@@ -1,0 +1,286 @@
+/*
+ * TOÀN BỘ SỐ LIỆU CỦA WEBSITE — sửa số ở đây, trang tự cập nhật.
+ *
+ * Quy ước đơn vị:
+ *  - bq.*  (BQLDA Đồng Bằng 2015): ĐỒNG, chép nguyên từ BCTC scan (bctc_bqlda.pdf).
+ *          Trang hiển thị theo tỷ đồng, làm tròn nửa lên trên số nguyên đồng.
+ *  - hp.*  (Tập đoàn Hòa Phát hợp nhất 2024): TỶ ĐỒNG, đúng như bài (baocao.pdf).
+ *          Không có BCTC Hòa Phát gốc, nên mọi chip nguồn ghi "theo bài".
+ *  - pct:  tỷ lệ % đúng như bài / BCTC (1 chữ số thập phân).
+ *  - Số trang "tr." của BQLDA là số trang trong bctc_bqlda.pdf;
+ *    số trang của Hòa Phát là số trang BCTC Hòa Phát mà bài trích dẫn.
+ */
+window.DATA = {
+  meta: {
+    truong: "NATIONAL ECONOMICS UNIVERSITY",
+    vien: "SCHOOL OF ADVANCED EDUCATION PROGRAMS",
+    mon: "Kế toán dự án đầu tư xây dựng",
+    deTai:
+      "Phân tích sự khác biệt về chế độ kế toán và báo cáo tài chính Ban Quản lý dự án giữa Thông tư 195/2012/TT-BTC và báo cáo tài chính Doanh nghiệp sử dụng Thông tư 200/2014/TT-BTC",
+    nhom: "Nhóm 2",
+    nam: 2026,
+    thanhVien: [
+      { ten: "Đỗ Thị Tiểu Luận", msv: "11230353" },
+      { ten: "Đặng Việt Hoàng", msv: "11232291" },
+      { ten: "Dương Gia Khánh", msv: "11231085" },
+      { ten: "Đỗ Minh Việt", msv: "11236876" }
+    ]
+  },
+
+  /* ---------------- BQLDA Nhà máy Chế biến Nông sản Đồng Bằng ---------------- */
+  bq: {
+    info: {
+      quyetDinh: "45/QĐ-HĐQT",
+      ngayThanhLap: "05/03/2013",
+      nhanSu2015: 24,
+      nhanSu2014: 22,
+      tongMuc: 312000000000,
+      namBatDau: 2013,
+      namKetThuc: 2016,
+      diaDiem: "KCN Trà Nóc, Cần Thơ",
+      ngayLapBCTC: "20/01/2016",
+      hopDongTinDung: "07/2013/HĐTD"
+    },
+
+    /* B01-CĐT, 31/12/2015 (tr.2) và thuyết minh B04-CĐT (tr.5–7) */
+    b01: {
+      tsnh: 11947250000,
+      tien: 4164850000,
+      tienMat: 38500000,
+      nhNgoaiThuong: 3802150000, // TK vốn đầu tư
+      nhCongThuong: 324200000, // TK hoạt động Ban
+      traTruoc: 3200000000,
+      traTruocXayLap5: 1900000000,
+      traTruocVietLong: 1300000000,
+      phaiThuKhac: 347400000,
+      tamUng: 285000000,
+      tk1388: 62400000,
+      htk: 1895000000,
+      vatLieu: 350000000,
+      thietBi: 1500000000,
+      ccdc: 45000000,
+      gtgt: 2340000000,
+      tsdh: 187516500000,
+      tscd: 774000000,
+      nguyenGia: 1260000000,
+      haoMon: 486000000,
+      khauHaoNam: 134000000,
+      tk241: 186742500000,
+      tongTS: 199463750000,
+      no: 10746300000,
+      ptnb: 9820000000,
+      ptnbXayLap5: 4650000000,
+      ptnbVietLong: 2730000000,
+      ptnbMienTay: 1240000000,
+      ptnbKhac: 1200000000,
+      thueTNCN: 128600000,
+      ptld: 215400000,
+      noiBo3368: 412000000,
+      phaiTraKhac: 74300000,
+      quyKTPL: 96000000,
+      quyDau: 84000000,
+      quyCap: 120000000,
+      quyChi: 108000000,
+      nvdt: 188717450000,
+      tongNV: 199463750000,
+      usdCuoi: 5420,
+      usdDau: 8150,
+      pct: { tsnh: 6.0, tsdh: 94.0, tk241: 93.6, no: 5.4, nvdt: 94.6 }
+    },
+
+    /* B02-CĐT (tr.3): TK 3361 */
+    b02: {
+      dau: 129449900000,
+      tang: 63850000000,
+      tangTien: 60650000000,
+      tangVatTu: 3200000000,
+      giam: 4582450000,
+      cuoi: 188717450000
+    },
+
+    /* F02-CĐT (tr.8): chi tiết theo nguồn */
+    f02: {
+      vcsh: { dau: 78200000000, tangTien: 24150000000, tangVatTu: 3200000000, giam: 2960000000, cuoi: 102590000000 },
+      vay: { dau: 51249900000, tangTien: 36500000000, tangVatTu: 0, giam: 1622450000, cuoi: 86127450000 },
+      pctVcsh: 54.4,
+      pctVay: 45.6
+    },
+
+    /* B03-CĐT (tr.4): TK 241 theo nội dung chi phí */
+    b03: {
+      dau: 121586000000,
+      ps: 69738950000,
+      giam: 4582450000,
+      cuoi: 186742500000,
+      tongMuc: 312000000000,
+      luyKe: 191324950000,
+      tyLe: 61.3,
+      quyetToan: 4582450000,
+      items: [
+        { key: "xd", ten: "Xây dựng", dau: 74912000000, ps: 41236800000, giam: 3120000000, cuoi: 113028800000 },
+        { key: "tb", ten: "Thiết bị", dau: 28640000000, ps: 15482300000, giam: 640000000, cuoi: 43482300000 },
+        { key: "bt", ten: "Bồi thường, hỗ trợ, tái định cư", dau: 6830000000, ps: 2915000000, giam: 0, cuoi: 9745000000 },
+        { key: "ql", ten: "Quản lý dự án", dau: 3915000000, ps: 2146450000, giam: 210000000, cuoi: 5851450000 },
+        { key: "tv", ten: "Tư vấn đầu tư xây dựng", dau: 5468000000, ps: 5873200000, giam: 412450000, cuoi: 10928750000 },
+        { key: "kh", ten: "Chi phí khác", dau: 1821000000, ps: 2085200000, giam: 200000000, cuoi: 3706200000 }
+      ]
+    },
+
+    /* F03A-CĐT (tr.9): theo hạng mục công trình */
+    f03a: {
+      items: [
+        { ten: "Nhà xưởng chế biến chính", dau: 51300000000, ps: 31250000000, giam: 0, cuoi: 82550000000 },
+        { ten: "Kho lạnh và kho thành phẩm", dau: 19800000000, ps: 10482300000, giam: 0, cuoi: 30282300000 },
+        { ten: "Hệ thống xử lý nước thải", dau: 9100000000, ps: 9578800000, giam: 0, cuoi: 18678800000 },
+        { ten: "Hạ tầng kỹ thuật", dau: 8250000000, ps: 8250000000, giam: 0, cuoi: 16500000000 },
+        { ten: "Nhà điều hành và công trình phụ trợ", dau: 3900000000, ps: 4600000000, giam: 0, cuoi: 8500000000 },
+        { ten: "Chi phí chung toàn dự án (chưa phân bổ)", dau: 25136000000, ps: 5095400000, giam: 0, cuoi: 30231400000 },
+        { ten: "Nhà bảo vệ, hàng rào, cổng (đã hoàn thành, bàn giao)", dau: 4100000000, ps: 482450000, giam: 4582450000, cuoi: 0, banGiao: true }
+      ]
+    },
+
+    /* F03B-CĐT (tr.10) */
+    f03b: {
+      hangMuc: "Nhà bảo vệ, hàng rào, cổng",
+      ngayBanGiao: "30/10/2015",
+      soQd: "128/QĐ-HĐQT",
+      ngayQd: "12/11/2015",
+      deNghi: 4582450000,
+      duyet: 4582450000,
+      chenhLech: 0,
+      xd: 3120000000,
+      tb: 640000000,
+      ql: 210000000,
+      tv: 412450000,
+      khac: 200000000
+    },
+
+    /* F03C-CĐT (tr.11) */
+    f03c: { dau: 1821000000, ps: 2085200000, giam: 200000000, cuoi: 3706200000 },
+
+    /* F03D-CĐT (tr.12): TK 642 */
+    f03d: {
+      ps2015: 2146450000,
+      ps2014: 2010300000,
+      phanBo: 2146450000,
+      conLai: 0,
+      luong: 1018400000,
+      baoHiem: 206900000,
+      khauHao: 134000000
+    }
+  },
+
+  /* ---------------- Tập đoàn Hòa Phát hợp nhất 31/12/2024 (theo bài, tỷ đồng) ---------------- */
+  hp: {
+    ngayKy: "24/03/2025",
+    tongTS: 224490,
+    tsnh: 86674,
+    tsdh: 137815,
+    xdcb: 63655.9,
+    tscdhh: 67244.2,
+    htk: 46091.2,
+    no: 109842,
+    vay: 82963.1,
+    vayNH: 55882.7,
+    vayDH: 27080.4,
+    vcsh: 114647, // bài ghi 114.647 khi làm tròn tỷ
+    vcshChiTiet: 114647.5, // bài ghi 114.647,5 khi có 1 chữ số thập phân
+    lnChuaPP: 49599,
+    pct: { tsnh: 38.6, tsdh: 61.4, xdcb: 28.4, tscd: 30.0, htk: 20.5, no: 48.9, vcsh: 51.1 },
+
+    // Tài sản ngắn hạn (đầu 1)
+    tien: 6887.6,
+    tienMat: 13.8,
+    tienGui: 2905.7,
+    tuongDuongTien: 3968.1,
+    dauTuTC: 18974.7,
+    phaiThuKH: 4352.1,
+    phaiThuKhac: 1249.0,
+    duPhongPTKD: 159.99,
+    gtgt: 6636.7,
+    cpTraTruocNH: 426.1,
+    traTruocNH: 2118.8,
+    traTruocDH: 82.8,
+    htkGoc: 46192.3,
+    htkDuPhong: 101.1,
+
+    // Tài sản dài hạn (đầu 2)
+    nguyenGia: 108146.6,
+    haoMon: 40902.4,
+    khauHaoPhanBo: 6915.7,
+    tsHetKH: 11515,
+    tsDoDangDH: 63750.7,
+    tsVoHinh: 184.2,
+    bdsDauTu: 559.6,
+    dauTuDH: 136.5,
+    cpTraTruocDH: 4269.1,
+    tsThueHoanLai: 254.7,
+    loiTheTM: 63.6,
+    duAnDungQuat: 60108.1,
+
+    // Nợ phải trả (đầu 3)
+    ptnbNH: 14046.8,
+    ptnbDH: 6283.6,
+    thuePhaiNop: 1743.4,
+    ptld: 890.9,
+    cpPhaiTraNH: 682.1,
+    cpPhaiTraDH: 1143.7,
+    phaiTraKhac: 188.1,
+    quyKTPL: 1027.3,
+
+    // Vốn chủ sở hữu (đầu 4)
+    vonCoPhan: 63962.5,
+    thangDuDauNam: 3211.6,
+    quyDTPT: 794.8,
+
+    // Kết quả kinh doanh (đầu 5–9)
+    dtt: 138855.1,
+    dtTaiChinh: 2618.9,
+    giaVon: 120357.6,
+    lnGop: 18497.5,
+    bienGop: 13.3,
+    cpBanHang: 2337.3,
+    cpQLDN: 1545.5,
+    cpTaiChinh: 3966.6,
+    thuNhapKhac: 1159.8,
+    cpKhac: 733.3,
+    thueTNDN: 1673.5,
+    lnTruocThue: 13693.5,
+    lnst: 12020.0,
+    lnstPct: 8.7,
+    laiTyGia: 1319.8,
+    loTyGia: 1473.2,
+
+    // Biến động vốn chủ sở hữu (tm 26)
+    gopVonCDKKS: 233.1,
+    trichQuy: 433.1,
+
+    // Ngoài bảng
+    usd: 14517852,
+    usdTy: 366.6,
+
+    // XDCB dở dang (tm 14)
+    xdcbTang: 39906.8,
+    laiVayVonHoa: 1310.4,
+    chuyenTSCD: 2925.6,
+    khauHao: 6810.7,
+    xoaSoXDCB: 16.1,
+
+    // Ước tính trong bài: tỷ lệ chi phí đi vào tài sản / kết quả kinh doanh
+    ratioTaiSan: 23.6,
+    ratioKetQua: 76.4
+  },
+
+  /* Ước tính tương ứng của BQLDA */
+  bqRatio: { taiSan: 100, ketQua: 0 },
+
+  /* Thời hạn nộp BCTC (số ngày kể từ ngày kết thúc kỳ) */
+  thoiHan: {
+    bq: { quy: 20, nam: 30 },
+    dn: { quy: 20, nam: 90 },
+    dnRieng: { quy: 45, nam: 30 }
+  },
+
+  /* Ví dụ hạch toán (Bảng 1.5, triệu đồng) */
+  viDu: { nhanVon: 2000, nghiemThu: 1000, luong: 50, banGiaoBq: 1050, banGiaoDn: 1000, chiPhiKy: 50 }
+};
