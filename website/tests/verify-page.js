@@ -30,7 +30,7 @@ function expected(p, d, s) {
     const errors = [];
     page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') errors.push(m.text()); });
     page.on('pageerror', e => errors.push(String(e)));
-    await page.goto('file://' + path.join(__dirname, '../index.html'), { waitUntil: 'load' });
+    await page.goto('file://' + path.join(__dirname, '..', process.env.PAGE || 'index.html'), { waitUntil: 'load' });
     await page.evaluate(() => window.__finalize());
     const items = await page.$$eval('[data-v]', els => els.map(e => ({ p: e.getAttribute('data-v'), d: e.getAttribute('data-d'), s: e.getAttribute('data-s'), t: e.textContent })));
     let bad = 0;

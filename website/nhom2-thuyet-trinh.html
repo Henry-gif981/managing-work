@@ -1,0 +1,4136 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nhóm 2 · BQLDA (TT 195) và Doanh nghiệp (TT 200)</title>
+<meta name="description" content="Website thuyết trình tiểu luận Nhóm 2, môn Kế toán dự án đầu tư xây dựng: so sánh chế độ kế toán và BCTC của Ban Quản lý dự án (TT 195/2012) với doanh nghiệp (TT 200/2014).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap">
+<style>
+/* =========================================================
+   Nhóm 2 — Website thuyết trình tiểu luận
+   Phong cách "company profile": nền xám xanh, canvas panel trắng ngà,
+   navy = BQLDA (TT 195), xanh sáng = Doanh nghiệp (TT 200).
+   ========================================================= */
+
+:root {
+  /* Màu */
+  --navy: #0d3b84;
+  --navy-700: #0a2d66;
+  --navy-50: #e8eef8;
+  --navy-100: #d3def0;
+  --blue: #1c6fe0;
+  --blue-50: #e8f1fd;
+  --blue-100: #d2e4fb;
+  --blue-300: #8db8f1;
+  --ink: #0f1e3a;
+  --ink-2: #44526b;
+  --ink-3: #64728a;
+  --line: #dde4ee;
+  --line-2: #c9d3e1;
+  --panel: #fbfcfe;
+  --card: #f2f5f9;
+  --white: #ffffff;
+  --bg-1: #8e95a6;
+  --bg-2: #6f7b94;
+
+  /* Chữ */
+  --f-head: "Sora", "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Khoảng cách */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --gutter: clamp(16px, 3vw, 40px);
+  --pad: clamp(20px, 4vw, 56px);
+
+  /* Bo góc, bóng */
+  --r-panel: 28px;
+  --r-card: 16px;
+  --r-sm: 10px;
+  --shadow-panel: 0 40px 80px -40px rgba(15, 30, 58, 0.55), 0 2px 6px rgba(15, 30, 58, 0.08);
+  --shadow-card: 0 10px 24px -14px rgba(13, 59, 132, 0.35);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-h: 56px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: linear-gradient(170deg, var(--bg-1) 0%, var(--bg-2) 100%) fixed;
+  background-color: var(--bg-2);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--f-head);
+  line-height: 1.2;
+  margin: 0;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 var(--s-3);
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding-left: 1.2em;
+}
+
+a {
+  color: var(--blue);
+}
+
+b,
+strong {
+  font-weight: 650;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.skip {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--white);
+  color: var(--navy);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.skip:focus {
+  top: 12px;
+}
+
+.ic {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------------- Thanh tiến độ + nav ---------------- */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 60;
+  background: transparent;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, var(--navy), var(--blue));
+}
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 0 var(--gutter);
+  background: rgba(111, 123, 148, 0.72);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--white);
+}
+.nav-brand {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-current {
+  display: none;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.nav-current b {
+  font-family: var(--f-head);
+  margin-right: 6px;
+}
+.nav-list {
+  display: flex;
+  gap: 2px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  min-width: 0;
+}
+.nav-list a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-list a b {
+  font-family: var(--f-head);
+  font-weight: 700;
+}
+.nav-list a span {
+  display: none;
+}
+.nav-list a:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+}
+.nav-list a[aria-current="true"] {
+  background: var(--white);
+  color: var(--navy);
+}
+.nav-list a[aria-current="true"] span {
+  display: inline;
+}
+.nav-tools {
+  display: flex;
+  gap: 6px;
+}
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--white);
+  font: 500 13px var(--f-body);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+.btn-ghost[aria-pressed="true"] {
+  background: var(--white);
+  color: var(--navy);
+}
+.btn-ghost .ic {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 1180px) {
+  .nav-list a[aria-current="true"] span {
+    display: none;
+  }
+}
+@media (max-width: 960px) {
+  .nav-list {
+    display: none;
+  }
+  .nav-current {
+    display: block;
+    flex: 1;
+  }
+  .btn-ghost .lbl {
+    display: none;
+  }
+  .btn-ghost {
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
+}
+
+/* ---------------- Masthead (như dải đầu ảnh tham chiếu) ---------------- */
+.masthead {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: clamp(28px, 5vw, 56px) var(--gutter) var(--s-6);
+  color: var(--white);
+}
+.mast-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-4) var(--s-6);
+}
+.mast-word {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(44px, 8vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+.mast-sub {
+  display: grid;
+  gap: 4px;
+}
+.mast-sub span {
+  font-size: clamp(15px, 1.6vw, 20px);
+}
+.mast-sub b {
+  font-family: var(--f-head);
+  font-size: clamp(15px, 1.7vw, 21px);
+  letter-spacing: 0.04em;
+}
+.mast-rule {
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  margin: var(--s-5) calc(var(--gutter) * -1) var(--s-4);
+}
+.mast-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--s-4) var(--s-7);
+}
+.mast-meta small {
+  display: block;
+  font-size: 13px;
+  opacity: 0.85;
+}
+.mast-meta strong {
+  font-family: var(--f-head);
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-weight: 700;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+  align-items: center;
+  font-size: 13px;
+}
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.legend i {
+  display: inline-block;
+  width: 52px;
+  height: 18px;
+}
+.legend .sw-navy {
+  background: var(--navy);
+}
+.legend .sw-blue {
+  background: var(--blue);
+}
+
+/* ---------------- Slide + panel ---------------- */
+main {
+  padding: 0 var(--gutter) var(--s-8);
+}
+.slide {
+  max-width: 1320px;
+  margin: 0 auto var(--s-7);
+  position: relative;
+}
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--panel);
+  border-radius: var(--r-panel);
+  box-shadow: var(--shadow-panel);
+  padding: var(--pad);
+  isolation: isolate;
+}
+/* họa tiết kiến trúc mờ ở nền panel */
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: auto -40px -60px auto;
+  width: min(560px, 70%);
+  aspect-ratio: 16 / 9;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180' fill='none' stroke='%231c6fe0' stroke-width='1'%3E%3Cpath d='M10 170h300M30 170V96l40-24v98M70 72l46 22v76M116 94h70v76M186 94l34-28 34 28v76M254 94h42v76M44 112h12M44 130h12M44 148h12M84 104h14M84 124h14M84 144h14M128 110h46M128 128h46M128 146h46M200 112h40M200 130h40M200 148h40M266 110h18M266 130h18M266 150h18M220 66V30h8v36M150 94V40l22-14v68'/%3E%3C/svg%3E")
+    no-repeat right bottom / contain;
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.ghost {
+  position: absolute;
+  top: -0.2em;
+  right: -0.04em;
+  z-index: -1;
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(76px, 15vw, 230px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: transparent;
+  background: linear-gradient(180deg, rgba(28, 111, 224, 0.2) 10%, rgba(28, 111, 224, 0.03) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  pointer-events: none;
+  user-select: none;
+}
+
+.sec-head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  margin-bottom: var(--s-6);
+}
+.sec-no {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 0.9;
+  color: var(--navy);
+  letter-spacing: -0.03em;
+}
+.sec-en {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  margin: 4px 0 6px;
+}
+.sec-head h2 {
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 700;
+  color: var(--ink);
+}
+.lede {
+  font-size: clamp(16px, 1.5vw, 18px);
+  color: var(--ink-2);
+  max-width: 70ch;
+}
+
+.block {
+  margin-top: var(--s-7);
+}
+.block-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-4);
+  margin-bottom: var(--s-4);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line);
+}
+.block-title h3 {
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 700;
+}
+.block-title .en {
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.06em;
+}
+
+/* ---------------- Lưới ---------------- */
+.grid {
+  display: grid;
+  gap: var(--s-4);
+}
+.g-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.g-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.g-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.g-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.g-split {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: start;
+}
+@media (max-width: 1060px) {
+  .g-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .g-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 860px) {
+  .g-3,
+  .g-split {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .g-5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 560px) {
+  .g-2,
+  .g-4,
+  .g-5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------------- Pill, chip nguồn ---------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font: 600 13px var(--f-body);
+  white-space: nowrap;
+}
+.pill-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+.pill-blue {
+  background: var(--blue);
+  color: var(--white);
+}
+.pill-soft {
+  background: var(--white);
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+}
+.src {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 20px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: var(--white);
+  color: var(--ink-2);
+  font: 500 11px/1 var(--f-body);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.src::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+}
+.src.hp::before {
+  background: var(--blue);
+}
+.src.bai::before {
+  background: var(--ink-3);
+}
+
+/* ---------------- Thẻ số liệu ---------------- */
+.stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card);
+  border-radius: var(--r-card);
+  padding: var(--s-4);
+  min-width: 0;
+}
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+.stat-ic {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy);
+  box-shadow: 0 1px 2px rgba(15, 30, 58, 0.08);
+}
+.stat-ic .ic {
+  width: 18px;
+  height: 18px;
+}
+.stat.is-dn .stat-ic {
+  color: var(--blue);
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.stat-val {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.1;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+.stat.is-dn .stat-val {
+  color: var(--blue);
+}
+.stat-val small {
+  font-family: var(--f-body);
+  font-size: 0.5em;
+  font-weight: 600;
+  margin-left: 4px;
+  color: var(--ink-2);
+}
+.stat-note {
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.stat .meter {
+  margin-top: 6px;
+}
+
+.meter {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--navy-100);
+  overflow: hidden;
+}
+.meter span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--w, 0%);
+  border-radius: inherit;
+  background: var(--navy);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 1.1s var(--ease);
+}
+.meter.dn {
+  background: var(--blue-100);
+}
+.meter.dn span {
+  background: var(--blue);
+}
+.in .meter span,
+.meter.in span {
+  transform: scaleX(1);
+}
+
+/* ---------------- Thẻ đôi (kiểu CARRIAGE OF PASSENGERS / GOODS) ---------------- */
+.duo {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--line);
+}
+.duo-art {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  background: linear-gradient(160deg, #dbe7f8, #f4f8fd);
+}
+.duo.is-dn .duo-art {
+  background: linear-gradient(160deg, #d7e8fd, #f3f8ff);
+}
+.duo-art svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.duo-badge {
+  position: absolute;
+  left: 50%;
+  bottom: -22px;
+  transform: translateX(-50%);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--navy);
+  box-shadow: 0 4px 12px rgba(15, 30, 58, 0.12);
+}
+.duo.is-dn .duo-badge {
+  color: var(--blue);
+}
+.duo-body {
+  padding: var(--s-6) var(--s-5) var(--s-5);
+  display: grid;
+  gap: var(--s-3);
+}
+.duo-kicker {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line);
+}
+.duo-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+.duo-row .k {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.duo-row .t {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--navy);
+}
+.duo.is-dn .duo-row .t {
+  color: var(--blue);
+}
+.duo-row .v {
+  font-family: var(--f-head);
+  font-weight: 700;
+  font-size: clamp(22px, 2.6vw, 32px);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.duo-row .v small {
+  font-size: 0.5em;
+  color: var(--ink-2);
+  margin-left: 4px;
+}
+
+/* ---------------- Thẻ thường ---------------- */
+.card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: var(--s-5);
+  min-width: 0;
+}
+.card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: var(--s-2);
+}
+.card p:last-child,
+.card ul:last-child {
+  margin-bottom: 0;
+}
+.card.bq {
+  border-top: 4px solid var(--navy);
+}
+.card.dn {
+  border-top: 4px solid var(--blue);
+}
+.card.soft {
+  background: var(--card);
+  border-color: transparent;
+}
+.card .tag {
+  display: inline-block;
+  font-size: 12px;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+}
+.muted {
+  color: var(--ink-2);
+}
+.small {
+  font-size: 14px;
+}
+.tiny {
+  font-size: 12.5px;
+}
+.num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.c-navy {
+  color: var(--navy);
+}
+.c-blue {
+  color: var(--blue);
+}
+
+.callout {
+  display: flex;
+  gap: var(--s-4);
+  align-items: flex-start;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--r-card);
+  padding: var(--s-5);
+}
+.callout h4,
+.callout b {
+  color: var(--white);
+}
+.callout .ic {
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  color: var(--blue-300);
+}
+.callout p {
+  margin: 0;
+}
+.note {
+  border-left: 3px solid var(--blue);
+  background: var(--blue-50);
+  padding: var(--s-3) var(--s-4);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+/* ---------------- Khác biệt cốt lõi ---------------- */
+.core {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: var(--s-4);
+  align-items: stretch;
+}
+.core-side {
+  border-radius: 20px;
+  padding: var(--s-6) var(--s-5);
+  color: var(--white);
+  display: grid;
+  gap: var(--s-2);
+  align-content: start;
+}
+.core-side.bq {
+  background: var(--navy);
+}
+.core-side.dn {
+  background: var(--blue);
+}
+.core-side .who {
+  font-size: 13px;
+  opacity: 0.9;
+}
+.core-side .word {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1;
+}
+.core-side p {
+  margin: 0;
+  opacity: 0.95;
+}
+.core-vs {
+  align-self: center;
+  font-family: var(--f-head);
+  font-weight: 700;
+  color: var(--ink-3);
+}
+@media (max-width: 720px) {
+  .core {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .core-vs {
+    justify-self: center;
+  }
+}
+
+/* ---------------- Bảng so sánh ---------------- */
+.seg {
+  display: inline-flex;
+  padding: 4px;
+  gap: 4px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.seg button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font: 600 13px var(--f-body);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.seg button:hover {
+  color: var(--ink);
+}
+.seg button[aria-pressed="true"] {
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(15, 30, 58, 0.15);
+}
+.seg button[data-show="bq"][aria-pressed="true"] {
+  background: var(--navy);
+  color: var(--white);
+}
+.seg button[data-show="dn"][aria-pressed="true"] {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+table.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14.5px;
+}
+.cmp th,
+.cmp td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.cmp tr:last-child td {
+  border-bottom: 0;
+}
+.cmp thead th {
+  font: 700 13px var(--f-head);
+  color: var(--white);
+  background: var(--ink);
+  letter-spacing: 0.02em;
+}
+.cmp thead th.bq {
+  background: var(--navy);
+}
+.cmp thead th.dn {
+  background: var(--blue);
+}
+.cmp tbody th {
+  width: 20%;
+  font-weight: 650;
+  color: var(--ink);
+  background: var(--card);
+}
+.cmp td.why {
+  color: var(--ink-2);
+  font-size: 13.5px;
+}
+.cmp .src {
+  margin-top: 6px;
+}
+.cmp td .src {
+  margin-left: 2px;
+}
+.cmp.cols-hide-dn .col-dn,
+.cmp.cols-hide-bq .col-bq {
+  display: none;
+}
+.cmp td.n,
+.cmp th.n {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.cmp tfoot td {
+  font-weight: 700;
+  background: var(--card);
+  border-top: 1px solid var(--line-2);
+}
+.cmp .bar-cell {
+  width: 32%;
+  min-width: 140px;
+}
+
+@media (max-width: 720px) {
+  table.cmp.stack thead {
+    display: none;
+  }
+  table.cmp.stack,
+  table.cmp.stack tbody,
+  table.cmp.stack tr,
+  table.cmp.stack th,
+  table.cmp.stack td {
+    display: block;
+    width: 100%;
+  }
+  table.cmp.stack tr {
+    border-bottom: 1px solid var(--line-2);
+  }
+  table.cmp.stack tbody th {
+    border-bottom: 0;
+  }
+  table.cmp.stack td {
+    border-bottom: 0;
+    padding-top: 6px;
+  }
+  table.cmp.stack td[data-h]::before {
+    content: attr(data-h);
+    display: block;
+    font: 700 12px var(--f-head);
+    margin-bottom: 2px;
+  }
+  table.cmp.stack td.col-bq[data-h]::before {
+    color: var(--navy);
+  }
+  table.cmp.stack td.col-dn[data-h]::before {
+    color: var(--blue);
+  }
+  table.cmp.stack td.why[data-h]::before {
+    color: var(--ink-3);
+  }
+}
+
+/* ---------------- Tabs ---------------- */
+.tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: var(--s-4);
+}
+.tabs button {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: var(--white);
+  color: var(--ink-2);
+  font: 600 13.5px var(--f-body);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.tabs button:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+.tabs button[aria-selected="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.tabpanel[hidden] {
+  display: none;
+}
+.tab-why {
+  margin-top: var(--s-4);
+}
+
+/* ---------------- Stepper ---------------- */
+.stepper {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-4);
+  counter-reset: st;
+}
+.step {
+  position: relative;
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+}
+.step-head {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 14px 32px 14px 18px;
+  color: var(--white);
+  background: var(--navy);
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 50%, calc(100% - 22px) 100%, 0 100%);
+  border-radius: 10px 0 0 10px;
+}
+.step:nth-child(2) .step-head {
+  background: #134d9f;
+}
+.step:nth-child(3) .step-head {
+  background: var(--blue);
+}
+.step-head small {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  opacity: 0.9;
+}
+.step-head b {
+  font-family: var(--f-head);
+  font-size: 16px;
+}
+.step .card {
+  padding: var(--s-4);
+}
+.step .card h4 {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  font-family: var(--f-body);
+  font-weight: 600;
+}
+.step ul {
+  font-size: 14px;
+  display: grid;
+  gap: 4px;
+}
+.step .card.acc {
+  background: var(--navy-50);
+  border-color: var(--navy-100);
+}
+@media (max-width: 860px) {
+  .stepper {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------------- Timeline pháp lý ---------------- */
+.timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-4);
+  padding-top: 28px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 9px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--navy), var(--blue));
+}
+.tl {
+  position: relative;
+}
+.tl::before {
+  content: "";
+  position: absolute;
+  top: -26px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 4px solid var(--navy);
+}
+.tl.dn::before {
+  border-color: var(--blue);
+}
+.tl.next::before {
+  border-style: dashed;
+  border-color: var(--ink-3);
+}
+.tl .yr {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--navy);
+  line-height: 1.1;
+}
+.tl.dn .yr {
+  color: var(--blue);
+}
+.tl.next .yr {
+  color: var(--ink-2);
+}
+.tl h4 {
+  font-size: 15px;
+  margin: 6px 0 4px;
+}
+.tl p {
+  font-size: 13.5px;
+  color: var(--ink-2);
+  margin: 0;
+}
+.tl .pill {
+  margin-top: 8px;
+}
+@media (max-width: 860px) {
+  .timeline {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 0 0 30px;
+  }
+  .timeline::before {
+    left: 7px;
+    right: auto;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, var(--navy), var(--blue));
+  }
+  .tl::before {
+    top: 6px;
+    left: -30px;
+  }
+}
+
+/* ---------------- Dòng hạch toán 5 bước ---------------- */
+.flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
+  gap: 10px 8px;
+  align-items: stretch;
+}
+.flow-h {
+  font: 700 13px var(--f-head);
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--white);
+}
+.flow-h.bq {
+  background: var(--navy);
+}
+.flow-h.dn {
+  background: var(--blue);
+}
+.flow-step {
+  border-radius: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--navy-100);
+  background: var(--navy-50);
+  font-size: 14px;
+}
+.flow-step.dn {
+  border-color: var(--blue-100);
+  background: var(--blue-50);
+}
+.flow-step b {
+  display: block;
+  font-family: var(--f-head);
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.flow-step code {
+  font: 500 13px var(--f-body);
+  color: var(--ink-2);
+}
+.flow-n {
+  display: grid;
+  place-items: center;
+}
+.flow-n span {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line-2);
+  background: var(--white);
+  font: 700 14px var(--f-head);
+  color: var(--ink-2);
+}
+.flow-step.end {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+.flow-step.end code {
+  color: rgba(255, 255, 255, 0.85);
+}
+.flow-step.dn.end {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+@media (max-width: 640px) {
+  .flow {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .flow .flow-n,
+  .flow .flow-sp {
+    display: none;
+  }
+  .flow-step {
+    font-size: 13px;
+    padding: 10px;
+  }
+}
+
+/* ---------------- Ví dụ nghiệp vụ ---------------- */
+.ops {
+  display: grid;
+  gap: var(--s-3);
+}
+.op {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: var(--s-4);
+  align-items: start;
+  padding: var(--s-4);
+  border-radius: var(--r-card);
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+.op-n {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--card);
+  font: 800 16px var(--f-head);
+  color: var(--ink-2);
+}
+.op-what b {
+  display: block;
+  font-family: var(--f-head);
+}
+.op-entry {
+  border-left: 3px solid var(--navy);
+  padding-left: var(--s-3);
+}
+.ops[data-mode="dn"] .op-entry {
+  border-left-color: var(--blue);
+}
+.op-entry [data-mode] {
+  display: none;
+}
+.ops[data-mode="bq"] .op-entry [data-mode="bq"],
+.ops[data-mode="dn"] .op-entry [data-mode="dn"] {
+  display: block;
+  animation: fadein 0.35s var(--ease);
+}
+.op-entry .je {
+  font: 600 15px var(--f-head);
+  color: var(--navy);
+}
+.ops[data-mode="dn"] .op-entry .je {
+  color: var(--blue);
+}
+.op-entry .je + .je {
+  margin-top: 4px;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+@media (max-width: 720px) {
+  .op {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+  .op-entry {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ---------------- Biểu đồ ---------------- */
+.chart {
+  width: 100%;
+}
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.chart text {
+  font-family: var(--f-body);
+}
+.chart .axis {
+  stroke: var(--line-2);
+}
+.chart .gridl {
+  stroke: var(--line);
+  stroke-dasharray: 3 4;
+}
+.chart-cap {
+  font-size: 13px;
+  color: var(--ink-2);
+  margin-top: var(--s-2);
+}
+
+/* Thanh xếp chồng ngang */
+.sbar {
+  display: grid;
+  gap: 8px;
+}
+.sbar + .sbar {
+  margin-top: var(--s-4);
+}
+.sbar-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-3);
+  flex-wrap: wrap;
+}
+.sbar-h b {
+  font-family: var(--f-head);
+  font-size: 14px;
+}
+.sbar-track {
+  display: flex;
+  height: 44px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--card);
+}
+.sbar-seg {
+  position: relative;
+  flex: 0 0 var(--w);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  color: var(--white);
+  font: 700 13px var(--f-head);
+  white-space: nowrap;
+  overflow: hidden;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 1s var(--ease);
+  border-right: 2px solid var(--panel);
+}
+.sbar-seg:last-child {
+  border-right: 0;
+}
+.in .sbar-seg {
+  transform: scaleX(1);
+}
+.sbar-seg.t1 {
+  background: var(--navy);
+}
+.sbar-seg.t2 {
+  background: #3f68ad;
+}
+.sbar-seg.t3 {
+  background: var(--navy-100);
+  color: var(--navy);
+}
+.sbar-seg.d1 {
+  background: var(--blue);
+}
+.sbar-seg.d2 {
+  background: #5a95e8;
+}
+.sbar-seg.d3 {
+  background: var(--blue-100);
+  color: var(--navy);
+}
+.sbar-seg.d4 {
+  background: #e3ecf8;
+  color: var(--ink-2);
+}
+.sbar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.sbar-legend i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: -1px;
+}
+
+/* Biểu đồ cột ngang */
+.hbars {
+  display: grid;
+  gap: 10px;
+}
+.hbar {
+  display: grid;
+  grid-template-columns: minmax(120px, 34%) minmax(0, 1fr) auto;
+  gap: var(--s-3);
+  align-items: center;
+  font-size: 14px;
+}
+.hbar-track {
+  height: 22px;
+  border-radius: 6px;
+  background: var(--card);
+  overflow: hidden;
+}
+.hbar-fill {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  background: var(--navy);
+  border-radius: 6px;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 1s var(--ease);
+}
+.hbar.dn .hbar-fill {
+  background: var(--blue);
+}
+.in .hbar-fill {
+  transform: scaleX(1);
+}
+.hbar-v {
+  font: 700 14px var(--f-head);
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  min-width: 64px;
+  text-align: right;
+}
+@media (max-width: 560px) {
+  .hbar {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .hbar-track {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
+
+/* Thanh 100% */
+.split100 {
+  display: grid;
+  gap: 6px;
+}
+.split100 .sbar-track {
+  height: 56px;
+}
+
+/* Tiến độ lớn */
+.bigprog {
+  display: grid;
+  gap: var(--s-3);
+}
+.bigprog-track {
+  position: relative;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--navy-100);
+  overflow: hidden;
+}
+.bigprog-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--w);
+  background: linear-gradient(90deg, var(--navy), var(--blue));
+  border-radius: inherit;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 1.4s var(--ease);
+}
+.in .bigprog-fill {
+  transform: scaleX(1);
+}
+.bigprog-scale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+/* Donut */
+.donut-wrap {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: center;
+}
+.donut svg {
+  width: 200px;
+  height: 200px;
+  display: block;
+}
+.donut circle.seg {
+  transition: stroke-dashoffset 1.2s var(--ease);
+}
+@media (max-width: 520px) {
+  .donut-wrap {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+}
+.key {
+  display: grid;
+  gap: var(--s-3);
+}
+.key-row {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: baseline;
+}
+.key-row i {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: block;
+  transform: translateY(2px);
+}
+.key-row .v {
+  font: 700 18px var(--f-head);
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+/* TK 642: hai đường đi */
+.paths {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s-4);
+}
+.path {
+  display: grid;
+  gap: 8px;
+}
+.path-node {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  background: var(--navy-50);
+  border: 1px solid var(--navy-100);
+}
+.path.dn .path-node {
+  background: var(--blue-50);
+  border-color: var(--blue-100);
+}
+.path-node b {
+  font-family: var(--f-head);
+}
+.path-node.start {
+  background: var(--white);
+  border-style: dashed;
+}
+.path-node.end {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+.path.dn .path-node.end {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+.path-arrow {
+  justify-self: center;
+  color: var(--ink-3);
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.path-arrow .ic {
+  width: 16px;
+  height: 16px;
+}
+@media (max-width: 720px) {
+  .paths {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Cùng sự kiện, kết cục khác */
+.fate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--s-4);
+}
+.fate .card {
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+}
+.fate .big {
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: clamp(34px, 4.6vw, 56px);
+  line-height: 1;
+  color: var(--navy);
+}
+.fate .dn .big {
+  color: var(--blue);
+}
+.fate .big small {
+  font-size: 0.4em;
+  font-weight: 600;
+  color: var(--ink-2);
+  margin-left: 6px;
+}
+.fate .verb {
+  font: 700 18px var(--f-head);
+}
+.strike {
+  position: relative;
+  display: inline-block;
+}
+.strike::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 52%;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--navy);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  transition: transform 0.8s 0.5s var(--ease);
+}
+.in .strike::after {
+  transform: scaleX(1);
+}
+@media (max-width: 720px) {
+  .fate {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Danh sách có dấu */
+.ticks {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.ticks li {
+  position: relative;
+  padding-left: 22px;
+}
+.ticks li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--navy);
+}
+.ticks.dn li::before {
+  background: var(--blue);
+}
+
+.reasons {
+  counter-reset: r;
+  display: grid;
+  gap: var(--s-3);
+}
+.reason {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: var(--s-3);
+  align-items: start;
+}
+.reason::before {
+  counter-increment: r;
+  content: counter(r);
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  font: 700 15px var(--f-head);
+}
+
+/* ---------------- Hero ---------------- */
+.hero .panel {
+  padding-bottom: var(--s-6);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--s-6);
+  align-items: center;
+}
+.hero-uni {
+  font: 600 12.5px var(--f-body);
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-bottom: var(--s-4);
+}
+.hero-uni span {
+  display: block;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: var(--s-4);
+}
+.hero h1 {
+  font-size: clamp(24px, 3.1vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--navy);
+}
+.hero h1 em + em {
+  color: var(--blue);
+}
+.hero-mon {
+  margin: var(--s-4) 0 var(--s-5);
+  color: var(--ink-2);
+}
+.members {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px var(--s-5);
+  padding: var(--s-4) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+  margin: 0;
+}
+.members li {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14.5px;
+}
+.members span {
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  margin-top: var(--s-3);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.hero-meta b {
+  color: var(--ink);
+}
+.hero-art {
+  position: relative;
+}
+.hero-art svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.hero-stats {
+  margin-top: var(--s-6);
+}
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-art {
+    order: -1;
+    max-width: 560px;
+  }
+}
+@media (max-width: 520px) {
+  .members {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------------- Tài liệu tham khảo ---------------- */
+.refs {
+  display: grid;
+  gap: 10px;
+  counter-reset: ref;
+  list-style: none;
+  padding: 0;
+}
+.refs li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 10px;
+  font-size: 14.5px;
+}
+.refs li::before {
+  counter-increment: ref;
+  content: "[" counter(ref) "]";
+  font: 700 14px var(--f-head);
+  color: var(--navy);
+}
+
+.foot {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: var(--s-5) var(--gutter) var(--s-7);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-3);
+}
+.kbd {
+  display: inline-block;
+  min-width: 22px;
+  padding: 0 6px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font: 600 12px var(--f-body);
+  text-align: center;
+}
+
+/* ---------------- Hiệu ứng xuất hiện ---------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .meter span,
+  .sbar-seg,
+  .hbar-fill,
+  .bigprog-fill,
+  .strike::after {
+    transform: none !important;
+    transition: none !important;
+  }
+  .donut circle.seg,
+  .wf-bar {
+    transition: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+}
+
+/* ---------------- Chế độ trình chiếu ---------------- */
+html.present {
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: var(--nav-h);
+}
+.page-head {
+  display: none;
+}
+html.present .page-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 var(--s-4);
+  font: 600 13px var(--f-body);
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+}
+html.present .page-head b {
+  font: 800 22px var(--f-head);
+  color: var(--navy);
+}
+html.present .page .block {
+  margin-top: 0;
+}
+html.present .page .panel::before {
+  opacity: 0.05;
+}
+html.present .masthead,
+html.present .foot {
+  display: none;
+}
+html.present main {
+  padding: 0;
+}
+html.present .slide {
+  max-width: none;
+  margin: 0;
+  height: calc(100vh - var(--nav-h));
+  height: calc(100dvh - var(--nav-h));
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px var(--gutter);
+  overflow: hidden;
+}
+html.present .slide > .panel {
+  width: min(100%, calc((100vh - var(--nav-h) - 36px) * 16 / 9));
+  flex: none;
+  max-height: none;
+}
+html.present .reveal {
+  opacity: 1;
+  transform: none;
+}
+html.present .nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+html.present body {
+  padding-top: var(--nav-h);
+}
+html.present .block {
+  margin-top: var(--s-6);
+}
+
+/* ---------------- In / lưu PDF ---------------- */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 12mm;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+  .nav,
+  .progress,
+  .skip,
+  .seg,
+  .tabs,
+  .no-print {
+    display: none !important;
+  }
+  .masthead {
+    color: var(--navy);
+    padding: 0 0 12px;
+  }
+  .masthead .mast-word,
+  .masthead strong {
+    color: var(--navy);
+  }
+  .mast-rule {
+    border-color: var(--line-2);
+    margin: 10px 0;
+  }
+  main {
+    padding: 0;
+  }
+  .slide {
+    margin: 0;
+    break-before: page;
+  }
+  .slide:first-of-type {
+    break-before: auto;
+  }
+  .panel {
+    box-shadow: none;
+    border: 1px solid var(--line-2);
+    border-radius: 12px;
+    padding: 18px 22px;
+    overflow: visible;
+  }
+  .panel::before,
+  .ghost {
+    display: none;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .tabpanel[hidden] {
+    display: block !important;
+  }
+  .tabpanel {
+    break-inside: avoid;
+    margin-bottom: 14px;
+  }
+  .tabpanel .print-title {
+    display: block !important;
+  }
+  .cmp.cols-hide-dn .col-dn,
+  .cmp.cols-hide-bq .col-bq {
+    display: table-cell !important;
+  }
+  .op-entry [data-mode] {
+    display: block !important;
+  }
+  .op-entry [data-mode="dn"] {
+    border-top: 1px dashed var(--line-2);
+    margin-top: 6px;
+    padding-top: 6px;
+  }
+  .meter span,
+  .sbar-seg,
+  .hbar-fill,
+  .bigprog-fill,
+  .strike::after {
+    transform: none !important;
+    transition: none !important;
+  }
+  .card,
+  .stat,
+  .duo,
+  .op,
+  tr,
+  .flow-step {
+    break-inside: avoid;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .foot {
+    color: var(--ink-2);
+  }
+}
+.print-title {
+  display: none;
+  font: 700 14px var(--f-head);
+  margin: 0 0 6px;
+}
+
+/* Biểu đồ SVG dựng bằng JS: thác nước, cột nhóm, donut */
+.wf-bar {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  transform: scaleY(0);
+  transition: transform 0.9s var(--ease);
+}
+.in .wf-bar {
+  transform: scaleY(1);
+}
+.donut .seg {
+  stroke-dasharray: 0 var(--c);
+  transition: stroke-dasharray 1.2s var(--ease);
+}
+.in .donut .seg {
+  stroke-dasharray: var(--l) var(--c);
+}
+@media (prefers-reduced-motion: reduce) {
+  .wf-bar {
+    transform: none;
+  }
+  .donut .seg {
+    stroke-dasharray: var(--l) var(--c);
+  }
+}
+@media print {
+  .wf-bar {
+    transform: none !important;
+  }
+  .donut .seg {
+    stroke-dasharray: var(--l) var(--c) !important;
+  }
+}
+
+/* Phân đoạn hẹp: ẩn nhãn trong thanh, số hiển thị ở chú thích dưới thanh */
+.sbar-seg.narrow {
+  font-size: 0;
+}
+@media (max-width: 640px) {
+  .sbar-seg.mid {
+    font-size: 0;
+  }
+  .sbar-seg {
+    font-size: 12px;
+  }
+}
+.sbar-note {
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.ghost.long {
+  font-size: clamp(64px, 10.5vw, 160px);
+}
+
+/* In: giữ bố cục nhiều cột như màn hình rộng */
+@media print {
+  body {
+    zoom: 0.72;
+  }
+  .slide,
+  .masthead,
+  .foot {
+    max-width: none;
+  }
+  .g-2,
+  .paths,
+  .fate,
+  .g-split,
+  .hero-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .g-3,
+  .stepper {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .g-4,
+  .timeline {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .g-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+  .core {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important;
+  }
+  .flow {
+    grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr) !important;
+  }
+  .flow .flow-n,
+  .flow .flow-sp {
+    display: grid !important;
+  }
+  .hero-art {
+    order: 0 !important;
+  }
+  .timeline {
+    padding: 28px 0 0 !important;
+  }
+  .timeline::before {
+    left: 8px !important;
+    right: 8px !important;
+    top: 9px !important;
+    bottom: auto !important;
+    width: auto !important;
+    height: 2px !important;
+  }
+  .tl::before {
+    top: -26px !important;
+    left: 0 !important;
+  }
+  .block {
+    break-inside: auto;
+  }
+  .block-title {
+    break-after: avoid;
+  }
+}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#s00">Bỏ qua thanh điều hướng</a>
+
+<!-- Bộ icon (inline, không tải ngoài) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h13v4M3 7v10a2 2 0 0 0 2 2h15V9H5a2 2 0 0 1-2-2zM16 14h.01"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5zM3 13l9 5 9-5"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a5 5 0 0 1 3.5 6"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3zM12 10v4M12 17h.01"/></symbol>
+  <symbol id="i-arrow-r" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-arrow-d" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V6h6v15H3zM7 17h2M12 17h2M17 17h2"/></symbol>
+  <symbol id="i-crane" viewBox="0 0 24 24"><path d="M6 21V4h2v17M3 21h8M8 4h12l-3 3M8 7h9M17 7v5M15.5 12h3v2h-3z"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0L5 7zM19 7l-3 7a3 3 0 0 0 6 0l-3-7z"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2 4 2 4H5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z"/></symbol>
+  <symbol id="i-max" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+  <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 9V3h10v6M7 18H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="7" y="14" width="10" height="7"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2V5zM4 19a2 2 0 0 1 2-2h14"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.2-8.2M17 6l2 2M15 8l2 2"/></symbol>
+  <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+</svg>
+
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+<nav class="nav" aria-label="Các phần của bài">
+  <a class="nav-brand" href="#s00">NHÓM 2</a>
+  <p class="nav-current" aria-live="polite"><b id="navNo">00</b><span id="navTitle">Bìa</span></p>
+  <ol class="nav-list" id="navList"></ol>
+  <div class="nav-tools">
+    <button class="btn-ghost" id="btnPresent" type="button" aria-pressed="false" title="Chế độ trình chiếu: phím ↓ → sang phần sau, ↑ ← lùi lại"><svg class="ic"><use href="#i-play"/></svg><span class="lbl">Trình chiếu</span></button>
+    <button class="btn-ghost" id="btnFull" type="button" title="Toàn màn hình (phím F)"><svg class="ic"><use href="#i-max"/></svg><span class="lbl">Toàn màn hình</span></button>
+    <button class="btn-ghost" id="btnPrint" type="button" title="In hoặc lưu PDF"><svg class="ic"><use href="#i-print"/></svg><span class="lbl">In / lưu PDF</span></button>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="mast-top">
+    <span class="mast-word">NHÓM 2</span>
+    <div class="mast-sub">
+      <span>Tiểu luận môn <span data-t="meta.mon"></span></span>
+      <b>ESSAY PRESENTATION</b>
+    </div>
+  </div>
+  <hr class="mast-rule">
+  <div class="mast-meta">
+    <div><small>Hai bộ báo cáo được đối chiếu</small><strong>BQLDA Đồng Bằng 2015 và Hòa Phát 2024</strong></div>
+    <div class="legend" aria-label="Quy ước màu">
+      <span><i class="sw-navy"></i>BQLDA, Thông tư 195/2012</span>
+      <span><i class="sw-blue"></i>Doanh nghiệp, Thông tư 200/2014</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ===================== 00. BÌA ===================== -->
+<section class="slide hero" id="s00" data-no="00" data-title="Bìa" aria-labelledby="t00">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">195 / 200</div>
+    <div class="hero-grid">
+      <div class="reveal">
+        <p class="hero-uni"><span data-t="meta.truong"></span><span data-t="meta.vien"></span></p>
+        <div class="hero-pills">
+          <span class="pill pill-navy">TT 195/2012/TT-BTC</span>
+          <span class="pill pill-blue">TT 200/2014/TT-BTC</span>
+        </div>
+        <h1 id="t00">Phân tích sự khác biệt về chế độ kế toán và báo cáo tài chính <em>Ban Quản lý dự án</em> giữa Thông tư 195/2012/TT-BTC và báo cáo tài chính <em>Doanh nghiệp</em> sử dụng Thông tư 200/2014/TT-BTC</h1>
+        <p class="hero-mon">Môn <b data-t="meta.mon"></b>, <span data-t="meta.nhom"></span>, năm <span data-t="meta.nam"></span></p>
+        <ul class="members" id="members" aria-label="Thành viên nhóm"></ul>
+      </div>
+      <div class="hero-art reveal" aria-hidden="true">
+        <svg viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c6fe0"/><stop offset="1" stop-color="#0d3b84"/></linearGradient>
+            <linearGradient id="hg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef4fd"/><stop offset="1" stop-color="#cfdff6"/></linearGradient>
+          </defs>
+          <ellipse cx="330" cy="372" rx="300" ry="34" fill="#e3ebf7"/>
+          <!-- nhà máy đã hoàn thành (doanh nghiệp) -->
+          <path d="M350 360V230l60 34v-34l60 34v-34l60 34v126z" fill="url(#hg1)"/>
+          <rect x="545" y="170" width="26" height="190" fill="#0d3b84"/>
+          <rect x="545" y="170" width="26" height="12" fill="#8db8f1"/>
+          <g fill="#8db8f1"><rect x="372" y="300" width="22" height="16" rx="2"/><rect x="430" y="300" width="22" height="16" rx="2"/><rect x="488" y="300" width="22" height="16" rx="2"/></g>
+          <!-- công trình đang thi công (BQLDA) -->
+          <rect x="120" y="200" width="200" height="160" fill="url(#hg2)" stroke="#0d3b84" stroke-width="2"/>
+          <g stroke="#0d3b84" stroke-width="2" opacity=".55"><path d="M120 253h200M120 306h200M170 200v160M220 200v160M270 200v160M120 200l50 53M170 200l50 53M220 200l50 53M270 200l50 53M120 253l50 53M170 253l50 53M220 253l50 53M270 253l50 53"/></g>
+          <rect x="170" y="306" width="100" height="54" fill="#0d3b84"/>
+          <!-- cần cẩu -->
+          <g fill="none" stroke="#0d3b84" stroke-width="5" stroke-linecap="round"><path d="M86 360V70M86 70h240M86 70 60 100M86 104h-28M300 70v86"/></g>
+          <g stroke="#0d3b84" stroke-width="2" opacity=".6"><path d="M80 90l12 20M92 110l-12 20M80 130l12 20M92 150l-12 20M80 170l12 20M92 190l-12 20M80 210l12 20M92 230l-12 20M80 250l12 20M92 270l-12 20M80 290l12 20M92 310l-12 20"/></g>
+          <rect x="286" y="156" width="28" height="22" rx="3" fill="#1c6fe0"/>
+          <rect x="44" y="96" width="30" height="20" rx="3" fill="#0d3b84"/>
+          <!-- dòng vốn -->
+          <g fill="#1c6fe0"><circle cx="40" cy="300" r="14"/><circle cx="40" cy="300" r="7" fill="#e8f1fd"/></g>
+          <path d="M58 300h48" stroke="#1c6fe0" stroke-width="3" stroke-dasharray="6 6"/>
+          <path d="M104 293l10 7-10 7z" fill="#1c6fe0"/>
+          <path d="M330 290h12" stroke="#0d3b84" stroke-width="3"/>
+          <path d="M340 283l10 7-10 7z" fill="#0d3b84"/>
+          <!-- nhãn -->
+          <g font-family="Sora, system-ui, sans-serif" font-weight="700" font-size="15">
+            <rect x="128" y="160" width="132" height="28" rx="14" fill="#0d3b84"/><text x="194" y="179" fill="#fff" text-anchor="middle">TK 241 · TK 336</text>
+            <rect x="372" y="196" width="120" height="28" rx="14" fill="#1c6fe0"/><text x="432" y="215" fill="#fff" text-anchor="middle">TK 211 · TK 911</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="grid g-3 hero-stats">
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-layers"/></svg></span><span class="src">B01 tr.2</span></div>
+        <span class="stat-label">Tổng tài sản BQLDA, 31/12/2015</span>
+        <span class="stat-val"><b class="cu" data-v="bq.b01.tongTS" data-d="3"></b><small>tỷ đồng</small></span>
+        <span class="stat-note">Bên kia: Hòa Phát <b data-v="hp.tongTS" data-d="0"></b> tỷ đồng <span class="src hp">Hòa Phát, theo bài</span></span>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-crane"/></svg></span><span class="src">B01 tr.2</span></div>
+        <span class="stat-label">TK 241 trong tổng tài sản</span>
+        <span class="stat-val"><b class="cu" data-v="bq.b01.pct.tk241" data-d="1"></b><small>%</small></span>
+        <span class="stat-note">Chi phí đầu tư xây dựng dở dang <b data-v="bq.b01.tk241" data-d="3"></b> tỷ đồng</span>
+        <div class="meter"><span data-wp="bq.b01.pct.tk241"></span></div>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-target"/></svg></span><span class="src">B03 tr.4</span></div>
+        <span class="stat-label">Lũy kế vốn đầu tư thực hiện</span>
+        <span class="stat-val"><b class="cu" data-v="bq.b03.luyKe" data-d="2"></b><small>tỷ đồng</small></span>
+        <span class="stat-note"><b data-v="bq.b03.tyLe" data-d="1"></b>% tổng mức <b data-v="bq.b03.tongMuc" data-d="0"></b> tỷ đồng</span>
+        <div class="meter"><span data-wp="bq.b03.tyLe"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 01. CƠ SỞ LÝ LUẬN ===================== -->
+<section class="slide" id="s01" data-no="01" data-title="Cơ sở lý luận" aria-labelledby="t01">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">Dự án</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">01</span>
+      <div><span class="sec-en">THEORETICAL BASIS</span><h2 id="t01">Cơ sở lý luận và pháp lý</h2></div>
+    </header>
+    <p class="lede reveal">Kế toán BQLDA và kế toán doanh nghiệp cùng dựa trên Luật Kế toán và phương pháp ghi sổ kép, nhưng phục vụ hai mục tiêu khác nhau: BQLDA quản lý và quyết toán nguồn vốn đầu tư của từng dự án, doanh nghiệp xác định kết quả kinh doanh của toàn đơn vị.</p>
+
+    <div class="block">
+      <div class="block-title"><h3>Năm đặc điểm của dự án và hệ quả kế toán</h3><span class="src bai">Bài, Bảng 1.1</span></div>
+      <div class="grid g-5">
+        <div class="card soft reveal"><span class="tag">Đặc điểm 1</span><h4>Có mục tiêu rõ ràng</h4><p class="small muted">Mỗi dự án tạo ra một công trình, sản phẩm hoặc dịch vụ cụ thể.</p><p class="small"><b class="c-navy">Kế toán:</b> tập hợp chi phí theo từng dự án để đối chiếu với mục tiêu và tổng mức đầu tư.</p></div>
+        <div class="card soft reveal"><span class="tag">Đặc điểm 2</span><h4>Có thời hạn xác định</h4><p class="small muted">Có điểm bắt đầu và kết thúc, thường kéo dài nhiều năm.</p><p class="small"><b class="c-navy">Kế toán:</b> theo dõi lũy kế từ khởi công đến khi hoàn thành, không chỉ theo từng năm tài chính.</p></div>
+        <div class="card soft reveal"><span class="tag">Đặc điểm 3</span><h4>Mang tính duy nhất</h4><p class="small muted">Mỗi dự án khác nhau về quy mô, địa điểm, thiết kế.</p><p class="small"><b class="c-navy">Kế toán:</b> mở sổ chi tiết riêng theo dự án, công trình, hạng mục công trình.</p></div>
+        <div class="card soft reveal"><span class="tag">Đặc điểm 4</span><h4>Nguồn lực giới hạn</h4><p class="small muted">Vốn, nhân lực, thời gian bị ràng buộc bởi kế hoạch được duyệt.</p><p class="small"><b class="c-navy">Kế toán:</b> kiểm soát chi theo dự toán, kế hoạch vốn và hợp đồng.</p></div>
+        <div class="card soft reveal"><span class="tag">Đặc điểm 5</span><h4>Có tính bất định, rủi ro</h4><p class="small muted">Giá cả, tiến độ, điều kiện thi công có thể thay đổi.</p><p class="small"><b class="c-navy">Kế toán:</b> theo dõi điều chỉnh dự toán, chi phí phát sinh, thiệt hại và khoản không được duyệt quyết toán.</p></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Chu trình dự án ba giai đoạn</h3><span class="src bai">Bài, Hình 1.1</span></div>
+      <div class="stepper">
+        <div class="step reveal">
+          <div class="step-head"><small>GIAI ĐOẠN 1</small><b>Chuẩn bị đầu tư</b></div>
+          <div class="card"><h4>Công việc quản lý</h4><ul><li>Nghiên cứu sự cần thiết và quy mô đầu tư</li><li>Lập báo cáo nghiên cứu tiền khả thi, khả thi</li><li>Thẩm định, phê duyệt chủ trương và quyết định đầu tư</li></ul></div>
+          <div class="card acc"><h4>Nhiệm vụ kế toán</h4><ul><li>Mở sổ chi tiết theo dõi chi phí chuẩn bị đầu tư</li><li>Theo dõi dự toán, kế hoạch vốn được giao</li><li>Lập chứng từ, hồ sơ ban đầu theo từng dự án</li></ul></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-head"><small>GIAI ĐOẠN 2</small><b>Thực hiện đầu tư</b></div>
+          <div class="card"><h4>Công việc quản lý</h4><ul><li>Giải phóng mặt bằng, lựa chọn nhà thầu, ký hợp đồng</li><li>Thi công xây lắp, mua sắm và lắp đặt thiết bị</li><li>Giám sát, nghiệm thu khối lượng từng giai đoạn</li></ul></div>
+          <div class="card acc"><h4>Nhiệm vụ kế toán</h4><ul><li>Tiếp nhận, quản lý và thanh toán vốn đầu tư</li><li>Hạch toán chi phí xây lắp, thiết bị, tư vấn, quản lý dự án</li><li>Theo dõi tạm ứng, thanh toán với nhà thầu</li></ul></div>
+        </div>
+        <div class="step reveal">
+          <div class="step-head"><small>GIAI ĐOẠN 3</small><b>Kết thúc xây dựng, đưa vào khai thác</b></div>
+          <div class="card"><h4>Công việc quản lý</h4><ul><li>Nghiệm thu, bàn giao công trình</li><li>Chạy thử, vận hành thử, bảo hành</li><li>Đưa dự án vào khai thác, sử dụng</li></ul></div>
+          <div class="card acc"><h4>Nhiệm vụ kế toán</h4><ul><li>Lập báo cáo quyết toán vốn đầu tư dự án hoàn thành</li><li>Xác định giá trị tài sản hình thành, bàn giao</li><li>Lập báo cáo tài chính, lưu trữ hồ sơ</li></ul></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Khung pháp lý</h3><span class="src bai">Bài, Bảng 1.3 và mục 1.2</span></div>
+      <div class="timeline">
+        <div class="tl reveal"><div class="yr">2012</div><h4>Thông tư 195/2012/TT-BTC</h4><p>Ban hành 15/11/2012, hiệu lực 01/01/2013. Kế toán cho đơn vị chủ đầu tư, trong đó có BQLDA.</p><span class="pill pill-navy">Chế độ BQLDA</span></div>
+        <div class="tl dn reveal"><div class="yr">2014</div><h4>Thông tư 200/2014/TT-BTC</h4><p>Ban hành 22/12/2014, áp dụng từ 01/01/2015. Chế độ kế toán doanh nghiệp.</p><span class="pill pill-blue">Chế độ doanh nghiệp</span></div>
+        <div class="tl reveal"><div class="yr">2019</div><h4>Thông tư 79/2019/TT-BTC</h4><p>Ngày 14/11/2019. Chế độ kế toán cho BQLDA sử dụng vốn đầu tư công, thay phần dành cho BQLDA thuộc đơn vị HCSN của TT 195.</p><span class="pill pill-soft">Vốn đầu tư công</span></div>
+        <div class="tl next reveal"><div class="yr">2025</div><h4>Thông tư 99/2025/TT-BTC</h4><p>Ngày 27/10/2025, hiệu lực 01/01/2026. Thay thế cả Thông tư 195 và Thông tư 200.</p><span class="pill pill-soft">Từ kỳ kế toán 2026</span></div>
+      </div>
+      <p class="note reveal" style="margin-top:var(--s-5)">Nền tảng chung cho mọi đơn vị kế toán: <b>Luật Kế toán 88/2015/QH13</b> và <b>Nghị định 174/2016/NĐ-CP</b>. Đơn vị có BQLDA và tổ chức bộ máy kế toán riêng thì theo Thông tư 195; doanh nghiệp không lập BQLDA hạch toán chi phí đầu tư xây dựng trên TK 241 theo Thông tư 200. Nội dung Thông tư 195 không hướng dẫn riêng thì theo Luật Kế toán và chế độ kế toán doanh nghiệp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02. HAI CHẾ ĐỘ ===================== -->
+<section class="slide" id="s02" data-no="02" data-title="Hai chế độ, một khác biệt" aria-labelledby="t02">
+  <div class="panel">
+    <div class="ghost long" aria-hidden="true">TT 195 vs 200</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">02</span>
+      <div><span class="sec-en">TWO REGIMES, ONE CORE DIFFERENCE</span><h2 id="t02">Hai chế độ, một khác biệt cốt lõi</h2></div>
+    </header>
+
+    <div class="core reveal">
+      <div class="core-side bq">
+        <span class="who">BQLDA, Thông tư 195/2012/TT-BTC</span>
+        <span class="word">Vốn</span>
+        <p>Hạch toán nguồn vốn và việc sử dụng vốn theo từng dự án. Chi phí dồn vào TK 241, kết thúc bằng quyết toán và bàn giao tài sản. Không xác định lãi, lỗ.</p>
+      </div>
+      <span class="core-vs">so với</span>
+      <div class="core-side dn">
+        <span class="who">Doanh nghiệp, Thông tư 200/2014/TT-BTC</span>
+        <span class="word">Kết quả</span>
+        <p>Hạch toán doanh thu, chi phí, lợi nhuận. Chi phí đi qua kết quả kinh doanh, kết thúc ở lãi, lỗ trên TK 911 và TK 421.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">
+        <h3>So sánh theo năm tiêu chí</h3>
+        <div class="seg no-print" role="group" aria-label="Hiển thị cột" data-target="tbl5">
+          <button type="button" data-show="all" aria-pressed="true">Cả hai</button>
+          <button type="button" data-show="bq" aria-pressed="false">BQLDA (TT 195)</button>
+          <button type="button" data-show="dn" aria-pressed="false">Doanh nghiệp (TT 200)</button>
+        </div>
+      </div>
+      <div class="table-wrap reveal">
+        <table class="cmp stack" id="tbl5">
+          <caption class="sr-only">So sánh tổng quát chế độ kế toán BQLDA và doanh nghiệp theo năm tiêu chí (Bài, Bảng 1.4)</caption>
+          <thead><tr><th scope="col">Tiêu chí</th><th scope="col" class="bq col-bq">BQLDA (TT 195/2012)</th><th scope="col" class="dn col-dn">Doanh nghiệp (TT 200/2014)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Đối tượng áp dụng</th><td class="col-bq" data-h="BQLDA">Chủ đầu tư có thành lập BQLDA và các BQLDA có tổ chức kế toán riêng.</td><td class="col-dn" data-h="Doanh nghiệp">Doanh nghiệp thuộc mọi lĩnh vực, mọi thành phần kinh tế.</td></tr>
+            <tr><th scope="row">1. Mục đích hạch toán</th><td class="col-bq" data-h="BQLDA">Phản ánh nguồn vốn đầu tư và chi phí thực hiện đầu tư; quyết toán vốn, bàn giao tài sản. Không tự xác định kết quả kinh doanh: doanh thu, thu nhập khác, chênh lệch tỷ giá kết chuyển về chủ đầu tư.</td><td class="col-dn" data-h="Doanh nghiệp">Phản ánh toàn bộ hoạt động sản xuất kinh doanh; xác định kết quả kinh doanh và tình hình tài chính cho chủ sở hữu, nhà đầu tư, cơ quan nhà nước.</td></tr>
+            <tr><th scope="row">2. Hệ thống tài khoản</th><td class="col-bq" data-h="BQLDA">Phụ lục 1a: TK 241 “Chi phí đầu tư xây dựng”, TK 154 “Chi phí sản xuất thử dở dang”, TK 336 có 4 TK cấp 2, TK 642 “Chi phí BQLDAĐT”. Sửa đổi TK cấp 1, cấp 2 phải được Bộ Tài chính chấp thuận bằng văn bản.</td><td class="col-dn" data-h="Doanh nghiệp">Loại 1 đến 9 và ngoài bảng (loại 0); TK 241 “Xây dựng cơ bản dở dang” (2411, 2412, 2413); TK 411, 421, 511, 632, 641, 642, 911.</td></tr>
+            <tr><th scope="row">3. Nghiệp vụ đặc thù</th><td class="col-bq" data-h="BQLDA">Nhận vốn đầu tư (TK 336); tập hợp chi phí theo dự án, công trình (TK 241); phân bổ chi phí BQLDA; vật liệu, thiết bị giao nhà thầu; chạy thử, sản xuất thử; thanh toán nội bộ (TK 136, 336); quyết toán và bàn giao công trình.</td><td class="col-dn" data-h="Doanh nghiệp">Bán hàng, cung cấp dịch vụ; ghi nhận doanh thu và giá vốn; chi phí bán hàng, quản lý; khấu hao, dự phòng; thuế thu nhập doanh nghiệp; phân phối lợi nhuận; hợp nhất (nếu có).</td></tr>
+            <tr><th scope="row">4. Hệ thống BCTC</th><td class="col-bq" data-h="BQLDA">B01, B02, B03, B04-CĐT và 5 phụ biểu F02, F03A, F03B, F03C, F03D-CĐT.</td><td class="col-dn" data-h="Doanh nghiệp">B01-DN, B02-DN (kết quả kinh doanh), B03-DN (lưu chuyển tiền tệ), B09-DN; báo cáo giữa niên độ.</td></tr>
+            <tr><th scope="row">5. Thời hạn nộp BCTC</th><td class="col-bq" data-h="BQLDA">Quý <b data-v="thoiHan.bq.quy" data-d="0"></b> ngày; năm <b data-v="thoiHan.bq.nam" data-d="0"></b> ngày kể từ ngày kết thúc kỳ.</td><td class="col-dn" data-h="Doanh nghiệp">Quý <b data-v="thoiHan.dn.quy" data-d="0"></b> ngày (<span data-v="thoiHan.dnRieng.quy" data-d="0"></span> ngày với công ty mẹ, tổng công ty nhà nước); năm <b data-v="thoiHan.dn.nam" data-d="0"></b> ngày (<span data-v="thoiHan.dnRieng.nam" data-d="0"></span> ngày với doanh nghiệp tư nhân, công ty hợp danh).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tiny muted" style="margin-top:8px"><span class="src bai">Bài, Bảng 1.4</span></p>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Dòng hạch toán năm bước, đặt song song</h3><span class="src bai">Bài, Hình 1.3</span></div>
+      <div class="flow reveal" role="table" aria-label="So sánh dòng hạch toán của BQLDA và doanh nghiệp">
+        <div class="flow-h bq" role="columnheader">BQLDA, TT 195/2012/TT-BTC</div><div class="flow-sp"></div><div class="flow-h dn" role="columnheader">Doanh nghiệp, TT 200/2014/TT-BTC</div>
+        <div class="flow-step" role="cell"><b>Nhận vốn đầu tư từ chủ đầu tư</b><code>Nợ TK 111, 112 / Có TK 336</code></div><div class="flow-n"><span>1</span></div><div class="flow-step dn" role="cell"><b>Huy động vốn chủ sở hữu, vốn vay</b><code>Nợ TK 111, 112 / Có TK 411, 341</code></div>
+        <div class="flow-step" role="cell"><b>Tập hợp chi phí đầu tư xây dựng</b><code>Nợ TK 241 / Có TK 111, 112, 331</code></div><div class="flow-n"><span>2</span></div><div class="flow-step dn" role="cell"><b>Đầu tư xây dựng cơ bản (nếu có)</b><code>Nợ TK 241 / Có TK 111, 112, 331</code></div>
+        <div class="flow-step" role="cell"><b>Chi phí hoạt động của BQLDA</b><code>Nợ TK 642, rồi phân bổ Nợ TK 241 / Có TK 642</code></div><div class="flow-n"><span>3</span></div><div class="flow-step dn" role="cell"><b>Doanh thu và chi phí kinh doanh</b><code>Có TK 511; Nợ TK 632, 641, 642</code></div>
+        <div class="flow-step" role="cell"><b>Quyết toán vốn đầu tư được duyệt</b><code>Nợ TK 336 / Có TK 241 (bàn giao tài sản)</code></div><div class="flow-n"><span>4</span></div><div class="flow-step dn" role="cell"><b>Cuối kỳ kết chuyển</b><code>Xác định kết quả (TK 911), lãi chuyển sang TK 421</code></div>
+        <div class="flow-step end" role="cell"><b>Kết quả cuối cùng</b><code>Không xác định lãi, lỗ. Báo cáo nguồn vốn và thực hiện đầu tư (B02, B03-CĐT)</code></div><div class="flow-n"><span>5</span></div><div class="flow-step dn end" role="cell"><b>Kết quả cuối cùng</b><code>Xác định lãi, lỗ. B01 đến B03, B09-DN</code></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">
+        <h3>Cùng bốn nghiệp vụ, hai cách ghi</h3>
+        <div class="seg no-print" role="group" aria-label="Chọn chế độ" data-target="ops">
+          <button type="button" data-show="bq" aria-pressed="true">BQLDA (TT 195)</button>
+          <button type="button" data-show="dn" aria-pressed="false">Doanh nghiệp (TT 200)</button>
+        </div>
+      </div>
+      <p class="small muted">Số liệu giả định của bài, đơn vị triệu đồng, chưa tính thuế GTGT. <span class="src bai">Bài, Bảng 1.5</span></p>
+      <div class="ops" id="ops" data-mode="bq" aria-live="polite">
+        <div class="op reveal"><span class="op-n">1</span><div class="op-what"><b>Nhận nguồn vốn <span data-v="viDu.nhanVon" data-d="0"></span></b><span class="small muted">BQLDA: chủ đầu tư cấp vốn. Doanh nghiệp: vay ngân hàng.</span></div>
+          <div class="op-entry"><div data-mode="bq"><div class="je">Nợ TK 112 / Có TK 336 (3361): <span data-v="viDu.nhanVon" data-d="0"></span></div></div><div data-mode="dn"><div class="je">Nợ TK 112 / Có TK 341: <span data-v="viDu.nhanVon" data-d="0"></span></div></div></div></div>
+        <div class="op reveal"><span class="op-n">2</span><div class="op-what"><b>Nghiệm thu khối lượng xây lắp <span data-v="viDu.nghiemThu" data-d="0"></span>, chưa thanh toán</b></div>
+          <div class="op-entry"><div data-mode="bq"><div class="je">Nợ TK 241 / Có TK 331: <span data-v="viDu.nghiemThu" data-d="0"></span></div></div><div data-mode="dn"><div class="je">Nợ TK 241 (2412) / Có TK 331: <span data-v="viDu.nghiemThu" data-d="0"></span></div></div></div></div>
+        <div class="op reveal"><span class="op-n">3</span><div class="op-what"><b>Lương nhân viên quản lý <span data-v="viDu.luong" data-d="0"></span></b></div>
+          <div class="op-entry"><div data-mode="bq"><div class="je">Nợ TK 642 / Có TK 334: <span data-v="viDu.luong" data-d="0"></span></div><div class="je">Phân bổ vào dự án: Nợ TK 241 / Có TK 642: <span data-v="viDu.luong" data-d="0"></span></div></div><div data-mode="dn"><div class="je">Nợ TK 642 / Có TK 334: <span data-v="viDu.luong" data-d="0"></span></div><p class="small muted" style="margin:4px 0 0">Tính vào chi phí kỳ.</p></div></div></div>
+        <div class="op reveal"><span class="op-n">4</span><div class="op-what"><b>Công trình hoàn thành, bàn giao</b></div>
+          <div class="op-entry"><div data-mode="bq"><div class="je">Nợ TK 336 / Có TK 241: <span data-v="viDu.banGiaoBq" data-d="0"></span></div><p class="small muted" style="margin:4px 0 0">Quyết toán được duyệt. Không ghi nhận lãi, lỗ: khoản chi <span data-v="viDu.banGiaoBq" data-d="0"></span> được “giải phóng” khỏi nguồn vốn.</p></div><div data-mode="dn"><div class="je">Nợ TK 211 / Có TK 241: <span data-v="viDu.banGiaoDn" data-d="0"></span></div><p class="small muted" style="margin:4px 0 0">Nhận tài sản đưa vào sử dụng. Chi phí <span data-v="viDu.chiPhiKy" data-d="0"></span> nằm trong lãi, lỗ của kỳ.</p></div></div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Thời hạn nộp báo cáo tài chính</h3><span class="src bai">Bài, Hình 1.4</span></div>
+      <div class="grid g-split">
+        <div class="chart reveal" id="chartDeadline" role="img" aria-label="Biểu đồ cột thời hạn nộp BCTC: quý, BQLDA 20 ngày, doanh nghiệp 20 ngày, trường hợp riêng 45 ngày; năm, BQLDA 30 ngày, doanh nghiệp 90 ngày, trường hợp riêng 30 ngày."></div>
+        <div class="reveal">
+          <p>BQLDA nộp báo cáo năm sớm hơn doanh nghiệp thông thường (<b data-v="thoiHan.bq.nam" data-d="0"></b> ngày so với <b data-v="thoiHan.dn.nam" data-d="0"></b> ngày) vì báo cáo của Ban là đầu vào để chủ đầu tư tổng hợp.</p>
+          <p class="small muted">Trường hợp riêng của doanh nghiệp: báo cáo quý của công ty mẹ, tổng công ty nhà nước (<span data-v="thoiHan.dnRieng.quy" data-d="0"></span> ngày); báo cáo năm của doanh nghiệp tư nhân, công ty hợp danh (<span data-v="thoiHan.dnRieng.nam" data-d="0"></span> ngày).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 03. ĐƠN VỊ NGHIÊN CỨU ===================== -->
+<section class="slide" id="s03" data-no="03" data-title="Đơn vị nghiên cứu" aria-labelledby="t03">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">Đồng Bằng</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">03</span>
+      <div><span class="sec-en">RESEARCH UNIT</span><h2 id="t03">Đơn vị nghiên cứu và hai bộ báo cáo</h2></div>
+    </header>
+    <p class="lede reveal">Ban Quản lý dự án Nhà máy Chế biến Nông sản Đồng Bằng trực thuộc Công ty Cổ phần Chế biến Nông sản Đồng Bằng (chủ đầu tư). Ban có con dấu, tài khoản riêng, tổ chức kế toán riêng và lập BCTC gửi chủ đầu tư, nhưng không hoạt động để tạo lợi nhuận cho chính mình.</p>
+
+    <div class="grid g-4" style="margin-top:var(--s-5)">
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-wallet"/></svg></span><span class="src">B04 I.3 tr.5</span></div>
+        <span class="stat-label">Tổng mức đầu tư được duyệt</span>
+        <span class="stat-val"><b class="cu" data-v="bq.info.tongMuc" data-d="0"></b><small>tỷ đồng</small></span>
+        <span class="stat-note">Giai đoạn 1, <span data-t="bq.info.diaDiem"></span></span>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-calendar"/></svg></span><span class="src">B04 I.3 tr.5</span></div>
+        <span class="stat-label">Thời gian thực hiện</span>
+        <span class="stat-val"><span data-t="bq.info.namBatDau"></span>–<span data-t="bq.info.namKetThuc"></span></span>
+        <span class="stat-note">Báo cáo năm 2015, lập ngày <span data-t="bq.info.ngayLapBCTC"></span></span>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-users"/></svg></span><span class="src">B04 I.4 tr.5</span></div>
+        <span class="stat-label">Nhân sự bình quân 2015</span>
+        <span class="stat-val"><b class="cu" data-v="bq.info.nhanSu2015" data-d="0"></b><small>người</small></span>
+        <span class="stat-note">Năm 2014: <span data-v="bq.info.nhanSu2014" data-d="0"></span> người</span>
+      </div>
+      <div class="stat reveal">
+        <div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-file"/></svg></span><span class="src">B04 I.1 tr.5</span></div>
+        <span class="stat-label">Quyết định thành lập</span>
+        <span class="stat-val" style="font-size:clamp(18px,2vw,24px)"><span data-t="bq.info.quyetDinh"></span></span>
+        <span class="stat-note">Ngày <span data-t="bq.info.ngayThanhLap"></span>, của Hội đồng quản trị chủ đầu tư</span>
+      </div>
+    </div>
+    <p class="note reveal" style="margin-top:var(--s-4)">Nguồn vốn của dự án: vốn chủ sở hữu và vốn vay thương mại <b>của chủ đầu tư</b>, được cấp cho Ban theo tiến độ thực hiện dự án. <span class="src">B04 I.3 tr.5</span></p>
+
+    <div class="block">
+      <div class="block-title"><h3>Hai đơn vị, hai mô hình</h3><span class="en">PROJECT BOARD / ENTERPRISE</span></div>
+      <div class="grid g-2">
+        <article class="duo reveal">
+          <div class="duo-art" aria-hidden="true">
+            <svg viewBox="0 0 400 175" preserveAspectRatio="xMidYMid slice"><rect x="0" y="150" width="400" height="25" fill="#c6d6ee"/><g fill="none" stroke="#0d3b84" stroke-width="2.5"><path d="M150 150V70h120v80M150 97h120M150 124h120M190 70v80M230 70v80"/><path d="M60 150V24M60 24h170M60 24 40 46M228 24v40"/></g><rect x="218" y="64" width="20" height="14" rx="2" fill="#1c6fe0"/><rect x="280" y="118" width="70" height="32" rx="4" fill="#0d3b84"/><circle cx="294" cy="152" r="7" fill="#0a2d66"/><circle cx="336" cy="152" r="7" fill="#0a2d66"/><g fill="#0d3b84" opacity=".25"><rect x="152" y="99" width="36" height="23"/><rect x="232" y="72" width="36" height="23"/></g></svg>
+            <span class="duo-badge"><svg class="ic"><use href="#i-crane"/></svg></span>
+          </div>
+          <div class="duo-body">
+            <span class="duo-kicker">BQLDA ĐỒNG BẰNG, NĂM 2015</span>
+            <div class="duo-row"><div><span class="k">Chế độ kế toán</span><div class="t">TT 195/2012</div></div><div style="text-align:right"><span class="k">Tổng tài sản cuối kỳ</span><div class="v"><b class="cu" data-v="bq.b01.tongTS" data-d="3"></b><small>tỷ đồng</small></div></div></div>
+            <span class="tiny muted">Quản lý dự án đầu tư xây dựng <span class="src">B01 tr.2</span></span>
+          </div>
+        </article>
+        <article class="duo is-dn reveal">
+          <div class="duo-art" aria-hidden="true">
+            <svg viewBox="0 0 400 175" preserveAspectRatio="xMidYMid slice"><rect x="0" y="150" width="400" height="25" fill="#c3dbfb"/><path d="M110 150V88l45 24V88l45 24V88l45 24v38z" fill="#1c6fe0"/><rect x="258" y="40" width="18" height="110" fill="#0d3b84"/><rect x="286" y="62" width="18" height="88" fill="#0d3b84"/><g fill="#8db8f1"><rect x="124" y="122" width="16" height="12" rx="2"/><rect x="170" y="122" width="16" height="12" rx="2"/><rect x="216" y="122" width="16" height="12" rx="2"/></g><circle cx="340" cy="132" r="18" fill="none" stroke="#0d3b84" stroke-width="6"/><circle cx="340" cy="132" r="6" fill="#0d3b84"/><path d="M40 120l26-22 22 12 30-34" fill="none" stroke="#1c6fe0" stroke-width="3"/></svg>
+            <span class="duo-badge"><svg class="ic"><use href="#i-factory"/></svg></span>
+          </div>
+          <div class="duo-body">
+            <span class="duo-kicker">TẬP ĐOÀN HÒA PHÁT (HỢP NHẤT), NĂM 2024</span>
+            <div class="duo-row"><div><span class="k">Chế độ kế toán</span><div class="t">TT 200/2014</div></div><div style="text-align:right"><span class="k">Tổng tài sản cuối kỳ</span><div class="v"><b class="cu" data-v="hp.tongTS" data-d="0"></b><small>tỷ đồng</small></div></div></div>
+            <span class="tiny muted">Sản xuất, kinh doanh <span class="src hp">Hòa Phát, theo bài</span></span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Thông tin chung về hai bộ BCTC</h3><span class="src bai">Bài, Bảng 2.1</span></div>
+      <div class="table-wrap reveal">
+        <table class="cmp stack">
+          <caption class="sr-only">Thông tin chung về hai bộ báo cáo tài chính được phân tích</caption>
+          <thead><tr><th scope="col">Nội dung</th><th scope="col" class="bq col-bq">BQLDA Nhà máy Chế biến Nông sản Đồng Bằng</th><th scope="col" class="dn col-dn">Tập đoàn Hòa Phát (hợp nhất)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Chủ thể lập báo cáo</th><td class="col-bq" data-h="BQLDA">Đơn vị trực thuộc chủ đầu tư, có tổ chức kế toán riêng</td><td class="col-dn" data-h="Hòa Phát">Công ty mẹ và các công ty con</td></tr>
+            <tr><th scope="row">Chế độ kế toán</th><td class="col-bq" data-h="BQLDA">Thông tư 195/2012/TT-BTC; nội dung không được hướng dẫn thì theo Luật Kế toán và chế độ kế toán doanh nghiệp (thuyết minh B04 nêu QĐ 15/2006/QĐ-BTC và TT 244/2009/TT-BTC)</td><td class="col-dn" data-h="Hòa Phát">Chế độ kế toán doanh nghiệp theo Thông tư 200/2014/TT-BTC; các mẫu hợp nhất B01, B02, B03-DN/HN ghi ban hành theo Thông tư 202/2014/TT-BTC</td></tr>
+            <tr><th scope="row">Kỳ báo cáo, ngày lập</th><td class="col-bq" data-h="BQLDA">Năm 2015; lập ngày <span data-t="bq.info.ngayLapBCTC"></span></td><td class="col-dn" data-h="Hòa Phát">Năm 2024; ký ngày <span data-t="hp.ngayKy"></span>; đã kiểm toán</td></tr>
+            <tr><th scope="row">Bộ báo cáo</th><td class="col-bq" data-h="BQLDA">B01, B02, B03, B04-CĐT; phụ biểu F02, F03A, F03B, F03C, F03D-CĐT</td><td class="col-dn" data-h="Hòa Phát">Bảng cân đối kế toán, Báo cáo kết quả hoạt động kinh doanh, Báo cáo lưu chuyển tiền tệ, Thuyết minh</td></tr>
+            <tr><th scope="row">Hoạt động chính</th><td class="col-bq" data-h="BQLDA">Quản lý dự án đầu tư xây dựng</td><td class="col-dn" data-h="Hòa Phát">Sản xuất, kinh doanh</td></tr>
+            <tr><th scope="row">Tổng tài sản cuối kỳ</th><td class="col-bq num" data-h="BQLDA"><b data-v="bq.b01.tongTS" data-d="3"></b> tỷ đồng <span class="src">B01 tr.2</span></td><td class="col-dn num" data-h="Hòa Phát"><b data-v="hp.tongTS" data-d="0"></b> tỷ đồng <span class="src hp">theo bài</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 04. B01-CĐT ===================== -->
+<section class="slide" id="s04" data-no="04" data-title="Bảng cân đối kế toán" aria-labelledby="t04">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">TK 241</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">04</span>
+      <div><span class="sec-en">BALANCE SHEET, FORM B01-CĐT</span><h2 id="t04">Bảng cân đối kế toán và hệ thống tài khoản</h2></div>
+    </header>
+    <p class="lede reveal">B01-CĐT vẫn cân: tổng tài sản bằng tổng nguồn vốn, <b class="num"><span data-v="bq.b01.tongTS" data-d="2"></span> tỷ đồng</b>. Điều khác là những gì nằm bên trong.</p>
+
+    <div class="grid g-2" style="margin-top:var(--s-5)">
+      <div class="card reveal" id="barsAssets">
+        <h4>Cơ cấu tài sản</h4>
+        <div class="sbar">
+          <div class="sbar-h"><b class="c-navy">BQLDA, 31/12/2015</b><span class="src">B01 tr.2</span></div>
+          <div class="sbar-track" role="img" aria-label="BQLDA: tài sản ngắn hạn 6,0%; chi phí đầu tư xây dựng dở dang 93,6%; tài sản dài hạn khác là phần còn lại của 94,0% tài sản dài hạn.">
+            <span class="sbar-seg t3" data-wp="bq.b01.pct.tsnh" title="Tài sản ngắn hạn"><span data-v="bq.b01.pct.tsnh" data-d="1"></span>%</span>
+            <span class="sbar-seg t1" data-wp="bq.b01.pct.tk241" title="TK 241"><span>TK 241: <span data-v="bq.b01.pct.tk241" data-d="1"></span>%</span></span>
+            <span class="sbar-seg t2" data-wrest="bq.b01.pct.tsdh,bq.b01.pct.tk241" title="TSCĐ hữu hình"></span>
+          </div>
+          <span class="sbar-note">Tài sản ngắn hạn <b data-v="bq.b01.pct.tsnh" data-d="1"></b>%; tài sản dài hạn <b data-v="bq.b01.pct.tsdh" data-d="1"></b>%, trong đó TK 241 <b data-v="bq.b01.pct.tk241" data-d="1"></b>%</span>
+        </div>
+        <div class="sbar">
+          <div class="sbar-h"><b class="c-blue">Hòa Phát, 31/12/2024</b><span class="src hp">Hòa Phát, theo bài</span></div>
+          <div class="sbar-track" role="img" aria-label="Hòa Phát: tài sản ngắn hạn 38,6%; xây dựng cơ bản dở dang 28,4%; tài sản cố định hữu hình 30,0%; còn lại là tài sản dài hạn khác.">
+            <span class="sbar-seg d3" data-wp="hp.pct.tsnh"><span data-v="hp.pct.tsnh" data-d="1"></span>%</span>
+            <span class="sbar-seg d1" data-wp="hp.pct.xdcb"><span>XDCB <span data-v="hp.pct.xdcb" data-d="1"></span>%</span></span>
+            <span class="sbar-seg d2" data-wp="hp.pct.tscd"><span>TSCĐ <span data-v="hp.pct.tscd" data-d="1"></span>%</span></span>
+            <span class="sbar-seg d4" data-wrest="hp.pct.tsdh,hp.pct.xdcb,hp.pct.tscd"></span>
+          </div>
+          <span class="sbar-note">Tài sản ngắn hạn <b data-v="hp.pct.tsnh" data-d="1"></b>%; tài sản dài hạn <b data-v="hp.pct.tsdh" data-d="1"></b>%; hàng tồn kho <b data-v="hp.pct.htk" data-d="1"></b>%</span>
+        </div>
+        <div class="sbar-legend" style="margin-top:12px"><span><i style="background:var(--navy-100)"></i>Tài sản ngắn hạn</span><span><i style="background:var(--navy)"></i>Chi phí đầu tư XD dở dang (TK 241)</span><span><i style="background:#5a95e8"></i>TSCĐ hữu hình</span><span><i style="background:#e3ecf8;border:1px solid var(--line-2)"></i>Tài sản dài hạn khác</span></div>
+      </div>
+      <div class="card reveal" id="barsSources">
+        <h4>Cơ cấu nguồn vốn</h4>
+        <div class="sbar">
+          <div class="sbar-h"><b class="c-navy">BQLDA, 31/12/2015</b><span class="src">B01 tr.2</span></div>
+          <div class="sbar-track" role="img" aria-label="BQLDA: nợ phải trả 5,4%; nguồn vốn đầu tư TK 3361 94,6%.">
+            <span class="sbar-seg t3" data-wp="bq.b01.pct.no"><span data-v="bq.b01.pct.no" data-d="1"></span>%</span>
+            <span class="sbar-seg t1" data-wp="bq.b01.pct.nvdt"><span>Nguồn vốn đầu tư <span data-v="bq.b01.pct.nvdt" data-d="1"></span>%</span></span>
+          </div>
+          <span class="sbar-note">Nợ phải trả <b data-v="bq.b01.pct.no" data-d="1"></b>%; nguồn vốn đầu tư <b data-v="bq.b01.pct.nvdt" data-d="1"></b>%</span>
+        </div>
+        <div class="sbar">
+          <div class="sbar-h"><b class="c-blue">Hòa Phát, 31/12/2024</b><span class="src hp">Hòa Phát, theo bài</span></div>
+          <div class="sbar-track" role="img" aria-label="Hòa Phát: nợ phải trả 48,9%; vốn chủ sở hữu 51,1%.">
+            <span class="sbar-seg d3" data-wp="hp.pct.no"><span>Nợ <span data-v="hp.pct.no" data-d="1"></span>%</span></span>
+            <span class="sbar-seg d1" data-wp="hp.pct.vcsh"><span>Vốn chủ sở hữu <span data-v="hp.pct.vcsh" data-d="1"></span>%</span></span>
+          </div>
+        </div>
+        <div class="sbar-legend" style="margin-top:12px"><span><i style="background:var(--navy-100)"></i>Nợ phải trả</span><span><i style="background:var(--navy)"></i>Nguồn vốn đầu tư (TK 3361, đầu 3)</span><span><i style="background:var(--blue)"></i>Vốn chủ sở hữu (đầu 4)</span></div>
+      </div>
+    </div>
+
+    <div class="grid g-4" style="margin-top:var(--s-4)">
+      <div class="stat reveal"><div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-crane"/></svg></span><span class="src">B01 mã 230</span></div><span class="stat-label">TK 241 BQLDA</span><span class="stat-val"><b class="cu" data-v="bq.b01.tk241" data-d="3"></b><small>tỷ</small></span><span class="stat-note"><span data-v="bq.b01.pct.tk241" data-d="1"></span>% tổng tài sản</span></div>
+      <div class="stat reveal"><div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-key"/></svg></span><span class="src">B01 mã 410</span></div><span class="stat-label">Nguồn vốn đầu tư (TK 3361)</span><span class="stat-val"><b class="cu" data-v="bq.b01.nvdt" data-d="3"></b><small>tỷ</small></span><span class="stat-note"><span data-v="bq.b01.pct.nvdt" data-d="1"></span>% tổng nguồn vốn</span></div>
+      <div class="stat is-dn reveal"><div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-crane"/></svg></span><span class="src hp">Hòa Phát tr.44</span></div><span class="stat-label">XDCB dở dang Hòa Phát</span><span class="stat-val"><b class="cu" data-v="hp.xdcb" data-d="0"></b><small>tỷ</small></span><span class="stat-note"><span data-v="hp.pct.xdcb" data-d="1"></span>% tổng tài sản</span></div>
+      <div class="stat is-dn reveal"><div class="stat-top"><span class="stat-ic"><svg class="ic"><use href="#i-wallet"/></svg></span><span class="src hp">Hòa Phát tr.9</span></div><span class="stat-label">Vốn chủ sở hữu Hòa Phát</span><span class="stat-val"><b class="cu" data-v="hp.vcsh" data-d="0"></b><small>tỷ</small></span><span class="stat-note"><span data-v="hp.pct.vcsh" data-d="1"></span>% tổng nguồn vốn</span></div>
+    </div>
+    <div class="callout reveal" style="margin-top:var(--s-4)">
+      <svg class="ic"><use href="#i-alert"/></svg>
+      <p>Ở BQLDA, <b><span data-v="bq.b01.pct.tk241" data-d="1"></span>%</b> tổng tài sản là chi phí đầu tư xây dựng dở dang và <b><span data-v="bq.b01.pct.nvdt" data-d="1"></span>%</b> nguồn vốn là vốn nhận từ chủ đầu tư, ghi trên TK 3361 thuộc <b>đầu 3</b> (nợ phải trả nội bộ), không phải đầu 4. Bảng cân đối về cơ bản là hình ảnh của một dự án đang thi công. Nợ phải trả chỉ <b class="num"><span data-v="bq.b01.no" data-d="3"></span> tỷ đồng</b> (<span data-v="bq.b01.pct.no" data-d="1"></span>%), gần như toàn là nợ nhà thầu.</p>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Đối chiếu theo từng đầu tài khoản</h3><span class="en">ACCOUNT GROUPS 1–9 AND OFF-BALANCE</span></div>
+      <div class="tabs no-print" role="tablist" aria-label="Đầu tài khoản">
+        <button role="tab" id="tab-1" aria-controls="tp-1" aria-selected="true">TK đầu 1</button>
+        <button role="tab" id="tab-2" aria-controls="tp-2" aria-selected="false" tabindex="-1">TK đầu 2</button>
+        <button role="tab" id="tab-3" aria-controls="tp-3" aria-selected="false" tabindex="-1">TK đầu 3</button>
+        <button role="tab" id="tab-4" aria-controls="tp-4" aria-selected="false" tabindex="-1">TK đầu 4</button>
+        <button role="tab" id="tab-5" aria-controls="tp-5" aria-selected="false" tabindex="-1">TK đầu 5–9</button>
+        <button role="tab" id="tab-0" aria-controls="tp-0" aria-selected="false" tabindex="-1">Ngoài bảng</button>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="tp-1" aria-labelledby="tab-1" tabindex="0">
+        <p class="print-title">TK đầu 1: Tài sản ngắn hạn</p>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Khoản mục</th><th scope="col" class="bq col-bq">BQLDA 2015</th><th scope="col" class="dn col-dn">Hòa Phát 2024 (tỷ đồng)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Tiền (mã 110)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.tien" data-d="3"></span> tỷ</b>: tiền mặt <span class="num"><span data-v="bq.b01.tienMat" data-s="trieu" data-d="1"></span> triệu</span>; NH Ngoại thương, TK vốn đầu tư <span class="num"><span data-v="bq.b01.nhNgoaiThuong" data-s="trieu" data-d="2"></span> triệu</span>; NH Công thương, TK hoạt động Ban <span class="num"><span data-v="bq.b01.nhCongThuong" data-s="trieu" data-d="1"></span> triệu</span> <span class="src">B04 V.01 tr.5</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.tien" data-d="1"></b>: tiền mặt <span data-v="hp.tienMat" data-d="1"></span>; tiền gửi ngân hàng <span class="num" data-v="hp.tienGui" data-d="1"></span>; tương đương tiền <span class="num" data-v="hp.tuongDuongTien" data-d="1"></span> <span class="src hp">Hòa Phát, theo bài</span></td></tr>
+            <tr><th scope="row">Đầu tư tài chính (mã 120)</th><td class="col-bq" data-h="BQLDA">Không có. Ban không được dùng vốn đầu tư để sinh lời; lãi tiền gửi ghi TK 3368 rồi nộp chủ đầu tư. <span class="src">B04 IV.7 tr.5</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.dauTuTC" data-d="1"></b> tiền gửi có kỳ hạn gốc trên 3 tháng <span class="src hp">Hòa Phát tr.37</span></td></tr>
+            <tr><th scope="row">Phải thu khách hàng (mã 131)</th><td class="col-bq" data-h="BQLDA">Không có: Ban không bán hàng.</td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.phaiThuKH" data-d="1"></b> <span class="src hp">Hòa Phát tr.37</span></td></tr>
+            <tr><th scope="row">Trả trước cho người bán (mã 132)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.traTruoc" data-d="1"></span> tỷ</b>: tạm ứng thi công nhà xưởng cho CP Xây lắp số 5 <span class="num" data-v="bq.b01.traTruocXayLap5" data-d="1"></span>; tạm ứng mua thiết bị cho Cơ điện Việt Long <span class="num" data-v="bq.b01.traTruocVietLong" data-d="1"></span> <span class="src">B04 V.02 tr.5</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.traTruocNH" data-d="1"></b> ngắn hạn và <span class="num" data-v="hp.traTruocDH" data-d="1"></span> dài hạn <span class="src hp">Hòa Phát tr.38</span></td></tr>
+            <tr><th scope="row">Phải thu khác (mã 138)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.phaiThuKhac" data-s="trieu" data-d="1"></span> triệu</b>: tạm ứng cán bộ (TK 141) <span class="num"><span data-v="bq.b01.tamUng" data-s="trieu" data-d="0"></span> triệu</span>; TK 1388 <span class="num"><span data-v="bq.b01.tk1388" data-s="trieu" data-d="1"></span> triệu</span> <span class="src">B04 V.03 tr.6</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.phaiThuKhac" data-d="1"></b> <span class="src hp">Hòa Phát tr.38</span></td></tr>
+            <tr><th scope="row">Dự phòng phải thu khó đòi</th><td class="col-bq" data-h="BQLDA">Không có: không có phải thu thương mại thì không có rủi ro nợ khó đòi.</td><td class="col-dn" data-h="Hòa Phát">(<span class="num" data-v="hp.duPhongPTKD" data-d="2"></span>) <span class="src hp">Hòa Phát tr.6</span></td></tr>
+            <tr><th scope="row">Hàng tồn kho (mã 140)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.htk" data-d="3"></span> tỷ</b>, toàn bộ là vật tư chờ đưa vào công trình: vật liệu <span class="num" data-v="bq.b01.vatLieu" data-d="3"></span>; thiết bị <span class="num" data-v="bq.b01.thietBi" data-d="3"></span>; công cụ <span class="num" data-v="bq.b01.ccdc" data-d="3"></span> <span class="src">B04 V.04 tr.6</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.htk" data-d="1"></b> (giá gốc <span class="num" data-v="hp.htkGoc" data-d="1"></span>, dự phòng <span class="num" data-v="hp.htkDuPhong" data-d="1"></span>): có thành phẩm, hàng hóa, sản xuất dở dang <span class="src hp">Hòa Phát tr.39</span></td></tr>
+            <tr><th scope="row">Thuế GTGT được khấu trừ (mã 152)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.gtgt" data-d="2"></span> tỷ</b>, đã lập bảng kê và chưa chuyển cho chủ đầu tư <span class="src">B04 V.05 tr.6</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.gtgt" data-d="1"></b>, tự khấu trừ với thuế đầu ra <span class="src hp">Hòa Phát tr.6</span></td></tr>
+            <tr><th scope="row">Chi phí trả trước ngắn hạn</th><td class="col-bq" data-h="BQLDA">Không có: chi phí của Ban đi thẳng vào TK 241 hoặc TK 642.</td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.cpTraTruocNH" data-d="1"></b> <span class="src hp">Hòa Phát tr.6</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="note tab-why"><b>Vì sao khác:</b> BQLDA giữ tiền, tạm ứng và vật tư để phục vụ một dự án cụ thể; Hòa Phát giữ tài sản lưu động để vận hành chuỗi sản xuất, bán hàng. Tiền vốn đầu tư không thuộc về Ban nên Ban mở tài khoản riêng cho vốn dự án và cho chi phí hoạt động. Ban không có doanh thu chịu thuế nên chuyển thuế GTGT đầu vào cho chủ đầu tư (Nợ TK 336 (3368) / Có TK 133).</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="tp-2" aria-labelledby="tab-2" tabindex="0" hidden>
+        <p class="print-title">TK đầu 2: Tài sản dài hạn</p>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Khoản mục</th><th scope="col" class="bq col-bq">BQLDA 2015</th><th scope="col" class="dn col-dn">Hòa Phát 2024 (tỷ đồng)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">TSCĐ hữu hình (TK 211, 214)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.tscd" data-d="3"></span> tỷ</b> = nguyên giá <span class="num" data-v="bq.b01.nguyenGia" data-d="3"></span> − hao mòn <span class="num" data-v="bq.b01.haoMon" data-d="3"></span>; phương tiện vận tải và thiết bị quản lý <span class="src">B04 V.06 tr.6</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.tscdhh" data-d="1"></b> = nguyên giá <span class="num" data-v="hp.nguyenGia" data-d="1"></span> − hao mòn <span class="num" data-v="hp.haoMon" data-d="1"></span>; nhà cửa, máy móc, phương tiện… <span class="src hp">Hòa Phát tr.41</span></td></tr>
+            <tr><th scope="row">Khấu hao</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.f03d.khauHao" data-d="3"></span> tỷ</b> trong năm, phân bổ vào TK 642 rồi tính vào giá trị công trình <span class="src">F03D tr.12</span></td><td class="col-dn" data-h="Hòa Phát">Khấu hao và phân bổ <b class="num" data-v="hp.khauHaoPhanBo" data-d="1"></b> tính vào chi phí kỳ, làm giảm lợi nhuận <span class="src hp">Hòa Phát tr.12</span></td></tr>
+            <tr><th scope="row">Tài sản đã hết khấu hao còn dùng</th><td class="col-bq" data-h="BQLDA">Không có (Ban thành lập năm 2013) <span class="src">B04 V.06 tr.6</span></td><td class="col-dn" data-h="Hòa Phát">Nguyên giá <b class="num" data-v="hp.tsHetKH" data-d="0"></b> <span class="src hp">Hòa Phát tr.41</span></td></tr>
+            <tr><th scope="row">Chi phí đầu tư XD dở dang (TK 241)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.tk241" data-d="2"></span> tỷ</b>, chiếm <span data-v="bq.b01.pct.tk241" data-d="1"></span>% tổng tài sản <span class="src">B01 tr.2, V.07</span></td><td class="col-dn" data-h="Hòa Phát">Tài sản dở dang dài hạn <span class="num" data-v="hp.tsDoDangDH" data-d="1"></span>, trong đó XDCB dở dang <b class="num" data-v="hp.xdcb" data-d="1"></b> (<span data-v="hp.pct.xdcb" data-d="1"></span>%) <span class="src hp">Hòa Phát tr.7, tr.44</span></td></tr>
+            <tr><th scope="row">TS vô hình, BĐS đầu tư, đầu tư dài hạn, chi phí trả trước dài hạn</th><td class="col-bq" data-h="BQLDA">Không có: Ban chỉ tồn tại trong vòng đời dự án.</td><td class="col-dn" data-h="Hòa Phát"><span class="num" data-v="hp.tsVoHinh" data-d="1"></span>; <span class="num" data-v="hp.bdsDauTu" data-d="1"></span>; <span class="num" data-v="hp.dauTuDH" data-d="1"></span>; <span class="num" data-v="hp.cpTraTruocDH" data-d="1"></span> <span class="src hp">Hòa Phát tr.7</span></td></tr>
+            <tr><th scope="row">Tài sản thuế hoãn lại, lợi thế thương mại</th><td class="col-bq" data-h="BQLDA">Không có.</td><td class="col-dn" data-h="Hòa Phát"><span class="num" data-v="hp.tsThueHoanLai" data-d="1"></span>; <span class="num" data-v="hp.loiTheTM" data-d="1"></span> (do hợp nhất) <span class="src hp">Hòa Phát tr.7</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="note tab-why"><b>Vì sao khác:</b> tài sản hình thành từ dự án nằm ở chi phí đầu tư xây dựng dở dang cho đến khi được quyết toán, bàn giao. Ban chỉ giữ lượng TSCĐ nhỏ phục vụ bộ máy quản lý; nhà xưởng, kho, hệ thống xử lý nước thải không nằm ở đây vì chúng thuộc chủ đầu tư. Cùng khấu hao đường thẳng nhưng nơi khấu hao đi đến khác nhau: Hòa Phát vào chi phí, BQLDA vào giá trị công trình.</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="tp-3" aria-labelledby="tab-3" tabindex="0" hidden>
+        <p class="print-title">TK đầu 3: Nợ phải trả và nguồn vốn đầu tư</p>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Khoản mục</th><th scope="col" class="bq col-bq">BQLDA 2015</th><th scope="col" class="dn col-dn">Hòa Phát 2024 (tỷ đồng)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Phải trả người bán (TK 331)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.ptnb" data-d="2"></span> tỷ</b>: CP Xây lắp số 5 <span class="num" data-v="bq.b01.ptnbXayLap5" data-d="2"></span>; Cơ điện Việt Long <span class="num" data-v="bq.b01.ptnbVietLong" data-d="2"></span>; Tư vấn Thiết kế XD Miền Tây <span class="num" data-v="bq.b01.ptnbMienTay" data-d="2"></span>; khác <span class="num" data-v="bq.b01.ptnbKhac" data-d="1"></span> <span class="src">B04 V.08 tr.6</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.ptnbNH" data-d="1"></b> ngắn hạn và <span class="num" data-v="hp.ptnbDH" data-d="1"></span> dài hạn <span class="src hp">Hòa Phát tr.8</span></td></tr>
+            <tr><th scope="row">Thuế phải nộp (TK 333)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.thueTNCN" data-s="trieu" data-d="1"></span> triệu</b>, chỉ thuế thu nhập cá nhân (TK 3335) <span class="src">B04 V.09 tr.6</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.thuePhaiNop" data-d="1"></b> <span class="src hp">Hòa Phát tr.8</span></td></tr>
+            <tr><th scope="row">Phải trả người lao động (TK 334)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.ptld" data-s="trieu" data-d="1"></span> triệu</b> (<span data-v="bq.info.nhanSu2015" data-d="0"></span> người) <span class="src">B01 tr.2</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.ptld" data-d="1"></b> <span class="src hp">Hòa Phát tr.8</span></td></tr>
+            <tr><th scope="row">Chi phí phải trả</th><td class="col-bq" data-h="BQLDA">Không có: chi phí ghi theo thực tế phát sinh vào TK 241 <span class="src">B04 IV.4 tr.5</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.cpPhaiTraNH" data-d="1"></b> ngắn hạn và <span class="num" data-v="hp.cpPhaiTraDH" data-d="1"></span> dài hạn <span class="src hp">Hòa Phát tr.8</span></td></tr>
+            <tr><th scope="row">Phải trả nội bộ khác (TK 3368)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.noiBo3368" data-s="trieu" data-d="0"></span> triệu</b>: lãi tiền gửi phải nộp chủ đầu tư <span class="src">B04 V.10 tr.6</span></td><td class="col-dn" data-h="Hòa Phát">Không có: doanh nghiệp độc lập không có “chủ đầu tư” đứng trên.</td></tr>
+            <tr><th scope="row">Phải trả khác (TK 338)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.phaiTraKhac" data-s="trieu" data-d="1"></span> triệu</b>: KPCĐ, BHXH, BHYT, BHTN <span class="src">B04 V.11 tr.6–7</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.phaiTraKhac" data-d="1"></b> ngắn hạn <span class="src hp">Hòa Phát tr.8</span></td></tr>
+            <tr><th scope="row">Quỹ khen thưởng, phúc lợi</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.quyKTPL" data-s="trieu" data-d="0"></span> triệu</b>, do chủ đầu tư cấp: <span data-v="bq.b01.quyDau" data-s="trieu" data-d="0"></span> + <span data-v="bq.b01.quyCap" data-s="trieu" data-d="0"></span> − <span data-v="bq.b01.quyChi" data-s="trieu" data-d="0"></span> triệu <span class="src">B04 V.12 tr.7</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.quyKTPL" data-d="1"></b>, trích từ lợi nhuận sau thuế <span class="src hp">Hòa Phát tr.8, tr.55</span></td></tr>
+            <tr><th scope="row">Vay ngắn hạn, dài hạn</th><td class="col-bq" data-h="BQLDA">Không có: chủ đầu tư đứng tên vay (HĐTD <span data-t="bq.info.hopDongTinDung"></span>) rồi cấp lại cho Ban <span class="src">F02 tr.8</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.vayNH" data-d="1"></b> ngắn hạn + <span class="num" data-v="hp.vayDH" data-d="1"></span> dài hạn <span class="src hp">Hòa Phát tr.8</span></td></tr>
+            <tr><th scope="row">Nguồn vốn đầu tư (TK 3361, mã 410)</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.nvdt" data-d="3"></span> tỷ</b> (<span data-v="bq.b01.pct.nvdt" data-d="1"></span>%), mục “B. Nguồn vốn đầu tư” <span class="src">B01 tr.2, V.10</span></td><td class="col-dn" data-h="Hòa Phát">Không có: vốn của chủ sở hữu nằm ở đầu 4.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note tab-why"><b>Vì sao khác:</b> nợ của BQLDA chủ yếu gắn với nhà thầu và hoạt động triển khai dự án; nợ của Hòa Phát gắn với chuỗi cung ứng, vay vốn và quy mô vận hành. BQLDA không ghi khoản vay do chủ đầu tư đứng tên rồi cấp lại thành nghĩa vụ vay của Ban, mà ghi là vốn đầu tư trên TK 3361.</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="tp-4" aria-labelledby="tab-4" tabindex="0" hidden>
+        <p class="print-title">TK đầu 4: Vốn chủ sở hữu</p>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Khoản mục</th><th scope="col" class="bq col-bq">BQLDA 2015</th><th scope="col" class="dn col-dn">Hòa Phát 2024 (tỷ đồng)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Vốn đầu tư của chủ sở hữu (TK 411)</th><td class="col-bq" data-h="BQLDA">Không có; vốn nằm ở TK 3361 thuộc đầu 3.</td><td class="col-dn" data-h="Hòa Phát">Vốn cổ phần <b class="num" data-v="hp.vonCoPhan" data-d="1"></b> <span class="src hp">Hòa Phát tr.56</span></td></tr>
+            <tr><th scope="row">Thặng dư vốn cổ phần</th><td class="col-bq" data-h="BQLDA">Không có.</td><td class="col-dn" data-h="Hòa Phát">0 cuối năm (đầu năm <span class="num" data-v="hp.thangDuDauNam" data-d="1"></span>, đã chuyển thành vốn cổ phần khi trả cổ tức bằng cổ phiếu) <span class="src hp">Hòa Phát tr.55</span></td></tr>
+            <tr><th scope="row">Quỹ đầu tư phát triển (TK 418)</th><td class="col-bq" data-h="BQLDA">Không có: quỹ trích từ lợi nhuận.</td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.quyDTPT" data-d="1"></b> <span class="src hp">theo bài</span></td></tr>
+            <tr><th scope="row">Lợi nhuận sau thuế chưa phân phối</th><td class="col-bq" data-h="BQLDA">Không có.</td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.lnChuaPP" data-d="0"></b> <span class="src hp">theo bài, mục 3.2</span></td></tr>
+            <tr><th scope="row">Tổng</th><td class="col-bq" data-h="BQLDA">Đầu 4 hoàn toàn trống. Vốn chỉ tăng khi chủ đầu tư cấp thêm (năm 2015: <span class="num" data-v="bq.b02.tangTien" data-d="2"></span> tỷ bằng tiền, <span class="num" data-v="bq.b02.tangVatTu" data-d="1"></span> tỷ bằng vật tư, thiết bị) và giảm khi quyết toán, bàn giao (<span class="num" data-v="bq.b02.giam" data-d="2"></span> tỷ) <span class="src">B02 tr.3</span></td><td class="col-dn" data-h="Hòa Phát">Vốn chủ sở hữu <b class="num" data-v="hp.vcshChiTiet" data-d="1"></b>, biến động theo kết quả kinh doanh, cổ tức và quyết định của cổ đông <span class="src hp">Hòa Phát tr.9</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="note tab-why"><b>Vì sao khác:</b> BQLDA không có quyền sở hữu độc lập đối với nguồn vốn được giao, không có cổ đông, không có lợi nhuận và không chia cổ tức, nên không hình thành vốn cổ phần, quỹ hay lợi nhuận chưa phân phối.</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="tp-5" aria-labelledby="tab-5" tabindex="0" hidden>
+        <p class="print-title">TK đầu 5 đến đầu 9: Doanh thu, chi phí và xác định kết quả</p>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Đầu tài khoản</th><th scope="col" class="bq col-bq">BQLDA 2015</th><th scope="col" class="dn col-dn">Hòa Phát 2024 (tỷ đồng)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Đầu 5: Doanh thu</th><td class="col-bq" data-h="BQLDA">Không có doanh thu. Lãi tiền gửi từ vốn đầu tư ghi TK 3368 và nộp chủ đầu tư <span class="src">B04 IV.7 tr.5</span></td><td class="col-dn" data-h="Hòa Phát">Doanh thu thuần <b class="num" data-v="hp.dtt" data-d="1"></b>; doanh thu tài chính <span class="num" data-v="hp.dtTaiChinh" data-d="1"></span> <span class="src hp">Hòa Phát tr.58–59</span></td></tr>
+            <tr><th scope="row">Đầu 6: Chi phí</th><td class="col-bq" data-h="BQLDA">TK 642 chi phí Ban QLDA <b class="num"><span data-v="bq.f03d.ps2015" data-d="3"></span> tỷ</b>, cuối kỳ kết chuyển hết vào TK 241 <span class="src">F03D tr.12</span></td><td class="col-dn" data-h="Hòa Phát">Giá vốn <b class="num" data-v="hp.giaVon" data-d="1"></b>; bán hàng <span class="num" data-v="hp.cpBanHang" data-d="1"></span>; quản lý doanh nghiệp (cũng TK 642) <span class="num" data-v="hp.cpQLDN" data-d="1"></span>; tài chính <span class="num" data-v="hp.cpTaiChinh" data-d="1"></span> <span class="src hp">Hòa Phát tr.10</span></td></tr>
+            <tr><th scope="row">Đầu 7: Thu nhập khác</th><td class="col-bq" data-h="BQLDA">Không có.</td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.thuNhapKhac" data-d="1"></b> <span class="src hp">theo bài</span></td></tr>
+            <tr><th scope="row">Đầu 8: Chi phí khác, thuế TNDN</th><td class="col-bq" data-h="BQLDA">Thuế TNDN không phát sinh. “Chi phí khác” trên F03C là một nội dung của chi phí đầu tư, tính vào TK 241 <span class="src">F03C tr.11</span></td><td class="col-dn" data-h="Hòa Phát">Chi phí khác <b class="num" data-v="hp.cpKhac" data-d="1"></b>; thuế TNDN <span class="num" data-v="hp.thueTNDN" data-d="1"></span> <span class="src hp">Hòa Phát tr.10, tr.62</span></td></tr>
+            <tr><th scope="row">Đầu 9: Xác định kết quả</th><td class="col-bq" data-h="BQLDA">Không có: “Ban QLDA không xác định kết quả kinh doanh riêng” <span class="src">B04 IV.7 tr.5</span></td><td class="col-dn" data-h="Hòa Phát">Lợi nhuận sau thuế <b class="num" data-v="hp.lnst" data-d="1"></b> <span class="src hp">Hòa Phát tr.10</span></td></tr>
+            <tr><th scope="row">Chênh lệch tỷ giá</th><td class="col-bq" data-h="BQLDA">Chuyển cho chủ đầu tư (TK 3362) <span class="src">B04 IV.1 tr.5</span></td><td class="col-dn" data-h="Hòa Phát">Vào kết quả kinh doanh: lãi thực hiện <span class="num" data-v="hp.laiTyGia" data-d="1"></span>, lỗ thực hiện <span class="num" data-v="hp.loTyGia" data-d="1"></span> <span class="src hp">Hòa Phát tr.59</span></td></tr>
+          </tbody>
+        </table></div>
+        <p class="note tab-why"><b>Vì sao khác:</b> ở doanh nghiệp, cuối kỳ các tài khoản đầu 5 đến 9 được kết chuyển vào kết quả kinh doanh rồi vào lợi nhuận chưa phân phối (TK 421). Chi phí của BQLDA được tập hợp để xác định giá trị đầu tư và quyết toán công trình, nên Ban không lập báo cáo kết quả hoạt động kinh doanh.</p>
+      </div>
+
+      <div class="tabpanel" role="tabpanel" id="tp-0" aria-labelledby="tab-0" tabindex="0" hidden>
+        <p class="print-title">Các chỉ tiêu ngoài bảng (TK đầu 0)</p>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Chỉ tiêu</th><th scope="col" class="bq col-bq">BQLDA 2015</th><th scope="col" class="dn col-dn">Hòa Phát 2024</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Ngoại tệ các loại</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b01.usdCuoi" data-d="0"></span> USD</b> (đầu năm <span class="num" data-v="bq.b01.usdDau" data-d="0"></span> USD), mã 007, in ngay dưới bảng cân đối <span class="src">B01 tr.2</span></td><td class="col-dn" data-h="Hòa Phát">Chỉ liệt kê ở thuyết minh 5.1: <b class="num"><span data-v="hp.usd" data-d="0"></span> USD</b>, tương đương <span class="num" data-v="hp.usdTy" data-d="1"></span> tỷ đồng <span class="src hp">Hòa Phát tr.36</span></td></tr>
+            <tr><th scope="row">Tài sản nhận giữ hộ</th><td class="col-bq" data-h="BQLDA">Mã 002, không có số dư <span class="src">B01 tr.2</span></td><td class="col-dn" data-h="Hòa Phát">Không có dòng này trên B01-DN/HN.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note tab-why"><b>Vì sao khác:</b> nguyên nhân nằm ở mẫu biểu. Thông tư 195 buộc BQLDA báo cáo ngoại tệ gốc và tài sản giữ hộ ngay trên bảng; mẫu B01-DN/HN không có dòng này.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>TK 241: cùng số hiệu, hai chức năng</h3><span class="src bai">Bài, mục 2.2.3</span></div>
+      <div class="grid g-4">
+        <div class="card reveal"><span class="tag">1. TỶ TRỌNG</span><p class="small">Gần như toàn bộ tài sản của Ban (<b class="c-navy"><span data-v="bq.b01.pct.tk241" data-d="1"></span>%</b>); ở Hòa Phát chỉ <b class="c-blue"><span data-v="hp.pct.xdcb" data-d="1"></span>%</b>, bên cạnh tài sản đang vận hành.</p></div>
+        <div class="card reveal"><span class="tag">2. MỤC ĐÍCH</span><p class="small">Công trình của Hòa Phát hoàn thành thì chuyển thành TSCĐ hữu hình <b class="c-blue num" data-v="hp.chuyenTSCD" data-d="1"></b> tỷ và tiếp tục khấu hao. Công trình của BQLDA hoàn thành thì ghi giảm TK 241 và TK 3361, bàn giao cho chủ đầu tư (<b class="c-navy num"><span data-v="bq.f03b.duyet" data-d="2"></span></b> tỷ) <span class="src">F03B tr.10</span></p></div>
+        <div class="card reveal"><span class="tag">3. MỨC ĐỘ CHI TIẾT</span><p class="small">BQLDA theo dõi theo dự án, công trình, hạng mục và 6 nội dung chi phí <span class="src">B03 tr.4</span>. Hòa Phát chỉ trình bày theo dự án lớn (Dung Quất <span class="num" data-v="hp.duAnDungQuat" data-d="1"></span> tỷ…) <span class="src hp">Hòa Phát tr.44</span></p></div>
+        <div class="card reveal"><span class="tag">4. CHI PHÍ QUẢN LÝ</span><p class="small">Chi phí hoạt động của Ban (TK 642, <b class="c-navy num"><span data-v="bq.f03d.ps2015" data-d="3"></span></b> tỷ) cuối kỳ được phân bổ hết vào TK 241, TK 642 không còn số dư <span class="src">F03D tr.12</span>. Ở Hòa Phát, chi phí quản lý <b class="c-blue num" data-v="hp.cpQLDN" data-d="1"></b> tỷ đi thẳng vào kết quả kinh doanh.</p></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>TK 642: cùng số hiệu, hai đường đi</h3><span class="en">SAME ACCOUNT, TWO PATHS</span></div>
+      <div class="paths reveal">
+        <div class="path">
+          <div class="path-node start"><span>Chi phí Ban QLDA phát sinh 2015</span><b class="num"><span data-v="bq.f03d.ps2015" data-d="3"></span> tỷ</b></div>
+          <div class="path-arrow"><svg class="ic"><use href="#i-arrow-d"/></svg>Nợ TK 241 / Có TK 642</div>
+          <div class="path-node"><span>Giá trị công trình (TK 241)</span><b>tăng</b></div>
+          <div class="path-arrow"><svg class="ic"><use href="#i-arrow-d"/></svg>Quyết toán, bàn giao</div>
+          <div class="path-node end"><span>Làm tăng giá trị tài sản bàn giao cho chủ đầu tư. TK 642 cuối kỳ: <span data-v="bq.f03d.conLai" data-d="0"></span></span></div>
+          <span class="tiny muted"><span class="src">F03D mã 20–22 tr.12</span></span>
+        </div>
+        <div class="path dn">
+          <div class="path-node start"><span>Chi phí quản lý doanh nghiệp 2024</span><b class="num"><span data-v="hp.cpQLDN" data-d="1"></span> tỷ</b></div>
+          <div class="path-arrow"><svg class="ic"><use href="#i-arrow-d"/></svg>Kết chuyển Nợ TK 911 / Có TK 642</div>
+          <div class="path-node"><span>Kết quả kinh doanh (TK 911)</span><b>giảm</b></div>
+          <div class="path-arrow"><svg class="ic"><use href="#i-arrow-d"/></svg>Lợi nhuận sau thuế, TK 421</div>
+          <div class="path-node end"><span>Làm giảm lợi nhuận trong kỳ</span></div>
+          <span class="tiny muted"><span class="src hp">Hòa Phát tr.10, theo bài</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 05. NGUỒN VỐN ĐẦU TƯ ===================== -->
+<section class="slide" id="s05" data-no="05" data-title="Nguồn vốn đầu tư" aria-labelledby="t05">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">TK 3361</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">05</span>
+      <div><span class="sec-en">INVESTMENT CAPITAL, B02 AND F02</span><h2 id="t05">Nguồn vốn đầu tư so với biến động vốn chủ sở hữu và lưu chuyển tiền tệ</h2></div>
+    </header>
+    <p class="lede reveal">Cả hai bên đều trả lời câu hỏi “vốn đến từ đâu và đã dùng thế nào”, nhưng BQLDA trả lời theo quan hệ chủ đầu tư và ban quản lý (cấp vốn, quyết toán, bàn giao), còn Hòa Phát theo quan hệ công ty và cổ đông (góp vốn, lợi nhuận, cổ tức).</p>
+
+    <div class="grid g-split" style="margin-top:var(--s-5)">
+      <div class="card reveal">
+        <div class="block-title" style="margin-bottom:8px"><h4 style="margin:0">Biến động TK 3361 năm 2015 (tỷ đồng)</h4><span class="src">B02 tr.3</span></div>
+        <div class="chart" id="chartWaterfall" role="img" aria-label="Biểu đồ thác nước TK 3361: đầu năm 129,45 tỷ, tăng 63,85 tỷ, giảm 4,58 tỷ, cuối năm 188,72 tỷ."></div>
+        <p class="chart-cap">Tăng <span data-v="bq.b02.tang" data-d="2"></span> tỷ gồm <span data-v="bq.b02.tangTien" data-d="2"></span> tỷ bằng tiền và <span data-v="bq.b02.tangVatTu" data-d="2"></span> tỷ bằng vật tư, thiết bị; giảm <span data-v="bq.b02.giam" data-d="2"></span> tỷ do quyết toán, bàn giao. Số cuối năm khớp B01 mã 410 và F02.</p>
+      </div>
+      <div class="card reveal">
+        <div class="block-title" style="margin-bottom:8px"><h4 style="margin:0">Nguồn vốn đầu tư theo nguồn hình thành</h4><span class="src">F02 tr.8</span></div>
+        <div class="donut-wrap">
+          <div class="donut" id="chartDonut" role="img" aria-label="Biểu đồ tròn: vốn chủ sở hữu của chủ đầu tư 54,4%, vốn vay thương mại do chủ đầu tư vay rồi cấp lại 45,6%."></div>
+          <div class="key">
+            <div class="key-row"><i style="background:var(--navy)"></i><span class="small">Vốn chủ sở hữu của chủ đầu tư cấp<br><span class="muted num"><span data-v="bq.f02.vcsh.cuoi" data-d="3"></span> tỷ</span></span><span class="v"><span data-v="bq.f02.pctVcsh" data-d="1"></span>%</span></div>
+            <div class="key-row"><i style="background:var(--blue-300)"></i><span class="small">Vốn vay thương mại do chủ đầu tư vay rồi cấp lại<br><span class="muted num"><span data-v="bq.f02.vay.cuoi" data-d="3"></span> tỷ</span></span><span class="v"><span data-v="bq.f02.pctVay" data-d="1"></span>%</span></div>
+            <p class="tiny muted" style="margin:0">Hợp đồng tín dụng số <span data-t="bq.info.hopDongTinDung"></span>: nghĩa vụ trả nợ thuộc chủ đầu tư nên Ban ghi là vốn đầu tư, không ghi nợ vay.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Nguồn vốn đầu tư không phải vốn chủ sở hữu</h3><span class="src">B04 I.1, IV.4, IV.5 tr.5</span></div>
+      <div class="reasons">
+        <div class="reason reveal"><div><b>Ban chỉ có tư cách quản lý.</b> Ban là đơn vị trực thuộc, thành lập theo Quyết định <span data-t="bq.info.quyetDinh"></span> của chủ đầu tư, không sở hữu vốn.</div></div>
+        <div class="reason reveal"><div><b>Vốn là nghĩa vụ phải quyết toán và bàn giao.</b> Vốn phải dùng đúng dự án, quyết toán và bàn giao cho chủ đầu tư; đó là nghĩa vụ chứ không phải tài sản ròng của Ban.</div></div>
+        <div class="reason reveal"><div><b>Vốn không có quyền phân phối.</b> Không có lợi nhuận giữ lại, quỹ hay cổ tức. Công trình quyết toán xong thì vốn giảm cùng lúc với tài sản (Nợ TK 3361 / Có TK 241).</div></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title">
+        <h3>B02-CĐT đặt cạnh bảng thay đổi vốn chủ sở hữu</h3>
+        <div class="seg no-print" role="group" aria-label="Hiển thị cột" data-target="tblCap">
+          <button type="button" data-show="all" aria-pressed="true">Cả hai</button>
+          <button type="button" data-show="bq" aria-pressed="false">BQLDA (TT 195)</button>
+          <button type="button" data-show="dn" aria-pressed="false">Doanh nghiệp (TT 200)</button>
+        </div>
+      </div>
+      <div class="table-wrap reveal"><table class="cmp stack" id="tblCap">
+        <caption class="sr-only">So sánh báo cáo nguồn vốn đầu tư của BQLDA với biến động vốn chủ sở hữu và lưu chuyển tiền tệ của Hòa Phát</caption>
+        <thead><tr><th scope="col">Nội dung</th><th scope="col" class="bq col-bq">BQLDA: B02, F02-CĐT</th><th scope="col" class="dn col-dn">Hòa Phát: thay đổi vốn chủ sở hữu, LCTT (tỷ đồng)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Tăng trong năm</th><td class="col-bq" data-h="BQLDA"><b class="num">+<span data-v="bq.b02.tang" data-d="3"></span> tỷ</b>: chủ đầu tư cấp bằng tiền <span class="num" data-v="bq.b02.tangTien" data-d="3"></span> (mã 03), bằng vật tư, thiết bị <span class="num" data-v="bq.b02.tangVatTu" data-d="3"></span> (mã 04) <span class="src">B02 tr.3</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num">+<span data-v="hp.lnst" data-d="1"></span></b> lợi nhuận thuần; +<span class="num" data-v="hp.gopVonCDKKS" data-d="1"></span> cổ đông không kiểm soát góp vốn <span class="src hp">Hòa Phát tr.55</span></td></tr>
+          <tr><th scope="row">Giảm trong năm</th><td class="col-bq" data-h="BQLDA"><b class="num">−<span data-v="bq.b02.giam" data-d="3"></span> tỷ</b> kết chuyển do quyết toán, bàn giao (mã 06); hoàn trả vốn cho chủ đầu tư không phát sinh (mã 07) <span class="src">B02 tr.3</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num">−<span data-v="hp.trichQuy" data-d="1"></span></b> trích quỹ khen thưởng, phúc lợi; cùng các khoản công ty con trả cổ tức, sử dụng quỹ <span class="src hp">Hòa Phát tr.55</span></td></tr>
+          <tr><th scope="row">Số dư cuối năm</th><td class="col-bq" data-h="BQLDA"><b class="num"><span data-v="bq.b02.cuoi" data-d="3"></span> tỷ</b>, khớp mã 410 trên B01 và F02 <span class="src">B02 tr.3</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.vcshChiTiet" data-d="1"></b>, khớp mã 400 trên B01 <span class="src hp">Hòa Phát tr.9</span></td></tr>
+          <tr><th scope="row">Phân loại theo nguồn</th><td class="col-bq" data-h="BQLDA">Vốn chủ sở hữu do chủ đầu tư cấp <span class="num" data-v="bq.f02.vcsh.cuoi" data-d="2"></span> tỷ (<span data-v="bq.f02.pctVcsh" data-d="1"></span>%); vốn vay do chủ đầu tư vay rồi cấp lại <span class="num" data-v="bq.f02.vay.cuoi" data-d="2"></span> tỷ (<span data-v="bq.f02.pctVay" data-d="1"></span>%) <span class="src">F02 tr.8</span></td><td class="col-dn" data-h="Hòa Phát">Vốn chủ sở hữu (đầu 4) và vay (đầu 3) là hai nhóm riêng; nợ vay <span class="num" data-v="hp.vay" data-d="0"></span> nằm trong nợ phải trả <span class="src hp">Hòa Phát tr.8</span></td></tr>
+          <tr><th scope="row">Dòng tiền liên quan đến vốn</th><td class="col-bq" data-h="BQLDA">Không có Báo cáo lưu chuyển tiền tệ; chỉ thấy phần cấp bằng tiền <span class="num" data-v="bq.b02.tangTien" data-d="3"></span> tỷ trên B02 <span class="src">B02 tr.3</span></td><td class="col-dn" data-h="Hòa Phát">Lưu chuyển tiền từ hoạt động tài chính: góp vốn, đi vay, trả nợ gốc, trả cổ tức <span class="src hp">Hòa Phát tr.13</span></td></tr>
+          <tr><th scope="row">Tổng mức và tiến độ</th><td class="col-bq" data-h="BQLDA">Tổng mức được duyệt <span class="num" data-v="bq.b03.tongMuc" data-d="0"></span> tỷ; lũy kế thực hiện <span class="num" data-v="bq.b03.luyKe" data-d="2"></span> tỷ, đạt <span data-v="bq.b03.tyLe" data-d="1"></span>% <span class="src">B03 mã 20–22 tr.4</span></td><td class="col-dn" data-h="Hòa Phát">Không có khái niệm tổng mức của cả tập đoàn.</td></tr>
+          <tr><th scope="row">Xác nhận số dư</th><td class="col-bq" data-h="BQLDA">Đối chiếu công nợ nội bộ với chủ đầu tư tại 31/12/2015, hai bên xác nhận không chênh lệch <span class="src">B04 V.10 tr.6</span></td><td class="col-dn" data-h="Hòa Phát">Báo cáo được kiểm toán độc lập.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 06. THỰC HIỆN ĐẦU TƯ ===================== -->
+<section class="slide" id="s06" data-no="06" data-title="Thực hiện đầu tư" aria-labelledby="t06">
+  <div class="panel">
+    <div class="ghost long" aria-hidden="true">B03 · F03A</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">06</span>
+      <div><span class="sec-en">INVESTMENT EXECUTION, B03 AND F03A</span><h2 id="t06">Thực hiện đầu tư so với Báo cáo kết quả kinh doanh</h2></div>
+    </header>
+    <p class="lede reveal">Điểm khác cốt lõi nằm ở <b>đích đến của chi phí</b>. Trên B03-CĐT, toàn bộ <b class="num"><span data-v="bq.b03.ps" data-d="2"></span> tỷ</b> chi phí phát sinh năm 2015 đi vào một chỗ duy nhất là tài sản (TK 241). Trên báo cáo kết quả kinh doanh của Hòa Phát, chi phí được trừ vào doanh thu để ra lợi nhuận sau thuế <b class="num"><span data-v="hp.lnst" data-d="1"></span> tỷ</b>.</p>
+
+    <div class="card reveal" style="margin-top:var(--s-5)">
+      <div class="block-title" style="margin-bottom:12px"><h4 style="margin:0">Chi phí đi về đâu?</h4><span class="src bai">Bài, mục 2.4.1 (ước tính thô)</span></div>
+      <div class="split100">
+        <div class="sbar-h"><b class="c-navy">BQLDA 2015</b><span class="src">B03 tr.4</span></div>
+        <div class="sbar-track" role="img" aria-label="BQLDA: 100% chi phí đi vào tài sản, 0% vào kết quả kinh doanh.">
+          <span class="sbar-seg t1" data-wp="bqRatio.taiSan"><span>Vào tài sản <span data-v="bqRatio.taiSan" data-d="0"></span>%</span></span>
+        </div>
+        <span class="tiny muted">Vào kết quả kinh doanh: <span data-v="bqRatio.ketQua" data-d="0"></span>%</span>
+      </div>
+      <div class="split100" style="margin-top:var(--s-4)">
+        <div class="sbar-h"><b class="c-blue">Hòa Phát 2024</b><span class="src hp">Hòa Phát tr.10, tr.44, theo bài</span></div>
+        <div class="sbar-track" role="img" aria-label="Hòa Phát: khoảng 23,6% chi phí đi vào tài sản (vốn hóa XDCB), 76,4% đi vào kết quả kinh doanh.">
+          <span class="sbar-seg d1" data-wp="hp.ratioTaiSan"><span>Tài sản <span data-v="hp.ratioTaiSan" data-d="1"></span>%</span></span>
+          <span class="sbar-seg d3" data-wp="hp.ratioKetQua"><span>Kết quả kinh doanh <span data-v="hp.ratioKetQua" data-d="1"></span>%</span></span>
+        </div>
+        <span class="tiny muted">Tài sản: <span class="num" data-v="hp.xdcbTang" data-d="1"></span> tỷ vốn hóa XDCB. Kết quả kinh doanh: giá vốn <span class="num" data-v="hp.giaVon" data-d="1"></span>; bán hàng <span class="num" data-v="hp.cpBanHang" data-d="1"></span>; quản lý <span class="num" data-v="hp.cpQLDN" data-d="1"></span>; tài chính <span class="num" data-v="hp.cpTaiChinh" data-d="1"></span>; khác <span class="num" data-v="hp.cpKhac" data-d="1"></span>.</span>
+      </div>
+    </div>
+
+    <div class="grid g-split" style="margin-top:var(--s-6)">
+      <div class="reveal">
+        <div class="block-title"><h3>Chi phí phát sinh 2015 theo 6 nội dung</h3><span class="src">B03 tr.4</span></div>
+        <div class="hbars" id="chartCost" role="img" aria-label="Biểu đồ cột ngang chi phí đầu tư phát sinh năm 2015 theo 6 nội dung, tỷ đồng."></div>
+        <p class="chart-cap">Cộng phát sinh <b class="num"><span data-v="bq.b03.ps" data-d="2"></span> tỷ đồng</b>, toàn bộ ghi tăng TK 241. Chi phí khác (bảo hiểm công trình, kiểm toán, thẩm định, thẩm tra phê duyệt quyết toán, lễ khởi công, đào tạo, bảo lãnh…) chi tiết trên F03C <span class="src">F03C tr.11</span></p>
+      </div>
+      <div class="reveal">
+        <div class="block-title"><h3>Tiến độ so với tổng mức</h3><span class="src">B03 mã 20–22 tr.4</span></div>
+        <div class="stat" style="background:var(--white);border:1px solid var(--line)">
+          <span class="stat-label">Lũy kế vốn đầu tư thực hiện từ khởi công đến 31/12/2015</span>
+          <span class="stat-val"><b class="cu" data-v="bq.b03.luyKe" data-d="2"></b><small>tỷ đồng</small></span>
+          <div class="bigprog" style="margin-top:10px">
+            <div class="bigprog-track"><span class="bigprog-fill" data-wp="bq.b03.tyLe"></span></div>
+            <div class="bigprog-scale"><span>0</span><b class="c-navy"><span data-v="bq.b03.tyLe" data-d="1"></span>%</b><span>Tổng mức <span data-v="bq.b03.tongMuc" data-d="0"></span> tỷ</span></div>
+          </div>
+          <span class="stat-note">Bằng số dư chi phí đầu tư dở dang (<span data-v="bq.b01.tk241" data-d="3"></span> tỷ) cộng giá trị hạng mục đã quyết toán, bàn giao (<span data-v="bq.b03.quyetToan" data-d="3"></span> tỷ).</span>
+        </div>
+        <p class="small muted" style="margin-top:var(--s-4)">BQLDA đo <b class="c-navy">tiến độ</b>; Hòa Phát đo <b class="c-blue">kết quả</b>: lợi nhuận trước thuế <span class="num" data-v="hp.lnTruocThue" data-d="1"></span> tỷ, sau thuế <span class="num" data-v="hp.lnst" data-d="1"></span> tỷ (<span data-v="hp.lnstPct" data-d="1"></span>% doanh thu thuần) <span class="src hp">Hòa Phát tr.10</span></p>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>F03A: thực hiện đầu tư theo 7 hạng mục (tỷ đồng)</h3><span class="src">F03A tr.9</span></div>
+      <div class="table-wrap reveal"><table class="cmp" id="tblF03A">
+        <caption class="sr-only">Phụ biểu F03A-CĐT, thực hiện đầu tư theo hạng mục công trình năm 2015, tỷ đồng</caption>
+        <thead><tr><th scope="col">Hạng mục công trình</th><th scope="col" class="n">Đầu năm</th><th scope="col" class="n">Phát sinh</th><th scope="col" class="n">Giảm</th><th scope="col" class="n">Cuối năm</th><th scope="col" class="bar-cell"><span class="sr-only">Tỷ trọng cuối năm</span></th></tr></thead>
+        <tbody></tbody>
+        <tfoot></tfoot>
+      </table></div>
+      <p class="small muted" style="margin-top:8px">BQLDA theo dõi 7 hạng mục của một dự án, kể cả trạng thái đang thi công hay đã bàn giao và phần chi phí chung chờ phân bổ. Hòa Phát theo dõi theo dự án lớn của cả tập đoàn và chỉ cho thấy phần đã chuyển sang TSCĐ (<span class="num" data-v="hp.chuyenTSCD" data-d="1"></span> tỷ) <span class="src hp">Hòa Phát tr.44</span></p>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Các dòng tương ứng trên hai báo cáo</h3><span class="src bai">Bài, mục 2.4.1</span></div>
+      <div class="table-wrap reveal"><table class="cmp stack">
+        <thead><tr><th scope="col">Dòng</th><th scope="col" class="bq col-bq">BQLDA: B03-CĐT</th><th scope="col" class="dn col-dn">Hòa Phát: kết quả kinh doanh (tỷ đồng)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Doanh thu</th><td class="col-bq" data-h="BQLDA">Không có. “Sản phẩm” của Ban là công trình bàn giao theo giá trị quyết toán, không có giá bán <span class="src">F03B tr.10</span></td><td class="col-dn" data-h="Hòa Phát">Doanh thu thuần <b class="num" data-v="hp.dtt" data-d="1"></b> <span class="src hp">Hòa Phát tr.58</span></td></tr>
+          <tr><th scope="row">Giá vốn</th><td class="col-bq" data-h="BQLDA">Không có. Gần nhất là giá trị quyết toán hạng mục bàn giao <span class="num" data-v="bq.f03b.duyet" data-d="2"></span> tỷ, nhưng nó đi ra khỏi sổ chứ không thành giá vốn <span class="src">F03B tr.10</span></td><td class="col-dn" data-h="Hòa Phát">Giá vốn <b class="num" data-v="hp.giaVon" data-d="1"></b>; lợi nhuận gộp <span class="num" data-v="hp.lnGop" data-d="1"></span> (biên <span data-v="hp.bienGop" data-d="1"></span>%) <span class="src hp">Hòa Phát tr.59</span></td></tr>
+          <tr><th scope="row">Chi phí xây dựng, thiết bị, tư vấn…</th><td class="col-bq" data-h="BQLDA">Phát sinh <b class="num" data-v="bq.b03.ps" data-d="2"></b> tỷ, ghi tăng TK 241 <span class="src">B03 tr.4</span></td><td class="col-dn" data-h="Hòa Phát">XDCB dở dang tăng <b class="num" data-v="hp.xdcbTang" data-d="1"></b>, trong đó lãi vay vốn hóa <span class="num" data-v="hp.laiVayVonHoa" data-d="1"></span> <span class="src hp">Hòa Phát tr.44</span></td></tr>
+          <tr><th scope="row">Chi phí quản lý</th><td class="col-bq" data-h="BQLDA"><b class="num" data-v="bq.f03d.ps2015" data-d="3"></b> tỷ, phân bổ hết vào TK 241; trong đó lương <span class="num" data-v="bq.f03d.luong" data-d="3"></span>, bảo hiểm và KPCĐ <span class="num" data-v="bq.f03d.baoHiem" data-d="3"></span>, khấu hao <span class="num" data-v="bq.f03d.khauHao" data-d="3"></span> (năm 2014: <span class="num" data-v="bq.f03d.ps2014" data-d="3"></span>) <span class="src">F03D tr.12</span></td><td class="col-dn" data-h="Hòa Phát"><b class="num" data-v="hp.cpQLDN" data-d="1"></b>, đi thẳng vào kết quả kinh doanh <span class="src hp">Hòa Phát tr.60</span></td></tr>
+          <tr><th scope="row">Chỉ tiêu cuối cùng</th><td class="col-bq" data-h="BQLDA">Không xác định lãi, lỗ. Tổng mức <span class="num" data-v="bq.b03.tongMuc" data-d="0"></span> tỷ; lũy kế <span class="num" data-v="bq.b03.luyKe" data-d="2"></span> tỷ (<span data-v="bq.b03.tyLe" data-d="1"></span>%); đã quyết toán, bàn giao <span class="num" data-v="bq.b03.quyetToan" data-d="2"></span> tỷ <span class="src">B03 mã 20–23 tr.4</span></td><td class="col-dn" data-h="Hòa Phát">Lợi nhuận sau thuế <b class="num" data-v="hp.lnst" data-d="1"></b> (<span data-v="hp.lnstPct" data-d="1"></span>% doanh thu thuần) <span class="src hp">Hòa Phát tr.10</span></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 07. QUYẾT TOÁN, BÀN GIAO ===================== -->
+<section class="slide" id="s07" data-no="07" data-title="Quyết toán và bàn giao" aria-labelledby="t07">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">F03B</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">07</span>
+      <div><span class="sec-en">SETTLEMENT AND HANDOVER, F03B</span><h2 id="t07">Quyết toán và bàn giao so với ghi nhận TSCĐ</h2></div>
+    </header>
+    <p class="lede reveal">Cùng sự kiện “công trình hoàn thành” nhưng kết cục khác hẳn.</p>
+
+    <div class="fate" style="margin-top:var(--s-5)">
+      <div class="card bq reveal">
+        <span class="tag">BQLDA ĐỒNG BẰNG, F03B-CĐT</span>
+        <span class="verb">Xóa khỏi sổ</span>
+        <span class="big"><span class="strike"><span data-v="bq.f03b.duyet" data-d="2"></span></span><small>tỷ đồng</small></span>
+        <p class="small">Hạng mục <b><span data-t="bq.f03b.hangMuc"></span></b> bàn giao ngày <b data-t="bq.f03b.ngayBanGiao"></b>, Quyết định phê duyệt quyết toán số <b data-t="bq.f03b.soQd"></b> ngày <b data-t="bq.f03b.ngayQd"></b>. Ban không giữ lại tài sản nào, nên không còn gì để khấu hao. <span class="src">F03B tr.10</span></p>
+      </div>
+      <div class="card dn reveal">
+        <span class="tag">TẬP ĐOÀN HÒA PHÁT, THUYẾT MINH 14</span>
+        <span class="verb">Chuyển sang TSCĐ, rồi khấu hao</span>
+        <span class="big"><span data-v="hp.chuyenTSCD" data-d="1"></span><small>tỷ đồng</small></span>
+        <p class="small">XDCB hoàn thành chuyển sang TSCĐ hữu hình, rồi tiếp tục khấu hao. Khấu hao TSCĐ hữu hình trong năm: <b class="num" data-v="hp.khauHao" data-d="1"></b> tỷ đồng. Tài sản tiếp tục xuất hiện trên báo cáo nhiều năm. <span class="src hp">Hòa Phát tr.41, tr.44</span></p>
+      </div>
+    </div>
+
+    <div class="grid g-split" style="margin-top:var(--s-6)">
+      <div class="reveal">
+        <div class="block-title"><h3>Hồ sơ quyết toán F03B</h3><span class="src">F03B tr.10</span></div>
+        <div class="grid g-3">
+          <div class="stat"><span class="stat-label">Giá trị đề nghị quyết toán</span><span class="stat-val" style="font-size:24px"><span data-v="bq.f03b.deNghi" data-d="3"></span><small>tỷ</small></span></div>
+          <div class="stat"><span class="stat-label">Giá trị được duyệt</span><span class="stat-val" style="font-size:24px"><span data-v="bq.f03b.duyet" data-d="3"></span><small>tỷ</small></span></div>
+          <div class="stat"><span class="stat-label">Chênh lệch</span><span class="stat-val" style="font-size:24px"><span data-v="bq.f03b.chenhLech" data-d="0"></span></span></div>
+        </div>
+        <div class="card" style="margin-top:var(--s-4)">
+          <h4>Cơ cấu giá trị quyết toán (tỷ đồng)</h4>
+          <div class="hbars" id="chartF03B" role="img" aria-label="Cơ cấu giá trị quyết toán hạng mục nhà bảo vệ, hàng rào, cổng: xây dựng 3,120; thiết bị 0,640; quản lý dự án 0,210; tư vấn 0,412; khác 0,200 tỷ đồng."></div>
+          <p class="tiny muted" style="margin:10px 0 0">Bút toán bàn giao: <b>Nợ TK 336 (3361) / Có TK 241</b>. Không có khoản chi phí bị duyệt loại phải thu hồi (TK 1388).</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="block-title"><h3>Hai cách đi ra khỏi TK 241</h3><span class="src bai">Bài, mục 2.5</span></div>
+        <div class="table-wrap"><table class="cmp stack">
+          <thead><tr><th scope="col">Dòng</th><th scope="col" class="bq col-bq">BQLDA</th><th scope="col" class="dn col-dn">Hòa Phát</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Căn cứ chuyển khỏi TK 241</th><td class="col-bq" data-h="BQLDA">Quyết định phê duyệt quyết toán <span data-t="bq.f03b.soQd"></span> ngày <span data-t="bq.f03b.ngayQd"></span>; bàn giao ngày <span data-t="bq.f03b.ngayBanGiao"></span> <span class="src">F03B, B04 VI.2</span></td><td class="col-dn" data-h="Hòa Phát">Đưa tài sản vào hoạt động; tự ghi nhận khi tài sản sẵn sàng sử dụng, không có bước duyệt quyết toán của bên thứ ba.</td></tr>
+            <tr><th scope="row">Giá trị chuyển</th><td class="col-bq" data-h="BQLDA"><span class="num" data-v="bq.f03b.duyet" data-d="3"></span> tỷ, một đích duy nhất là bàn giao</td><td class="col-dn" data-h="Hòa Phát">TSCĐ hữu hình <span class="num" data-v="hp.chuyenTSCD" data-d="1"></span> tỷ cùng TSCĐ vô hình và chi phí trả trước <span class="src hp">Hòa Phát tr.44</span></td></tr>
+            <tr><th scope="row">Bút toán</th><td class="col-bq" data-h="BQLDA">Nợ TK 336 (3361) / Có TK 241: giảm nguồn vốn</td><td class="col-dn" data-h="Hòa Phát">Nợ TK 211 (hoặc 213, 242) / Có TK 241: tăng tài sản</td></tr>
+            <tr><th scope="row">Tác động lên báo cáo</th><td class="col-bq" data-h="BQLDA">Nguồn vốn đầu tư (B02) và chi phí dở dang (B03) cùng giảm <span class="num" data-v="bq.b02.giam" data-d="3"></span> tỷ; không có lãi, lỗ</td><td class="col-dn" data-h="Hòa Phát">Tài sản dài hạn đổi từ XDCB dở dang sang TSCĐ; tổng tài sản không đổi tại thời điểm chuyển</td></tr>
+            <tr><th scope="row">Sau khi hoàn thành</th><td class="col-bq" data-h="BQLDA">Không còn tài sản trên sổ của Ban; không khấu hao tài sản bàn giao</td><td class="col-dn" data-h="Hòa Phát">Theo dõi nguyên giá, hao mòn; khấu hao vào chi phí kỳ, làm giảm lợi nhuận</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 08. NHẬN XÉT ===================== -->
+<section class="slide" id="s08" data-no="08" data-title="Nhận xét, đánh giá" aria-labelledby="t08">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">Đánh giá</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">08</span>
+      <div><span class="sec-en">ASSESSMENT</span><h2 id="t08">Nhận xét, đánh giá</h2></div>
+    </header>
+
+    <div class="block" style="margin-top:0">
+      <div class="block-title"><h3>Ưu điểm và hạn chế của chế độ kế toán BQLDA</h3><span class="src bai">Bài, Bảng 3.1</span></div>
+      <div class="table-wrap reveal"><table class="cmp stack">
+        <thead><tr><th scope="col">Khía cạnh</th><th scope="col" class="bq">Ưu điểm</th><th scope="col">Hạn chế</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Quản trị chi phí (TK 241)</th><td data-h="Ưu điểm" class="col-bq">Kiểm soát chi tiết nguồn vốn theo dự toán. Phân loại rõ chi phí theo 6 nội dung: xây dựng, thiết bị, bồi thường, quản lý dự án, tư vấn, khác.</td><td data-h="Hạn chế" class="why">Khối lượng chứng từ lớn, đòi hỏi mức độ chi tiết cao, dễ phát sinh sai sót khi tập hợp chi phí chung chưa phân bổ.</td></tr>
+          <tr><th scope="row">Quản lý nguồn vốn (TK 336)</th><td data-h="Ưu điểm" class="col-bq">Phản ánh minh bạch dòng vốn được cấp, chi tiết theo hình thức cấp bằng tiền hoặc vật tư, thuận lợi cho đối chiếu quyết toán.</td><td data-h="Hạn chế" class="why">Cơ chế ghi giảm nguồn vốn khi bàn giao (Nợ 336 / Có 241) có thể phức tạp nếu phát sinh chi phí không được duyệt quyết toán.</td></tr>
+          <tr><th scope="row">Phân bổ chi phí BQLDA (TK 642)</th><td data-h="Ưu điểm" class="col-bq">Phản ánh đúng bản chất: chi phí hoạt động của BQLDA là bộ phận cấu thành nên giá trị tài sản đầu tư.</td><td data-h="Hạn chế" class="why">Việc chọn tiêu thức phân bổ chi phí quản lý vào TK 241 cuối kỳ có thể ảnh hưởng đến độ chính xác của giá trị từng hạng mục.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid g-2" style="margin-top:var(--s-4)">
+        <div class="card soft reveal"><h4>Điểm nổi bật</h4><p class="small">Thông tư 195 giúp giám sát chi tiết nguồn vốn so với tổng mức đầu tư được duyệt. Qua F03A, trong <b class="num"><span data-v="bq.b01.tk241" data-d="2"></span> tỷ</b> chi phí dở dang của BQLDA Đồng Bằng năm 2015, Nhà xưởng chế biến chính chiếm <b class="num" data-v="bq.f03a.items.0.cuoi" data-d="2"></b> tỷ và Kho lạnh <b class="num" data-v="bq.f03a.items.1.cuoi" data-d="2"></b> tỷ. <span class="src">F03A tr.9</span></p></div>
+        <div class="card soft reveal"><h4>Điểm hạn chế</h4><p class="small">Năm 2015, BQLDA Đồng Bằng phát sinh <b class="num"><span data-v="bq.f03d.ps2015" data-s="dong" data-d="0"></span> đồng</b> chi phí hoạt động và phân bổ toàn bộ vào TK 241. Nếu tiêu thức phân bổ không phù hợp với thực tế thi công, giá trị quyết toán từng hạng mục sẽ bị phản ánh sai lệch. <span class="src">F03D tr.12</span></p></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="block-title"><h3>Khó khăn khi đọc BCTC BQLDA bằng tư duy doanh nghiệp</h3><span class="src bai">Bài, Bảng 3.2</span></div>
+      <div class="table-wrap reveal"><table class="cmp stack">
+        <thead><tr><th scope="col">Góc độ đánh giá</th><th scope="col" class="dn col-dn">Tư duy doanh nghiệp (TT 200)</th><th scope="col" class="bq col-bq">Thực tế tại BQLDA (TT 195)</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Cơ cấu tài sản</th><td class="col-dn" data-h="Doanh nghiệp">Tài sản đa dạng, phục vụ sản xuất kinh doanh (tiền, hàng tồn kho, TSCĐ).</td><td class="col-bq" data-h="BQLDA">Tài sản chủ yếu là giá trị công trình đang hình thành; chi phí XDCB dở dang chiếm tỷ trọng tuyệt đối.</td></tr>
+          <tr><th scope="row">Cơ cấu nguồn vốn</th><td class="col-dn" data-h="Doanh nghiệp">Tách rõ nợ phải trả và vốn chủ sở hữu (gồm vốn góp và lợi nhuận tích lũy).</td><td class="col-bq" data-h="BQLDA">Không ghi nhận vốn chủ sở hữu; toàn bộ nguồn lực cấp phát theo dõi dưới dạng phải trả nội bộ (TK 336).</td></tr>
+          <tr><th scope="row">Hiệu quả hoạt động</th><td class="col-dn" data-h="Doanh nghiệp">Dùng báo cáo kết quả kinh doanh (B02-DN) để xác định doanh thu, chi phí, lợi nhuận.</td><td class="col-bq" data-h="BQLDA">Đánh giá qua báo cáo thực hiện đầu tư (B03-CĐT), dựa trên tiến độ giải ngân và tuân thủ tổng mức đầu tư.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="grid g-2" style="margin-top:var(--s-4)">
+        <div class="card reveal"><span class="tag">KHÁC BIỆT 1: CẤU TRÚC BẢNG CÂN ĐỐI</span><p class="small">BQLDA Đồng Bằng không ghi nhận vốn chủ sở hữu. Trong tổng tài sản <b class="num"><span data-v="bq.b01.tongTS" data-d="2"></span> tỷ</b>, nợ phải trả chỉ <b class="num"><span data-v="bq.b01.no" data-d="3"></span> tỷ</b>; nguồn vốn đầu tư nhận từ chủ đầu tư (TK 3361, mã 410) là <b class="num"><span data-v="bq.b01.nvdt" data-d="3"></span> tỷ</b>. Tài sản tập trung ở chi phí đầu tư xây dựng dở dang, <span data-v="bq.b01.pct.tk241" data-d="1"></span>% (<span class="num" data-v="bq.b01.tk241" data-d="2"></span> tỷ). Hòa Phát có vốn chủ sở hữu <span class="num" data-v="hp.vcsh" data-d="0"></span> tỷ, gồm <span class="num" data-v="hp.lnChuaPP" data-d="0"></span> tỷ lợi nhuận chưa phân phối. <span class="src">B01 tr.2</span></p></div>
+        <div class="card reveal"><span class="tag">KHÁC BIỆT 2: PHÂN TÍCH DÒNG TIỀN</span><p class="small">BQLDA không lập báo cáo lưu chuyển tiền tệ, nên người đọc dùng B02-CĐT kết hợp B03-CĐT. Năm 2015 dự án được cấp tăng <b class="num"><span data-v="bq.b02.tang" data-d="2"></span> tỷ</b> nguồn vốn, tương ứng <b class="num"><span data-v="bq.b03.ps" data-d="2"></span> tỷ</b> chi phí đầu tư phát sinh trên B03-CĐT. Hiệu quả của Ban được đánh giá qua tiến độ giải ngân và sự tuân thủ dự toán. <span class="src">B02 tr.3, B03 tr.4</span></p></div>
+      </div>
+      <p class="note reveal" style="margin-top:var(--s-4)"><b>Đính chính so với bài:</b> mục 3.2 của bài ghi “Nợ phải trả (chủ yếu là TK 336) lên tới 188,71 tỷ đồng”. Theo B01-CĐT, nợ phải trả là <span class="num" data-v="bq.b01.no" data-d="3"></span> tỷ; con số 188,717 tỷ là nguồn vốn đầu tư (TK 3361, mã 410, mục B). Chi phí phát sinh năm 2015 trên B03 là <span class="num"><span data-v="bq.b03.ps" data-s="dong" data-d="0"></span> đồng</span>, làm tròn <span data-v="bq.b03.ps" data-d="2"></span> tỷ (bài có chỗ ghi 69,73). <span class="src">B01 tr.2, B03 tr.4</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 09. KIẾN NGHỊ ===================== -->
+<section class="slide" id="s09" data-no="09" data-title="Kiến nghị" aria-labelledby="t09">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">Kiến nghị</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">09</span>
+      <div><span class="sec-en">RECOMMENDATIONS</span><h2 id="t09">Kiến nghị hoàn thiện công tác lập, đọc và quản lý BCTC BQLDA</h2></div>
+    </header>
+    <div class="grid g-2">
+      <div class="card bq reveal">
+        <span class="tag">VỚI NGƯỜI LÀM KẾ TOÁN VÀ NGƯỜI ĐỌC BCTC</span>
+        <h4>Đọc theo luồng vốn, không theo lợi nhuận</h4>
+        <ul class="ticks small">
+          <li>Xác định đúng mô hình tổ chức thực hiện dự án để áp dụng phương pháp phân tích phù hợp.</li>
+          <li>Tập trung vào luồng hạch toán vốn cốt lõi: nhận vốn cấp phát (Có TK 336), tập hợp chi phí thi công (Nợ TK 241), quyết toán bàn giao công trình (Nợ TK 336 / Có TK 241).</li>
+          <li>Phối hợp chặt chẽ với bộ phận kỹ thuật để bảo đảm tính hợp lệ của khối lượng nghiệm thu.</li>
+          <li>Xác định tiêu thức phân bổ chi phí BQLDA (TK 642) hợp lý để giảm rủi ro xuất toán chi phí khi thanh tra, kiểm toán quyết toán.</li>
+        </ul>
+      </div>
+      <div class="card dn reveal">
+        <span class="tag">VỚI CƠ QUAN QUẢN LÝ NHÀ NƯỚC</span>
+        <h4>Chuẩn bị chuyển sang Thông tư 99/2025/TT-BTC</h4>
+        <ul class="ticks dn small">
+          <li>Thông tư 99/2025/TT-BTC (hiệu lực 01/01/2026) thay thế cả Thông tư 195 và Thông tư 200: một thay đổi mang tính hệ thống để khắc phục sự thiếu đồng bộ giữa các chế độ.</li>
+          <li>Sớm ban hành hướng dẫn chuyển đổi số dư, đặc biệt cách tích hợp các tài khoản đặc thù của BQLDA như <b>TK 3361</b> và <b>TK 3368</b> vào hệ thống tài khoản hợp nhất mới.</li>
+          <li>Số hóa nền tảng báo cáo để tự động trích xuất các phụ biểu chi tiết <b>F03A, F03B</b>, đẩy nhanh thẩm tra, phê duyệt quyết toán.</li>
+          <li>Xử lý dứt điểm tình trạng công trình đã đưa vào khai thác nhưng chưa hoàn tất thủ tục ghi tăng tài sản cố định.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 10. KẾT LUẬN ===================== -->
+<section class="slide" id="s10" data-no="10" data-title="Kết luận" aria-labelledby="t10">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true">Kết luận</div>
+    <header class="sec-head reveal">
+      <span class="sec-no">10</span>
+      <div><span class="sec-en">CONCLUSION AND REFERENCES</span><h2 id="t10">Kết luận và tài liệu tham khảo</h2></div>
+    </header>
+    <div class="grid g-3">
+      <div class="card soft reveal"><span class="tag">NGUYÊN LÝ</span><p class="small">Chế độ kế toán luôn phản ánh đúng chức năng, nhiệm vụ và bản chất hoạt động của đơn vị.</p></div>
+      <div class="card soft reveal"><span class="tag">BQLDA VÀ DOANH NGHIỆP</span><p class="small">Ban tiếp nhận vốn, thực hiện đầu tư và bàn giao tài sản, nên kế toán tập trung vào nguồn cấp phát (TK 336) và chi phí đầu tư (TK 241). Doanh nghiệp hoạt động vì mục tiêu sinh lời, nên kế toán đo chu kỳ kinh doanh qua doanh thu, chi phí và kết quả.</p></div>
+      <div class="card soft reveal"><span class="tag">Ý NGHĨA</span><p class="small">Khi Thông tư 99/2025/TT-BTC có hiệu lực từ 01/01/2026, nhận diện rõ ưu điểm, hạn chế và khác biệt giữa hai chế độ giúp người làm kế toán thích ứng nhanh với cơ chế hạch toán hợp nhất.</p></div>
+    </div>
+
+    <div class="grid g-split block">
+      <div class="reveal">
+        <div class="block-title"><h3>Tài liệu tham khảo</h3><span class="en">REFERENCES</span></div>
+        <ol class="refs">
+          <li>Quốc hội (2015), Luật Kế toán số 88/2015/QH13.</li>
+          <li>Chính phủ (2016), Nghị định số 174/2016/NĐ-CP quy định chi tiết một số điều của Luật Kế toán.</li>
+          <li>Bộ Tài chính (2012), Thông tư số 195/2012/TT-BTC ngày 15/11/2012 hướng dẫn kế toán áp dụng cho đơn vị chủ đầu tư.</li>
+          <li>Bộ Tài chính (2014), Thông tư số 200/2014/TT-BTC ngày 22/12/2014 hướng dẫn Chế độ kế toán doanh nghiệp.</li>
+          <li>Bộ Tài chính (2019), Thông tư số 79/2019/TT-BTC ngày 14/11/2019 hướng dẫn Chế độ kế toán áp dụng cho ban quản lý dự án sử dụng vốn đầu tư công.</li>
+          <li>Bộ Tài chính (2025), Thông tư số 99/2025/TT-BTC ngày 27/10/2025 hướng dẫn Chế độ kế toán doanh nghiệp.</li>
+        </ol>
+      </div>
+      <div class="reveal">
+        <div class="block-title"><h3>Phụ lục</h3><span class="en">APPENDICES</span></div>
+        <ul class="ticks small">
+          <li>Phụ lục 1: Bảng tổng hợp 24 điểm khác biệt trọng tâm</li>
+          <li>Phụ lục 2: Sơ đồ luồng vốn và luồng hạch toán kế toán giữa chủ đầu tư và BQLDA</li>
+          <li>Phụ lục 3: Bộ BCTC mẫu đầy đủ theo TT 195/2012/TT-BTC</li>
+        </ul>
+        <p class="note" style="margin-top:var(--s-4)">Nội dung phụ lục: xem bài đầy đủ.</p>
+        <p class="tiny muted" style="margin-top:var(--s-4)">Quy ước chip nguồn: <span class="src">B01 tr.2</span> là biểu và trang trong BCTC BQLDA scan; <span class="src hp">Hòa Phát tr.44</span> là trang BCTC Hòa Phát mà bài trích dẫn (số liệu Hòa Phát lấy theo bài); <span class="src bai">Bài, Bảng 1.4</span> là bảng, hình trong bài tiểu luận.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <span><span data-t="meta.nhom"></span>, <span data-t="meta.truong"></span>, <span data-t="meta.nam"></span></span>
+  <span>Trình chiếu: <span class="kbd">↓</span> <span class="kbd">→</span> phần sau, <span class="kbd">↑</span> <span class="kbd">←</span> lùi lại, <span class="kbd">F</span> toàn màn hình</span>
+</footer>
+
+<script>
+/*
+ * TOÀN BỘ SỐ LIỆU CỦA WEBSITE — sửa số ở đây, trang tự cập nhật.
+ *
+ * Quy ước đơn vị:
+ *  - bq.*  (BQLDA Đồng Bằng 2015): ĐỒNG, chép nguyên từ BCTC scan (bctc_bqlda.pdf).
+ *          Trang hiển thị theo tỷ đồng, làm tròn nửa lên trên số nguyên đồng.
+ *  - hp.*  (Tập đoàn Hòa Phát hợp nhất 2024): TỶ ĐỒNG, đúng như bài (baocao.pdf).
+ *          Không có BCTC Hòa Phát gốc, nên mọi chip nguồn ghi "theo bài".
+ *  - pct:  tỷ lệ % đúng như bài / BCTC (1 chữ số thập phân).
+ *  - Số trang "tr." của BQLDA là số trang trong bctc_bqlda.pdf;
+ *    số trang của Hòa Phát là số trang BCTC Hòa Phát mà bài trích dẫn.
+ */
+window.DATA = {
+  meta: {
+    truong: "NATIONAL ECONOMICS UNIVERSITY",
+    vien: "SCHOOL OF ADVANCED EDUCATION PROGRAMS",
+    mon: "Kế toán dự án đầu tư xây dựng",
+    deTai:
+      "Phân tích sự khác biệt về chế độ kế toán và báo cáo tài chính Ban Quản lý dự án giữa Thông tư 195/2012/TT-BTC và báo cáo tài chính Doanh nghiệp sử dụng Thông tư 200/2014/TT-BTC",
+    nhom: "Nhóm 2",
+    nam: 2026,
+    thanhVien: [
+      { ten: "Đỗ Thị Tiểu Luận", msv: "11230353" },
+      { ten: "Đặng Việt Hoàng", msv: "11232291" },
+      { ten: "Dương Gia Khánh", msv: "11231085" },
+      { ten: "Đỗ Minh Việt", msv: "11236876" }
+    ]
+  },
+
+  /* ---------------- BQLDA Nhà máy Chế biến Nông sản Đồng Bằng ---------------- */
+  bq: {
+    info: {
+      quyetDinh: "45/QĐ-HĐQT",
+      ngayThanhLap: "05/03/2013",
+      nhanSu2015: 24,
+      nhanSu2014: 22,
+      tongMuc: 312000000000,
+      namBatDau: 2013,
+      namKetThuc: 2016,
+      diaDiem: "KCN Trà Nóc, Cần Thơ",
+      ngayLapBCTC: "20/01/2016",
+      hopDongTinDung: "07/2013/HĐTD"
+    },
+
+    /* B01-CĐT, 31/12/2015 (tr.2) và thuyết minh B04-CĐT (tr.5–7) */
+    b01: {
+      tsnh: 11947250000,
+      tien: 4164850000,
+      tienMat: 38500000,
+      nhNgoaiThuong: 3802150000, // TK vốn đầu tư
+      nhCongThuong: 324200000, // TK hoạt động Ban
+      traTruoc: 3200000000,
+      traTruocXayLap5: 1900000000,
+      traTruocVietLong: 1300000000,
+      phaiThuKhac: 347400000,
+      tamUng: 285000000,
+      tk1388: 62400000,
+      htk: 1895000000,
+      vatLieu: 350000000,
+      thietBi: 1500000000,
+      ccdc: 45000000,
+      gtgt: 2340000000,
+      tsdh: 187516500000,
+      tscd: 774000000,
+      nguyenGia: 1260000000,
+      haoMon: 486000000,
+      khauHaoNam: 134000000,
+      tk241: 186742500000,
+      tongTS: 199463750000,
+      no: 10746300000,
+      ptnb: 9820000000,
+      ptnbXayLap5: 4650000000,
+      ptnbVietLong: 2730000000,
+      ptnbMienTay: 1240000000,
+      ptnbKhac: 1200000000,
+      thueTNCN: 128600000,
+      ptld: 215400000,
+      noiBo3368: 412000000,
+      phaiTraKhac: 74300000,
+      quyKTPL: 96000000,
+      quyDau: 84000000,
+      quyCap: 120000000,
+      quyChi: 108000000,
+      nvdt: 188717450000,
+      tongNV: 199463750000,
+      usdCuoi: 5420,
+      usdDau: 8150,
+      pct: { tsnh: 6.0, tsdh: 94.0, tk241: 93.6, no: 5.4, nvdt: 94.6 }
+    },
+
+    /* B02-CĐT (tr.3): TK 3361 */
+    b02: {
+      dau: 129449900000,
+      tang: 63850000000,
+      tangTien: 60650000000,
+      tangVatTu: 3200000000,
+      giam: 4582450000,
+      cuoi: 188717450000
+    },
+
+    /* F02-CĐT (tr.8): chi tiết theo nguồn */
+    f02: {
+      vcsh: { dau: 78200000000, tangTien: 24150000000, tangVatTu: 3200000000, giam: 2960000000, cuoi: 102590000000 },
+      vay: { dau: 51249900000, tangTien: 36500000000, tangVatTu: 0, giam: 1622450000, cuoi: 86127450000 },
+      pctVcsh: 54.4,
+      pctVay: 45.6
+    },
+
+    /* B03-CĐT (tr.4): TK 241 theo nội dung chi phí */
+    b03: {
+      dau: 121586000000,
+      ps: 69738950000,
+      giam: 4582450000,
+      cuoi: 186742500000,
+      tongMuc: 312000000000,
+      luyKe: 191324950000,
+      tyLe: 61.3,
+      quyetToan: 4582450000,
+      items: [
+        { key: "xd", ten: "Xây dựng", dau: 74912000000, ps: 41236800000, giam: 3120000000, cuoi: 113028800000 },
+        { key: "tb", ten: "Thiết bị", dau: 28640000000, ps: 15482300000, giam: 640000000, cuoi: 43482300000 },
+        { key: "bt", ten: "Bồi thường, hỗ trợ, tái định cư", dau: 6830000000, ps: 2915000000, giam: 0, cuoi: 9745000000 },
+        { key: "ql", ten: "Quản lý dự án", dau: 3915000000, ps: 2146450000, giam: 210000000, cuoi: 5851450000 },
+        { key: "tv", ten: "Tư vấn đầu tư xây dựng", dau: 5468000000, ps: 5873200000, giam: 412450000, cuoi: 10928750000 },
+        { key: "kh", ten: "Chi phí khác", dau: 1821000000, ps: 2085200000, giam: 200000000, cuoi: 3706200000 }
+      ]
+    },
+
+    /* F03A-CĐT (tr.9): theo hạng mục công trình */
+    f03a: {
+      items: [
+        { ten: "Nhà xưởng chế biến chính", dau: 51300000000, ps: 31250000000, giam: 0, cuoi: 82550000000 },
+        { ten: "Kho lạnh và kho thành phẩm", dau: 19800000000, ps: 10482300000, giam: 0, cuoi: 30282300000 },
+        { ten: "Hệ thống xử lý nước thải", dau: 9100000000, ps: 9578800000, giam: 0, cuoi: 18678800000 },
+        { ten: "Hạ tầng kỹ thuật", dau: 8250000000, ps: 8250000000, giam: 0, cuoi: 16500000000 },
+        { ten: "Nhà điều hành và công trình phụ trợ", dau: 3900000000, ps: 4600000000, giam: 0, cuoi: 8500000000 },
+        { ten: "Chi phí chung toàn dự án (chưa phân bổ)", dau: 25136000000, ps: 5095400000, giam: 0, cuoi: 30231400000 },
+        { ten: "Nhà bảo vệ, hàng rào, cổng (đã hoàn thành, bàn giao)", dau: 4100000000, ps: 482450000, giam: 4582450000, cuoi: 0, banGiao: true }
+      ]
+    },
+
+    /* F03B-CĐT (tr.10) */
+    f03b: {
+      hangMuc: "Nhà bảo vệ, hàng rào, cổng",
+      ngayBanGiao: "30/10/2015",
+      soQd: "128/QĐ-HĐQT",
+      ngayQd: "12/11/2015",
+      deNghi: 4582450000,
+      duyet: 4582450000,
+      chenhLech: 0,
+      xd: 3120000000,
+      tb: 640000000,
+      ql: 210000000,
+      tv: 412450000,
+      khac: 200000000
+    },
+
+    /* F03C-CĐT (tr.11) */
+    f03c: { dau: 1821000000, ps: 2085200000, giam: 200000000, cuoi: 3706200000 },
+
+    /* F03D-CĐT (tr.12): TK 642 */
+    f03d: {
+      ps2015: 2146450000,
+      ps2014: 2010300000,
+      phanBo: 2146450000,
+      conLai: 0,
+      luong: 1018400000,
+      baoHiem: 206900000,
+      khauHao: 134000000
+    }
+  },
+
+  /* ---------------- Tập đoàn Hòa Phát hợp nhất 31/12/2024 (theo bài, tỷ đồng) ---------------- */
+  hp: {
+    ngayKy: "24/03/2025",
+    tongTS: 224490,
+    tsnh: 86674,
+    tsdh: 137815,
+    xdcb: 63655.9,
+    tscdhh: 67244.2,
+    htk: 46091.2,
+    no: 109842,
+    vay: 82963.1,
+    vayNH: 55882.7,
+    vayDH: 27080.4,
+    vcsh: 114647, // bài ghi 114.647 khi làm tròn tỷ
+    vcshChiTiet: 114647.5, // bài ghi 114.647,5 khi có 1 chữ số thập phân
+    lnChuaPP: 49599,
+    pct: { tsnh: 38.6, tsdh: 61.4, xdcb: 28.4, tscd: 30.0, htk: 20.5, no: 48.9, vcsh: 51.1 },
+
+    // Tài sản ngắn hạn (đầu 1)
+    tien: 6887.6,
+    tienMat: 13.8,
+    tienGui: 2905.7,
+    tuongDuongTien: 3968.1,
+    dauTuTC: 18974.7,
+    phaiThuKH: 4352.1,
+    phaiThuKhac: 1249.0,
+    duPhongPTKD: 159.99,
+    gtgt: 6636.7,
+    cpTraTruocNH: 426.1,
+    traTruocNH: 2118.8,
+    traTruocDH: 82.8,
+    htkGoc: 46192.3,
+    htkDuPhong: 101.1,
+
+    // Tài sản dài hạn (đầu 2)
+    nguyenGia: 108146.6,
+    haoMon: 40902.4,
+    khauHaoPhanBo: 6915.7,
+    tsHetKH: 11515,
+    tsDoDangDH: 63750.7,
+    tsVoHinh: 184.2,
+    bdsDauTu: 559.6,
+    dauTuDH: 136.5,
+    cpTraTruocDH: 4269.1,
+    tsThueHoanLai: 254.7,
+    loiTheTM: 63.6,
+    duAnDungQuat: 60108.1,
+
+    // Nợ phải trả (đầu 3)
+    ptnbNH: 14046.8,
+    ptnbDH: 6283.6,
+    thuePhaiNop: 1743.4,
+    ptld: 890.9,
+    cpPhaiTraNH: 682.1,
+    cpPhaiTraDH: 1143.7,
+    phaiTraKhac: 188.1,
+    quyKTPL: 1027.3,
+
+    // Vốn chủ sở hữu (đầu 4)
+    vonCoPhan: 63962.5,
+    thangDuDauNam: 3211.6,
+    quyDTPT: 794.8,
+
+    // Kết quả kinh doanh (đầu 5–9)
+    dtt: 138855.1,
+    dtTaiChinh: 2618.9,
+    giaVon: 120357.6,
+    lnGop: 18497.5,
+    bienGop: 13.3,
+    cpBanHang: 2337.3,
+    cpQLDN: 1545.5,
+    cpTaiChinh: 3966.6,
+    thuNhapKhac: 1159.8,
+    cpKhac: 733.3,
+    thueTNDN: 1673.5,
+    lnTruocThue: 13693.5,
+    lnst: 12020.0,
+    lnstPct: 8.7,
+    laiTyGia: 1319.8,
+    loTyGia: 1473.2,
+
+    // Biến động vốn chủ sở hữu (tm 26)
+    gopVonCDKKS: 233.1,
+    trichQuy: 433.1,
+
+    // Ngoài bảng
+    usd: 14517852,
+    usdTy: 366.6,
+
+    // XDCB dở dang (tm 14)
+    xdcbTang: 39906.8,
+    laiVayVonHoa: 1310.4,
+    chuyenTSCD: 2925.6,
+    khauHao: 6810.7,
+    xoaSoXDCB: 16.1,
+
+    // Ước tính trong bài: tỷ lệ chi phí đi vào tài sản / kết quả kinh doanh
+    ratioTaiSan: 23.6,
+    ratioKetQua: 76.4
+  },
+
+  /* Ước tính tương ứng của BQLDA */
+  bqRatio: { taiSan: 100, ketQua: 0 },
+
+  /* Thời hạn nộp BCTC (số ngày kể từ ngày kết thúc kỳ) */
+  thoiHan: {
+    bq: { quy: 20, nam: 30 },
+    dn: { quy: 20, nam: 90 },
+    dnRieng: { quy: 45, nam: 30 }
+  },
+
+  /* Ví dụ hạch toán (Bảng 1.5, triệu đồng) */
+  viDu: { nhanVon: 2000, nghiemThu: 1000, luong: 50, banGiaoBq: 1050, banGiaoDn: 1000, chiPhiKy: 50 }
+};
+
+</script>
+<script>
+/* Nhóm 2 — điều khiển website: điền số liệu từ data.js, biểu đồ, tương tác, trình chiếu. */
+(function () {
+  "use strict";
+
+  var D = window.DATA;
+  var doc = document;
+  var root = doc.documentElement;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------- Định dạng số kiểu Việt Nam ---------------- */
+
+  function get(path) {
+    return path.split(".").reduce(function (o, k) {
+      return o == null ? undefined : o[k];
+    }, D);
+  }
+
+  // Chia số nguyên đồng cho 10^k và làm tròn nửa lên, tính hoàn toàn trên số nguyên
+  // (tránh lỗi dấu phẩy động: 69.738.950.000 → 69,74 chứ không 69,73).
+  function roundDiv(v, div) {
+    var q = Math.floor(v / div);
+    var r = v - q * div;
+    return 2 * r >= div ? q + 1 : q;
+  }
+
+  function group(s) {
+    return s.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
+
+  // scale: "ty" (đồng → tỷ), "trieu" (đồng → triệu), "none" (giữ nguyên)
+  function fmt(v, d, scale) {
+    var neg = v < 0;
+    v = Math.abs(v);
+    var n;
+    if (scale === "ty" || scale === "trieu") {
+      var exp = scale === "ty" ? 9 : 6;
+      n = roundDiv(Math.round(v), Math.pow(10, exp - d));
+    } else {
+      n = Math.round(v * Math.pow(10, d) + 1e-9 * (v ? 1 : 0));
+    }
+    var s = String(n);
+    while (s.length < d + 1) s = "0" + s;
+    var ip = d ? s.slice(0, s.length - d) : s;
+    var fp = d ? s.slice(s.length - d) : "";
+    return (neg ? "−" : "") + group(ip) + (fp ? "," + fp : "");
+  }
+
+  function scaleOf(el, path, v) {
+    var s = el.getAttribute("data-s");
+    if (s === "dong") return "none";
+    if (s) return s;
+    if (path.indexOf("bq.") === 0 && Number.isInteger(v) && Math.abs(v) >= 1e6) return "ty";
+    return "none";
+  }
+
+  function decimalsOf(el, path) {
+    var d = el.getAttribute("data-d");
+    if (d !== null) return parseInt(d, 10);
+    return path.indexOf("hp.") === 0 || /pct|tyLe|ratio/i.test(path) ? 1 : 3;
+  }
+
+  function spec(el) {
+    var path = el.getAttribute("data-v");
+    var v = get(path);
+    if (typeof v !== "number") {
+      console.warn("Thiếu số liệu:", path);
+      return null;
+    }
+    return { v: v, d: decimalsOf(el, path), s: scaleOf(el, path, v) };
+  }
+
+  function fillNumbers(scope) {
+    (scope || doc).querySelectorAll("[data-v]").forEach(function (el) {
+      var sp = spec(el);
+      if (sp) el.textContent = fmt(sp.v, sp.d, sp.s);
+    });
+    (scope || doc).querySelectorAll("[data-t]").forEach(function (el) {
+      var t = get(el.getAttribute("data-t"));
+      if (t != null) el.textContent = String(t);
+    });
+  }
+
+  function fillWidths(scope) {
+    (scope || doc).querySelectorAll("[data-wp]").forEach(function (el) {
+      var w = get(el.getAttribute("data-wp"));
+      el.style.setProperty("--w", w + "%");
+      if (el.classList.contains("sbar-seg") && w < 9) el.classList.add("narrow");
+      else if (el.classList.contains("sbar-seg") && w < 40) el.classList.add("mid");
+    });
+    (scope || doc).querySelectorAll("[data-wrest]").forEach(function (el) {
+      var parts = el.getAttribute("data-wrest").split(",");
+      var w = parts.reduce(function (acc, p, i) {
+        var v = get(p.trim());
+        return i === 0 ? v : acc - v;
+      }, 0);
+      el.style.setProperty("--w", Math.max(0, w) + "%");
+    });
+  }
+
+  /* ---------------- Dựng nội dung từ data ---------------- */
+
+  function h(tag, attrs, html) {
+    var el = doc.createElement(tag);
+    if (attrs)
+      Object.keys(attrs).forEach(function (k) {
+        el.setAttribute(k, attrs[k]);
+      });
+    if (html != null) el.innerHTML = html;
+    return el;
+  }
+  function vspan(path, d, extra) {
+    return '<span data-v="' + path + '" data-d="' + d + '"' + (extra || "") + "></span>";
+  }
+
+  function buildMembers() {
+    var ul = doc.getElementById("members");
+    D.meta.thanhVien.forEach(function (m) {
+      ul.appendChild(h("li", null, "<b>" + m.ten + "</b><span>" + m.msv + "</span>"));
+    });
+  }
+
+  function buildNav() {
+    var list = doc.getElementById("navList");
+    sections.forEach(function (s) {
+      var li = h("li");
+      var a = h("a", { href: "#" + s.id }, "<b>" + s.dataset.no + "</b><span>" + s.dataset.title + "</span>");
+      a.setAttribute("aria-label", s.dataset.no + ". " + s.dataset.title);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  }
+
+  function buildCostBars() {
+    var box = doc.getElementById("chartCost");
+    var items = D.bq.b03.items;
+    var max = Math.max.apply(null, items.map(function (i) { return i.ps; }));
+    items.forEach(function (it, idx) {
+      var row = h("div", { class: "hbar" });
+      row.innerHTML =
+        "<span>" + it.ten + "</span>" +
+        '<span class="hbar-track"><span class="hbar-fill" style="--w:' + ((it.ps / max) * 100).toFixed(2) + '%"></span></span>' +
+        '<span class="hbar-v">' + vspan("bq.b03.items." + idx + ".ps", 3) + "</span>";
+      box.appendChild(row);
+    });
+  }
+
+  function buildF03BBars() {
+    var box = doc.getElementById("chartF03B");
+    var f = D.bq.f03b;
+    var rows = [["xd", "Xây dựng"], ["tb", "Thiết bị"], ["ql", "Quản lý dự án"], ["tv", "Tư vấn"], ["khac", "Chi phí khác"]];
+    var max = Math.max.apply(null, rows.map(function (r) { return f[r[0]]; }));
+    rows.forEach(function (r) {
+      var row = h("div", { class: "hbar" });
+      row.innerHTML =
+        "<span>" + r[1] + "</span>" +
+        '<span class="hbar-track"><span class="hbar-fill" style="--w:' + ((f[r[0]] / max) * 100).toFixed(2) + '%"></span></span>' +
+        '<span class="hbar-v">' + vspan("bq.f03b." + r[0], 3) + "</span>";
+      box.appendChild(row);
+    });
+  }
+
+  function buildF03A() {
+    var t = doc.getElementById("tblF03A");
+    var tb = t.querySelector("tbody");
+    var tf = t.querySelector("tfoot");
+    var items = D.bq.f03a.items;
+    var total = D.bq.b03.cuoi;
+    function cell(path, v) {
+      return '<td class="n">' + (v === 0 ? "–" : vspan(path, 3)) + "</td>";
+    }
+    items.forEach(function (it, i) {
+      var p = "bq.f03a.items." + i + ".";
+      var tr = h("tr");
+      var pctW = ((it.cuoi / total) * 100).toFixed(2);
+      tr.innerHTML =
+        '<th scope="row">' + it.ten + (it.banGiao ? ' <span class="pill pill-soft" style="height:22px;font-size:11.5px">Đã bàn giao 30/10/2015</span>' : "") + "</th>" +
+        cell(p + "dau", it.dau) + cell(p + "ps", it.ps) + cell(p + "giam", it.giam) + cell(p + "cuoi", it.cuoi) +
+        '<td class="bar-cell"><div class="meter"><span style="--w:' + pctW + '%"></span></div></td>';
+      tb.appendChild(tr);
+    });
+    // ngày bàn giao lấy từ data
+    tb.querySelectorAll(".pill").forEach(function (p) {
+      p.textContent = "Đã bàn giao " + D.bq.f03b.ngayBanGiao;
+    });
+    var b = "bq.b03.";
+    tf.innerHTML =
+      '<tr><td>Cộng (khớp B03-CĐT)</td><td class="n">' + vspan(b + "dau", 3) + '</td><td class="n">' + vspan(b + "ps", 3) +
+      '</td><td class="n">' + vspan(b + "giam", 3) + '</td><td class="n">' + vspan(b + "cuoi", 3) + "</td><td></td></tr>";
+  }
+
+  var SVGNS = "http://www.w3.org/2000/svg";
+  function svgEl(tag, attrs, text) {
+    var el = doc.createElementNS(SVGNS, tag);
+    Object.keys(attrs || {}).forEach(function (k) {
+      el.setAttribute(k, attrs[k]);
+    });
+    if (text != null) el.textContent = text;
+    return el;
+  }
+
+  // Thác nước TK 3361: 129,45 → +63,85 → −4,58 → 188,72
+  function buildWaterfall() {
+    var box = doc.getElementById("chartWaterfall");
+    var b = D.bq.b02;
+    var W = 560, H = 300, top = 28, bottom = 52, left = 12, right = 12;
+    var maxV = b.dau + b.tang; // đỉnh cao nhất
+    var y = function (v) { return top + (H - top - bottom) * (1 - v / maxV); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, "aria-hidden": "true" });
+    var bars = [
+      { lab: "Đầu năm", from: 0, to: b.dau, path: "bq.b02.dau", cls: "#0d3b84", sign: "" },
+      { lab: "Tăng trong năm", from: b.dau, to: b.dau + b.tang, path: "bq.b02.tang", cls: "#1c6fe0", sign: "+" },
+      { lab: "Giảm (quyết toán)", from: b.dau + b.tang, to: b.cuoi, path: "bq.b02.giam", cls: "#8db8f1", sign: "−" },
+      { lab: "Cuối năm", from: 0, to: b.cuoi, path: "bq.b02.cuoi", cls: "#0d3b84", sign: "" }
+    ];
+    var slot = (W - left - right) / bars.length;
+    var bw = slot * 0.56;
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: y(0), y2: y(0), class: "axis" }));
+    bars.forEach(function (br, i) {
+      var x = left + slot * i + (slot - bw) / 2;
+      var y1 = y(Math.max(br.from, br.to)), y2 = y(Math.min(br.from, br.to));
+      var r = svgEl("rect", { x: x, y: y1, width: bw, height: Math.max(2, y2 - y1), rx: 6, fill: br.cls, class: "wf-bar" });
+      r.style.transitionDelay = i * 0.18 + "s";
+      svg.appendChild(r);
+      if (i < bars.length - 1) {
+        var nx = left + slot * (i + 1) + (slot - bw) / 2;
+        svg.appendChild(svgEl("line", { x1: x + bw, x2: nx, y1: y(br.to), y2: y(br.to), stroke: "#9aa8bf", "stroke-dasharray": "4 4" }));
+      }
+      var val = svgEl("text", { x: x + bw / 2, y: y1 - 8, "text-anchor": "middle", "font-size": 16, "font-weight": 700, fill: "#0f1e3a" });
+      val.appendChild(svgEl("tspan", {}, br.sign));
+      var tsp = svgEl("tspan", { "data-v": br.path, "data-d": "2" });
+      val.appendChild(tsp);
+      svg.appendChild(val);
+      var lab = svgEl("text", { x: x + bw / 2, y: H - bottom + 22, "text-anchor": "middle", "font-size": 13, fill: "#44526b" }, br.lab);
+      svg.appendChild(lab);
+    });
+    box.appendChild(svg);
+  }
+
+  // Donut F02: 54,4% / 45,6%
+  function buildDonut() {
+    var box = doc.getElementById("chartDonut");
+    var f = D.bq.f02;
+    var r = 80, c = 2 * Math.PI * r;
+    var svg = svgEl("svg", { viewBox: "0 0 200 200", "aria-hidden": "true" });
+    svg.appendChild(svgEl("circle", { cx: 100, cy: 100, r: r, fill: "none", stroke: "#e8eef8", "stroke-width": 26 }));
+    var a = (f.pctVcsh / 100) * c, b2 = (f.pctVay / 100) * c, gap = 3;
+    var s1 = svgEl("circle", { cx: 100, cy: 100, r: r, fill: "none", stroke: "#0d3b84", "stroke-width": 26, class: "seg", transform: "rotate(-90 100 100)" });
+    s1.style.setProperty("--l", a - gap + "px");
+    var s2 = svgEl("circle", { cx: 100, cy: 100, r: r, fill: "none", stroke: "#8db8f1", "stroke-width": 26, class: "seg", transform: "rotate(-90 100 100)", "stroke-dashoffset": -a });
+    s2.style.setProperty("--l", b2 - gap + "px");
+    [s1, s2].forEach(function (s) { s.style.setProperty("--c", c + "px"); });
+    svg.appendChild(s1);
+    svg.appendChild(s2);
+    var t1 = svgEl("text", { x: 100, y: 98, "text-anchor": "middle", "font-size": 22, "font-weight": 800, fill: "#0d3b84" });
+    t1.appendChild(svgEl("tspan", { "data-v": "bq.b02.cuoi", "data-d": "2" }));
+    svg.appendChild(t1);
+    svg.appendChild(svgEl("text", { x: 100, y: 120, "text-anchor": "middle", "font-size": 12, fill: "#44526b" }, "tỷ đồng, TK 3361"));
+    box.appendChild(svg);
+  }
+
+  // Cột nhóm: thời hạn nộp BCTC
+  function buildDeadline() {
+    var box = doc.getElementById("chartDeadline");
+    var T = D.thoiHan;
+    var W = 560, H = 300, top = 30, bottom = 64, left = 40, right = 10;
+    var maxV = 100;
+    var y = function (v) { return top + (H - top - bottom) * (1 - v / maxV); };
+    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, "aria-hidden": "true" });
+    var defs = svgEl("defs");
+    var pat = svgEl("pattern", { id: "hatch", width: 8, height: 8, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" });
+    pat.appendChild(svgEl("rect", { width: 8, height: 8, fill: "#d2e4fb" }));
+    pat.appendChild(svgEl("line", { x1: 0, y1: 0, x2: 0, y2: 8, stroke: "#1c6fe0", "stroke-width": 3 }));
+    defs.appendChild(pat);
+    svg.appendChild(defs);
+    [0, 30, 60, 90].forEach(function (g) {
+      svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: y(g), y2: y(g), class: g ? "gridl" : "axis" }));
+      svg.appendChild(svgEl("text", { x: left - 8, y: y(g) + 4, "text-anchor": "end", "font-size": 11, fill: "#64728a" }, String(g)));
+    });
+    var groups = [["quy", "Báo cáo quý"], ["nam", "Báo cáo năm"]];
+    var series = [
+      { k: "bq", fill: "#0d3b84", lab: "BQLDA (TT 195)" },
+      { k: "dn", fill: "#1c6fe0", lab: "Doanh nghiệp (TT 200)" },
+      { k: "dnRieng", fill: "url(#hatch)", lab: "DN, trường hợp riêng" }
+    ];
+    var gw = (W - left - right) / groups.length, bw = 52, gapB = 10;
+    groups.forEach(function (g, gi) {
+      var startX = left + gw * gi + (gw - (bw * 3 + gapB * 2)) / 2;
+      series.forEach(function (s, si) {
+        var v = T[s.k][g[0]];
+        var x = startX + si * (bw + gapB);
+        var r = svgEl("rect", { x: x, y: y(v), width: bw, height: y(0) - y(v), rx: 5, fill: s.fill, class: "wf-bar", stroke: s.k === "dnRieng" ? "#1c6fe0" : "none" });
+        r.style.transitionDelay = (gi * 3 + si) * 0.08 + "s";
+        svg.appendChild(r);
+        var t = svgEl("text", { x: x + bw / 2, y: y(v) - 7, "text-anchor": "middle", "font-size": 13, "font-weight": 700, fill: "#0f1e3a" });
+        t.appendChild(svgEl("tspan", { "data-v": "thoiHan." + s.k + "." + g[0], "data-d": "0" }));
+        t.appendChild(svgEl("tspan", {}, " ngày"));
+        svg.appendChild(t);
+      });
+      svg.appendChild(svgEl("text", { x: left + gw * gi + gw / 2, y: y(0) + 20, "text-anchor": "middle", "font-size": 13, "font-weight": 600, fill: "#0f1e3a" }, g[1]));
+    });
+    var lx = left;
+    series.forEach(function (s) {
+      svg.appendChild(svgEl("rect", { x: lx, y: H - 22, width: 12, height: 12, rx: 3, fill: s.fill, stroke: s.k === "dnRieng" ? "#1c6fe0" : "none" }));
+      svg.appendChild(svgEl("text", { x: lx + 18, y: H - 12, "font-size": 12, fill: "#44526b" }, s.lab));
+      lx += s.lab.length * 6.6 + 40;
+    });
+    box.appendChild(svg);
+  }
+
+  /* ---------------- Count-up ---------------- */
+
+  function countUp(el) {
+    if (el.dataset.counted) return;
+    el.dataset.counted = "1";
+    var sp = spec(el);
+    if (!sp || reduceMotion) return;
+    var dur = 1200, t0 = null;
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      var cur = sp.s === "none" ? sp.v * e : Math.round(sp.v * e);
+      if (el.dataset.final) return;
+      el.textContent = p < 1 ? fmt(cur, sp.d, sp.s) : fmt(sp.v, sp.d, sp.s);
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------------- Reveal khi cuộn ---------------- */
+
+  function initReveal() {
+    var targets = doc.querySelectorAll(".reveal");
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      targets.forEach(function (t) { t.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          en.target.classList.add("in");
+          en.target.querySelectorAll(".cu").forEach(countUp);
+          if (en.target.classList.contains("cu")) countUp(en.target);
+          io.unobserve(en.target);
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -6% 0px" }
+    );
+    targets.forEach(function (t) { io.observe(t); });
+  }
+
+  function finalizeAll() {
+    doc.querySelectorAll(".reveal").forEach(function (t) { t.classList.add("in"); });
+    doc.querySelectorAll(".cu").forEach(function (el) {
+      el.dataset.counted = "1";
+      el.dataset.final = "1";
+    });
+    fillNumbers();
+  }
+
+  /* ---------------- Toggle BQLDA / Doanh nghiệp ---------------- */
+
+  function initSegs() {
+    doc.querySelectorAll(".seg[data-target]").forEach(function (seg) {
+      var target = doc.getElementById(seg.getAttribute("data-target"));
+      seg.addEventListener("click", function (e) {
+        var btn = e.target.closest("button");
+        if (!btn) return;
+        var mode = btn.getAttribute("data-show");
+        seg.querySelectorAll("button").forEach(function (b) {
+          b.setAttribute("aria-pressed", String(b === btn));
+        });
+        if (target.tagName === "TABLE") {
+          target.classList.toggle("cols-hide-dn", mode === "bq");
+          target.classList.toggle("cols-hide-bq", mode === "dn");
+        } else {
+          target.setAttribute("data-mode", mode);
+        }
+        if (present) fitPanels();
+      });
+    });
+  }
+
+  /* ---------------- Tabs ---------------- */
+
+  function initTabs() {
+    doc.querySelectorAll('[role="tablist"]').forEach(function (list) {
+      var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+      function select(tab, focus) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          doc.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+        });
+        if (focus) tab.focus();
+        if (present) fitPanels();
+      }
+      list.addEventListener("click", function (e) {
+        var t = e.target.closest('[role="tab"]');
+        if (t) select(t);
+      });
+      list.addEventListener("keydown", function (e) {
+        var i = tabs.indexOf(doc.activeElement);
+        if (i < 0) return;
+        var n = null;
+        if (e.key === "ArrowRight") n = tabs[(i + 1) % tabs.length];
+        if (e.key === "ArrowLeft") n = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === "Home") n = tabs[0];
+        if (e.key === "End") n = tabs[tabs.length - 1];
+        if (n) {
+          e.preventDefault();
+          e.stopPropagation();
+          select(n, true);
+        }
+      });
+    });
+  }
+
+  /* ---------------- Nav, tiến độ cuộn ---------------- */
+
+  // sections: 11 phần gốc (00–10). Khi trình chiếu, các phần dài được tách thêm trang (.page).
+  var sections = Array.prototype.slice.call(doc.querySelectorAll("main > .slide"));
+  var currentIdx = 0; // vị trí trong danh sách slide đang hiển thị (gồm cả trang tách)
+  var shownNo = null; // số phần đang hiện trên nav
+
+  function slides() {
+    return Array.prototype.slice.call(doc.querySelectorAll("main > .slide"));
+  }
+
+  function updateScroll() {
+    var max = root.scrollHeight - window.innerHeight;
+    var p = max > 0 ? window.scrollY / max : 0;
+    doc.getElementById("progress").style.transform = "scaleX(" + p.toFixed(4) + ")";
+    var line = window.innerHeight * 0.35;
+    var list = slides();
+    var idx = 0;
+    list.forEach(function (s, i) {
+      if (s.getBoundingClientRect().top <= line) idx = i;
+    });
+    currentIdx = idx;
+    var s = list[idx];
+    if (s.dataset.no === shownNo) return;
+    shownNo = s.dataset.no;
+    doc.querySelectorAll("#navList a").forEach(function (a) {
+      if (a.getAttribute("href") === "#s" + shownNo) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+    doc.getElementById("navNo").textContent = s.dataset.no;
+    doc.getElementById("navTitle").textContent = s.dataset.title;
+  }
+
+  function goTo(i) {
+    var list = slides();
+    i = Math.max(0, Math.min(list.length - 1, i));
+    currentIdx = i;
+    list[i].scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+
+  /* ---------------- Chế độ trình chiếu ---------------- */
+
+  var present = false;
+  var presentFromFullscreen = false;
+  var movedNodes = [];
+
+  // Tách mỗi .block của một phần thành một trang 16:9 riêng. Nút DOM được DI CHUYỂN (không sao chép)
+  // nên tab, toggle vẫn hoạt động; khi thoát trình chiếu, mọi nút trở về chỗ cũ.
+  function buildPages() {
+    sections.forEach(function (sec) {
+      var panel = sec.querySelector(".panel");
+      var last = sec;
+      var curPanel = null;
+      var part = 1;
+      Array.prototype.slice.call(panel.children).forEach(function (k) {
+        if (k.classList.contains("block")) {
+          part++;
+          var page = h("section", {
+            class: "slide page",
+            "data-no": sec.dataset.no,
+            "data-title": sec.dataset.title,
+            "aria-label": sec.dataset.no + ". " + sec.dataset.title + ", phần " + part
+          });
+          curPanel = h("div", { class: "panel" }, '<p class="page-head"><b>' + sec.dataset.no + "</b>" + sec.dataset.title + "</p>");
+          page.appendChild(curPanel);
+          last.parentNode.insertBefore(page, last.nextSibling);
+          last = page;
+        }
+        if (curPanel) {
+          var ph = doc.createComment("vị trí gốc");
+          k.parentNode.insertBefore(ph, k);
+          curPanel.appendChild(k);
+          movedNodes.push([k, ph]);
+        }
+      });
+    });
+  }
+
+  function unbuildPages() {
+    movedNodes.forEach(function (m) {
+      m[1].parentNode.insertBefore(m[0], m[1]);
+      m[1].remove();
+    });
+    movedNodes = [];
+    doc.querySelectorAll("main > .slide.page").forEach(function (p) { p.remove(); });
+  }
+
+  // Thu nhỏ panel cho vừa khung; panel được nới rộng tương ứng để nội dung dàn ngang trước khi thu nhỏ.
+  function fitPanels() {
+    slides().forEach(function (s) {
+      var p = s.querySelector(".panel");
+      p.style.zoom = "";
+      p.style.width = "";
+      if (!present) return;
+      var availH = s.clientHeight - 36;
+      var availW = s.clientWidth - 2 * parseFloat(getComputedStyle(s).paddingLeft || 0);
+      var baseW = p.offsetWidth;
+      if (p.offsetHeight <= availH) return;
+      var lo = 0.45, hi = 1, best = lo;
+      for (var n = 0; n < 12; n++) {
+        var z = (lo + hi) / 2;
+        p.style.width = Math.min(availW / z, baseW / z) + "px";
+        if (p.offsetHeight * z <= availH) {
+          best = z;
+          lo = z;
+        } else hi = z;
+      }
+      p.style.width = Math.min(availW / best, baseW / best) + "px";
+      p.style.zoom = best.toFixed(3);
+    });
+  }
+
+  function setPresent(on) {
+    var no = (slides()[currentIdx] || sections[0]).dataset.no;
+    present = on;
+    if (on) {
+      finalizeAll();
+      buildPages();
+    } else {
+      unbuildPages();
+    }
+    root.classList.toggle("present", on);
+    doc.getElementById("btnPresent").setAttribute("aria-pressed", String(on));
+    fitPanels();
+    shownNo = null;
+    doc.getElementById("s" + no).scrollIntoView({ block: "start" });
+    updateScroll();
+  }
+
+  function toggleFullscreen() {
+    if (!doc.fullscreenElement) {
+      if (root.requestFullscreen) {
+        root.requestFullscreen().then(function () {
+          if (!present) {
+            presentFromFullscreen = true;
+            setPresent(true);
+          }
+        }).catch(function () {});
+      }
+    } else if (doc.exitFullscreen) {
+      doc.exitFullscreen();
+    }
+  }
+
+  doc.addEventListener("fullscreenchange", function () {
+    if (!doc.fullscreenElement && presentFromFullscreen) {
+      presentFromFullscreen = false;
+      setPresent(false);
+    } else {
+      setTimeout(fitPanels, 50);
+    }
+  });
+
+  function onKey(e) {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    var t = e.target;
+    if (t.closest && t.closest('[role="tablist"], input, textarea, select')) return;
+    var k = e.key;
+    if (k === "f" || k === "F") {
+      e.preventDefault();
+      toggleFullscreen();
+      return;
+    }
+    if (k === "Escape" && present && !doc.fullscreenElement) {
+      setPresent(false);
+      return;
+    }
+    var next = k === "ArrowRight" || (present && (k === "ArrowDown" || k === "PageDown" || k === " "));
+    var prev = k === "ArrowLeft" || (present && (k === "ArrowUp" || k === "PageUp"));
+    if (next || prev) {
+      e.preventDefault();
+      if (present) {
+        goTo(currentIdx + (next ? 1 : -1));
+      } else {
+        // Ngoài trình chiếu: ← → nhảy giữa 11 phần gốc
+        var no = (slides()[currentIdx] || sections[0]).dataset.no;
+        var si = sections.findIndex(function (x) { return x.dataset.no === no; });
+        var target = sections[Math.max(0, Math.min(sections.length - 1, si + (next ? 1 : -1)))];
+        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      }
+    }
+  }
+
+  /* ---------------- In ---------------- */
+
+  var presentBeforePrint = false;
+  window.addEventListener("beforeprint", function () {
+    finalizeAll();
+    presentBeforePrint = present;
+    if (present) setPresent(false);
+  });
+  window.addEventListener("afterprint", function () {
+    if (presentBeforePrint) setPresent(true);
+  });
+
+  /* ---------------- Khởi động ---------------- */
+
+  buildMembers();
+  buildNav();
+  buildCostBars();
+  buildF03BBars();
+  buildF03A();
+  buildWaterfall();
+  buildDonut();
+  buildDeadline();
+  fillNumbers();
+  fillWidths();
+
+  // Số đếm: trước khi vào khung nhìn hiển thị 0, rồi đếm lên.
+  if (!reduceMotion && "IntersectionObserver" in window) {
+    doc.querySelectorAll(".cu").forEach(function (el) {
+      var sp = spec(el);
+      if (sp) el.textContent = fmt(0, sp.d, sp.s);
+    });
+  }
+  initReveal();
+  initSegs();
+  initTabs();
+
+  doc.getElementById("btnPresent").addEventListener("click", function () { setPresent(!present); });
+  doc.getElementById("btnFull").addEventListener("click", toggleFullscreen);
+  doc.getElementById("btnPrint").addEventListener("click", function () {
+    finalizeAll();
+    window.print();
+  });
+  doc.addEventListener("keydown", onKey);
+
+  var ticking = false;
+  window.addEventListener("scroll", function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      ticking = false;
+      updateScroll();
+    });
+  }, { passive: true });
+  window.addEventListener("resize", function () {
+    fitPanels();
+    updateScroll();
+  });
+  updateScroll();
+
+  // Cho bản kiểm thử: hiện mọi thứ ở trạng thái cuối.
+  window.__finalize = finalizeAll;
+  window.__fmt = fmt;
+})();
+
+</script>
+</body>
+</html>
