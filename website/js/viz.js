@@ -141,17 +141,6 @@
       }).join("") + "</svg>";
   }
 
-  function heroGraphics() {
-    var el = doc.getElementById("heroGraphics");
-    if (!el) return;
-    el.innerHTML =
-      '<figure class="gpanel bq reveal"><figcaption>' + ic("i-pipe") + "<b>BQLDA · TT 195/2012</b><span>BQLDA hạch toán <em>“vốn”</em> (mục 1.3.3)</span></figcaption>" + pipeSVG({ id: "h" }) +
-      '<p class="gnote">Số liệu BQLDA Đồng Bằng 2015 ' + chip("F02 tr.8 · B03 tr.4 · F03B tr.10") + "</p></figure>" +
-      '<span class="vs-pill">so với</span>' +
-      '<figure class="gpanel dn reveal"><figcaption>' + ic("i-loop") + "<b>Doanh nghiệp · TT 200/2014</b><span>Doanh nghiệp hạch toán <em>“kết quả”</em> (mục 1.3.3)</span></figcaption>" + loopSVG({ id: "h" }) +
-      '<p class="gnote">Số liệu Hòa Phát 2024 ' + chip("Hòa Phát tr.10", "hp") + '</p></figure><p class="hero-fig-note">Minh họa 0-A (minh họa)</p>';
-  }
-
   /* ---------- Thành phần biểu đồ ---------- */
 
   // Thác nước ngang. steps: {lab, p, d, kind: start|up|down|total, calc, src, s(scale)}
@@ -758,7 +747,6 @@
 
   window.VIZ = {
     build: function () {
-      heroGraphics();
       Object.keys(V).forEach(function (k) { if (doc.querySelector('[data-viz="' + k + '"]')) V[k](); });
     },
     init: function (reduce) {

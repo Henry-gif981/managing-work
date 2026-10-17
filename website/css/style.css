@@ -1773,9 +1773,20 @@ table.cmp {
 }
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: var(--s-6);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--s-7);
   align-items: center;
+}
+.hero-main {
+  min-width: 0;
+}
+.hero-main h1 {
+  text-wrap: pretty;
+}
+.hero-side {
+  display: flex;
+  justify-content: center;
+  padding-right: var(--s-4);
 }
 .hero-uni {
   font: 600 12.5px var(--f-body);
@@ -1840,12 +1851,15 @@ table.cmp {
 .hero-meta b {
   color: var(--ink);
 }
-.hero-stats {
-  margin-top: var(--s-6);
-}
-@media (max-width: 960px) {
+@media screen and (max-width: 960px) {
   .hero-grid {
     grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-4);
+  }
+  .hero-side {
+    order: -1;
+    justify-content: flex-start;
+    padding: 0;
   }
 }
 @media (max-width: 520px) {
@@ -2178,8 +2192,7 @@ html.present .block {
   .g-2,
   .paths,
   .fate,
-  .g-split,
-  .hero-grid {
+  .g-split {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
   .g-3,
@@ -3077,9 +3090,6 @@ html.present table.f03a td {
   --amber-50: #fdf0db;
   --calc: #b26b00;
 }
-.hero-grid {
-  grid-template-columns: minmax(0, 1fr);
-}
 .viz {
   margin: var(--s-4) 0 var(--s-5);
 }
@@ -3343,62 +3353,7 @@ details.more > summary:focus-visible {
   border-right: 4px solid var(--blue);
 }
 
-/* ---------- Đồ họa đại diện ---------- */
-.hero-g {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 14px;
-  align-items: center;
-  margin-top: var(--s-5);
-}
-.gpanel {
-  margin: 0;
-  padding: 14px 16px 12px;
-  border-radius: 18px;
-  background: var(--white);
-  border: 1px solid var(--line);
-}
-.gpanel.bq { border-top: 5px solid var(--navy); }
-.gpanel.dn { border-top: 5px solid var(--blue); }
-.gpanel figcaption {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2px 8px;
-  margin-bottom: 6px;
-  font-size: 14px;
-}
-.gpanel figcaption b {
-  font: 700 15px var(--f-head);
-}
-.gpanel.bq figcaption { color: var(--navy); }
-.gpanel.dn figcaption { color: var(--blue); }
-.gpanel figcaption span {
-  flex-basis: 100%;
-  font-size: 15px;
-  color: var(--ink-2);
-}
-.gpanel figcaption em {
-  font-style: normal;
-  font-weight: 700;
-}
-.gnote {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 6px;
-  margin: 6px 0 0;
-  font-size: 14px;
-  color: var(--ink-3);
-}
-.vs-pill {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line-2);
-  background: var(--white);
-  font: 600 15px var(--f-body);
-  color: var(--ink-2);
-}
+/* ---------- Đồ họa đại diện (dòng vốn, vòng kết quả; dùng ở 1.3.3, Kết luận, Phụ lục) ---------- */
 .g-pipe,
 .g-loop {
   display: block;
@@ -4779,7 +4734,6 @@ details.more > summary:focus-visible {
 
 /* ---------- Màn hẹp ---------- */
 @media (max-width: 900px) {
-  .hero-g,
   .vsplit-body,
   .duo2-row,
   .spoke,
@@ -4794,7 +4748,6 @@ details.more > summary:focus-visible {
   .dtree-opts {
     grid-template-columns: minmax(0, 1fr);
   }
-  .vs-pill { justify-self: center; }
   .feat-row { grid-template-columns: minmax(0, 1fr); }
   .feat-arrow { transform: rotate(90deg); height: 20px; }
   .tasks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -4814,7 +4767,7 @@ details.more > summary:focus-visible {
   .fl-col, .fl-target { height: auto !important; }
   .fl-seg { position: static; height: auto !important; min-height: 44px; margin-bottom: 4px; }
   .fl-mid { display: none; }
-  .gpanel, .vs-l, .vs-r { overflow-x: auto; }
+  .vs-l, .vs-r { overflow-x: auto; }
   .g-pipe:not(.mini), .g-loop:not(.mini) { min-width: 520px; }
   .onebar { flex-wrap: wrap; }
 }
@@ -4823,11 +4776,22 @@ details.more > summary:focus-visible {
 html.present .viz {
   margin: 8px 0 12px;
 }
-html.present .hero-g {
-  margin-top: 12px;
-}
 html.present .hero h1 {
-  font-size: clamp(24px, 2.2vw, 36px);
+  font-size: clamp(26px, 2.6vw, 50px);
+}
+html.present .hero .panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 68vh;
+}
+html.present .hero-logo {
+  width: clamp(170px, 16vw, 300px);
+}
+html.present .hero-mon,
+html.present .hero-gv,
+html.present .hero .members li {
+  font-size: clamp(14.5px, 1vw, 19px);
 }
 html.present .hero .members {
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -4839,13 +4803,6 @@ html.present .hero .members li {
 }
 html.present .hero-mon {
   margin: 8px 0 12px;
-}
-html.present .hero-stats {
-  margin-top: 16px;
-}
-html.present .hero .g-pipe,
-html.present .hero .g-loop {
-  max-height: 32vh;
 }
 
 /* ---------- Giảm chuyển động ---------- */
@@ -4878,12 +4835,11 @@ html.present .hero .g-loop {
   details.more > summary { display: none; }
   .more-body { padding: 0; }
   .split-head .ic { stroke: #fff; }
-  .vsplit, .gpanel, .tm-cell, .fl-seg, .stk-seg, .c100-s, .wf-bar, .ob-bar, .fl-target, .road-goal, .t-cdt, .t-bq, .t-dn, .pp, .xc-hub, .ld-stop, .br-src, .dtree-root, .root3-top, .spoke-hub, .bdg {
+  .vsplit, .tm-cell, .fl-seg, .stk-seg, .c100-s, .wf-bar, .ob-bar, .fl-target, .road-goal, .t-cdt, .t-bq, .t-dn, .pp, .xc-hub, .ld-stop, .br-src, .dtree-root, .root3-top, .spoke-hub, .bdg {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .gpanel, .tm, .wf, .fl, .duo2, .feat-row, .scale, .task { break-inside: avoid; }
-  .hero-g { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important; }
+  .tm, .wf, .fl, .duo2, .feat-row, .scale, .task { break-inside: avoid; }
   .vsplit-body,
   .duo2-row,
   .root3-arms,
@@ -4905,7 +4861,7 @@ html.present .hero .g-loop {
   .duo2 { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) !important; }
   .g-pipe:not(.mini),
   .g-loop:not(.mini) { min-width: 0 !important; }
-  .gpanel, .vs-l, .vs-r { overflow: visible !important; }
+  .vs-l, .vs-r { overflow: visible !important; }
   .swim { min-width: 0; }
   .b01m[data-read] .rd { display: flex !important; }
   [data-model-r][hidden],
@@ -5197,19 +5153,12 @@ html.present .keys li {
 }
 
 /* bìa */
-.hero-id {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: var(--s-4);
-}
 .hero-logo {
-  width: 64px;
-  height: 64px;
+  display: block;
+  width: clamp(150px, 16vw, 230px);
+  height: auto;
+  aspect-ratio: 1;
   object-fit: contain;
-}
-.hero-id .hero-uni {
-  margin: 0;
 }
 .hero-gv {
   display: flex;
@@ -5226,12 +5175,6 @@ html.present .keys li {
   min-width: 220px;
   border-bottom: 1px solid var(--ink-3);
   font-weight: 600;
-}
-.hero-fig-note {
-  margin: 6px 0 0;
-  font-size: 13px;
-  color: var(--ink-3);
-  text-align: right;
 }
 
 /* thanh điều hướng: hai chế độ, ghi chú in */
@@ -5262,7 +5205,6 @@ html.present .keys li {
 
 /* pill “so với” không tách chữ */
 .split-head .vs::before,
-.vs-pill,
 .tagc,
 .src,
 .pill,
@@ -5345,8 +5287,7 @@ html.review .calcv[data-formula]:hover::after {
     margin: 8px 0 0;
   }
   .hero-logo {
-    width: 52px;
-    height: 52px;
+    width: 96px;
   }
   .gv-line {
     min-width: 140px;
@@ -5422,7 +5363,6 @@ html.review .calcv[data-formula]:hover::after {
   .table-wrap,
   tr,
   .vsplit,
-  .gpanel,
   .wf,
   .tm,
   .fl,
@@ -5452,47 +5392,34 @@ html.review .calcv[data-formula]:hover::after {
   .stage .srows {
     break-before: avoid;
   }
-  /* bìa: hai cột vừa một trang */
+  /* bìa: tiêu đề rộng bên trái, logo bên phải, vừa một trang */
+  /* body có zoom 0,72: 255mm ở đây ≈ 184mm trên giấy A4 ngang */
   .hero .panel {
-    display: grid !important;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    grid-template-rows: auto 1fr;
-    gap: 10px 24px;
-    padding: 14px 18px;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 255mm;
+    padding: 40px 56px;
     break-inside: avoid;
   }
   .hero-grid {
-    grid-column: 1;
-    grid-row: 1;
-    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-columns: minmax(0, 1fr) auto !important;
+    gap: 56px;
   }
   .hero h1 {
-    font-size: 25px;
+    font-size: 42px;
   }
-  .hero-stats {
-    grid-column: 1;
-    grid-row: 2;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 8px;
-    margin-top: 0;
-    align-self: end;
+  .hero-mon,
+  .hero-gv,
+  .hero .members li {
+    font-size: 17px;
   }
-  .hero-stats .stat {
-    padding: 10px 12px;
+  .hero-logo {
+    width: 260px;
+    height: 260px;
   }
-  .hero-g {
-    grid-column: 2;
-    grid-row: 1 / span 2;
-    grid-template-columns: minmax(0, 1fr) !important;
-    gap: 6px;
-    margin-top: 0;
-  }
-  .hero-g .vs-pill {
-    justify-self: center;
-  }
-  .hero-g .g-pipe,
-  .hero-g .g-loop {
-    max-height: 74mm;
+  .hero + .slide {
+    break-before: page !important;
   }
   .slide.chapter .panel {
     padding: 12px 16px;

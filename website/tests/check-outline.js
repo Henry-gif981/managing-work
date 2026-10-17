@@ -108,7 +108,11 @@ let lostB3 = 0;
     document.querySelectorAll('.sub').forEach(sub => {
       if (/đối chiếu hiệu lực/i.test(sub.innerText) && !['m-3-3', 'm-kl'].includes(sub.id)) out.push('câu đối chiếu hiệu lực TT 99 nằm ở ' + sub.id);
     });
-    if (!document.querySelector('#heroGraphics .g-pipe') || !document.querySelector('#heroGraphics .g-loop')) out.push('thiếu đồ họa hero');
+    // bìa: không còn khối đồ họa, thẻ số và Minh họa 0-A; Kết luận và Phụ lục vẫn đủ hình
+    const hero = document.getElementById('s00');
+    if (hero.querySelector('.g-pipe, .g-loop, .stat, #heroGraphics')) out.push('bìa còn đồ họa hoặc thẻ số');
+    if (/Minh họa 0-A/.test(body)) out.push('còn Minh họa 0-A');
+    ['m-kl', 'm-pl'].forEach(id => { const s = document.getElementById(id); if (!s.querySelector('.g-pipe') || !s.querySelector('.g-loop')) out.push(id + ' thiếu đồ họa dòng vốn hoặc vòng kết quả'); });
     return { out, viz: document.querySelectorAll('[data-viz]').length, tips: document.querySelectorAll('[data-tip]').length };
   });
   const srcAll = ['index.html', 'js/main.js', 'js/viz.js', 'js/content.js', 'css/style.css'].map(f => fs.readFileSync(path.join(__dirname, '..', f), 'utf8')).join('\n');
