@@ -7,7 +7,7 @@ rd = lambda p: open(os.path.join(ROOT, p), encoding="utf-8").read()
 
 html = rd("index.html")
 css = rd("css/style.css")
-scripts = {k: rd("js/" + k) for k in ("data.js", "content.js", "main.js")}
+scripts = {k: rd("js/" + k) for k in ("data.js", "content.js", "viz.js", "main.js")}
 
 def b64(m):
     path = os.path.join(ROOT, m.group(0))

@@ -7,8 +7,9 @@ require(path.join(__dirname, '../js/data.js'));
 const D = window.DATA;
 const get = p => p.split('.').reduce((o, k) => (o == null ? undefined : o[k]), D);
 // Bộ định dạng độc lập (BigInt cho số đồng)
-function expected(p, d, s) {
-  const v = get(p);
+function expected(p, d, s, abs) {
+  let v = get(p);
+  if (abs) v = Math.abs(v);
   if (d == null) d = p.startsWith('hp.') || /pct|tyLe|ratio/i.test(p) ? 1 : 3;
   if (s === 'dong') s = 'none';
   if (!s) s = p.startsWith('bq.') && Number.isInteger(v) && Math.abs(v) >= 1e6 ? 'ty' : 'none';
@@ -32,10 +33,10 @@ function expected(p, d, s) {
     page.on('pageerror', e => errors.push(String(e)));
     await page.goto('file://' + path.join(__dirname, '..', process.env.PAGE || 'index.html'), { waitUntil: 'load' });
     await page.evaluate(() => window.__finalize());
-    const items = await page.$$eval('[data-v]', els => els.map(e => ({ p: e.getAttribute('data-v'), d: e.getAttribute('data-d'), s: e.getAttribute('data-s'), t: e.textContent })));
+    const items = await page.$$eval('[data-v]', els => els.map(e => ({ p: e.getAttribute('data-v'), d: e.getAttribute('data-d'), s: e.getAttribute('data-s'), a: e.hasAttribute('data-abs'), t: e.textContent })));
     let bad = 0;
     for (const it of items) {
-      const exp = expected(it.p, it.d == null ? null : +it.d, it.s);
+      const exp = expected(it.p, it.d == null ? null : +it.d, it.s, it.a);
       if (it.t !== exp) { bad++; console.log(`  SAI ${it.p}: "${it.t}" ≠ "${exp}"`); }
     }
     const texts = await page.$$eval('[data-t]', els => els.map(e => ({ p: e.getAttribute('data-t'), t: e.textContent })));

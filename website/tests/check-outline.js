@@ -17,11 +17,11 @@ const CHECKLIST = [
   ['1.2.1 ba lớp + Bảng 1.3', ['1.2.1', 'LỚP 1', 'LỚP 2', 'LỚP 3', 'Bảng 1.3', 'Luật Kế toán số 88/2015/QH13', 'Nghị định 174/2016/NĐ-CP', 'Thông tư 79/2019/TT-BTC', 'Vai trò trong đề tài']],
   ['1.2.2 TT 195', ['1.2.2', '15/11/2012', '01/01/2013', 'QĐ 214/2000/QĐ-BTC', 'Chủ đầu tư không thành lập BQLDA', 'HỆ THỐNG TÀI KHOẢN', 'TK 154 thành “Chi phí sản xuất thử dở dang”', 'thêm bốn tài khoản cấp 2', 'NGHIỆP VỤ ĐẶC THÙ', 'BÁO CÁO TÀI CHÍNH', 'THỜI HẠN NỘP']],
   ['1.2.3 TT 200', ['1.2.3', '22/12/2014', '01/01/2015', 'TT 244/2009/TT-BTC', 'Thông tư 133/2016/TT-BTC', 'Thông tư 75/2015/TT-BTC', 'Thông tư 53/2016/TT-BTC', '2411, 2412, 2413', 'B09-DN']],
-  ['1.2.4 + Hình 1.2', ['1.2.4', 'Hình 1.2', 'A. BAN QUẢN LÝ DỰ ÁN', 'B. CHỦ ĐẦU TƯ CÓ THÀNH LẬP BAN QUẢN LÝ DỰ ÁN', 'C. CHỦ ĐẦU TƯ KHÔNG THÀNH LẬP BQLDA', 'phù hợp với hướng dẫn của Bộ Tài chính']],
+  ['1.2.4 + Hình 1.2', ['1.2.4', 'Hình 1.2', 'Ban quản lý dự án có tổ chức kế toán riêng', 'Chủ đầu tư có thành lập Ban quản lý dự án', 'Chủ đầu tư không thành lập BQLDA', 'Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo TT 195', 'Lập thêm B02, B03/CĐT và 4 phụ biểu', 'phù hợp với hướng dẫn của Bộ Tài chính']],
   ['1.3.1 phạm vi', ['1.3.1', 'ĐỐI TƯỢNG (i)', 'ĐỐI TƯỢNG (ii)', 'Cùng “gốc”', 'hành chính sự nghiệp, thuế và kiểm toán']],
   ['1.3.2 tiêu chí, Bảng 1.4, Hình 1.3, Bảng 1.5, Hình 1.4', ['1.3.2', 'Bảng 1.4', 'Đối tượng áp dụng', 'Nơi nhận báo cáo', 'Điều 110 Thông tư 200', 'Hình 1.3', 'Bước 5', 'Bảng 1.5', 'ĐIỂM CẦN CHÚ Ý 1', 'ĐIỂM CẦN CHÚ Ý 2', 'Hình 1.4', 'Trường hợp riêng của doanh nghiệp']],
   ['1.3.3 năm ý', ['1.3.3', 'GIỐNG NHAU', 'KHÁC NHAU CỐT LÕI', 'HỆ QUẢ KHI HẠCH TOÁN', 'HỆ QUẢ KHI LẬP BÁO CÁO', 'ĐIỀU KIỆN ÁP DỤNG']],
-  ['Tóm tắt chương 1 (4 ý, TT 99/2025)', ['Tóm tắt chương 1', 'đối chiếu hiệu lực của Thông tư 99/2025/TT-BTC khi phân tích kỳ kế toán từ năm 2026']],
+  ['Mốc TT 99/2025 trên dòng thời gian', ['Bài, mục 1.2; mốc 2025 theo mục 3.3 và Kết luận', 'Thông tư 99/2025/TT-BTC']],
   ['2.1.1 + Bảng 2.1', ['2.1.1', '45/QĐ-HĐQT', '05/03/2013', 'con dấu', 'tài khoản tiền gửi riêng', 'Khu công nghiệp Trà Nóc', 'Ban không hoạt động như một doanh nghiệp sản xuất kinh doanh', 'Bảng 2.1', 'Chủ thể lập báo cáo', 'Chế độ kế toán áp dụng', 'Kỳ báo cáo, ngày lập', 'Bộ báo cáo', 'Hoạt động chính', 'Tổng tài sản cuối kỳ']],
   ['2.1.2 bộ BCTC, số liệu, Bảng 2.2, nhận xét', ['2.1.2', 'B01-CĐT', 'B02-CĐT', 'B03-CĐT', 'B04-CĐT', 'F02-CĐT', 'F03A-CĐT', 'F03B-CĐT', 'F03C-CĐT', 'F03D-CĐT', '191,32', '186,743', '4,582', 'Bảng 2.2', 'Vì sao khác:', 'hình ảnh của một dự án đang thi công']],
   ['2.2 mở đầu', ['B01-CĐT vẫn là một bảng cân đối đúng nghĩa', '199,46', 'TK 3361 thuộc đầu 3']],
@@ -45,11 +45,18 @@ const CHECKLIST = [
   ['Tài liệu tham khảo 6', ['Luật Kế toán số 88/2015/QH13.', 'Nghị định số 174/2016/NĐ-CP', 'Thông tư số 195/2012/TT-BTC', 'Thông tư số 200/2014/TT-BTC', 'Thông tư số 79/2019/TT-BTC', 'Thông tư số 99/2025/TT-BTC']]
 ];
 
+let lostB3 = 0;
 (async () => {
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
   await page.goto('file://' + path.join(__dirname, '..', PAGE));
-  await page.evaluate(() => window.__finalize());
+  await page.evaluate(() => {
+    window.__finalize();
+    // mở lớp chi tiết thứ hai để đọc đủ chữ của bài
+    document.querySelectorAll('details').forEach(d => { d.open = true; });
+    document.querySelectorAll('.srow.closed').forEach(r => r.classList.remove('closed'));
+    document.querySelectorAll('[data-model-r], [data-spoke-p]').forEach(p => { p.hidden = false; });
+  });
   const text = await page.evaluate(() => document.body.innerText.replace(/\s+/g, ' '));
   let missing = 0;
   CHECKLIST.forEach(([name, needles]) => {
@@ -84,7 +91,31 @@ const CHECKLIST = [
   (src.match(/assets\/[a-z0-9-]+\.jpg/g) || []).forEach(x => imgs.push(x));
   const lost = imgs.filter(f => !f.startsWith('data:') && !fs.existsSync(path.join(__dirname, '..', f)));
   console.log(`Ảnh gốc: ${imgs.length} tham chiếu, thiếu file: ${lost.length ? lost.join(', ') : 'không'}`);
+  // Bản 3: đồ họa mới, hình là điểm nhìn đầu tiên, không còn Tóm tắt chương
+  const b3 = await page.evaluate(() => {
+    const out = [];
+    document.querySelectorAll('[data-viz]').forEach(v => { if (v.children.length === 0) out.push('viz rỗng ' + v.dataset.viz); });
+    document.querySelectorAll('.sub').forEach(sub => {
+      const v = sub.querySelector(':scope > .viz');
+      if (!v) return;
+      const head = sub.querySelector(':scope > .sub-head');
+      let el = head.nextElementSibling;
+      if (el !== v) out.push('hình không đứng đầu ' + sub.id);
+    });
+    document.querySelectorAll('[role="img"]').forEach(el => { if (!el.getAttribute('aria-label')) out.push('thiếu aria-label ' + (el.closest('[data-viz]') || {}).dataset?.viz); });
+    const body = document.body.innerText;
+    if (/Tóm tắt chương/.test(body)) out.push('còn "Tóm tắt chương" trên trang');
+    document.querySelectorAll('.sub').forEach(sub => {
+      if (/đối chiếu hiệu lực/i.test(sub.innerText) && !['m-3-3', 'm-kl'].includes(sub.id)) out.push('câu đối chiếu hiệu lực TT 99 nằm ở ' + sub.id);
+    });
+    if (!document.querySelector('#heroGraphics .g-pipe') || !document.querySelector('#heroGraphics .g-loop')) out.push('thiếu đồ họa hero');
+    return { out, viz: document.querySelectorAll('[data-viz]').length, tips: document.querySelectorAll('[data-tip]').length };
+  });
+  const srcAll = ['index.html', 'js/main.js', 'js/viz.js', 'js/content.js', 'css/style.css'].map(f => fs.readFileSync(path.join(__dirname, '..', f), 'utf8')).join('\n');
+  ['i-crane', 'i-factory', 'i-building', 'i-trend', '"i-target"', '#i-target"', 'hero-art', 'duo-art', 'Tóm tắt chương'].forEach(k => { if (srcAll.includes(k)) b3.out.push('mã nguồn còn ' + k); });
+  console.log(`Bản 3: ${b3.viz} khung hình, ${b3.tips} điểm có tooltip; ${b3.out.length ? 'LỖI: ' + b3.out.join('; ') : 'không còn đồ họa cũ, hình đứng đầu mỗi tiểu mục, không còn Tóm tắt chương'}`);
+  lostB3 = b3.out.length;
   await browser.close();
-  console.log(missing || sides.bad.length || lost.length ? `\n${missing} mục thiếu` : '\nĐủ mọi mục trong bảng đối chiếu.');
-  process.exit(missing || sides.bad.length || lost.length ? 1 : 0);
+  console.log(missing || sides.bad.length || lost.length || lostB3 ? `\n${missing} mục thiếu` : '\nĐủ mọi mục trong bảng đối chiếu.');
+  process.exit(missing || sides.bad.length || lost.length || lostB3 ? 1 : 0);
 })();

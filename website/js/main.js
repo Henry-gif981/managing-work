@@ -62,6 +62,7 @@
   function spec(el) {
     var path = el.getAttribute("data-v");
     var v = get(path);
+    if (typeof v === "number" && el.hasAttribute("data-abs")) v = Math.abs(v);
     if (typeof v !== "number") {
       console.warn("Thiếu số liệu:", path);
       return null;
@@ -176,15 +177,17 @@
     return "src";
   }
 
+  var TAGS = { co: ["t-co", "Có"], kh: ["t-kh", "Không có"], ts: ["t-ts", "Vào tài sản"], ln: ["t-ln", "Vào lợi nhuận"], cdt: ["t-cdt", "Chuyển cho chủ đầu tư"], kps: ["t-kh", "Không phát sinh"], tang: ["t-tang", "Tăng"], giam: ["t-giam", "Giảm"] };
+  function tagHtml(k) { var t = TAGS[k]; return t ? '<span class="tagc ' + t[0] + '">' + t[1] + "</span>" : ""; }
   function card(side, c) {
-    var label = side === "bq" ? "BQLDA" : "Doanh nghiệp";
+    var label = '<svg class="ic" aria-hidden="true"><use href="#' + (side === "bq" ? "i-pipe" : "i-loop") + '"/></svg>' + (side === "bq" ? "BQLDA" : "Doanh nghiệp");
     var src = c.s ? '<span class="' + (side === "dn" && !/^(B0|F0)/.test(c.s) ? "src hp" : chipClass(c.s)) + '">' + c.s + "</span>" : "";
     if (c.none != null) {
       return '<div class="scard ' + side + ' none"><span class="side">' + label + "</span>" + src +
-        '<div class="m">Không có</div><p class="d">' + tpl(c.none) + "</p></div>";
+        '<div class="m">' + tagHtml(c.tag || "kh") + "</div>" + (c.none ? '<p class="d">' + tpl(c.none) + "</p>" : "") + "</div>";
     }
-    return '<div class="scard ' + side + '"><span class="side">' + label + "</span>" + src +
-      (c.m ? '<div class="m">' + tpl(c.m) + "</div>" : "") + (c.d ? '<p class="d">' + tpl(c.d) + "</p>" : "") + "</div>";
+    return '<div class="scard ' + side + (c.m ? "" : " nom") + '"><span class="side">' + label + "</span>" + src +
+      (c.m ? '<div class="m">' + (c.tag ? tagHtml(c.tag) + " " : "") + tpl(c.m) + "</div>" : "") + (c.d ? '<p class="d">' + tpl(c.d) + "</p>" : "") + "</div>";
   }
 
   function stageHead(st) {
@@ -204,10 +207,12 @@
       var dupTitle = sub && sub.dataset.sub && st.title.indexOf(sub.dataset.sub + ".") === 0;
       var html = (dupTitle ? "" : '<p class="stage-title">' + st.title + "</p>") + (st.note ? '<p class="stage-note">' + st.note + "</p>" : "");
       html += stageHead(st);
+      if (st.rows.length > 1) html += '<div class="stage-tools"><button type="button" class="btn-more" aria-pressed="false">Mở tất cả chi tiết</button></div>';
       if (st.intro) html += '<p class="why-band intro" style="margin:12px 12px 0">' + tpl(st.intro) + "</p>";
       html += '<div class="srows">';
       st.rows.forEach(function (r) {
-        html += '<div class="srow"><div class="srow-k">' + tpl(r.k) + "</div>" + card("bq", r.bq) + card("dn", r.dn) + "</div>";
+        var hasD = (r.bq.m && r.bq.d) || (r.dn.m && r.dn.d) || r.bq.none || r.dn.none;
+        html += '<div class="srow' + (hasD ? " closed" : "") + '"><div class="srow-k">' + (hasD ? '<button type="button" class="row-t" aria-expanded="false">' + tpl(r.k) + '<i aria-hidden="true"></i></button>' : tpl(r.k)) + "</div>" + card("bq", r.bq) + card("dn", r.dn) + "</div>";
       });
       html += "</div>";
       if (st.why) html += '<div class="why-band"><b>Vì sao khác:</b> ' + tpl(st.why) + "</div>";
@@ -252,43 +257,17 @@
     ], 100, "%");
   }
 
-  function hbarsInto(id, rows, cls) {
-    var box = doc.getElementById(id);
-    var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(get(r.p)); }));
-    rows.forEach(function (r) {
-      var v = get(r.p);
-      var row = h("div", { class: "hbar" });
-      row.innerHTML = "<span>" + r.lab + "</span>" +
-        '<span class="hbar-track"><span class="hbar-fill' + (r.neg ? " neg" : "") + '" style="--w:' + Math.max(0.6, (Math.abs(v) / max) * 100).toFixed(2) + '%"></span></span>' +
-        '<span class="hbar-v">' + (r.neg ? "−" : r.plus ? "+" : "") + vspan(r.p, r.d) + "</span>";
-      box.appendChild(row);
-    });
-  }
 
-  function buildHPCharts() {
-    hbarsInto("chartHPEquity", [
-      { lab: "Lợi nhuận thuần", p: "hp.lnst", d: 1, plus: true },
-      { lab: "Cổ đông không kiểm soát góp vốn", p: "hp.gopVonCDKKS", d: 1, plus: true },
-      { lab: "Trích quỹ khen thưởng, phúc lợi", p: "hp.trichQuy", d: 1, neg: true },
-      { lab: "Công ty con trả cổ tức cho CĐKKS", p: "hp.cdkksCoTuc", d: 1, neg: true },
-      { lab: "Sử dụng quỹ", p: "hp.suDungQuy", d: 1, neg: true },
-      { lab: "Trả lại vốn cho CĐKKS", p: "hp.traVonCDKKS", d: 1, neg: true }
-    ]);
-    hbarsInto("chartHPCost", [
-      { lab: "Giá vốn", p: "hp.giaVon", d: 1 },
-      { lab: "Chi phí tài chính", p: "hp.cpTaiChinh", d: 1 },
-      { lab: "Chi phí bán hàng", p: "hp.cpBanHang", d: 1 },
-      { lab: "Chi phí quản lý doanh nghiệp", p: "hp.cpQLDN", d: 1 },
-      { lab: "Chi phí khác", p: "hp.cpKhac", d: 1 }
-    ]);
-  }
 
   // Thanh tiêu đề: thêm nhãn ngắn cho màn hình nhỏ (hai chip nhỏ)
   function shortHeads() {
     doc.querySelectorAll(".split-head").forEach(function (hd) {
       [["bq", "BQLDA · TT 195"], ["dn", "Doanh nghiệp · TT 200"]].forEach(function (x) {
         var el = hd.querySelector("." + x[0]);
-        if (el && !el.querySelector(".l")) el.innerHTML = '<i class="l">' + el.innerHTML + '</i><i class="s">' + x[1] + "</i>";
+        if (!el || el.querySelector(".l")) return;
+        var old = el.querySelector("svg.ic");
+        if (old) old.remove();
+        el.innerHTML = '<svg class="ic" aria-hidden="true"><use href="#' + (x[0] === "bq" ? "i-pipe" : "i-loop") + '"/></svg><i class="l">' + el.innerHTML + '</i><i class="s">' + x[1] + "</i>";
       });
     });
   }
@@ -307,20 +286,6 @@
     });
   }
 
-  function buildF03BBars() {
-    var box = doc.getElementById("chartF03B");
-    var f = D.bq.f03b;
-    var rows = [["xd", "Xây dựng"], ["tb", "Thiết bị"], ["ql", "Quản lý dự án"], ["tv", "Tư vấn"], ["khac", "Chi phí khác"]];
-    var max = Math.max.apply(null, rows.map(function (r) { return f[r[0]]; }));
-    rows.forEach(function (r) {
-      var row = h("div", { class: "hbar" });
-      row.innerHTML =
-        "<span>" + r[1] + "</span>" +
-        '<span class="hbar-track"><span class="hbar-fill" style="--w:' + ((f[r[0]] / max) * 100).toFixed(2) + '%"></span></span>' +
-        '<span class="hbar-v">' + vspan("bq.f03b." + r[0], 3) + "</span>";
-      box.appendChild(row);
-    });
-  }
 
   function buildF03A() {
     var t = doc.getElementById("tblF03A");
@@ -413,74 +378,8 @@
   }
 
   var SVGNS = "http://www.w3.org/2000/svg";
-  function svgEl(tag, attrs, text) {
-    var el = doc.createElementNS(SVGNS, tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      el.setAttribute(k, attrs[k]);
-    });
-    if (text != null) el.textContent = text;
-    return el;
-  }
 
-  // Thác nước TK 3361: 129,45 → +63,85 → −4,58 → 188,72
-  function buildWaterfall() {
-    var box = doc.getElementById("chartWaterfall");
-    var b = D.bq.b02;
-    var W = 560, H = 300, top = 28, bottom = 52, left = 12, right = 12;
-    var maxV = b.dau + b.tang; // đỉnh cao nhất
-    var y = function (v) { return top + (H - top - bottom) * (1 - v / maxV); };
-    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, "aria-hidden": "true" });
-    var bars = [
-      { lab: "Đầu năm", from: 0, to: b.dau, path: "bq.b02.dau", cls: "#0d3b84", sign: "" },
-      { lab: "Tăng trong năm", from: b.dau, to: b.dau + b.tang, path: "bq.b02.tang", cls: "#1c6fe0", sign: "+" },
-      { lab: "Giảm (quyết toán)", from: b.dau + b.tang, to: b.cuoi, path: "bq.b02.giam", cls: "#8db8f1", sign: "−" },
-      { lab: "Cuối năm", from: 0, to: b.cuoi, path: "bq.b02.cuoi", cls: "#0d3b84", sign: "" }
-    ];
-    var slot = (W - left - right) / bars.length;
-    var bw = slot * 0.56;
-    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: y(0), y2: y(0), class: "axis" }));
-    bars.forEach(function (br, i) {
-      var x = left + slot * i + (slot - bw) / 2;
-      var y1 = y(Math.max(br.from, br.to)), y2 = y(Math.min(br.from, br.to));
-      var r = svgEl("rect", { x: x, y: y1, width: bw, height: Math.max(2, y2 - y1), rx: 6, fill: br.cls, class: "wf-bar" });
-      r.style.transitionDelay = i * 0.18 + "s";
-      svg.appendChild(r);
-      if (i < bars.length - 1) {
-        var nx = left + slot * (i + 1) + (slot - bw) / 2;
-        svg.appendChild(svgEl("line", { x1: x + bw, x2: nx, y1: y(br.to), y2: y(br.to), stroke: "#9aa8bf", "stroke-dasharray": "4 4" }));
-      }
-      var val = svgEl("text", { x: x + bw / 2, y: y1 - 8, "text-anchor": "middle", "font-size": 16, "font-weight": 700, fill: "#0f1e3a" });
-      val.appendChild(svgEl("tspan", {}, br.sign));
-      var tsp = svgEl("tspan", { "data-v": br.path, "data-d": "2" });
-      val.appendChild(tsp);
-      svg.appendChild(val);
-      var lab = svgEl("text", { x: x + bw / 2, y: H - bottom + 22, "text-anchor": "middle", "font-size": 13, fill: "#44526b" }, br.lab);
-      svg.appendChild(lab);
-    });
-    box.appendChild(svg);
-  }
 
-  // Donut F02: 54,4% / 45,6%
-  function buildDonut() {
-    var box = doc.getElementById("chartDonut");
-    var f = D.bq.f02;
-    var r = 80, c = 2 * Math.PI * r;
-    var svg = svgEl("svg", { viewBox: "0 0 200 200", "aria-hidden": "true" });
-    svg.appendChild(svgEl("circle", { cx: 100, cy: 100, r: r, fill: "none", stroke: "#e8eef8", "stroke-width": 26 }));
-    var a = (f.pctVcsh / 100) * c, b2 = (f.pctVay / 100) * c, gap = 3;
-    var s1 = svgEl("circle", { cx: 100, cy: 100, r: r, fill: "none", stroke: "#0d3b84", "stroke-width": 26, class: "seg", transform: "rotate(-90 100 100)" });
-    s1.style.setProperty("--l", a - gap + "px");
-    var s2 = svgEl("circle", { cx: 100, cy: 100, r: r, fill: "none", stroke: "#8db8f1", "stroke-width": 26, class: "seg", transform: "rotate(-90 100 100)", "stroke-dashoffset": -a });
-    s2.style.setProperty("--l", b2 - gap + "px");
-    [s1, s2].forEach(function (s) { s.style.setProperty("--c", c + "px"); });
-    svg.appendChild(s1);
-    svg.appendChild(s2);
-    var t1 = svgEl("text", { x: 100, y: 98, "text-anchor": "middle", "font-size": 22, "font-weight": 800, fill: "#0d3b84" });
-    t1.appendChild(svgEl("tspan", { "data-v": "bq.b02.cuoi", "data-d": "2" }));
-    svg.appendChild(t1);
-    svg.appendChild(svgEl("text", { x: 100, y: 120, "text-anchor": "middle", "font-size": 12, fill: "#44526b" }, "tỷ đồng, TK 3361"));
-    box.appendChild(svg);
-  }
 
   /* ---------------- Count-up ---------------- */
 
@@ -691,7 +590,7 @@
   }
 
   function makeShell(stage) {
-    var sh = h("div", { class: "stage shell" });
+    var sh = h("div", { class: "stage shell", "data-of": stage.getAttribute("data-stage") || stage.getAttribute("data-of") || "" });
     stage.querySelectorAll(":scope > .stage-title, :scope > .stage-note, :scope > .split-head").forEach(function (c) {
       sh.appendChild(c.cloneNode(true));
     });
@@ -757,6 +656,34 @@
               if (!fits()) {
                 nextPage();
                 move(t, box);
+              }
+            });
+          } else if (k.classList.contains("viz")) {
+            if (!fits() && box.children.length > (box === sub ? 2 : 1)) {
+              nextPage();
+              move(k, box);
+            }
+            if (fits()) return;
+            // khối hình quá cao: tách theo từng cụm (tiêu đề + hình) sang màn sau
+            var parts = Array.prototype.slice.call(k.children), units = [];
+            for (var i = 0; i < parts.length; i++) {
+              var u = [parts[i]];
+              if (parts[i].classList.contains("viz-title") && i + 1 < parts.length) u.push(parts[++i]);
+              units.push(u);
+            }
+            if (units.length < 2) return;
+            var hold2 = h("div");
+            units.forEach(function (u) { u.forEach(function (c) { move(c, hold2); }); });
+            var part = k, cnt = 0;
+            units.forEach(function (u) {
+              u.forEach(function (c) { move(c, part); });
+              cnt++;
+              if (!fits() && cnt > 1) {
+                nextPage();
+                part = h("div", { class: "viz viz-cont reveal in" });
+                box.appendChild(part);
+                u.forEach(function (c) { move(c, part); });
+                cnt = 1;
               }
             });
           } else if (!fits() && box.children.length > (box === sub ? 2 : 1)) {
@@ -905,15 +832,57 @@
     }
   }
 
+  /* ---------------- Lớp chi tiết thứ hai ---------------- */
+
+  function setRow(row, open) {
+    row.classList.toggle("closed", !open);
+    var b = row.querySelector(".row-t");
+    if (b) b.setAttribute("aria-expanded", String(open));
+  }
+  function stageRows(btn) {
+    var st = btn.closest(".stage");
+    var id = st.getAttribute("data-stage") || st.getAttribute("data-of");
+    var all = doc.querySelectorAll('.stage[data-stage="' + id + '"] .srow, .stage[data-of="' + id + '"] .srow');
+    return all.length ? all : st.querySelectorAll(".srow");
+  }
+  function initLayers() {
+    doc.addEventListener("click", function (e) {
+      var rt = e.target.closest(".row-t");
+      if (rt) {
+        var row = rt.closest(".srow");
+        setRow(row, row.classList.contains("closed"));
+        if (present) fitPanels();
+        return;
+      }
+      var bm = e.target.closest(".btn-more");
+      if (bm) {
+        var open = bm.getAttribute("aria-pressed") !== "true";
+        bm.setAttribute("aria-pressed", String(open));
+        bm.textContent = open ? "Thu gọn chi tiết" : "Mở tất cả chi tiết";
+        stageRows(bm).forEach(function (r) { if (r.querySelector(".row-t")) setRow(r, open); });
+        if (present) fitPanels();
+      }
+    });
+    doc.addEventListener("toggle", function (e) {
+      if (present && e.target.tagName === "DETAILS") fitPanels();
+    }, true);
+  }
+
   /* ---------------- In ---------------- */
 
   var presentBeforePrint = false;
+  var printOpened = [];
   window.addEventListener("beforeprint", function () {
+    printOpened = [];
+    doc.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; printOpened.push(d); });
+    doc.querySelectorAll(".srow.closed").forEach(function (r) { r.classList.add("print-open"); });
     finalizeAll();
     presentBeforePrint = present;
     if (present) setPresent(false);
   });
   window.addEventListener("afterprint", function () {
+    printOpened.forEach(function (d) { d.open = false; });
+    doc.querySelectorAll(".print-open").forEach(function (r) { r.classList.remove("print-open"); });
     if (presentBeforePrint) setPresent(true);
   });
 
@@ -922,17 +891,17 @@
   buildMembers();
   buildNav();
   renderStages();
+  window.VIZ.build();
   buildCostBars();
-  buildF03BBars();
   buildF03A();
-  buildWaterfall();
-  buildDonut();
   buildDeadline();
   buildB22();
-  buildHPCharts();
   shortHeads();
   fillNumbers();
   fillWidths();
+  window.__fill = function (scope) { fillNumbers(scope); };
+  window.VIZ.init(reduceMotion);
+  initLayers();
 
   // Số đếm: trước khi vào khung nhìn hiển thị 0, rồi đếm lên.
   if (!reduceMotion && "IntersectionObserver" in window) {

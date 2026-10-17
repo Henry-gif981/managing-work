@@ -68,4 +68,24 @@ pct('HP biên gộp', h.lnGop, h.dtt, h.bienGop); pct('HP LNST/DTT', h.lnst, h.d
 const tongCP = h.giaVon + h.cpBanHang + h.cpQLDN + h.cpTaiChinh + h.cpKhac;
 pct('HP chi phí vào tài sản', h.xdcbTang, h.xdcbTang + tongCP, h.ratioTaiSan);
 pct('HP chi phí vào KQKD', tongCP, h.xdcbTang + tongCP, h.ratioKetQua);
+// ===== Bản 3: số tính thêm phải đúng công thức =====
+const c = D.calc;
+pct('calc TSNH tiền', o.tien, o.tsnh, c.bqTsnhTienPct); pct('calc TSNH phải thu', c.bqTsnhPhaiThu, o.tsnh, c.bqTsnhPhaiThuPct);
+pct('calc TSNH HTK', o.htk, o.tsnh, c.bqTsnhHtkPct); pct('calc TSNH GTGT', o.gtgt, o.tsnh, c.bqTsnhGtgtPct);
+eq('calc phải thu = trả trước + khác', o.traTruoc + o.phaiThuKhac, c.bqTsnhPhaiThu);
+eq('calc HP TSNH còn lại', Math.round((h.tsnh - h.tien - h.dauTuTC - h.phaiThuKH - h.htk) * 10) / 10, c.hpTsnhConLai);
+eq('calc HP TS còn lại', Math.round((h.tongTS - h.tscdhh - h.xdcb - h.htk - h.dauTuTC - h.tien - h.phaiThuKH) * 10) / 10, c.hpTsConLai);
+pct('calc nợ PTNB', o.ptnb, o.no, c.bqNoPtnbPct); eq('calc nợ khác', o.no - o.ptnb, c.bqNoKhac);
+pct('calc HP vay/nợ', h.vay, h.no, c.hpNoVayPct); eq('calc HP nợ khác', Math.round(h.no - Math.round(h.vay)), c.hpNoKhac);
+eq('calc KQ sau BH, QL', Math.round((h.lnGop - h.cpBanHang - h.cpQLDN) * 10) / 10, c.hpSauBhQl);
+eq('calc KQ sau tài chính', Math.round((c.hpSauBhQl + h.dtTaiChinh - h.cpTaiChinh) * 10) / 10, c.hpSauTaiChinh);
+eq('chuỗi KQ → LNTT 13.693,5', Math.round((c.hpSauTaiChinh + h.thuNhapKhac - h.cpKhac) * 10) / 10, h.lnTruocThue);
+eq('chuỗi KQ → LNST 12.020,0', Math.round((h.lnTruocThue - h.thueTNDN) * 10) / 10, h.lnst);
+eq('calc VCSH đầu năm tính bù', Math.round((h.vcshChiTiet - h.lnst - h.gopVonCDKKS + h.trichQuy + h.cdkksCoTuc + h.suDungQuy + h.traVonCDKKS) * 10) / 10, c.hpVcshDauTinh);
+b.f03a.items.forEach((it, i) => pct('calc F03A % ' + it.ten, it.cuoi, b3.cuoi, c.f03aPct[i]));
+['xd', 'tb', 'ql', 'tv', 'khac'].forEach(k => pct('calc F03B % ' + k, b.f03b[k], b.f03b.duyet, c.f03bPct[k]));
+// Bảng 1.5: số dư lũy kế phải cân Nợ = Có ở mọi bước và khớp bút toán
+['bq', 'dn'].forEach(side => D.tAcc[side].steps.forEach((st, i) => eq(`T ${side} bước ${i + 1} cân`, Object.values(st).reduce((a, x) => a + x, 0), 0)));
+eq('T bq 336 cuối = 2000 − 1050', D.tAcc.bq.steps[3]['336'], -(D.viDu.nhanVon - D.viDu.banGiaoBq));
+eq('T dn 211 cuối', D.tAcc.dn.steps[3]['211'], D.viDu.banGiaoDn);
 console.log(fail ? `\n${fail} lỗi` : '\nTất cả khớp.'); process.exit(fail ? 1 : 0);
