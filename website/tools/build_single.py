@@ -1,23 +1,31 @@
-"""Đóng gói website thành MỘT file HTML (CSS, JS, số liệu, ảnh báo cáo gốc đều nhúng sẵn).
+"""Đóng gói website thành MỘT file HTML tự chứa (CSS, JS, số liệu, ảnh WebP nhúng base64).
 Chạy: python3 website/tools/build_single.py  →  website/nhom2-thuyet-trinh.html"""
-import base64, os, re
+import base64, os, re, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+subprocess.run([sys.executable, os.path.join(ROOT, "tools", "build_md.py")], check=True)
 rd = lambda p: open(os.path.join(ROOT, p), encoding="utf-8").read()
 
 html = rd("index.html")
 css = rd("css/style.css")
-scripts = {k: rd("js/" + k) for k in ("data.js", "content.js", "viz.js", "main.js")}
+SCRIPTS = ("data.js", "content.js", "md.js", "review.js", "viz.js", "main.js")
+scripts = {k: rd("js/" + k) for k in SCRIPTS}
+MIME = {"webp": "image/webp", "jpg": "image/jpeg", "png": "image/png"}
+ASSET = re.compile(r"assets/[a-z0-9-]+\.(webp|jpg|png)")
+
 
 def b64(m):
     path = os.path.join(ROOT, m.group(0))
-    return "data:image/jpeg;base64," + base64.b64encode(open(path, "rb").read()).decode()
+    return "data:%s;base64,%s" % (MIME[m.group(1)], base64.b64encode(open(path, "rb").read()).decode())
+
 
 for k in scripts:
     assert "</script" not in scripts[k]
-    scripts[k] = re.sub(r"assets/[a-z0-9-]+\.jpg", b64, scripts[k])
+    scripts[k] = ASSET.sub(b64, scripts[k])
+html = ASSET.sub(b64, html)
 
-html = html.replace('<link rel="stylesheet" href="css/style.css">', "<style>\n" + css + "\n</style>")
+html, n = re.subn(r'<link[^>]*href="css/style.css"[^>]*/?>', lambda m: "<style>\n" + css + "\n</style>", html)
+assert n == 1
 for k, v in scripts.items():
     tag = '<script src="js/%s"></script>' % k
     assert tag in html, tag

@@ -74,20 +74,8 @@ window.CONTENT = {
   /* ---------- Chương 2 ---------- */
   s212: {
     id: "s212",
-    title: "Số liệu khái quát của hai bộ báo cáo (mục 2.1.2)",
+    title: "Vốn cấp thêm và tiến độ thực hiện (mục 2.1.2)",
     rows: [
-      { k: "Thời điểm, mô hình",
-        bq: { m: "31/12/2015", d: "Ban quản lý một dự án đầu tư xây dựng." },
-        dn: { m: "31/12/2024", d: "Báo cáo hợp nhất năm 2024 của Hòa Phát phản ánh mô hình của một doanh nghiệp sản xuất kinh doanh quy mô lớn." } },
-      { k: "Tổng tài sản",
-        bq: { m: "{bq.b01.tongTS|3} tỷ", d: "Tài sản ngắn hạn {bq.b01.tsnh|3} tỷ và tài sản dài hạn {bq.b01.tsdh|3} tỷ, trong đó chi phí đầu tư xây dựng dở dang {bq.b01.tk241|3} tỷ.", s: "B01 tr.2" },
-        dn: { m: "{hp.tongTS|0} tỷ", d: "Tài sản ngắn hạn {hp.tsnh|0}; tài sản dài hạn {hp.tsdh|0} (tỷ đồng)." } },
-      { k: "Nợ phải trả",
-        bq: { m: "{bq.b01.no|3} tỷ", s: "B01 mã 300" },
-        dn: { m: "{hp.no|0} tỷ" } },
-      { k: "Nguồn vốn đầu tư / Vốn chủ sở hữu",
-        bq: { m: "{bq.b01.nvdt|3} tỷ", d: "Nguồn vốn đầu tư nhận từ chủ đầu tư.", s: "B01 mã 410" },
-        dn: { m: "{hp.vcsh|0} tỷ", d: "Vốn chủ sở hữu." } },
       { k: "Vốn cấp thêm trong năm",
         bq: { m: "{bq.b02.tang|3} tỷ", d: "Chủ đầu tư cấp thêm trong năm 2015: {bq.b02.tangTien|3} tỷ bằng tiền và {bq.b02.tangVatTu|3} tỷ bằng vật tư, thiết bị.", s: "B02 tr.3" },
         dn: { m: "Vốn tự tích lũy", d: "Vốn chủ sở hữu tăng chủ yếu từ lợi nhuận (xem mục 2.3)." } },
@@ -101,7 +89,6 @@ window.CONTENT = {
     id: "b32",
     generic: true,
     title: "Bảng 3.2. Các điểm khác biệt cốt lõi về nhận thức khi phân tích BCTC BQLDA",
-    note: "Bài đặt cột “Tư duy Doanh nghiệp (TT 200)” trước; trên trang, BQLDA luôn ở bên trái.",
     heads: ["Thực tế tại BQLDA (TT 195)", "Tư duy Doanh nghiệp (TT 200)"],
     rows: [
       { k: "Cơ cấu tài sản",
@@ -128,7 +115,7 @@ window.CONTENT = {
       { k: "Kỳ báo cáo, ngày lập", bq: { m: "Năm 2015", d: "Lập ngày {t:bq.info.ngayLapBCTC}", s: "B01 tr.2" }, dn: { m: "Năm 2024", d: "Ký ngày {t:hp.ngayKy}; đã kiểm toán" } },
       { k: "Bộ báo cáo", bq: { d: "B01, B02, B03, B04-CĐT; phụ biểu F02, F03A, F03B, F03C, F03D-CĐT", s: "tr.1" }, dn: { d: "Bảng cân đối kế toán, Báo cáo kết quả hoạt động kinh doanh, Báo cáo lưu chuyển tiền tệ, Thuyết minh" } },
       { k: "Hoạt động chính", bq: { d: "Quản lý dự án đầu tư xây dựng" }, dn: { d: "Sản xuất, kinh doanh" } },
-      { k: "Tổng tài sản cuối kỳ", bq: { m: "{bq.b01.tongTS|3} tỷ đồng", s: "B01 tr.2" }, dn: { m: "{hp.tongTS|0} tỷ đồng", s: "Hòa Phát, theo bài" } }
+      { k: "Tổng tài sản cuối kỳ", bq: { m: "{bq.b01.tongTS|3} tỷ đồng", s: "B01 tr.2" }, dn: { m: "{hp.tongTS|0} tỷ đồng", s: "Bài, mục 2.1.2" } }
     ]
   },
 
@@ -163,7 +150,7 @@ window.CONTENT = {
     rows: [
       { k: "Tiền (mã 110)",
         bq: { m: "{bq.b01.tien|3} tỷ", d: "Tiền mặt {bq.b01.tienMat|1|trieu} triệu; tiền gửi NH Ngoại thương (TK vốn đầu tư) {bq.b01.nhNgoaiThuong|2|trieu} triệu; tiền gửi NH Công thương (TK hoạt động Ban QLDA) {bq.b01.nhCongThuong|1|trieu} triệu. Tiền vốn đầu tư không thuộc về Ban nên Ban mở tài khoản riêng cho vốn dự án và cho chi phí hoạt động.", s: "B04 V.01 tr.5" },
-        dn: { m: "{hp.tien|1} tỷ", d: "Tiền mặt {hp.tienMat|1} tỷ; tiền gửi ngân hàng {hp.tienGui|1} tỷ; tương đương tiền {hp.tuongDuongTien|1} tỷ (tiền gửi gốc dưới 3 tháng, lãi suất {hp.laiTDTtu|1}%–{hp.laiTDTden|1}%/năm). Sắp xếp theo mức độ thanh khoản, có thêm nhóm “tương đương tiền”.", s: "Hòa Phát, theo bài" } },
+        dn: { m: "{hp.tien|1} tỷ", d: "Tiền mặt {hp.tienMat|1} tỷ; tiền gửi ngân hàng {hp.tienGui|1} tỷ; tương đương tiền {hp.tuongDuongTien|1} tỷ (tiền gửi gốc dưới 3 tháng, lãi suất {hp.laiTDTtu|1}%–{hp.laiTDTden|1}%/năm). Sắp xếp theo mức độ thanh khoản, có thêm nhóm “tương đương tiền”.", s: "Bài, mục 2.2.2" } },
       { k: "Đầu tư tài chính (mã 120)",
         bq: { none: "Ban không được dùng vốn đầu tư để sinh lời; lãi tiền gửi nhàn rỗi ghi TK 3368 rồi nộp chủ đầu tư.", s: "B04 IV.7 tr.5" },
         dn: { m: "{hp.dauTuTC|1} tỷ", d: "Tiền gửi có kỳ hạn gốc trên 3 tháng, lãi {hp.laiDTTCtu|1}% đến {hp.laiDTTCden|1}%/năm. Lãi tiền gửi đưa vào doanh thu tài chính (tr.59, tm 32).", s: "Hòa Phát tr.37, tm 6" } },
@@ -191,9 +178,9 @@ window.CONTENT = {
     ],
     why: "Điểm khác biệt cốt lõi của tài sản ngắn hạn không nằm đơn thuần ở quy mô mà ở mục đích tồn tại của từng khoản mục. BQLDA giữ tiền, khoản tạm ứng và vật tư để phục vụ một dự án cụ thể; Hòa Phát giữ tài sản lưu động để vận hành chuỗi sản xuất, bán hàng và quản trị vốn của một tập đoàn kinh doanh.",
     figs: [
-      { n: "Hình 2.1", t: "Phần tài sản ngắn hạn của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-1-bq.jpg", dn: "assets/h2-1-hp.jpg" },
-      { n: "Hình 2.2", t: "Phần trả trước cho người bán của BQLDA (trái) và Hòa Phát (phải)", bq: "assets/h2-2-bq.jpg", dn: "assets/h2-2-hp.jpg" },
-      { n: "Hình 2.3", t: "Phần hàng tồn kho của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-3-bq.jpg", dn: "assets/h2-3-hp.jpg" }
+      { n: "Hình 2.1", t: "Phần tài sản ngắn hạn của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-1-bq.webp", dn: "assets/h2-1-hp.webp" },
+      { n: "Hình 2.2", t: "Phần trả trước cho người bán của BQLDA (trái) và Hòa Phát (phải)", bq: "assets/h2-2-bq.webp", dn: "assets/h2-2-hp.webp" },
+      { n: "Hình 2.3", t: "Phần hàng tồn kho của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-3-bq.webp", dn: "assets/h2-3-hp.webp" }
     ]
   },
 
@@ -223,8 +210,8 @@ window.CONTENT = {
     ],
     why: "Ở cả hai báo cáo, TK 241 đều là nơi vốn hóa chi phí: chi phí để tạo ra tài sản dùng nhiều năm không đi qua lợi nhuận mà làm tăng tài sản. Nhưng chức năng của tài khoản này đối với hai BCTC hoàn toàn khác nhau (xem bốn điểm bên dưới). Cùng phương pháp khấu hao đường thẳng, nhưng nơi khấu hao đi đến khác nhau: Hòa Phát vào chi phí làm giảm lợi nhuận, BQLDA vào giá trị công trình.",
     figs: [
-      { n: "Hình 2.4", t: "Phần tài sản dài hạn của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-4-bq.jpg", dn: "assets/h2-4-hp.jpg" },
-      { n: "Hình 2.5", t: "TK 241 của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-5-bq.jpg", dn: "assets/h2-5-hp.jpg" }
+      { n: "Hình 2.4", t: "Phần tài sản dài hạn của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-4-bq.webp", dn: "assets/h2-4-hp.webp" },
+      { n: "Hình 2.5", t: "TK 241 của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-5-bq.webp", dn: "assets/h2-5-hp.webp" }
     ]
   },
 
@@ -264,7 +251,7 @@ window.CONTENT = {
         dn: { m: "{hp.cpPhaiTraNH|1} tỷ", d: "Ngắn hạn; và {hp.cpPhaiTraDH|1} tỷ dài hạn.", s: "Hòa Phát tr.8" } },
       { k: "Phải trả nội bộ (TK 336)",
         bq: { m: "{bq.b01.noiBo3368|0|trieu} triệu", d: "TK 3368: lãi tiền gửi phải nộp chủ đầu tư.", s: "B04 V.10 tr.6" },
-        dn: { none: "Quan hệ trực thuộc chỉ tồn tại ở BQLDA; doanh nghiệp độc lập không có “chủ đầu tư” đứng trên." } },
+        dn: { none: "Không có trên báo cáo hợp nhất." } },
       { k: "Phải trả khác (TK 338)",
         bq: { m: "{bq.b01.phaiTraKhac|1|trieu} triệu", d: "Kinh phí công đoàn (3382), BHXH (3383), BHYT (3384), BHTN (3389).", s: "B04 V.11 tr.6–7" },
         dn: { m: "{hp.phaiTraKhac|1} tỷ", d: "Ngắn hạn. Tuy cũng có các khoản bảo hiểm nhưng Tập đoàn có thêm nhiều khoản khác.", s: "Hòa Phát tr.8" } },
@@ -280,8 +267,8 @@ window.CONTENT = {
     ],
     why: "Nguồn vốn đầu tư không phải là vốn chủ sở hữu, vì ba lý do: (1) Ban là đơn vị trực thuộc, được thành lập theo Quyết định 45/QĐ-HĐQT của chủ đầu tư và chỉ có tư cách quản lý, không sở hữu vốn (B04 mục I.1); (2) vốn phải được dùng đúng dự án, quyết toán và bàn giao cho chủ đầu tư, đó là nghĩa vụ chứ không phải tài sản ròng của Ban; (3) vốn không có quyền phân phối: không có lợi nhuận giữ lại, quỹ hay cổ tức, công trình quyết toán xong thì vốn giảm cùng lúc với tài sản (Nợ TK 3361 / Có TK 241, B04 mục IV.4).",
     figs: [
-      { n: "Hình 2.6", t: "Phần nợ phải trả của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-6-bq.jpg", dn: "assets/h2-6-hp.jpg" },
-      { n: "Hình 2.7", t: "Phần nguồn vốn đầu tư của BQLDA (trái) và vốn chủ sở hữu của Hòa Phát (phải)", bq: "assets/h2-7-bq.jpg", dn: "assets/h2-7-hp.jpg" }
+      { n: "Hình 2.6", t: "Phần nợ phải trả của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-6-bq.webp", dn: "assets/h2-6-hp.webp" },
+      { n: "Hình 2.7", t: "Phần nguồn vốn đầu tư của BQLDA (trái) và vốn chủ sở hữu của Hòa Phát (phải)", bq: "assets/h2-7-bq.webp", dn: "assets/h2-7-hp.webp" }
     ]
   },
 
@@ -298,7 +285,7 @@ window.CONTENT = {
         dn: { m: "0 cuối năm", d: "Đầu năm {hp.thangDuDauNam|1} tỷ, đã chuyển thành vốn cổ phần khi trả cổ tức bằng cổ phiếu.", s: "Hòa Phát tr.55" } },
       { k: "Quỹ đầu tư phát triển (TK 418)",
         bq: { none: "Đây là quỹ trích từ lợi nhuận nên BQLDA cũng không có." },
-        dn: { m: "{hp.quyDTPT|1} tỷ", s: "Hòa Phát, theo bài" } }
+        dn: { m: "{hp.quyDTPT|1} tỷ", s: "Bài, mục 2.2.5" } }
     ],
     why: "Tương tự những TK đầu 4 khác, vì Ban không có cổ đông, không có lợi nhuận và không chia cổ tức nên đầu 4 của BQLDA hoàn toàn trống. Vốn của Ban chỉ tăng khi chủ đầu tư cấp thêm (năm 2015: {bq.b02.tangTien|2} tỷ bằng tiền và {bq.b02.tangVatTu|1} tỷ bằng vật tư, thiết bị) và chỉ giảm khi quyết toán, bàn giao ({bq.b02.giam|2} tỷ) (B02 tr.3). Vốn của Tập đoàn Hòa Phát biến động theo kết quả kinh doanh, cổ tức và quyết định của cổ đông."
   },
@@ -310,19 +297,19 @@ window.CONTENT = {
     rows: [
       { k: "Đầu 5: Doanh thu",
         bq: { none: "Không có doanh thu. Lãi tiền gửi từ vốn đầu tư ghi TK 3368 và nộp chủ đầu tư.", s: "B04 mục IV.7" },
-        dn: { m: "{hp.dtt|1} tỷ", d: "Doanh thu thuần; doanh thu tài chính {hp.dtTaiChinh|1} tỷ.", s: "Hòa Phát, theo bài" } },
+        dn: { m: "{hp.dtt|1} tỷ", d: "Doanh thu thuần; doanh thu tài chính {hp.dtTaiChinh|1} tỷ.", s: "Hòa Phát tr.58, tm 30" } },
       { k: "Đầu 6: Chi phí",
         bq: { m: "TK 642: {bq.f03d.ps2015|3} tỷ", d: "Chi phí Ban QLDA, cuối kỳ kết chuyển hết vào TK 241.", s: "F03D tr.12" },
-        dn: { m: "Giá vốn {hp.giaVon|1} tỷ", d: "Bán hàng {hp.cpBanHang|1}; quản lý doanh nghiệp (cũng TK 642) {hp.cpQLDN|1}; tài chính {hp.cpTaiChinh|1}.", s: "Hòa Phát, theo bài" } },
+        dn: { m: "Giá vốn {hp.giaVon|1} tỷ", d: "Bán hàng {hp.cpBanHang|1}; quản lý doanh nghiệp (cũng TK 642) {hp.cpQLDN|1}; tài chính {hp.cpTaiChinh|1}.", s: "Hòa Phát tr.10" } },
       { k: "Đầu 7: Thu nhập khác",
         bq: { none: "Không có." },
-        dn: { m: "{hp.thuNhapKhac|1} tỷ", s: "Hòa Phát, theo bài" } },
+        dn: { m: "{hp.thuNhapKhac|1} tỷ", s: "Bài, mục 2.2.6" } },
       { k: "Đầu 8: Chi phí khác, thuế thu nhập doanh nghiệp",
         bq: { none: "Thuế TNDN không phát sinh. F03C “chi phí khác” là một nội dung của chi phí đầu tư (xem mục 2.4)." },
         dn: { m: "Chi phí khác {hp.cpKhac|1} tỷ", d: "Chi phí thuế thu nhập doanh nghiệp {hp.thueTNDN|1} tỷ.", s: "Hòa Phát tr.10, tr.62" } },
       { k: "Đầu 9: Xác định kết quả",
         bq: { none: "“Ban QLDA không xác định kết quả kinh doanh riêng”.", s: "B04 mục IV.7" },
-        dn: { m: "LNST {hp.lnst|1} tỷ", d: "Lợi nhuận sau thuế.", s: "Hòa Phát, theo bài" } },
+        dn: { m: "LNST {hp.lnst|1} tỷ", d: "Lợi nhuận sau thuế.", s: "Hòa Phát tr.10" } },
       { k: "Chênh lệch tỷ giá",
         bq: { m: "Chuyển cho chủ đầu tư", d: "TK 3362.", s: "B04 mục IV.1" },
         dn: { m: "Vào kết quả kinh doanh", d: "Lãi thực hiện {hp.laiTyGia|1} tỷ, lỗ thực hiện {hp.loTyGia|1} tỷ.", s: "Hòa Phát tr.59" } }
@@ -341,7 +328,7 @@ window.CONTENT = {
         bq: { m: "Không có số dư", d: "Vẫn có dòng trên bảng.", s: "B01 tr.2" },
         dn: { none: "Mẫu B01-DN/HN không có dòng này." } }
     ],
-    why: "Nguyên nhân là mẫu biểu: Thông tư 195 buộc BQLDA báo cáo ngoại tệ gốc và tài sản giữ hộ ngay trên bảng, còn mẫu B01-DN/HN không có dòng này."
+    why: "Mẫu B01-CĐT có phần chỉ tiêu ngoài bảng; mẫu B01-DN/HN (hợp nhất) không có dòng này."
   },
 
   s231: {
@@ -363,7 +350,7 @@ window.CONTENT = {
     ],
     why: "Hai báo cáo có thể cùng thể hiện số đầu kỳ, tăng, giảm và cuối kỳ nhưng không cùng bản chất kinh tế: báo cáo biến động vốn của BQLDA phản ánh luồng vốn được chủ đầu tư giao và giá trị công trình đã bàn giao; báo cáo biến động vốn chủ sở hữu của Hòa Phát phản ánh vốn cổ đông, lợi nhuận tích lũy, trích lập quỹ và phân phối lợi ích. Ở mỗi dòng, hai đơn vị khác nhau về mục tiêu ghi nhận và nhu cầu thông tin quản trị.",
     figs: [
-      { n: "Hình 2.8", t: "Nguồn vốn đầu tư của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-8-bq.jpg", dn: "assets/h2-8-hp.jpg" }
+      { n: "Hình 2.8", t: "Nguồn vốn đầu tư của BQLDA (trái) và của Hòa Phát (phải)", bq: "assets/h2-8-bq.webp", dn: "assets/h2-8-hp.webp" }
     ]
   },
 
@@ -409,7 +396,7 @@ window.CONTENT = {
     rows: [
       { k: "Doanh thu",
         bq: { none: "Không có doanh thu. “Sản phẩm” của Ban là công trình bàn giao cho chủ đầu tư theo giá trị quyết toán, không có giá bán. Ban không bán gì ra ngoài nên không có đầu ra để đo lãi lỗ.", s: "F03B tr.10" },
-        dn: { m: "{hp.dtt|1} tỷ", d: "Doanh thu thuần: bán hàng {hp.dtBanHang|1}; cung cấp dịch vụ {hp.dtDichVu|1}; cho thuê đất thuê {hp.dtChoThueDat|1}; cho thuê bất động sản đầu tư {hp.dtChoThueBDS|1}; trừ giảm trừ {hp.dtGiamTru|1}.", s: "Hòa Phát tr.58, tm 30" } },
+        dn: { m: "{hp.dtt|1} tỷ", d: "Doanh thu thuần.", s: "Hòa Phát tr.58, tm 30" } },
       { k: "Giá vốn",
         bq: { none: "Tương ứng gần nhất là giá trị quyết toán hạng mục bàn giao {bq.f03b.duyet|2} tỷ, nhưng nó đi ra khỏi sổ chứ không thành giá vốn: Ban giao công trình đi nên giá trị đó không “tiêu hao”.", s: "F03B tr.10" },
         dn: { m: "{hp.giaVon|1} tỷ", d: "Chủ yếu thành phẩm và hàng hóa đã bán {hp.gvThanhPham|1}; lợi nhuận gộp {hp.lnGop|1} tỷ (biên {hp.bienGop|1}%).", s: "Hòa Phát tr.59, tm 31" } },
@@ -430,7 +417,7 @@ window.CONTENT = {
         dn: { m: "{hp.cpKhac|1} tỷ", d: "Chủ yếu giá vốn điện, nước {hp.cpkGiaVonDienNuoc|1} và bồi thường {hp.cpkBoiThuong|1}; đi vào kết quả kinh doanh.", s: "Hòa Phát tr.61, tm 37" } },
       { k: "Thuế thu nhập doanh nghiệp",
         bq: { none: "Ban không có lợi nhuận nên không có thuế TNDN; thuế duy nhất là thuế thu nhập cá nhân khấu trừ {bq.b01.thueTNCN|1|trieu} triệu.", s: "B04 V.09 tr.6" },
-        dn: { m: "{hp.thueTNDN|1} tỷ", d: "Hiện hành {hp.thueHienHanh|1}; hoãn lại {hp.thueHoanLai|1}; thuế suất hiệu dụng khoảng {hp.thueSuatHieuDung|1}% lợi nhuận trước thuế.", s: "Hòa Phát tr.62, tm 39" } },
+        dn: { m: "{hp.thueTNDN|1} tỷ", d: "Thuế thu nhập doanh nghiệp phải nộp trong năm {hp.thueHienHanh|1}; hoãn lại {hp.thueHoanLai|1}; thuế suất hiệu dụng khoảng {hp.thueSuatHieuDung|1}% lợi nhuận trước thuế.", s: "Hòa Phát tr.62, tm 39" } },
       { k: "Chỉ tiêu cuối cùng",
         bq: { m: "Không xác định lãi, lỗ", d: "Chỉ tiêu bổ sung: tổng mức đầu tư được duyệt {bq.b03.tongMuc|0} tỷ, lũy kế vốn đầu tư thực hiện {bq.b03.luyKe|2} tỷ ({bq.b03.tyLe|1}%), giá trị đã quyết toán, bàn giao {bq.b03.quyetToan|2} tỷ. BQLDA đo tiến độ.", s: "B03 mã 20 đến 23, tr.4" },
         dn: { m: "LNST {hp.lnst|1} tỷ", d: "Lợi nhuận trước thuế {hp.lnTruocThue|1} tỷ; sau thuế {hp.lnst|1} tỷ ({hp.lnstPct|1}% doanh thu thuần). Tập đoàn đo kết quả.", s: "Hòa Phát tr.10" } }
@@ -460,7 +447,7 @@ window.CONTENT = {
         bq: { m: "TK 241 chi tiết", d: "Theo dự án, công trình, hạng mục và 6 nội dung chi phí.", s: "B04 mục IV.4, tr.5" },
         dn: { m: "TK 241 theo dự án", d: "XDCB tăng {hp.xdcbTang|1} tỷ, gồm cả lãi vay vốn hóa {hp.laiVayVonHoa|1} tỷ; không khấu hao khi chưa đưa vào sử dụng (chính sách 3.10, tr.26).", s: "Hòa Phát tr.44" } },
       { k: "Căn cứ chuyển khỏi TK 241",
-        bq: { m: "QĐ {t:bq.f03b.soQd}", d: "Quyết định phê duyệt quyết toán số {t:bq.f03b.soQd} ngày {t:bq.f03b.ngayQd}; bàn giao ngày {t:bq.f03b.ngayBanGiao}. Ban phải được chủ đầu tư duyệt quyết toán.", s: "F03B; B04 VI.2" },
+        bq: { m: "QĐ {t:bq.f03b.soQd}", d: "Bàn giao ngày {t:bq.f03b.ngayBanGiao}; quyết định phê duyệt quyết toán số {t:bq.f03b.soQd} ngày {t:bq.f03b.ngayQd}. Ban phải được chủ đầu tư duyệt quyết toán.", s: "F03B tr.10; B04 VI.2" },
         dn: { m: "Đưa tài sản vào hoạt động", d: "Không có bước duyệt quyết toán của bên thứ ba trên báo cáo; Tập đoàn tự ghi nhận khi tài sản sẵn sàng sử dụng." } },
       { k: "Giá trị chuyển",
         bq: { m: "{bq.f03b.duyet|3} tỷ", d: "Xây dựng {bq.f03b.xd|3}; thiết bị {bq.f03b.tb|3}; quản lý dự án {bq.f03b.ql|3}; tư vấn {bq.f03b.tv|3}; khác {bq.f03b.khac|3}. Giá trị đề nghị bằng giá trị được duyệt, chênh lệch {bq.f03b.chenhLech|0}. Ban chỉ có một đích là bàn giao.", s: "F03B tr.10" },
@@ -481,6 +468,158 @@ window.CONTENT = {
         bq: { m: "Không có", d: "F03B và B04 V.07 nêu rõ không có chi phí bị duyệt loại phải thu hồi (TK 1388); số dư TK 1388 {bq.b01.tk1388|1|trieu} triệu (V.03) là phải thu khác, không liên quan quyết toán. Ở Ban có bên duyệt nên chi phí bị loại sẽ thành khoản phải thu.", s: "F03B tr.10; B04 tr.6" },
         dn: { m: "Xóa sổ {hp.xoaSoXDCB|1} tỷ", d: "XDCB trong năm; không thấy cơ chế tương tự (chi phí bị loại thành phải thu) trên báo cáo.", s: "Hòa Phát tr.44" } }
     ],
-    why: "Điểm quyết định thời điểm ghi giảm TK 241 khác nhau: BQLDA gắn với phê duyệt quyết toán và bàn giao cho chủ đầu tư; doanh nghiệp ghi nhận tài sản khi tài sản đã sẵn sàng sử dụng theo chính sách kế toán. Sau thời điểm chuyển, BQLDA không tiếp tục ghi nhận công trình đã bàn giao, trong khi doanh nghiệp tiếp tục theo dõi nguyên giá, hao mòn và khấu hao."
+    why: "Sau thời điểm chuyển, BQLDA không tiếp tục ghi nhận công trình đã bàn giao, trong khi doanh nghiệp tiếp tục theo dõi nguyên giá, hao mòn và khấu hao."
   }
+};
+
+/*
+ * BA Ý CHÍNH CỦA LỚP TRÌNH BÀY (bản 4, mục E). Mỗi ý lấy từ câu kết luận, câu nhận xét trong chính tiểu mục đó của bài
+ * (các câu "Như vậy", "Nhận xét", "Điều này cho thấy", "Tóm lại"…), chỉ rút gọn, không thêm nhận định mới.
+ */
+window.KEYS = {
+  "1-1-1": [
+    "Dự án là tập hợp các hoạt động có liên quan với nhau, thực hiện trong khoảng thời gian xác định, với nguồn lực giới hạn, nhằm tạo ra một kết quả cụ thể.",
+    "Dự án có năm đặc điểm cơ bản; mỗi đặc điểm kéo theo một yêu cầu riêng đối với tổ chức kế toán.",
+    "Có thời hạn xác định nên kế toán theo dõi lũy kế từ khởi công đến khi hoàn thành, không chỉ theo từng năm tài chính."
+  ],
+  "1-1-2": [
+    "Mỗi cách phân loại cho biết cơ quan nào quản lý, nguồn vốn nào được dùng, và do đó quy định kế toán, báo cáo nào phải tuân thủ.",
+    "Theo nguồn vốn: quyết định cơ chế cấp vốn, thanh toán, kiểm soát chi và hình thức quyết toán.",
+    "Cách phân loại theo chủ thể quản lý là cơ sở trực tiếp để chọn chế độ kế toán."
+  ],
+  "1-1-3": [
+    "Chu trình dự án gồm ba giai đoạn: chuẩn bị đầu tư, thực hiện đầu tư, kết thúc xây dựng và đưa dự án vào khai thác sử dụng.",
+    "Ở mỗi giai đoạn, công việc quản lý dự án luôn đi kèm một nhiệm vụ cụ thể của kế toán.",
+    "Thực hiện đầu tư phát sinh nhiều nghiệp vụ nhất (nhận vốn, thanh toán nhà thầu, nghiệm thu khối lượng), là trọng tâm hạch toán."
+  ],
+  "1-1-4": [
+    "Kế toán dự án thu thập, xử lý, kiểm tra, phân tích và cung cấp thông tin về nguồn vốn, tình hình sử dụng vốn và kết quả thực hiện của dự án.",
+    "Nguồn vốn chủ yếu do chủ đầu tư hoặc nhà nước cấp nên trọng tâm là quản lý vốn chứ không phải lợi nhuận.",
+    "Số liệu phải chi tiết theo từng dự án, nguồn vốn và nội dung chi phí; không dồn chung các dự án."
+  ],
+  "1-2-1": [
+    "Kế toán dự án vận hành trong ba lớp văn bản: luật và nghị định; thông tư về chế độ kế toán của Bộ Tài chính; quy định về quản lý, thanh toán và quyết toán vốn đầu tư.",
+    "Thông tư 195/2012/TT-BTC là chế độ kế toán BQLDA, trọng tâm so sánh.",
+    "Thông tư 200/2014/TT-BTC là chế độ kế toán doanh nghiệp, trọng tâm so sánh."
+  ],
+  "1-2-2": [
+    "Thông tư 195/2012/TT-BTC ban hành ngày 15/11/2012, có hiệu lực từ 01/01/2013, thay thế Quyết định 214/2000/QĐ-BTC.",
+    "Hệ thống tài khoản dựa trên hệ thống tài khoản doanh nghiệp, được sửa đổi, bổ sung, đổi tên cho phù hợp hoạt động đầu tư.",
+    "Thời hạn nộp: báo cáo quý chậm nhất {thoiHan.bq.quy|0} ngày, báo cáo năm chậm nhất {thoiHan.bq.nam|0} ngày kể từ ngày kết thúc kỳ."
+  ],
+  "1-2-3": [
+    "Thông tư 200/2014/TT-BTC ban hành ngày 22/12/2014, áp dụng cho năm tài chính bắt đầu từ ngày 01/01/2015.",
+    "Hoạt động đầu tư xây dựng của doanh nghiệp được theo dõi trên TK 241 “Xây dựng cơ bản dở dang” (2411, 2412, 2413).",
+    "Thời hạn nộp: báo cáo quý chậm nhất {thoiHan.dn.quy|0} ngày ({thoiHan.dnRieng.quy|0} ngày với công ty mẹ, tổng công ty nhà nước); báo cáo năm chậm nhất {thoiHan.dn.nam|0} ngày ({thoiHan.dnRieng.nam|0} ngày với doanh nghiệp tư nhân, công ty hợp danh)."
+  ],
+  "1-2-4": [
+    "Hai chế độ không loại trừ nhau mà bổ sung cho nhau.",
+    "Nội dung nào không được hướng dẫn riêng thì thực hiện theo Luật Kế toán và chế độ kế toán doanh nghiệp.",
+    "Việc chọn chế độ phụ thuộc vào việc đơn vị có thành lập BQLDA và tổ chức bộ máy kế toán riêng hay không."
+  ],
+  "1-3-1": [
+    "Việc so sánh giới hạn ở kế toán của BQLDA theo Thông tư 195 và kế toán của doanh nghiệp theo Thông tư 200.",
+    "Hai chế độ có cùng “gốc” vì Thông tư 195 xây dựng trên chế độ kế toán doanh nghiệp.",
+    "Khác biệt nằm ở mục đích, tài khoản đặc thù, nghiệp vụ và báo cáo, không nằm ở các nguyên tắc kế toán cơ bản."
+  ],
+  "1-3-2": [
+    "Năm tiêu chí so sánh: mục đích hạch toán; hệ thống tài khoản; nghiệp vụ kế toán đặc thù; hệ thống báo cáo tài chính; thời hạn lập và nộp báo cáo.",
+    "Với BQLDA, vốn đi từ chủ đầu tư, được tập hợp thành chi phí đầu tư trên TK 241 và kết thúc bằng quyết toán, bàn giao tài sản; với doanh nghiệp, hạch toán đi qua doanh thu và chi phí, kết thúc ở lãi, lỗ.",
+    "Chi phí quản lý ở BQLDA được phân bổ vào giá trị công trình, còn ở doanh nghiệp nó đi vào chi phí kỳ và ảnh hưởng trực tiếp đến lợi nhuận."
+  ],
+  "1-3-3": [
+    "Giống nhau: cùng tuân thủ Luật Kế toán, cùng dùng phương pháp ghi sổ kép và các nguyên tắc kế toán cơ bản.",
+    "Khác nhau cốt lõi: BQLDA hạch toán “vốn”, doanh nghiệp hạch toán “kết quả”.",
+    "Bước đầu tiên của người làm kế toán là xác định đúng mô hình tổ chức thực hiện dự án."
+  ],
+  "2-1-1": [
+    "Ban là đơn vị trực thuộc chủ đầu tư, có tổ chức công tác kế toán riêng và lập báo cáo tài chính riêng gửi chủ đầu tư.",
+    "Tổng mức đầu tư được duyệt {bq.info.tongMuc|0} tỷ đồng, thời gian thực hiện từ năm {t:bq.info.namBatDau} đến năm {t:bq.info.namKetThuc}.",
+    "Ban không hoạt động như một doanh nghiệp sản xuất kinh doanh nhằm tạo lợi nhuận cho chính đơn vị."
+  ],
+  "2-1-2": [
+    "Ở BQLDA, hơn 93% tổng tài sản là chi phí đầu tư xây dựng dở dang và gần 95% nguồn vốn là nguồn vốn đầu tư do chủ đầu tư cấp.",
+    "Ở Hòa Phát, xây dựng cơ bản dở dang chỉ chiếm {hp.pct.xdcb|1}% tổng tài sản; nguồn vốn là sự kết hợp giữa nợ và vốn chủ sở hữu.",
+    "BQLDA phản ánh nguồn vốn và chi phí hình thành dự án, doanh nghiệp phản ánh toàn bộ tài sản, nguồn vốn và kết quả hoạt động kinh doanh."
+  ],
+  "2-2-1": [
+    "Tài sản dài hạn chiếm {bq.b01.pct.tsdh|1}% tổng tài sản của BQLDA so với {hp.pct.tsdh|1}% của Hòa Phát: tài sản của Ban hầu như chỉ là công trình đang hình thành.",
+    "Khoản mục lớn nhất của Ban là TK 241 ({bq.b01.pct.tk241|1}%); ở Hòa Phát các khoản lớn nhất trải ra là TSCĐ hữu hình, xây dựng cơ bản dở dang và hàng tồn kho.",
+    "Một bên là vốn được giao để quản lý rồi quyết toán, một bên là vốn thuộc sở hữu của cổ đông."
+  ],
+  "2-2-2": [
+    "Điểm khác biệt cốt lõi của tài sản ngắn hạn không nằm đơn thuần ở quy mô mà ở mục đích tồn tại của từng khoản mục.",
+    "BQLDA giữ tiền, khoản tạm ứng và vật tư để phục vụ một dự án cụ thể; Hòa Phát giữ tài sản lưu động để vận hành chuỗi sản xuất, bán hàng.",
+    "Ban không bán hàng nên không phát sinh phải thu thương mại."
+  ],
+  "2-2-3": [
+    "BQLDA chỉ giữ lượng tài sản nhỏ phục vụ bộ máy quản lý; tài sản hình thành từ dự án nằm ở chi phí đầu tư xây dựng dở dang cho đến khi được quyết toán và bàn giao.",
+    "Cùng phương pháp đường thẳng nhưng khấu hao đi đến nơi khác nhau: ở Hòa Phát vào chi phí làm giảm lợi nhuận, ở BQLDA vào giá trị công trình.",
+    "TK 241 gần như là toàn bộ tài sản của Ban ({bq.b01.pct.tk241|1}%), còn ở Hòa Phát chỉ chiếm {hp.pct.xdcb|1}%."
+  ],
+  "2-2-4": [
+    "Nợ của BQLDA chủ yếu gắn với nhà thầu và hoạt động triển khai dự án; nợ của Hòa Phát còn gắn với chuỗi cung ứng, vay vốn và quy mô vận hành.",
+    "BQLDA không ghi nhận khoản vay do chủ đầu tư đứng tên vay rồi cấp lại như nghĩa vụ vay của chính Ban.",
+    "Nguồn vốn đầu tư không phải là vốn chủ sở hữu: Ban chỉ có tư cách quản lý, vốn phải quyết toán và bàn giao, không có quyền phân phối."
+  ],
+  "2-2-5": [
+    "BQLDA không có quyền sở hữu độc lập đối với nguồn vốn được giao nên không hình thành vốn cổ phần, quỹ từ lợi nhuận hay lợi nhuận chưa phân phối.",
+    "Vốn của Ban chỉ tăng khi chủ đầu tư cấp thêm và chỉ giảm khi quyết toán, bàn giao.",
+    "Vốn của Hòa Phát biến động theo kết quả kinh doanh, cổ tức và quyết định của cổ đông."
+  ],
+  "2-2-6": [
+    "Ở doanh nghiệp, cuối kỳ các tài khoản này được kết chuyển vào kết quả kinh doanh rồi vào lợi nhuận chưa phân phối; BQLDA không thực hiện theo cơ chế này.",
+    "TK 642 có cùng số hiệu nhưng đi hai đường: ở Hòa Phát làm giảm lợi nhuận; ở BQLDA kết chuyển vào TK 241 và làm tăng giá trị tài sản bàn giao.",
+    "Chênh lệch tỷ giá ở Hòa Phát đi vào kết quả kinh doanh, ở BQLDA được chuyển cho chủ đầu tư (TK 3362)."
+  ],
+  "2-2-7": [
+    "BQLDA in ngay dưới bảng cân đối phần “Các chỉ tiêu ngoài bảng cân đối kế toán”.",
+    "Hòa Phát không có phần này trên Bảng cân đối kế toán; ngoại tệ chỉ được liệt kê ở thuyết minh 5.1.",
+    "Mẫu B01-CĐT có phần chỉ tiêu ngoài bảng; mẫu B01-DN/HN (hợp nhất) không có dòng này."
+  ],
+  "2-3-1": [
+    "B02-CĐT theo dõi biến động của đúng một tài khoản, TK 3361, từ {bq.b02.dau|3} tỷ lên {bq.b02.cuoi|3} tỷ.",
+    "Hai báo cáo có thể cùng thể hiện số đầu kỳ, tăng, giảm và cuối kỳ nhưng không cùng bản chất kinh tế.",
+    "BQLDA: luồng vốn được chủ đầu tư giao và giá trị công trình đã bàn giao; Hòa Phát: vốn cổ đông, lợi nhuận tích lũy, trích lập quỹ và phân phối lợi ích."
+  ],
+  "2-3-2": [
+    "BQLDA phải tách nguồn cấp bằng tiền với vật tư, thiết bị và đối chiếu số dư với chủ đầu tư; Hòa Phát phân loại riêng vốn chủ sở hữu và nợ vay.",
+    "Vốn của Ban là nguồn “được giao”, vốn của Hòa Phát phần lớn là nguồn “tự tích lũy”.",
+    "BQLDA trả lời theo quan hệ chủ đầu tư – ban quản lý (cấp vốn, quyết toán, bàn giao), Hòa Phát theo quan hệ công ty – cổ đông (góp vốn, lợi nhuận, cổ tức)."
+  ],
+  "2-4-1": [
+    "Điểm khác cốt lõi không nằm ở tên báo cáo mà ở đích đến của chi phí.",
+    "Trên B03-CĐT, toàn bộ {bq.b03.ps|3} tỷ chi phí phát sinh năm 2015 đi vào tài sản (TK 241); Hòa Phát trừ chi phí vào doanh thu để ra lợi nhuận sau thuế {hp.lnst|1} tỷ.",
+    "BQLDA đo tiến độ, Hòa Phát đo kết quả."
+  ],
+  "2-4-2": [
+    "BQLDA cần theo dõi không chỉ tổng chi phí dở dang mà còn trạng thái hoàn thành, phần chi phí dùng chung và giá trị đã bàn giao.",
+    "Ban chỉ có một dự án nên chi tiết đến hạng mục; Hòa Phát có nhiều dự án nên chi tiết đến dự án.",
+    "Ở Hòa Phát chỉ thấy phần đã chuyển sang tài sản cố định ({hp.chuyenTSCD|1} tỷ)."
+  ],
+  "2-5": [
+    "Cùng sự kiện “công trình hoàn thành” nhưng kết cục khác hẳn: BQLDA xóa {bq.f03b.duyet|3} tỷ khỏi sổ vì đã bàn giao cho chủ đầu tư.",
+    "Hòa Phát chuyển {hp.chuyenTSCD|1} tỷ sang tài sản cố định hữu hình rồi tiếp tục khấu hao.",
+    "Hòa Phát chuyển XDCB ra nhiều loại tài sản; Ban chỉ có một đích là bàn giao."
+  ],
+  "3-1": [
+    "Điểm nổi bật của Thông tư 195 là khả năng giám sát chi tiết nguồn vốn so với tổng mức đầu tư được duyệt.",
+    "Kế toán BQLDA phải phân bổ toàn bộ chi phí hoạt động (TK 642) vào giá trị dự án: năm 2015 là {bq.f03d.ps2015|3} tỷ đồng.",
+    "Nếu tiêu thức phân bổ không phù hợp với thực tế thi công, giá trị quyết toán của từng hạng mục công trình sẽ bị phản ánh sai lệch."
+  ],
+  "3-2": [
+    "BQLDA không ghi nhận vốn chủ sở hữu; tài sản chủ yếu tập trung ở chi phí đầu tư xây dựng dở dang ({bq.b01.pct.tk241|1}% tổng tài sản).",
+    "BQLDA không lập Báo cáo lưu chuyển tiền tệ: người đọc dùng B02-CĐT kết hợp B03-CĐT để theo dõi luân chuyển vốn.",
+    "Hiệu quả của BQLDA được đánh giá qua tiến độ giải ngân và sự tuân thủ dự toán, thay vì các chỉ số tỷ suất sinh lời thông thường."
+  ],
+  "3-3": [
+    "Người làm kế toán và người đọc BCTC cần tập trung vào luồng hạch toán quản trị vốn: nhận vốn (Có TK 336), tập hợp chi phí (Nợ TK 241), quyết toán bàn giao (Nợ TK 336 / Có TK 241).",
+    "Cần xác định tiêu thức phân bổ chi phí BQLDA (TK 642) hợp lý nhằm giảm thiểu rủi ro xuất toán chi phí.",
+    "Cơ quan quản lý cần hướng dẫn cụ thể việc chuyển đổi số dư các tài khoản đặc thù của BQLDA (TK 3361, TK 3368) khi Thông tư 99/2025/TT-BTC thay thế cả Thông tư 195 và Thông tư 200."
+  ],
+  "kl": [
+    "Chế độ kế toán luôn phản ánh đúng chức năng, nhiệm vụ và bản chất hoạt động của đơn vị.",
+    "Kế toán của Ban tập trung vào kiểm soát nguồn cấp phát (TK 336) và tập hợp chi phí đầu tư xây dựng (TK 241); doanh nghiệp đo lường chu kỳ kinh doanh qua doanh thu, chi phí và kết quả hoạt động kinh doanh.",
+    "Bộ Tài chính đã ban hành Thông tư 99/2025/TT-BTC (hiệu lực từ 01/01/2026) thay thế cả Thông tư 195/2012/TT-BTC và Thông tư 200/2014/TT-BTC."
+  ]
 };

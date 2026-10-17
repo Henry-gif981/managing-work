@@ -81,7 +81,18 @@ eq('calc KQ sau BH, QL', Math.round((h.lnGop - h.cpBanHang - h.cpQLDN) * 10) / 1
 eq('calc KQ sau tài chính', Math.round((c.hpSauBhQl + h.dtTaiChinh - h.cpTaiChinh) * 10) / 10, c.hpSauTaiChinh);
 eq('chuỗi KQ → LNTT 13.693,5', Math.round((c.hpSauTaiChinh + h.thuNhapKhac - h.cpKhac) * 10) / 10, h.lnTruocThue);
 eq('chuỗi KQ → LNST 12.020,0', Math.round((h.lnTruocThue - h.thueTNDN) * 10) / 10, h.lnst);
-eq('calc VCSH đầu năm tính bù', Math.round((h.vcshChiTiet - h.lnst - h.gopVonCDKKS + h.trichQuy + h.cdkksCoTuc + h.suDungQuy + h.traVonCDKKS) * 10) / 10, c.hpVcshDauTinh);
+eq('A1 VCSH đầu năm = số gốc 102.836,4', h.vcshDauNam, 102836.4);
+eq('A1 thác nước VCSH cộng khớp (có dòng làm tròn)', Math.round((h.vcshDauNam + h.lnst + h.gopVonCDKKS - h.trichQuy - h.cdkksCoTuc - h.suDungQuy - h.traVonCDKKS + c.hpVcshLamTron) * 10) / 10, h.vcshChiTiet);
+eq('A2 F02 vay (đồng) = đầu + tăng − giảm', b.f02.vay.dau + b.f02.vay.tangTien + b.f02.vay.tangVatTu - b.f02.vay.giam, b.f02.vay.cuoi);
+eq('A2 F02 vay cuối = 86.127.450.000', b.f02.vay.cuoi, 86127450000);
+eq('F02 VCSH (đồng) = đầu + tăng − giảm', b.f02.vcsh.dau + b.f02.vcsh.tangTien + b.f02.vcsh.tangVatTu - b.f02.vcsh.giam, b.f02.vcsh.cuoi);
+eq('B02 TK 3361 (đồng) = đầu + tăng − giảm', b.b02.dau + b.b02.tangTien + b.b02.tangVatTu - b.b02.giam, b.b02.cuoi);
+eq('TSCĐ BQLDA = nguyên giá − hao mòn', o.nguyenGia - o.haoMon, o.tscd);
+eq('TSCĐ HP = nguyên giá − hao mòn', Math.round((h.nguyenGia - h.haoMon) * 10) / 10, h.tscdhh);
+eq('A3 khấu hao HP: khấu hao và phân bổ 6.915,7', h.khauHaoPhanBo, 6915.7);
+eq('A3 khấu hao TSCĐ hữu hình trong năm 6.810,7', h.khauHao, 6810.7);
+eq('A7 BQLDA 3 chữ số thập phân', D.fmt.bqDec, 3);
+eq('A7 tỷ lệ % 1 chữ số thập phân', D.fmt.pctDec, 1);
 b.f03a.items.forEach((it, i) => pct('calc F03A % ' + it.ten, it.cuoi, b3.cuoi, c.f03aPct[i]));
 ['xd', 'tb', 'ql', 'tv', 'khac'].forEach(k => pct('calc F03B % ' + k, b.f03b[k], b.f03b.duyet, c.f03bPct[k]));
 // Bảng 1.5: số dư lũy kế phải cân Nợ = Có ở mọi bước và khớp bút toán

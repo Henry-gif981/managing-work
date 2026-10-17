@@ -7,8 +7,7 @@ const PAGE = process.env.PAGE || 'index.html';
 
 // Mỗi dòng: [mục, [các đoạn chữ phải có mặt trên trang]]
 const CHECKLIST = [
-  ['Danh mục từ viết tắt (nhóm bổ sung)', ['Danh mục từ viết tắt', 'BQLDA', 'BCTC', 'CĐT', 'TSCĐ', 'XDCB', 'TNDN', 'GTGT', 'Nhóm bổ sung']],
-  ['Phần mở đầu: 3 tiêu đề', ['Lý do chọn đề tài'.toUpperCase(), 'MỤC TIÊU, ĐỐI TƯỢNG VÀ PHẠM VI NGHIÊN CỨU', 'PHƯƠNG PHÁP NGHIÊN CỨU', 'Đối chiếu văn bản', 'So sánh bút toán', 'Minh họa bằng số liệu mẫu']],
+  ['Danh mục từ viết tắt', ['Danh mục từ viết tắt', 'BQLDA', 'BCTC', 'CĐT', 'TSCĐ', 'XDCB', 'TNDN', 'GTGT']],
   ['Ch.1 đoạn dẫn + 3 phần', ['cùng dùng phương pháp ghi sổ kép', 'MỤC 1.1', 'MỤC 1.2', 'MỤC 1.3']],
   ['1.1.1 + Bảng 1.1', ['1.1.1', 'Tập hợp các hoạt động có liên quan với nhau', 'Tập hợp các đề xuất bỏ vốn trung hạn hoặc dài hạn', 'Bảng 1.1', 'Có mục tiêu rõ ràng', 'Có thời hạn xác định', 'Mang tính duy nhất', 'Nguồn lực giới hạn', 'Có tính bất định, rủi ro']],
   ['1.1.2 + Bảng 1.2 (5 tiêu thức) + câu chốt', ['1.1.2', 'Bảng 1.2', 'Theo nguồn vốn', 'Theo quy mô, tính chất', 'Theo lĩnh vực', 'Theo tính chất đầu tư', 'Theo chủ thể quản lý', 'cơ sở trực tiếp để chọn chế độ kế toán']],
@@ -17,13 +16,13 @@ const CHECKLIST = [
   ['1.2.1 ba lớp + Bảng 1.3', ['1.2.1', 'LỚP 1', 'LỚP 2', 'LỚP 3', 'Bảng 1.3', 'Luật Kế toán số 88/2015/QH13', 'Nghị định 174/2016/NĐ-CP', 'Thông tư 79/2019/TT-BTC', 'Vai trò trong đề tài']],
   ['1.2.2 TT 195', ['1.2.2', '15/11/2012', '01/01/2013', 'QĐ 214/2000/QĐ-BTC', 'Chủ đầu tư không thành lập BQLDA', 'HỆ THỐNG TÀI KHOẢN', 'TK 154 thành “Chi phí sản xuất thử dở dang”', 'thêm bốn tài khoản cấp 2', 'NGHIỆP VỤ ĐẶC THÙ', 'BÁO CÁO TÀI CHÍNH', 'THỜI HẠN NỘP']],
   ['1.2.3 TT 200', ['1.2.3', '22/12/2014', '01/01/2015', 'TT 244/2009/TT-BTC', 'Thông tư 133/2016/TT-BTC', 'Thông tư 75/2015/TT-BTC', 'Thông tư 53/2016/TT-BTC', '2411, 2412, 2413', 'B09-DN']],
-  ['1.2.4 + Hình 1.2', ['1.2.4', 'Hình 1.2', 'Ban quản lý dự án có tổ chức kế toán riêng', 'Chủ đầu tư có thành lập Ban quản lý dự án', 'Chủ đầu tư không thành lập BQLDA', 'Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo TT 195', 'Lập thêm B02, B03/CĐT và 4 phụ biểu', 'phù hợp với hướng dẫn của Bộ Tài chính']],
+  ['1.2.4 + Hình 1.2', ['1.2.4', 'Hình 1.2', 'Ban quản lý dự án (có tổ chức kế toán riêng)', 'Chủ đầu tư có thành lập Ban quản lý dự án', 'Chủ đầu tư không thành lập BQLDA', 'Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo TT 195', 'Lập thêm B02, B03/CĐT và 4 phụ biểu', 'phù hợp với hướng dẫn của Bộ Tài chính']],
   ['1.3.1 phạm vi', ['1.3.1', 'ĐỐI TƯỢNG (i)', 'ĐỐI TƯỢNG (ii)', 'Cùng “gốc”', 'hành chính sự nghiệp, thuế và kiểm toán']],
   ['1.3.2 tiêu chí, Bảng 1.4, Hình 1.3, Bảng 1.5, Hình 1.4', ['1.3.2', 'Bảng 1.4', 'Đối tượng áp dụng', 'Nơi nhận báo cáo', 'Điều 110 Thông tư 200', 'Hình 1.3', 'Bước 5', 'Bảng 1.5', 'ĐIỂM CẦN CHÚ Ý 1', 'ĐIỂM CẦN CHÚ Ý 2', 'Hình 1.4', 'Trường hợp riêng của doanh nghiệp']],
   ['1.3.3 năm ý', ['1.3.3', 'GIỐNG NHAU', 'KHÁC NHAU CỐT LÕI', 'HỆ QUẢ KHI HẠCH TOÁN', 'HỆ QUẢ KHI LẬP BÁO CÁO', 'ĐIỀU KIỆN ÁP DỤNG']],
-  ['Mốc TT 99/2025 trên dòng thời gian', ['Bài, mục 1.2; mốc 2025 theo mục 3.3 và Kết luận', 'Thông tư 99/2025/TT-BTC']],
+  ['Mốc TT 99/2025 trên dòng thời gian', ['Mốc thời gian các thông tư', 'Thông tư 99/2025/TT-BTC', 'Bài, mục 3.3']],
   ['2.1.1 + Bảng 2.1', ['2.1.1', '45/QĐ-HĐQT', '05/03/2013', 'con dấu', 'tài khoản tiền gửi riêng', 'Khu công nghiệp Trà Nóc', 'Ban không hoạt động như một doanh nghiệp sản xuất kinh doanh', 'Bảng 2.1', 'Chủ thể lập báo cáo', 'Chế độ kế toán áp dụng', 'Kỳ báo cáo, ngày lập', 'Bộ báo cáo', 'Hoạt động chính', 'Tổng tài sản cuối kỳ']],
-  ['2.1.2 bộ BCTC, số liệu, Bảng 2.2, nhận xét', ['2.1.2', 'B01-CĐT', 'B02-CĐT', 'B03-CĐT', 'B04-CĐT', 'F02-CĐT', 'F03A-CĐT', 'F03B-CĐT', 'F03C-CĐT', 'F03D-CĐT', '191,32', '186,743', '4,582', 'Bảng 2.2', 'Vì sao khác:', 'hình ảnh của một dự án đang thi công']],
+  ['2.1.2 bộ BCTC, số liệu, Bảng 2.2, nhận xét', ['2.1.2', 'B01-CĐT', 'B02-CĐT', 'B03-CĐT', 'B04-CĐT', 'F02-CĐT', 'F03A-CĐT', 'F03B-CĐT', 'F03C-CĐT', 'F03D-CĐT', '191,325', '186,743', '4,582', 'Bảng 2.2', 'Vì sao khác:', 'hình ảnh của một dự án đang thi công']],
   ['2.2 mở đầu', ['B01-CĐT vẫn là một bảng cân đối đúng nghĩa', '199,46', 'TK 3361 thuộc đầu 3']],
   ['2.2.1 cơ cấu chung', ['2.2.1', 'Cơ cấu chung', 'Tài sản dài hạn', 'Khoản mục lớn nhất', 'Phần nguồn vốn còn lại']],
   ['2.2.2 chín khoản mục + hình', ['2.2.2', 'Tiền (mã 110)', 'Đầu tư tài chính (mã 120)', 'Phải thu khách hàng (mã 131)', 'Phải thu khác (mã 138)', 'Dự phòng phải thu khó đòi', 'Thuế GTGT được khấu trừ', 'Chi phí trả trước ngắn hạn', 'Trả trước cho người bán', 'Hàng tồn kho (mã 140)', 'Hình 2.1', 'Hình 2.2', 'Hình 2.3']],
@@ -31,17 +30,17 @@ const CHECKLIST = [
   ['2.2.4 TK đầu 3 + 3 lý do + hình', ['2.2.4', 'Phải trả người bán (TK 331)', 'Thuế và các khoản phải nộp Nhà nước', 'Phải trả người lao động', 'Chi phí phải trả', 'Phải trả nội bộ (TK 336)', 'Phải trả khác (TK 338)', 'Quỹ khen thưởng, phúc lợi', 'Vay ngắn hạn, dài hạn', 'Nguồn vốn đầu tư (TK 3361, mã 410)', 'không phải là vốn chủ sở hữu, vì ba lý do', 'Hình 2.6', 'Hình 2.7']],
   ['2.2.5 TK đầu 4', ['2.2.5', 'Vốn đầu tư của chủ sở hữu (TK 411)', 'Thặng dư vốn cổ phần', 'Quỹ đầu tư phát triển (TK 418)', 'đầu 4 của BQLDA hoàn toàn trống', 'chỉ giảm khi quyết toán, bàn giao']],
   ['2.2.6 TK đầu 5–9', ['2.2.6', 'Bảng cân đối chỉ ghi số dư', 'Đầu 5: Doanh thu', 'Đầu 6: Chi phí', 'Đầu 7: Thu nhập khác', 'Đầu 8: Chi phí khác', 'Đầu 9: Xác định kết quả', 'TK 642 có cùng số hiệu nhưng đi hai đường khác nhau', 'TK 3362']],
-  ['2.2.7 ngoài bảng', ['2.2.7', 'Ngoại tệ các loại (mã 007)', 'Tài sản nhận giữ hộ (mã 002)', 'Nguyên nhân là mẫu biểu']],
+  ['2.2.7 ngoài bảng', ['2.2.7', 'Ngoại tệ các loại (mã 007)', 'Tài sản nhận giữ hộ (mã 002)', 'mẫu B01-DN/HN (hợp nhất) không có dòng này']],
   ['2.3.1 đối chiếu + Hình 2.8 + nhận xét', ['2.3.1', 'Tăng trong năm', 'Giảm trong năm', 'Chuyển trong nội bộ vốn', 'Cổ tức bằng cổ phiếu', 'hoàn nhập quỹ đầu tư phát triển', 'Số dư cuối năm', 'Hình 2.8', 'không cùng bản chất kinh tế']],
   ['2.3.2 chín dòng + Tóm lại', ['2.3.2', 'Số khoản được theo dõi', 'Nguyên nhân tăng', 'Nguyên nhân giảm', 'Hình thức vốn', 'Phân loại theo nguồn', 'Dòng tiền liên quan đến vốn', 'Tổng mức và tiến độ', 'Xác nhận số dư', 'Đối chiếu chéo giữa các báo cáo', 'Tóm lại']],
   ['2.4.1 B03 vs KQHĐKD', ['2.4.1', 'đích đến của chi phí', 'Doanh thu', 'Giá vốn', 'Chi phí xây dựng, thiết bị, tư vấn, bồi thường', 'Chi phí bán hàng', 'Hoạt động tài chính', 'Chi phí khác', 'Thuế thu nhập doanh nghiệp', 'Chỉ tiêu cuối cùng', '23,6', '76,4', '100%', '0%']],
   ['2.4.2 F03A', ['2.4.2', 'Nhà xưởng chế biến chính', 'Kho lạnh và kho thành phẩm', 'Hệ thống xử lý nước thải', 'Hạ tầng kỹ thuật', 'Nhà điều hành và công trình phụ trợ', 'Chi phí chung toàn dự án', 'Nhà bảo vệ, hàng rào, cổng', 'Trong đó cuối năm', 'Đơn vị theo dõi', 'Trạng thái hoàn thành', 'nhu cầu quản trị']],
-  ['2.5 F03B tám dòng', ['2.5', 'Cùng sự kiện “công trình hoàn thành” nhưng kết cục khác hẳn', 'Tập hợp chi phí', 'Căn cứ chuyển khỏi TK 241', 'Giá trị chuyển', 'Bút toán', 'Tác động lên báo cáo', 'Sau khi hoàn thành', 'Chi phí quản lý dự án', 'Khoản không được duyệt, xóa sổ', 'Điểm quyết định thời điểm ghi giảm TK 241']],
+  ['2.5 F03B tám dòng', ['2.5', 'Cùng sự kiện “công trình hoàn thành” nhưng kết cục khác hẳn', 'Tập hợp chi phí', 'Căn cứ chuyển khỏi TK 241', 'Giá trị chuyển', 'Bút toán', 'Tác động lên báo cáo', 'Sau khi hoàn thành', 'Chi phí quản lý dự án', 'Khoản không được duyệt, xóa sổ', 'Quyết định phê duyệt quyết toán số']],
   ['3.1 Bảng 3.1 + 2 đoạn', ['3.1', 'Bảng 3.1', 'Quản trị chi phí (TK 241)', 'Quản lý nguồn vốn (TK 336)', 'Phân bổ chi phí BQLDA (TK 642)', 'ĐIỂM NỔI BẬT', 'ĐIỂM HẠN CHẾ']],
-  ['3.2 Bảng 3.2 + 2 khác biệt + Đính chính', ['3.2', 'Bảng 3.2', 'Cơ cấu tài sản', 'Cơ cấu nguồn vốn', 'Hiệu quả hoạt động', 'KHÁC BIỆT 1', 'KHÁC BIỆT 2', 'Đính chính so với bài']],
+  ['3.2 Bảng 3.2 (3 hàng) + 2 khác biệt', ['3.2', 'Bảng 3.2', 'Cơ cấu tài sản', 'Cơ cấu nguồn vốn', 'Hiệu quả hoạt động', 'KHÁC BIỆT 1', 'KHÁC BIỆT 2']],
   ['3.3 kiến nghị', ['3.3', 'ĐỐI VỚI NGƯỜI LÀM KẾ TOÁN VÀ NGƯỜI ĐỌC BÁO CÁO TÀI CHÍNH', 'ĐỐI VỚI CƠ QUAN QUẢN LÝ NHÀ NƯỚC', 'Thông tư 99/2025/TT-BTC', 'TK 3361', 'TK 3368', 'F03A, F03B', 'chưa hoàn tất thủ tục ghi tăng tài sản cố định']],
   ['Kết luận 3 đoạn', ['Kết luận', 'chế độ kế toán luôn phản ánh đúng chức năng', 'Tài khoản 336', 'thích ứng nhanh chóng với cơ chế hạch toán hợp nhất']],
-  ['Phụ lục 3 tiêu đề', ['Phụ lục 1', 'Phụ lục 2', 'Phụ lục 3', 'xem bài đầy đủ']],
+  ['Phụ lục 2, 3 (Phụ lục 1 ẩn đến khi có nội dung)', ['Phụ lục 2: Sơ đồ luồng vốn và luồng hạch toán', 'Phụ lục 3: Bộ BCTC mẫu đầy đủ', 'B01-CĐT · Bảng cân đối kế toán (tr.2)', 'F03D-CĐT · Chi phí Ban QLDA (tr.12)']],
   ['Tài liệu tham khảo 6', ['Luật Kế toán số 88/2015/QH13.', 'Nghị định số 174/2016/NĐ-CP', 'Thông tư số 195/2012/TT-BTC', 'Thông tư số 200/2014/TT-BTC', 'Thông tư số 79/2019/TT-BTC', 'Thông tư số 99/2025/TT-BTC']]
 ];
 
@@ -56,6 +55,7 @@ let lostB3 = 0;
     document.querySelectorAll('details').forEach(d => { d.open = true; });
     document.querySelectorAll('.srow.closed').forEach(r => r.classList.remove('closed'));
     document.querySelectorAll('[data-model-r], [data-spoke-p]').forEach(p => { p.hidden = false; });
+    document.querySelectorAll('.dual').forEach(d => d.removeAttribute('data-view'));
   });
   const text = await page.evaluate(() => document.body.innerText.replace(/\s+/g, ' '));
   let missing = 0;
@@ -115,6 +115,44 @@ let lostB3 = 0;
   ['i-crane', 'i-factory', 'i-building', 'i-trend', '"i-target"', '#i-target"', 'hero-art', 'duo-art', 'Tóm tắt chương'].forEach(k => { if (srcAll.includes(k)) b3.out.push('mã nguồn còn ' + k); });
   console.log(`Bản 3: ${b3.viz} khung hình, ${b3.tips} điểm có tooltip; ${b3.out.length ? 'LỖI: ' + b3.out.join('; ') : 'không còn đồ họa cũ, hình đứng đầu mỗi tiểu mục, không còn Tóm tắt chương'}`);
   lostB3 = b3.out.length;
+  // Bản 4: chế độ xem bình thường (lớp trình bày + chi tiết, mỗi đối tượng một dạng mặc định), không bật rà soát
+  await page.reload();
+  await page.evaluate(() => window.__finalize());
+  const b4 = await page.evaluate(() => {
+    const out = [];
+    const body = document.body.innerText;
+    ['Nhóm bổ sung', 'theo bài', 'tính từ số liệu bài', 'Đính chính so với bài', 'hiểu lầm', 'hiện hành', 'xem bài đầy đủ', 'Sáu ống', 'Một ống', 'dấu * là số tính'].forEach(w => { if (body.includes(w)) out.push('còn chữ “' + w + '”'); });
+    // số hiệu Hình/Bảng của bài chỉ xuất hiện một lần làm nhãn đối tượng
+    const labels = [...document.querySelectorAll('.dual-cap, .stage-title, .tcap, .fig-thumb .ft-cap b')].map(e => (e.textContent.match(/^(Hình|Bảng) \d\.\d/) || [])[0]).filter(Boolean);
+    const seen = {}; labels.forEach(l => { seen[l] = (seen[l] || 0) + 1; });
+    Object.keys(seen).forEach(k => { if (seen[k] > 1) out.push(k + ' trùng ' + seen[k] + ' lần'); });
+    const want = ['Bảng 1.1', 'Bảng 1.2', 'Bảng 1.3', 'Bảng 1.4', 'Bảng 1.5', 'Bảng 2.1', 'Bảng 2.2', 'Bảng 3.1', 'Bảng 3.2', 'Hình 1.1', 'Hình 1.2', 'Hình 1.3', 'Hình 1.4', 'Hình 2.1', 'Hình 2.2', 'Hình 2.3', 'Hình 2.4', 'Hình 2.5', 'Hình 2.6', 'Hình 2.7', 'Hình 2.8'];
+    want.forEach(w => { if (!seen[w]) out.push('thiếu nhãn ' + w); });
+    document.querySelectorAll('.viz-title').forEach(t => { if (!/^Minh họa [0-9A-Z]+-[A-Z]\./.test(t.textContent.trim()) || !/\(minh họa\)$/.test(t.textContent.trim())) out.push('hình tự vẽ thiếu mã/chú thích: ' + t.textContent.slice(0, 40)); });
+    if (/Hình 2\.8 trực quan|Bảng 2\.2 trực quan/.test(body)) out.push('còn nhãn “trực quan” mượn số');
+    // mỗi tiểu mục: đúng 1 hình chính + 3 ý chính
+    document.querySelectorAll('.lp').forEach(lp => {
+      const n = lp.querySelectorAll(':scope > .viz, :scope > .dual, :scope > .stage').length;
+      if (n !== 1) out.push(lp.parentElement.id + ': lớp trình bày có ' + n + ' hình');
+      const k = lp.querySelectorAll('.keys li').length;
+      if (k !== 3) out.push(lp.parentElement.id + ': ' + k + ' ý chính');
+    });
+    const thumbs = document.querySelectorAll('.fig-thumb').length;
+    if (thumbs !== 8) out.push('ảnh Hình 2.x: ' + thumbs + '/8');
+    const scans = document.querySelectorAll('[data-scan]').length;
+    const links = document.querySelectorAll('.src-link').length;
+    const pages = document.querySelectorAll('#pgal .pg').length;
+    if (pages !== 12) out.push('Phụ lục 3: ' + pages + '/12 trang');
+    const broken = [...document.images].filter(i => !i.complete || !i.naturalWidth).map(i => i.getAttribute('alt') || i.src.slice(0, 40));
+    if (broken.length) out.push('ảnh lỗi: ' + broken.join('; '));
+    if (!document.querySelector('.hero-logo') || !/Giảng viên:/.test(body)) out.push('bìa thiếu logo hoặc dòng Giảng viên');
+    if (/61,3/.test(document.getElementById('m-kl').innerText)) out.push('Kết luận còn 61,3%');
+    return { out, thumbs, scans, links, pages };
+  });
+  console.log(`Bản 4: ${b4.thumbs} ảnh Hình 2.x, ${b4.scans} hình scan Hình 1.x, ${b4.links} chip mở được trang scan, ${b4.pages} trang Phụ lục 3; ${b4.out.length ? 'LỖI: ' + b4.out.join('; ') : 'đạt'}`);
+  lostB3 += b4.out.length;
+  const md = fs.readFileSync(path.join(__dirname, '../content/phan_mo_dau.md'), 'utf8');
+  ['## 1. Lý do chọn đề tài', '## 2. Mục tiêu, đối tượng và phạm vi nghiên cứu', '## 3. Phương pháp nghiên cứu'].forEach(h => { if (!md.includes(h)) { console.log('content/phan_mo_dau.md thiếu ' + h); lostB3++; } });
   await browser.close();
   console.log(missing || sides.bad.length || lost.length || lostB3 ? `\n${missing} mục thiếu` : '\nĐủ mọi mục trong bảng đối chiếu.');
   process.exit(missing || sides.bad.length || lost.length || lostB3 ? 1 : 0);

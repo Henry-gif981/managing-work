@@ -10,9 +10,12 @@ const get = p => p.split('.').reduce((o, k) => (o == null ? undefined : o[k]), D
 function expected(p, d, s, abs) {
   let v = get(p);
   if (abs) v = Math.abs(v);
-  if (d == null) d = p.startsWith('hp.') || /pct|tyLe|ratio/i.test(p) ? 1 : 3;
   if (s === 'dong') s = 'none';
   if (!s) s = p.startsWith('bq.') && Number.isInteger(v) && Math.abs(v) >= 1e6 ? 'ty' : 'none';
+  // Quy ước làm tròn toàn trang (data.js → fmt)
+  if (s === 'ty') d = D.fmt.bqDec;
+  else if (/(^|\.)(pct|tyLe)|Pct$|ratio|Ratio/.test(p)) d = D.fmt.pctDec;
+  else if (d == null) d = p.startsWith('hp.') ? 1 : 3;
   let n;
   if (s === 'ty' || s === 'trieu') {
     const div = 10n ** BigInt((s === 'ty' ? 9 : 6) - d);

@@ -53,7 +53,10 @@
     return "none";
   }
 
-  function decimalsOf(el, path) {
+  // Quy ước làm tròn toàn trang (data.js → fmt): số BQLDA theo tỷ đồng luôn bqDec chữ số, mọi tỷ lệ % pctDec chữ số.
+  function decimalsOf(el, path, scale) {
+    if (scale === "ty") return D.fmt.bqDec;
+    if (/(^|\.)(pct|tyLe)|Pct$|ratio|Ratio/.test(path)) return D.fmt.pctDec;
     var d = el.getAttribute("data-d");
     if (d !== null) return parseInt(d, 10);
     return path.indexOf("hp.") === 0 || /pct|tyLe|ratio/i.test(path) ? 1 : 3;
@@ -67,13 +70,16 @@
       console.warn("Thiếu số liệu:", path);
       return null;
     }
-    return { v: v, d: decimalsOf(el, path), s: scaleOf(el, path, v) };
+    var sc = scaleOf(el, path, v);
+    return { v: v, d: decimalsOf(el, path, sc), s: sc };
   }
 
   function fillNumbers(scope) {
     (scope || doc).querySelectorAll("[data-v]").forEach(function (el) {
       var sp = spec(el);
       if (sp) el.textContent = fmt(sp.v, sp.d, sp.s);
+      var p = el.getAttribute("data-v");
+      if (/^(calc|tAcc)\./.test(p)) el.classList.add("calcv");
     });
     (scope || doc).querySelectorAll("[data-t]").forEach(function (el) {
       var t = get(el.getAttribute("data-t"));
@@ -133,7 +139,7 @@
     var toc = doc.getElementById("toc");
     chapters.forEach(function (s) {
       toc.appendChild(h("h4", null, s.dataset.no + " · " + s.dataset.title));
-      s.querySelectorAll(".sub").forEach(function (sub) {
+      s.querySelectorAll(".sub:not([hidden])").forEach(function (sub) {
         var no = sub.dataset.sub || "";
         toc.appendChild(h("a", { href: "#" + sub.id, "data-for": sub.id }, "<b>" + no + "</b><span>" + sub.dataset.subtitle + "</span>"));
       });
@@ -173,7 +179,8 @@
   }
 
   function chipClass(src) {
-    if (/Hòa Phát|theo bài/.test(src)) return "src hp";
+    if (/^Bài/.test(src)) return "src bai";
+    if (/^Hòa Phát/.test(src)) return "src hp";
     return "src";
   }
 
@@ -181,7 +188,8 @@
   function tagHtml(k) { var t = TAGS[k]; return t ? '<span class="tagc ' + t[0] + '">' + t[1] + "</span>" : ""; }
   function card(side, c) {
     var label = '<svg class="ic" aria-hidden="true"><use href="#' + (side === "bq" ? "i-pipe" : "i-loop") + '"/></svg>' + (side === "bq" ? "BQLDA" : "Doanh nghiệp");
-    var src = c.s ? '<span class="' + (side === "dn" && !/^(B0|F0)/.test(c.s) ? "src hp" : chipClass(c.s)) + '">' + c.s + "</span>" : "";
+    var s0 = c.s || (side === "dn" && card.sec && /\{hp\./.test((c.m || "") + (c.d || "")) ? "Bài, mục " + card.sec : "");
+    var src = s0 ? '<span class="' + (side === "dn" && !/^(B0|F0|Bài)/.test(s0) ? "src hp" : chipClass(s0)) + '">' + s0 + "</span>" : "";
     if (c.none != null) {
       return '<div class="scard ' + side + ' none"><span class="side">' + label + "</span>" + src +
         '<div class="m">' + tagHtml(c.tag || "kh") + "</div>" + (c.none ? '<p class="d">' + tpl(c.none) + "</p>" : "") + "</div>";
@@ -204,21 +212,21 @@
         return;
       }
       var sub = el.closest(".sub");
-      var dupTitle = sub && sub.dataset.sub && st.title.indexOf(sub.dataset.sub + ".") === 0;
-      var html = (dupTitle ? "" : '<p class="stage-title">' + st.title + "</p>") + (st.note ? '<p class="stage-note">' + st.note + "</p>" : "");
+      card.sec = sub && sub.dataset.sub;
+      var dupTitle = (sub && sub.dataset.sub && st.title.indexOf(sub.dataset.sub + ".") === 0) || el.closest(".dual");
+      // Tiêu đề, thanh "so với" và hàng đầu tiên nằm chung một khối không tách trang khi in (không để tiêu đề mồ côi)
+      var html = '<div class="stg-keep">' + (dupTitle ? "" : '<p class="stage-title">' + st.title + "</p>") + (st.note ? '<p class="stage-note">' + st.note + "</p>" : "");
       html += stageHead(st);
-      if (st.rows.length > 1) html += '<div class="stage-tools"><button type="button" class="btn-more" aria-pressed="false">Mở tất cả chi tiết</button></div>';
       if (st.intro) html += '<p class="why-band intro" style="margin:12px 12px 0">' + tpl(st.intro) + "</p>";
-      html += '<div class="srows">';
-      st.rows.forEach(function (r) {
-        var hasD = (r.bq.m && r.bq.d) || (r.dn.m && r.dn.d) || r.bq.none || r.dn.none;
-        html += '<div class="srow' + (hasD ? " closed" : "") + '"><div class="srow-k">' + (hasD ? '<button type="button" class="row-t" aria-expanded="false">' + tpl(r.k) + '<i aria-hidden="true"></i></button>' : tpl(r.k)) + "</div>" + card("bq", r.bq) + card("dn", r.dn) + "</div>";
+      var rowHtml = st.rows.map(function (r) {
+        return '<div class="srow"><div class="srow-k">' + tpl(r.k) + "</div>" + card("bq", r.bq) + card("dn", r.dn) + "</div>";
       });
-      html += "</div>";
+      html += '<div class="srows">' + rowHtml[0] + "</div></div>";
+      if (rowHtml.length > 1) html += '<div class="srows srows-rest">' + rowHtml.slice(1).join("") + "</div>";
       if (st.why) html += '<div class="why-band"><b>Vì sao khác:</b> ' + tpl(st.why) + "</div>";
       if (st.figs) {
         html += '<div class="fig-row">' + st.figs.map(function (f, i) {
-          return '<button type="button" class="btn-src" data-fig="' + st.id + ":" + i + '">' + f.n + ": xem báo cáo gốc</button>";
+          return '<button type="button" class="fig-thumb" data-fig="' + st.id + ":" + i + '"><span class="ft-imgs"><img src="' + f.bq + '" alt=""><img src="' + f.dn + '" alt=""></span><span class="ft-cap"><b>' + f.n + ".</b> " + f.t + "</span></button>";
         }).join("") + "</div>";
       }
       el.innerHTML = html;
@@ -247,15 +255,7 @@
     ], 90, " ngày");
   }
 
-  function buildB22() {
-    butterfly(doc.querySelector("#chartB22 .bfly"), [
-      { k: "Tài sản ngắn hạn", bq: [{ p: "bq.b01.pct.tsnh", d: 1 }], dn: [{ p: "hp.pct.tsnh", d: 1 }] },
-      { k: "Tài sản dài hạn", bq: [{ p: "bq.b01.pct.tsdh", d: 1 }], dn: [{ p: "hp.pct.tsdh", d: 1 }] },
-      { k: "Trong đó: XDCB dở dang", bq: [{ p: "bq.b01.pct.tk241", d: 1 }], dn: [{ p: "hp.pct.xdcb", d: 1 }] },
-      { k: "Nợ phải trả", bq: [{ p: "bq.b01.pct.no", d: 1 }], dn: [{ p: "hp.pct.no", d: 1 }] },
-      { k: "Nguồn vốn đầu tư / Vốn chủ sở hữu", bq: [{ p: "bq.b01.pct.nvdt", d: 1 }], dn: [{ p: "hp.pct.vcsh", d: 1 }] }
-    ], 100, "%");
-  }
+
 
 
 
@@ -311,17 +311,47 @@
   }
 
   /* ---------- Lightbox: ảnh báo cáo gốc ---------- */
-  var GALLERY = {
-    b01: [["assets/bctc-b01.jpg", "B01-CĐT · Bảng cân đối kế toán (tr.2)"]],
-    b02: [["assets/bctc-b02.jpg", "B02-CĐT · Nguồn vốn đầu tư (tr.3)"]],
-    b03: [["assets/bctc-b03.jpg", "B03-CĐT · Thực hiện đầu tư xây dựng (tr.4)"]],
-    b04: [["assets/bctc-b04-1.jpg", "B04-CĐT · Thuyết minh (tr.5)"], ["assets/bctc-b04-2.jpg", "B04-CĐT · Thuyết minh (tr.6)"], ["assets/bctc-b04-3.jpg", "B04-CĐT · Thuyết minh (tr.7)"]],
-    f02: [["assets/bctc-f02.jpg", "F02-CĐT · Chi tiết nguồn vốn đầu tư (tr.8)"]],
-    f03a: [["assets/bctc-f03a.jpg", "F03A-CĐT · Thực hiện đầu tư theo hạng mục (tr.9)"]],
-    f03b: [["assets/bctc-f03b.jpg", "F03B-CĐT · Quyết toán công trình hoàn thành (tr.10)"]],
-    f03c: [["assets/bctc-f03c.jpg", "F03C-CĐT · Chi phí khác (tr.11)"]],
-    f03d: [["assets/bctc-f03d.jpg", "F03D-CĐT · Chi phí Ban QLDA (tr.12)"]]
-  };
+  // BCTC BQLDA: 12 trang scan (bctc_bqlda.pdf), dùng cho chip nguồn, nút "Xem bản gốc" và Phụ lục 3
+  var PAGE_IMG = ["assets/bctc-p01.webp", "assets/bctc-p02.webp", "assets/bctc-p03.webp", "assets/bctc-p04.webp", "assets/bctc-p05.webp", "assets/bctc-p06.webp",
+    "assets/bctc-p07.webp", "assets/bctc-p08.webp", "assets/bctc-p09.webp", "assets/bctc-p10.webp", "assets/bctc-p11.webp", "assets/bctc-p12.webp"];
+  var PAGES = [
+    "Trang 1 · Danh mục báo cáo", "B01-CĐT · Bảng cân đối kế toán (tr.2)", "B02-CĐT · Nguồn vốn đầu tư (tr.3)", "B03-CĐT · Thực hiện đầu tư xây dựng (tr.4)",
+    "B04-CĐT · Thuyết minh (tr.5)", "B04-CĐT · Thuyết minh (tr.6)", "B04-CĐT · Thuyết minh (tr.7)", "F02-CĐT · Chi tiết nguồn vốn đầu tư (tr.8)",
+    "F03A-CĐT · Thực hiện đầu tư theo hạng mục (tr.9)", "F03B-CĐT · Quyết toán công trình hoàn thành (tr.10)", "F03C-CĐT · Chi phí khác (tr.11)", "F03D-CĐT · Chi phí Ban QLDA (tr.12)"
+  ].map(function (t, i) { return { title: "BCTC BQLDA Đồng Bằng 2015: " + t, bq: PAGE_IMG[i], capBq: t }; });
+  var FORM_PAGE = { b01: 2, b02: 3, b03: 4, b04: 5, f02: 8, f03a: 9, f03b: 10, f03c: 11, f03d: 12 };
+  // Chip "B04 V.06 tr.6", "F03D mã 21, 22 tr.12", "tr.1"… → số trang; không xác định được thì trả 0
+  function chipPage(txt) {
+    var m = txt.match(/tr\.\s?(\d+)/);
+    if (m && +m[1] >= 1 && +m[1] <= 12) return +m[1];
+    var f = txt.match(/\b(B0[1-4]|F02|F03[A-D])\b/);
+    if (!f) return 0;
+    var k = f[1].toLowerCase();
+    if (k === "b04") {
+      if (/\bV\.(0[3-9]|10|11)\b/.test(txt)) return 6;
+      if (/\bV\.12\b|\bVI\./.test(txt)) return 7;
+    }
+    return FORM_PAGE[k] || 0;
+  }
+  function initChips() {
+    doc.querySelectorAll(".src:not(.hp):not(.bai)").forEach(function (c) {
+      if (c.closest(".tip-src")) return;
+      var p = chipPage(c.textContent);
+      if (!p) return;
+      c.classList.add("src-link");
+      c.setAttribute("role", "button");
+      c.setAttribute("tabindex", "0");
+      c.setAttribute("data-page", p);
+      c.setAttribute("title", "Mở trang " + p + " của BCTC BQLDA");
+    });
+  }
+  function buildPgal() {
+    var g = doc.getElementById("pgal");
+    if (!g) return;
+    g.innerHTML = PAGES.map(function (p, i) {
+      return '<button type="button" class="pg" data-page="' + (i + 1) + '"><img src="' + p.bq + '" alt="' + p.capBq + '"><span>' + p.capBq + "</span></button>";
+    }).join("");
+  }
   var lbState = { list: [], i: 0, opener: null };
 
   function lbShow() {
@@ -349,17 +379,26 @@
     doc.addEventListener("click", function (e) {
       var f = e.target.closest("[data-fig]");
       var g = e.target.closest("[data-gallery]");
-      if (f) {
+      var pg = e.target.closest("[data-page]");
+      var sc = e.target.closest("[data-scan]");
+      if (pg) {
+        lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg);
+      } else if (sc) {
+        var cap = sc.closest(".dual").querySelector(".dual-cap").textContent;
+        lbOpen([{ title: cap + " (hình trong bài)", bq: sc.querySelector("img").getAttribute("src"), capBq: cap }], 0, sc);
+      } else if (f) {
         var parts = f.getAttribute("data-fig").split(":");
         var figs = window.CONTENT[parts[0]].figs;
         lbOpen(figs.map(function (x) {
           return { title: x.n + ". " + x.t, bq: x.bq, dn: x.dn, capBq: "BQLDA Đồng Bằng 2015 (trái)", capDn: "Hòa Phát 2024 (phải)" };
         }), +parts[1], f);
       } else if (g) {
-        lbOpen(GALLERY[g.getAttribute("data-gallery")].map(function (x) {
-          return { title: "Bản gốc BCTC BQLDA: " + x[1], bq: x[0], capBq: x[1] };
-        }), 0, g);
+        lbOpen(PAGES, FORM_PAGE[g.getAttribute("data-gallery")] - 1, g);
       }
+    });
+    doc.addEventListener("keydown", function (e) {
+      var pg = e.target.closest && e.target.closest(".src-link");
+      if (pg && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg); }
     });
     function step(d) {
       lbState.i = (lbState.i + d + lbState.list.length) % lbState.list.length;
@@ -622,6 +661,8 @@
         kids.forEach(function (k) {
           var isHead = k.classList.contains("sub-head") || k.classList.contains("part-head");
           if (isHead) return;
+          // Trình chiếu chỉ có lớp trình bày: lớp chi tiết bị ẩn, lớp trình bày ở cùng màn với tiêu đề (thu nhỏ nếu cần)
+          if (k.classList.contains("ld") || k.classList.contains("lp")) return;
           if (box !== sub) move(k, box);
           if (k.classList.contains("stage")) {
             var rows = Array.prototype.slice.call(k.querySelectorAll(":scope > .srows > .srow"));
@@ -748,6 +789,7 @@
       unbuildPages();
     }
     doc.getElementById("btnPresent").setAttribute("aria-pressed", String(on));
+    doc.getElementById("btnRead").setAttribute("aria-pressed", String(!on));
     fitPanels();
     // Font web tải xong sau thì chữ đổi kích thước: phân trang lại một lần nữa.
     if (on && doc.fonts && doc.fonts.status !== "loaded") doc.fonts.ready.then(onResize);
@@ -832,76 +874,139 @@
     }
   }
 
-  /* ---------------- Lớp chi tiết thứ hai ---------------- */
+  /* ---------------- Hai lớp, khối hai dạng, ba ý chính ---------------- */
 
-  function setRow(row, open) {
-    row.classList.toggle("closed", !open);
-    var b = row.querySelector(".row-t");
-    if (b) b.setAttribute("aria-expanded", String(open));
-  }
-  function stageRows(btn) {
-    var st = btn.closest(".stage");
-    var id = st.getAttribute("data-stage") || st.getAttribute("data-of");
-    var all = doc.querySelectorAll('.stage[data-stage="' + id + '"] .srow, .stage[data-of="' + id + '"] .srow');
-    return all.length ? all : st.querySelectorAll(".srow");
-  }
-  function initLayers() {
-    doc.addEventListener("click", function (e) {
-      var rt = e.target.closest(".row-t");
-      if (rt) {
-        var row = rt.closest(".srow");
-        setRow(row, row.classList.contains("closed"));
-        if (present) fitPanels();
-        return;
-      }
-      var bm = e.target.closest(".btn-more");
-      if (bm) {
-        var open = bm.getAttribute("aria-pressed") !== "true";
-        bm.setAttribute("aria-pressed", String(open));
-        bm.textContent = open ? "Thu gọn chi tiết" : "Mở tất cả chi tiết";
-        stageRows(bm).forEach(function (r) { if (r.querySelector(".row-t")) setRow(r, open); });
-        if (present) fitPanels();
-      }
+  // Ba ý chính của lớp trình bày (content.js → KEYS)
+  function renderKeys() {
+    doc.querySelectorAll("ul.keys[data-keys]").forEach(function (ul) {
+      var k = window.KEYS[ul.getAttribute("data-keys")];
+      if (!k) { console.warn("Thiếu ý chính:", ul.getAttribute("data-keys")); return; }
+      ul.innerHTML = k.map(function (t) { return "<li>" + tpl(t) + "</li>"; }).join("");
     });
-    doc.addEventListener("toggle", function (e) {
-      if (present && e.target.tagName === "DETAILS") fitPanels();
-    }, true);
+  }
+
+  // Khối một đối tượng, hai (ba) dạng hiển thị: chỉ một dạng hiện, dạng kia sau nút chuyển
+  function setDual(f, key) {
+    f.setAttribute("data-view", key);
+    f.querySelectorAll(".dual-seg button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-dv") === key)); });
+  }
+  function initDual() {
+    doc.querySelectorAll(".dual").forEach(function (f) {
+      f.querySelectorAll(".dv").forEach(function (d) { d.removeAttribute("hidden"); });
+      setDual(f, f.querySelector(".dv").getAttribute("data-dv"));
+    });
+    doc.addEventListener("click", function (e) {
+      var b = e.target.closest(".dual-seg button");
+      if (!b) return;
+      setDual(b.closest(".dual"), b.getAttribute("data-dv"));
+      if (present) fitPanels();
+    });
+  }
+
+  // Hình web tự vẽ: mã "Minh họa x-A" theo chương và chú thích "(minh họa)"; không mượn số hình của bài
+  function numberFigs() {
+    var count = {};
+    doc.querySelectorAll(".viz-title").forEach(function (t) {
+      var ch = t.closest(".chapter");
+      var no = ch ? ch.dataset.no : "0";
+      var code = no === "04" ? "KL" : String(parseInt(no, 10) || 0);
+      if (t.closest("#m-pl")) code = "PL";
+      count[code] = (count[code] || 0) + 1;
+      var tag = code + "-" + String.fromCharCode(64 + count[code]);
+      t.insertAdjacentHTML("afterbegin", '<span class="mh">Minh họa ' + tag + ".</span> ");
+      t.insertAdjacentHTML("beforeend", ' <span class="mh-note">(minh họa)</span>');
+    });
+  }
+
+  // Nội dung nhóm tự viết (content/*.md → js/md.js): chỉ hiện mục có nội dung
+  function fillMD() {
+    var MD = window.MD || {};
+    var md = doc.getElementById("moDau");
+    if (md) {
+      var secs = (MD.phan_mo_dau || []).filter(function (x) { return x.html && x.html.trim(); });
+      md.innerHTML = secs.map(function (x) { return '<div class="card"><span class="tag">' + x.h + "</span>" + x.html + "</div>"; }).join("");
+      if (!secs.length) md.closest(".sub").hidden = true;
+    }
+    var p1 = doc.getElementById("pl1");
+    if (p1) {
+      var s1 = (MD.phu_luc_1 || []).filter(function (x) { return x.html && x.html.trim(); });
+      if (s1.length) {
+        p1.hidden = false;
+        p1.querySelector(".pl-body").innerHTML = s1.map(function (x) { return "<h5>" + x.h + "</h5>" + x.html; }).join("");
+      }
+    }
+  }
+
+  // Chế độ đọc: "Đọc đầy đủ" (cả hai lớp) và "Trình chiếu" (chỉ lớp trình bày, phân màn 16:9)
+  function initModes() {
+    doc.getElementById("btnRead").addEventListener("click", function () { setPresent(false); });
+  }
+
+  // Chế độ rà soát: phím R hoặc ?review=1. Người xem bình thường không thấy gì.
+  var reviewOn = false;
+  function buildReview() {
+    var R = window.REVIEW || { calc: {}, notes: [] };
+    var groups = {};
+    R.notes.forEach(function (n) { (groups[n.g] = groups[n.g] || []).push(n.t); });
+    var chips = {};
+    doc.querySelectorAll(".src").forEach(function (c) { if (!c.closest(".tip-src, #reviewPanel")) chips[c.textContent.trim()] = c.classList.contains("src-link") ? "mở được trang scan" : c.classList.contains("hp") ? "BCTC Hòa Phát (không có scan)" : c.classList.contains("bai") ? "trỏ về bài" : "nhãn chữ"; });
+    var html = '<div class="rv-head"><b>Chế độ rà soát</b><span>Phím R để tắt</span></div>';
+    Object.keys(groups).forEach(function (g) { html += "<h4>" + g + "</h4><ul>" + groups[g].map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>"; });
+    html += "<h4>Số tính thêm (viền đứt trên trang)</h4><ul>" + Object.keys(R.calc).map(function (k) { return "<li><code>" + k + "</code>: " + R.calc[k] + "</li>"; }).join("") + "</ul>";
+    html += "<h4>Chip nguồn trên trang (" + Object.keys(chips).length + ")</h4><ul class=\"rv-chips\">" + Object.keys(chips).sort().map(function (k) { return "<li>" + k + " <em>" + chips[k] + "</em></li>"; }).join("") + "</ul>";
+    doc.getElementById("reviewPanel").innerHTML = html;
+    doc.querySelectorAll(".calcv").forEach(function (el) {
+      var p = el.getAttribute("data-v"), key = Object.keys(R.calc).filter(function (k) { return p === k || p.indexOf(k + ".") === 0; })[0];
+      if (key) el.setAttribute("data-formula", R.calc[key]);
+    });
+  }
+  function setReview(on) {
+    reviewOn = on;
+    root.classList.toggle("review", on);
+    if (on) buildReview();
+    doc.getElementById("reviewPanel").hidden = !on;
+  }
+  function initReview() {
+    if (/[?&]review=1/.test(location.search)) setReview(true);
+    doc.addEventListener("keydown", function (e) {
+      if ((e.key === "r" || e.key === "R") && !e.altKey && !e.ctrlKey && !e.metaKey && !(e.target.closest && e.target.closest("input, textarea"))) setReview(!reviewOn);
+    });
   }
 
   /* ---------------- In ---------------- */
 
   var presentBeforePrint = false;
-  var printOpened = [];
   window.addEventListener("beforeprint", function () {
-    printOpened = [];
-    doc.querySelectorAll("details:not([open])").forEach(function (d) { d.open = true; printOpened.push(d); });
-    doc.querySelectorAll(".srow.closed").forEach(function (r) { r.classList.add("print-open"); });
     finalizeAll();
     presentBeforePrint = present;
     if (present) setPresent(false);
   });
   window.addEventListener("afterprint", function () {
-    printOpened.forEach(function (d) { d.open = false; });
-    doc.querySelectorAll(".print-open").forEach(function (r) { r.classList.remove("print-open"); });
     if (presentBeforePrint) setPresent(true);
   });
 
   /* ---------------- Khởi động ---------------- */
 
   buildMembers();
+  fillMD();
   buildNav();
   renderStages();
+  renderKeys();
   window.VIZ.build();
+  numberFigs();
   buildCostBars();
   buildF03A();
   buildDeadline();
-  buildB22();
+  buildPgal();
   shortHeads();
   fillNumbers();
   fillWidths();
+  initChips();
+  initDual();
   window.__fill = function (scope) { fillNumbers(scope); };
   window.VIZ.init(reduceMotion);
-  initLayers();
+  initModes();
+  initReview();
 
   // Số đếm: trước khi vào khung nhìn hiển thị 0, rồi đếm lên.
   if (!reduceMotion && "IntersectionObserver" in window) {
@@ -915,7 +1020,7 @@
   initTabs();
   initLightbox();
 
-  doc.getElementById("btnPresent").addEventListener("click", function () { setPresent(!present); });
+  doc.getElementById("btnPresent").addEventListener("click", function () { setPresent(true); });
   doc.getElementById("btnFull").addEventListener("click", toggleFullscreen);
   doc.getElementById("btnPrint").addEventListener("click", function () {
     finalizeAll();

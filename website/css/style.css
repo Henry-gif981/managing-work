@@ -2007,7 +2007,7 @@ html.present .block {
 @media print {
   @page {
     size: A4 landscape;
-    margin: 12mm;
+    margin: 0;
   }
   body {
     background: #fff;
@@ -4910,4 +4910,701 @@ html.present .hero .g-loop {
   .b01m[data-read] .rd { display: flex !important; }
   [data-model-r][hidden],
   [data-spoke-p][hidden] { display: block !important; margin-top: 8px; }
+}
+
+/* =====================================================================
+   Bản 4: hai lớp (trình bày / chi tiết), khối hai dạng, chế độ rà soát,
+   ảnh scan, phụ lục, bìa có logo; quy tắc in
+   ===================================================================== */
+.lp {
+  display: block;
+}
+.keys {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: var(--s-4) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: k;
+}
+.keys li {
+  position: relative;
+  padding: 14px 16px 14px 48px;
+  border-radius: 14px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  font: 500 16px/1.45 var(--f-body);
+  color: var(--ink);
+}
+.keys li::before {
+  counter-increment: k;
+  content: counter(k);
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  font: 700 13px var(--f-head);
+}
+.ld {
+  margin-top: var(--s-6);
+  padding-top: var(--s-4);
+  border-top: 2px solid var(--line);
+}
+.ld-h {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 var(--s-3);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  font: 700 13px var(--f-head);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+html.present .ld {
+  display: none !important;
+}
+html.present .keys li {
+  font-size: 17px;
+}
+
+/* khối một đối tượng, nhiều dạng hiển thị */
+.dual {
+  margin: 0;
+  padding: 14px 16px 16px;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.dual-cap {
+  display: inline;
+  margin-right: 12px;
+  font: 700 16px/1.35 var(--f-head);
+  color: var(--ink);
+}
+.dual-seg {
+  float: right;
+  margin: -4px 0 10px 12px;
+}
+.dual-seg button {
+  min-height: 30px;
+  font-size: 14px;
+}
+.dv {
+  clear: both;
+  padding-top: 10px;
+}
+.dual[data-view] .dv {
+  display: none;
+}
+.dual[data-view="fig"] .dv[data-dv="fig"],
+.dual[data-view="tab"] .dv[data-dv="tab"],
+.dual[data-view="scan"] .dv[data-dv="scan"] {
+  display: block;
+}
+.dual .viz {
+  margin: 0;
+}
+.dv .stage {
+  margin-top: 0;
+}
+.scan-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  cursor: zoom-in;
+  overflow: hidden;
+}
+.scan-btn img {
+  display: block;
+  width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+}
+.scan-hint {
+  display: block;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--ink-3);
+  text-align: left;
+}
+
+/* mã hình tự vẽ */
+.viz-title .mh {
+  color: var(--ink-3);
+  font-weight: 600;
+}
+.viz-title .mh-note {
+  color: var(--ink-3);
+  font-weight: 500;
+  font-size: 14px;
+}
+.viz-sub {
+  margin: 0 0 8px;
+  font: 700 15px/1.35 var(--f-head);
+  color: var(--ink);
+}
+.calc-note {
+  color: var(--ink-3);
+}
+.viz-foot.warn {
+  color: var(--amber);
+}
+
+/* ảnh scan Hình 2.x, thu nhỏ */
+.fig-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+  padding: 12px;
+}
+.fig-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--white);
+  cursor: zoom-in;
+  text-align: left;
+  font: 500 14px/1.35 var(--f-body);
+  color: var(--ink);
+}
+.ft-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.ft-imgs img {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+.fig-thumb:focus-visible,
+.scan-btn:focus-visible,
+.pg:focus-visible,
+.src-link:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* chip nguồn BQLDA bấm được */
+.src-link {
+  cursor: pointer;
+  border-color: var(--navy);
+  color: var(--navy);
+}
+.src-link:hover {
+  background: var(--navy-50);
+}
+.src.bai::before {
+  background: var(--ink-3);
+}
+
+/* phụ lục */
+.pl {
+  margin-top: var(--s-5);
+}
+.pl-h {
+  margin: 0 0 10px;
+  font: 700 16px var(--f-head);
+}
+.pgal {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.pg {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--white);
+  cursor: zoom-in;
+  font: 500 13px/1.3 var(--f-body);
+  text-align: left;
+  color: var(--ink-2);
+}
+.pg img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px;
+}
+
+/* mốc thời gian F03B */
+.mtl {
+  position: relative;
+  height: 96px;
+  margin: 8px 24px 0;
+}
+.mtl-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 10px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--navy-100);
+}
+.mtl-m {
+  position: absolute;
+  top: 24px;
+  max-width: 40%;
+  transform: translateX(-10%);
+  font-size: 14px;
+  color: var(--ink-2);
+}
+.mtl-m i {
+  position: absolute;
+  left: 10%;
+  top: -22px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 3px solid var(--navy);
+  background: var(--white);
+}
+.mtl-m b {
+  display: block;
+  color: var(--navy);
+  font-family: var(--f-head);
+}
+.dtree-rk {
+  flex-basis: 100%;
+  font: 700 15px var(--f-head);
+}
+
+/* bìa */
+.hero-id {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: var(--s-4);
+}
+.hero-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.hero-id .hero-uni {
+  margin: 0;
+}
+.hero-gv {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 14.5px;
+}
+.hero-gv span {
+  color: var(--ink-3);
+}
+.gv-line {
+  display: inline-block;
+  min-width: 220px;
+  border-bottom: 1px solid var(--ink-3);
+  font-weight: 600;
+}
+.hero-fig-note {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--ink-3);
+  text-align: right;
+}
+
+/* thanh điều hướng: hai chế độ, ghi chú in */
+.mode-seg {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+.mode-seg .btn-ghost[aria-pressed="true"] {
+  background: var(--white);
+  color: var(--ink);
+}
+.print-hint {
+  display: none;
+  max-width: 190px;
+  font-size: 11.5px;
+  line-height: 1.25;
+  color: inherit;
+  opacity: 0.8;
+}
+@media (min-width: 1500px) {
+  .print-hint {
+    display: inline;
+  }
+}
+
+/* pill “so với” không tách chữ */
+.split-head .vs::before,
+.vs-pill,
+.tagc,
+.src,
+.pill,
+.r {
+  white-space: nowrap;
+}
+.split-head .vs {
+  min-width: 64px;
+}
+.split-head .vs::before {
+  min-width: max-content;
+  letter-spacing: normal;
+}
+
+/* Chế độ rà soát */
+.review-panel {
+  position: fixed;
+  right: 12px;
+  top: calc(var(--nav-h) + 12px);
+  bottom: 12px;
+  z-index: 250;
+  width: min(440px, 92vw);
+  overflow: auto;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: #fffbea;
+  border: 2px solid #c98a00;
+  box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.review-panel h4 {
+  margin: 12px 0 6px;
+  font: 700 14px var(--f-head);
+  color: #7a5200;
+}
+.review-panel ul {
+  margin: 0;
+  padding-left: 18px;
+}
+.review-panel li {
+  margin-bottom: 4px;
+}
+.review-panel em {
+  color: var(--ink-3);
+  font-style: normal;
+}
+.rv-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 15px;
+}
+html.review .calcv {
+  outline: 2px dashed #c98a00;
+  outline-offset: 1px;
+  cursor: help;
+}
+html.review .calcv[data-formula]:hover::after {
+  content: attr(data-formula);
+  position: absolute;
+  z-index: 260;
+  max-width: 320px;
+  margin-top: 1.4em;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #3a2a00;
+  color: #fff;
+  font: 500 12.5px/1.4 var(--f-body);
+  white-space: normal;
+}
+
+@media (max-width: 900px) {
+  .keys {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .dual-seg {
+    float: none;
+    display: flex;
+    margin: 8px 0 0;
+  }
+  .hero-logo {
+    width: 52px;
+    height: 52px;
+  }
+  .gv-line {
+    min-width: 140px;
+  }
+}
+
+/* ---------- In (bản 4): lề do nội dung tự tạo; không tiêu đề mồ côi ---------- */
+@media print {
+  body {
+    padding: 9mm 10mm;
+  }
+  .review-panel,
+  .mode-seg,
+  .print-hint,
+  .dual-seg,
+  .scan-hint,
+  .ld-h {
+    display: none !important;
+  }
+  .ld {
+    margin-top: 10px;
+    padding-top: 0;
+    border-top: 0;
+  }
+  /* mỗi đối tượng chỉ in một dạng */
+  .dual .dv {
+    display: none !important;
+  }
+  .dual[data-print="tab"] .dv[data-dv="tab"],
+  .dual[data-print="fig"] .dv[data-dv="fig"],
+  .dual[data-print="scan"] .dv[data-dv="scan"] {
+    display: block !important;
+  }
+  .scan-btn {
+    border: 0;
+  }
+  .scan-btn img {
+    max-height: 72mm;
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .fig-thumb .ft-imgs img {
+    height: 70px;
+  }
+  /* tiêu đề luôn đi cùng nội dung bên dưới */
+  .sub-head,
+  .part-head,
+  .split-head,
+  .stage-title,
+  .viz-title,
+  .viz-sub,
+  .dual-cap,
+  .pl-h,
+  .tcap,
+  .srow-k,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .split-head {
+    position: static !important;
+    box-shadow: none;
+  }
+  .srow,
+  .scard,
+  .why-band,
+  .keys li,
+  .card,
+  .stat,
+  .table-wrap,
+  tr,
+  .vsplit,
+  .gpanel,
+  .wf,
+  .tm,
+  .fl,
+  .stk-track,
+  .feat-row,
+  .scale,
+  .task,
+  .tile,
+  .br,
+  .fig-thumb,
+  .xcheck,
+  .mtl,
+  .dual,
+  .callout,
+  p {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .dual,
+  .vsplit {
+    break-inside: auto;
+  }
+  .dual-cap,
+  .vsplit > .split-head {
+    break-after: avoid;
+  }
+  .stage .srows {
+    break-before: avoid;
+  }
+  /* bìa: hai cột vừa một trang */
+  .hero .panel {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    grid-template-rows: auto 1fr;
+    gap: 10px 24px;
+    padding: 14px 18px;
+    break-inside: avoid;
+  }
+  .hero-grid {
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .hero h1 {
+    font-size: 25px;
+  }
+  .hero-stats {
+    grid-column: 1;
+    grid-row: 2;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px;
+    margin-top: 0;
+    align-self: end;
+  }
+  .hero-stats .stat {
+    padding: 10px 12px;
+  }
+  .hero-g {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 6px;
+    margin-top: 0;
+  }
+  .hero-g .vs-pill {
+    justify-self: center;
+  }
+  .hero-g .g-pipe,
+  .hero-g .g-loop {
+    max-height: 74mm;
+  }
+  .slide.chapter .panel {
+    padding: 12px 16px;
+  }
+  .keys {
+    margin-top: 8px;
+  }
+  .keys li {
+    padding: 8px 10px 8px 40px;
+    font-size: 14px;
+  }
+  .keys li::before {
+    left: 10px;
+    top: 8px;
+  }
+  .mast-rule,
+  .masthead {
+    break-after: avoid;
+  }
+}
+.dtree-r[hidden] {
+  display: none;
+}
+@media print {
+  .dtree-r[hidden] {
+    display: flex !important;
+  }
+}
+@media print {
+  .masthead {
+    display: none !important;
+  }
+  .srows {
+    gap: 2px;
+    padding: 6px 8px;
+  }
+  .srow {
+    gap: 4px 14px;
+    padding: 4px 0 6px;
+  }
+  .scard {
+    padding: 8px 10px;
+    gap: 3px;
+  }
+  .scard .m {
+    font-size: 16px;
+  }
+  .scard .d {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .srow-k {
+    font-size: 13px;
+    padding: 1px 10px;
+  }
+  .why-band {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .sub {
+    margin-top: 14px;
+  }
+  .sub-head {
+    margin-bottom: 8px;
+  }
+  .viz {
+    margin: 6px 0 8px;
+  }
+  .fig-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 6px 8px;
+  }
+}
+@media print {
+  .slide.chapter {
+    break-before: auto;
+    margin-top: 10px;
+  }
+  .dual-cap {
+    display: block;
+    margin-bottom: 6px;
+  }
+  .dual[data-print="scan"],
+  .dual[data-print="fig"],
+  .vsplit,
+  .viz > .vsplit,
+  .keys {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .sec-head {
+    break-after: avoid;
+  }
+  .g-pipe.mini,
+  .g-loop.mini {
+    max-height: 55mm;
+  }
+}
+.stg-keep .srows {
+  padding-bottom: 0;
+}
+.srows-rest {
+  padding-top: 4px;
+}
+.stg-keep .srow:only-child {
+  border-bottom: 1px dashed var(--line-2);
+}
+@media print {
+  .stg-keep,
+  .dual,
+  .viz {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }

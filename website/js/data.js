@@ -5,12 +5,18 @@
  *  - bq.*  (BQLDA Đồng Bằng 2015): ĐỒNG, chép nguyên từ BCTC scan (bctc_bqlda.pdf).
  *          Trang hiển thị theo tỷ đồng, làm tròn nửa lên trên số nguyên đồng.
  *  - hp.*  (Tập đoàn Hòa Phát hợp nhất 2024): TỶ ĐỒNG, đúng như bài (baocao.pdf).
- *          Không có BCTC Hòa Phát gốc, nên mọi chip nguồn ghi "theo bài".
+ *          Chip nguồn ghi số trang BCTC Hòa Phát theo chú dẫn của bài; chỗ bài không ghi trang thì ghi "Bài, mục x.y".
  *  - pct:  tỷ lệ % đúng như bài / BCTC (1 chữ số thập phân).
  *  - Số trang "tr." của BQLDA là số trang trong bctc_bqlda.pdf;
  *    số trang của Hòa Phát là số trang BCTC Hòa Phát mà bài trích dẫn.
  */
 window.DATA = {
+  /* QUY ƯỚC LÀM TRÒN TOÀN TRANG (bản 4, mục A7). Đổi ở đây là đổi toàn trang.
+   *  bqDec: số chữ số thập phân khi hiển thị số BQLDA theo tỷ đồng (gốc là đồng).
+   *  pctDec: số chữ số thập phân của mọi tỷ lệ %.
+   *  Số Hòa Phát giữ đúng số chữ số thập phân như bài (đặt bằng data-d ở từng chỗ). */
+  fmt: { bqDec: 3, pctDec: 1 },
+
   meta: {
     truong: "NATIONAL ECONOMICS UNIVERSITY",
     vien: "SCHOOL OF ADVANCED EDUCATION PROGRAMS",
@@ -19,6 +25,7 @@ window.DATA = {
       "Phân tích sự khác biệt về chế độ kế toán và báo cáo tài chính Ban Quản lý dự án giữa Thông tư 195/2012/TT-BTC và báo cáo tài chính Doanh nghiệp sử dụng Thông tư 200/2014/TT-BTC",
     nhom: "Nhóm 2",
     nam: 2026,
+    giangVien: "", // bài để trống dòng "Giảng viên:"; điền tên vào đây khi có
     thanhVien: [
       { ten: "Đỗ Thị Tiểu Luận", msv: "11230353" },
       { ten: "Đặng Việt Hoàng", msv: "11232291" },
@@ -188,6 +195,7 @@ window.DATA = {
     vayDH: 27080.4,
     vcsh: 114647, // bài ghi 114.647 khi làm tròn tỷ
     vcshChiTiet: 114647.5, // bài ghi 114.647,5 khi có 1 chữ số thập phân
+    vcshDauNam: 102836.4, // 1/1/2024: 102.836.419.239.379 đồng (B01 Hòa Phát tr.9, Hình 2.7 trong bài)
     lnChuaPP: 49599,
     pct: { tsnh: 38.6, tsdh: 61.4, xdcb: 28.4, tscd: 30.0, htk: 20.5, no: 48.9, vcsh: 51.1 },
 
@@ -319,7 +327,8 @@ window.DATA = {
     hpSauTaiChinh: 13267.0,   // 14.614,7 + 2.618,9 − 3.966,6
     // 2.3.1: vốn chủ sở hữu Hòa Phát đầu năm suy ngược từ cuối năm và các khoản bài nêu
     // = 114.647,5 − 12.020,0 − 233,1 + 433,1 + 6,3 + 2,6 + 0,1  (Hình 2.7 của bài in 102.836,4; lệch 0,1 do làm tròn)
-    hpVcshDauTinh: 102836.5,
+    // Chênh lệch làm tròn của thác nước vốn chủ sở hữu: 114.647,5 − (102.836,4 + 12.020,0 + 233,1 − 433,1 − 6,3 − 2,6 − 0,1)
+    hpVcshLamTron: 0.1,
     // 2.4.2: tỷ trọng từng hạng mục F03A trong số dư cuối năm 186.742.500.000
     f03aPct: [44.2, 16.2, 10.0, 8.8, 4.6, 16.2, 0],
     // 2.5: tỷ trọng cơ cấu giá trị quyết toán trong 4.582.450.000
