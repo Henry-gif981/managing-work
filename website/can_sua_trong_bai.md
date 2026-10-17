@@ -13,8 +13,8 @@ Cách đọc: mỗi mục ghi **vị trí trong bài**, **nội dung bài đang 
 | F1 | Mục 1.3.2, đoạn trước Hình 1.4 | "BQLDA có thời hạn nộp báo cáo năm ngắn hơn (30 ngày so với 90 ngày) **vì báo cáo của BQLDA là đầu vào để chủ đầu tư tổng hợp**." | Thông tư 195 chỉ quy định thời hạn, không nêu lý do này. Câu "vì…" là suy luận, chưa có căn cứ pháp lý. | Bỏ vế "vì…", hoặc dẫn văn bản nêu lý do. | Chỉ hiện các thời hạn (quý 20 ngày; năm 30 so với 90 ngày; các trường hợp riêng 45 và 30 ngày). |
 | F2 | Mục 2.2.4, dòng "Phải trả nội bộ (TK 336)" | Hòa Phát không có khoản này vì "doanh nghiệp độc lập không có 'chủ đầu tư' đứng trên". | Báo cáo của Hòa Phát là báo cáo **hợp nhất**. Phải trả nội bộ giữa công ty mẹ và công ty con nhiều khả năng đã bị loại trừ khi hợp nhất, chứ không phải vì không có quan hệ nội bộ. | Viết "Không có trên báo cáo hợp nhất (các khoản nội bộ đã được loại trừ khi hợp nhất)". Nếu dùng lý do này, nên dẫn thuyết minh về nguyên tắc hợp nhất. | "Không có trên báo cáo hợp nhất." |
 | F3 | Mục 2.2.7, câu cuối | "Nguyên nhân là mẫu biểu: Thông tư 195 buộc BQLDA báo cáo… còn mẫu B01-DN/HN không có dòng này." | Bài đang so mẫu của Thông tư 195 với mẫu **hợp nhất** B01-DN/HN. Khác biệt nằm giữa hai mẫu này. Câu hiện tại dễ bị hiểu là mọi doanh nghiệp theo Thông tư 200 đều không có chỉ tiêu ngoài bảng. | "Mẫu B01-CĐT có phần chỉ tiêu ngoài bảng; mẫu B01-DN/HN (hợp nhất) không có dòng này." | Đúng câu đề xuất bên trái. |
-| F4 | Mục 2.4.1, đoạn "Ước tính thô để thấy sự tương phản" | Khoảng 23,6% chi phí đi vào tài sản (39.906,8 tỷ vốn hóa XDCB) và 76,4% đi vào kết quả kinh doanh. | Số tăng XDCB 39.906,8 tỷ là biến động tài sản trong năm, còn giá vốn và các chi phí là chi phí trong kỳ. Hai phạm vi này chưa cùng bản chất, nên tỷ lệ không so sánh được trực tiếp với "100% / 0%" của BQLDA. | Bỏ đoạn này, hoặc ghi rõ đây là ước tính thô và giải thích hai phạm vi. | Bỏ khỏi biểu đồ chính. Chỉ còn ở lớp chi tiết, kèm chú thích "ước tính thô của bài, hai phạm vi chưa cùng bản chất". |
-| F5 | Mục 2.4.1, dòng "Doanh thu" | Doanh thu thuần 138.855,1 tỷ: bán hàng 137.852,9; dịch vụ 725,5; cho thuê đất thuê 1.826,7; cho thuê BĐS đầu tư 147,9; trừ giảm trừ 1.706,3. | Cộng các thành phần ra **138.846,7**, lệch 8,4 tỷ so với 138.855,1. | Đối chiếu lại thuyết minh 30 (tr.58) của BCTC Hòa Phát và sửa số thành phần. | Chỉ hiện tổng 138.855,1. Không dựng biểu đồ phân rã doanh thu. |
+| F4 | Mục 2.4.1, đoạn "Ước tính thô để thấy sự tương phản" | Khoảng 23,6% chi phí đi vào tài sản (39.906,8 tỷ vốn hóa XDCB) và 76,4% đi vào kết quả kinh doanh. | Số tăng XDCB 39.906,8 tỷ là biến động tài sản trong năm, còn giá vốn và các chi phí là chi phí trong kỳ. Hai phạm vi này chưa cùng bản chất, nên tỷ lệ không so sánh được trực tiếp với "100% / 0%" của BQLDA. | Bỏ đoạn này, hoặc ghi rõ đây là ước tính thô và giải thích hai phạm vi. | Đã xóa khỏi web (bản 5): không còn biểu đồ, không còn số 23,6% / 76,4% ở cả lớp trình bày và lớp chi tiết. |
+| F5 | Mục 2.4.1, dòng "Doanh thu" | Doanh thu thuần 138.855,1 tỷ: bán hàng 137.852,9; dịch vụ 725,5; cho thuê đất thuê 1.826,7; cho thuê BĐS đầu tư 147,9; trừ giảm trừ 1.706,3. | Cộng các thành phần ra **138.846,7**, lệch 8,4 tỷ so với 138.855,1. Đã đối chiếu thuyết minh 30 (tr.58, trang PDF 59): bài **thiếu dòng "Doanh thu khác" 8.351.242.751 đồng (8,4 tỷ)**. Đủ các dòng thì tổng doanh thu 140.561.387.448.572 − giảm trừ 1.706.275.317.185 = 138.855.112.131.387 đồng, khớp. | Thêm "doanh thu khác 8,4" vào danh sách thành phần. | Hiện đủ các thành phần, có "doanh thu khác 8,4" lấy từ thuyết minh 30. |
 | F6 | Mục 2.5, đoạn "Điểm quyết định thời điểm ghi giảm TK 241…" và dòng "Căn cứ chuyển khỏi TK 241" | BQLDA ghi giảm TK 241 gắn với phê duyệt quyết toán và bàn giao. | F03B ghi **bàn giao ngày 30/10/2015** nhưng **quyết định phê duyệt quyết toán số 128/QĐ-HĐQT ngày 12/11/2015**. Bài chưa chứng minh bút toán Nợ 336 / Có 241 được ghi vào ngày nào. | Nêu rõ ngày ghi bút toán theo chứng từ, hoặc chỉ nêu cả hai mốc mà không khẳng định. | Một thanh thời gian nhỏ hiện cả hai ngày như F03B, không khẳng định ngày nào là ngày ghi bút toán. |
 | F7 | Bảng 1.3, dòng Thông tư 79/2019 | "Thay phần dành cho BQLDA thuộc đơn vị HCSN của TT 195 (**xem lưu ý ở mục 1.2.4**)." | Mục 1.2.4 không có lưu ý nào về Thông tư 79/2019. | Bỏ "(xem lưu ý ở mục 1.2.4)", hoặc viết bổ sung lưu ý đó vào mục 1.2.4. | Đã bỏ phần trong ngoặc. |
 | F8 | Mục 1.1.4 (yêu cầu thứ 5) và Kết luận (đoạn 3) | "quy định quản lý đầu tư xây dựng **hiện hành**"; "hai chế độ kế toán **hiện hành**". | Thông tư 99/2025/TT-BTC thay thế cả Thông tư 195 và Thông tư 200 từ 01/01/2026. Gọi hai thông tư này là "hiện hành" trong bài năm 2026 là chưa chính xác. | Thay bằng "áp dụng cho kỳ báo cáo được phân tích (2015 và 2024)". | Đã thay đúng như đề xuất. Chỗ nhắc Thông tư 99 giữ nguyên như bài. |
@@ -24,7 +24,7 @@ Cách đọc: mỗi mục ghi **vị trí trong bài**, **nội dung bài đang 
 | # | Vị trí | Bài đang viết | Số đúng theo BCTC | Đề xuất |
 |---|---|---|---|---|
 | S1 | Mục 3.2, đoạn "Sự khác biệt đầu tiên…" | "Nợ phải trả (chủ yếu là TK 336) lên tới **188,71 tỷ đồng**" | B01-CĐT (tr.2): nợ phải trả **10,746 tỷ**. 188,717 tỷ là **nguồn vốn đầu tư** (TK 3361, mã 410, mục B), không thuộc nợ phải trả trên bảng. | Sửa thành "nợ phải trả 10,746 tỷ đồng; nguồn vốn đầu tư nhận từ chủ đầu tư (TK 3361) 188,717 tỷ đồng". |
-| S2 | Mục 2.3.1, dòng "Chuyển trong nội bộ vốn" | Cổ tức bằng cổ phiếu 5.814,6 tỷ = thặng dư 3.211,6 + LNCPP 2.603,1 | 3.211,6 + 2.603,1 = **5.814,7** | Đối chiếu thuyết minh 26 (tr.55) và thống nhất số. |
+| S2 | Mục 2.3.1 (thác nước vốn chủ sở hữu) | Liệt kê các khoản biến động vốn chủ sở hữu trong năm | Thuyết minh 26 (tr.55, trang PDF 56) còn dòng **"Biến động khác" (35.757.746 đồng)** mà bài không nêu. (Ghi chú: mục S2 cũ về cổ tức 5.814,6 là bài **đúng**: thuyết minh 26 ghi 5.814.645.000.000 = 3.211.560.416.270 + 2.603.084.583.730; lệch 0,1 chỉ do làm tròn từng thành phần.) | Bổ sung dòng "Biến động khác" hoặc ghi chú phần chênh lệch nhỏ. Web gộp vào dòng "Biến động khác và chênh lệch làm tròn". |
 | S3 | Mục 2.1.2 (Bảng 2.1, đoạn Hòa Phát) và mục 2.2 trở đi | "224,490 **nghìn tỷ** đồng", "109,842 nghìn tỷ", "114,647 nghìn tỷ" | Các mục sau ghi "224.490 tỷ", "109.842 tỷ"… (cùng số nhưng khác đơn vị và cách đặt dấu) | Thống nhất một đơn vị (tỷ đồng) trong toàn bài. Web dùng tỷ đồng. |
 
 ## 3. Làm tròn chưa thống nhất (quy ước mới của web, mục A7)
@@ -48,7 +48,7 @@ Quy ước web đang dùng: số BQLDA (gốc là đồng) hiển thị theo **t
 | 102.590.000.000 / 86.127.450.000 | 102,590 / 86,127 | 102,59 / 86,13 | Mục 2.3.2 (dòng "Phân loại theo nguồn") |
 | 2.340.000.000 / 3.200.000.000 | 2,340 / 3,200 | 2,34 / 3,2 | Mục 2.2.2 |
 | 312.000.000.000 | 312,000 | 312 | Mục 2.1.1; 2.1.2; 2.3.2; 2.4.1 |
-| Vốn chủ sở hữu Hòa Phát 1/1/2024: 102.836.419.239.379 | 102.836,4 | (Hình 2.7 in 102.836,4; không có số trong lời văn) | Mục 2.3.1. Các khoản biến động làm tròn đến 0,1 tỷ nên khi cộng có chênh lệch 0,1 tỷ. Web để dòng "Khác (chênh lệch làm tròn)". |
+| Vốn chủ sở hữu Hòa Phát 1/1/2024: 102.836.419.239.379 | 102.836,4 | (Hình 2.7 in 102.836,4; không có số trong lời văn) | Mục 2.3.1. Các khoản biến động làm tròn đến 0,1 tỷ nên khi cộng có chênh lệch 0,1 tỷ. Web để dòng "Biến động khác và chênh lệch làm tròn" (gồm dòng "Biến động khác" 35.757.746 đồng của thuyết minh 26). |
 | F02 vốn vay: 51.249.900.000 + 36.500.000.000 − 1.622.450.000 = 86.127.450.000 | 86,127 | 86,13 | Mục 2.3.2. Ba thành phần làm tròn 3 chữ số (51,250 + 36,500 − 1,622) cộng ra 86,128. Web ghi chú một lần dưới biểu đồ. |
 
 Nếu nhóm muốn giữ cách làm tròn 2 chữ số của bài, đổi `fmt.bqDec` trong `website/js/data.js` từ 3 thành 2 là toàn trang đổi theo.
@@ -65,7 +65,8 @@ Nếu nhóm muốn giữ cách làm tròn 2 chữ số của bài, đổi `fmt.b
 | N6 | Mục lục | Còn dòng "Tóm tắt chương" | Xem mục 5. |
 | N7 | Mục 2.2.3 và 2.5 | Khấu hao Hòa Phát dùng hai số: 6.915,7 (khấu hao **và phân bổ**, LCTT tr.12, tr.61) và 6.810,7 (khấu hao **TSCĐ hữu hình** trong năm, tm 11, tr.41). | Ghi rõ phạm vi ngay cạnh mỗi số. Web đã ghi nhãn phạm vi. |
 | N8 | Mục 3.2, Bảng 3.2 | Cột "Tư duy Doanh nghiệp (TT 200)" đặt trước cột BQLDA; các bảng khác trong bài đặt BQLDA trước. | Thống nhất thứ tự cột (web luôn để BQLDA bên trái). |
-| N9 | Hình 2.1–2.8 | Một số chỗ trong lời văn ghi số trang Hòa Phát, một số chỗ không (ví dụ tiền 6.887,6; quỹ đầu tư phát triển 794,8; lợi nhuận chưa phân phối 49.599; thu nhập khác 1.159,8; tổng tài sản và cơ cấu Bảng 2.2). | Bổ sung số trang BCTC Hòa Phát cho các số này. Web tạm ghi chip "Bài, mục x.y". |
+| N10 | Mục 2.2.2, dòng "Phải thu khác (mã 138)" | Mã 138 là mã trên B01-CĐT của BQLDA; trên B01 Hòa Phát, phải thu ngắn hạn khác là **mã 136** (tr.6). Các dòng khác dùng chung mã cho hai bên. | Ghi rõ mã của từng bên nếu giữ mã trong nhãn dòng. |
+| N9 | Hình 2.1–2.8 | Một số chỗ trong lời văn ghi số trang Hòa Phát, một số chỗ không (ví dụ tiền 6.887,6; quỹ đầu tư phát triển 794,8; lợi nhuận chưa phân phối 49.599; thu nhập khác 1.159,8; tổng tài sản và cơ cấu Bảng 2.2). | Bổ sung số trang BCTC Hòa Phát cho các số này. Web đã tìm trong BCTC gốc và gắn chip: tổng tài sản tr.7; tiền tr.6 (thuyết minh 5, tr.36); quỹ đầu tư phát triển và lợi nhuận chưa phân phối tr.9; thu nhập khác tr.10 (tr.60); cơ cấu Bảng 2.2 tr.6 đến tr.9. |
 
 ## 5. Việc nhóm phải tự hoàn thiện
 
@@ -75,6 +76,25 @@ Nếu nhóm muốn giữ cách làm tròn 2 chữ số của bài, đổi `fmt.b
 | H2 | **Phụ lục 1** "Bảng tổng hợp 24 điểm khác biệt trọng tâm": bài mới có tiêu đề. | Ẩn. | Tạo `website/content/phu_luc_1.md` (bảng Markdown). Web tự hiện. |
 | H3 | **Phụ lục 2** "Sơ đồ luồng vốn và luồng hạch toán": bài mới có tiêu đề. | Web dùng lại sơ đồ dòng hạch toán của Hình 1.3. | Nếu nhóm vẽ sơ đồ riêng trong bài, gửi để thay. |
 | H4 | **Phụ lục 3** "Bộ BCTC mẫu đầy đủ": bài mới có tiêu đề. | Web hiện đủ 12 trang scan BCTC BQLDA. | Chèn vào bài hoặc ghi "xem bctc_bqlda.pdf". |
-| H5 | **Tên giảng viên**: bài để trống dòng "Giảng viên:". | Hiện nhãn và đường kẻ trống. | Điền vào `meta.giangVien` trong `website/js/data.js`. |
+| H5 | **Tên giảng viên**: bài để trống dòng "Giảng viên:". | Web đã điền PGS.TS. Nguyễn La Soa (bìa và trang cảm ơn). | Điền tên vào trang bìa của bài. |
 | H6 | **Tóm tắt chương 1**: web đã bỏ từ bản 3, nhưng bài vẫn còn (cuối mục 1.3.3, và dòng "Tóm tắt chương" ở mục lục). | Không có. | Nhóm quyết định bỏ khỏi bài cho khớp với web, hoặc giữ trong bài (web không phục hồi). |
 | H7 | **Danh mục từ viết tắt**: bài mới có tiêu đề. | Web có bảng viết tắt lấy từ các chữ xuất hiện trên trang. | Chép bảng này vào bài, rà lại. |
+
+## 6. Đối chiếu số Hòa Phát với BCTC hợp nhất 2024 gốc (hpg_bctc_2024.pdf)
+
+Cách làm: OCR toàn bộ 67 trang scan, so từng số Hòa Phát đang dùng trên web (khoảng 120 số trong `data.js`, nhóm `hp`) với số gốc (đồng) sau khi làm tròn như bài. Trang ghi theo **trang in**; trang PDF = trang in + 1.
+
+Kết quả: **không có số nào lệch**. Tất cả các số bài dùng đều tìm thấy đúng trên BCTC gốc. Các điểm cần lưu ý:
+
+| # | Số | Trang | Ghi chú |
+|---|---|---|---|
+| D1 | Vốn chủ sở hữu đầu năm 102.836,4 | tr.9 (B01), tr.55 (tm 26) | Khớp: 102.836.419.239.379 đồng. |
+| D2 | Doanh thu thuần 138.855,1 và các thành phần | tr.10, tr.58 (tm 30) | Khớp. Bài thiếu dòng doanh thu khác 8,4 tỷ (xem F5). |
+| D3 | Thu nhập khác 1.159,8 | tr.10, tr.60 | Khớp. |
+| D4 | Quỹ đầu tư phát triển 794,8 | tr.9, tr.55 | Khớp: 794.841.242.128 đồng. |
+| D5 | Khấu hao 6.915,7 và 6.810,7 | tr.12 (LCTT), tr.61; tr.41 (tm 11) | 6.915,7 là "khấu hao và phân bổ" (LCTT); 6.810,7 là "khấu hao trong năm" của TSCĐ hữu hình (tm 11). Hai phạm vi khác nhau (xem N7). |
+| D6 | Chuyển sang TSCĐ 2.925,6; sang chi phí trả trước dài hạn 557,2; ngắn hạn 105,3; TSCĐ vô hình 9,6 | tr.44 (tm 14) | Khớp; tổng 3.597,7. |
+| D7 | Nợ phải trả 109.842; vay 82.963,1 | tr.8 | Nợ phải trả mã 300 = 109.842.249.570.282 đồng. Vay = mã 320 (55.882,7) + mã 338 (27.080,4); không có dòng "vay" tổng trên báo cáo. |
+| D8 | Cổ tức bằng cổ phiếu 5.814,6 | tr.55 (tm 26) | Khớp (xem S2). Bài thiếu dòng "Biến động khác". |
+| D9 | Tài sản đã khấu hao hết 11.515 | tr.41 (tm 11) | Khớp. |
+

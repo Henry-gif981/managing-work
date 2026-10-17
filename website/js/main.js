@@ -120,9 +120,12 @@
   }
 
   function buildMembers() {
-    var ul = doc.getElementById("members");
-    D.meta.thanhVien.forEach(function (m) {
-      ul.appendChild(h("li", null, "<b>" + m.ten + "</b><span>" + m.msv + "</span>"));
+    ["members", "thanksMembers"].forEach(function (id) {
+      var ul = doc.getElementById(id);
+      if (!ul) return;
+      D.meta.thanhVien.forEach(function (m) {
+        ul.appendChild(h("li", null, "<b>" + m.ten + "</b><span>" + m.msv + "</span>"));
+      });
     });
   }
 
@@ -333,7 +336,34 @@
     }
     return FORM_PAGE[k] || 0;
   }
+  // BCTC hợp nhất Hòa Phát 2024 (hpg_bctc_2024.pdf): chỉ nhúng các trang được trích dẫn.
+  // Khóa là số trang in "tr.N" (trang PDF = N + 1). Danh sách sinh bởi tools/build_hp_pages.py.
+  var HP_IMG = window.HP_PAGES || {};
+  function hpPages(txt) {
+    var out = [];
+    (txt.match(/tr\.\s?\d+/g) || []).forEach(function (m) {
+      var n = +m.replace(/\D/g, "");
+      if (HP_IMG[n] && out.indexOf(n) < 0) out.push(n);
+    });
+    return out;
+  }
+  function hpList(pages) {
+    return pages.map(function (n) {
+      var t = "BCTC hợp nhất Hòa Phát 2024, trang " + n;
+      return { title: t, bq: HP_IMG[n], capBq: t };
+    });
+  }
   function initChips() {
+    doc.querySelectorAll(".src.hp").forEach(function (c) {
+      if (c.closest(".tip-src")) return;
+      var ps = hpPages(c.textContent);
+      if (!ps.length) return;
+      c.classList.add("src-link", "hp-link");
+      c.setAttribute("role", "button");
+      c.setAttribute("tabindex", "0");
+      c.setAttribute("data-hp", ps.join(","));
+      c.setAttribute("title", "Mở BCTC hợp nhất Hòa Phát 2024, trang " + ps.join(", "));
+    });
     doc.querySelectorAll(".src:not(.hp):not(.bai)").forEach(function (c) {
       if (c.closest(".tip-src")) return;
       var p = chipPage(c.textContent);
@@ -381,7 +411,10 @@
       var g = e.target.closest("[data-gallery]");
       var pg = e.target.closest("[data-page]");
       var sc = e.target.closest("[data-scan]");
-      if (pg) {
+      var hp = e.target.closest("[data-hp]");
+      if (hp) {
+        lbOpen(hpList(hp.getAttribute("data-hp").split(",").map(Number)), 0, hp);
+      } else if (pg) {
         lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg);
       } else if (sc) {
         var cap = sc.closest(".dual").querySelector(".dual-cap").textContent;
@@ -398,7 +431,11 @@
     });
     doc.addEventListener("keydown", function (e) {
       var pg = e.target.closest && e.target.closest(".src-link");
-      if (pg && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg); }
+      if (pg && (e.key === "Enter" || e.key === " ")) {
+        e.preventDefault();
+        if (pg.hasAttribute("data-hp")) lbOpen(hpList(pg.getAttribute("data-hp").split(",").map(Number)), 0, pg);
+        else lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg);
+      }
     });
     function step(d) {
       lbState.i = (lbState.i + d + lbState.list.length) % lbState.list.length;
@@ -453,8 +490,6 @@
         entries.forEach(function (en) {
           if (!en.isIntersecting) return;
           en.target.classList.add("in");
-          en.target.querySelectorAll(".cu").forEach(countUp);
-          if (en.target.classList.contains("cu")) countUp(en.target);
           io.unobserve(en.target);
         });
       },
@@ -949,7 +984,7 @@
     var groups = {};
     R.notes.forEach(function (n) { (groups[n.g] = groups[n.g] || []).push(n.t); });
     var chips = {};
-    doc.querySelectorAll(".src").forEach(function (c) { if (!c.closest(".tip-src, #reviewPanel")) chips[c.textContent.trim()] = c.classList.contains("src-link") ? "mở được trang scan" : c.classList.contains("hp") ? "BCTC Hòa Phát (không có scan)" : c.classList.contains("bai") ? "trỏ về bài" : "nhãn chữ"; });
+    doc.querySelectorAll(".src").forEach(function (c) { if (!c.closest(".tip-src, #reviewPanel")) chips[c.textContent.trim()] = c.classList.contains("hp-link") ? "mở trang BCTC Hòa Phát" : c.classList.contains("src-link") ? "mở được trang scan BQLDA" : c.classList.contains("hp") ? "Hòa Phát, không có trang để mở" : c.classList.contains("bai") ? "trỏ về bài" : "nhãn chữ"; });
     var html = '<div class="rv-head"><b>Chế độ rà soát</b><span>Phím R để tắt</span></div>';
     Object.keys(groups).forEach(function (g) { html += "<h4>" + g + "</h4><ul>" + groups[g].map(function (t) { return "<li>" + t + "</li>"; }).join("") + "</ul>"; });
     html += "<h4>Số tính thêm (viền đứt trên trang)</h4><ul>" + Object.keys(R.calc).map(function (k) { return "<li><code>" + k + "</code>: " + R.calc[k] + "</li>"; }).join("") + "</ul>";
@@ -1008,12 +1043,17 @@
   initModes();
   initReview();
 
-  // Số đếm: trước khi vào khung nhìn hiển thị 0, rồi đếm lên.
+  // Số đếm: giá trị cuối luôn được ghi sẵn (fillNumbers). Hiệu ứng đếm chỉ là trang trí,
+  // chạy khi chính thẻ số hiện ra (kể cả khi lớp chi tiết vừa được mở); thẻ ẩn vẫn giữ số đúng.
   if (!reduceMotion && "IntersectionObserver" in window) {
-    doc.querySelectorAll(".cu").forEach(function (el) {
-      var sp = spec(el);
-      if (sp) el.textContent = fmt(0, sp.d, sp.s);
-    });
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || !en.target.offsetParent) return;
+        cio.unobserve(en.target);
+        countUp(en.target);
+      });
+    }, { threshold: 0.6 });
+    doc.querySelectorAll(".cu").forEach(function (el) { cio.observe(el); });
   }
   initReveal();
   initSegs();

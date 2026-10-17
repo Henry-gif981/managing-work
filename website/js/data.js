@@ -25,7 +25,7 @@ window.DATA = {
       "Phân tích sự khác biệt về chế độ kế toán và báo cáo tài chính Ban Quản lý dự án giữa Thông tư 195/2012/TT-BTC và báo cáo tài chính Doanh nghiệp sử dụng Thông tư 200/2014/TT-BTC",
     nhom: "Nhóm 2",
     nam: 2026,
-    giangVien: "", // bài để trống dòng "Giảng viên:"; điền tên vào đây khi có
+    giangVien: "PGS.TS. Nguyễn La Soa",
     thanhVien: [
       { ten: "Đỗ Thị Tiểu Luận", msv: "11230353" },
       { ten: "Đặng Việt Hoàng", msv: "11232291" },
@@ -189,8 +189,8 @@ window.DATA = {
     xdcb: 63655.9,
     tscdhh: 67244.2,
     htk: 46091.2,
-    no: 109842,
-    vay: 82963.1,
+    no: 109842, // mã 300 = 310 + 330: 109.842.249.570.282 đồng (B01 Hòa Phát tr.8)
+    vay: 82963.1, // = vay ngắn hạn (mã 320, tm 23.1) 55.882,7 + vay dài hạn (mã 338, tm 23.2) 27.080,4; B01 Hòa Phát tr.8
     vayNH: 55882.7,
     vayDH: 27080.4,
     vcsh: 114647, // bài ghi 114.647 khi làm tròn tỷ
@@ -285,7 +285,8 @@ window.DATA = {
     htkDiDuong: 5559.0, htkNVL: 20324.5, htkThanhPham: 12155.7, htkDoDang: 4048.6,
     khNhaCuaTu: 5, khNhaCuaDen: 50, khMayMocTu: 1, khMayMocDen: 25,
     duAnDungQuatPct: 94.4, duAnContainer: 2232.0, duAnOngThep: 585.1, duAnNongNghiep: 326.2, duAnHaiDuong: 143,
-    dtBanHang: 137852.9, dtDichVu: 725.5, dtChoThueDat: 1826.7, dtChoThueBDS: 147.9, dtGiamTru: 1706.3,
+    // tm 30 (tr.58): 137.852,9 + 725,5 + 1.826,7 + 147,9 + 8,4 (doanh thu khác, bài chưa nêu) = 140.561,4; − giảm trừ 1.706,3 = 138.855,1
+    dtBanHang: 137852.9, dtDichVu: 725.5, dtChoThueDat: 1826.7, dtChoThueBDS: 147.9, dtKhac: 8.4, dtGiamTru: 1706.3,
     gvThanhPham: 118828.1,
     bhVanChuyen: 563.2, bhXuatKhau: 1017.4, bhNhanVien: 209.3,
     dtcLaiTienGui: 1258.7, cptcDiVay: 2287.4,
@@ -321,7 +322,7 @@ window.DATA = {
     bqNoKhac: 926300000,      // 10.746.300.000 − 9.820.000.000
     hpNoVayPct: 75.5,         // 82.963 / 109.842
     hpNoKhacPct: 24.5,        // 100 − 75,5
-    hpNoKhac: 26879,          // 109.842 − 82.963
+    hpNoKhac: 26879,          // còn lại = nợ phải trả mã 300 109.842,2 − vay 82.963,1 (không phải chỉ tiêu trên báo cáo)
     // 2.4.1: các bậc trung gian của chuỗi kết quả kinh doanh Hòa Phát
     hpSauBhQl: 14614.7,       // 18.497,5 − 2.337,3 − 1.545,5
     hpSauTaiChinh: 13267.0,   // 14.614,7 + 2.618,9 − 3.966,6
@@ -329,6 +330,12 @@ window.DATA = {
     // = 114.647,5 − 12.020,0 − 233,1 + 433,1 + 6,3 + 2,6 + 0,1  (Hình 2.7 của bài in 102.836,4; lệch 0,1 do làm tròn)
     // Chênh lệch làm tròn của thác nước vốn chủ sở hữu: 114.647,5 − (102.836,4 + 12.020,0 + 233,1 − 433,1 − 6,3 − 2,6 − 0,1)
     hpVcshLamTron: 0.1,
+    // 3.2: phần tài sản Hòa Phát ngoài ba khoản bài nêu = 100 − (30,0 + 28,4 + 20,5)
+    hpPctTsConLai: 21.1,
+    // 2.5: tổng giá trị XDCB chuyển đi = 2.925,6 + 557,2 + 105,3 + 9,6 (thuyết minh 14)
+    hpChuyenTong: 3597.7,
+    // 3.2: vốn chủ sở hữu Hòa Phát ngoài lợi nhuận chưa phân phối = 114.647 − 49.599
+    hpVcshKhacLNCPP: 65048,
     // 2.4.2: tỷ trọng từng hạng mục F03A trong số dư cuối năm 186.742.500.000
     f03aPct: [44.2, 16.2, 10.0, 8.8, 4.6, 16.2, 0],
     // 2.5: tỷ trọng cơ cấu giá trị quyết toán trong 4.582.450.000

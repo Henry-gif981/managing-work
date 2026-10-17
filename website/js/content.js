@@ -115,7 +115,7 @@ window.CONTENT = {
       { k: "Kỳ báo cáo, ngày lập", bq: { m: "Năm 2015", d: "Lập ngày {t:bq.info.ngayLapBCTC}", s: "B01 tr.2" }, dn: { m: "Năm 2024", d: "Ký ngày {t:hp.ngayKy}; đã kiểm toán" } },
       { k: "Bộ báo cáo", bq: { d: "B01, B02, B03, B04-CĐT; phụ biểu F02, F03A, F03B, F03C, F03D-CĐT", s: "tr.1" }, dn: { d: "Bảng cân đối kế toán, Báo cáo kết quả hoạt động kinh doanh, Báo cáo lưu chuyển tiền tệ, Thuyết minh" } },
       { k: "Hoạt động chính", bq: { d: "Quản lý dự án đầu tư xây dựng" }, dn: { d: "Sản xuất, kinh doanh" } },
-      { k: "Tổng tài sản cuối kỳ", bq: { m: "{bq.b01.tongTS|3} tỷ đồng", s: "B01 tr.2" }, dn: { m: "{hp.tongTS|0} tỷ đồng", s: "Bài, mục 2.1.2" } }
+      { k: "Tổng tài sản cuối kỳ", bq: { m: "{bq.b01.tongTS|3} tỷ đồng", s: "B01 tr.2" }, dn: { m: "{hp.tongTS|0} tỷ đồng", s: "Hòa Phát tr.7" } }
     ]
   },
 
@@ -148,9 +148,9 @@ window.CONTENT = {
     id: "s222",
     title: "2.2.2. So sánh các TK đầu 1: Tài sản ngắn hạn",
     rows: [
-      { k: "Tiền (mã 110)",
+      { k: "Tiền",
         bq: { m: "{bq.b01.tien|3} tỷ", d: "Tiền mặt {bq.b01.tienMat|1|trieu} triệu; tiền gửi NH Ngoại thương (TK vốn đầu tư) {bq.b01.nhNgoaiThuong|2|trieu} triệu; tiền gửi NH Công thương (TK hoạt động Ban QLDA) {bq.b01.nhCongThuong|1|trieu} triệu. Tiền vốn đầu tư không thuộc về Ban nên Ban mở tài khoản riêng cho vốn dự án và cho chi phí hoạt động.", s: "B04 V.01 tr.5" },
-        dn: { m: "{hp.tien|1} tỷ", d: "Tiền mặt {hp.tienMat|1} tỷ; tiền gửi ngân hàng {hp.tienGui|1} tỷ; tương đương tiền {hp.tuongDuongTien|1} tỷ (tiền gửi gốc dưới 3 tháng, lãi suất {hp.laiTDTtu|1}%–{hp.laiTDTden|1}%/năm). Sắp xếp theo mức độ thanh khoản, có thêm nhóm “tương đương tiền”.", s: "Bài, mục 2.2.2" } },
+        dn: { m: "{hp.tien|1} tỷ", d: "Tiền mặt {hp.tienMat|1} tỷ; tiền gửi ngân hàng {hp.tienGui|1} tỷ; tương đương tiền {hp.tuongDuongTien|1} tỷ (tiền gửi gốc dưới 3 tháng, lãi suất {hp.laiTDTtu|1}%–{hp.laiTDTden|1}%/năm). Sắp xếp theo mức độ thanh khoản, có thêm nhóm “tương đương tiền”.", s: "Hòa Phát tr.6, tr.36, tm 5" } },
       { k: "Đầu tư tài chính (mã 120)",
         bq: { none: "Ban không được dùng vốn đầu tư để sinh lời; lãi tiền gửi nhàn rỗi ghi TK 3368 rồi nộp chủ đầu tư.", s: "B04 IV.7 tr.5" },
         dn: { m: "{hp.dauTuTC|1} tỷ", d: "Tiền gửi có kỳ hạn gốc trên 3 tháng, lãi {hp.laiDTTCtu|1}% đến {hp.laiDTTCden|1}%/năm. Lãi tiền gửi đưa vào doanh thu tài chính (tr.59, tm 32).", s: "Hòa Phát tr.37, tm 6" } },
@@ -285,7 +285,7 @@ window.CONTENT = {
         dn: { m: "0 cuối năm", d: "Đầu năm {hp.thangDuDauNam|1} tỷ, đã chuyển thành vốn cổ phần khi trả cổ tức bằng cổ phiếu.", s: "Hòa Phát tr.55" } },
       { k: "Quỹ đầu tư phát triển (TK 418)",
         bq: { none: "Đây là quỹ trích từ lợi nhuận nên BQLDA cũng không có." },
-        dn: { m: "{hp.quyDTPT|1} tỷ", s: "Bài, mục 2.2.5" } }
+        dn: { m: "{hp.quyDTPT|1} tỷ", s: "Hòa Phát tr.9" } }
     ],
     why: "Tương tự những TK đầu 4 khác, vì Ban không có cổ đông, không có lợi nhuận và không chia cổ tức nên đầu 4 của BQLDA hoàn toàn trống. Vốn của Ban chỉ tăng khi chủ đầu tư cấp thêm (năm 2015: {bq.b02.tangTien|2} tỷ bằng tiền và {bq.b02.tangVatTu|1} tỷ bằng vật tư, thiết bị) và chỉ giảm khi quyết toán, bàn giao ({bq.b02.giam|2} tỷ) (B02 tr.3). Vốn của Tập đoàn Hòa Phát biến động theo kết quả kinh doanh, cổ tức và quyết định của cổ đông."
   },
@@ -303,7 +303,7 @@ window.CONTENT = {
         dn: { m: "Giá vốn {hp.giaVon|1} tỷ", d: "Bán hàng {hp.cpBanHang|1}; quản lý doanh nghiệp (cũng TK 642) {hp.cpQLDN|1}; tài chính {hp.cpTaiChinh|1}.", s: "Hòa Phát tr.10" } },
       { k: "Đầu 7: Thu nhập khác",
         bq: { none: "Không có." },
-        dn: { m: "{hp.thuNhapKhac|1} tỷ", s: "Bài, mục 2.2.6" } },
+        dn: { m: "{hp.thuNhapKhac|1} tỷ", s: "Hòa Phát tr.10, tr.60" } },
       { k: "Đầu 8: Chi phí khác, thuế thu nhập doanh nghiệp",
         bq: { none: "Thuế TNDN không phát sinh. F03C “chi phí khác” là một nội dung của chi phí đầu tư (xem mục 2.4)." },
         dn: { m: "Chi phí khác {hp.cpKhac|1} tỷ", d: "Chi phí thuế thu nhập doanh nghiệp {hp.thueTNDN|1} tỷ.", s: "Hòa Phát tr.10, tr.62" } },
@@ -396,7 +396,7 @@ window.CONTENT = {
     rows: [
       { k: "Doanh thu",
         bq: { none: "Không có doanh thu. “Sản phẩm” của Ban là công trình bàn giao cho chủ đầu tư theo giá trị quyết toán, không có giá bán. Ban không bán gì ra ngoài nên không có đầu ra để đo lãi lỗ.", s: "F03B tr.10" },
-        dn: { m: "{hp.dtt|1} tỷ", d: "Doanh thu thuần.", s: "Hòa Phát tr.58, tm 30" } },
+        dn: { m: "{hp.dtt|1} tỷ", d: "Doanh thu thuần = bán hàng {hp.dtBanHang|1} + cung cấp dịch vụ {hp.dtDichVu|1} + cho thuê lại đất {hp.dtChoThueDat|1} + cho thuê bất động sản đầu tư {hp.dtChoThueBDS|1} + doanh thu khác {hp.dtKhac|1} − giảm trừ {hp.dtGiamTru|1}.", s: "Hòa Phát tr.58, tm 30" } },
       { k: "Giá vốn",
         bq: { none: "Tương ứng gần nhất là giá trị quyết toán hạng mục bàn giao {bq.f03b.duyet|2} tỷ, nhưng nó đi ra khỏi sổ chứ không thành giá vốn: Ban giao công trình đi nên giá trị đó không “tiêu hao”.", s: "F03B tr.10" },
         dn: { m: "{hp.giaVon|1} tỷ", d: "Chủ yếu thành phẩm và hàng hóa đã bán {hp.gvThanhPham|1}; lợi nhuận gộp {hp.lnGop|1} tỷ (biên {hp.bienGop|1}%).", s: "Hòa Phát tr.59, tm 31" } },
@@ -611,11 +611,6 @@ window.KEYS = {
     "BQLDA không ghi nhận vốn chủ sở hữu; tài sản chủ yếu tập trung ở chi phí đầu tư xây dựng dở dang ({bq.b01.pct.tk241|1}% tổng tài sản).",
     "BQLDA không lập Báo cáo lưu chuyển tiền tệ: người đọc dùng B02-CĐT kết hợp B03-CĐT để theo dõi luân chuyển vốn.",
     "Hiệu quả của BQLDA được đánh giá qua tiến độ giải ngân và sự tuân thủ dự toán, thay vì các chỉ số tỷ suất sinh lời thông thường."
-  ],
-  "3-3": [
-    "Người làm kế toán và người đọc BCTC cần tập trung vào luồng hạch toán quản trị vốn: nhận vốn (Có TK 336), tập hợp chi phí (Nợ TK 241), quyết toán bàn giao (Nợ TK 336 / Có TK 241).",
-    "Cần xác định tiêu thức phân bổ chi phí BQLDA (TK 642) hợp lý nhằm giảm thiểu rủi ro xuất toán chi phí.",
-    "Cơ quan quản lý cần hướng dẫn cụ thể việc chuyển đổi số dư các tài khoản đặc thù của BQLDA (TK 3361, TK 3368) khi Thông tư 99/2025/TT-BTC thay thế cả Thông tư 195 và Thông tư 200."
   ],
   "kl": [
     "Chế độ kế toán luôn phản ánh đúng chức năng, nhiệm vụ và bản chất hoạt động của đơn vị.",

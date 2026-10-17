@@ -44,8 +44,10 @@ for (const k of ['dau', 'ps', 'giam', 'cuoi']) eq(`F03A cộng ${k}`, sum(fa, k)
 fa.forEach(i => eq(`F03A ${i.ten}`, i.dau + i.ps - i.giam, i.cuoi));
 ['xd','tb','bt','ql','tv','kh'].forEach(k => { const key = {kh:'kh'}[k] || k; eq(`F03A cột ${k} = B03 cuối`, sum(fa, k), b3.items.find(i => i.key === key).cuoi); });
 fa.forEach(i => eq(`F03A cơ cấu ${i.ten}`, i.xd + i.tb + i.bt + i.ql + i.tv + i.kh, i.cuoi));
-note('HP DTT = các dòng − giảm trừ', Math.round((h.dtBanHang + h.dtDichVu + h.dtChoThueDat + h.dtChoThueBDS - h.dtGiamTru) * 10) / 10, h.dtt);
-note('HP cổ tức CP = thặng dư + LNCPP', Math.round((h.coTucTuThangDu + h.coTucTuLNCPP) * 10) / 10, h.coTucCP);
+// tm 30 (tr.58): đủ các dòng, kể cả doanh thu khác 8,4 mà bài chưa nêu
+eq('HP DTT = các dòng + doanh thu khác − giảm trừ', Math.round((h.dtBanHang + h.dtDichVu + h.dtChoThueDat + h.dtChoThueBDS + h.dtKhac - h.dtGiamTru) * 10) / 10, h.dtt);
+// tm 26 (tr.55): 5.814.645.000.000 = 3.211.560.416.270 + 2.603.084.583.730; lệch 0,1 chỉ do làm tròn từng thành phần
+note('HP cổ tức CP = thặng dư + LNCPP (làm tròn)', Math.round((h.coTucTuThangDu + h.coTucTuLNCPP) * 10) / 10, h.coTucCP);
 eq('HP thuế = hiện hành + hoãn lại', Math.round((h.thueHienHanh + h.thueHoanLai) * 10) / 10, h.thueTNDN);
 eq('HP DTTC ≈ lãi tiền gửi + lãi tỷ giá (≤ tổng)', h.dtcLaiTienGui + h.laiTyGia <= h.dtTaiChinh ? 1 : 0, 1);
 const fb = b.f03b;

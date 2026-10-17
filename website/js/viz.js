@@ -81,10 +81,11 @@
       seg("M360 112 H390") +
       // bình TK 241
       '<rect x="394" y="' + tankY + '" width="126" height="' + tankH + '" rx="12" class="tank"/>' +
-      '<rect class="water" x="396" y="' + (tankY + tankH - water) + '" width="122" height="' + (water - 2) + '" rx="10" fill="url(#gw' + id + ')"/>' +
+      (opts.noPct ? "" : '<rect class="water" x="396" y="' + (tankY + tankH - water) + '" width="122" height="' + (water - 2) + '" rx="10" fill="url(#gw' + id + ')"/>') +
       '<text x="457" y="30" class="t-h" text-anchor="middle">TK 241</text>' +
       (opts.mini ? (opts.noPct ? "" : '<text x="457" y="' + (tankY + tankH - 30) + '" class="t-w big keep" text-anchor="middle"><tspan data-v="bq.b03.tyLe" data-d="1"></tspan>%</text>') :
-        '<text x="457" y="' + (tankY + tankH - 44) + '" class="t-w big" text-anchor="middle"><tspan data-v="bq.b03.tyLe" data-d="1"></tspan>%</text><text x="457" y="' + (tankY + tankH - 18) + '" class="t-w sm" text-anchor="middle"><tspan data-v="bq.b03.luyKe" data-d="3"></tspan> tỷ</text>') +
+        (opts.noPct ? '<text x="457" y="' + (tankY + tankH / 2 - 6) + '" class="t-s b" text-anchor="middle">Chi phí</text><text x="457" y="' + (tankY + tankH / 2 + 16) + '" class="t-s b" text-anchor="middle">đầu tư</text><text x="457" y="' + (tankY + tankH / 2 + 38) + '" class="t-s b" text-anchor="middle">xây dựng</text>' :
+        '<text x="457" y="' + (tankY + tankH - 44) + '" class="t-w big" text-anchor="middle"><tspan data-v="bq.b03.tyLe" data-d="1"></tspan>%</text><text x="457" y="' + (tankY + tankH - 18) + '" class="t-w sm" text-anchor="middle"><tspan data-v="bq.b03.luyKe" data-d="3"></tspan> tỷ</text>')) +
       // cửa ra quyết toán
       seg("M520 172 H610") +
       (opts.mini ? '<text x="565" y="156" class="t-s b" text-anchor="middle">Bàn giao</text>' : '<text x="565" y="138" class="t-s b" text-anchor="middle">Quyết toán,</text><text x="565" y="157" class="t-s b" text-anchor="middle">bàn giao</text><text x="565" y="236" class="t-xs" text-anchor="middle">Nợ 336 / Có 241</text>') +
@@ -196,7 +197,7 @@
     }).join("") + "</div>";
     var anyCalc = cfg.segs.some(function (s) { return s.calc || s.pctCalc; });
     el.innerHTML = (cfg.title ? '<p class="viz-sub">' + cfg.title + "</p>" : "") + html +
-      (cfg.noFoot ? "" : '<p class="viz-foot">' + chip(cfg.src, cfg.bq ? "" : "hp") + (anyCalc ? " " + calcNote() : "") + "</p>");
+      (cfg.noFoot ? "" : '<p class="viz-foot">' + (cfg.foot ? cfg.foot + " " : "") + chip(cfg.src, cfg.bq ? "" : "hp") + (anyCalc ? " " + calcNote() : "") + "</p>");
   }
 
   // Treemap squarified. items: {lab, p, d, s, cls, note}
@@ -261,32 +262,46 @@
     }).join("") + "</div></div>";
   }
 
-  // Sơ đồ dòng (Sankey đơn giản): nhiều nhánh → một đích, hoặc một nguồn → nhiều đích (dir: "in" | "out")
+  // Sơ đồ dòng (Sankey đơn giản): nhiều nhánh → một đích ("in") hoặc một nguồn → nhiều đích ("out").
+  // Mỗi nhánh là một thanh mảnh có chiều cao tỷ lệ (tối thiểu MINB px); nhãn đặt ngoài dải luồng, cách nhau
+  // ít nhất một dòng chữ, nối với thanh bằng đường dẫn nhỏ. Thứ tự cố định theo giá trị giảm dần.
   function flow(el, cfg) {
-    var H = cfg.height || 300, gap = 6;
-    var vals = cfg.items.map(function (it) { return cfg.bq ? bqVal(it.p) : get(it.p); });
+    var MINB = 6, GAP = 6, LH = 54, LG = 6;
+    var items = cfg.items.slice().sort(function (a, b) { return (cfg.bq ? bqVal(b.p) : get(b.p)) - (cfg.bq ? bqVal(a.p) : get(a.p)); });
+    var vals = items.map(function (it) { return cfg.bq ? bqVal(it.p) : get(it.p); });
     var tot = vals.reduce(function (a, b) { return a + b; }, 0);
-    var avail = H - gap * (vals.length - 1);
-    var hs = vals.map(function (x) { return Math.max(46, (x / tot) * avail); });
+    var n = items.length;
+    var H = Math.max(cfg.height || 240, n * (LH + LG));
+    var avail = H - GAP * (n - 1);
+    var hs = vals.map(function (x) { return Math.max(MINB, (x / tot) * avail); });
     var k = avail / hs.reduce(function (a, b) { return a + b; }, 0);
     hs = hs.map(function (x) { return x * k; });
-    var y = 0, segs = "", ribbons = "", ty = 0;
+    var y = 0, ty = 0, bars = "", ribs = "", leads = "", labs = "", prevBottom = -LG;
     var out = cfg.dir === "out";
-    cfg.items.forEach(function (it, i) {
+    items.forEach(function (it, i) {
       var th = (vals[i] / tot) * H;
-      segs += '<div class="fl-seg ' + (it.cls || "") + '" style="top:' + y + "px;height:" + hs[i] + 'px"' +
-        tip("<b>" + it.lab + "</b><br>" + v(it.p, it.d, it.s) + " tỷ đồng" + (it.pct ? " · " + v(it.pct, 1) + "%" : "") + (it.dong ? "<br>" + v(it.p, 0, "dong") + " đồng" : "") + "<br>" + chip(it.src || cfg.src)) + "><b>" + it.lab + "</b><span>" + v(it.p, it.d, it.s) + (it.pct ? " · " + v(it.pct, 1) + "%" : "") + "</span></div>";
-      var y1 = y, y2 = y + hs[i], t1 = ty, t2 = ty + th;
-      var a = out ? [100, t1, t2, 0, y1, y2] : [0, y1, y2, 100, t1, t2];
-      ribbons += '<path class="rib ' + (it.cls || "") + '" d="M' + a[0] + " " + a[1] + " C50 " + a[1] + " 50 " + a[4] + " " + a[3] + " " + a[4] + " L" + a[3] + " " + a[5] + " C50 " + a[5] + " 50 " + a[2] + " " + a[0] + " " + a[2] + 'Z"/>';
-      y += hs[i] + gap;
+      var y1 = y, y2 = y + hs[i], mid = (y1 + y2) / 2;
+      bars += '<span class="flb ' + (it.cls || "") + '" style="top:' + y1 + "px;height:" + hs[i] + 'px"></span>';
+      var a = out ? [0, ty, ty + th, 100, y1, y2] : [100, ty, ty + th, 0, y1, y2];
+      ribs += '<path class="rib ' + (it.cls || "") + '" d="M' + a[0] + " " + a[1] + " C50 " + a[1] + " 50 " + a[4] + " " + a[3] + " " + a[4] + " L" + a[3] + " " + a[5] + " C50 " + a[5] + " 50 " + a[2] + " " + a[0] + " " + a[2] + 'Z"/>';
+      var ly = Math.min(Math.max(mid - LH / 2, prevBottom + LG), H - (n - i) * (LH + LG) + LG);
+      prevBottom = ly + LH;
+      var lm = ly + LH / 2;
+      leads += '<path d="M' + (out ? 0 : 100) + " " + mid + " C50 " + mid + " 50 " + lm + " " + (out ? 100 : 0) + " " + lm + '"/>';
+      labs += '<div class="fll ' + (it.cls || "") + '" style="top:' + ly + "px;height:" + LH + 'px"' +
+        tip("<b>" + it.lab + "</b><br>" + v(it.p, it.d, it.s) + " tỷ đồng" + (it.pct ? " · " + v(it.pct, 1) + "%" : "") + (it.dong ? "<br>" + v(it.p, 0, "dong") + " đồng" : "") + "<br>" + chip(it.src || cfg.src)) +
+        '><i></i><span><b>' + it.lab + "</b><em>" + v(it.p, it.d, it.s) + (it.pct ? " · " + v(it.pct, 1) + "%" : "") + "</em></span></div>";
+      y += hs[i] + GAP;
       ty += th;
     });
     var target = '<div class="fl-target ' + (cfg.side || "") + '" style="height:' + H + 'px"><b>' + cfg.target[0] + "</b><span>" + cfg.target[1] + "</span></div>";
-    var left = out ? target : '<div class="fl-col" style="height:' + H + 'px">' + segs + "</div>";
-    var right = out ? '<div class="fl-col" style="height:' + H + 'px">' + segs + "</div>" : target;
+    var ribSvg = '<svg class="fl-rib" viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="height:' + H + 'px">' + ribs + "</svg>";
+    var barCol = '<div class="fl-bars" style="height:' + H + 'px">' + bars + "</div>";
+    var leadSvg = '<svg class="fl-lead" viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="height:' + H + 'px">' + leads + "</svg>";
+    var labCol = '<div class="fl-labs" style="height:' + H + 'px">' + labs + "</div>";
+    var parts = out ? [target, ribSvg, barCol, leadSvg, labCol] : [labCol, leadSvg, barCol, ribSvg, target];
     el.innerHTML = (cfg.title ? '<p class="viz-sub">' + cfg.title + "</p>" : "") +
-      '<div class="fl ' + (cfg.side || "") + '" role="img" aria-label="' + cfg.aria + '">' + left + '<svg class="fl-mid" viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="height:' + H + 'px">' + ribbons + "</svg>" + right + "</div>" +
+      '<div class="fl2 ' + (out ? "out " : "in ") + (cfg.side || "") + '" role="img" aria-label="' + cfg.aria + '">' + parts.join("") + "</div>" +
       (cfg.foot ? '<p class="viz-foot">' + cfg.foot + "</p>" : "");
   }
 
@@ -424,8 +439,8 @@
   // 1.3.3: khác nhau cốt lõi
   V["1-3-3"] = function () {
     put("1-3-3", title("Khác nhau cốt lõi: BQLDA hạch toán “vốn”, doanh nghiệp hạch toán “kết quả”") + splitWrap(
-      pipeSVG({ mini: true, noPct: true, id: "n" }) + '<p class="mini-chain bq">Nguồn vốn và sử dụng vốn theo từng dự án</p>',
-      loopSVG({ mini: true, id: "n" }) + '<p class="mini-chain dn">Doanh thu, chi phí, lợi nhuận</p>', H2));
+      pipeSVG({ noPct: true, id: "n" }) + '<p class="mini-chain bq">Nguồn vốn và sử dụng vốn theo từng dự án</p>',
+      loopSVG({ id: "n" }) + '<p class="mini-chain dn">Doanh thu, chi phí, lợi nhuận</p>', H2));
   };
 
   /* ---------- Chương 2 ---------- */
@@ -479,10 +494,10 @@
       { lab: "Tiền", p: "bq.b01.tien", d: 3, cls: "t2" }, { lab: "Trả trước cho người bán", p: "bq.b01.traTruoc", d: 3, cls: "t2" },
       { lab: "Thuế GTGT được khấu trừ", p: "bq.b01.gtgt", d: 3, cls: "t3" }, { lab: "Hàng tồn kho", p: "bq.b01.htk", d: 3, cls: "t3" },
       { lab: "TSCĐ hữu hình", p: "bq.b01.tscd", d: 3, cls: "t3" }, { lab: "Phải thu khác", p: "bq.b01.phaiThuKhac", d: 3, cls: "t3" }] });
-    treemap(doc.querySelector('[data-tm="dn"]'), { src: "Bài, mục 2.2.1", aria: "Cơ cấu tài sản Hòa Phát: TSCĐ hữu hình, XDCB dở dang, hàng tồn kho, đầu tư tài chính, tiền, phải thu khách hàng và phần còn lại", items: [
+    treemap(doc.querySelector('[data-tm="dn"]'), { src: "Hòa Phát tr.6, tr.7", aria: "Cơ cấu tài sản Hòa Phát: TSCĐ hữu hình, XDCB dở dang, hàng tồn kho, đầu tư tài chính, tiền, phải thu khách hàng và phần còn lại", items: [
       { lab: "TSCĐ hữu hình", p: "hp.tscdhh", d: 1, cls: "d1", note: v("hp.pct.tscd", 1) + "%", src: "Hòa Phát tr.7, tr.41, tm 11" }, { lab: "XDCB dở dang", p: "hp.xdcb", d: 1, cls: "d2", note: v("hp.pct.xdcb", 1) + "%", src: "Hòa Phát tr.7, tr.44" },
       { lab: "Hàng tồn kho", p: "hp.htk", d: 1, cls: "d2", note: v("hp.pct.htk", 1) + "%", src: "Hòa Phát tr.39, tm 10.1" }, { lab: "Đầu tư tài chính ngắn hạn", p: "hp.dauTuTC", d: 1, cls: "d3", src: "Hòa Phát tr.37, tm 6" },
-      { lab: "Tiền", p: "hp.tien", d: 1, cls: "d3", src: "Bài, mục 2.2.2" }, { lab: "Phải thu khách hàng", p: "hp.phaiThuKH", d: 1, cls: "d3", src: "Hòa Phát tr.37, tm 7" },
+      { lab: "Tiền", p: "hp.tien", d: 1, cls: "d3", src: "Hòa Phát tr.6, tr.36, tm 5" }, { lab: "Phải thu khách hàng", p: "hp.phaiThuKH", d: 1, cls: "d3", src: "Hòa Phát tr.37, tm 7" },
       { lab: "Tài sản khác", p: "calc.hpTsConLai", d: 1, cls: "d4", calc: true }] });
   };
 
@@ -493,9 +508,9 @@
       { lab: "Trả trước cho người bán và phải thu khác", p: "calc.bqTsnhPhaiThu", d: 3, s: "ty", pct: "calc.bqTsnhPhaiThuPct", cls: "t2", pctCalc: true, src: "B01 mã 130 tr.2" },
       { lab: "Thuế GTGT được khấu trừ", p: "bq.b01.gtgt", d: 3, pct: "calc.bqTsnhGtgtPct", cls: "t4", pctCalc: true },
       { lab: "Hàng tồn kho", p: "bq.b01.htk", d: 3, pct: "calc.bqTsnhHtkPct", cls: "t3", pctCalc: true }] });
-    stack(doc.querySelector('[data-stk="dn"]'), { total: get("hp.tsnh"), src: "Bài, mục 2.2.2", title: "Hòa Phát: " + v("hp.tsnh", 0) + " tỷ đồng", aria: "Cơ cấu tài sản ngắn hạn Hòa Phát", segs: [
+    stack(doc.querySelector('[data-stk="dn"]'), { total: get("hp.tsnh"), src: "Hòa Phát tr.6", title: "Hòa Phát: " + v("hp.tsnh", 0) + " tỷ đồng", aria: "Cơ cấu tài sản ngắn hạn Hòa Phát", segs: [
       { lab: "Hàng tồn kho", p: "hp.htk", d: 1, cls: "d1", src: "Hòa Phát tr.39, tm 10.1" }, { lab: "Đầu tư tài chính", p: "hp.dauTuTC", d: 1, cls: "d2", src: "Hòa Phát tr.37, tm 6" },
-      { lab: "Tiền", p: "hp.tien", d: 1, cls: "d3" }, { lab: "Phải thu khách hàng", p: "hp.phaiThuKH", d: 1, cls: "d5", src: "Hòa Phát tr.37, tm 7" },
+      { lab: "Tiền", p: "hp.tien", d: 1, cls: "d3", src: "Hòa Phát tr.6, tr.36, tm 5" }, { lab: "Phải thu khách hàng", p: "hp.phaiThuKH", d: 1, cls: "d5", src: "Hòa Phát tr.37, tm 7" },
       { lab: "Tài sản ngắn hạn khác", p: "calc.hpTsnhConLai", d: 1, cls: "d4", calc: true }] });
   };
 
@@ -513,24 +528,16 @@
     put("2-2-4", title("Cơ cấu nợ phải trả của hai đơn vị") + splitWrap('<div data-stk="no-bq"></div>', '<div data-stk="no-dn"></div>'));
     stack(doc.querySelector('[data-stk="no-bq"]'), { bq: true, total: get("bq.b01.no") / 1e9, src: "B04 V.08 tr.6", title: "BQLDA: nợ phải trả " + v("bq.b01.no", 3) + " tỷ đồng", aria: "Nợ phải trả BQLDA: phải trả người bán và các khoản khác", segs: [
       { lab: "Phải trả người bán", p: "bq.b01.ptnb", d: 3, pct: "calc.bqNoPtnbPct", cls: "t1", pctCalc: true }, { lab: "Các khoản nợ khác", p: "calc.bqNoKhac", d: 3, s: "ty", pct: "calc.bqNoKhacPct", cls: "t3", calc: true }] });
-    stack(doc.querySelector('[data-stk="no-dn"]'), { total: get("hp.no"), src: "Hòa Phát tr.8", title: "Hòa Phát: nợ phải trả " + v("hp.no", 0) + " tỷ đồng", aria: "Nợ phải trả Hòa Phát: vay ngân hàng và các khoản khác", segs: [
-      { lab: "Vay ngân hàng", p: "hp.vay", d: 0, pct: "calc.hpNoVayPct", cls: "d1", pctCalc: true }, { lab: "Các khoản nợ khác", p: "calc.hpNoKhac", d: 0, pct: "calc.hpNoKhacPct", cls: "d3", calc: true }] });
+    stack(doc.querySelector('[data-stk="no-dn"]'), { total: get("hp.no"), src: "Hòa Phát tr.8", foot: "BCTC hợp nhất Hòa Phát 31/12/2024, Bảng cân đối kế toán, mã 300; vay = mã 320 và mã 338.", title: "Hòa Phát: nợ phải trả " + v("hp.no", 0) + " tỷ đồng", aria: "Nợ phải trả Hòa Phát: vay ngân hàng và các khoản khác", segs: [
+      { lab: "Vay ngân hàng", p: "hp.vay", d: 0, pct: "calc.hpNoVayPct", cls: "d1", pctCalc: true }, { lab: "Còn lại", p: "calc.hpNoKhac", d: 0, pct: "calc.hpNoKhacPct", cls: "d3", calc: true }] });
   };
-  V["2-2-4-more"] = function () {
-    put("2-2-4-more", title("Nguồn vốn đầu tư (TK 3361) hình thành từ hai nguồn của chủ đầu tư (F02)") + '<div data-flow="3361"></div>' +
-      title("Ba lý do nguồn vốn đầu tư không phải là vốn chủ sở hữu") + '<div class="why3"><div>' + ic("i-users") + "<b>Chỉ có tư cách quản lý</b><span>Ban là đơn vị trực thuộc, thành lập theo Quyết định " + t("bq.info.quyetDinh") + " của chủ đầu tư, không sở hữu vốn (B04 mục I.1).</span></div><div>" + ic("i-key") + "<b>Nghĩa vụ quyết toán, bàn giao</b><span>Vốn phải được dùng đúng dự án, quyết toán và bàn giao cho chủ đầu tư.</span></div><div>" + ic("i-x") + "<b>Không có quyền phân phối</b><span>Không có lợi nhuận giữ lại, quỹ hay cổ tức (B04 mục IV.4).</span></div></div>");
-    flow(doc.querySelector('[data-flow="3361"]'), { bq: true, side: "bq", src: "F02 tr.8", height: 200, target: ["TK 3361 nguồn vốn đầu tư", v("bq.b02.cuoi", 3) + " tỷ · B01 mã 410"], aria: "Hai nguồn vốn của chủ đầu tư hình thành TK 3361",
-      items: [{ lab: "Vốn chủ sở hữu do chủ đầu tư cấp", p: "bq.f02.vcsh.cuoi", d: 3, pct: "bq.f02.pctVcsh", cls: "t1", dong: true }, { lab: "Vốn vay thương mại do chủ đầu tư vay rồi cấp lại", p: "bq.f02.vay.cuoi", d: 3, pct: "bq.f02.pctVay", cls: "t2", dong: true }],
-      foot: "Tỷ đồng. Hợp đồng tín dụng số " + t("bq.info.hopDongTinDung") + ": nghĩa vụ trả nợ vay của dự án thuộc chủ đầu tư. " + chip("F02 tr.8") });
-  };
-
   V["2-2-5"] = function () {
     put("2-2-5", title("Các tài khoản đầu 4: BQLDA không có, Hòa Phát có vốn cổ phần, quỹ, lợi nhuận chưa phân phối") + splitWrap(
       '<div class="empty4">' + ic("i-x") + "<b>Đầu 4 hoàn toàn trống</b><span>Không có vốn cổ phần, quỹ từ lợi nhuận, lợi nhuận chưa phân phối</span></div>" +
       '<div class="capline"><p class="viz-sub">Vốn của Ban (TK 3361) năm 2015</p><div class="cl-row"><span class="tagc t-tang">Tăng</span>Chủ đầu tư cấp thêm <b>+' + v("bq.b02.tang", 3) + ' tỷ</b></div><div class="cl-row"><span class="tagc t-giam">Giảm</span>Quyết toán, bàn giao <b>−' + v("bq.b02.giam", 3) + " tỷ</b></div>" + chip("B02 tr.3") + "</div>",
       '<div data-tm="eq-dn"></div>'));
     treemap(doc.querySelector('[data-tm="eq-dn"]'), { src: "Hòa Phát tr.55", aria: "Các khoản vốn chủ sở hữu Hòa Phát được bài nêu", items: [
-      { lab: "Vốn cổ phần (TK 411)", p: "hp.vonCoPhan", d: 1, cls: "d1", src: "Hòa Phát tr.56, tm 27" }, { lab: "Lợi nhuận chưa phân phối", p: "hp.lnChuaPP", d: 0, cls: "d2", src: "Bài, mục 3.2" }, { lab: "Quỹ đầu tư phát triển (TK 418)", p: "hp.quyDTPT", d: 1, cls: "d3", src: "Bài, mục 2.2.5" }] });
+      { lab: "Vốn cổ phần (TK 411)", p: "hp.vonCoPhan", d: 1, cls: "d1", src: "Hòa Phát tr.56, tm 27" }, { lab: "Lợi nhuận chưa phân phối", p: "hp.lnChuaPP", d: 0, cls: "d2", src: "Hòa Phát tr.9" }, { lab: "Quỹ đầu tư phát triển (TK 418)", p: "hp.quyDTPT", d: 1, cls: "d3", src: "Hòa Phát tr.9" }] });
   };
 
   V["2-2-6"] = function () {
@@ -545,15 +552,10 @@
     var r = '<div class="ladder dn">' + steps.map(function (s) { return '<div class="ld-step"><b>' + s[0] + "</b><span>" + s[1] + "</span></div>"; }).join("") + chip("Hòa Phát tr.10", "hp") + "</div>";
     put("2-2-6", title("Các tài khoản đầu 5 đến đầu 9 ở hai đơn vị") + splitWrap(l, r));
   };
-  V["2-2-6-more"] = function () {
-    put("2-2-6-more", title("TK 642 và chênh lệch tỷ giá: cùng tên, hai đường đi") + '<div class="branch"><div class="br-src">TK 642</div><div class="br-arms"><div class="br bq"><b>Kết chuyển vào TK 241</b><span>' + v("bq.f03d.ps2015", 3) + ' tỷ → làm tăng giá trị tài sản bàn giao</span><span class="tagc t-ts">Vào tài sản</span></div><div class="br dn"><b>Kết chuyển vào kết quả kinh doanh</b><span>' + v("hp.cpQLDN", 1) + ' tỷ → làm giảm lợi nhuận</span><span class="tagc t-ln">Vào lợi nhuận</span></div></div></div>' +
-      '<div class="branch"><div class="br-src">Chênh lệch tỷ giá</div><div class="br-arms"><div class="br bq"><b>TK 3362</b><span>Được chuyển cho chủ đầu tư (B04 mục IV.1)</span><span class="tagc t-cdt">Chuyển cho chủ đầu tư</span></div><div class="br dn"><b>Kết quả kinh doanh</b><span>Lãi thực hiện ' + v("hp.laiTyGia", 1) + "; lỗ thực hiện " + v("hp.loTyGia", 1) + ' tỷ (tr.59)</span><span class="tagc t-ln">Vào lợi nhuận</span></div></div></div>');
-  };
-
   V["2-2-7"] = function () {
     put("2-2-7", title("Các chỉ tiêu ngoài bảng (TK đầu 0)") + splitWrap(
       '<div class="tiles"><div class="tile"' + tip("<b>Ngoại tệ các loại (mã 007)</b><br>Cuối năm " + v("bq.b01.usdCuoi", 0) + " USD, đầu năm " + v("bq.b01.usdDau", 0) + " USD<br>" + chip("B01 tr.2")) + '><span class="tagc t-co">Có, trên B01-CĐT</span><b>' + v("bq.b01.usdCuoi", 0) + " USD</b><span>Ngoại tệ các loại (mã 007); đầu năm " + v("bq.b01.usdDau", 0) + ' USD</span><span class="mini-bars"><i style="--w:100%"></i><i style="--w:' + (get("bq.b01.usdCuoi") / get("bq.b01.usdDau")) * 100 + '%"></i></span></div><div class="tile"><span class="tagc t-co">Có dòng, không có số dư</span><b>Tài sản nhận giữ hộ</b><span>Mã 002</span></div></div>',
-      '<div class="tiles"><div class="tile"><span class="tagc t-kh">Không có trên B01</span><b>' + v("hp.usd", 0) + " USD</b><span>Tương đương " + v("hp.usdTy", 1) + ' tỷ đồng, thuyết minh 5.1 (tr.36)</span></div><div class="tile"><span class="tagc t-kh">Không có dòng này</span><b>Tài sản nhận giữ hộ</b><span>Mẫu B01-DN/HN (hợp nhất)</span></div></div>'));
+      '<div class="tiles"><div class="tile"><span class="tagc t-kh">Không có trên B01</span><b>' + v("hp.usd", 0) + " USD</b><span>Tương đương " + v("hp.usdTy", 1) + ' tỷ đồng, thuyết minh 5.1</span>' + chip("Hòa Phát tr.36, tm 5.1", "hp") + '</div><div class="tile"><span class="tagc t-kh">Không có dòng này</span><b>Tài sản nhận giữ hộ</b><span>Mẫu B01-DN/HN (hợp nhất)</span></div></div>'));
   };
 
   V["2-3-1"] = function () {
@@ -561,10 +563,10 @@
     waterfall(doc.querySelector('[data-wf="3361"]'), { bq: true, src: "B02 tr.3", aria: "Biến động TK 3361 năm 2015: đầu năm, cấp bằng tiền, cấp bằng vật tư thiết bị, quyết toán bàn giao, cuối năm", steps: [
       { lab: "Đầu năm", p: "bq.b02.dau", d: 3, kind: "start", dong: true }, { lab: "Cấp bằng tiền (mã 03)", p: "bq.b02.tangTien", d: 3, kind: "up", dong: true }, { lab: "Cấp bằng vật tư, thiết bị (mã 04)", p: "bq.b02.tangVatTu", d: 3, kind: "up", dong: true },
       { lab: "Quyết toán, bàn giao (mã 06)", p: "bq.b02.giam", d: 3, kind: "down", dong: true }, { lab: "Cuối năm", p: "bq.b02.cuoi", d: 3, kind: "total", dong: true }] });
-    waterfall(doc.querySelector('[data-wf="vcsh"]'), { src: "Hòa Phát tr.55, tm 26", note: "Đầu năm theo B01 Hòa Phát (Hình 2.7). Các khoản làm tròn đến 0,1 tỷ nên có dòng chênh lệch làm tròn.", aria: "Biến động vốn chủ sở hữu Hòa Phát năm 2024 từ đầu năm đến cuối năm", steps: [
+    waterfall(doc.querySelector('[data-wf="vcsh"]'), { src: "Hòa Phát tr.55, tm 26", note: "Đầu năm theo B01 Hòa Phát (Hình 2.7). Các khoản làm tròn đến 0,1 tỷ; dòng cuối gộp biến động khác và chênh lệch làm tròn.", aria: "Biến động vốn chủ sở hữu Hòa Phát năm 2024 từ đầu năm đến cuối năm", steps: [
       { lab: "Đầu năm", p: "hp.vcshDauNam", d: 1, kind: "start", src: "Hòa Phát tr.9; Hình 2.7" }, { lab: "Lợi nhuận thuần", p: "hp.lnst", d: 1, kind: "up" }, { lab: "Cổ đông không kiểm soát góp vốn", p: "hp.gopVonCDKKS", d: 1, kind: "up" },
       { lab: "Trích quỹ khen thưởng, phúc lợi", p: "hp.trichQuy", d: 1, kind: "down" }, { lab: "Công ty con trả cổ tức cho CĐKKS", p: "hp.cdkksCoTuc", d: 1, kind: "down" }, { lab: "Sử dụng quỹ", p: "hp.suDungQuy", d: 1, kind: "down" },
-      { lab: "Trả lại vốn cho CĐKKS", p: "hp.traVonCDKKS", d: 1, kind: "down" }, { lab: "Khác (chênh lệch làm tròn)", p: "calc.hpVcshLamTron", d: 1, kind: "up", calc: true }, { lab: "Cuối năm", p: "hp.vcshChiTiet", d: 1, kind: "total" }] });
+      { lab: "Trả lại vốn cho CĐKKS", p: "hp.traVonCDKKS", d: 1, kind: "down" }, { lab: "Biến động khác và chênh lệch làm tròn", p: "calc.hpVcshLamTron", d: 1, kind: "up", calc: true }, { lab: "Cuối năm", p: "hp.vcshChiTiet", d: 1, kind: "total" }] });
   };
   V["2-3-1-more"] = function () {
     put("2-3-1-more", '<div class="intra"><span class="tagc t-co">Chuyển trong nội bộ vốn (tổng không đổi)</span><span>Cổ tức bằng cổ phiếu ' + v("hp.coTucCPPct", 0) + "%: " + v("hp.coTucCP", 1) + " tỷ chuyển từ thặng dư vốn (" + v("hp.coTucTuThangDu", 1) + ") và lợi nhuận chưa phân phối (" + v("hp.coTucTuLNCPP", 1) + ") sang vốn cổ phần; hoàn nhập quỹ đầu tư phát triển " + v("hp.hoanNhapQuyDTPT", 1) + " tỷ sang lợi nhuận chưa phân phối.</span>" + chip("Hòa Phát tr.55, tr.56", "hp") + "</div>");
@@ -600,11 +602,7 @@
       { lab: "Thuế TNDN", p: "hp.thueTNDN", d: 1, kind: "down" }, { lab: "Lợi nhuận sau thuế", p: "hp.lnst", d: 1, kind: "total" }] });
   };
   V["2-4-1-more"] = function () {
-    put("2-4-1-more", title("Chi phí phát sinh năm 2015 của BQLDA theo 6 nội dung (B03-CĐT)") + '<div class="hbars" id="chartCost" role="img" aria-label="Chi phí đầu tư phát sinh năm 2015 theo 6 nội dung, tỷ đồng."></div><p class="viz-foot">Tỷ đồng. ' + chip("B03 tr.4") + "</p>" +
-      title("Ước tính thô của bài: tỷ lệ chi phí đi vào tài sản và vào kết quả kinh doanh") + splitWrap('<div data-stk="ratio-bq"></div>', '<div data-stk="ratio-dn"></div>') +
-      '<p class="viz-foot warn">Ước tính thô của bài, hai phạm vi chưa cùng bản chất: số tăng XDCB (' + v("hp.xdcbTang", 1) + " tỷ) và chi phí trong kỳ. " + chip("Bài, mục 2.4.1", "bai") + "</p>");
-    stack(doc.querySelector('[data-stk="ratio-bq"]'), { total: 100, src: "Bài, mục 2.4.1", aria: "BQLDA: 100% vào tài sản, 0% vào kết quả", noFoot: true, segs: [{ lab: "Vào tài sản", p: "bqRatio.taiSan", d: 1, cls: "t1" }, { lab: "Vào kết quả kinh doanh", p: "bqRatio.ketQua", d: 1, cls: "t3" }], unit: "%" });
-    stack(doc.querySelector('[data-stk="ratio-dn"]'), { total: 100, src: "Bài, mục 2.4.1", aria: "Hòa Phát: khoảng 23,6% vào tài sản, 76,4% vào kết quả kinh doanh", noFoot: true, segs: [{ lab: "Vào tài sản", p: "hp.ratioTaiSan", d: 1, cls: "d1" }, { lab: "Vào kết quả kinh doanh", p: "hp.ratioKetQua", d: 1, cls: "d3" }], unit: "%" });
+    put("2-4-1-more", title("Chi phí phát sinh năm 2015 của BQLDA theo 6 nội dung (B03-CĐT)") + '<div class="hbars" id="chartCost" role="img" aria-label="Chi phí đầu tư phát sinh năm 2015 theo 6 nội dung, tỷ đồng."></div><p class="viz-foot">Tỷ đồng. ' + chip("B03 tr.4") + "</p>");
   };
 
   V["2-4-2"] = function () {
@@ -628,17 +626,10 @@
     flow(doc.querySelector('[data-flow="f03b"]'), { bq: true, side: "bq", src: "F03B tr.10", target: ["Bàn giao cho chủ đầu tư", "Nợ TK 336 (3361) / Có TK 241 · " + v("bq.f03b.duyet", 3) + " tỷ"], aria: "Giá trị quyết toán tách thành năm nội dung, cùng chuyển tới bàn giao cho chủ đầu tư",
       items: [{ lab: "Xây dựng", p: "bq.f03b.xd", d: 3, pct: "calc.f03bPct.xd", cls: "t1" }, { lab: "Thiết bị", p: "bq.f03b.tb", d: 3, pct: "calc.f03bPct.tb", cls: "t2" }, { lab: "Tư vấn", p: "bq.f03b.tv", d: 3, pct: "calc.f03bPct.tv", cls: "t3" }, { lab: "Quản lý dự án", p: "bq.f03b.ql", d: 3, pct: "calc.f03bPct.ql", cls: "t3" }, { lab: "Khác", p: "bq.f03b.khac", d: 3, pct: "calc.f03bPct.khac", cls: "t3" }],
       foot: "Tỷ đồng. " + calcNote() + " " + chip("F03B tr.10") });
-    flow(doc.querySelector('[data-flow="xdcb"]'), { side: "dn", dir: "out", src: "Hòa Phát tr.44", target: ["XDCB hoàn thành", "Nợ TK 211 (hoặc 213, 242) / Có TK 241"], aria: "XDCB Hòa Phát chuyển thành TSCĐ hữu hình, vô hình và chi phí trả trước",
+    flow(doc.querySelector('[data-flow="xdcb"]'), { side: "dn", dir: "out", src: "Hòa Phát tr.44", target: ["XDCB hoàn thành chuyển đi", v("calc.hpChuyenTong", 1) + " tỷ · Nợ TK 211 (hoặc 213, 242) / Có TK 241"], aria: "XDCB Hòa Phát chuyển thành TSCĐ hữu hình, vô hình và chi phí trả trước",
       items: [{ lab: "TSCĐ hữu hình", p: "hp.chuyenTSCD", d: 1, cls: "d1" }, { lab: "Chi phí trả trước dài hạn", p: "hp.chuyenCPTTDH", d: 1, cls: "d2" }, { lab: "Chi phí trả trước ngắn hạn", p: "hp.chuyenCPTTNH", d: 1, cls: "d3" }, { lab: "TSCĐ vô hình", p: "hp.chuyenTSCDVoHinh", d: 1, cls: "d3" }],
-      foot: "Tỷ đồng; độ dày chỉ so trong từng bên. " + chip("Hòa Phát tr.44", "hp") });
+      foot: "Tỷ đồng; tỷ lệ độ dày chỉ so trong từng bên, không so với bên BQLDA. " + calcNote() + " " + chip("Hòa Phát tr.44, tm 14", "hp") });
   };
-  V["2-5-more"] = function () {
-    put("2-5-more", title("Các mốc ghi trên F03B-CĐT") + '<div class="mtl"><span class="mtl-bar"></span><span class="mtl-m" style="left:12%"><i></i><b>' + t("bq.f03b.ngayBanGiao") + '</b>Bàn giao hạng mục nhà bảo vệ, hàng rào, cổng</span><span class="mtl-m" style="left:72%"><i></i><b>' + t("bq.f03b.ngayQd") + "</b>Quyết định phê duyệt quyết toán số " + t("bq.f03b.soQd") + '</span></div><p class="viz-foot">' + chip("F03B tr.10") + " " + chip("B04 VI.2 tr.7") + "</p>" +
-      title("Sau khi hoàn thành") + splitWrap(
-        '<div class="after bq"><span class="af-a">Bàn giao cho chủ đầu tư</span><span class="af-line stop"></span><span class="af-end">' + ic("i-x") + "<span>Không còn tài sản trên sổ của Ban; không khấu hao tài sản bàn giao</span></span></div>",
-        '<div class="after dn"><span class="af-a">Đưa vào sử dụng</span><span class="af-line go"></span><span class="af-end go">' + ic("i-arrow-r") + "<span>Khấu hao TSCĐ hữu hình trong năm " + v("hp.khauHao", 1) + " tỷ (thuyết minh 11)</span>" + chip("Hòa Phát tr.41, tm 11", "hp") + "</span></div>"));
-  };
-
   /* ---------- Chương 3 ---------- */
   V["3-1"] = function () {
     var a = [["Quản trị chi phí (TK 241)", "Kiểm soát chi tiết nguồn vốn theo dự toán. Phân loại rõ ràng chi phí theo 6 nội dung cơ bản.", "Khối lượng chứng từ lớn, đòi hỏi mức độ chi tiết cao, dễ phát sinh sai sót khi tập hợp chi phí chung chưa phân bổ."],
@@ -649,14 +640,55 @@
     }).join("") + "</div>");
   };
 
+  // 3.2: Bảng 3.2 dạng hình (ba hàng của bài) và hai khác biệt
+  function bar(segs, aria) {
+    return '<div class="mbar" role="img" aria-label="' + aria + '">' + segs.map(function (g) {
+      return '<span class="mbar-s ' + g.cls + '" style="--w:' + g.w + '%"' + tip("<b>" + g.lab + "</b><br>" + g.val + "<br>" + chip(g.src, /^Hòa Phát/.test(g.src) ? "hp" : "")) + "><b>" + g.txt + "</b></span>";
+    }).join("") + "</div>";
+  }
+  V["3-2"] = function () {
+    var srcHpTS = "Hòa Phát tr.6, tr.7", srcHpNV = "Hòa Phát tr.8, tr.9";
+    var rows = [
+      ["Cơ cấu tài sản",
+        bar([{ lab: "Chi phí XDCB dở dang (TK 241)", val: v("bq.b01.tk241", 3) + " tỷ · " + v("bq.b01.pct.tk241", 1) + "% tổng tài sản", w: get("bq.b01.pct.tk241"), cls: "t1", txt: "TK 241 · " + v("bq.b01.pct.tk241", 1) + "%", src: "B01 tr.2" },
+          { lab: "Các tài sản khác", val: v("bq.b01.tongTS", 3) + " tỷ tổng tài sản", w: 100 - get("bq.b01.pct.tk241"), cls: "t4", txt: "", src: "B01 tr.2" }], "BQLDA: chi phí XDCB dở dang chiếm 93,6% tổng tài sản") + '<p class="mcap">Tài sản chủ yếu là giá trị công trình đang hình thành ' + chip("B01 tr.2") + "</p>",
+        bar([{ lab: "TSCĐ hữu hình", val: v("hp.tscdhh", 1) + " tỷ · " + v("hp.pct.tscd", 1) + "%", w: get("hp.pct.tscd"), cls: "d1", txt: "TSCĐ " + v("hp.pct.tscd", 1) + "%", src: srcHpTS },
+          { lab: "XDCB dở dang", val: v("hp.xdcb", 1) + " tỷ · " + v("hp.pct.xdcb", 1) + "%", w: get("hp.pct.xdcb"), cls: "d2", txt: "XDCB " + v("hp.pct.xdcb", 1) + "%", src: srcHpTS },
+          { lab: "Hàng tồn kho", val: v("hp.htk", 1) + " tỷ · " + v("hp.pct.htk", 1) + "%", w: get("hp.pct.htk"), cls: "d5", txt: "HTK " + v("hp.pct.htk", 1) + "%", src: srcHpTS },
+          { lab: "Tài sản khác (còn lại, gồm tiền)", val: v("calc.hpPctTsConLai", 1) + "%", w: get("calc.hpPctTsConLai"), cls: "d4", txt: "còn lại", src: srcHpTS }], "Hòa Phát: TSCĐ 30,0%, XDCB 28,4%, hàng tồn kho 20,5%, còn lại") + '<p class="mcap">Tài sản đa dạng: tiền, hàng tồn kho, tài sản cố định ' + chip(srcHpTS, "hp") + "</p>"],
+      ["Cơ cấu nguồn vốn",
+        bar([{ lab: "Phải trả nội bộ (TK 336): nguồn vốn đầu tư", val: v("bq.b01.nvdt", 3) + " tỷ · " + v("bq.b01.pct.nvdt", 1) + "%", w: get("bq.b01.pct.nvdt"), cls: "t1", txt: "TK 336 · " + v("bq.b01.pct.nvdt", 1) + "%", src: "B01 tr.2" },
+          { lab: "Nợ phải trả", val: v("bq.b01.no", 3) + " tỷ · " + v("bq.b01.pct.no", 1) + "%", w: get("bq.b01.pct.no"), cls: "t3", txt: "", src: "B01 tr.2" }], "BQLDA: nguồn vốn đầu tư 94,6%, không có vốn chủ sở hữu") + '<p class="mcap"><span class="tagc t-kh">Không có vốn chủ sở hữu</span> ' + chip("B01 tr.2") + "</p>",
+        bar([{ lab: "Nợ phải trả", val: v("hp.no", 0) + " tỷ · " + v("hp.pct.no", 1) + "%", w: get("hp.pct.no"), cls: "d3", txt: "Nợ " + v("hp.pct.no", 1) + "%", src: srcHpNV },
+          { lab: "Vốn chủ sở hữu", val: v("hp.vcsh", 0) + " tỷ · " + v("hp.pct.vcsh", 1) + "%", w: get("hp.pct.vcsh"), cls: "d1", txt: "VCSH " + v("hp.pct.vcsh", 1) + "%", src: srcHpNV }], "Hòa Phát: nợ phải trả 48,9%, vốn chủ sở hữu 51,1%") + '<p class="mcap">Vốn chủ sở hữu gồm vốn góp và lợi nhuận tích lũy ' + chip(srcHpNV, "hp") + "</p>"],
+      ["Hiệu quả hoạt động",
+        '<div class="mprog"' + tip("<b>Lũy kế vốn đầu tư thực hiện</b><br>" + v("bq.b03.luyKe", 3) + " / " + v("bq.b03.tongMuc", 3) + " tỷ · " + v("bq.b03.tyLe", 1) + "%<br>" + chip("B03 tr.4")) + '><span class="mprog-f" style="--w:' + get("bq.b03.tyLe") + '%"></span><b>' + v("bq.b03.luyKe", 3) + " / " + v("bq.b03.tongMuc", 3) + " tỷ · " + v("bq.b03.tyLe", 1) + '%</b></div><p class="mcap">B03-CĐT: tiến độ giải ngân và tuân thủ tổng mức đầu tư ' + chip("B03 tr.4") + "</p>",
+        '<div class="mkq"><span' + tip("<b>Doanh thu thuần</b><br>" + v("hp.dtt", 1) + " tỷ<br>" + chip("Hòa Phát tr.10", "hp")) + '><small>Doanh thu thuần</small><b>' + v("hp.dtt", 1) + "</b></span>" + ic("i-arrow-r") + "<span" + tip("<b>Lợi nhuận sau thuế</b><br>" + v("hp.lnst", 1) + " tỷ<br>" + chip("Hòa Phát tr.10", "hp")) + '><small>Lợi nhuận sau thuế</small><b>' + v("hp.lnst", 1) + '</b></span></div><p class="mcap">B02-DN: doanh thu, chi phí, lợi nhuận (tỷ đồng) ' + chip("Hòa Phát tr.10", "hp") + "</p>"]
+    ];
+    var b32 = '<div class="b32v">' + rows.map(function (r) {
+      return '<div class="b32-row"><b class="b32-k">' + r[0] + '</b><div class="b32-l">' + r[1] + '</div><div class="b32-r">' + r[2] + "</div></div>";
+    }).join("") + "</div>";
+    var kb1 = '<div class="kb kb1"><div class="kb-side bq"><p class="kb-h">BQLDA · B01-CĐT</p>' +
+      bar([{ lab: "Nợ phải trả (đầu 3)", val: v("bq.b01.no", 3) + " tỷ · " + v("bq.b01.pct.no", 1) + "%", w: get("bq.b01.pct.no"), cls: "t3", txt: "", src: "B01 tr.2" },
+        { lab: "Nguồn vốn đầu tư (TK 3361, mã 410, đầu 3)", val: v("bq.b01.nvdt", 3) + " tỷ · " + v("bq.b01.pct.nvdt", 1) + "%", w: get("bq.b01.pct.nvdt"), cls: "t1", txt: "Nguồn vốn đầu tư " + v("bq.b01.nvdt", 3) + " tỷ", src: "B01 tr.2" }], "BQLDA: nợ phải trả 10,746 tỷ, nguồn vốn đầu tư 188,717 tỷ") +
+      '<p class="kb-k"><span class="tagc t-co">đầu 3</span> Nợ phải trả ' + v("bq.b01.no", 3) + " tỷ (" + v("bq.b01.pct.no", 1) + "%); nguồn vốn đầu tư (TK 3361, mã 410) " + v("bq.b01.nvdt", 3) + " tỷ (" + v("bq.b01.pct.nvdt", 1) + '%)</p><p class="kb-box">TK 241: ' + v("bq.b01.tk241", 3) + " tỷ, " + v("bq.b01.pct.tk241", 1) + "% tổng tài sản " + chip("B01 tr.2") + "</p></div>" +
+      '<div class="kb-side dn"><p class="kb-h">Hòa Phát · Bảng cân đối kế toán</p>' +
+      bar([{ lab: "Lợi nhuận chưa phân phối", val: v("hp.lnChuaPP", 0) + " tỷ", w: (get("hp.lnChuaPP") / get("hp.vcsh")) * 100, cls: "d2", txt: "LNCPP " + v("hp.lnChuaPP", 0), src: "Hòa Phát tr.9" },
+        { lab: "Phần vốn chủ sở hữu còn lại", val: v("calc.hpVcshKhacLNCPP", 0) + " tỷ", w: (get("calc.hpVcshKhacLNCPP") / get("hp.vcsh")) * 100, cls: "d1", txt: "", src: "Hòa Phát tr.9" }], "Hòa Phát: vốn chủ sở hữu 114.647 tỷ, trong đó lợi nhuận chưa phân phối 49.599 tỷ") +
+      '<p class="kb-k"><span class="tagc t-dn">đầu 4</span> Vốn chủ sở hữu ' + v("hp.vcsh", 0) + " tỷ, trong đó lợi nhuận chưa phân phối " + v("hp.lnChuaPP", 0) + " tỷ " + chip("Hòa Phát tr.9", "hp") + "</p></div></div>";
+    var kb2 = '<div class="kb kb2"><p class="kb-h">BQLDA không lập báo cáo lưu chuyển tiền tệ: đọc B02-CĐT kết hợp B03-CĐT</p><div class="kb2-cols"><div class="kb2-c"' + tip("<b>Nguồn vốn cấp tăng năm 2015</b><br>" + v("bq.b02.tang", 3) + " tỷ<br>" + chip("B02 tr.3")) + '><small>Nguồn vốn cấp tăng (B02)</small><b>' + v("bq.b02.tang", 3) + ' tỷ</b>' + chip("B02 tr.3") + '</div><span class="kb2-eq">tương ứng</span><div class="kb2-c"' + tip("<b>Chi phí đầu tư phát sinh năm 2015</b><br>" + v("bq.b03.ps", 3) + " tỷ<br>" + chip("B03 tr.4")) + '><small>Chi phí đầu tư phát sinh (B03)</small><b>' + v("bq.b03.ps", 3) + ' tỷ</b>' + chip("B03 tr.4") + '</div><div class="kb2-ring"' + tip("<b>Tiến độ</b><br>" + v("bq.b03.luyKe", 3) + " / " + v("bq.b03.tongMuc", 3) + " tỷ<br>" + chip("B03 tr.4")) + '><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" class="rg-bg"/><circle cx="60" cy="60" r="48" class="rg-fg" style="--p:' + get("bq.b03.tyLe") + '"/></svg><b>' + v("bq.b03.tyLe", 1) + '%</b><small>tiến độ</small></div></div></div>';
+    put("3-2", title("Bảng 3.2 dạng hình: ba góc độ đánh giá") + '<div class="b32-wrap"><div class="split-head"><span class="bq">' + ic("i-pipe") + 'Thực tế tại BQLDA (TT 195)</span><span class="vs">so với</span><span class="dn">' + ic("i-loop") + "Tư duy Doanh nghiệp (TT 200)</span></div>" + b32 + "</div>" +
+      '<div class="kb-grid"><div>' + title("Khác biệt 1: cấu trúc Bảng cân đối kế toán") + kb1 + "</div><div>" + title("Khác biệt 2: phương pháp phân tích dòng tiền") + kb2 + "</div></div>");
+  };
+
   V["3-3"] = function () {
     var l1 = ["Xác định chính xác mô hình tổ chức thực hiện dự án", "Tập trung vào luồng hạch toán quản trị vốn: Có TK 336 → Nợ TK 241 → Nợ TK 336 / Có TK 241", "Phối hợp với bộ phận kỹ thuật về tính hợp lệ của khối lượng nghiệm thu", "Xác định tiêu thức phân bổ chi phí BQLDA (TK 642) hợp lý"];
     var l2 = ["Hướng dẫn chuyển đổi số dư các tài khoản đặc thù (TK 3361, TK 3368)", "Số hóa, tự động trích xuất phụ biểu F03A, F03B", "Đẩy nhanh thẩm tra, phê duyệt quyết toán vốn đầu tư", "Xử lý công trình đã khai thác nhưng chưa ghi tăng tài sản cố định"];
-    put("3-3", title("Kiến nghị theo hai nhóm đối tượng") + '<div class="road"><div class="road-lane"><b class="road-k">' + ic("i-users") + "Người làm kế toán và người đọc BCTC</b>" + l1.map(function (x, i) { return '<span class="road-s"><i>' + (i + 1) + "</i>" + x + "</span>"; }).join("") + '</div><div class="road-lane"><b class="road-k">' + ic("i-book") + "Cơ quan quản lý nhà nước</b>" + l2.map(function (x, i) { return '<span class="road-s"><i>' + (i + 1) + "</i>" + x + "</span>"; }).join("") + '</div><div class="road-goal"><b>TT 99/2025/TT-BTC</b><span>ngày 27/10/2025</span><span>hiệu lực 01/01/2026</span><span>thay thế cả TT 195 và TT 200</span></div></div>');
+    put("3-3", title("Kiến nghị theo hai nhóm đối tượng") + '<div class="road two"><div class="road-lane"><b class="road-k">' + ic("i-users") + "Người làm kế toán và người đọc BCTC</b>" + l1.map(function (x, i) { return '<span class="road-s"><i>' + (i + 1) + "</i>" + x + "</span>"; }).join("") + '</div><div class="road-lane"><b class="road-k">' + ic("i-book") + "Cơ quan quản lý nhà nước</b>" + l2.map(function (x, i) { return '<span class="road-s"><i>' + (i + 1) + "</i>" + x + "</span>"; }).join("") + "</div></div>");
   };
 
   V["kl"] = function () {
-    put("kl", title("BQLDA và doanh nghiệp: hai mục tiêu, hai hệ thống kế toán") + '<div class="klg"><div class="klg-c bq">' + pipeSVG({ mini: true, noPct: true, id: "k" }) + "<b>Ban Quản lý dự án: kiểm soát nguồn cấp phát (TK 336) và tập hợp chi phí đầu tư xây dựng (TK 241)</b></div>" + '<div class="klg-c dn">' + loopSVG({ mini: true, id: "k" }) + "<b>Doanh nghiệp: đo lường chu kỳ kinh doanh qua doanh thu, chi phí và kết quả hoạt động kinh doanh</b></div></div>");
+    put("kl", title("BQLDA và doanh nghiệp: hai mục tiêu, hai hệ thống kế toán") + '<div class="klg"><div class="klg-c bq">' + pipeSVG({ noPct: true, id: "k" }) + "<b>Ban Quản lý dự án: kiểm soát nguồn cấp phát (TK 336) và tập hợp chi phí đầu tư xây dựng (TK 241)</b></div>" + '<div class="klg-c dn">' + loopSVG({ id: "k" }) + "<b>Doanh nghiệp: đo lường chu kỳ kinh doanh qua doanh thu, chi phí và kết quả hoạt động kinh doanh</b></div></div>");
   };
 
   // Phụ lục 2: dùng lại sơ đồ dòng hạch toán

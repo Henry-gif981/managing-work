@@ -8,7 +8,7 @@ rd = lambda p: open(os.path.join(ROOT, p), encoding="utf-8").read()
 
 html = rd("index.html")
 css = rd("css/style.css")
-SCRIPTS = ("data.js", "content.js", "md.js", "review.js", "viz.js", "main.js")
+SCRIPTS = ("data.js", "content.js", "md.js", "review.js", "viz.js", "hp_pages.js", "main.js")
 scripts = {k: rd("js/" + k) for k in SCRIPTS}
 MIME = {"webp": "image/webp", "jpg": "image/jpeg", "png": "image/png"}
 ASSET = re.compile(r"assets/[a-z0-9-]+\.(webp|jpg|png)")
