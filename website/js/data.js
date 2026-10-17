@@ -65,6 +65,9 @@ window.DATA = {
       nguyenGia: 1260000000,
       haoMon: 486000000,
       khauHaoNam: 134000000,
+      khNamPTVT: 10, // phương tiện vận tải: 10 năm (B04 IV.3)
+      khNamTBQLtu: 3,
+      khNamTBQLden: 5,
       tk241: 186742500000,
       tongTS: 199463750000,
       no: 10746300000,
@@ -129,13 +132,13 @@ window.DATA = {
     /* F03A-CĐT (tr.9): theo hạng mục công trình */
     f03a: {
       items: [
-        { ten: "Nhà xưởng chế biến chính", dau: 51300000000, ps: 31250000000, giam: 0, cuoi: 82550000000 },
-        { ten: "Kho lạnh và kho thành phẩm", dau: 19800000000, ps: 10482300000, giam: 0, cuoi: 30282300000 },
-        { ten: "Hệ thống xử lý nước thải", dau: 9100000000, ps: 9578800000, giam: 0, cuoi: 18678800000 },
-        { ten: "Hạ tầng kỹ thuật", dau: 8250000000, ps: 8250000000, giam: 0, cuoi: 16500000000 },
-        { ten: "Nhà điều hành và công trình phụ trợ", dau: 3900000000, ps: 4600000000, giam: 0, cuoi: 8500000000 },
-        { ten: "Chi phí chung toàn dự án (chưa phân bổ)", dau: 25136000000, ps: 5095400000, giam: 0, cuoi: 30231400000 },
-        { ten: "Nhà bảo vệ, hàng rào, cổng (đã hoàn thành, bàn giao)", dau: 4100000000, ps: 482450000, giam: 4582450000, cuoi: 0, banGiao: true }
+        { ten: "Nhà xưởng chế biến chính", dau: 51300000000, ps: 31250000000, giam: 0, cuoi: 82550000000, xd: 52400000000, tb: 30150000000, bt: 0, ql: 0, tv: 0, kh: 0 },
+        { ten: "Kho lạnh và kho thành phẩm", dau: 19800000000, ps: 10482300000, giam: 0, cuoi: 30282300000, xd: 21350000000, tb: 8932300000, bt: 0, ql: 0, tv: 0, kh: 0 },
+        { ten: "Hệ thống xử lý nước thải", dau: 9100000000, ps: 9578800000, giam: 0, cuoi: 18678800000, xd: 14278800000, tb: 4400000000, bt: 0, ql: 0, tv: 0, kh: 0 },
+        { ten: "Hạ tầng kỹ thuật (đường nội bộ, cấp điện, cấp thoát nước)", dau: 8250000000, ps: 8250000000, giam: 0, cuoi: 16500000000, xd: 16500000000, tb: 0, bt: 0, ql: 0, tv: 0, kh: 0 },
+        { ten: "Nhà điều hành và công trình phụ trợ", dau: 3900000000, ps: 4600000000, giam: 0, cuoi: 8500000000, xd: 8500000000, tb: 0, bt: 0, ql: 0, tv: 0, kh: 0 },
+        { ten: "Chi phí chung toàn dự án (chưa phân bổ cho hạng mục)", dau: 25136000000, ps: 5095400000, giam: 0, cuoi: 30231400000, xd: 0, tb: 0, bt: 9745000000, ql: 5851450000, tv: 10928750000, kh: 3706200000 },
+        { ten: "Nhà bảo vệ, hàng rào, cổng (đã hoàn thành, bàn giao)", dau: 4100000000, ps: 482450000, giam: 4582450000, cuoi: 0, xd: 0, tb: 0, bt: 0, ql: 0, tv: 0, kh: 0, banGiao: true }
       ]
     },
 
@@ -265,6 +268,25 @@ window.DATA = {
     chuyenTSCD: 2925.6,
     khauHao: 6810.7,
     xoaSoXDCB: 16.1,
+
+    // Chi tiết khác theo bài (mục 2.2–2.5)
+    laiDTTCtu: 1.9, laiDTTCden: 6.7, // %/năm, tiền gửi kỳ hạn gốc trên 3 tháng
+    laiTDTtu: 1.6, laiTDTden: 5.5, // %/năm, tương đương tiền
+    pthMarcegaglia: 482.4, pthHPTrading: 558.7, pthHoaSen: 218.6,
+    ptkLaiTienGui: 409.6, ptkKyCuoc: 350.2, ptkThueNK: 176.3, ptkBoiThuong: 125.7,
+    htkDiDuong: 5559.0, htkNVL: 20324.5, htkThanhPham: 12155.7, htkDoDang: 4048.6,
+    khNhaCuaTu: 5, khNhaCuaDen: 50, khMayMocTu: 1, khMayMocDen: 25,
+    duAnDungQuatPct: 94.4, duAnContainer: 2232.0, duAnOngThep: 585.1, duAnNongNghiep: 326.2, duAnHaiDuong: 143,
+    dtBanHang: 137852.9, dtDichVu: 725.5, dtChoThueDat: 1826.7, dtChoThueBDS: 147.9, dtGiamTru: 1706.3,
+    gvThanhPham: 118828.1,
+    bhVanChuyen: 563.2, bhXuatKhau: 1017.4, bhNhanVien: 209.3,
+    dtcLaiTienGui: 1258.7, cptcDiVay: 2287.4,
+    cpkGiaVonDienNuoc: 552.7, cpkBoiThuong: 97.2,
+    thueHienHanh: 1765.8, thueHoanLai: -92.3, thueSuatHieuDung: 12.2,
+    cdkksCoTuc: 6.3, suDungQuy: 2.6, traVonCDKKS: 0.1,
+    coTucCP: 5814.6, coTucCPPct: 10, coTucTuThangDu: 3211.6, coTucTuLNCPP: 2603.1, hoanNhapQuyDTPT: 20.8,
+    lcttThuDiVay: 174466.0, lcttTraNoGoc: 156878.9, lcttTraCoTuc: 5.0,
+    chuyenTSCDVoHinh: 9.6, chuyenCPTTDH: 557.2, chuyenCPTTNH: 105.3,
 
     // Ước tính trong bài: tỷ lệ chi phí đi vào tài sản / kết quả kinh doanh
     ratioTaiSan: 23.6,

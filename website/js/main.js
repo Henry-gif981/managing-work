@@ -121,12 +121,175 @@
 
   function buildNav() {
     var list = doc.getElementById("navList");
-    sections.forEach(function (s) {
+    chapters.forEach(function (s) {
       var li = h("li");
       var a = h("a", { href: "#" + s.id }, "<b>" + s.dataset.no + "</b><span>" + s.dataset.title + "</span>");
-      a.setAttribute("aria-label", s.dataset.no + ". " + s.dataset.title);
+      a.setAttribute("aria-label", s.dataset.title);
       li.appendChild(a);
       list.appendChild(li);
+    });
+    // Mục lục: danh sách tiểu mục theo chương
+    var toc = doc.getElementById("toc");
+    chapters.forEach(function (s) {
+      toc.appendChild(h("h4", null, s.dataset.no + " · " + s.dataset.title));
+      s.querySelectorAll(".sub").forEach(function (sub) {
+        var no = sub.dataset.sub || "";
+        toc.appendChild(h("a", { href: "#" + sub.id, "data-for": sub.id }, "<b>" + no + "</b><span>" + sub.dataset.subtitle + "</span>"));
+      });
+    });
+    var btn = doc.getElementById("btnToc");
+    function setToc(open) {
+      toc.hidden = !open;
+      btn.setAttribute("aria-expanded", String(open));
+    }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setToc(toc.hidden);
+    });
+    toc.addEventListener("click", function (e) {
+      if (e.target.closest("a")) setToc(false);
+    });
+    doc.addEventListener("click", function (e) {
+      if (!toc.hidden && !e.target.closest("#toc")) setToc(false);
+    });
+    doc.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !toc.hidden) {
+        setToc(false);
+        btn.focus();
+      }
+    });
+  }
+
+  /* ---------- Sân khấu chia đôi: dựng từ window.CONTENT ---------- */
+
+  // {đường.dẫn|số lẻ|thang} → thẻ số data-v; {t:đường.dẫn} → chữ data-t
+  function tpl(str) {
+    if (str == null) return "";
+    return String(str).replace(/\{(t:)?([a-zA-Z0-9_.]+)(?:\|(\d+))?(?:\|(\w+))?\}/g, function (m, isText, path, d, sc) {
+      if (isText) return '<span data-t="' + path + '"></span>';
+      return '<span data-v="' + path + '" data-d="' + (d || 0) + '"' + (sc ? ' data-s="' + sc + '"' : "") + "></span>";
+    });
+  }
+
+  function chipClass(src) {
+    if (/Hòa Phát|theo bài/.test(src)) return "src hp";
+    return "src";
+  }
+
+  function card(side, c) {
+    var label = side === "bq" ? "BQLDA" : "Doanh nghiệp";
+    var src = c.s ? '<span class="' + (side === "dn" && !/^(B0|F0)/.test(c.s) ? "src hp" : chipClass(c.s)) + '">' + c.s + "</span>" : "";
+    if (c.none != null) {
+      return '<div class="scard ' + side + ' none"><span class="side">' + label + "</span>" + src +
+        '<div class="m">Không có</div><p class="d">' + tpl(c.none) + "</p></div>";
+    }
+    return '<div class="scard ' + side + '"><span class="side">' + label + "</span>" + src +
+      (c.m ? '<div class="m">' + tpl(c.m) + "</div>" : "") + (c.d ? '<p class="d">' + tpl(c.d) + "</p>" : "") + "</div>";
+  }
+
+  function stageHead(st) {
+    var l = st.heads ? st.heads[0] : st.generic ? "BQLDA · TT 195/2012" : "BQLDA · TT 195/2012 · Đồng Bằng 2015";
+    var r = st.heads ? st.heads[1] : st.generic ? "Doanh nghiệp · TT 200/2014" : "Doanh nghiệp · TT 200/2014 · Hòa Phát 2024";
+    return '<div class="split-head"><span class="bq">' + l + '</span><span class="vs">so với</span><span class="dn">' + r + "</span></div>";
+  }
+
+  function renderStages() {
+    doc.querySelectorAll(".stage[data-stage]").forEach(function (el) {
+      var st = window.CONTENT[el.getAttribute("data-stage")];
+      if (!st) {
+        console.warn("Thiếu nội dung sân khấu:", el.getAttribute("data-stage"));
+        return;
+      }
+      var sub = el.closest(".sub");
+      var dupTitle = sub && sub.dataset.sub && st.title.indexOf(sub.dataset.sub + ".") === 0;
+      var html = (dupTitle ? "" : '<p class="stage-title">' + st.title + "</p>") + (st.note ? '<p class="stage-note">' + st.note + "</p>" : "");
+      html += stageHead(st);
+      if (st.intro) html += '<p class="why-band intro" style="margin:12px 12px 0">' + tpl(st.intro) + "</p>";
+      html += '<div class="srows">';
+      st.rows.forEach(function (r) {
+        html += '<div class="srow"><div class="srow-k">' + tpl(r.k) + "</div>" + card("bq", r.bq) + card("dn", r.dn) + "</div>";
+      });
+      html += "</div>";
+      if (st.why) html += '<div class="why-band"><b>Vì sao khác:</b> ' + tpl(st.why) + "</div>";
+      if (st.figs) {
+        html += '<div class="fig-row">' + st.figs.map(function (f, i) {
+          return '<button type="button" class="btn-src" data-fig="' + st.id + ":" + i + '">' + f.n + ": xem báo cáo gốc</button>";
+        }).join("") + "</div>";
+      }
+      el.innerHTML = html;
+    });
+  }
+
+  /* ---------- Biểu đồ gương ---------- */
+  function butterfly(box, rows, max, unit) {
+    var html = "";
+    rows.forEach(function (r) {
+      html += '<div class="bf-row"><div class="bf-side bq">' + r.bq.map(function (b) {
+        return '<div class="bf-bar"><span class="bf-fill' + (b.hatch ? " hatch" : "") + '" style="--w:' + ((get(b.p) / max) * 100).toFixed(2) + '%"></span><span class="bf-v">' + vspan(b.p, b.d) + unit + (b.lab ? " " + b.lab : "") + "</span></div>";
+      }).join("") + '</div><div class="bf-k">' + r.k + '</div><div class="bf-side dn">' + r.dn.map(function (b) {
+        return '<div class="bf-bar"><span class="bf-fill' + (b.hatch ? " hatch" : "") + '" style="--w:' + ((get(b.p) / max) * 100).toFixed(2) + '%"></span><span class="bf-v">' + vspan(b.p, b.d) + unit + (b.lab ? " " + b.lab : "") + "</span></div>";
+      }).join("") + "</div></div>";
+    });
+    html += '<div class="bf-axis"><span><b>' + max + "</b><b>0</b></span><span></span><span><b>0</b><b>" + max + "</b></span></div>";
+    box.innerHTML = html;
+    box.classList.add("reveal");
+  }
+
+  function buildDeadline() {
+    butterfly(doc.querySelector("#chartDeadline .bfly"), [
+      { k: "Báo cáo quý", bq: [{ p: "thoiHan.bq.quy", d: 0 }], dn: [{ p: "thoiHan.dn.quy", d: 0 }, { p: "thoiHan.dnRieng.quy", d: 0, hatch: true, lab: "(*)" }] },
+      { k: "Báo cáo năm", bq: [{ p: "thoiHan.bq.nam", d: 0 }], dn: [{ p: "thoiHan.dn.nam", d: 0 }, { p: "thoiHan.dnRieng.nam", d: 0, hatch: true, lab: "(*)" }] }
+    ], 90, " ngày");
+  }
+
+  function buildB22() {
+    butterfly(doc.querySelector("#chartB22 .bfly"), [
+      { k: "Tài sản ngắn hạn", bq: [{ p: "bq.b01.pct.tsnh", d: 1 }], dn: [{ p: "hp.pct.tsnh", d: 1 }] },
+      { k: "Tài sản dài hạn", bq: [{ p: "bq.b01.pct.tsdh", d: 1 }], dn: [{ p: "hp.pct.tsdh", d: 1 }] },
+      { k: "Trong đó: XDCB dở dang", bq: [{ p: "bq.b01.pct.tk241", d: 1 }], dn: [{ p: "hp.pct.xdcb", d: 1 }] },
+      { k: "Nợ phải trả", bq: [{ p: "bq.b01.pct.no", d: 1 }], dn: [{ p: "hp.pct.no", d: 1 }] },
+      { k: "Nguồn vốn đầu tư / Vốn chủ sở hữu", bq: [{ p: "bq.b01.pct.nvdt", d: 1 }], dn: [{ p: "hp.pct.vcsh", d: 1 }] }
+    ], 100, "%");
+  }
+
+  function hbarsInto(id, rows, cls) {
+    var box = doc.getElementById(id);
+    var max = Math.max.apply(null, rows.map(function (r) { return Math.abs(get(r.p)); }));
+    rows.forEach(function (r) {
+      var v = get(r.p);
+      var row = h("div", { class: "hbar" });
+      row.innerHTML = "<span>" + r.lab + "</span>" +
+        '<span class="hbar-track"><span class="hbar-fill' + (r.neg ? " neg" : "") + '" style="--w:' + Math.max(0.6, (Math.abs(v) / max) * 100).toFixed(2) + '%"></span></span>' +
+        '<span class="hbar-v">' + (r.neg ? "−" : r.plus ? "+" : "") + vspan(r.p, r.d) + "</span>";
+      box.appendChild(row);
+    });
+  }
+
+  function buildHPCharts() {
+    hbarsInto("chartHPEquity", [
+      { lab: "Lợi nhuận thuần", p: "hp.lnst", d: 1, plus: true },
+      { lab: "Cổ đông không kiểm soát góp vốn", p: "hp.gopVonCDKKS", d: 1, plus: true },
+      { lab: "Trích quỹ khen thưởng, phúc lợi", p: "hp.trichQuy", d: 1, neg: true },
+      { lab: "Công ty con trả cổ tức cho CĐKKS", p: "hp.cdkksCoTuc", d: 1, neg: true },
+      { lab: "Sử dụng quỹ", p: "hp.suDungQuy", d: 1, neg: true },
+      { lab: "Trả lại vốn cho CĐKKS", p: "hp.traVonCDKKS", d: 1, neg: true }
+    ]);
+    hbarsInto("chartHPCost", [
+      { lab: "Giá vốn", p: "hp.giaVon", d: 1 },
+      { lab: "Chi phí tài chính", p: "hp.cpTaiChinh", d: 1 },
+      { lab: "Chi phí bán hàng", p: "hp.cpBanHang", d: 1 },
+      { lab: "Chi phí quản lý doanh nghiệp", p: "hp.cpQLDN", d: 1 },
+      { lab: "Chi phí khác", p: "hp.cpKhac", d: 1 }
+    ]);
+  }
+
+  // Thanh tiêu đề: thêm nhãn ngắn cho màn hình nhỏ (hai chip nhỏ)
+  function shortHeads() {
+    doc.querySelectorAll(".split-head").forEach(function (hd) {
+      [["bq", "BQLDA · TT 195"], ["dn", "Doanh nghiệp · TT 200"]].forEach(function (x) {
+        var el = hd.querySelector("." + x[0]);
+        if (el && !el.querySelector(".l")) el.innerHTML = '<i class="l">' + el.innerHTML + '</i><i class="s">' + x[1] + "</i>";
+      });
     });
   }
 
@@ -163,29 +326,90 @@
     var t = doc.getElementById("tblF03A");
     var tb = t.querySelector("tbody");
     var tf = t.querySelector("tfoot");
-    var items = D.bq.f03a.items;
-    var total = D.bq.b03.cuoi;
+    var cols = ["dau", "ps", "giam", "cuoi", "xd", "tb", "bt", "ql", "tv", "kh"];
     function cell(path, v) {
       return '<td class="n">' + (v === 0 ? "–" : vspan(path, 3)) + "</td>";
     }
-    items.forEach(function (it, i) {
+    D.bq.f03a.items.forEach(function (it, i) {
       var p = "bq.f03a.items." + i + ".";
-      var tr = h("tr");
-      var pctW = ((it.cuoi / total) * 100).toFixed(2);
-      tr.innerHTML =
-        '<th scope="row">' + it.ten + (it.banGiao ? ' <span class="pill pill-soft" style="height:22px;font-size:11.5px">Đã bàn giao 30/10/2015</span>' : "") + "</th>" +
-        cell(p + "dau", it.dau) + cell(p + "ps", it.ps) + cell(p + "giam", it.giam) + cell(p + "cuoi", it.cuoi) +
-        '<td class="bar-cell"><div class="meter"><span style="--w:' + pctW + '%"></span></div></td>';
+      var tr = h("tr", it.banGiao ? { class: "done" } : null);
+      tr.innerHTML = '<th scope="row">' + it.ten + (it.banGiao ? ' <span class="pill pill-soft" style="height:22px;font-size:11.5px">Đã bàn giao <span data-t="bq.f03b.ngayBanGiao"></span></span>' : "") + "</th>" +
+        cols.map(function (c) { return cell(p + c, it[c]); }).join("");
       tb.appendChild(tr);
     });
-    // ngày bàn giao lấy từ data
-    tb.querySelectorAll(".pill").forEach(function (p) {
-      p.textContent = "Đã bàn giao " + D.bq.f03b.ngayBanGiao;
+    var b3 = {};
+    D.bq.b03.items.forEach(function (x, i) { b3[x.key] = "bq.b03.items." + i + ".cuoi"; });
+    tf.innerHTML = '<tr><td>Cộng (khớp B03-CĐT)</td>' +
+      ["bq.b03.dau", "bq.b03.ps", "bq.b03.giam", "bq.b03.cuoi", b3.xd, b3.tb, b3.bt, b3.ql, b3.tv, b3.kh].map(function (p) {
+        return '<td class="n">' + vspan(p, 3) + "</td>";
+      }).join("") + "</tr>";
+  }
+
+  /* ---------- Lightbox: ảnh báo cáo gốc ---------- */
+  var GALLERY = {
+    b01: [["assets/bctc-b01.jpg", "B01-CĐT · Bảng cân đối kế toán (tr.2)"]],
+    b02: [["assets/bctc-b02.jpg", "B02-CĐT · Nguồn vốn đầu tư (tr.3)"]],
+    b03: [["assets/bctc-b03.jpg", "B03-CĐT · Thực hiện đầu tư xây dựng (tr.4)"]],
+    b04: [["assets/bctc-b04-1.jpg", "B04-CĐT · Thuyết minh (tr.5)"], ["assets/bctc-b04-2.jpg", "B04-CĐT · Thuyết minh (tr.6)"], ["assets/bctc-b04-3.jpg", "B04-CĐT · Thuyết minh (tr.7)"]],
+    f02: [["assets/bctc-f02.jpg", "F02-CĐT · Chi tiết nguồn vốn đầu tư (tr.8)"]],
+    f03a: [["assets/bctc-f03a.jpg", "F03A-CĐT · Thực hiện đầu tư theo hạng mục (tr.9)"]],
+    f03b: [["assets/bctc-f03b.jpg", "F03B-CĐT · Quyết toán công trình hoàn thành (tr.10)"]],
+    f03c: [["assets/bctc-f03c.jpg", "F03C-CĐT · Chi phí khác (tr.11)"]],
+    f03d: [["assets/bctc-f03d.jpg", "F03D-CĐT · Chi phí Ban QLDA (tr.12)"]]
+  };
+  var lbState = { list: [], i: 0, opener: null };
+
+  function lbShow() {
+    var it = lbState.list[lbState.i];
+    var body = doc.getElementById("lbBody");
+    doc.getElementById("lbTitle").textContent = it.title;
+    var many = lbState.list.length > 1;
+    doc.getElementById("lbCount").textContent = many ? lbState.i + 1 + " / " + lbState.list.length : "";
+    doc.getElementById("lbPrev").hidden = doc.getElementById("lbNext").hidden = !many;
+    body.className = "lb-body" + (it.dn ? "" : " one");
+    body.innerHTML = '<figure class="bq"><figcaption>' + it.capBq + '</figcaption><img src="' + it.bq + '" alt="' + it.capBq + '"></figure>' +
+      (it.dn ? '<figure class="dn"><figcaption>' + it.capDn + '</figcaption><img src="' + it.dn + '" alt="' + it.capDn + '"></figure>' : "");
+  }
+
+  function lbOpen(list, i, opener) {
+    var dlg = doc.getElementById("lightbox");
+    lbState = { list: list, i: i || 0, opener: opener };
+    lbShow();
+    if (dlg.showModal) dlg.showModal();
+    else dlg.setAttribute("open", "");
+  }
+
+  function initLightbox() {
+    var dlg = doc.getElementById("lightbox");
+    doc.addEventListener("click", function (e) {
+      var f = e.target.closest("[data-fig]");
+      var g = e.target.closest("[data-gallery]");
+      if (f) {
+        var parts = f.getAttribute("data-fig").split(":");
+        var figs = window.CONTENT[parts[0]].figs;
+        lbOpen(figs.map(function (x) {
+          return { title: x.n + ". " + x.t, bq: x.bq, dn: x.dn, capBq: "BQLDA Đồng Bằng 2015 (trái)", capDn: "Hòa Phát 2024 (phải)" };
+        }), +parts[1], f);
+      } else if (g) {
+        lbOpen(GALLERY[g.getAttribute("data-gallery")].map(function (x) {
+          return { title: "Bản gốc BCTC BQLDA: " + x[1], bq: x[0], capBq: x[1] };
+        }), 0, g);
+      }
     });
-    var b = "bq.b03.";
-    tf.innerHTML =
-      '<tr><td>Cộng (khớp B03-CĐT)</td><td class="n">' + vspan(b + "dau", 3) + '</td><td class="n">' + vspan(b + "ps", 3) +
-      '</td><td class="n">' + vspan(b + "giam", 3) + '</td><td class="n">' + vspan(b + "cuoi", 3) + "</td><td></td></tr>";
+    function step(d) {
+      lbState.i = (lbState.i + d + lbState.list.length) % lbState.list.length;
+      lbShow();
+    }
+    doc.getElementById("lbPrev").addEventListener("click", function () { step(-1); });
+    doc.getElementById("lbNext").addEventListener("click", function () { step(1); });
+    doc.getElementById("lbClose").addEventListener("click", function () { dlg.close(); });
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
+      if (e.key === "ArrowLeft") { e.preventDefault(); step(-1); }
+      e.stopPropagation();
+    });
+    dlg.addEventListener("close", function () { if (lbState.opener) lbState.opener.focus(); });
   }
 
   var SVGNS = "http://www.w3.org/2000/svg";
@@ -255,55 +479,6 @@
     t1.appendChild(svgEl("tspan", { "data-v": "bq.b02.cuoi", "data-d": "2" }));
     svg.appendChild(t1);
     svg.appendChild(svgEl("text", { x: 100, y: 120, "text-anchor": "middle", "font-size": 12, fill: "#44526b" }, "tỷ đồng, TK 3361"));
-    box.appendChild(svg);
-  }
-
-  // Cột nhóm: thời hạn nộp BCTC
-  function buildDeadline() {
-    var box = doc.getElementById("chartDeadline");
-    var T = D.thoiHan;
-    var W = 560, H = 300, top = 30, bottom = 64, left = 40, right = 10;
-    var maxV = 100;
-    var y = function (v) { return top + (H - top - bottom) * (1 - v / maxV); };
-    var svg = svgEl("svg", { viewBox: "0 0 " + W + " " + H, "aria-hidden": "true" });
-    var defs = svgEl("defs");
-    var pat = svgEl("pattern", { id: "hatch", width: 8, height: 8, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" });
-    pat.appendChild(svgEl("rect", { width: 8, height: 8, fill: "#d2e4fb" }));
-    pat.appendChild(svgEl("line", { x1: 0, y1: 0, x2: 0, y2: 8, stroke: "#1c6fe0", "stroke-width": 3 }));
-    defs.appendChild(pat);
-    svg.appendChild(defs);
-    [0, 30, 60, 90].forEach(function (g) {
-      svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: y(g), y2: y(g), class: g ? "gridl" : "axis" }));
-      svg.appendChild(svgEl("text", { x: left - 8, y: y(g) + 4, "text-anchor": "end", "font-size": 11, fill: "#64728a" }, String(g)));
-    });
-    var groups = [["quy", "Báo cáo quý"], ["nam", "Báo cáo năm"]];
-    var series = [
-      { k: "bq", fill: "#0d3b84", lab: "BQLDA (TT 195)" },
-      { k: "dn", fill: "#1c6fe0", lab: "Doanh nghiệp (TT 200)" },
-      { k: "dnRieng", fill: "url(#hatch)", lab: "DN, trường hợp riêng" }
-    ];
-    var gw = (W - left - right) / groups.length, bw = 52, gapB = 10;
-    groups.forEach(function (g, gi) {
-      var startX = left + gw * gi + (gw - (bw * 3 + gapB * 2)) / 2;
-      series.forEach(function (s, si) {
-        var v = T[s.k][g[0]];
-        var x = startX + si * (bw + gapB);
-        var r = svgEl("rect", { x: x, y: y(v), width: bw, height: y(0) - y(v), rx: 5, fill: s.fill, class: "wf-bar", stroke: s.k === "dnRieng" ? "#1c6fe0" : "none" });
-        r.style.transitionDelay = (gi * 3 + si) * 0.08 + "s";
-        svg.appendChild(r);
-        var t = svgEl("text", { x: x + bw / 2, y: y(v) - 7, "text-anchor": "middle", "font-size": 13, "font-weight": 700, fill: "#0f1e3a" });
-        t.appendChild(svgEl("tspan", { "data-v": "thoiHan." + s.k + "." + g[0], "data-d": "0" }));
-        t.appendChild(svgEl("tspan", {}, " ngày"));
-        svg.appendChild(t);
-      });
-      svg.appendChild(svgEl("text", { x: left + gw * gi + gw / 2, y: y(0) + 20, "text-anchor": "middle", "font-size": 13, "font-weight": 600, fill: "#0f1e3a" }, g[1]));
-    });
-    var lx = left;
-    series.forEach(function (s) {
-      svg.appendChild(svgEl("rect", { x: lx, y: H - 22, width: 12, height: 12, rx: 3, fill: s.fill, stroke: s.k === "dnRieng" ? "#1c6fe0" : "none" }));
-      svg.appendChild(svgEl("text", { x: lx + 18, y: H - 12, "font-size": 12, fill: "#44526b" }, s.lab));
-      lx += s.lab.length * 6.6 + 40;
-    });
     box.appendChild(svg);
   }
 
@@ -420,13 +595,20 @@
 
   /* ---------------- Nav, tiến độ cuộn ---------------- */
 
-  // sections: 11 phần gốc (00–10). Khi trình chiếu, các phần dài được tách thêm trang (.page).
+  // sections: bìa + 5 phần (Mở đầu, Chương 1–3, Kết luận). Khi trình chiếu có thêm các trang tách (.page).
   var sections = Array.prototype.slice.call(doc.querySelectorAll("main > .slide"));
-  var currentIdx = 0; // vị trí trong danh sách slide đang hiển thị (gồm cả trang tách)
-  var shownNo = null; // số phần đang hiện trên nav
+  var chapters = sections.filter(function (s) { return s.classList.contains("chapter"); });
+  var currentIdx = 0;
+  var shownKey = null;
 
   function slides() {
     return Array.prototype.slice.call(doc.querySelectorAll("main > .slide"));
+  }
+
+  function chapterOf(slide) {
+    if (slide.classList.contains("chapter")) return slide;
+    if (slide.dataset.chapter) return doc.getElementById(slide.dataset.chapter);
+    return null;
   }
 
   function updateScroll() {
@@ -440,15 +622,30 @@
       if (s.getBoundingClientRect().top <= line) idx = i;
     });
     currentIdx = idx;
-    var s = list[idx];
-    if (s.dataset.no === shownNo) return;
-    shownNo = s.dataset.no;
+    var slide = list[idx];
+    var ch = chapterOf(slide);
+    var sub = null;
+    if (ch) {
+      if (slide.dataset.subref) sub = doc.getElementById(slide.dataset.subref);
+      else if (!present) {
+        ch.querySelectorAll(".sub").forEach(function (s) {
+          if (s.getBoundingClientRect().top <= line) sub = s;
+        });
+      }
+    }
+    var key = (ch ? ch.id : "hero") + "|" + (sub ? sub.id : "");
+    if (key === shownKey) return;
+    shownKey = key;
     doc.querySelectorAll("#navList a").forEach(function (a) {
-      if (a.getAttribute("href") === "#s" + shownNo) a.setAttribute("aria-current", "true");
+      if (ch && a.getAttribute("href") === "#" + ch.id) a.setAttribute("aria-current", "true");
       else a.removeAttribute("aria-current");
     });
-    doc.getElementById("navNo").textContent = s.dataset.no;
-    doc.getElementById("navTitle").textContent = s.dataset.title;
+    doc.querySelectorAll("#toc a").forEach(function (a) {
+      if (sub && a.getAttribute("data-for") === sub.id) a.setAttribute("aria-current", "true");
+      else a.removeAttribute("aria-current");
+    });
+    doc.getElementById("navNo").textContent = ch ? ch.dataset.title : "Bìa";
+    doc.getElementById("navTitle").textContent = sub ? " · " + (sub.dataset.sub && sub.dataset.sub !== ch.dataset.title ? sub.dataset.sub + " " : "") + sub.dataset.subtitle : "";
   }
 
   function goTo(i) {
@@ -463,49 +660,130 @@
   var present = false;
   var presentFromFullscreen = false;
   var movedNodes = [];
+  var MAX_ROWS = 4;
 
-  // Tách mỗi .block của một phần thành một trang 16:9 riêng. Nút DOM được DI CHUYỂN (không sao chép)
-  // nên tab, toggle vẫn hoạt động; khi thoát trình chiếu, mọi nút trở về chỗ cũ.
+  // Di chuyển (không sao chép) để tab, nút vẫn chạy; ghi lại vị trí gốc để trả về khi thoát.
+  function move(node, target) {
+    if (!node.__ph) {
+      var ph = doc.createComment("vị trí gốc");
+      node.parentNode.insertBefore(ph, node);
+      node.__ph = ph;
+      movedNodes.push(node);
+    }
+    target.appendChild(node);
+  }
+
+  function availHeight() {
+    return window.innerHeight - parseFloat(getComputedStyle(root).getPropertyValue("--nav-h")) - 36;
+  }
+
+  function newPage(ch, sub, after) {
+    var page = h("section", {
+      class: "slide page",
+      "data-chapter": ch.id,
+      "data-subref": sub.id,
+      "aria-label": ch.dataset.title + (sub.dataset.sub ? ", " + sub.dataset.sub : "") + " " + sub.dataset.subtitle
+    });
+    var panel = h("div", { class: "panel" }, '<p class="page-head"><b>' + (sub.dataset.sub || "") + "</b><span>" + sub.dataset.subtitle + "</span><em></em></p>");
+    page.appendChild(panel);
+    after.parentNode.insertBefore(page, after.nextSibling);
+    return { el: page, panel: panel };
+  }
+
+  function makeShell(stage) {
+    var sh = h("div", { class: "stage shell" });
+    stage.querySelectorAll(":scope > .stage-title, :scope > .stage-note, :scope > .split-head").forEach(function (c) {
+      sh.appendChild(c.cloneNode(true));
+    });
+    sh.appendChild(h("div", { class: "srows" }));
+    return sh;
+  }
+
   function buildPages() {
-    sections.forEach(function (sec) {
-      var panel = sec.querySelector(".panel");
-      var last = sec;
-      var curPanel = null;
-      var part = 1;
-      Array.prototype.slice.call(panel.children).forEach(function (k) {
-        if (k.classList.contains("block")) {
-          part++;
-          var page = h("section", {
-            class: "slide page",
-            "data-no": sec.dataset.no,
-            "data-title": sec.dataset.title,
-            "aria-label": sec.dataset.no + ". " + sec.dataset.title + ", phần " + part
-          });
-          curPanel = h("div", { class: "panel" }, '<p class="page-head"><b>' + sec.dataset.no + "</b>" + sec.dataset.title + "</p>");
-          page.appendChild(curPanel);
-          last.parentNode.insertBefore(page, last.nextSibling);
-          last = page;
+    var limit = availHeight();
+    chapters.forEach(function (ch) {
+      var last = ch;
+      Array.prototype.slice.call(ch.querySelectorAll(":scope > .panel > .sub")).forEach(function (sub) {
+        var pages = [];
+        var cur, box;
+        function fits() { return cur.panel.offsetHeight <= limit - 14; }
+        function nextPage() {
+          cur = newPage(ch, sub, last);
+          last = cur.el;
+          pages.push(cur);
+          box = h("div", { class: "sub-cont" });
+          cur.panel.appendChild(box);
         }
-        if (curPanel) {
-          var ph = doc.createComment("vị trí gốc");
-          k.parentNode.insertBefore(ph, k);
-          curPanel.appendChild(k);
-          movedNodes.push([k, ph]);
+        cur = newPage(ch, sub, last);
+        last = cur.el;
+        pages.push(cur);
+        var kids = Array.prototype.slice.call(sub.children);
+        move(sub, cur.panel);
+        box = sub;
+        kids.forEach(function (k) {
+          var isHead = k.classList.contains("sub-head") || k.classList.contains("part-head");
+          if (isHead) return;
+          if (box !== sub) move(k, box);
+          if (k.classList.contains("stage")) {
+            var rows = Array.prototype.slice.call(k.querySelectorAll(":scope > .srows > .srow"));
+            if (fits() && rows.length <= MAX_ROWS) return;
+            var tail = Array.prototype.slice.call(k.children).filter(function (c) {
+              return (c.classList.contains("why-band") && !c.classList.contains("intro")) || c.classList.contains("fig-row");
+            });
+            var hold = h("div");
+            rows.concat(tail).forEach(function (r) { move(r, hold); });
+            if (!fits() && box.children.length > (box === sub ? 2 : 1)) {
+              nextPage();
+              move(k, box);
+            }
+            var shell = k, n = 0;
+            rows.forEach(function (r) {
+              move(r, shell.querySelector(":scope > .srows"));
+              n++;
+              if (n === 1 && !fits() && shell === k && box.children.length > (box === sub ? 2 : 1)) {
+                // ngay hàng đầu đã tràn: đưa cả sân khấu sang màn mới
+                nextPage();
+                move(k, box);
+              } else if (n > MAX_ROWS || (!fits() && n > 1)) {
+                nextPage();
+                shell = makeShell(k);
+                box.appendChild(shell);
+                move(r, shell.querySelector(":scope > .srows"));
+                n = 1;
+              }
+            });
+            tail.forEach(function (t) {
+              move(t, shell);
+              if (!fits()) {
+                nextPage();
+                move(t, box);
+              }
+            });
+          } else if (!fits() && box.children.length > (box === sub ? 2 : 1)) {
+            nextPage();
+            move(k, box);
+          }
+        });
+        if (pages.length > 1) {
+          pages.forEach(function (pg, i) {
+            pg.panel.querySelector(".page-head em").textContent = "(" + (i + 1) + "/" + pages.length + ")";
+          });
         }
       });
     });
   }
 
   function unbuildPages() {
-    movedNodes.forEach(function (m) {
-      m[1].parentNode.insertBefore(m[0], m[1]);
-      m[1].remove();
+    movedNodes.forEach(function (n) {
+      n.__ph.parentNode.insertBefore(n, n.__ph);
+      n.__ph.remove();
+      delete n.__ph;
     });
     movedNodes = [];
     doc.querySelectorAll("main > .slide.page").forEach(function (p) { p.remove(); });
   }
 
-  // Thu nhỏ panel cho vừa khung; panel được nới rộng tương ứng để nội dung dàn ngang trước khi thu nhỏ.
+  // Khi một khối đơn lẻ vẫn cao hơn màn hình, thu nhỏ panel (nới rộng tương ứng để dàn ngang trước).
   function fitPanels() {
     slides().forEach(function (s) {
       var p = s.querySelector(".panel");
@@ -531,20 +809,44 @@
   }
 
   function setPresent(on) {
-    var no = (slides()[currentIdx] || sections[0]).dataset.no;
+    var cur = slides()[currentIdx] || sections[0];
+    var target = cur.dataset.subref || (cur.classList.contains("page") ? cur.dataset.chapter : cur.id);
+    if (on === present) return;
     present = on;
+    root.classList.toggle("present", on);
     if (on) {
       finalizeAll();
       buildPages();
     } else {
       unbuildPages();
     }
-    root.classList.toggle("present", on);
     doc.getElementById("btnPresent").setAttribute("aria-pressed", String(on));
     fitPanels();
-    shownNo = null;
-    doc.getElementById("s" + no).scrollIntoView({ block: "start" });
+    // Font web tải xong sau thì chữ đổi kích thước: phân trang lại một lần nữa.
+    if (on && doc.fonts && doc.fonts.status !== "loaded") doc.fonts.ready.then(onResize);
+    shownKey = null;
+    var el = doc.getElementById(target);
+    if (on && el && el.classList.contains("sub")) el = el.closest(".slide");
+    if (el) el.scrollIntoView({ block: "start" });
     updateScroll();
+  }
+
+  var resizeTimer = null;
+  function onResize() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      if (present) {
+        // phân trang lại theo kích thước màn hình mới
+        var cur = slides()[currentIdx];
+        var ref = cur && (cur.dataset.subref || cur.id);
+        unbuildPages();
+        buildPages();
+        fitPanels();
+        var el = ref && doc.getElementById(ref);
+        if (el) (el.closest(".slide") || el).scrollIntoView({ block: "start" });
+      }
+      updateScroll();
+    }, 150);
   }
 
   function toggleFullscreen() {
@@ -567,14 +869,15 @@
       presentFromFullscreen = false;
       setPresent(false);
     } else {
-      setTimeout(fitPanels, 50);
+      onResize();
     }
   });
 
   function onKey(e) {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (doc.getElementById("lightbox").open) return;
     var t = e.target;
-    if (t.closest && t.closest('[role="tablist"], input, textarea, select')) return;
+    if (t.closest && t.closest('[role="tablist"], input, textarea, select, #toc')) return;
     var k = e.key;
     if (k === "f" || k === "F") {
       e.preventDefault();
@@ -592,11 +895,12 @@
       if (present) {
         goTo(currentIdx + (next ? 1 : -1));
       } else {
-        // Ngoài trình chiếu: ← → nhảy giữa 11 phần gốc
-        var no = (slides()[currentIdx] || sections[0]).dataset.no;
-        var si = sections.findIndex(function (x) { return x.dataset.no === no; });
-        var target = sections[Math.max(0, Math.min(sections.length - 1, si + (next ? 1 : -1)))];
-        target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+        // Ngoài trình chiếu: ← → nhảy giữa các tiểu mục
+        var anchors = [sections[0]].concat(Array.prototype.slice.call(doc.querySelectorAll(".chapter, .sub")));
+        var line = window.innerHeight * 0.35, ai = 0;
+        anchors.forEach(function (a, i) { if (a.getBoundingClientRect().top <= line + 2) ai = i; });
+        var tgt = anchors[Math.max(0, Math.min(anchors.length - 1, ai + (next ? 1 : -1)))];
+        tgt.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
       }
     }
   }
@@ -617,12 +921,16 @@
 
   buildMembers();
   buildNav();
+  renderStages();
   buildCostBars();
   buildF03BBars();
   buildF03A();
   buildWaterfall();
   buildDonut();
   buildDeadline();
+  buildB22();
+  buildHPCharts();
+  shortHeads();
   fillNumbers();
   fillWidths();
 
@@ -636,6 +944,7 @@
   initReveal();
   initSegs();
   initTabs();
+  initLightbox();
 
   doc.getElementById("btnPresent").addEventListener("click", function () { setPresent(!present); });
   doc.getElementById("btnFull").addEventListener("click", toggleFullscreen);
@@ -654,10 +963,7 @@
       updateScroll();
     });
   }, { passive: true });
-  window.addEventListener("resize", function () {
-    fitPanels();
-    updateScroll();
-  });
+  window.addEventListener("resize", onResize);
   updateScroll();
 
   // Cho bản kiểm thử: hiện mọi thứ ở trạng thái cuối.
