@@ -16,10 +16,9 @@ const CHECKLIST = [
   ['1.2.1 ba lớp + Bảng 1.3', ['1.2.1', 'LỚP 1', 'LỚP 2', 'LỚP 3', 'Bảng 1.3', 'Luật Kế toán số 88/2015/QH13', 'Nghị định 174/2016/NĐ-CP', 'Thông tư 79/2019/TT-BTC', 'Vai trò trong đề tài']],
   ['1.2.2 TT 195', ['1.2.2', '15/11/2012', '01/01/2013', 'QĐ 214/2000/QĐ-BTC', 'Chủ đầu tư không thành lập BQLDA', 'HỆ THỐNG TÀI KHOẢN', 'TK 154 thành “Chi phí sản xuất thử dở dang”', 'thêm bốn tài khoản cấp 2', 'NGHIỆP VỤ ĐẶC THÙ', 'BÁO CÁO TÀI CHÍNH', 'THỜI HẠN NỘP']],
   ['1.2.3 TT 200', ['1.2.3', '22/12/2014', '01/01/2015', 'TT 244/2009/TT-BTC', 'Thông tư 133/2016/TT-BTC', 'Thông tư 75/2015/TT-BTC', 'Thông tư 53/2016/TT-BTC', '2411, 2412, 2413', 'B09-DN']],
-  ['1.2.4 + Hình 1.2', ['1.2.4', 'Hình 1.2', 'Ban quản lý dự án (có tổ chức kế toán riêng)', 'Chủ đầu tư có thành lập Ban quản lý dự án', 'Chủ đầu tư không thành lập BQLDA', 'Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo TT 195', 'Lập thêm B02, B03/CĐT và 4 phụ biểu', 'phù hợp với hướng dẫn của Bộ Tài chính']],
+  ['1.2.4 + Hình 1.2', ['1.2.4', 'Hình 1.2', 'Ban quản lý dự án (có tổ chức kế toán riêng)', 'Chủ đầu tư có thành lập Ban quản lý dự án', 'Chủ đầu tư không thành lập BQLDA', 'Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo Thông tư 195', 'B02-CĐT Nguồn vốn đầu tư', 'B04-CĐT Thuyết minh báo cáo tài chính', 'Lập thêm B02-CĐT (Nguồn vốn đầu tư', 'và 4 phụ biểu', 'phù hợp với hướng dẫn của Bộ Tài chính']],
   ['1.3.1 phạm vi', ['1.3.1', 'ĐỐI TƯỢNG (i)', 'ĐỐI TƯỢNG (ii)', 'Cùng “gốc”', 'hành chính sự nghiệp, thuế và kiểm toán']],
   ['1.3.2 tiêu chí, Bảng 1.4, Hình 1.3, Bảng 1.5, Hình 1.4', ['1.3.2', 'Bảng 1.4', 'Đối tượng áp dụng', 'Nơi nhận báo cáo', 'Điều 110 Thông tư 200', 'Hình 1.3', 'Bước 5', 'Bảng 1.5', 'ĐIỂM CẦN CHÚ Ý 1', 'ĐIỂM CẦN CHÚ Ý 2', 'Hình 1.4', 'Trường hợp riêng của doanh nghiệp']],
-  ['1.3.3 năm ý', ['1.3.3', 'GIỐNG NHAU', 'KHÁC NHAU CỐT LÕI', 'HỆ QUẢ KHI HẠCH TOÁN', 'HỆ QUẢ KHI LẬP BÁO CÁO', 'ĐIỀU KIỆN ÁP DỤNG']],
   ['Mốc TT 99/2025 trên dòng thời gian', ['Mốc thời gian các thông tư', 'Thông tư 99/2025/TT-BTC', 'Bài, mục 3.3']],
   ['2.1.1 + Bảng 2.1', ['2.1.1', '45/QĐ-HĐQT', '05/03/2013', 'con dấu', 'tài khoản tiền gửi riêng', 'Khu công nghiệp Trà Nóc', 'Ban không hoạt động như một doanh nghiệp sản xuất kinh doanh', 'Bảng 2.1', 'Chủ thể lập báo cáo', 'Chế độ kế toán áp dụng', 'Kỳ báo cáo, ngày lập', 'Bộ báo cáo', 'Hoạt động chính', 'Tổng tài sản cuối kỳ']],
   ['2.1.2 bộ BCTC, số liệu, Bảng 2.2, nhận xét', ['2.1.2', 'B01-CĐT', 'B02-CĐT', 'B03-CĐT', 'B04-CĐT', 'F02-CĐT', 'F03A-CĐT', 'F03B-CĐT', 'F03C-CĐT', 'F03D-CĐT', '191,325', '186,743', '4,582', 'Bảng 2.2', 'Vì sao khác:', 'hình ảnh của một dự án đang thi công']],
@@ -54,7 +53,7 @@ let lostB3 = 0;
     // mở lớp chi tiết thứ hai để đọc đủ chữ của bài
     document.querySelectorAll('details').forEach(d => { d.open = true; });
     document.querySelectorAll('.srow.closed').forEach(r => r.classList.remove('closed'));
-    document.querySelectorAll('[data-model-r], [data-spoke-p]').forEach(p => { p.hidden = false; });
+    document.querySelectorAll('[data-spoke-p]').forEach(p => { p.hidden = false; });
     document.querySelectorAll('.dual').forEach(d => d.removeAttribute('data-view'));
   });
   const text = await page.evaluate(() => document.body.innerText.replace(/\s+/g, ' '));
@@ -122,6 +121,7 @@ let lostB3 = 0;
   // Bản 4: chế độ xem bình thường (lớp trình bày + chi tiết, mỗi đối tượng một dạng mặc định), không bật rà soát
   await page.reload();
   await page.evaluate(() => window.__finalize());
+  await page.waitForFunction(() => [...document.images].every(i => i.hasAttribute('data-src') || i.complete), null, { timeout: 30000 });
   const b4 = await page.evaluate(() => {
     const out = [];
     const body = document.body.innerText;
@@ -148,7 +148,7 @@ let lostB3 = 0;
     const links = document.querySelectorAll('.src-link').length;
     const pages = document.querySelectorAll('#pgal .pg').length;
     if (pages !== 12) out.push('Phụ lục 3: ' + pages + '/12 trang');
-    const broken = [...document.images].filter(i => !i.complete || !i.naturalWidth).map(i => i.getAttribute('alt') || i.src.slice(0, 40));
+    const broken = [...document.images].filter(i => !i.hasAttribute('data-src') && (!i.complete || !i.naturalWidth)).map(i => i.getAttribute('alt') || i.src.slice(0, 40));
     if (broken.length) out.push('ảnh lỗi: ' + broken.join('; '));
     if (!document.querySelector('.hero-logo') || !/Giảng viên:/.test(body)) out.push('bìa thiếu logo hoặc dòng Giảng viên');
     if (/61,3/.test(document.getElementById('m-kl').innerText)) out.push('Kết luận còn 61,3%');
@@ -173,6 +173,30 @@ let lostB3 = 0;
   });
   console.log(`Bản 5: ${b5.linked}/${b5.hp} chip Hòa Phát mở được trang BCTC; ${b5.out.length ? 'LỖI: ' + b5.out.join('; ') : 'đạt'}`);
   lostB3 += b5.out.length;
+  // Bản 6 + 7: 1-E ba mốc, tên đủ chín báo cáo, Hình 1.2 có heading A/B/C, không còn 1.3.3, Phụ lục giữa 2.1 và 2.2, chỉ Montserrat
+  const b6 = await page.evaluate(() => {
+    const out = [];
+    const tl = [...document.querySelectorAll('[data-viz="1-2-1"] .tl .yr')].map(e => e.textContent).join(',');
+    if (tl !== '2012,2019,2025') out.push('Minh họa 1-E: ' + tl);
+    const rl = [...document.querySelectorAll('[data-viz="1-2-2"] .rlist li')].map(li => li.textContent);
+    ['B01-CĐTBảng cân đối kế toán', 'B02-CĐTNguồn vốn đầu tư', 'B03-CĐTThực hiện đầu tư xây dựng', 'B04-CĐTThuyết minh báo cáo tài chính', 'F02-CĐTChi tiết nguồn vốn đầu tư',
+      'F03A-CĐTThực hiện đầu tư theo dự án, công trình, hạng mục công trình', 'F03B-CĐTQuyết toán vốn đầu tư theo dự án, công trình, hạng mục công trình hoàn thành bàn giao sử dụng',
+      'F03C-CĐTChi phí khác', 'F03D-CĐTChi phí Ban quản lý dự án đầu tư'].forEach(n => { if (!rl.some(t => t.startsWith(n))) out.push('1.2.2 thiếu ' + n); });
+    if (document.querySelectorAll('#m-1-2-4 h3.dtree-h').length !== 3) out.push('Hình 1.2 thiếu heading A, B, C');
+    if (/Phụ lục 1a/.test(document.getElementById('m-1-2-4').innerText)) out.push('Hình 1.2 còn Phụ lục 1a');
+    if (document.querySelector('#m-1-2-4 img')) out.push('Hình 1.2 còn ảnh raster');
+    if (/1\.3\.3/.test(document.documentElement.innerHTML)) out.push('còn chữ 1.3.3');
+    const pl = document.getElementById('m-pl');
+    if (pl.previousElementSibling.id !== 'm-2-1-2' || pl.nextElementSibling.id !== 'm-2-2-1') out.push('Phụ lục không nằm giữa 2.1 và 2.2');
+    if (document.querySelector('#ch4 .pl')) out.push('còn phụ lục ở cuối');
+    if (document.querySelectorAll('#hpgal .pg').length !== 67) out.push('Phụ lục 4 không đủ 67 trang');
+    return out;
+  });
+  const fam = srcAll.match(/font-family:[^;]*;|--f-(head|body):[^;]*;/g) || [];
+  fam.filter(f => !/Montserrat|var\(--f-/.test(f) || /Inter|Sora|Jakarta|system-ui/.test(f)).forEach(f => b6.push('phông khác: ' + f));
+  if (/fonts\.googleapis/.test(srcAll)) b6.push('còn link Google Fonts');
+  console.log(`Bản 6+7: ${b6.length ? 'LỖI: ' + b6.join('; ') : 'đạt'}`);
+  lostB3 += b6.length;
   const md = fs.readFileSync(path.join(__dirname, '../content/phan_mo_dau.md'), 'utf8');
   ['## 1. Lý do chọn đề tài', '## 2. Mục tiêu, đối tượng và phạm vi nghiên cứu', '## 3. Phương pháp nghiên cứu'].forEach(h => { if (!md.includes(h)) { console.log('content/phan_mo_dau.md thiếu ' + h); lostB3++; } });
   await browser.close();

@@ -26,6 +26,9 @@ html = ASSET.sub(b64, html)
 
 html, n = re.subn(r'<link[^>]*href="css/style.css"[^>]*/?>', lambda m: "<style>\n" + css + "\n</style>", html)
 assert n == 1
+fonts = rd("css/fonts.css")
+html, n = re.subn(r'<link[^>]*href="css/fonts.css"[^>]*/?>', lambda m: "<style>\n" + fonts + "</style>", html)
+assert n == 1
 for k, v in scripts.items():
     tag = '<script src="js/%s"></script>' % k
     assert tag in html, tag

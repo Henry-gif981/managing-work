@@ -221,17 +221,32 @@
     var W = 100, H = 62;
     var rects = squarify(items.map(function (x) { return { a: (x.val / tot) * W * H, it: x.it }; }), 0, 0, W, H);
     var html = '<div class="tm" role="img" aria-label="' + cfg.aria + '" style="aspect-ratio:' + W + "/" + H + '">';
-    rects.forEach(function (r) {
+    rects.forEach(function (r, k) {
       var big = r.w * r.h > 380;
-      html += '<div class="tm-cell ' + r.it.cls + (big ? "" : " small") + '" style="left:' + r.x + "%;top:" + (r.y / H) * 100 + "%;width:" + r.w + "%;height:" + (r.h / H) * 100 + '%"' +
+      html += '<div class="tm-cell ' + r.it.cls + (big ? "" : " small") + '" data-k="' + k + '" style="left:' + r.x + "%;top:" + (r.y / H) * 100 + "%;width:" + r.w + "%;height:" + (r.h / H) * 100 + '%"' +
         tip("<b>" + r.it.lab + "</b><br>" + v(r.it.p, r.it.d, r.it.s) + " " + (cfg.unit || "tỷ đồng") + (r.it.note ? "<br>" + r.it.note : "") + "<br>" + chip(r.it.src || cfg.src)) + ">" +
         (big ? "<b>" + r.it.lab + "</b><span>" + v(r.it.p, r.it.d, r.it.s) + "</span>" + (r.it.note ? "<em>" + r.it.note + "</em>" : "") : "") + "</div>";
     });
     html += "</div>";
-    var smalls = rects.filter(function (r) { return r.w * r.h <= 380; });
+    // chú giải có đủ các ô; ô đủ chỗ ghi chữ bên trong thì ẩn dòng chú giải của nó (fitTreemaps)
     el.innerHTML = (cfg.title ? '<p class="viz-sub">' + cfg.title + "</p>" : "") + html +
-      (smalls.length ? '<div class="stk-key">' + smalls.map(function (r) { return '<span><i class="' + r.it.cls + '"></i>' + r.it.lab + ": <b>" + v(r.it.p, r.it.d, r.it.s) + "</b></span>"; }).join("") + "</div>" : "") +
+      '<div class="stk-key tm-key">' + rects.map(function (r, k) { return '<span data-k="' + k + '"' + (r.w * r.h > 380 ? " hidden" : "") + '><i class="' + r.it.cls + '"></i>' + r.it.lab + ": <b>" + v(r.it.p, r.it.d, r.it.s) + "</b></span>"; }).join("") + "</div>" +
       '<p class="viz-foot">' + (cfg.unit || "Tỷ đồng") + ". " + chip(cfg.src, cfg.bq ? "" : "hp") + (cfg.items.some(function (i) { return i.calc || i.pctCalc; }) ? " " + calcNote() : "") + "</p>";
+  }
+
+  // Ô treemap nào không đủ chỗ cho chữ (màn hẹp, phông rộng) thì bỏ chữ trong ô, hiện dòng chú giải bên dưới.
+  function fitTreemaps() {
+    doc.querySelectorAll(".tm").forEach(function (tm) {
+      var key = tm.parentNode.querySelector(".tm-key");
+      if (!key || !tm.offsetWidth) return;
+      tm.querySelectorAll(".tm-cell:not(.small)").forEach(function (c) {
+        c.classList.remove("clip");
+        var over = c.scrollHeight > c.clientHeight + 1 || c.scrollWidth > c.clientWidth + 1;
+        c.classList.toggle("clip", over);
+        var leg = key.querySelector('[data-k="' + c.getAttribute("data-k") + '"]');
+        if (leg) leg.hidden = !over;
+      });
+    });
   }
 
   // Donut. segs: {lab, p, d, color}
@@ -364,13 +379,28 @@
   };
 
   // 1.2.2 / 1.2.3: cây tài khoản và bộ báo cáo
-  function tree195() {
+  // danh sách báo cáo: mã, tên đầy đủ (theo tiêu đề biểu), chức năng (bài, mục 2.1.2); x[3] = báo cáo chính
+  function rlist(side, rows) {
+    return '<ul class="rlist ' + side + '">' + rows.map(function (x) {
+      return '<li class="' + (x[3] ? "rl-main" : "rl-extra") + '"><span class="rl-code">' + x[0] + '</span><span class="rl-t"><b>' + x[1] + "</b>" + (x[2] ? "<small>" + x[2] + "</small>" : "") + "</span></li>";
+    }).join("") + "</ul>";
+  }
+  function tree195(short) {
     return '<div class="atree bq"><p class="atree-h">' + ic("i-pipe") + "Hệ thống tài khoản Thông tư 195</p><ul>" +
-      '<li><b>TK 241</b><span class="ren">→ “Chi phí đầu tư xây dựng”</span></li>' +
-      '<li><b>TK 154</b><span class="ren">→ “Chi phí sản xuất thử dở dang”</span></li>' +
-      '<li><b>TK 642</b><span class="ren">→ “Chi phí Ban quản lý dự án đầu tư”</span></li>' +
+      '<li><b>TK 241</b><span class="ren"><svg class="ic ar" role="img" aria-label="sang"><use href="#i-arrow-r"/></svg> “Chi phí đầu tư xây dựng”</span></li>' +
+      '<li><b>TK 154</b><span class="ren"><svg class="ic ar" role="img" aria-label="sang"><use href="#i-arrow-r"/></svg> “Chi phí sản xuất thử dở dang”</span></li>' +
+      '<li><b>TK 642</b><span class="ren"><svg class="ic ar" role="img" aria-label="sang"><use href="#i-arrow-r"/></svg> “Chi phí Ban quản lý dự án đầu tư”</span></li>' +
       '<li><b>TK 336</b> “Phải trả nội bộ” <span class="ren">thêm bốn tài khoản cấp 2</span><ul><li>Vốn đầu tư xây dựng</li><li>Chênh lệch tỷ giá</li><li>Chi phí đi vay đủ điều kiện vốn hóa</li><li>Phải trả nội bộ khác</li></ul></li></ul>' +
-      '<p class="atree-h">Báo cáo tài chính</p><div class="rbox"><span class="r main">B01</span><span class="r main">B02</span><span class="r main">B03</span><span class="r main">B04</span><span class="r">F02</span><span class="r">F03A</span><span class="r">F03B</span><span class="r">F03C</span><span class="r">F03D</span></div>' +
+      '<p class="atree-h">Báo cáo tài chính</p>' + rlist(short ? "bq short" : "bq", [
+        ["B01-CĐT", "Bảng cân đối kế toán", "Tài sản và nguồn vốn của Ban tại thời điểm cuối kỳ", 1],
+        ["B02-CĐT", "Nguồn vốn đầu tư", "Hình thành và biến động của nguồn vốn đầu tư", 1],
+        ["B03-CĐT", "Thực hiện đầu tư xây dựng", "Thực hiện đầu tư xây dựng theo nội dung chi phí (TK 241)", 1],
+        ["B04-CĐT", "Thuyết minh báo cáo tài chính", "Thuyết minh bổ sung cho các chỉ tiêu trên báo cáo", 1],
+        ["F02-CĐT", "Chi tiết nguồn vốn đầu tư", "Chi tiết theo từng nguồn hình thành"],
+        ["F03A-CĐT", "Thực hiện đầu tư theo dự án, công trình, hạng mục công trình", "Chi tiết theo dự án, công trình, hạng mục"],
+        ["F03B-CĐT", "Quyết toán vốn đầu tư theo dự án, công trình, hạng mục công trình hoàn thành bàn giao sử dụng", "Quyết toán vốn đầu tư công trình, hạng mục hoàn thành bàn giao"],
+        ["F03C-CĐT", "Chi phí khác", "Chi phí khác"],
+        ["F03D-CĐT", "Chi phí Ban quản lý dự án đầu tư", "Chi phí Ban quản lý dự án"]]) +
       '<p class="tiny muted">-CĐT · nộp quý ' + v("thoiHan.bq.quy", 0) + " ngày, năm " + v("thoiHan.bq.nam", 0) + " ngày</p></div>";
   }
   function tree200() {
@@ -378,25 +408,27 @@
       "<li><b>Loại 1 đến 9</b> trong bảng, <b>loại 0</b> ngoài bảng</li>" +
       '<li><b>TK 241</b><span class="ren">“Xây dựng cơ bản dở dang”</span><ul><li>2411 · 2412 · 2413</li></ul></li>' +
       "<li><b>TK 411, 421, 511, 632, 641, 642, 911…</b></li></ul>" +
-      '<p class="atree-h">Báo cáo tài chính năm</p><div class="rbox"><span class="r main dn">B01</span><span class="r main dn">B02</span><span class="r main dn">B03</span><span class="r main dn">B09</span><span class="r dn">Giữa niên độ</span></div>' +
+      '<p class="atree-h">Báo cáo tài chính năm</p>' + rlist("dn", [
+        ["B01-DN", "Bảng cân đối kế toán", "", 1], ["B02-DN", "Báo cáo kết quả hoạt động kinh doanh", "", 1],
+        ["B03-DN", "Báo cáo lưu chuyển tiền tệ", "", 1], ["B09-DN", "Bản thuyết minh báo cáo tài chính", "", 1]]) +
+      '<p class="tiny muted">Có thêm báo cáo tài chính giữa niên độ.</p>' +
       '<p class="tiny muted">-DN · nộp quý ' + v("thoiHan.dn.quy", 0) + " ngày, năm " + v("thoiHan.dn.nam", 0) + " ngày</p></div>";
   }
   V["1-2-2"] = function () { put("1-2-2", title("Hệ thống tài khoản và báo cáo tài chính theo Thông tư 195") + tree195()); };
-  V["1-2-3"] = function () { put("1-2-3", title("Hệ thống tài khoản và báo cáo tài chính của hai chế độ") + splitWrap(tree195(), tree200(), H2)); };
+  V["1-2-3"] = function () { put("1-2-3", title("Hệ thống tài khoản và báo cáo tài chính của hai chế độ") + splitWrap(tree195(true), tree200(), H2)); };
 
-  // 1.2.4: cây quyết định (Hình 1.2, dạng vẽ lại)
+  // 1.2.4: ba lựa chọn (Hình 1.2, dựng lại bằng chữ thật; tên lựa chọn là heading)
   V["1-2-4"] = function () {
+    var cdtBc = "B01-CĐT Bảng cân đối kế toán; B02-CĐT Nguồn vốn đầu tư; B03-CĐT Thực hiện đầu tư xây dựng; B04-CĐT Thuyết minh báo cáo tài chính; kèm các phụ biểu (mã F02, F03A, F03B, F03C, F03D-CĐT)";
     var m = [
-      ["A", "Ban quản lý dự án (có tổ chức kế toán riêng)", "bq", ["Áp dụng TT 195/2012/TT-BTC", "Hệ thống tài khoản theo Phụ lục 1a (đã sửa đổi, bổ sung)", "BCTC đặc thù: B01 – B04/CĐT và các phụ biểu"]],
-      ["B", "Chủ đầu tư có thành lập Ban quản lý dự án", "dn", ["Áp dụng chế độ kế toán doanh nghiệp (TT 200/2014)", "Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo TT 195", "Nhận, tổng hợp BCTC của BQLDA"]],
-      ["C", "Chủ đầu tư không thành lập BQLDA", "dn", ["Hạch toán chung hệ thống sổ của doanh nghiệp (TT 200/2014, TK 241)", "Mở sổ chi tiết theo dự án", "Lập thêm B02, B03/CĐT và 4 phụ biểu"]]
+      ["A", "Ban quản lý dự án (có tổ chức kế toán riêng)", "bq", ["Áp dụng Thông tư 195/2012/TT-BTC", "Báo cáo tài chính: " + cdtBc]],
+      ["B", "Chủ đầu tư có thành lập Ban quản lý dự án", "dn", ["Áp dụng chế độ kế toán doanh nghiệp (Thông tư 200/2014/TT-BTC)", "Bổ sung TK cấp 2 của TK 136 (1362, 1363) theo Thông tư 195", "Nhận, tổng hợp báo cáo tài chính của BQLDA"]],
+      ["C", "Chủ đầu tư không thành lập BQLDA", "dn", ["Hạch toán chung hệ thống sổ của doanh nghiệp (Thông tư 200/2014, TK 241)", "Mở sổ chi tiết theo dự án", "Lập thêm B02-CĐT (Nguồn vốn đầu tư: hình thành và biến động của nguồn vốn đầu tư), B03-CĐT (Thực hiện đầu tư xây dựng: thực hiện đầu tư theo nội dung chi phí TK 241) và 4 phụ biểu"]]
     ];
     put("1-2-4", title("Lựa chọn chế độ kế toán theo mô hình tổ chức thực hiện dự án") + '<div class="dtree"><div class="dtree-root">Đơn vị thực hiện dự án đầu tư (doanh nghiệp / chủ đầu tư)</div><div class="dtree-opts">' +
-      m.map(function (x, i) {
-        return '<button type="button" class="dtree-o ' + x[2] + '" data-model="' + i + '" aria-pressed="' + (i === 0) + '"><b>' + x[0] + "</b>" + x[1] + "</button>";
-      }).join("") + '</div><div class="dtree-res" aria-live="polite">' + m.map(function (x, i) {
-        return '<div class="dtree-r ' + x[2] + '" data-model-r="' + i + '"' + (i === 0 ? "" : " hidden") + '><b class="dtree-rk">' + x[0] + ". " + x[1] + '</b><ul class="ticks' + (x[2] === "dn" ? " dn" : "") + '">' + x[3].map(function (y) { return "<li>" + y + "</li>"; }).join("") + "</ul></div>";
-      }).join("") + '</div><div class="dtree-foot">Nội dung chưa được hướng dẫn riêng → thực hiện theo Luật Kế toán và chế độ kế toán doanh nghiệp (TT 200/2014)</div></div>');
+      m.map(function (x) {
+        return '<div class="dtree-col ' + x[2] + '"><h3 class="dtree-h" id="m-1-2-4-' + x[0].toLowerCase() + '"><span class="dtree-k">' + x[0] + "</span>" + x[1] + '</h3><ul class="ticks' + (x[2] === "dn" ? " dn" : "") + '">' + x[3].map(function (y) { return "<li>" + y + "</li>"; }).join("") + "</ul></div>";
+      }).join("") + '</div><div class="dtree-foot">Nội dung chưa được hướng dẫn riêng <svg class="ic ar" role="img" aria-label="sang"><use href="#i-arrow-r"/></svg> thực hiện theo Luật Kế toán và chế độ kế toán doanh nghiệp (Thông tư 200/2014)</div></div>');
   };
 
   // 1.3.1: cùng gốc
@@ -423,13 +455,6 @@
       '<div class="tres"><div class="tres-b bq">' + ic("i-pipe") + '<b>Không ghi nhận lãi, lỗ</b><span>Quyết toán được duyệt: Nợ TK 336 / Có TK 241: ' + v("viDu.banGiaoBq", 0) + ".</span></div>" +
       '<div class="tres-b dn">' + ic("i-loop") + "<b>Chi phí " + v("viDu.chiPhiKy", 0) + " nằm trong lãi, lỗ của kỳ</b><span>Nhận tài sản đưa vào sử dụng: Nợ TK 211 / Có TK 241: " + v("viDu.banGiaoDn", 0) + ".</span></div></div>" +
       '<p class="viz-foot">Số dư cộng dồn từ các bút toán của Bảng 1.5. ' + calcNote() + "</p>");
-  };
-
-  // 1.3.3: khác nhau cốt lõi
-  V["1-3-3"] = function () {
-    put("1-3-3", title("Khác nhau cốt lõi: BQLDA hạch toán “vốn”, doanh nghiệp hạch toán “kết quả”") + splitWrap(
-      pipeSVG({ noPct: true, id: "n" }) + '<p class="mini-chain bq">Nguồn vốn và sử dụng vốn theo từng dự án</p>',
-      loopSVG({ id: "n" }) + '<p class="mini-chain dn">Doanh thu, chi phí, lợi nhuận</p>', H2));
   };
 
   /* ---------- Chương 2 ---------- */
@@ -581,7 +606,7 @@
 
   V["2-4-1"] = function () {
     put("2-4-1", title("Đích đến của chi phí: B03-CĐT so với Báo cáo kết quả hoạt động kinh doanh hợp nhất") + splitWrap(
-      '<div class="onebar"><span class="ob-bar"' + tip("<b>Chi phí phát sinh năm 2015</b><br>" + v("bq.b03.ps", 3) + " tỷ đồng → TK 241<br>" + v("bq.b03.ps", 0, "dong") + " đồng<br>" + chip("B03 tr.4")) + '><b>' + v("bq.b03.ps", 3) + ' tỷ</b> chi phí phát sinh năm 2015</span>' + ic("i-arrow-r") + '<span class="ob-to">TK 241<small>số dư cuối năm ' + v("bq.b03.cuoi", 3) + ' tỷ</small></span></div><p class="ob-note"><span class="tagc t-kh">Không có doanh thu</span><span class="tagc t-kh">Không có lợi nhuận</span><span class="tagc t-ts">Toàn bộ vào tài sản</span></p><p class="viz-foot">' + chip("B03 tr.4") + "</p>",
+      '<div class="onebar"><span class="ob-bar"' + tip("<b>Chi phí phát sinh năm 2015</b><br>" + v("bq.b03.ps", 3) + " tỷ đồng <svg class='ic ar' role='img' aria-label='sang'><use href='#i-arrow-r'/></svg> TK 241<br>" + v("bq.b03.ps", 0, "dong") + " đồng<br>" + chip("B03 tr.4")) + '><b>' + v("bq.b03.ps", 3) + ' tỷ</b> chi phí phát sinh năm 2015</span>' + ic("i-arrow-r") + '<span class="ob-to">TK 241<small>số dư cuối năm ' + v("bq.b03.cuoi", 3) + ' tỷ</small></span></div><p class="ob-note"><span class="tagc t-kh">Không có doanh thu</span><span class="tagc t-kh">Không có lợi nhuận</span><span class="tagc t-ts">Toàn bộ vào tài sản</span></p><p class="viz-foot">' + chip("B03 tr.4") + "</p>",
       '<div data-wf="kq"></div>'));
     waterfall(doc.querySelector('[data-wf="kq"]'), { src: "Hòa Phát tr.10", title: "Kết quả kinh doanh hợp nhất năm 2024", aria: "Kết quả kinh doanh Hòa Phát năm 2024 từ doanh thu thuần đến lợi nhuận sau thuế", steps: [
       { lab: "Doanh thu thuần", p: "hp.dtt", d: 1, kind: "start" }, { lab: "Giá vốn", p: "hp.giaVon", d: 1, kind: "down" }, { lab: "Lợi nhuận gộp", p: "hp.lnGop", d: 1, kind: "total" },
@@ -671,7 +696,7 @@
   };
 
   V["3-3"] = function () {
-    var l1 = ["Xác định chính xác mô hình tổ chức thực hiện dự án", "Tập trung vào luồng hạch toán quản trị vốn: Có TK 336 → Nợ TK 241 → Nợ TK 336 / Có TK 241", "Phối hợp với bộ phận kỹ thuật về tính hợp lệ của khối lượng nghiệm thu", "Xác định tiêu thức phân bổ chi phí BQLDA (TK 642) hợp lý"];
+    var l1 = ["Xác định chính xác mô hình tổ chức thực hiện dự án", "Tập trung vào luồng hạch toán quản trị vốn: Có TK 336 <svg class='ic ar' role='img' aria-label='sang'><use href='#i-arrow-r'/></svg> Nợ TK 241 <svg class='ic ar' role='img' aria-label='sang'><use href='#i-arrow-r'/></svg> Nợ TK 336 / Có TK 241", "Phối hợp với bộ phận kỹ thuật về tính hợp lệ của khối lượng nghiệm thu", "Xác định tiêu thức phân bổ chi phí BQLDA (TK 642) hợp lý"];
     var l2 = ["Hướng dẫn chuyển đổi số dư các tài khoản đặc thù (TK 3361, TK 3368)", "Số hóa, tự động trích xuất phụ biểu F03A, F03B", "Đẩy nhanh thẩm tra, phê duyệt quyết toán vốn đầu tư", "Xử lý công trình đã khai thác nhưng chưa ghi tăng tài sản cố định"];
     put("3-3", title("Kiến nghị theo hai nhóm đối tượng") + '<div class="road two"><div class="road-lane"><b class="road-k">' + ic("i-users") + "Người làm kế toán và người đọc BCTC</b>" + l1.map(function (x, i) { return '<span class="road-s"><i>' + (i + 1) + "</i>" + x + "</span>"; }).join("") + '</div><div class="road-lane"><b class="road-k">' + ic("i-book") + "Cơ quan quản lý nhà nước</b>" + l2.map(function (x, i) { return '<span class="road-s"><i>' + (i + 1) + "</i>" + x + "</span>"; }).join("") + "</div></div>");
   };
@@ -693,12 +718,6 @@
         var i = sp.getAttribute("data-spoke");
         doc.querySelectorAll("[data-spoke]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === sp)); });
         doc.querySelectorAll("[data-spoke-p]").forEach(function (p) { p.hidden = p.getAttribute("data-spoke-p") !== i; });
-      }
-      var md = e.target.closest("[data-model]");
-      if (md) {
-        var j = md.getAttribute("data-model");
-        doc.querySelectorAll("[data-model]").forEach(function (b) { b.setAttribute("aria-pressed", String(b === md)); });
-        doc.querySelectorAll("[data-model-r]").forEach(function (p) { p.hidden = p.getAttribute("data-model-r") !== j; });
       }
       var ts = e.target.closest("[data-tstep]");
       if (ts) setTStep(+ts.getAttribute("data-tstep"));
@@ -748,7 +767,12 @@
   window.VIZ = {
     build: function () {
       Object.keys(V).forEach(function (k) { if (doc.querySelector('[data-viz="' + k + '"]')) V[k](); });
+      fitTreemaps();
+      if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(fitTreemaps);
+      var rt;
+      window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(fitTreemaps, 120); });
     },
+    fit: fitTreemaps,
     init: function (reduce) {
       initTips();
       initInteractions();

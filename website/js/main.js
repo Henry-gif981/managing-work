@@ -144,7 +144,11 @@
       toc.appendChild(h("h4", null, s.dataset.no + " · " + s.dataset.title));
       s.querySelectorAll(".sub:not([hidden])").forEach(function (sub) {
         var no = sub.dataset.sub || "";
-        toc.appendChild(h("a", { href: "#" + sub.id, "data-for": sub.id }, "<b>" + no + "</b><span>" + sub.dataset.subtitle + "</span>"));
+        toc.appendChild(h("a", { href: "#" + sub.id, "data-for": sub.id }, "<b>" + no + "</b><span>" + sub.dataset.subtitle + (sub.dataset.note ? "<small>" + sub.dataset.note + "</small>" : "") + "</span>"));
+        // tiểu mục con là heading thật trong hình (ví dụ ba lựa chọn A, B, C của Hình 1.2)
+        if (sub.dataset.parts) JSON.parse(sub.dataset.parts).forEach(function (p) {
+          toc.appendChild(h("a", { href: "#" + p[0], "data-for": sub.id, class: "toc-part" }, "<b></b><span>" + p[1] + "</span>"));
+        });
       });
     });
     var btn = doc.getElementById("btnToc");
@@ -349,9 +353,37 @@
   }
   function hpList(pages) {
     return pages.map(function (n) {
-      var t = "BCTC hợp nhất Hòa Phát 2024, trang " + n;
+      var t = "BCTC hợp nhất Hòa Phát 2024, " + (n ? "trang " + n : "trang bìa");
       return { title: t, bq: HP_IMG[n], capBq: t };
     });
+  }
+  // Phụ lục 4: toàn bộ báo cáo; mục lục nhanh theo trang in (đã xem ảnh từng trang đầu mục)
+  var HP_ALL = Object.keys(HP_IMG).map(Number).sort(function (a, b) { return a - b; });
+  var HP_TOC = [
+    ["Báo cáo của Ban Giám đốc", 1, 3], ["Báo cáo kiểm toán độc lập", 4, 5], ["Bảng cân đối kế toán", 6, 9],
+    ["Báo cáo kết quả hoạt động kinh doanh", 10, 11], ["Báo cáo lưu chuyển tiền tệ", 12, 13], ["Thuyết minh báo cáo tài chính", 14, HP_ALL.length - 1]
+  ];
+  function buildHpGal() {
+    var g = doc.getElementById("hpgal"), toc = doc.getElementById("hpgToc");
+    if (!g || !HP_ALL.length) return;
+    var TH = window.HP_THUMBS || {};
+    toc.innerHTML = HP_TOC.map(function (t) {
+      return '<button type="button" class="hpg-j" data-hpg="' + t[1] + '"><b>' + t[0] + "</b><small>tr." + t[1] + "–" + t[2] + "</small></button>";
+    }).join("");
+    g.innerHTML = HP_ALL.map(function (n) {
+      return '<button type="button" class="pg" data-hpg="' + n + '"><img data-src="' + TH[n] + '" alt="BCTC hợp nhất Hòa Phát 2024, ' + (n ? "trang " + n : "trang bìa") + '"><span>' + (n ? "tr." + n : "Bìa") + "</span></button>";
+    }).join("");
+    // ảnh thu nhỏ chỉ giải mã khi cuộn tới
+    var imgs = g.querySelectorAll("img[data-src]");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { loadThumb(e.target); io.unobserve(e.target); } });
+      }, { rootMargin: "400px" });
+      imgs.forEach(function (i) { io.observe(i); });
+    } else imgs.forEach(loadThumb);
+  }
+  function loadThumb(i) {
+    if (i.dataset.src) { i.src = i.dataset.src; i.removeAttribute("data-src"); }
   }
   function initChips() {
     doc.querySelectorAll(".src.hp").forEach(function (c) {
@@ -391,14 +423,15 @@
     var many = lbState.list.length > 1;
     doc.getElementById("lbCount").textContent = many ? lbState.i + 1 + " / " + lbState.list.length : "";
     doc.getElementById("lbPrev").hidden = doc.getElementById("lbNext").hidden = !many;
-    body.className = "lb-body" + (it.dn ? "" : " one");
+    body.className = "lb-body" + (it.dn ? "" : " one") + (lbState.zoom ? " zoomed" : "");
     body.innerHTML = '<figure class="bq"><figcaption>' + it.capBq + '</figcaption><img src="' + it.bq + '" alt="' + it.capBq + '"></figure>' +
       (it.dn ? '<figure class="dn"><figcaption>' + it.capDn + '</figcaption><img src="' + it.dn + '" alt="' + it.capDn + '"></figure>' : "");
   }
 
   function lbOpen(list, i, opener) {
     var dlg = doc.getElementById("lightbox");
-    lbState = { list: list, i: i || 0, opener: opener };
+    lbState = { list: list, i: i || 0, opener: opener, zoom: false };
+    doc.getElementById("lbZoom").setAttribute("aria-pressed", "false");
     lbShow();
     if (dlg.showModal) dlg.showModal();
     else dlg.setAttribute("open", "");
@@ -412,7 +445,10 @@
       var pg = e.target.closest("[data-page]");
       var sc = e.target.closest("[data-scan]");
       var hp = e.target.closest("[data-hp]");
-      if (hp) {
+      var hg = e.target.closest("[data-hpg]");
+      if (hg) {
+        lbOpen(hpList(HP_ALL), HP_ALL.indexOf(+hg.getAttribute("data-hpg")), hg);
+      } else if (hp) {
         lbOpen(hpList(hp.getAttribute("data-hp").split(",").map(Number)), 0, hp);
       } else if (pg) {
         lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg);
@@ -444,6 +480,12 @@
     doc.getElementById("lbPrev").addEventListener("click", function () { step(-1); });
     doc.getElementById("lbNext").addEventListener("click", function () { step(1); });
     doc.getElementById("lbClose").addEventListener("click", function () { dlg.close(); });
+    doc.getElementById("lbZoom").addEventListener("click", function () {
+      lbState.zoom = !lbState.zoom;
+      this.setAttribute("aria-pressed", String(lbState.zoom));
+      this.setAttribute("aria-label", lbState.zoom ? "Thu nhỏ" : "Phóng to");
+      doc.getElementById("lbBody").classList.toggle("zoomed", lbState.zoom);
+    });
     dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
     dlg.addEventListener("keydown", function (e) {
       if (e.key === "ArrowRight") { e.preventDefault(); step(1); }
@@ -500,6 +542,7 @@
 
   function finalizeAll() {
     doc.querySelectorAll(".reveal").forEach(function (t) { t.classList.add("in"); });
+    doc.querySelectorAll("#hpgal img[data-src]").forEach(loadThumb);
     doc.querySelectorAll(".cu").forEach(function (el) {
       el.dataset.counted = "1";
       el.dataset.final = "1";
@@ -617,8 +660,9 @@
       if (sub && a.getAttribute("data-for") === sub.id) a.setAttribute("aria-current", "true");
       else a.removeAttribute("aria-current");
     });
-    doc.getElementById("navNo").textContent = ch ? ch.dataset.title : "Bìa";
-    doc.getElementById("navTitle").textContent = sub ? " · " + (sub.dataset.sub && sub.dataset.sub !== ch.dataset.title ? sub.dataset.sub + " " : "") + sub.dataset.subtitle : "";
+    var own = sub && sub.dataset.navself;
+    doc.getElementById("navNo").textContent = own || (ch ? ch.dataset.title : "Bìa");
+    doc.getElementById("navTitle").textContent = sub && !own ? " · " + (sub.dataset.sub && sub.dataset.sub !== ch.dataset.title ? sub.dataset.sub + " " : "") + sub.dataset.subtitle : "";
   }
 
   function goTo(i) {
@@ -646,8 +690,29 @@
     target.appendChild(node);
   }
 
+  // Khung cố định 1920 × 1080 khi in hoặc xuất PDF: màn trình chiếu và trang PDF giống hệt nhau.
+  // Màn hình trình chiếu cũng dàn trang trên khung logic này rồi co giãn cho vừa cửa sổ (scaleSlides),
+  // nên số slide và cách ngắt slide trên web và trong PDF luôn trùng nhau.
+  var FRAME_H = 1080, PANEL_W = 1824;
   function availHeight() {
-    return window.innerHeight - parseFloat(getComputedStyle(root).getPropertyValue("--nav-h")) - 36;
+    return FRAME_H - 36;
+  }
+  function scaleSlides() {
+    var k = 1;
+    var s = slides()[0];
+    if (present && !root.classList.contains("frame") && s) {
+      var padX = parseFloat(getComputedStyle(s).paddingLeft || 0);
+      k = Math.min((s.clientWidth - 2 * padX) / PANEL_W, (s.clientHeight - 36) / (FRAME_H - 36));
+    }
+    root.style.setProperty("--pk", k.toFixed(4));
+  }
+
+  // Bộ đếm "n / N" vẽ trong từng slide
+  function numberSlides() {
+    doc.querySelectorAll(".slide-no").forEach(function (e) { e.remove(); });
+    if (!present) return;
+    var list = slides();
+    list.forEach(function (sl, i) { sl.appendChild(h("span", { class: "slide-no", "aria-hidden": "true" }, i + 1 + " / " + list.length)); });
   }
 
   function newPage(ch, sub, after) {
@@ -676,7 +741,7 @@
     var limit = availHeight();
     chapters.forEach(function (ch) {
       var last = ch;
-      Array.prototype.slice.call(ch.querySelectorAll(":scope > .panel > .sub")).forEach(function (sub) {
+      Array.prototype.slice.call(ch.querySelectorAll(":scope > .panel > .sub:not([hidden])")).forEach(function (sub) {
         var pages = [];
         var cur, box;
         function fits() { return cur.panel.offsetHeight <= limit - 14; }
@@ -693,9 +758,15 @@
         var kids = Array.prototype.slice.call(sub.children);
         move(sub, cur.panel);
         box = sub;
+        var plSeen = 0;
         kids.forEach(function (k) {
           var isHead = k.classList.contains("sub-head") || k.classList.contains("part-head");
-          if (isHead) return;
+          if (isHead || k.hidden) return;
+          // Phụ lục: mỗi phụ lục một màn
+          if (k.classList.contains("pl")) {
+            if (plSeen++) { nextPage(); move(k, box); }
+            return;
+          }
           // Trình chiếu chỉ có lớp trình bày: lớp chi tiết bị ẩn, lớp trình bày ở cùng màn với tiêu đề (thu nhỏ nếu cần)
           if (k.classList.contains("ld") || k.classList.contains("lp")) return;
           if (box !== sub) move(k, box);
@@ -767,9 +838,16 @@
             move(k, box);
           }
         });
+        // Một tiêu đề mỗi màn: màn đầu dùng tiêu đề của tiểu mục; màn sau dùng dòng đầu trang kèm (i/N)
+        var h3 = sub.querySelector(":scope > .sub-head h3");
+        var full = h3 ? h3.textContent : sub.dataset.subtitle;
+        pages[0].panel.querySelector(".page-head").classList.add("ph-first");
         if (pages.length > 1) {
+          if (h3) h3.appendChild(h("em", { class: "pg-n" }, " (1/" + pages.length + ")"));
           pages.forEach(function (pg, i) {
-            pg.panel.querySelector(".page-head em").textContent = "(" + (i + 1) + "/" + pages.length + ")";
+            var ph = pg.panel.querySelector(".page-head");
+            ph.querySelector("span").textContent = full;
+            ph.querySelector("em").textContent = "(" + (i + 1) + "/" + pages.length + ")";
           });
         }
       });
@@ -784,6 +862,7 @@
     });
     movedNodes = [];
     doc.querySelectorAll("main > .slide.page").forEach(function (p) { p.remove(); });
+    doc.querySelectorAll(".sub-head .pg-n").forEach(function (e) { e.remove(); });
   }
 
   // Khi một khối đơn lẻ vẫn cao hơn màn hình, thu nhỏ panel (nới rộng tương ứng để dàn ngang trước).
@@ -793,8 +872,8 @@
       p.style.zoom = "";
       p.style.width = "";
       if (!present) return;
-      var availH = s.clientHeight - 36;
-      var availW = s.clientWidth - 2 * parseFloat(getComputedStyle(s).paddingLeft || 0);
+      var availH = FRAME_H - 36;
+      var availW = PANEL_W;
       var baseW = p.offsetWidth;
       if (p.offsetHeight <= availH) return;
       var lo = 0.45, hi = 1, best = lo;
@@ -825,9 +904,14 @@
     }
     doc.getElementById("btnPresent").setAttribute("aria-pressed", String(on));
     doc.getElementById("btnRead").setAttribute("aria-pressed", String(!on));
+    window.VIZ.fit();
+    numberSlides();
     fitPanels();
+    scaleSlides();
     // Font web tải xong sau thì chữ đổi kích thước: phân trang lại một lần nữa.
-    if (on && doc.fonts && doc.fonts.status !== "loaded") doc.fonts.ready.then(onResize);
+    if (on && doc.fonts && doc.fonts.status !== "loaded") doc.fonts.ready.then(function () {
+      if (present) { setPresent(false); setPresent(true); }
+    });
     shownKey = null;
     var el = doc.getElementById(target);
     if (on && el && el.classList.contains("sub")) el = el.closest(".slide");
@@ -840,14 +924,10 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
       if (present) {
-        // phân trang lại theo kích thước màn hình mới
+        // khung logic không đổi: chỉ co giãn lại cho vừa cửa sổ mới
+        scaleSlides();
         var cur = slides()[currentIdx];
-        var ref = cur && (cur.dataset.subref || cur.id);
-        unbuildPages();
-        buildPages();
-        fitPanels();
-        var el = ref && doc.getElementById(ref);
-        if (el) (el.closest(".slide") || el).scrollIntoView({ block: "start" });
+        if (cur) cur.scrollIntoView({ block: "start" });
       }
       updateScroll();
     }, 150);
@@ -1010,15 +1090,23 @@
 
   /* ---------------- In ---------------- */
 
-  var presentBeforePrint = false;
-  window.addEventListener("beforeprint", function () {
-    finalizeAll();
-    presentBeforePrint = present;
+  // In và lưu PDF luôn ra bản Trình chiếu: mỗi slide một trang 1920 × 1080, có số trang "n / N".
+  var presentBeforePrint = false, framed = false;
+  function setFrame(on) {
+    if (on === framed) return;
+    framed = on;
+    if (on) presentBeforePrint = present;
+    var dlg = doc.getElementById("lightbox");
+    if (on && dlg.open) dlg.close();
+    if (on && reviewOn) setReview(false);
+    doc.getElementById("tooltip").hidden = true;
     if (present) setPresent(false);
-  });
-  window.addEventListener("afterprint", function () {
-    if (presentBeforePrint) setPresent(true);
-  });
+    root.classList.toggle("frame", on);
+    setPresent(on ? true : presentBeforePrint);
+  }
+  window.__printPrep = function () { finalizeAll(); setFrame(true); return slides().length; };
+  window.addEventListener("beforeprint", function () { finalizeAll(); setFrame(true); });
+  window.addEventListener("afterprint", function () { setFrame(false); });
 
   /* ---------------- Khởi động ---------------- */
 
@@ -1033,6 +1121,7 @@
   buildF03A();
   buildDeadline();
   buildPgal();
+  buildHpGal();
   shortHeads();
   fillNumbers();
   fillWidths();

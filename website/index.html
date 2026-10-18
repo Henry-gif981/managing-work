@@ -6,9 +6,7 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Nhóm 2 · Kế toán BQLDA (TT 195) và Doanh nghiệp (TT 200)</title>
 <meta content="Website thuyết trình tiểu luận Nhóm 2, môn Kế toán dự án đầu tư xây dựng: so sánh chế độ kế toán và BCTC của Ban Quản lý dự án (TT 195/2012) với doanh nghiệp (TT 200/2014)." name="description"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/fonts.css" rel="stylesheet"/>
 <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
@@ -50,9 +48,9 @@
 <p aria-live="polite" class="nav-current"><b id="navNo">Bìa</b><span id="navTitle"></span></p>
 <div class="nav-tools">
 <button aria-controls="toc" aria-expanded="false" class="btn-ghost" id="btnToc" type="button"><svg class="ic"><use href="#i-book"></use></svg><span class="lbl">Mục lục</span></button>
-<div aria-label="Chế độ xem" class="mode-seg" role="group"><button aria-pressed="false" class="btn-ghost" id="btnPresent" title="Trình chiếu: chỉ lớp trình bày, mỗi tiểu mục một màn 16:9. Phím ↓ → sang màn sau, ↑ ← lùi lại" type="button"><svg class="ic"><use href="#i-play"></use></svg><span class="lbl">Trình chiếu</span></button><button aria-pressed="true" class="btn-ghost" id="btnRead" title="Đọc đầy đủ: mở cả lớp trình bày và lớp chi tiết" type="button"><svg class="ic"><use href="#i-book"></use></svg><span class="lbl">Đọc đầy đủ</span></button></div>
+<div aria-label="Chế độ xem" class="mode-seg" role="group"><button aria-pressed="false" class="btn-ghost" id="btnPresent" title="Trình chiếu: chỉ lớp trình bày, mỗi tiểu mục một màn 16:9. Phím ↓ hoặc mũi tên phải sang màn sau, ↑ hoặc mũi tên trái lùi lại" type="button"><svg class="ic"><use href="#i-play"></use></svg><span class="lbl">Trình chiếu</span></button><button aria-pressed="true" class="btn-ghost" id="btnRead" title="Đọc đầy đủ: mở cả lớp trình bày và lớp chi tiết" type="button"><svg class="ic"><use href="#i-book"></use></svg><span class="lbl">Đọc đầy đủ</span></button></div>
 <button class="btn-ghost" id="btnFull" title="Toàn màn hình (phím F)" type="button"><svg class="ic"><use href="#i-max"></use></svg><span class="lbl">Toàn màn hình</span></button>
-<button class="btn-ghost" id="btnPrint" title="In hoặc lưu PDF. Trong hộp thoại in: bật “Background graphics”, tắt “Headers and footers”." type="button"><svg class="ic"><use href="#i-print"></use></svg><span class="lbl">In / PDF</span></button><span class="print-hint">Khi in: bật “Background graphics”, tắt “Headers and footers”</span>
+<button class="btn-ghost" id="btnPrint" title="Xuất PDF bản trình chiếu: mỗi slide một trang 16:9. Trong hộp thoại in: chọn “Save as PDF”, bật “Background graphics”, tắt “Headers and footers”." type="button"><svg class="ic"><use href="#i-print"></use></svg><span class="lbl">Xuất PDF (bản trình chiếu)</span></button><span class="print-hint">Khi in: bật “Background graphics”, tắt “Headers and footers”</span>
 </div>
 <div class="toc" hidden="" id="toc"></div>
 </nav>
@@ -216,7 +214,6 @@
 <p class="part-head"><span>1.2</span>Khung pháp lý và chế độ kế toán áp dụng</p>
 <header class="sub-head"><span class="sub-no">1.2.1</span><h3>Hệ thống văn bản pháp lý</h3></header><div class="lp"><div class="viz reveal" data-viz="1-2-1"><p class="viz-title">Mốc thời gian các thông tư</p><div class="timeline">
 <div class="tl"><div class="yr">2012</div><h4>Thông tư 195/2012/TT-BTC</h4><p>Ban hành 15/11/2012, hiệu lực 01/01/2013.</p><span class="pill pill-navy">Chế độ BQLDA</span></div>
-<div class="tl dn"><div class="yr">2014</div><h4>Thông tư 200/2014/TT-BTC</h4><p>Ban hành 22/12/2014, áp dụng từ 01/01/2015.</p><span class="pill pill-blue">Chế độ doanh nghiệp</span></div>
 <div class="tl"><div class="yr">2019</div><h4>Thông tư 79/2019/TT-BTC</h4><p>Ngày 14/11/2019. BQLDA sử dụng vốn đầu tư công.</p><span class="pill pill-soft">Vốn đầu tư công</span></div>
 <div class="tl next"><div class="yr">2025</div><h4>Thông tư 99/2025/TT-BTC</h4><p>Ngày 27/10/2025, hiệu lực 01/01/2026. Thay thế cả Thông tư 195 và Thông tư 200.</p><span class="pill pill-soft">Từ kỳ kế toán 2026</span></div>
 </div><p class="viz-foot"><span class="src bai">Bài, mục 1.2</span> <span class="src bai">Bài, mục 3.3</span> <span class="src bai">Bài, Kết luận</span></p></div><ul class="keys" data-keys="1-2-1"></ul></div><div class="ld"><p class="ld-h">Chi tiết</p><p class="small">Kế toán dự án vận hành trong ba lớp văn bản:</p><div class="grid g-3">
@@ -258,8 +255,8 @@
 <div class="card dn"><span class="tag">BÁO CÁO TÀI CHÍNH NĂM</span><p class="small">Bảng cân đối kế toán (B01-DN), Báo cáo kết quả hoạt động kinh doanh (B02-DN), Báo cáo lưu chuyển tiền tệ (B03-DN), Bản thuyết minh báo cáo tài chính (B09-DN); ngoài ra có báo cáo tài chính giữa niên độ.</p></div>
 </div></div>
 </section>
-<section class="sub" data-sub="1.2.4" data-subtitle="Phân biệt và mối quan hệ giữa hai chế độ" id="m-1-2-4">
-<header class="sub-head"><span class="sub-no">1.2.4</span><h3>Phân biệt và mối quan hệ giữa hai chế độ</h3></header><div class="lp"><figure class="dual" data-dual="h12" data-print="scan"><figcaption class="dual-cap">Hình 1.2. Lựa chọn chế độ kế toán theo mô hình tổ chức thực hiện dự án</figcaption><div aria-label="Dạng hiển thị" class="seg dual-seg" role="group"><button aria-pressed="true" data-dv="fig" type="button">Vẽ lại</button><button aria-pressed="false" data-dv="scan" type="button">Hình trong bài</button></div><div class="dv" data-dv="fig"><div class="viz reveal" data-viz="1-2-4"></div></div><div class="dv" data-dv="scan" hidden=""><div class="scan"><button class="scan-btn" data-scan="fig-1-2" type="button"><img alt="Hình 1.2 trong bài" src="assets/fig-1-2.webp"/><span class="scan-hint">Bấm để phóng to</span></button></div></div></figure><ul class="keys" data-keys="1-2-4"></ul></div><div class="ld"><p class="ld-h">Chi tiết</p><p class="small">Hai chế độ không loại trừ nhau mà bổ sung cho nhau. Thông tư 195 xây dựng trên nền chế độ kế toán doanh nghiệp, nên nội dung nào không được hướng dẫn riêng thì thực hiện theo Luật Kế toán và chế độ kế toán doanh nghiệp. Việc chọn chế độ phụ thuộc vào việc đơn vị có thành lập BQLDA và tổ chức bộ máy kế toán riêng hay không (Hình 1.2). Điều này cũng phù hợp với hướng dẫn của Bộ Tài chính: đơn vị có BQLDA đầu tư xây dựng và tổ chức bộ máy kế toán riêng thì thực hiện theo Thông tư 195; doanh nghiệp không thành lập BQLDA hạch toán chi phí đầu tư xây dựng trên TK 241 theo Thông tư 200.</p></div>
+<section class="sub" data-parts="[[&quot;m-1-2-4-a&quot;, &quot;A. Ban quản lý dự án (có tổ chức kế toán riêng)&quot;], [&quot;m-1-2-4-b&quot;, &quot;B. Chủ đầu tư có thành lập Ban quản lý dự án&quot;], [&quot;m-1-2-4-c&quot;, &quot;C. Chủ đầu tư không thành lập BQLDA&quot;]]" data-sub="1.2.4" data-subtitle="Phân biệt và mối quan hệ giữa hai chế độ" id="m-1-2-4">
+<header class="sub-head"><span class="sub-no">1.2.4</span><h3>Phân biệt và mối quan hệ giữa hai chế độ</h3></header><div class="lp"><figure class="dual one" data-dual="h12"><figcaption class="dual-cap">Hình 1.2. Lựa chọn chế độ kế toán theo mô hình tổ chức thực hiện dự án</figcaption><div class="dv" data-dv="fig"><div class="viz reveal" data-viz="1-2-4"></div></div></figure><ul class="keys" data-keys="1-2-4"></ul></div><div class="ld"><p class="ld-h">Chi tiết</p><p class="small">Hai chế độ không loại trừ nhau mà bổ sung cho nhau. Thông tư 195 xây dựng trên nền chế độ kế toán doanh nghiệp, nên nội dung nào không được hướng dẫn riêng thì thực hiện theo Luật Kế toán và chế độ kế toán doanh nghiệp. Việc chọn chế độ phụ thuộc vào việc đơn vị có thành lập BQLDA và tổ chức bộ máy kế toán riêng hay không (Hình 1.2). Điều này cũng phù hợp với hướng dẫn của Bộ Tài chính: đơn vị có BQLDA đầu tư xây dựng và tổ chức bộ máy kế toán riêng thì thực hiện theo Thông tư 195; doanh nghiệp không thành lập BQLDA hạch toán chi phí đầu tư xây dựng trên TK 241 theo Thông tư 200.</p></div>
 </section>
 <section class="sub" data-sub="1.3.1" data-subtitle="Phạm vi so sánh" id="m-1-3-1">
 <p class="part-head"><span>1.3</span>Phạm vi và tiêu chí so sánh tổng quát</p>
@@ -278,15 +275,6 @@
 <div aria-label="Biểu đồ gương thời hạn nộp BCTC: báo cáo quý BQLDA 20 ngày, doanh nghiệp 20 ngày, trường hợp riêng 45 ngày; báo cáo năm BQLDA 30 ngày, doanh nghiệp 90 ngày, trường hợp riêng 30 ngày." class="bfly" role="img"></div>
 <p class="tiny muted">(*) Trường hợp riêng của doanh nghiệp: báo cáo quý của công ty mẹ, tổng công ty nhà nước (<span data-d="0" data-v="thoiHan.dnRieng.quy"></span> ngày); báo cáo năm của doanh nghiệp tư nhân, công ty hợp danh (<span data-d="0" data-v="thoiHan.dnRieng.nam"></span> ngày). <span class="src bai">Bài, Hình 1.4</span></p>
 </div></div><div class="dv" data-dv="scan" hidden=""><div class="scan"><button class="scan-btn" data-scan="fig-1-4" type="button"><img alt="Hình 1.4 trong bài" src="assets/fig-1-4.webp"/><span class="scan-hint">Bấm để phóng to</span></button></div></div></figure></div>
-</section>
-<section class="sub" data-sub="1.3.3" data-subtitle="Nhận xét" id="m-1-3-3">
-<header class="sub-head"><span class="sub-no">1.3.3</span><h3>Nhận xét</h3></header><div class="lp"><div class="viz reveal" data-viz="1-3-3"></div><ul class="keys" data-keys="1-3-3"></ul></div><div class="ld"><p class="ld-h">Chi tiết</p><div class="grid g-5">
-<div class="card soft"><span class="tag">GIỐNG NHAU</span><p class="small">Cùng tuân thủ Luật Kế toán, cùng dùng phương pháp ghi sổ kép và các nguyên tắc kế toán cơ bản; hệ thống tài khoản của BQLDA kế thừa từ hệ thống tài khoản doanh nghiệp.</p></div>
-<div class="card soft"><span class="tag">KHÁC NHAU CỐT LÕI</span><p class="small">BQLDA hạch toán “vốn” (nguồn vốn và sử dụng vốn theo từng dự án), doanh nghiệp hạch toán “kết quả” (doanh thu, chi phí, lợi nhuận).</p></div>
-<div class="card soft"><span class="tag">HỆ QUẢ KHI HẠCH TOÁN</span><p class="small">Cùng một khoản chi cho công trình, BQLDA ghi tăng TK 241 đối ứng với nguồn vốn trên TK 336; doanh nghiệp ghi nhận vào TK 241 để sau đó hình thành tài sản cố định hoặc tính vào chi phí kỳ.</p></div>
-<div class="card soft"><span class="tag">HỆ QUẢ KHI LẬP BÁO CÁO</span><p class="small">Báo cáo của BQLDA tập trung vào nguồn vốn đầu tư và thực hiện đầu tư; báo cáo của doanh nghiệp tập trung vào tài sản, nguồn vốn, kết quả và dòng tiền.</p></div>
-<div class="card soft"><span class="tag">ĐIỀU KIỆN ÁP DỤNG</span><p class="small">Chọn sai chế độ sẽ dẫn đến dùng sai tài khoản và lập sai báo cáo, nên bước đầu tiên của người làm kế toán là xác định đúng mô hình tổ chức thực hiện dự án (Hình 1.2).</p></div>
-</div></div>
 </section>
 </div>
 </section>
@@ -323,6 +311,13 @@
 <button class="form-card" data-gallery="f03d" type="button"><b>F03D-CĐT</b><span>Chi phí Ban quản lý dự án.</span><em>Xem bản gốc</em></button>
 <button class="form-card" data-gallery="b04" type="button"><b>B04-CĐT</b><span>Thuyết minh bổ sung cho các chỉ tiêu trên báo cáo.</span><em>Xem bản gốc</em></button>
 </div><div class="stage" data-stage="s212"></div></div>
+</section>
+<section class="sub" data-navself="Phụ lục" data-note="Báo cáo tài chính gốc để đối chiếu cho các mục 2.2 đến 2.5" data-sub="PL" data-subtitle="Phụ lục" id="m-pl">
+<header class="sub-head"><span class="sub-no">PL</span><h3>Phụ lục</h3><p class="sub-note">Báo cáo tài chính gốc để đối chiếu cho các mục 2.2 đến 2.5</p></header>
+<div class="pl" data-md="phu_luc_1" hidden="" id="pl1"><h4 class="pl-h">Phụ lục 1: Bảng tổng hợp 24 điểm khác biệt trọng tâm (Tiêu chí, BQLDA, Doanh nghiệp, Căn cứ pháp lý)</h4><div class="pl-body"></div></div>
+<div class="pl" id="pl2"><h4 class="pl-h">Phụ lục 2: Sơ đồ luồng vốn và luồng hạch toán kế toán giữa Chủ đầu tư và BQLDA</h4><div class="viz reveal" data-viz="pl2"></div></div>
+<div class="pl" id="pl3"><h4 class="pl-h">Phụ lục 3: Bộ BCTC mẫu đầy đủ (Áp dụng theo TT 195/2012/TT-BTC)</h4><p class="small">BCTC năm 2015 của BQLDA Nhà máy Chế biến Nông sản Đồng Bằng: B01, B02, B03, B04, F02, F03A, F03B, F03C, F03D-CĐT.</p><div class="pgal" id="pgal"></div></div>
+<div class="pl" id="pl4"><h4 class="pl-h">Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát (đã kiểm toán)</h4><p class="small">Bản scan 67 trang, số trang theo trang in của báo cáo.<span class="pl-hint"> Bấm một trang hoặc một mục để mở, dùng ‹ › để lật trang.</span></p><nav aria-label="Mục lục nhanh BCTC Hòa Phát" class="hpg-toc" id="hpgToc"></nav><div class="pgal hpgal" id="hpgal"></div></div>
 </section>
 <section class="sub" data-sub="2.2.1" data-subtitle="Cơ cấu chung" id="m-2-2-1">
 <p class="part-head"><span>2.2</span>So sánh Bảng cân đối kế toán (Mẫu số B01-CĐT) và hệ thống tài khoản</p>
@@ -430,7 +425,7 @@
 <div aria-hidden="true" class="ghost">Kết luận</div>
 <header class="sec-head reveal">
 <span class="sec-no">04</span>
-<div><span class="sec-en">CONCLUSION · APPENDICES · REFERENCES</span><h2 id="t-ch4">Kết luận, phụ lục và tài liệu tham khảo</h2></div>
+<div><span class="sec-en">CONCLUSION · REFERENCES</span><h2 id="t-ch4">Kết luận và tài liệu tham khảo</h2></div>
 </header>
 <section class="sub" data-sub="Kết luận" data-subtitle="Kết luận" id="m-kl">
 <header class="sub-head"><span class="sub-no">KL</span><h3>Kết luận</h3></header><div class="lp"><div class="viz reveal" data-viz="kl"></div><ul class="keys" data-keys="kl"></ul></div><div class="ld"><p class="ld-h">Chi tiết</p><div class="grid g-3">
@@ -439,12 +434,7 @@
 <div class="card soft"><span class="tag">Ý NGHĨA</span><p class="small">Trong bối cảnh Bộ Tài chính đã ban hành Thông tư 99/2025/TT-BTC (có hiệu lực từ ngày 01/01/2026) nhằm thay thế cả Thông tư 195/2012/TT-BTC và Thông tư 200/2014/TT-BTC, việc nhận diện rõ những ưu điểm, hạn chế và sự khác biệt giữa hai chế độ kế toán áp dụng cho kỳ báo cáo được phân tích (2015 và 2024) có ý nghĩa thực tiễn quan trọng. Điều này không chỉ giúp nâng cao chất lượng công tác quản trị vốn đầu tư, minh bạch hóa số liệu giải ngân trong giai đoạn hiện tại, mà còn tạo nền tảng kiến thức vững chắc để những người làm công tác tài chính, kế toán thích ứng nhanh chóng với cơ chế hạch toán hợp nhất và đồng bộ trong thời gian tới.</p></div>
 </div></div>
 </section>
-<section class="sub" data-sub="Phụ lục" data-subtitle="Phụ lục" id="m-pl">
-<header class="sub-head"><span class="sub-no">PL</span><h3>Phụ lục</h3></header>
-<div class="pl" data-md="phu_luc_1" hidden="" id="pl1"><h4 class="pl-h">Phụ lục 1: Bảng tổng hợp 24 điểm khác biệt trọng tâm (Tiêu chí, BQLDA, Doanh nghiệp, Căn cứ pháp lý)</h4><div class="pl-body"></div></div>
-<div class="pl" id="pl2"><h4 class="pl-h">Phụ lục 2: Sơ đồ luồng vốn và luồng hạch toán kế toán giữa Chủ đầu tư và BQLDA</h4><div class="viz reveal" data-viz="pl2"></div></div>
-<div class="pl" id="pl3"><h4 class="pl-h">Phụ lục 3: Bộ BCTC mẫu đầy đủ (Áp dụng theo TT 195/2012/TT-BTC)</h4><p class="small">BCTC năm 2015 của BQLDA Nhà máy Chế biến Nông sản Đồng Bằng: B01, B02, B03, B04, F02, F03A, F03B, F03C, F03D-CĐT.</p><div class="pgal" id="pgal"></div></div>
-</section><section class="sub" data-sub="Tài liệu" data-subtitle="Tài liệu tham khảo" id="m-tl">
+<section class="sub" data-sub="Tài liệu" data-subtitle="Tài liệu tham khảo" id="m-tl">
 <header class="sub-head"><span class="sub-no">TL</span><h3>Tài liệu tham khảo</h3></header>
 <ol class="refs">
 <li>Quốc hội (2015), Luật Kế toán số 88/2015/QH13.</li>
@@ -470,10 +460,10 @@
 </main>
 <footer class="foot">
 <span><span data-t="meta.nhom"></span>, <span data-t="meta.truong"></span>, <span data-t="meta.nam"></span></span>
-<span>Trình chiếu: <span class="kbd">↓</span> <span class="kbd">→</span> màn sau, <span class="kbd">↑</span> <span class="kbd">←</span> lùi lại, <span class="kbd">F</span> toàn màn hình, <span class="kbd">Esc</span> thoát</span>
+<span>Trình chiếu: <span class="kbd">↓</span> <span class="kbd"><svg class="ic ar" role="img" aria-label="sang"><use href="#i-arrow-r"/></svg></span> màn sau, <span class="kbd">↑</span> <span class="kbd"><svg class="ic ar l" role="img" aria-label="lùi"><use href="#i-arrow-r"/></svg></span> lùi lại, <span class="kbd">F</span> toàn màn hình, <span class="kbd">Esc</span> thoát</span>
 </footer>
 <dialog aria-label="Xem báo cáo gốc" class="lightbox" id="lightbox">
-<div class="lb-head"><b id="lbTitle"></b><div class="lb-tools"><button aria-label="Ảnh trước" class="lb-btn" id="lbPrev" type="button">‹</button><span id="lbCount"></span><button aria-label="Ảnh sau" class="lb-btn" id="lbNext" type="button">›</button><button aria-label="Đóng" class="lb-btn" id="lbClose" type="button">✕</button></div></div>
+<div class="lb-head"><b id="lbTitle"></b><div class="lb-tools"><button aria-label="Ảnh trước" class="lb-btn" id="lbPrev" type="button">‹</button><span id="lbCount"></span><button aria-label="Ảnh sau" class="lb-btn" id="lbNext" type="button">›</button><button aria-label="Phóng to" aria-pressed="false" class="lb-btn lb-zoom" id="lbZoom" type="button">+</button><button aria-label="Đóng" class="lb-btn" id="lbClose" type="button">×</button></div></div>
 <div class="lb-body" id="lbBody"></div>
 </dialog>
 <div hidden="" id="tipStore"></div>

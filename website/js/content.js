@@ -45,7 +45,7 @@ window.CONTENT = {
     rows: [
       { k: "Bước 1", bq: { m: "Nhận vốn đầu tư từ chủ đầu tư", d: "Nợ TK 111, 112 / Có TK 336" }, dn: { m: "Huy động vốn chủ sở hữu, vốn vay", d: "Nợ TK 111, 112 / Có TK 411, 341" } },
       { k: "Bước 2", bq: { m: "Tập hợp chi phí đầu tư xây dựng", d: "Nợ TK 241 / Có TK 111, 112, 331" }, dn: { m: "Đầu tư xây dựng cơ bản (nếu có)", d: "Nợ TK 241 / Có TK 111, 112, 331" } },
-      { k: "Bước 3", bq: { m: "Chi phí hoạt động của BQLDA", d: "Nợ TK 642 → phân bổ: Nợ TK 241 / Có TK 642" }, dn: { m: "Doanh thu và chi phí kinh doanh", d: "Có TK 511; Nợ TK 632, 641, 642" } },
+      { k: "Bước 3", bq: { m: "Chi phí hoạt động của BQLDA", d: "Nợ TK 642 <svg class='ic ar' role='img' aria-label='sang'><use href='#i-arrow-r'/></svg> phân bổ: Nợ TK 241 / Có TK 642" }, dn: { m: "Doanh thu và chi phí kinh doanh", d: "Có TK 511; Nợ TK 632, 641, 642" } },
       { k: "Bước 4", bq: { m: "Quyết toán vốn đầu tư được duyệt", d: "Nợ TK 336 / Có TK 241 (bàn giao tài sản)" }, dn: { m: "Cuối kỳ kết chuyển", d: "Xác định kết quả (TK 911), lãi chuyển sang TK 421" } },
       { k: "Bước 5: kết quả cuối cùng", bq: { m: "Không xác định lãi, lỗ", d: "Báo cáo nguồn vốn và thực hiện đầu tư (B02, B03/CĐT)" }, dn: { m: "Xác định lãi, lỗ", d: "Bảng cân đối kế toán, KQHĐKD, lưu chuyển tiền tệ (B01 – B03, B09/DN)" } }
     ]
@@ -526,11 +526,6 @@ window.KEYS = {
     "Năm tiêu chí so sánh: mục đích hạch toán; hệ thống tài khoản; nghiệp vụ kế toán đặc thù; hệ thống báo cáo tài chính; thời hạn lập và nộp báo cáo.",
     "Với BQLDA, vốn đi từ chủ đầu tư, được tập hợp thành chi phí đầu tư trên TK 241 và kết thúc bằng quyết toán, bàn giao tài sản; với doanh nghiệp, hạch toán đi qua doanh thu và chi phí, kết thúc ở lãi, lỗ.",
     "Chi phí quản lý ở BQLDA được phân bổ vào giá trị công trình, còn ở doanh nghiệp nó đi vào chi phí kỳ và ảnh hưởng trực tiếp đến lợi nhuận."
-  ],
-  "1-3-3": [
-    "Giống nhau: cùng tuân thủ Luật Kế toán, cùng dùng phương pháp ghi sổ kép và các nguyên tắc kế toán cơ bản.",
-    "Khác nhau cốt lõi: BQLDA hạch toán “vốn”, doanh nghiệp hạch toán “kết quả”.",
-    "Bước đầu tiên của người làm kế toán là xác định đúng mô hình tổ chức thực hiện dự án."
   ],
   "2-1-1": [
     "Ban là đơn vị trực thuộc chủ đầu tư, có tổ chức công tác kế toán riêng và lập báo cáo tài chính riêng gửi chủ đầu tư.",

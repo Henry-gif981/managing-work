@@ -98,3 +98,12 @@ Kết quả: **không có số nào lệch**. Tất cả các số bài dùng đ
 | D8 | Cổ tức bằng cổ phiếu 5.814,6 | tr.55 (tm 26) | Khớp (xem S2). Bài thiếu dòng "Biến động khác". |
 | D9 | Tài sản đã khấu hao hết 11.515 | tr.41 (tm 11) | Khớp. |
 
+## 7. Phát sinh ở bản 6 + 7
+
+| # | Vị trí trong bài | Vấn đề | Đề xuất |
+|---|---|---|---|
+| B1 | Hình 1.2 (mục 1.2.4), phần C "Chủ đầu tư không thành lập BQLDA" | Hình ghi "Lập thêm B02, B03/CĐT và **4 phụ biểu**", trong khi mục 1.2.2 và 2.1.2 nói bộ báo cáo có **5 phụ biểu** (F02, F03A, F03B, F03C, F03D-CĐT). | Kiểm tra lại số phụ biểu mà chủ đầu tư không thành lập BQLDA phải lập và sửa hình hoặc lời văn cho thống nhất. Web giữ nguyên "4 phụ biểu" như hình, không tự liệt kê tên. |
+| B2 | Mục 1.3.3 "Nhận xét" | Web đã bỏ hẳn mục này (cả năm ý và hình minh họa); bài vẫn còn. | Nhóm quyết định bỏ khỏi bài cho khớp với web, hay giữ trong bài. |
+| B3 | Danh sách phụ lục của bài | Web thêm **Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát (đã kiểm toán)**, 67 trang scan; bài chưa có phụ lục này. | Thêm Phụ lục 4 vào danh sách phụ lục của bài (đính kèm hpg_bctc_2024.pdf). |
+| B4 | Vị trí Phụ lục | Web đặt Phụ lục ngay sau mục 2.1 (trước 2.2) để có sẵn báo cáo gốc khi đọc 2.2 đến 2.5; bài để phụ lục ở cuối. | Không bắt buộc sửa bài; ghi nhận để nhóm biết khi trình bày. |
+
