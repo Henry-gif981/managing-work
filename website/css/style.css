@@ -4643,7 +4643,7 @@ html.present .hero .members li {
   font-size: clamp(14.5px, 1vw, 19px);
 }
 html.present .hero .members {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   padding: 8px 0;
 }
 html.present .hero .members li {
