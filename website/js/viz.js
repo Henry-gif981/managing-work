@@ -312,7 +312,7 @@
   /* ---------- Hình theo tiểu mục ----------
    * [data-viz="k"]       : hình chính của lớp trình bày (đúng một hình)
    * [data-viz="k-more"]  : hình phụ, nằm trong lớp chi tiết
-   * Tiêu đề hình (.viz-title) được main.js đánh mã "Minh họa x-A ... (minh họa)". */
+   * Tiêu đề hình (.viz-title) chỉ ghi tên hình; mã nội bộ (1-A, 2-F…) chỉ hiện ở Chế độ rà soát. */
   var V = {};
   function slot(key) { return doc.querySelector('[data-viz="' + key + '"]'); }
   function put(key, html) {
@@ -583,7 +583,7 @@
       { lab: "Trả lại vốn cho CĐKKS", p: "hp.traVonCDKKS", d: 1, kind: "down" }, { lab: "Biến động khác và chênh lệch làm tròn", p: "calc.hpVcshLamTron", d: 1, kind: "up", calc: true }, { lab: "Cuối năm", p: "hp.vcshChiTiet", d: 1, kind: "total" }] });
   };
   V["2-3-1-more"] = function () {
-    put("2-3-1-more", '<div class="intra"><span class="tagc t-co">Chuyển trong nội bộ vốn (tổng không đổi)</span><span>Cổ tức bằng cổ phiếu ' + v("hp.coTucCPPct", 0) + "%: " + v("hp.coTucCP", 1) + " tỷ chuyển từ thặng dư vốn (" + v("hp.coTucTuThangDu", 1) + ") và lợi nhuận chưa phân phối (" + v("hp.coTucTuLNCPP", 1) + ") sang vốn cổ phần; hoàn nhập quỹ đầu tư phát triển " + v("hp.hoanNhapQuyDTPT", 1) + " tỷ sang lợi nhuận chưa phân phối.</span>" + chip("Hòa Phát tr.55, tr.56", "hp") + "</div>");
+    put("2-3-1-more", '<p class="viz-title" data-mh-of="2-J">Chuyển trong nội bộ vốn chủ sở hữu của Hòa Phát</p><div class="intra"><span class="tagc t-co">Chuyển trong nội bộ vốn (tổng không đổi)</span><span>Cổ tức bằng cổ phiếu ' + v("hp.coTucCPPct", 0) + "%: " + v("hp.coTucCP", 1) + " tỷ chuyển từ thặng dư vốn (" + v("hp.coTucTuThangDu", 1) + ") và lợi nhuận chưa phân phối (" + v("hp.coTucTuLNCPP", 1) + ") sang vốn cổ phần; hoàn nhập quỹ đầu tư phát triển " + v("hp.hoanNhapQuyDTPT", 1) + " tỷ sang lợi nhuận chưa phân phối.</span>" + chip("Hòa Phát tr.55, tr.56", "hp") + "</div>");
   };
 
   V["2-3-2"] = function () {
@@ -705,10 +705,6 @@
     put("kl", title("BQLDA và doanh nghiệp: hai mục tiêu, hai hệ thống kế toán") + '<div class="klg"><div class="klg-c bq">' + pipeSVG({ noPct: true, id: "k" }) + "<b>Ban Quản lý dự án: kiểm soát nguồn cấp phát (TK 336) và tập hợp chi phí đầu tư xây dựng (TK 241)</b></div>" + '<div class="klg-c dn">' + loopSVG({ id: "k" }) + "<b>Doanh nghiệp: đo lường chu kỳ kinh doanh qua doanh thu, chi phí và kết quả hoạt động kinh doanh</b></div></div>");
   };
 
-  // Phụ lục 2: dùng lại sơ đồ dòng hạch toán
-  V["pl2"] = function () {
-    put("pl2", title("Sơ đồ luồng vốn và luồng hạch toán kế toán giữa chủ đầu tư và BQLDA") + splitWrap(pipeSVG({ steps: true, id: "p" }), loopSVG({ steps: true, id: "p" }), H2));
-  };
 
   /* ---------- Tương tác ---------- */
   function initInteractions() {

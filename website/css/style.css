@@ -4805,14 +4805,19 @@ html.present .keys li {
 }
 
 /* mã hình tự vẽ */
-.viz-title .mh {
-  color: var(--ink-3);
-  font-weight: 600;
+/* mã nội bộ của hình web vẽ: chỉ hiện ở Chế độ rà soát */
+.mh-tag {
+  display: none;
 }
-.viz-title .mh-note {
-  color: var(--ink-3);
-  font-weight: 500;
-  font-size: 14px;
+html.review .mh-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--calc);
+  color: var(--white);
+  font: 700 12px/1.4 var(--f-body);
+  vertical-align: middle;
 }
 .viz-sub {
   margin: 0 0 8px;

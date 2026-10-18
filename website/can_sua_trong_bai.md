@@ -74,7 +74,7 @@ Nếu nhóm muốn giữ cách làm tròn 2 chữ số của bài, đổi `fmt.b
 |---|---|---|---|
 | H1 | **Phần mở đầu**: bài mới có ba tiêu đề (Lý do chọn đề tài; Mục tiêu, đối tượng và phạm vi nghiên cứu; Phương pháp nghiên cứu). Mục 3 trong bài chỉ có ghi chú trong ngoặc "(đối chiếu văn bản, so sánh bút toán, minh họa bằng số liệu mẫu)". | Ẩn hoàn toàn. | Viết vào bài trước, rồi chép sang `website/content/phan_mo_dau.md` và chạy `python3 website/tools/build_single.py`. Mục nào có chữ thì web tự hiện. |
 | H2 | **Phụ lục 1** "Bảng tổng hợp 24 điểm khác biệt trọng tâm": bài mới có tiêu đề. | Ẩn. | Tạo `website/content/phu_luc_1.md` (bảng Markdown). Web tự hiện. |
-| H3 | **Phụ lục 2** "Sơ đồ luồng vốn và luồng hạch toán": bài mới có tiêu đề. | Web dùng lại sơ đồ dòng hạch toán của Hình 1.3. | Nếu nhóm vẽ sơ đồ riêng trong bài, gửi để thay. |
+| H3 | **Phụ lục 2** "Sơ đồ luồng vốn và luồng hạch toán": bài mới có tiêu đề. | Web đã bỏ Phụ lục 2 (bản 8). | Xem mục B5. |
 | H4 | **Phụ lục 3** "Bộ BCTC mẫu đầy đủ": bài mới có tiêu đề. | Web hiện đủ 12 trang scan BCTC BQLDA. | Chèn vào bài hoặc ghi "xem bctc_bqlda.pdf". |
 | H5 | **Tên giảng viên**: bài để trống dòng "Giảng viên:". | Web đã điền PGS.TS. Nguyễn La Soa (bìa và trang cảm ơn). | Điền tên vào trang bìa của bài. |
 | H6 | **Tóm tắt chương 1**: web đã bỏ từ bản 3, nhưng bài vẫn còn (cuối mục 1.3.3, và dòng "Tóm tắt chương" ở mục lục). | Không có. | Nhóm quyết định bỏ khỏi bài cho khớp với web, hoặc giữ trong bài (web không phục hồi). |
@@ -105,5 +105,5 @@ Kết quả: **không có số nào lệch**. Tất cả các số bài dùng đ
 | B1 | Hình 1.2 (mục 1.2.4), phần C "Chủ đầu tư không thành lập BQLDA" | Hình ghi "Lập thêm B02, B03/CĐT và **4 phụ biểu**", trong khi mục 1.2.2 và 2.1.2 nói bộ báo cáo có **5 phụ biểu** (F02, F03A, F03B, F03C, F03D-CĐT). | Kiểm tra lại số phụ biểu mà chủ đầu tư không thành lập BQLDA phải lập và sửa hình hoặc lời văn cho thống nhất. Web giữ nguyên "4 phụ biểu" như hình, không tự liệt kê tên. |
 | B2 | Mục 1.3.3 "Nhận xét" | Web đã bỏ hẳn mục này (cả năm ý và hình minh họa); bài vẫn còn. | Nhóm quyết định bỏ khỏi bài cho khớp với web, hay giữ trong bài. |
 | B3 | Danh sách phụ lục của bài | Web thêm **Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát (đã kiểm toán)**, 67 trang scan; bài chưa có phụ lục này. | Thêm Phụ lục 4 vào danh sách phụ lục của bài (đính kèm hpg_bctc_2024.pdf). |
-| B4 | Vị trí Phụ lục | Web đặt Phụ lục ngay sau mục 2.1 (trước 2.2) để có sẵn báo cáo gốc khi đọc 2.2 đến 2.5; bài để phụ lục ở cuối. | Không bắt buộc sửa bài; ghi nhận để nhóm biết khi trình bày. |
-
+| B4 | Vị trí Phụ lục | Web đặt Phụ lục ngay sau tiêu đề Chương 2, trước mục 2.1, để có sẵn báo cáo gốc khi đọc Chương 2; bài để phụ lục ở cuối. | Không bắt buộc sửa bài; ghi nhận để nhóm biết khi trình bày. |
+| B5 | Danh sách phụ lục của bài | Bài liệt kê Phụ lục 1, 2, 3; web chỉ hiển thị **Phụ lục 3** (Bộ BCTC mẫu BQLDA Đồng Bằng 2015) và **Phụ lục 4** (BCTC hợp nhất Hòa Phát 2024), giữ nguyên số hiệu; Phụ lục 1 ẩn vì chưa có nội dung, Phụ lục 2 đã bỏ. | Cập nhật danh sách phụ lục trong bài cho khớp (bỏ hoặc hoàn thiện Phụ lục 1, 2; thêm Phụ lục 4). |

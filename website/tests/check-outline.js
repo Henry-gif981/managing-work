@@ -39,7 +39,7 @@ const CHECKLIST = [
   ['3.2 Bảng 3.2 (3 hàng) + 2 khác biệt', ['3.2', 'Bảng 3.2', 'Cơ cấu tài sản', 'Cơ cấu nguồn vốn', 'Hiệu quả hoạt động', 'KHÁC BIỆT 1', 'KHÁC BIỆT 2']],
   ['3.3 kiến nghị', ['3.3', 'ĐỐI VỚI NGƯỜI LÀM KẾ TOÁN VÀ NGƯỜI ĐỌC BÁO CÁO TÀI CHÍNH', 'ĐỐI VỚI CƠ QUAN QUẢN LÝ NHÀ NƯỚC', 'Thông tư 99/2025/TT-BTC', 'TK 3361', 'TK 3368', 'F03A, F03B', 'chưa hoàn tất thủ tục ghi tăng tài sản cố định']],
   ['Kết luận 3 đoạn', ['Kết luận', 'chế độ kế toán luôn phản ánh đúng chức năng', 'Tài khoản 336', 'thích ứng nhanh chóng với cơ chế hạch toán hợp nhất']],
-  ['Phụ lục 2, 3 (Phụ lục 1 ẩn đến khi có nội dung)', ['Phụ lục 2: Sơ đồ luồng vốn và luồng hạch toán', 'Phụ lục 3: Bộ BCTC mẫu đầy đủ', 'B01-CĐT · Bảng cân đối kế toán (tr.2)', 'F03D-CĐT · Chi phí Ban QLDA (tr.12)']],
+  ['Phụ lục 3, 4 (Phụ lục 1 ẩn đến khi có nội dung)', ['Phụ lục 3: Bộ BCTC mẫu đầy đủ', 'B01-CĐT · Bảng cân đối kế toán (tr.2)', 'F03D-CĐT · Chi phí Ban QLDA (tr.12)', 'Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát', 'Báo cáo tài chính gốc để đối chiếu cho Chương 2']],
   ['Tài liệu tham khảo 6', ['Luật Kế toán số 88/2015/QH13.', 'Nghị định số 174/2016/NĐ-CP', 'Thông tư số 195/2012/TT-BTC', 'Thông tư số 200/2014/TT-BTC', 'Thông tư số 79/2019/TT-BTC', 'Thông tư số 99/2025/TT-BTC']]
 ];
 
@@ -111,7 +111,7 @@ let lostB3 = 0;
     const hero = document.getElementById('s00');
     if (hero.querySelector('.g-pipe, .g-loop, .stat, #heroGraphics')) out.push('bìa còn đồ họa hoặc thẻ số');
     if (/Minh họa 0-A/.test(body)) out.push('còn Minh họa 0-A');
-    ['m-kl', 'm-pl'].forEach(id => { const s = document.getElementById(id); if (!s.querySelector('.g-pipe') || !s.querySelector('.g-loop')) out.push(id + ' thiếu đồ họa dòng vốn hoặc vòng kết quả'); });
+    ['m-kl'].forEach(id => { const s = document.getElementById(id); if (!s.querySelector('.g-pipe') || !s.querySelector('.g-loop')) out.push(id + ' thiếu đồ họa dòng vốn hoặc vòng kết quả'); });
     return { out, viz: document.querySelectorAll('[data-viz]').length, tips: document.querySelectorAll('[data-tip]').length };
   });
   const srcAll = ['index.html', 'js/main.js', 'js/viz.js', 'js/content.js', 'css/style.css'].map(f => fs.readFileSync(path.join(__dirname, '..', f), 'utf8')).join('\n');
@@ -132,7 +132,19 @@ let lostB3 = 0;
     Object.keys(seen).forEach(k => { if (seen[k] > 1) out.push(k + ' trùng ' + seen[k] + ' lần'); });
     const want = ['Bảng 1.1', 'Bảng 1.2', 'Bảng 1.3', 'Bảng 1.4', 'Bảng 1.5', 'Bảng 2.1', 'Bảng 2.2', 'Bảng 3.1', 'Bảng 3.2', 'Hình 1.1', 'Hình 1.2', 'Hình 1.3', 'Hình 1.4', 'Hình 2.1', 'Hình 2.2', 'Hình 2.3', 'Hình 2.4', 'Hình 2.5', 'Hình 2.6', 'Hình 2.7', 'Hình 2.8'];
     want.forEach(w => { if (!seen[w]) out.push('thiếu nhãn ' + w); });
-    document.querySelectorAll('.viz-title').forEach(t => { if (!/^Minh họa [0-9A-Z]+-[A-Z]\./.test(t.textContent.trim()) || !/\(minh họa\)$/.test(t.textContent.trim())) out.push('hình tự vẽ thiếu mã/chú thích: ' + t.textContent.slice(0, 40)); });
+    // bản 8: hình web vẽ chỉ ghi tên, không mã "Minh họa X-Y", không "(minh họa)"; tên không trùng; mã nội bộ chỉ ở Chế độ rà soát
+    const names = {};
+    document.querySelectorAll('.viz-title').forEach(t => {
+      const nm = [...t.childNodes].filter(n => !(n.classList && n.classList.contains('mh-tag'))).map(n => n.textContent).join('').trim();
+      if (!nm) out.push('hình không có tên ' + t.dataset.mh);
+      names[nm] = (names[nm] || 0) + 1;
+      if (!t.dataset.mh) out.push('hình thiếu mã nội bộ: ' + nm.slice(0, 40));
+    });
+    Object.keys(names).forEach(k => { if (names[k] > 1) out.push('tên hình trùng: ' + k); });
+    document.querySelectorAll('[data-viz]').forEach(v => { if (v.children.length && !v.querySelector('.viz-title')) out.push('khối hình không có tên: ' + v.dataset.viz); });
+    if (/Minh họa\s*[0-9A-Z]+-[A-Z]|\(minh họa\)/.test(body)) out.push('còn “Minh họa X-Y” hoặc “(minh họa)”');
+    const codes = body.match(/\b(?:[0-9]|KL|PL)-[A-Z]\b/g);
+    if (codes) out.push('còn mã hình trên giao diện thường: ' + codes.slice(0, 5).join(', '));
     if (/Hình 2\.8 trực quan|Bảng 2\.2 trực quan/.test(body)) out.push('còn nhãn “trực quan” mượn số');
     // mỗi tiểu mục: đúng 1 hình chính + 3 ý chính
     document.querySelectorAll('.lp').forEach(lp => {
@@ -187,7 +199,8 @@ let lostB3 = 0;
     if (document.querySelector('#m-1-2-4 img')) out.push('Hình 1.2 còn ảnh raster');
     if (/1\.3\.3/.test(document.documentElement.innerHTML)) out.push('còn chữ 1.3.3');
     const pl = document.getElementById('m-pl');
-    if (pl.previousElementSibling.id !== 'm-2-1-2' || pl.nextElementSibling.id !== 'm-2-2-1') out.push('Phụ lục không nằm giữa 2.1 và 2.2');
+    if (!pl.previousElementSibling.matches('#ch2 .sec-head') || pl.nextElementSibling.id !== 'm-2-1-1') out.push('Phụ lục không nằm ngay sau tiêu đề Chương 2, trước 2.1');
+    if (document.getElementById('pl2') || /Phụ lục 2/.test(document.body.innerText)) out.push('còn Phụ lục 2');
     if (document.querySelector('#ch4 .pl')) out.push('còn phụ lục ở cuối');
     if (document.querySelectorAll('#hpgal .pg').length !== 67) out.push('Phụ lục 4 không đủ 67 trang');
     return out;

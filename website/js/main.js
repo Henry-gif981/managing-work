@@ -1018,18 +1018,25 @@
     });
   }
 
-  // Hình web tự vẽ: mã "Minh họa x-A" theo chương và chú thích "(minh họa)"; không mượn số hình của bài
+  // Hình web tự vẽ chỉ ghi tên hình. Mã nội bộ theo chương (1-A, 2-F, KL-A…) giữ để phản hồi,
+  // chỉ hiện thành thẻ nhỏ khi bật Chế độ rà soát.
   function numberFigs() {
     var count = {};
     doc.querySelectorAll(".viz-title").forEach(function (t) {
+      // hình phụ trong lớp chi tiết thêm sau: mã theo hình chính, không làm dịch mã các hình khác
+      if (t.dataset.mhOf) {
+        t.setAttribute("data-mh", t.dataset.mhOf + "·ct");
+        t.insertAdjacentHTML("beforeend", ' <span class="mh-tag" aria-hidden="true">' + t.dataset.mhOf + " · chi tiết</span>");
+        return;
+      }
       var ch = t.closest(".chapter");
       var no = ch ? ch.dataset.no : "0";
       var code = no === "04" ? "KL" : String(parseInt(no, 10) || 0);
       if (t.closest("#m-pl")) code = "PL";
       count[code] = (count[code] || 0) + 1;
       var tag = code + "-" + String.fromCharCode(64 + count[code]);
-      t.insertAdjacentHTML("afterbegin", '<span class="mh">Minh họa ' + tag + ".</span> ");
-      t.insertAdjacentHTML("beforeend", ' <span class="mh-note">(minh họa)</span>');
+      t.setAttribute("data-mh", tag);
+      t.insertAdjacentHTML("beforeend", ' <span class="mh-tag" aria-hidden="true">' + tag + "</span>");
     });
   }
 

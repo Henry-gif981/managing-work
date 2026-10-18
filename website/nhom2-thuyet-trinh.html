@@ -4832,14 +4832,19 @@ html.present .keys li {
 }
 
 /* mã hình tự vẽ */
-.viz-title .mh {
-  color: var(--ink-3);
-  font-weight: 600;
+/* mã nội bộ của hình web vẽ: chỉ hiện ở Chế độ rà soát */
+.mh-tag {
+  display: none;
 }
-.viz-title .mh-note {
-  color: var(--ink-3);
-  font-weight: 500;
-  font-size: 14px;
+html.review .mh-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 7px;
+  border-radius: 6px;
+  background: var(--calc);
+  color: var(--white);
+  font: 700 12px/1.4 var(--f-body);
+  vertical-align: middle;
 }
 .viz-sub {
   margin: 0 0 8px;
@@ -5988,6 +5993,12 @@ html.frame .pl-hint {
 <span class="sec-no">02</span><span aria-hidden="true" class="sec-badges"><i class="bdg bq"><svg class="ic"><use href="#i-pipe"></use></svg></i><i class="bdg dn"><svg class="ic"><use href="#i-loop"></use></svg></i></span>
 <div><span class="sec-en">CHAPTER 2 · ANALYSIS OF THE DIFFERENCES</span><h2 id="t-ch2">Chương 2. Phân tích sự khác biệt về chế độ kế toán và BCTC Ban quản lý dự án giữa Thông tư 195/2012/TT-BTC và BCTC doanh nghiệp sử dụng Thông tư 200</h2></div>
 </header>
+<section class="sub" data-navself="Phụ lục" data-note="Báo cáo tài chính gốc để đối chiếu cho Chương 2" data-sub="PL" data-subtitle="Phụ lục" id="m-pl">
+<header class="sub-head"><span class="sub-no">PL</span><h3>Phụ lục</h3><p class="sub-note">Báo cáo tài chính gốc để đối chiếu cho Chương 2</p></header>
+<div class="pl" data-md="phu_luc_1" hidden="" id="pl1"><h4 class="pl-h">Phụ lục 1: Bảng tổng hợp 24 điểm khác biệt trọng tâm (Tiêu chí, BQLDA, Doanh nghiệp, Căn cứ pháp lý)</h4><div class="pl-body"></div></div>
+<div class="pl" id="pl3"><h4 class="pl-h">Phụ lục 3: Bộ BCTC mẫu đầy đủ (Áp dụng theo TT 195/2012/TT-BTC)</h4><p class="small">BCTC năm 2015 của BQLDA Nhà máy Chế biến Nông sản Đồng Bằng: B01, B02, B03, B04, F02, F03A, F03B, F03C, F03D-CĐT.</p><div class="pgal" id="pgal"></div></div>
+<div class="pl" id="pl4"><h4 class="pl-h">Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát (đã kiểm toán)</h4><p class="small">Bản scan 67 trang, số trang theo trang in của báo cáo.<span class="pl-hint"> Bấm một trang hoặc một mục để mở, dùng ‹ › để lật trang.</span></p><nav aria-label="Mục lục nhanh BCTC Hòa Phát" class="hpg-toc" id="hpgToc"></nav><div class="pgal hpgal" id="hpgal"></div></div>
+</section>
 <section class="sub" data-sub="2.1.1" data-subtitle="BQLDA Đồng Bằng" id="m-2-1-1">
 <p class="part-head"><span>2.1</span>Tổng quan về đơn vị nghiên cứu và bộ Báo cáo tài chính mẫu</p>
 <header class="sub-head"><span class="sub-no">2.1.1</span><h3>Giới thiệu khái quát về BQLDA Nhà máy Chế biến Nông sản Đồng Bằng</h3></header><div class="lp"><div class="viz reveal" data-viz="2-1-1"></div><ul class="keys" data-keys="2-1-1"></ul></div><div class="ld"><p class="ld-h">Chi tiết</p><div class="grid g-4">
@@ -6013,13 +6024,6 @@ html.frame .pl-hint {
 <button class="form-card" data-gallery="f03d" type="button"><b>F03D-CĐT</b><span>Chi phí Ban quản lý dự án.</span><em>Xem bản gốc</em></button>
 <button class="form-card" data-gallery="b04" type="button"><b>B04-CĐT</b><span>Thuyết minh bổ sung cho các chỉ tiêu trên báo cáo.</span><em>Xem bản gốc</em></button>
 </div><div class="stage" data-stage="s212"></div></div>
-</section>
-<section class="sub" data-navself="Phụ lục" data-note="Báo cáo tài chính gốc để đối chiếu cho các mục 2.2 đến 2.5" data-sub="PL" data-subtitle="Phụ lục" id="m-pl">
-<header class="sub-head"><span class="sub-no">PL</span><h3>Phụ lục</h3><p class="sub-note">Báo cáo tài chính gốc để đối chiếu cho các mục 2.2 đến 2.5</p></header>
-<div class="pl" data-md="phu_luc_1" hidden="" id="pl1"><h4 class="pl-h">Phụ lục 1: Bảng tổng hợp 24 điểm khác biệt trọng tâm (Tiêu chí, BQLDA, Doanh nghiệp, Căn cứ pháp lý)</h4><div class="pl-body"></div></div>
-<div class="pl" id="pl2"><h4 class="pl-h">Phụ lục 2: Sơ đồ luồng vốn và luồng hạch toán kế toán giữa Chủ đầu tư và BQLDA</h4><div class="viz reveal" data-viz="pl2"></div></div>
-<div class="pl" id="pl3"><h4 class="pl-h">Phụ lục 3: Bộ BCTC mẫu đầy đủ (Áp dụng theo TT 195/2012/TT-BTC)</h4><p class="small">BCTC năm 2015 của BQLDA Nhà máy Chế biến Nông sản Đồng Bằng: B01, B02, B03, B04, F02, F03A, F03B, F03C, F03D-CĐT.</p><div class="pgal" id="pgal"></div></div>
-<div class="pl" id="pl4"><h4 class="pl-h">Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát (đã kiểm toán)</h4><p class="small">Bản scan 67 trang, số trang theo trang in của báo cáo.<span class="pl-hint"> Bấm một trang hoặc một mục để mở, dùng ‹ › để lật trang.</span></p><nav aria-label="Mục lục nhanh BCTC Hòa Phát" class="hpg-toc" id="hpgToc"></nav><div class="pgal hpgal" id="hpgal"></div></div>
 </section>
 <section class="sub" data-sub="2.2.1" data-subtitle="Cơ cấu chung" id="m-2-2-1">
 <p class="part-head"><span>2.2</span>So sánh Bảng cân đối kế toán (Mẫu số B01-CĐT) và hệ thống tài khoản</p>
@@ -7560,7 +7564,7 @@ window.REVIEW = {
   /* ---------- Hình theo tiểu mục ----------
    * [data-viz="k"]       : hình chính của lớp trình bày (đúng một hình)
    * [data-viz="k-more"]  : hình phụ, nằm trong lớp chi tiết
-   * Tiêu đề hình (.viz-title) được main.js đánh mã "Minh họa x-A ... (minh họa)". */
+   * Tiêu đề hình (.viz-title) chỉ ghi tên hình; mã nội bộ (1-A, 2-F…) chỉ hiện ở Chế độ rà soát. */
   var V = {};
   function slot(key) { return doc.querySelector('[data-viz="' + key + '"]'); }
   function put(key, html) {
@@ -7831,7 +7835,7 @@ window.REVIEW = {
       { lab: "Trả lại vốn cho CĐKKS", p: "hp.traVonCDKKS", d: 1, kind: "down" }, { lab: "Biến động khác và chênh lệch làm tròn", p: "calc.hpVcshLamTron", d: 1, kind: "up", calc: true }, { lab: "Cuối năm", p: "hp.vcshChiTiet", d: 1, kind: "total" }] });
   };
   V["2-3-1-more"] = function () {
-    put("2-3-1-more", '<div class="intra"><span class="tagc t-co">Chuyển trong nội bộ vốn (tổng không đổi)</span><span>Cổ tức bằng cổ phiếu ' + v("hp.coTucCPPct", 0) + "%: " + v("hp.coTucCP", 1) + " tỷ chuyển từ thặng dư vốn (" + v("hp.coTucTuThangDu", 1) + ") và lợi nhuận chưa phân phối (" + v("hp.coTucTuLNCPP", 1) + ") sang vốn cổ phần; hoàn nhập quỹ đầu tư phát triển " + v("hp.hoanNhapQuyDTPT", 1) + " tỷ sang lợi nhuận chưa phân phối.</span>" + chip("Hòa Phát tr.55, tr.56", "hp") + "</div>");
+    put("2-3-1-more", '<p class="viz-title" data-mh-of="2-J">Chuyển trong nội bộ vốn chủ sở hữu của Hòa Phát</p><div class="intra"><span class="tagc t-co">Chuyển trong nội bộ vốn (tổng không đổi)</span><span>Cổ tức bằng cổ phiếu ' + v("hp.coTucCPPct", 0) + "%: " + v("hp.coTucCP", 1) + " tỷ chuyển từ thặng dư vốn (" + v("hp.coTucTuThangDu", 1) + ") và lợi nhuận chưa phân phối (" + v("hp.coTucTuLNCPP", 1) + ") sang vốn cổ phần; hoàn nhập quỹ đầu tư phát triển " + v("hp.hoanNhapQuyDTPT", 1) + " tỷ sang lợi nhuận chưa phân phối.</span>" + chip("Hòa Phát tr.55, tr.56", "hp") + "</div>");
   };
 
   V["2-3-2"] = function () {
@@ -7953,10 +7957,6 @@ window.REVIEW = {
     put("kl", title("BQLDA và doanh nghiệp: hai mục tiêu, hai hệ thống kế toán") + '<div class="klg"><div class="klg-c bq">' + pipeSVG({ noPct: true, id: "k" }) + "<b>Ban Quản lý dự án: kiểm soát nguồn cấp phát (TK 336) và tập hợp chi phí đầu tư xây dựng (TK 241)</b></div>" + '<div class="klg-c dn">' + loopSVG({ id: "k" }) + "<b>Doanh nghiệp: đo lường chu kỳ kinh doanh qua doanh thu, chi phí và kết quả hoạt động kinh doanh</b></div></div>");
   };
 
-  // Phụ lục 2: dùng lại sơ đồ dòng hạch toán
-  V["pl2"] = function () {
-    put("pl2", title("Sơ đồ luồng vốn và luồng hạch toán kế toán giữa chủ đầu tư và BQLDA") + splitWrap(pipeSVG({ steps: true, id: "p" }), loopSVG({ steps: true, id: "p" }), H2));
-  };
 
   /* ---------- Tương tác ---------- */
   function initInteractions() {
@@ -9193,18 +9193,25 @@ window.HP_THUMBS = {
     });
   }
 
-  // Hình web tự vẽ: mã "Minh họa x-A" theo chương và chú thích "(minh họa)"; không mượn số hình của bài
+  // Hình web tự vẽ chỉ ghi tên hình. Mã nội bộ theo chương (1-A, 2-F, KL-A…) giữ để phản hồi,
+  // chỉ hiện thành thẻ nhỏ khi bật Chế độ rà soát.
   function numberFigs() {
     var count = {};
     doc.querySelectorAll(".viz-title").forEach(function (t) {
+      // hình phụ trong lớp chi tiết thêm sau: mã theo hình chính, không làm dịch mã các hình khác
+      if (t.dataset.mhOf) {
+        t.setAttribute("data-mh", t.dataset.mhOf + "·ct");
+        t.insertAdjacentHTML("beforeend", ' <span class="mh-tag" aria-hidden="true">' + t.dataset.mhOf + " · chi tiết</span>");
+        return;
+      }
       var ch = t.closest(".chapter");
       var no = ch ? ch.dataset.no : "0";
       var code = no === "04" ? "KL" : String(parseInt(no, 10) || 0);
       if (t.closest("#m-pl")) code = "PL";
       count[code] = (count[code] || 0) + 1;
       var tag = code + "-" + String.fromCharCode(64 + count[code]);
-      t.insertAdjacentHTML("afterbegin", '<span class="mh">Minh họa ' + tag + ".</span> ");
-      t.insertAdjacentHTML("beforeend", ' <span class="mh-note">(minh họa)</span>');
+      t.setAttribute("data-mh", tag);
+      t.insertAdjacentHTML("beforeend", ' <span class="mh-tag" aria-hidden="true">' + tag + "</span>");
     });
   }
 
