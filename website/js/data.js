@@ -30,7 +30,8 @@ window.DATA = {
       { ten: "Đỗ Thị Tiểu Luận", msv: "11230353" },
       { ten: "Đặng Việt Hoàng", msv: "11232291" },
       { ten: "Dương Gia Khánh", msv: "11231085" },
-      { ten: "Đỗ Minh Việt", msv: "11236876" }
+      { ten: "Đỗ Minh Việt", msv: "11236876" },
+      { ten: "Đỗ Bảo Ngọc", msv: "11236548" }
     ]
   },
 

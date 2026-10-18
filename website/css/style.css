@@ -5686,3 +5686,72 @@ html.present .slide-no {
 html.frame .pl-hint {
   display: none;
 }
+
+/* ---------- In / xuất PDF: màu dịu hơn và logo NEU làm hình mờ ở mỗi trang (màn hình không đổi) ---------- */
+.print-wm {
+  display: none;
+}
+@media print {
+  /* màu chủ đạo giảm bão hòa 30% (giữ sắc độ và độ sáng; chữ thân --ink giữ nguyên để đủ tương phản).
+     BQLDA (navy, sáng 28%) và Doanh nghiệp (xanh sáng, sáng 49%) vẫn tách nhau rõ. */
+  :root {
+    --navy: #1f3f72;
+    --navy-700: #183058;
+    --navy-50: #eaeff6;
+    --navy-100: #d7dfec;
+    --blue: #3973c3;
+    --blue-50: #ebf1fa;
+    --blue-100: #d8e5f5;
+    --blue-300: #9cbae2;
+    --line: #e0e4eb;
+    --line-2: #cdd4dd;
+    --bg-1: #9297a2;
+    --bg-2: #757d8e;
+    --ok: #2d6c47;
+    --ok-50: #e6f1ea;
+    --bad: #9d3a34;
+    --bad-50: #faecea;
+    --amber: #754f15;
+    --amber-50: #f8efe0;
+    --calc: #97661b;
+    /* nền panel và card bán trong suốt để hình mờ lộ ra ở vùng trống */
+    --panel: rgba(251, 252, 254, 0.85);
+    --card: rgba(243, 245, 248, 0.85);
+  }
+  .t1 { --c: #1f3f72; }
+  .t2 { --c: #506c9c; }
+  .t3 { --c: #a7b8d3; }
+  .t4 { --c: #d4ddea; }
+  .d1 { --c: #3973c3; }
+  .d2 { --c: #6796d6; }
+  .d3 { --c: #b4cbea; }
+  .d4 { --c: #e0e9f6; }
+  .d5 { --c: #8fb1e1; }
+  /* màu ghi thẳng trong SVG (sơ đồ dòng vốn, vòng kết quả, donut) */
+  [stop-color="#0d3b84"] { stop-color: #1f3f72; }
+  [stop-color="#3f68ad"] { stop-color: #506c9c; }
+  [fill="#0d3b84"] { fill: #1f3f72; }
+  [fill="#1c6fe0"] { fill: #3973c3; }
+  [stroke="#e8eef8"] { stroke: #eaeff6; }
+  html,
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  /* logo NEU: giữa trang, lặp lại trên mọi trang (phần tử fixed nằm ngoài main) */
+  .print-wm {
+    display: block;
+    position: fixed;
+    top: 6%;
+    bottom: 6%;
+    left: 20%;
+    right: 20%;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.08;
+    pointer-events: none;
+  }
+}
+
