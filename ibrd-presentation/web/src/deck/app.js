@@ -78,7 +78,7 @@ export function startDeck(deck) {
     const slot = slotOf(s);
     if (slot) {
       const S = SLOTS[slot];
-      nodes.fb = make(`<div class="fb-wrap" data-n="${n}"><img alt="" decoding="async" src="/fallbacks/${s.hero3d}-${slot}.webp" style="left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px"></div>`, L.fallback);
+      nodes.fb = make(`<div class="fb-wrap" data-n="${n}"><img alt="" decoding="async" src="${import.meta.env.BASE_URL}fallbacks/${s.hero3d}-${slot}.webp" style="left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px"></div>`, L.fallback);
       nodes.fb.querySelector('img').onerror = function () { this.remove(); };
     }
     fitGiant(nodes.giant);
@@ -217,7 +217,7 @@ export function startDeck(deck) {
   ui.chip.addEventListener('click', () => setPreset('full'));
 
   // ----------------------------------------------------------------------------- input
-  const fullscreen = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.());
+  const fullscreen = () => { const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); p?.catch?.(() => { /* fullscreen refused (embedded frame): keep presenting */ }); };
   addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     const k = e.key;

@@ -20,7 +20,7 @@ export async function startPrint(deck) {
     const r = renderSlide(s, deck);
     const slot = slotOf(s);
     let fb = '';
-    if (slot) { const S = SLOTS[slot]; fb = `<div class="fb-wrap"><img alt="" src="/fallbacks/${s.hero3d}-${slot}.webp" style="position:absolute;left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px;object-fit:contain" onerror="this.remove()"></div>`; }
+    if (slot) { const S = SLOTS[slot]; fb = `<div class="fb-wrap"><img alt="" src="${import.meta.env.BASE_URL}fallbacks/${s.hero3d}-${slot}.webp" style="position:absolute;left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px;object-fit:contain" onerror="this.remove()"></div>`; }
     return `<div class="page">${r.ground}<div class="layer">${r.giant}</div>${fb}${s.ground === 'night' ? '<div class="vig"></div>' : ''}<div class="layer">${r.content}</div><div class="pnum">${s.n} / ${deck.slides.length}</div></div>`;
   });
   document.body.innerHTML = pages.join('');
