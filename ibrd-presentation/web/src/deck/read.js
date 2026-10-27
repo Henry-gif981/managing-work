@@ -13,7 +13,7 @@ function body(s, d) {
   const out = [];
   if (s.tpl === 'cover') {
     const m = d.meta;
-    out.push(`<p class="eyebrow">${esc(m.university)} · ${esc(m.course)}</p><h2 class="ctitle">${esc(m.title)}</h2><p>${esc(m.group)}: ${m.members.map(esc).join(', ')}<br>Class: ${esc(m.class)}<br><span class="ph">${esc(m.lecturer)}</span><br>${esc(m.place)}</p>`);
+    out.push(`<p class="eyebrow">${esc(m.university)} · ${esc(m.course)}</p><h3 class="ctitle">${esc(m.title)}</h3><p>${esc(m.group)}: ${m.members.map(esc).join(', ')}<br>Class: ${esc(m.class)}<br><span class="ph">${esc(m.lecturer)}</span><br>${esc(m.place)}</p>`);
     return out.join('');
   }
   if (s.lead) out.push(`<p class="lead">${h(s.lead)}</p>`);

@@ -1,5 +1,5 @@
 {
- "date": "2026-10-27 08:25",
+ "date": "2026-10-27 08:30",
  "bundle": [
   {
    "f": "three-C1E6klC1.js",
@@ -7,7 +7,7 @@
    "gz": 128.7
   },
   {
-   "f": "main-DcTKPnON.js",
+   "f": "main-DV9NSOop.js",
    "kb": 288.6,
    "gz": 75.5
   },
@@ -27,7 +27,7 @@
    "gz": 7.8
   },
   {
-   "f": "app-BaU8lU8F.js",
+   "f": "app-WrBhBMSq.js",
    "kb": 12.6,
    "gz": 5.1
   },
@@ -37,9 +37,9 @@
    "gz": 4.6
   },
   {
-   "f": "read-ARzJ1Eq1.js",
-   "kb": 4.3,
-   "gz": 1.8
+   "f": "read-D1DyXi7G.js",
+   "kb": 4.8,
+   "gz": 2.1
   },
   {
    "f": "drawer-isTqS_8t.js",
@@ -47,7 +47,7 @@
    "gz": 1.4
   },
   {
-   "f": "read-DgDlzPNw.css",
+   "f": "read-CynCpd4E.css",
    "kb": 4.3,
    "gz": 1.3
   },
@@ -57,14 +57,14 @@
    "gz": 1.3
   },
   {
-   "f": "specimen-C3U_TD9Q.js",
-   "kb": 2.5,
+   "f": "print-DJrqWZxq.js",
+   "kb": 2.4,
    "gz": 1.2
   },
   {
-   "f": "print-BXBYrt-w.js",
-   "kb": 2.1,
-   "gz": 1.1
+   "f": "specimen-C3U_TD9Q.js",
+   "kb": 2.5,
+   "gz": 1.2
   },
   {
    "f": "modulepreload-polyfill-B5Qt9EMX.js",
@@ -76,29 +76,29 @@
  "stage": {
   "kb": 1198,
   "byType": {
-   "1:417": 2,
+   "html": 2,
    "woff2": 173,
-   "js": 885,
    "css": 44,
+   "js": 885,
    "png": 61,
    "webp": 35
   },
-  "readyMs": 7091,
-  "dcl": 65,
-  "fcp": 3952
+  "readyMs": 7413,
+  "dcl": 50,
+  "fcp": 3944
  },
  "reading mode": {
-  "kb": 666,
+  "kb": 561,
   "byType": {
-   "1:417": 2,
-   "woff2": 279,
-   "js": 333,
+   "html": 2,
+   "woff2": 173,
    "css": 48,
+   "js": 334,
    "webp": 5
   },
-  "readyMs": 2159,
-  "dcl": 75,
-  "fcp": 520
+  "readyMs": 703,
+  "dcl": 54,
+  "fcp": 172
  },
  "fps": [
   {
@@ -106,10 +106,10 @@
    "kind": "globe",
    "tris": 16793,
    "calls": 17,
-   "frames": 7,
-   "avgMs": 498.7,
-   "p95Ms": 616.6,
-   "fps": 2
+   "frames": 8,
+   "avgMs": 375.8,
+   "p95Ms": 783.4,
+   "fps": 2.7
   },
   {
    "n": 16,
@@ -117,92 +117,98 @@
    "tris": 14057,
    "calls": 22,
    "frames": 9,
-   "avgMs": 401.5,
-   "p95Ms": 1550,
-   "fps": 2.5
+   "avgMs": 358.9,
+   "p95Ms": 1216.6,
+   "fps": 2.8
   },
   {
    "n": 19,
    "kind": "trio",
    "tris": 5769,
    "calls": 33,
-   "frames": 12,
-   "avgMs": 294.6,
-   "p95Ms": 716.7,
-   "fps": 3.4
+   "frames": 10,
+   "avgMs": 313.6,
+   "p95Ms": 666.6,
+   "fps": 3.2
   },
   {
    "n": 28,
    "kind": "ring",
    "tris": 10201,
    "calls": 25,
-   "frames": 10,
-   "avgMs": 308.8,
-   "p95Ms": 683.2,
-   "fps": 3.2
+   "frames": 9,
+   "avgMs": 346.8,
+   "p95Ms": 633.3,
+   "fps": 2.9
   },
   {
    "n": 53,
    "kind": "pylon",
    "tris": 9675,
    "calls": 14,
-   "frames": 9,
-   "avgMs": 445.7,
-   "p95Ms": 1333.3,
-   "fps": 2.2
+   "frames": 10,
+   "avgMs": 329.1,
+   "p95Ms": 783.3,
+   "fps": 3
   },
   {
-   "n": 71,
-   "kind": null,
-   "tris": 37,
-   "calls": 0,
-   "frames": 6,
-   "avgMs": 637,
-   "p95Ms": 1266.6,
-   "fps": 1.6
+   "n": 70,
+   "kind": "pylon",
+   "tris": 9675,
+   "calls": 7,
+   "frames": 3,
+   "avgMs": 1171.4,
+   "p95Ms": 2666.5,
+   "fps": 0.9
   },
   {
-   "n": 79,
-   "kind": null,
-   "tris": 37,
-   "calls": 0,
-   "frames": 9,
-   "avgMs": 368.9,
-   "p95Ms": 616.6,
-   "fps": 2.7
+   "n": 80,
+   "kind": "bridge",
+   "tris": 10791,
+   "calls": 39,
+   "frames": 13,
+   "avgMs": 235.1,
+   "p95Ms": 416.7,
+   "fps": 4.3
   },
   {
    "n": 103,
    "kind": "compass",
    "tris": 4653,
    "calls": 17,
-   "frames": 16,
-   "avgMs": 215.6,
-   "p95Ms": 783.3,
-   "fps": 4.6
+   "frames": 12,
+   "avgMs": 266.9,
+   "p95Ms": 433.4,
+   "fps": 3.7
   },
   {
    "n": 119,
    "kind": "coin",
    "tris": 3785,
    "calls": 20,
-   "frames": 13,
-   "avgMs": 236.9,
-   "p95Ms": 633.3,
-   "fps": 4.2
+   "frames": 10,
+   "avgMs": 309.8,
+   "p95Ms": 1000,
+   "fps": 3.2
   }
  ],
+ "baseline2D": {
+  "frames": 8,
+  "avgMs": 384.1,
+  "p95Ms": 599.9,
+  "fps": 2.6
+ },
  "throttled": {
-  "frames": 13,
-  "avgMs": 316.4,
-  "p95Ms": 999.9,
-  "fps": 3.2
+  "frames": 17,
+  "avgMs": 243.7,
+  "p95Ms": 600,
+  "fps": 4.1
  },
  "throttledPreset": "light",
  "memory": [
   {
    "pass": 1,
-   "heapMB": 6,
+   "heapMB": 6.1,
    "nodes": 495,
    "glGeometries": 28,
    "glTextures": 7,
@@ -210,7 +216,7 @@
   },
   {
    "pass": 2,
-   "heapMB": 6.2,
+   "heapMB": 6.3,
    "nodes": 495,
    "glGeometries": 28,
    "glTextures": 7,
@@ -218,7 +224,7 @@
   },
   {
    "pass": 3,
-   "heapMB": 6.3,
+   "heapMB": 6.4,
    "nodes": 495,
    "glGeometries": 28,
    "glTextures": 7,

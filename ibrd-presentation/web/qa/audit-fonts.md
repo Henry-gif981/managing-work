@@ -45,12 +45,12 @@ Sections audited: 119 at 1920×1080 (all bullets shown). Layout shift while load
 | Cormorant 600 · 34px | 8 |
 | Cormorant 500 · 58px | 7 |
 | Cormorant 600 · 36px | 7 |
-| IBM Plex Mono 500 · 26.66px | 7 |
-| IBM Plex Mono 500 · 19.78px | 7 |
-| IBM Plex Mono 500 · 25.8px | 7 |
+| IBM Plex Mono 500 · 31px | 7 |
+| IBM Plex Mono 500 · 23px | 7 |
+| IBM Plex Mono 500 · 30px | 7 |
 | Cormorant 500 · 62px | 6 |
 | Cormorant 400 · 44px | 6 |
-| IBM Plex Mono 500 · 18.92px | 6 |
+| IBM Plex Mono 500 · 22px | 6 |
 | Cormorant SC 600 · 21px | 6 |
 | Cormorant 500 · 56px | 6 |
 | Cormorant 400 italic · 22px | 6 |
@@ -69,34 +69,15 @@ Sections audited: 119 at 1920×1080 (all bullets shown). Layout shift while load
 | Be Vietnam Pro 600 · 24px | 1 |
 | Cormorant 500 italic · 60px | 1 |
 | Cormorant 600 · 31px | 1 |
-| IBM Plex Mono 500 · 24.94px | 1 |
+| IBM Plex Mono 500 · 29px | 1 |
 | Cormorant 500 italic · 40px | 1 |
 | Be Vietnam Pro 400 italic · 21px | 1 |
-| IBM Plex Mono 500 · 18.06px | 1 |
+| IBM Plex Mono 500 · 21px | 1 |
 
-## Below the size minimums (19)
-- s49 bullet 26.66px < 30: “P156849” (span.code)
-- s50 table 18.92px < 22: “P131558” (span.code)
-- s50 table 18.92px < 22: “P156849” (span.code)
-- s50 table 18.92px < 22: “8417-VN” (span.code)
-- s50 table 18.92px < 22: “6036-VN” (span.code)
-- s52 table 19.78px < 22: “38/2013/ND-CP” (span.code)
-- s52 table 19.78px < 22: “16/2016/ND-CP” (span.code)
-- s52 table 19.78px < 22: “56/2020/ND-CP” (span.code)
-- s52 table 19.78px < 22: “114/2021/ND-CP” (span.code)
-- s52 table 19.78px < 22: “20/2023/ND-CP” (span.code)
-- s52 table 19.78px < 22: “242/2025/ND-CP” (span.code)
-- s52 table 19.78px < 22: “119/2026/ND-CP” (span.code)
-- s55 table 18.92px < 22: “P131558” (span.code)
-- s55 table 18.92px < 22: “8417-VN” (span.code)
-- s77 bullet 26.66px < 30: “P156143” (span.code)
-- s79 bullet 25.8px < 30: “80/2014/ND-CP” (span.code)
-- s91 bullet 25.8px < 30: “NT-2.1” (span.code)
-- s91 bullet 25.8px < 30: “NT-2.2” (span.code)
-- s104 bullet 25.8px < 30: “242/2025/ND-CP” (span.code)
+## Below the size minimums (0)
 
 ## Characters missing from their font (0)
 
 ## Fallback / unexpected families (0)
 
-Result: FAIL
+Result: PASS
