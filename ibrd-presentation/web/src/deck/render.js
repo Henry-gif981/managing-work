@@ -8,13 +8,15 @@ const h = toHTML;
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Which templates show the part's 3D hero object, and where (stage px; used by the 3D engine and fallbacks).
+// cx, cy: centre on the stage; h, w: the box the object must fit in (both dimensions).
 export const SLOTS = {
-  center: { cx: 960, cy: 500, h: 600 },
-  left: { cx: 540, cy: 560, h: 620 },
-  carousel: { cx: 540, cy: 520, h: 520 },
-  ring: { cx: 520, cy: 600, h: 560 },
+  center: { cx: 960, cy: 445, h: 540, w: 600 },
+  chapter: { cx: 1190, cy: 470, h: 560, w: 700 },
+  left: { cx: 540, cy: 560, h: 600, w: 780 },
+  carousel: { cx: 540, cy: 500, h: 500, w: 840 },
+  ring: { cx: 520, cy: 580, h: 520, w: 840 },
 };
-export const slotOf = (s) => (s.obj && SLOTS[s.obj] ? s.obj : null);
+export const slotOf = (s) => (s.obj && SLOTS[s.obj] ? (s.obj === 'center' && s.tpl === 'chapter' ? 'chapter' : s.obj) : null);
 
 function runner(s, deck) {
   const roman = s.roman ? `<span class="roman">${esc(s.roman === 'Intro' ? '' : s.roman)}</span>` : '';
@@ -62,8 +64,8 @@ function giant(s) {
   const word = s.tpl === 'thanks' ? 'THANK YOU' : s.giant;
   if (!word) return '';
   const pos = {
-    cover: 'left:50%;top:300px;transform:translateX(-50%);font-size:450px',
-    chapter: 'left:50%;top:300px;transform:translateX(-50%);font-size:440px',
+    cover: 'left:50%;top:270px;transform:translateX(-50%);font-size:430px',
+    chapter: 'left:1190px;top:310px;transform:translateX(-50%);font-size:420px',
     thanks: 'left:50%;top:330px;transform:translateX(-50%);font-size:300px',
     gallery: 'left:540px;top:330px;transform:translateX(-50%);font-size:400px',
     cycle: 'left:520px;top:350px;transform:translateX(-50%);font-size:360px',
@@ -212,7 +214,7 @@ T.index = (s, d) => {
     const yr = (r.text.match(/\((\d{4}|n\.d\.)/) || [])[1] || '';
     cells.push(`<a href="#src-${n}" data-src="${n}" class="${c.citedFor.length ? '' : 'nc'}">${n}<small>${esc(author.slice(0, 18))} ${esc(yr)}</small></a>`);
   }
-  return `${runner(s, d)}${head(s, 'wide')}<div class="idx">${cells.join('')}</div><div class="idx-note">Dashed tiles: not cited in the body text ([5], [6]). Every tile opens the source card.</div>`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="idx">${cells.join('')}</div><div class="idx-note">Dashed tiles: sources 5 and 6 are not cited in the body text. Every tile opens the source card.</div>`;
 };
 T.credits = (s, d) => `${runner(s, d)}${head(s, 'wide')}<div class="credits">
   <h3>Content</h3><p>All text, figures, tables and citations: Group 6, <em>IBRD and its Development Project Financing Activities in Vietnam</em> (NEU, Hanoi, 2026). Bullets condense the paper; full verbatim text is in the presenter notes (N) and reading mode.</p>

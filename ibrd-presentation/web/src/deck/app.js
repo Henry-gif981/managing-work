@@ -12,6 +12,7 @@ const store = {
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
 export function startDeck(deck) {
+  window.__deckData = deck;
   const N = deck.slides.length;
   const params = new URLSearchParams(location.search);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -77,7 +78,7 @@ export function startDeck(deck) {
     const slot = slotOf(s);
     if (slot) {
       const S = SLOTS[slot];
-      nodes.fb = make(`<div class="fb-wrap" data-n="${n}"><img alt="" decoding="async" src="/fallbacks/${s.hero3d}-${slot}.webp" style="left:${S.cx - S.h * 0.75}px;top:${S.cy - S.h / 2}px;width:${S.h * 1.5}px;height:${S.h}px"></div>`, L.fallback);
+      nodes.fb = make(`<div class="fb-wrap" data-n="${n}"><img alt="" decoding="async" src="/fallbacks/${s.hero3d}-${slot}.webp" style="left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px"></div>`, L.fallback);
       nodes.fb.querySelector('img').onerror = function () { this.remove(); };
     }
     fitGiant(nodes.giant);
@@ -87,7 +88,7 @@ export function startDeck(deck) {
   function fitGiant(wrap) {
     const g = wrap?.firstElementChild;
     if (!g) return;
-    const max = { gallery: 900, cycle: 860, hero: 760, cover: 1500, chapter: 1500, thanks: 1700 }[g.dataset.fit] || 1500;
+    const max = { gallery: 900, cycle: 860, hero: 760, cover: 1300, chapter: 1080, thanks: 1700 }[g.dataset.fit] || 1500;
     let fs = parseFloat(g.style.fontSize);
     for (let i = 0; i < 12 && g.scrollWidth > max; i++) { fs *= Math.max(0.6, max / g.scrollWidth); g.style.fontSize = fs + 'px'; }
   }
@@ -191,7 +192,7 @@ export function startDeck(deck) {
   async function ensureThree() {
     if (three || !hasWebGL || !state.three || state.preset === 'static') return;
     const mod = await import('../three/engine.js');
-    three = mod.createEngine($('#gl'), { preset: state.preset, reduced, onDowngrade: () => { state.autoLight = true; ui.chip.classList.add('on'); setPreset('light', true); } });
+    three = mod.createEngine($('#gl'), { preset: state.preset, reduced: reduced || params.has('capture'), capture: params.has('capture'), onDowngrade: () => { state.autoLight = true; ui.chip.classList.add('on'); setPreset('light', true); } });
     three.resize(scale);
     applyStep();
   }

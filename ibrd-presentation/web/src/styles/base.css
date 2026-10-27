@@ -85,7 +85,7 @@ ul.bullets ul li::before { content: '–'; position: absolute; left: 0; }
 .night ul.bullets > li strong { color: #FFFFFF; }
 .night ul.bullets > li::before { border-color: var(--gold); }
 
-.code { font-family: var(--f-mono); font-weight: 500; font-size: .86em; letter-spacing: -.01em; }
+.code { font-family: var(--f-mono); font-weight: 500; font-size: 1em; letter-spacing: -.03em; }
 .num { font-variant-numeric: lining-nums tabular-nums; }
 
 /* citations: every number its own link, big enough to hit on stage */

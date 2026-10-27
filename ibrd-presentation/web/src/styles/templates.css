@@ -1,7 +1,7 @@
 /* Section templates on the 1920×1080 stage. Every template reserves explicit zones:
    text zones never overlap the art zone or the 3D slot (see DESIGN-3D.md §4). */
 .slide .head { position: absolute; left: var(--m-x); top: 112px; width: 1100px; display: flex; flex-direction: column; gap: 18px; }
-.slide .head.wide { width: calc(1920px - 2 * var(--m-x)); }
+.slide .head.wide { width: 1440px; }
 .slide .body { position: absolute; left: var(--m-x); }
 .art { position: absolute; pointer-events: none; }
 .art svg { width: 100%; height: 100%; display: block; overflow: visible; }
@@ -26,11 +26,11 @@
 
 /* ---- chapter opener ---------------------------------------------------------------------------- */
 .tpl-chapter .roman-big { position: absolute; left: var(--m-x); top: 150px; font-family: var(--f-display); font-weight: 300; font-size: 120px; line-height: 1; color: var(--gold); }
-.tpl-chapter .chap { position: absolute; left: var(--m-x); bottom: 140px; width: 760px; }
+.tpl-chapter .chap { position: absolute; left: var(--m-x); bottom: 140px; width: 700px; }
 .tpl-chapter .chap h1.title { font-size: 76px; }
 .tpl-chapter .chap .lead { margin-top: 20px; font-size: 30px; }
 .tpl-chapter .chap-rule { width: 260px; height: 6px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); margin: 26px 0 0; }
-.tpl-chapter .toc { position: absolute; right: var(--m-x); bottom: 140px; width: 440px; text-align: right; font-size: 24px; line-height: 1.6; color: var(--mist-soft); }
+.tpl-chapter .toc { position: absolute; right: var(--m-x); bottom: 110px; width: 520px; text-align: right; font-size: 24px; line-height: 1.6; color: var(--mist-soft); }
 .tpl-chapter .toc b { color: var(--gold); font-weight: 600; font-family: var(--f-sc); letter-spacing: .12em; display: block; margin-bottom: 6px; }
 
 /* ---- hero: bullets left, engraving right over a faint giant word ------------------------------ */
@@ -57,7 +57,7 @@
 .cardrow.c2 .cert { min-height: 250px; }
 .cardrow.c4 .cert .h { font-size: 34px; }
 .cardrow.c4 .cert .b, .cardrow.c5 .cert .b { font-size: 27px; }
-.tpl-cards .art, .tpl-agenda .art, .tpl-grid .art, .tpl-compare .art, .tpl-table .art, .tpl-timeline .art, .tpl-stats .art, .tpl-process .art, .tpl-quote .art, .tpl-chart .art { right: 70px; top: 52px; width: 230px; height: 230px; }
+.tpl-cards .art, .tpl-agenda .art, .tpl-grid .art, .tpl-compare .art, .tpl-table .art, .tpl-timeline .art, .tpl-stats .art, .tpl-process .art, .tpl-quote .art, .tpl-chart .art { right: 70px; top: 96px; width: 210px; height: 210px; }
 .tpl-cards .art.big { right: 40px; top: 40px; width: 300px; height: 300px; }
 .tpl-cards .qline { position: absolute; left: var(--m-x); right: 360px; top: 270px; font-family: var(--f-display); font-style: italic; font-weight: 500; font-size: 40px; line-height: 1.2; color: #FFF8EA; }
 .tpl-cards.paper .qline { color: var(--slate); }

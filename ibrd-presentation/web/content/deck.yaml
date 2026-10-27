@@ -863,7 +863,7 @@ slides:
     nums:
       - {v: "52.6%", l: "re-estimated EIRR, 2022 completion report [41, Annex 4]"}
       - {v: "31.4%", l: "EIRR in the appraisal economic analysis"}
-      - {v: "USD 1,089 million", l: "economic NPV at a 10% discount rate"}
+      - {v: "USD 1,089 million", l: "economic net present value at a 10% discount rate"}
     bullets:
       - "**Renewables:** better conditions for intermittent generation [37, pp. 8–13]"
       - "**Not quantified:** no verified extra solar or wind MWh; curtailment continued"
