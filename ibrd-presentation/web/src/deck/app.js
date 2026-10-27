@@ -1,6 +1,6 @@
 // Presentation engine: fixed 1920×1080 stage, step-by-step bullets, keyboard/hash/swipe navigation,
 // presenter notes, overview, table of contents, source drawer and the lazily loaded 3D layer.
-import { renderSlide, slotOf, SLOTS } from './render.js';
+import { renderSlide, slotOf, SLOTS, fallbackSrc } from './render.js';
 import { createDrawer } from './drawer.js';
 import { toHTML } from '../lib/markup.js';
 
@@ -78,7 +78,7 @@ export function startDeck(deck) {
     const slot = slotOf(s);
     if (slot) {
       const S = SLOTS[slot];
-      nodes.fb = make(`<div class="fb-wrap" data-n="${n}"><img alt="" decoding="async" src="${import.meta.env.BASE_URL}fallbacks/${s.hero3d}-${slot}.webp" style="left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px"></div>`, L.fallback);
+      nodes.fb = make(`<div class="fb-wrap" data-n="${n}"><img alt="" decoding="async" src="${fallbackSrc(s.hero3d, slot)}" style="left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px"></div>`, L.fallback);
       nodes.fb.querySelector('img').onerror = function () { this.remove(); };
     }
     fitGiant(nodes.giant);

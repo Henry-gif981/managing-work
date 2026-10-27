@@ -16,6 +16,11 @@ export const SLOTS = {
   carousel: { cx: 540, cy: 500, h: 500, w: 840 },
   ring: { cx: 520, cy: 580, h: 520, w: 840 },
 };
+// Still image of a 3D hero. The standalone single-file build inlines them as data URIs in window.__IBRD_INLINE.
+export const fallbackSrc = (kind, slot) => {
+  const key = `fallbacks/${kind}-${slot}.webp`;
+  return (globalThis.__IBRD_INLINE && globalThis.__IBRD_INLINE[key]) || `${import.meta.env.BASE_URL}${key}`;
+};
 export const slotOf = (s) => (s.obj && SLOTS[s.obj] ? (s.obj === 'center' && s.tpl === 'chapter' ? 'chapter' : s.obj) : null);
 
 function runner(s, deck) {
