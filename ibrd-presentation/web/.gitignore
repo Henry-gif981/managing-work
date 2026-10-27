@@ -1,0 +1,4 @@
+node_modules/
+dist/
+content/.paper-index.json
+qa/tmp/

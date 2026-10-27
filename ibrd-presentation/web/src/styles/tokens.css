@@ -1,0 +1,37 @@
+/* Design tokens — see DESIGN.md §2. Values sampled from the 2D and 3D references, tuned for projection. */
+:root {
+  --paper: #FBF2DE;
+  --paper-2: #F1E5C8;
+  --paper-edge: #E2D3AE;
+  --wash: #8B98A0;
+  --wash-light: #ACB5BC;
+  --wash-deep: #5F6E79;
+  --ink: #23292F;
+  --slate: #2F4458;
+  --slate-soft: #4A5D6E;
+  --brick: #A13D2D;
+  --brick-light: #E8826E;
+  --ochre: #A87A2A;
+  --night: #070D18;
+  --night-2: #101A2B;
+  --night-3: #1A2740;
+  --mist: #DCE3EC;
+  --mist-soft: #AEB9C7;
+  --gold: #C9A24A;
+  --gold-hi: #F2D27A;
+  --silver: linear-gradient(180deg, #F4F7FB 0%, #C9D2DD 34%, #7D8BA0 64%, #B4C0CF 100%);
+
+  --f-display: 'IBRD Sym', 'Cormorant', 'Cormorant Fallback', Georgia, serif;
+  --f-sc: 'IBRD Sym', 'Cormorant SC', 'Cormorant', 'Cormorant Fallback', Georgia, serif;
+  --f-text: 'IBRD Sym', 'Be Vietnam Pro', 'Be Vietnam Fallback', Arial, sans-serif;
+  --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --m-x: 96px;        /* stage margins */
+  --m-y: 72px;
+  --gap: 64px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --t-in: 320ms;
+  --t-out: 260ms;
+
+  color-scheme: light;
+}

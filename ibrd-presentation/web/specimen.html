@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Font Specimen · IBRD</title>
+<link rel="stylesheet" href="/src/styles/fonts-all.css">
+<style>
+  :root {
+    --paper: #FBF2DE; --paper-2: #F1E6CC; --wash: #8B98A0; --slate: #2F4458; --ink: #262B31;
+    --brick: #A13D2D; --night: #070D18; --night-2: #101A2B; --mist: #DCE3EC; --gold: #C9A24A;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: #c9ccc8; font-family: system-ui; padding: 32px; }
+  h1.page { font: 600 28px/1.2 system-ui; margin: 0 0 8px; }
+  p.page { font: 16px/1.5 system-ui; max-width: 1200px; margin-bottom: 24px; }
+  .board { width: 1920px; height: 1080px; display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 40px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,.25); }
+  .half { padding: 56px 64px; position: relative; overflow: hidden; }
+  .light { background: var(--paper); color: var(--ink); }
+  .dark { background: radial-gradient(ellipse at 35% 30%, #1a2740 0%, var(--night) 70%); color: var(--mist); }
+  .tag { font: 600 18px/1 system-ui; letter-spacing: .08em; text-transform: uppercase; color: var(--brick); margin-bottom: 18px; }
+  .dark .tag { color: #E8826E; }
+  .giant { font-size: 250px; line-height: .82; letter-spacing: -.01em; margin: 6px 0 18px; }
+  .light .giant { color: var(--slate); }
+  .dark .giant { background: linear-gradient(180deg, #F4F7FB 0%, #B7C2D0 42%, #6A7890 70%, #A9B6C6 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .eyebrow { font-size: 22px; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 10px; }
+  .title { font-size: 60px; line-height: 1.05; margin-bottom: 22px; }
+  ul { padding-left: 1.1em; margin-bottom: 20px; }
+  li { font-size: 30px; line-height: 1.32; margin-bottom: 8px; }
+  li b { font-weight: 600; }
+  .cite { color: var(--brick); text-decoration: underline; text-underline-offset: 3px; font-size: 22px; }
+  .dark .cite { color: #E8826E; }
+  table { border-collapse: collapse; font-size: 24px; margin: 10px 0 18px; font-variant-numeric: lining-nums tabular-nums; }
+  td, th { padding: 6px 18px 6px 0; border-bottom: 1px solid rgba(0,0,0,.18); text-align: left; }
+  .dark td, .dark th { border-color: rgba(255,255,255,.2); }
+  td.n { text-align: right; }
+  .quote { font-size: 34px; font-style: italic; line-height: 1.25; margin: 6px 0 14px; }
+  .mono { font-size: 24px; }
+  .names { font-size: 24px; line-height: 1.4; opacity: .9; }
+  .big { font-size: 120px; line-height: 1; font-variant-numeric: lining-nums tabular-nums; }
+  .note { position: absolute; right: 24px; bottom: 18px; font: 15px system-ui; opacity: .6; }
+</style>
+</head>
+<body>
+<h1 class="page">Font specimen — IBRD web presentation (1920×1080 boards, real rendering)</h1>
+<p class="page">Each board = one candidate pairing: display serif for titles and giant letters, text face for bullets and tables, small caps eyebrow, italic quote, tabular figures, mono for project codes. Left: cream paper (2D sections). Right: dark gallery (3D sections). All glyphs are self-hosted; Vietnamese names and ≈ ≥ – — ’ “ ” § ↩ → are tested.</p>
+<div id="boards"></div>
+<script type="module">
+const pairs = [
+  { id: 'A', name: 'A · Playfair Display / Source Serif 4 / Be Vietnam Pro', display: "'Playfair Display'", dw: 400, text: "'Be Vietnam Pro'", quote: "'Source Serif 4'", sc: "'Playfair Display'", mono: "'IBM Plex Mono'" },
+  { id: 'B', name: 'B · Newsreader / IBM Plex Sans / IBM Plex Mono', display: "'Newsreader'", dw: 300, text: "'IBM Plex Sans'", quote: "'Newsreader'", sc: "'Newsreader'", mono: "'IBM Plex Mono'" },
+  { id: 'C', name: 'C · Cormorant SC + Cormorant / Be Vietnam Pro', display: "'Cormorant'", dw: 400, text: "'Be Vietnam Pro'", quote: "'Cormorant'", sc: "'Cormorant SC'", mono: "'IBM Plex Mono'" },
+  { id: 'D', name: 'D · Fraunces / IBM Plex Sans', display: "'Fraunces'", dw: 300, text: "'IBM Plex Sans'", quote: "'Fraunces'", sc: "'Fraunces'", mono: "'IBM Plex Mono'" },
+];
+const half = (p, cls, giant) => `
+  <div class="half ${cls}" style="font-family:'IBRD Sym',${p.text}">
+    <div class="tag">${p.name}</div>
+    <div class="eyebrow" style="font-family:'IBRD Sym',${p.sc}">Chapter III · Case study 1 · 1944</div>
+    <div class="giant" style="font-family:${p.display};font-weight:${p.dw}">${giant}</div>
+    <div class="title" style="font-family:'IBRD Sym',${p.display};font-weight:${p.dw + 100}">Commitment vs disbursement</div>
+    <ul>
+      <li><b>Approval:</b> 7 August 2014; IBRD loan 8417-VN <a class="cite">[44]</a> <a class="cite">[41]</a></li>
+      <li><b>Gap:</b> USD 181.47 million (36.3%) ≈ 500.00 − 318.53 → ≥ 63.7% used</li>
+      <li><b>Đổi Mới:</b> “resident office” in Hanoi, 1994 — § 3.1.1 ↩ Back</li>
+    </ul>
+    <table><tr><th>Component</th><th>Appraisal</th><th>Actual</th></tr>
+      <tr><td>Transmission infrastructure</td><td class="n">625.00</td><td class="n">464.53</td></tr>
+      <tr><td>Smart-grid network</td><td class="n">80.00</td><td class="n">46.01</td></tr>
+      <tr><td>Total project cost</td><td class="n">731.25</td><td class="n">517.53</td></tr></table>
+    <div class="quote" style="font-family:'IBRD Sym',${p.quote}">“The package works only when domestic systems are ready to absorb it.”</div>
+    <div class="mono" style="font-family:${p.mono}">P131558 · 8417-VN · P156143 · IBRD-84170 · 80/2014/ND-CP</div>
+    <div class="names">Đặng Việt Hoàng · Trần Lan Quyên · Đào Bảo Bình · Nguyễn Anh Đức · Lê Thị Yến Nhi — ế ữ ợ ặ</div>
+    <div class="note">${cls === 'light' ? 'cream #FBF2DE' : 'night #070D18'}</div>
+  </div>`;
+document.getElementById('boards').innerHTML = pairs.map((p) =>
+  `<section class="board" id="pair-${p.id}">${half(p, 'light', 'IBRD')}${half(p, 'dark', 'TEP')}</section>`).join('');
+</script>
+</body>
+</html>

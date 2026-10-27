@@ -1,0 +1,272 @@
+# ---------------------------------------------------------------------------
+# TABLES — transcribed cell by cell from `paper/IBRD - NHÓM 6(1).pdf` (PDF pages given).
+# Cells are verbatim; table rows broken across pages are re-joined.
+# "short" (optional) = shortened on-slide wording when a cell is > ~14 words;
+# the full cell always goes to the speaker notes.
+# ---------------------------------------------------------------------------
+tables:
+  T1:
+    caption: "Table 1. The five institutions of the World Bank Group"
+    section: "1.1.2"
+    page: 11
+    header: ["Institution", "Year founded", "Main clients", "Main activities", "Source of funds"]
+    rows:
+      - ["IBRD", "1944", "Governments of middle-income and creditworthy poorer countries", "Loans, guarantees, risk management, advisory services", "Bonds on international capital markets, member capital"]
+      - ["IDA", "1960", "Governments of the poorest countries", "Grants and very low-interest or interest-free loans", "Contributions from donor countries"]
+      - ["IFC", "1956", "Private enterprises in developing countries", "Loans, equity investment, advisory services", "Own capital and market borrowing"]
+      - ["MIGA", "1988", "Foreign investors and lenders", "Insurance against political risks such as war or expropriation", "Member capital and premiums"]
+      - ["ICSID", "1966", "Governments and foreign investors", "Settling investment disputes through arbitration and conciliation", "Contributions from the World Bank and fees"]
+    source: "Source: Authors' compilation from [7] and [8]."
+  T2:
+    caption: "Table 2. The IBRD’s three lending instruments"
+    section: "1.4.1"
+    page: 17
+    header: ["Instrument", "What it finances", "Disbursed against", "Best suited to"]
+    rows:
+      - ["Investment Project Financing (IPF)", "Ring-fenced project activities: works, goods, consulting services", "Eligible expenditures actually incurred", "Infrastructure and other projects with a defined scope"]
+      - ["Development Policy Financing (DPF)", "A program of policy and institutional actions", "Completion of agreed prior actions", "Sector or economy-wide reforms; budget support"]
+      - ["Program-for-Results (PforR)", "Part of a government’s own expenditure program", "Verified achievement of Disbursement-Linked Indicators", "Programs where results can be measured and verified"]
+    source: "Source: Authors’ compilation from {{ay:Wes (2023)|14|certain}} and {{ay:Gelb et al. (2016)|15|certain}}."
+  T3:
+    caption: "Table 3. Main terms of the IBRD Flexible Loan"
+    section: "1.4.2"
+    page: 18
+    header: ["Term", "Current setting", "Source"]
+    rows:
+      - ["Interest rate", "Reference rate (SOFR for USD) + variable spread", "{{ay:World Bank Treasury (2020)|17|certain}}"]
+      - ["Final maturity", "Up to 35 years; up to 50 years for some projects", "{{ay:World Bank (2014b)|18|inferred}}; {{ay:IBRD (2025)|19|certain}}"]
+      - ["Average maturity", "Up to 20 years", "{{ay:World Bank (2014b)|18|inferred}}"]
+      - ["Short Maturity Loan", "7-year final maturity, 20 bps spread discount", "{{ay:World Bank Treasury (n.d.-b)|20|inferred}}"]
+      - ["Front-end fee", "0.25% of the committed amount, charged once", "{{ay:World Bank Treasury (n.d.-a)|16|inferred}}"]
+      - ["Commitment fee", "0.25% a year on the undisbursed balance, from 60 days after signing", "{{ay:World Bank Treasury (n.d.-a)|16|inferred}}"]
+    source: "Note: Terms are reviewed annually and may change; figures are as at October 2026."
+  T4:
+    caption: "Table 4. Stages of the World Bank project cycle"
+    section: "2.1.1"
+    page: 21
+    header: ["Stage", "Main activities", "Lead role", "Key document"]
+    rows:
+      - ["1. Identification", "Bank and government agree on a project concept consistent with the Country Partnership Framework", "Borrower and Bank", "Project Concept Note, Project Information Document"]
+      - ["2. Preparation", "Feasibility studies, technical design, environmental and social instruments, procurement plan", "Borrower, with Bank advice", "Feasibility study, ESIA, resettlement plan"]
+      - ["3. Appraisal", "Bank reviews technical, economic, financial, institutional and E&S aspects", "Bank", "Project Appraisal Document (PAD)"]
+      - ["4. Negotiation and Board approval", "Legal agreements negotiated; Board of Executive Directors approves; loan signed and declared effective", "Borrower and Bank", "Loan Agreement"]
+      - ["5. Implementation and supervision", "Borrower carries out the project; Bank supervises and may restructure", "Borrower; Bank supervises", "Implementation Status and Results Report (ISR)"]
+      - ["6. Completion and evaluation", "Results assessed; lessons recorded; independent validation", "Bank, then IEG", "Implementation Completion and Results Report (ICR)"]
+    short:
+      "3,1": "Legal agreements negotiated; Board approves; loan signed and declared effective"
+    source: "Source: Authors’ compilation from [25]."
+  T5:
+    caption: "Table 5. IBRD disbursement methods for investment projects"
+    section: "2.1.2"
+    page: 22
+    header: ["Method", "How it works", "Typical use"]
+    rows:
+      - ["Advance", "Bank deposits funds in a borrower’s designated account; the borrower pays eligible expenses and documents them later", "Many small and recurring payments"]
+      - ["Reimbursement", "Borrower pays first from its own funds; the Bank then refunds eligible expenditures", "Expenses the borrower can pre-finance"]
+      - ["Direct payment", "Bank pays a supplier, contractor or consultant directly at the borrower’s request", "Large contract payments"]
+      - ["Special commitment", "Bank commits to pay a third party under a letter of credit opened by a commercial bank", "Imported goods and equipment"]
+    short:
+      "0,1": "Bank deposits funds in a designated account; borrower pays eligible expenses, documents them later"
+    source: "Source: Authors’ compilation from [26;27]."
+  T6:
+    caption: "Table 6. Institutional reform activities in the two case studies"
+    section: "2.3.3"
+    page: 28
+    header: ["Project", "Reform activity", "Position at the latest report"]
+    rows:
+      - ["TEP", "Asset management system for NPT", "Fully operational; used for investment and maintenance decisions"]
+      - ["TEP", "Cost-reflective transmission tariff, IFRS reporting, testing laboratory", "Carried out mainly with NPT/EVN funds"]
+      - ["CCSEP", "Public Service Management Units in each city", "Established"]
+      - ["CCSEP", "Wastewater tariff roadmaps, household connection policies", "Approved or issued; implementation varies by city"]
+      - ["CCSEP", "Performance-based service contracts", "Largely not yet in use, except at the Nha Trang treatment plant"]
+    source: "Source: Sections 3.2.3 and 3.3.3, based on World Bank ({{ay:2022a|41|inferred}}, {{ay:2022b|42|inferred}}, {{ay:2022c|43|inferred}}, {{ay:2023|37|inferred}})."
+  T7:
+    caption: "Table 7. The three forms of IBRD support across the project cycle"
+    section: "2.4"
+    page: 29
+    header: ["Stage", "Financial support", "Technical support", "Training and capacity building"]
+    rows:
+      - ["Preparation and appraisal", "Loan size, instrument and terms agreed; Project Preparation Advance if needed", "Feasibility, economic analysis, safeguard instruments, results framework", "Assessment of the implementing agency’s capacity"]
+      - ["Implementation", "Disbursement against eligible expenditures or results", "Supervision, ISRs, restructuring when needed", "PMU training in procurement, financial management and safeguards"]
+      - ["Completion and after", "Loan repayment; savings cancelled", "ICR and IEG evaluation; lessons for new projects", "Systems and institutions left in place (e.g. TEP’s asset management system)"]
+    source: "Source: Authors’ synthesis of Sections 2.1-2.3."
+  T8:
+    caption: "Table 8. Selected project financing characteristics at appraisal: TEP and SAHEP"
+    section: "3.1.3"
+    page: 33
+    header: ["Indicator", "Transmission Efficiency Project (TEP)", "Support for Autonomous Higher Education Project (SAHEP)"]
+    rows:
+      - ["World Bank project ID", "P131558", "P156849"]
+      - ["Approval date", "7 August 2014", "15 May 2017"]
+      - ["Financing institution", "IBRD (loan 8417-VN)", "IDA (credit 6036-VN)"]
+      - ["World Bank financing (million USD)", "500.00", "155.00"]
+      - ["Counterpart financing (million USD)", "231.25", "19.60"]
+      - ["Total appraisal cost (million USD)", "731.25", "174.60"]
+      - ["Primary sector", "Electricity transmission", "Higher education"]
+    source: "Source: Authors’ compilation from World Bank ({{ay:2014|44|inferred}}, {{ay:2017|47|inferred}}), project appraisal documents."
+  T9:
+    caption: "Table 9. Selected milestones in Vietnam’s regulatory framework for ODA and concessional loans"
+    section: "3.1.4"
+    page: 34
+    header: ["Instrument", "Effective date / period", "Relevance for the analysis"]
+    rows:
+      - ["Decree 38/2013/ND-CP", "Issued 23 April 2013", "Principal ODA framework at TEP approval in 2014"]
+      - ["Decree 16/2016/ND-CP", "Effective 2 May 2016", "Replaced Decree 38/2013; historical implementation period"]
+      - ["Decree 56/2020/ND-CP", "Effective 25 May 2020", "Replaced Decree 16/2016; pre-2021 ODA framework"]
+      - ["Decree 114/2021/ND-CP and Decree 20/2023/ND-CP", "2021-9 September 2025", "Subsequent ODA framework; superseded"]
+      - ["Decree 242/2025/ND-CP", "Effective 10 September 2025", "Current principal decree as at October 2026"]
+      - ["Decree 119/2026/ND-CP", "Issued 3 Apr 2026; effective 1 Jan 2026", "Amends Decree 242/2025; includes transition rules"]
+    source: "Source: Authors’ compilation from Government of Viet Nam ({{ay:2013|48|certain}}, {{ay:2016|49|certain}}, {{ay:2020|50|certain}}, {{ay:2021|51|certain}}, {{ay:2023|52|certain}}, {{ay:2025|53|certain}}, {{ay:2026|54|certain}})."
+  T10:
+    caption: "Table 10. TEP: basic project profile and implementation milestones"
+    section: "3.2.1"
+    page: 36
+    header: ["Item", "Verified information"]
+    rows:
+      - ["Project name / ID", "Transmission Efficiency Project (TEP) / P131558"]
+      - ["Loan number / instrument", "IBRD loan 8417-VN / Investment Project Financing"]
+      - ["Borrower / responsible agency", "Socialist Republic of Viet Nam / NPT (EVN subsidiary)"]
+      - ["Approval / effectiveness", "7 August 2014 / 10 February 2015"]
+      - ["Original / actual closing", "31 December 2019 / 31 December 2021"]
+      - ["Appraisal IBRD loan", "USD 500.00 million"]
+      - ["Appraisal borrower contribution", "USD 231.25 million"]
+      - ["Appraisal total project cost", "USD 731.25 million"]
+      - ["Actual total project cost at closing", "USD 517.53 million"]
+    source: "Source: Authors’ compilation from World Bank ({{ay:2014, Project Data Sheet|44|inferred}}), World Bank ({{ay:2022a, pp. 1-3, 49|41|inferred}}), and World Bank ({{ay:2023, pp. v-vi|37|inferred}})."
+  T11:
+    caption: "Table 11. TEP project cost by component at approval and at closing (million USD)"
+    section: "3.2.2"
+    page: 37
+    header: ["Project component", "Amount at approval", "Actual at closing", "Actual / approval (%)"]
+    rows:
+      - ["Enhancing Transmission Infrastructure", "625.00", "464.53", "74.30"]
+      - ["Developing Smart Grid Network", "80.00", "46.01", "57.50"]
+      - ["Capacity Building", "25.00", "5.74", "22.96"]
+      - ["Front-end fee", "1.25", "1.25", "100.00"]
+      - ["Total project cost", "731.25", "517.53", "70.77"]
+    source: "Source: World Bank ({{ay:2022a, Annex 3, Table 3.1, p. 48|41|inferred}}). Figures transcribed from the original table; the fee row is labeled using the PAD (World Bank, {{ay:2014|44|inferred}})."
+  T12:
+    caption: "Table 12. TEP component financing by source: appraisal versus actual (million USD)"
+    section: "3.2.2"
+    page: 37
+    header: ["Component", "Appraisal total", "Actual total", "Appraisal IBRD", "Actual IBRD"]
+    rows:
+      - ["1. Transmission infrastructure", "625.00", "464.53", "429.45", "289.03"]
+      - ["2. Smart-grid network", "80.00", "46.01", "55.00", "28.01"]
+      - ["3. Capacity building", "25.00", "5.74", "14.30", "0.24"]
+      - ["Front-end fee", "1.25", "1.25", "1.25", "1.25"]
+      - ["TOTAL", "731.25", "517.53", "500.00", "318.53"]
+    source: "Source: Adapted from World Bank ({{ay:2022a, Annex 3, Table 3.2, p. 49|41|inferred}}). IBRD component allocations and actual costs are taken from the original table."
+  T13:
+    caption: "Table 13. Selected institutional and digital systems activities under TEP"
+    section: "3.2.3"
+    page: 40
+    header: ["Workstream", "Original purpose", "Position by project closing"]
+    rows:
+      - ["Asset management system (AMS)", "Data-supported maintenance and capital-investment decisions", "Operational; actual subcomponent cost USD 2.24 million, including USD 0.24 million IBRD"]
+      - ["Cost-reflective transmission tariff", "Support financial sustainability and tariff-related analysis", "USD 0.20 million actual cost; financed by NPT/borrower"]
+      - ["IFRS-related reporting capacity", "Improve financial reporting and governance", "USD 0.30 million actual cost; financed by NPT/borrower"]
+      - ["Electrical testing laboratory", "Improve capacity for specialised testing", "Partial upgrade; USD 3.00 million actual cost; financed by NPT/borrower"]
+      - ["Operation/equipment information system (Component 2)", "Upgrade related digital management information system", "Cancelled after existing system judged adequate"]
+    source: "Source: Authors’ synthesis of World Bank ({{ay:2022a, Annex 3, Table 3.2, p. 49|41|inferred}}) and World Bank ({{ay:2022b, pp. 2-3|42|inferred}})."
+  T14:
+    caption: "Table 14. TEP selected physical outputs: original target and independently reported achievement"
+    section: "3.2.4"
+    page: 41
+    header: ["Indicator", "Target", "Actual", "Achieved / target"]
+    rows:
+      - ["New transmission lines", "920 km", "981 km", "106.6%"]
+      - ["Rehabilitated transmission lines", "120 km", "261 km", "217.5%"]
+      - ["Additional transformer capacity", "3,950 MW", "4,263 MW", "107.9%"]
+      - ["500-kV smart-grid substations", "5", "5", "100.0%"]
+      - ["220-kV smart-grid substations", "11", "10", "90.9%"]
+    source: "Source: World Bank ({{ay:2023, pp. viii-ix, 8|37|inferred}}); achievement percentages calculated by the authors."
+  T15:
+    caption: "Table 15. Selected system-level service and efficiency indicators around TEP completion"
+    section: "3.2.4"
+    page: 43
+    header: ["Indicator", "Earlier observation", "Later observation", "Interpretation / scope"]
+    rows:
+      - ["O&M cost per energy transmitted", "USD 0.87/MWh (baseline)", "USD 0.67/MWh (2021 and 2022)", "Lower unit costs; NPT-wide"]
+      - ["Unserved energy caused by transmission failures", "4,875 MWh (2012)", "817 MWh (2021)", "Large reduction; system indicator"]
+      - ["Avg. interruption duration per customer", "724.28 min (2018)", "356.12 min (2021)", "Improved reliability indicator"]
+      - ["Avg. interruption frequency per customer", "4.97 times (2018)", "3.11 times (2021)", "Improved reliability indicator"]
+      - ["Transmission losses", "2.34% (2015)", "2.29% (2021); 2.54% (2022)", "Improved by closing then worsened"]
+    source: "Source: Authors’ compilation from World Bank ({{ay:2023, pp. 9-11, Tables 2.2-2.3|37|inferred}}; underlying EVN data)."
+  T16:
+    caption: "Table 16. TEP financing gap: definitions and derived comparisons (million USD)"
+    section: "3.2.5"
+    page: 45
+    header: ["Measure", "million USD", "Meaning"]
+    rows:
+      - ["IBRD amount committed at appraisal", "500.00", "Original approved financing envelope"]
+      - ["IBRD amount actually disbursed", "318.53", "World Bank financing used through project closing"]
+      - ["Commitment minus disbursement", "181.47", "Derived arithmetic gap: 36.3% of commitment"]
+      - ["Loan savings reported cancelled by IEG", "~160.00", "Separate approximate cancellation figure in IEG assessment"]
+      - ["Total project cost at appraisal", "731.25", "Initial budget; includes fee"]
+      - ["Total actual project cost", "517.53", "Closing expenditure"]
+      - ["Appraisal minus actual project cost", "213.72", "Derived reduction in overall project cost (29.2%)"]
+    source: "Source: Authors’ compilation and calculations from World Bank ({{ay:2022a, Annex 3, Table 3.2|41|inferred}}) and World Bank ({{ay:2023, pp. v, x, 17|37|inferred}})."
+  T17:
+    caption: "Table 17. Planned and actual project implementation timeline"
+    section: "3.3.1"
+    page: 48
+    header: ["Milestone", "Planned", "Actual"]
+    rows:
+      - ["Approval", "5/5/2017", "5/5/2017"]
+      - ["Agreement signing", "-", "27/10/2017"]
+      - ["Effectiveness date", "3/8/2017", "18/1/2018"]
+      - ["Implementation start", "5/5/2017", "18/1/2018"]
+      - ["Implementation end", "30/6/2022", "-"]
+      - ["Loan closing", "31/12/2022", "30/6/2024"]
+    source: "Source: projects.worldbank.org"
+  T18:
+    caption: "Table 18. Project components and financing sources (base cost, million USD)"
+    section: "3.3.2"
+    page: 51
+    header: ["Component", "Total", "IDA", "IBRD", "Counterpart funding"]
+    rows:
+      - ["1. Sanitation Infrastructure Expansion", "140,7", "140,7", "-", "-"]
+      - ["2. Urban Connectivity Improvement", "31,2", "-", "31,2", "-"]
+      - ["3. Compensation and Site Clearance", "25,1", "3,4", "-", "21,7"]
+      - ["4. Implementation Support and Institutional Reform", "11,7", "-", "-", "11,7"]
+      - ["Total Base Cost", "208,7", "144,1", "31,2", "33,4"]
+    source: "Source: projects.worldbank.org"
+    note: "Note: The table shows base costs only. The difference from the total project cost comes from contingencies (USD 37.9 million), VAT (USD 22.3 million), and capitalized fees and interest (USD 4.8 million), which are also financed by the three sources. This is why the IBRD total is USD 46.0 million, against USD 31.2 million of base cost for Component 2 (World Bank, {{ay:2017, Annex 2, Table 2.1|33|inferred}}). Minor differences in totals are due to rounding in the PAD."
+  T19:
+    caption: "Table 19. Funding structure: plan vs. adjusted (million USD)"
+    section: "3.3.2"
+    page: 53
+    header: ["Funding source", "Appraisal amount", "Appraisal share", "Adjusted amount", "Adjusted share", "Difference"]
+    rows:
+      - ["Total WB financing", "236,2", "86,33%", "190,6", "79,22%", "45,6"]
+      - ["IBRD", "46", "16,81%", "34,2", "14,21%", "11,8"]
+      - ["IDA", "190,2", "69,52%", "156,4", "65,00%", "33,8"]
+      - ["Counterpart funding", "37,4", "13,67%", "50", "20,78%", "-12,6"]
+      - ["Total project cost", "273,6", "100,00%", "240,6", "100,00%", "33"]
+    source: "Source: projects.worldbank.org"
+  T20:
+    caption: "Table 20. Planned and actual project implementation timeline"
+    section: "3.3.3"
+    page: 54
+    header: ["Milestone", "Planned", "Actual"]
+    rows:
+      - ["Approval", "5/5/2017", "5/5/2017"]
+      - ["Agreement signing", "-", "27/10/2017"]
+      - ["Effectiveness date", "3/8/2017", "18/1/2018"]
+      - ["Implementation start", "5/5/2017", "18/1/2018"]
+      - ["Implementation end", "30/6/2022", "-"]
+      - ["Loan closing", "31/12/2022", "30/6/2024"]
+    source: "Source: projects.worldbank.org"
+  T21:
+    caption: "Table 21. Progress on key performance indicators as of 31/10/2022"
+    section: "3.3.3"
+    page: 55
+    header: ["Indicator", "Target (PAD)", "Actual", "Ratio"]
+    rows:
+      - ["Direct beneficiaries", "290.000", "185.559", "64%"]
+      - ["People with access to sewer connections", "256.000", "97.400", "38%"]
+      - ["Cost recovery level", "100%", "98%", "98%"]
+      - ["Roads (km)", "22", "4,38", "20%"]
+      - ["Bridges", "5", "3", "60%"]
+    source: "Source: projects.worldbank.org"
