@@ -1,0 +1,3153 @@
+{
+ "built": "2026-10-27T04:39:51",
+ "visible_slides": 123,
+ "card_slides": 85,
+ "slides": [
+  {
+   "no": 1,
+   "title": "cover",
+   "kind": "cover",
+   "section": "cover",
+   "ref": "cover",
+   "notes": [
+    "cover"
+   ]
+  },
+  {
+   "no": 2,
+   "title": "Contents",
+   "kind": "agenda",
+   "section": "cover",
+   "ref": "agenda",
+   "notes": [
+    "intro-6"
+   ]
+  },
+  {
+   "no": 3,
+   "title": "Introduction",
+   "kind": "divider",
+   "section": "intro",
+   "ref": "divider",
+   "notes": []
+  },
+  {
+   "no": 4,
+   "title": "The role of multilateral development finance",
+   "kind": "bullets",
+   "section": "intro",
+   "ref": "Introduction · 1.1",
+   "notes": [
+    "intro-1.1"
+   ]
+  },
+  {
+   "no": 5,
+   "title": "Vietnam's shift from IDA to IBRD",
+   "kind": "timeline",
+   "section": "intro",
+   "ref": "Introduction · 1.2",
+   "notes": [
+    "intro-1.2#1"
+   ]
+  },
+  {
+   "no": 6,
+   "title": "Why the IBRD matters now",
+   "kind": "bullets",
+   "section": "intro",
+   "ref": "Introduction · 1.2",
+   "notes": [
+    "intro-1.2#2-4"
+   ]
+  },
+  {
+   "no": 7,
+   "title": "Research problem and four questions",
+   "kind": "cards",
+   "section": "intro",
+   "ref": "Introduction · 2",
+   "notes": [
+    "intro-2"
+   ]
+  },
+  {
+   "no": 8,
+   "title": "Research objectives",
+   "kind": "cards",
+   "section": "intro",
+   "ref": "Introduction · 3",
+   "notes": [
+    "intro-3.1",
+    "intro-3.2"
+   ]
+  },
+  {
+   "no": 9,
+   "title": "Research methodology",
+   "kind": "bullets",
+   "section": "intro",
+   "ref": "Introduction · 4",
+   "notes": [
+    "intro-4"
+   ]
+  },
+  {
+   "no": 10,
+   "title": "Research scope",
+   "kind": "cards",
+   "section": "intro",
+   "ref": "Introduction · 5",
+   "notes": [
+    "intro-5"
+   ]
+  },
+  {
+   "no": 11,
+   "title": "Overview of the IBRD",
+   "kind": "divider",
+   "section": "ch1",
+   "ref": "divider",
+   "notes": [
+    "ch1"
+   ]
+  },
+  {
+   "no": 12,
+   "title": "Definition, mission and borrowers",
+   "kind": "bullets",
+   "section": "ch1",
+   "ref": "1.1.1",
+   "notes": [
+    "1.1.1"
+   ]
+  },
+  {
+   "no": 13,
+   "title": "The five institutions (1/2)",
+   "kind": "table",
+   "section": "ch1",
+   "ref": "1.1.2",
+   "notes": [
+    "1.1.2#1",
+    "T1"
+   ]
+  },
+  {
+   "no": 14,
+   "title": "The five institutions (2/2)",
+   "kind": "table",
+   "section": "ch1",
+   "ref": "1.1.2",
+   "notes": [
+    "T1"
+   ]
+  },
+  {
+   "no": 15,
+   "title": "How the IBRD differs",
+   "kind": "bullets",
+   "section": "ch1",
+   "ref": "1.1.2",
+   "notes": [
+    "1.1.2#1-3"
+   ]
+  },
+  {
+   "no": 16,
+   "title": "History in four stages",
+   "kind": "cards",
+   "section": "ch1",
+   "ref": "1.2",
+   "notes": [
+    "1.2"
+   ]
+  },
+  {
+   "no": 17,
+   "title": "Governance: three levels",
+   "kind": "cards",
+   "section": "ch1",
+   "ref": "1.3.1",
+   "notes": [
+    "1.3.1"
+   ]
+  },
+  {
+   "no": 18,
+   "title": "Voting power follows shares",
+   "kind": "bignums",
+   "section": "ch1",
+   "ref": "1.3.2",
+   "notes": [
+    "1.3.2"
+   ]
+  },
+  {
+   "no": 19,
+   "title": "Source of funds",
+   "kind": "flow",
+   "section": "ch1",
+   "ref": "1.3.3",
+   "notes": [
+    "1.3.3"
+   ]
+  },
+  {
+   "no": 20,
+   "title": "Three lending instruments",
+   "kind": "cards",
+   "section": "ch1",
+   "ref": "1.4.1",
+   "notes": [
+    "1.4#1",
+    "1.4.1#1-3"
+   ]
+  },
+  {
+   "no": 21,
+   "title": "Instruments compared",
+   "kind": "table",
+   "section": "ch1",
+   "ref": "1.4.1",
+   "notes": [
+    "1.4.1#4",
+    "T2"
+   ]
+  },
+  {
+   "no": 22,
+   "title": "Loan terms: price (1/2)",
+   "kind": "bullets",
+   "section": "ch1",
+   "ref": "1.4.2",
+   "notes": [
+    "1.4.2#1-2",
+    "1.4.2#5"
+   ]
+  },
+  {
+   "no": 23,
+   "title": "Loan terms: maturity (2/2)",
+   "kind": "bullets",
+   "section": "ch1",
+   "ref": "1.4.2",
+   "notes": [
+    "1.4.2#3-4"
+   ]
+  },
+  {
+   "no": 24,
+   "title": "Main terms of the IBRD Flexible Loan",
+   "kind": "table",
+   "section": "ch1",
+   "ref": "1.4.2",
+   "notes": [
+    "T3"
+   ]
+  },
+  {
+   "no": 25,
+   "title": "Safeguards and procurement",
+   "kind": "bullets",
+   "section": "ch1",
+   "ref": "1.4.3",
+   "notes": [
+    "1.4.3#1-2",
+    "1.4.3#14-15"
+   ]
+  },
+  {
+   "no": 26,
+   "title": "Ten Environmental and Social Standards",
+   "kind": "grid",
+   "section": "ch1",
+   "ref": "1.4.3",
+   "notes": [
+    "1.4.3#3-13"
+   ]
+  },
+  {
+   "no": 27,
+   "title": "How the IBRD supports project financing",
+   "kind": "divider",
+   "section": "ch2",
+   "ref": "divider",
+   "notes": [
+    "ch2",
+    "2.1#1"
+   ]
+  },
+  {
+   "no": 28,
+   "title": "The six-stage project cycle",
+   "kind": "cycle",
+   "section": "ch2",
+   "ref": "2.1.1",
+   "notes": [
+    "2.1.1#1"
+   ]
+  },
+  {
+   "no": 29,
+   "title": "Stages of the project cycle (1/2)",
+   "kind": "table",
+   "section": "ch2",
+   "ref": "2.1.1",
+   "notes": [
+    "T4"
+   ]
+  },
+  {
+   "no": 30,
+   "title": "Stages of the project cycle (2/2)",
+   "kind": "table",
+   "section": "ch2",
+   "ref": "2.1.1",
+   "notes": [
+    "T4"
+   ]
+  },
+  {
+   "no": 31,
+   "title": "The cycle does not end at approval",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.1.1",
+   "notes": [
+    "2.1.1#2-3"
+   ]
+  },
+  {
+   "no": 32,
+   "title": "Four disbursement methods",
+   "kind": "table",
+   "section": "ch2",
+   "ref": "2.1.2",
+   "notes": [
+    "2.1.2#1",
+    "T5"
+   ]
+  },
+  {
+   "no": 33,
+   "title": "Counterpart funding as the constraint",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.1.2",
+   "notes": [
+    "2.1.2#2-4"
+   ]
+  },
+  {
+   "no": 34,
+   "title": "Instruments in practice: IPF and PforR",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.1.3",
+   "notes": [
+    "2.1.3#1",
+    "2.1.3#3-4"
+   ]
+  },
+  {
+   "no": 35,
+   "title": "DPF in Vietnam: policy matrix to budget",
+   "kind": "chart",
+   "section": "ch2",
+   "ref": "2.1.3",
+   "notes": [
+    "2.1.3#2",
+    "DPF"
+   ]
+  },
+  {
+   "no": 36,
+   "title": "Technical support: preparation",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.2.1",
+   "notes": [
+    "2.2#1",
+    "2.2.1"
+   ]
+  },
+  {
+   "no": 37,
+   "title": "Advisory Services and Analytics",
+   "kind": "chart",
+   "section": "ch2",
+   "ref": "2.2.2",
+   "notes": [
+    "2.2.2"
+   ]
+  },
+  {
+   "no": 38,
+   "title": "Monitoring and evaluation: three levels",
+   "kind": "cards",
+   "section": "ch2",
+   "ref": "2.2.3",
+   "notes": [
+    "2.2.3#1-5"
+   ]
+  },
+  {
+   "no": 39,
+   "title": "What M&E shows and its limits",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.2.3",
+   "notes": [
+    "2.2.3#6-7"
+   ]
+  },
+  {
+   "no": 40,
+   "title": "Training project management units",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.3.1",
+   "notes": [
+    "2.3#1",
+    "2.3.1"
+   ]
+  },
+  {
+   "no": 41,
+   "title": "Knowledge transfer by doing",
+   "kind": "bullets",
+   "section": "ch2",
+   "ref": "2.3.2",
+   "notes": [
+    "2.3.2"
+   ]
+  },
+  {
+   "no": 42,
+   "title": "Institutional reform in the two cases",
+   "kind": "table",
+   "section": "ch2",
+   "ref": "2.3.3",
+   "notes": [
+    "2.3.3#1",
+    "T6"
+   ]
+  },
+  {
+   "no": 43,
+   "title": "Reform depends on the borrower",
+   "kind": "bignums",
+   "section": "ch2",
+   "ref": "2.3.3",
+   "notes": [
+    "2.3.3#2-3"
+   ]
+  },
+  {
+   "no": 44,
+   "title": "Three forms of support across the cycle",
+   "kind": "table",
+   "section": "ch2",
+   "ref": "2.4",
+   "notes": [
+    "2.4#1",
+    "T7"
+   ]
+  },
+  {
+   "no": 45,
+   "title": "One package, one dependency",
+   "kind": "cards",
+   "section": "ch2",
+   "ref": "2.4",
+   "notes": [
+    "2.4#2-3"
+   ]
+  },
+  {
+   "no": 46,
+   "title": "The IBRD and selected projects in Vietnam",
+   "kind": "divider",
+   "section": "ch3",
+   "ref": "divider",
+   "notes": [
+    "ch3"
+   ]
+  },
+  {
+   "no": 47,
+   "title": "Vietnam and the World Bank since 1993",
+   "kind": "timeline",
+   "section": "ch3",
+   "ref": "3.1 · 3.1.1",
+   "notes": [
+    "3.1",
+    "3.1.1#1",
+    "3.1.2#1-3"
+   ]
+  },
+  {
+   "no": 48,
+   "title": "A shift in lending mix",
+   "kind": "bullets",
+   "section": "ch3",
+   "ref": "3.1.1 · 3.1.2",
+   "notes": [
+    "3.1",
+    "3.1.1#2",
+    "3.1.2#2-3"
+   ]
+  },
+  {
+   "no": 49,
+   "title": "A late IDA project: SAHEP (2017)",
+   "kind": "bullets",
+   "section": "ch3",
+   "ref": "3.1.3",
+   "notes": [
+    "3.1.3"
+   ]
+  },
+  {
+   "no": 50,
+   "title": "TEP and SAHEP at appraisal (1/2)",
+   "kind": "table",
+   "section": "ch3",
+   "ref": "3.1.3",
+   "notes": [
+    "T8"
+   ]
+  },
+  {
+   "no": 51,
+   "title": "TEP and SAHEP at appraisal (2/2)",
+   "kind": "table_chart",
+   "section": "ch3",
+   "ref": "3.1.3",
+   "notes": [
+    "T8"
+   ]
+  },
+  {
+   "no": 52,
+   "title": "Two overlapping legal systems",
+   "kind": "bullets",
+   "section": "ch3",
+   "ref": "3.1.4",
+   "notes": [
+    "3.1.4#1-5"
+   ]
+  },
+  {
+   "no": 53,
+   "title": "Regulatory milestones",
+   "kind": "table",
+   "section": "ch3",
+   "ref": "3.1.4",
+   "notes": [
+    "T9"
+   ]
+  },
+  {
+   "no": 54,
+   "title": "Case study 1: Transmission Efficiency Project",
+   "kind": "divider",
+   "section": "tep",
+   "ref": "divider",
+   "notes": [
+    "3.2"
+   ]
+  },
+  {
+   "no": 55,
+   "title": "TEP: project overview",
+   "kind": "bullets",
+   "section": "tep",
+   "ref": "3.2.1",
+   "notes": [
+    "3.2.1#1-2"
+   ]
+  },
+  {
+   "no": 56,
+   "title": "TEP profile and milestones (1/2)",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.1",
+   "notes": [
+    "T10"
+   ]
+  },
+  {
+   "no": 57,
+   "title": "TEP profile and milestones (2/2)",
+   "kind": "table_nums",
+   "section": "tep",
+   "ref": "3.2.1",
+   "notes": [
+    "3.2.1#3",
+    "T10"
+   ]
+  },
+  {
+   "no": 58,
+   "title": "Three components",
+   "kind": "cards",
+   "section": "tep",
+   "ref": "3.2.2",
+   "notes": [
+    "3.2.2#1-2"
+   ]
+  },
+  {
+   "no": 59,
+   "title": "Cost by component (million USD)",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.2",
+   "notes": [
+    "3.2.2#3",
+    "T11"
+   ]
+  },
+  {
+   "no": 60,
+   "title": "Financing by source: totals (1/2)",
+   "kind": "table_chart",
+   "section": "tep",
+   "ref": "3.2.2",
+   "notes": [
+    "T12",
+    "F2"
+   ]
+  },
+  {
+   "no": 61,
+   "title": "Financing by source: IBRD (2/2)",
+   "kind": "table_chart",
+   "section": "tep",
+   "ref": "3.2.2",
+   "notes": [
+    "T12",
+    "F1"
+   ]
+  },
+  {
+   "no": 62,
+   "title": "What the closing accounts show",
+   "kind": "bullets",
+   "section": "tep",
+   "ref": "3.2.2",
+   "notes": [
+    "3.2.2#4-5"
+   ]
+  },
+  {
+   "no": 63,
+   "title": "Capacity building narrowed to the AMS",
+   "kind": "bullets",
+   "section": "tep",
+   "ref": "3.2.3",
+   "notes": [
+    "3.2.3#1-2"
+   ]
+  },
+  {
+   "no": 64,
+   "title": "Institutional and digital workstreams",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.3",
+   "notes": [
+    "T13"
+   ]
+  },
+  {
+   "no": 65,
+   "title": "Learning platform and technology friction",
+   "kind": "bullets",
+   "section": "tep",
+   "ref": "3.2.3",
+   "notes": [
+    "3.2.3#3-4"
+   ]
+  },
+  {
+   "no": 66,
+   "title": "Physical outputs vs targets",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.4",
+   "notes": [
+    "3.2.4#1",
+    "T14"
+   ]
+  },
+  {
+   "no": 67,
+   "title": "Output achievement (%)",
+   "kind": "chart",
+   "section": "tep",
+   "ref": "3.2.4",
+   "notes": [
+    "3.2.4#1",
+    "F3"
+   ]
+  },
+  {
+   "no": 68,
+   "title": "Capacity and electricity transmitted",
+   "kind": "chart",
+   "section": "tep",
+   "ref": "3.2.4",
+   "notes": [
+    "3.2.4#2",
+    "TWH"
+   ]
+  },
+  {
+   "no": 69,
+   "title": "System-level service indicators",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.4",
+   "notes": [
+    "3.2.4#3",
+    "T15"
+   ]
+  },
+  {
+   "no": 70,
+   "title": "Transmission losses, 2015-2022 (%)",
+   "kind": "chart",
+   "section": "tep",
+   "ref": "3.2.4",
+   "notes": [
+    "3.2.4#4",
+    "F4"
+   ]
+  },
+  {
+   "no": 71,
+   "title": "Renewables and economic return",
+   "kind": "bullets",
+   "section": "tep",
+   "ref": "3.2.4",
+   "notes": [
+    "3.2.4#5-6"
+   ]
+  },
+  {
+   "no": 72,
+   "title": "Commitment vs disbursement",
+   "kind": "bignums",
+   "section": "tep",
+   "ref": "3.2.5",
+   "notes": [
+    "3.2.5#1-2"
+   ]
+  },
+  {
+   "no": 73,
+   "title": "Financing gap: definitions (1/2)",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.5",
+   "notes": [
+    "T16"
+   ]
+  },
+  {
+   "no": 74,
+   "title": "Financing gap: definitions (2/2)",
+   "kind": "table",
+   "section": "tep",
+   "ref": "3.2.5",
+   "notes": [
+    "T16"
+   ]
+  },
+  {
+   "no": 75,
+   "title": "Delays, safeguards, sustainability",
+   "kind": "bullets",
+   "section": "tep",
+   "ref": "3.2.5",
+   "notes": [
+    "3.2.5#3-5"
+   ]
+  },
+  {
+   "no": 76,
+   "title": "TEP: overall assessment",
+   "kind": "cards",
+   "section": "tep",
+   "ref": "3.2.6",
+   "notes": [
+    "3.2.6#1"
+   ]
+  },
+  {
+   "no": 77,
+   "title": "Three conclusions from TEP",
+   "kind": "cards",
+   "section": "tep",
+   "ref": "3.2.6",
+   "notes": [
+    "3.2.6#2-3"
+   ]
+  },
+  {
+   "no": 78,
+   "title": "Case study 2: Coastal Cities Sustainable Environment Project",
+   "kind": "divider",
+   "section": "ccsep",
+   "ref": "divider",
+   "notes": [
+    "3.3"
+   ]
+  },
+  {
+   "no": 79,
+   "title": "Why CCSEP was needed",
+   "kind": "bignums",
+   "section": "ccsep",
+   "ref": "3.3.1",
+   "notes": [
+    "3.3.1#1"
+   ]
+  },
+  {
+   "no": 80,
+   "title": "CCSEP: project overview",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.1",
+   "notes": [
+    "3.3.1#2"
+   ]
+  },
+  {
+   "no": 81,
+   "title": "Planned and actual timeline",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.1",
+   "notes": [
+    "T17"
+   ]
+  },
+  {
+   "no": 82,
+   "title": "Objective and key indicators",
+   "kind": "bignums",
+   "section": "ccsep",
+   "ref": "3.3.1",
+   "notes": [
+    "3.3.1#3"
+   ]
+  },
+  {
+   "no": 83,
+   "title": "A blended financing package",
+   "kind": "chart",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#1",
+    "F5"
+   ]
+  },
+  {
+   "no": 84,
+   "title": "Two sources, two sets of terms",
+   "kind": "cards",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#2"
+   ]
+  },
+  {
+   "no": 85,
+   "title": "On-granting vs on-lending",
+   "kind": "chart",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#2",
+    "F6"
+   ]
+  },
+  {
+   "no": 86,
+   "title": "Four components",
+   "kind": "cards",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#3"
+   ]
+  },
+  {
+   "no": 87,
+   "title": "Components by source (1/2)",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "T18"
+   ]
+  },
+  {
+   "no": 88,
+   "title": "Components by source (2/2)",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "T18",
+    "3.3.2#4"
+   ]
+  },
+  {
+   "no": 89,
+   "title": "Funding by city as planned",
+   "kind": "chart",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#5",
+    "F7"
+   ]
+  },
+  {
+   "no": 90,
+   "title": "Decentralized disbursement",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#6"
+   ]
+  },
+  {
+   "no": 91,
+   "title": "Plan vs adjusted: amounts (1/2)",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#7",
+    "T19"
+   ]
+  },
+  {
+   "no": 92,
+   "title": "Plan vs adjusted: shares (2/2)",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "T19"
+   ]
+  },
+  {
+   "no": 93,
+   "title": "Adjusted commitments by city",
+   "kind": "chart_image",
+   "section": "ccsep",
+   "ref": "3.3.2",
+   "notes": [
+    "3.3.2#8",
+    "F8"
+   ]
+  },
+  {
+   "no": 94,
+   "title": "Slow start, slow disbursement",
+   "kind": "chart",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "3.3.3#1",
+    "DISB"
+   ]
+  },
+  {
+   "no": 95,
+   "title": "Timeline (Table 20)",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "T20"
+   ]
+  },
+  {
+   "no": 96,
+   "title": "Technical support and delay factors",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "3.3.3#2"
+   ]
+  },
+  {
+   "no": 97,
+   "title": "Resettlement: the main bottleneck",
+   "kind": "bignums",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "3.3.3#3"
+   ]
+  },
+  {
+   "no": 98,
+   "title": "Key indicators at 31/10/2022",
+   "kind": "table",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "T21"
+   ]
+  },
+  {
+   "no": 99,
+   "title": "Training and institutional reform",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "3.3.3#4-5"
+   ]
+  },
+  {
+   "no": 100,
+   "title": "Same bottleneck for all three forms",
+   "kind": "bignums",
+   "section": "ccsep",
+   "ref": "3.3.3",
+   "notes": [
+    "3.3.3#6"
+   ]
+  },
+  {
+   "no": 101,
+   "title": "Results so far",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.4",
+   "notes": [
+    "3.3.4#1-2"
+   ]
+  },
+  {
+   "no": 102,
+   "title": "Climate resilience and institutions",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.4",
+   "notes": [
+    "3.3.4#3"
+   ]
+  },
+  {
+   "no": 103,
+   "title": "Nha Trang: resettlement bottleneck",
+   "kind": "bullets",
+   "section": "ccsep",
+   "ref": "3.3.4",
+   "notes": [
+    "3.3.4#4"
+   ]
+  },
+  {
+   "no": 104,
+   "title": "From bottleneck to formal complaint",
+   "kind": "timeline",
+   "section": "ccsep",
+   "ref": "3.3.4",
+   "notes": [
+    "3.3.4#5"
+   ]
+  },
+  {
+   "no": 105,
+   "title": "Three direct causes",
+   "kind": "cards",
+   "section": "ccsep",
+   "ref": "3.3.4",
+   "notes": [
+    "3.3.4#6"
+   ]
+  },
+  {
+   "no": 106,
+   "title": "Achievements",
+   "kind": "cards",
+   "section": "lessons",
+   "ref": "3.4.1",
+   "notes": [
+    "3.4.1"
+   ]
+  },
+  {
+   "no": 107,
+   "title": "Limitations",
+   "kind": "cards",
+   "section": "lessons",
+   "ref": "3.4.2",
+   "notes": [
+    "3.4.2"
+   ]
+  },
+  {
+   "no": 108,
+   "title": "Recommendations (1/2)",
+   "kind": "cards",
+   "section": "lessons",
+   "ref": "3.4.3",
+   "notes": [
+    "3.4.3#1-4"
+   ]
+  },
+  {
+   "no": 109,
+   "title": "Recommendations (2/2)",
+   "kind": "cards",
+   "section": "lessons",
+   "ref": "3.4.3",
+   "notes": [
+    "3.4.3#5-7"
+   ]
+  },
+  {
+   "no": 110,
+   "title": "Conclusion",
+   "kind": "divider",
+   "section": "concl",
+   "ref": "divider",
+   "notes": [
+    "concl",
+    "concl-1"
+   ]
+  },
+  {
+   "no": 111,
+   "title": "Three pillars, one package",
+   "kind": "cards",
+   "section": "concl",
+   "ref": "Conclusion · 1.1",
+   "notes": [
+    "concl-1.1"
+   ]
+  },
+  {
+   "no": 112,
+   "title": "What the two cases show",
+   "kind": "cards",
+   "section": "concl",
+   "ref": "Conclusion · 1.2",
+   "notes": [
+    "concl-1.2"
+   ]
+  },
+  {
+   "no": 113,
+   "title": "Significance and limitations",
+   "kind": "cards",
+   "section": "concl",
+   "ref": "Conclusion · 2 · 3",
+   "notes": [
+    "concl-2",
+    "concl-3"
+   ]
+  },
+  {
+   "no": 114,
+   "title": "Directions for further research",
+   "kind": "cards",
+   "section": "concl",
+   "ref": "Conclusion · 4",
+   "notes": [
+    "concl-4"
+   ]
+  },
+  {
+   "no": 115,
+   "title": "References",
+   "kind": "references",
+   "section": "refs",
+   "ref": "References",
+   "notes": []
+  },
+  {
+   "no": 116,
+   "title": "References",
+   "kind": "references",
+   "section": "refs",
+   "ref": "References",
+   "notes": []
+  },
+  {
+   "no": 117,
+   "title": "References",
+   "kind": "references",
+   "section": "refs",
+   "ref": "References",
+   "notes": []
+  },
+  {
+   "no": 118,
+   "title": "References",
+   "kind": "references",
+   "section": "refs",
+   "ref": "References",
+   "notes": []
+  },
+  {
+   "no": 119,
+   "title": "References",
+   "kind": "references",
+   "section": "refs",
+   "ref": "References",
+   "notes": []
+  },
+  {
+   "no": 120,
+   "title": "References",
+   "kind": "references",
+   "section": "refs",
+   "ref": "References",
+   "notes": []
+  },
+  {
+   "no": 121,
+   "title": "Index of sources",
+   "kind": "index",
+   "section": "refs",
+   "ref": "Index",
+   "notes": []
+  },
+  {
+   "no": 122,
+   "title": "Credits",
+   "kind": "credits",
+   "section": "refs",
+   "ref": "Credits",
+   "notes": []
+  },
+  {
+   "no": 123,
+   "title": "Thank you",
+   "kind": "thanks",
+   "section": "refs",
+   "ref": "Thanks",
+   "notes": []
+  }
+ ],
+ "usages": {
+  "1": [
+   {
+    "slide_no": 5,
+    "slide_key": "s5",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 1 (p. 4)",
+    "quote": "The Bank declared Vietnam IBRD-eligible in 2007, and the first IBRD loan, a US$500 million Public Investment Reform loan, was approved in December 2009 [1; 2]."
+   }
+  ],
+  "2": [
+   {
+    "slide_no": 5,
+    "slide_key": "s5",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 1 (p. 4)",
+    "quote": "The Bank declared Vietnam IBRD-eligible in 2007, and the first IBRD loan, a US$500 million Public Investment Reform loan, was approved in December 2009 [1; 2]."
+   },
+   {
+    "slide_no": 20,
+    "slide_key": "s20",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.1, paragraph 2 (p. 16)",
+    "quote": "Vietnam's first IBRD loan was a DPF operation: a US$500 million Public Investment Reform loan approved in December 2009 and signed on 30 December 2009 [2]."
+   },
+   {
+    "slide_no": 35,
+    "slide_key": "s35",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.3, paragraph 2 (p. 24)",
+    "quote": "The first operation, a US$500 million IBRD loan, was approved in December 2009 as the first of two single-tranche operations [2]."
+   },
+   {
+    "slide_no": 37,
+    "slide_key": "s37",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.2, paragraph 3 (p. 25)",
+    "quote": "The Public Investment Reform series, for example, rested on policy dialogue about the public investment cycle [2]."
+   },
+   {
+    "slide_no": 43,
+    "slide_key": "s43",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.3.3, paragraph 2 (p. 28)",
+    "quote": "The Public Investment Reform series, for example, supported measures to strengthen how public investment projects are selected and implemented [2]."
+   }
+  ],
+  "3": [
+   {
+    "slide_no": 5,
+    "slide_key": "s5",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 1 (p. 4)",
+    "quote": "From 2018, it could borrow only from the IBRD and through non-concessional IDA terms, both at higher interest rates, with transitional support during the IDA18 period (FY18–20) [3]."
+   },
+   {
+    "slide_no": 6,
+    "slide_key": "s6",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 2 (p. 5)",
+    "quote": "According to the World Bank, official financing alone will not be enough to meet these needs, so Vietnam will also have to borrow on capital markets and pay more to do so [3]."
+   },
+   {
+    "slide_no": 47,
+    "slide_key": "s47",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.2, paragraph 1 (p. 31)",
+    "quote": "The World Bank's 2019 Performance and Learning Review records transitional IDA18 support of SDR 1.593 billion (approximately USD 2.3 billion before a subsequent allocation reduction), alongside continuing access to IBRD financing [3]."
+   }
+  ],
+  "4": [
+   {
+    "slide_no": 5,
+    "slide_key": "s5",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 1 (p. 4)",
+    "quote": "In July 2026, the World Bank reclassified Vietnam as an upper-middle-income economy [4]."
+   },
+   {
+    "slide_no": 47,
+    "slide_key": "s47",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.2, paragraph 3 (p. 32)",
+    "quote": "The World Bank Group reclassified Vietnam as an upper-middle-income economy in July 2026, a country-income classification distinct from its 2017 IDA graduation [4]."
+   },
+   {
+    "slide_no": 108,
+    "slide_key": "s108",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.3, paragraph 1 (p. 60)",
+    "quote": "Vietnam's reclassification as an upper-middle-income economy in 2026 means that future World Bank borrowing will rely on IBRD terms [4]."
+   }
+  ],
+  "7": [
+   {
+    "slide_no": 12,
+    "slide_key": "s12",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.1.1, paragraph 1 (p. 10)",
+    "quote": "It is one of the five institutions of the World Bank Group and, together with IDA, forms what is commonly called the World Bank [7]."
+   },
+   {
+    "slide_no": 13,
+    "slide_key": "s13",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Paper § 1.1.2",
+    "quote": "Source: Authors' compilation from [7] and [8].",
+    "from_slide_text": true
+   },
+   {
+    "slide_no": 14,
+    "slide_key": "s14",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Paper § 1.1.2",
+    "quote": "Source: Authors' compilation from [7] and [8].",
+    "from_slide_text": true
+   }
+  ],
+  "8": [
+   {
+    "slide_no": 13,
+    "slide_key": "s13",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Paper § 1.1.2",
+    "quote": "Source: Authors' compilation from [7] and [8].",
+    "from_slide_text": true
+   },
+   {
+    "slide_no": 14,
+    "slide_key": "s14",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Paper § 1.1.2",
+    "quote": "Source: Authors' compilation from [7] and [8].",
+    "from_slide_text": true
+   },
+   {
+    "slide_no": 16,
+    "slide_key": "s16",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 2 (p. 12)",
+    "quote": "This led the IBRD to turn its attention to developing countries [8]."
+   }
+  ],
+  "9": [
+   {
+    "slide_no": 16,
+    "slide_key": "s16",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.2, paragraph 2 (p. 12)",
+    "quote": "Its first loan, worth US$250 million, went to France in 1947 to support reconstruction [9]."
+   }
+  ],
+  "10": [
+   {
+    "slide_no": 17,
+    "slide_key": "s17",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.3.1, paragraph 3 (p. 14)",
+    "quote": "The current President is Ajay Banga, who began his term on 2 June 2023 [10]."
+   }
+  ],
+  "11": [
+   {
+    "slide_no": 18,
+    "slide_key": "s18",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.3.2, paragraph 4 (p. 15)",
+    "quote": "As of April 2026, Vietnam held 0.21 percent of IBRD votes [11]."
+   }
+  ],
+  "12": [
+   {
+    "slide_no": 19,
+    "slide_key": "s19",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.3.3, paragraph 2 (p. 15)",
+    "quote": "When demand for lending grows, member countries can agree to a capital increase, as they did in 2018 [12]."
+   }
+  ],
+  "13": [
+   {
+    "slide_no": 19,
+    "slide_key": "s19",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.3.3, paragraph 3 (p. 15)",
+    "quote": "In recent years, the IBRD has also issued sustainable development bonds and green bonds, linking investors' money to social and environmental goals [13]."
+   }
+  ],
+  "14": [
+   {
+    "slide_no": 20,
+    "slide_key": "s20",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.1, paragraph 1 (p. 16)",
+    "quote": "Money is disbursed as the borrower incurs eligible project expenditures [14]."
+   },
+   {
+    "slide_no": 21,
+    "slide_key": "s21",
+    "ay": "certain",
+    "ay_text": "Wes (2023)",
+    "locator": "Wes (2023)",
+    "paper_where": "Table/figure source line (§ 1.4.1)",
+    "quote": "Source: Authors’ compilation from Wes (2023) and Gelb et al. (2016)."
+   }
+  ],
+  "15": [
+   {
+    "slide_no": 20,
+    "slide_key": "s20",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.1, paragraph 3 (p. 17)",
+    "quote": "It was only the third financing instrument approved by the Bank's Board since 1944 [15]."
+   },
+   {
+    "slide_no": 21,
+    "slide_key": "s21",
+    "ay": "certain",
+    "ay_text": "Gelb et al. (2016)",
+    "locator": "Gelb et al. (2016)",
+    "paper_where": "Table/figure source line (§ 1.4.1)",
+    "quote": "Source: Authors’ compilation from Wes (2023) and Gelb et al. (2016)."
+   }
+  ],
+  "16": [
+   {
+    "slide_no": 22,
+    "slide_key": "s22",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.2, paragraph 1 (p. 17)",
+    "quote": "The IBRD Flexible Loan (IFL) is the Bank's leading loan product for public-sector borrowers in middle-income countries [16]."
+   },
+   {
+    "slide_no": 24,
+    "slide_key": "s24",
+    "ay": "inferred",
+    "ay_text": "World Bank Treasury (n.d.-a)",
+    "locator": "World Bank Treasury (n.d.-a)",
+    "paper_where": "Table/figure source line (§ 1.4.2)",
+    "quote": "World Bank Treasury (n.d.-a)"
+   }
+  ],
+  "17": [
+   {
+    "slide_no": 22,
+    "slide_key": "s22",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.2, paragraph 2 (p. 17)",
+    "quote": "The premium rises with the loan's average maturity and depends on the borrower's pricing group, set by income level [17]."
+   },
+   {
+    "slide_no": 24,
+    "slide_key": "s24",
+    "ay": "certain",
+    "ay_text": "World Bank Treasury (2020)",
+    "locator": "World Bank Treasury (2020)",
+    "paper_where": "Table/figure source line (§ 1.4.2)",
+    "quote": "World Bank Treasury (2020)"
+   }
+  ],
+  "18": [
+   {
+    "slide_no": 23,
+    "slide_key": "s23",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.2, paragraph 3 (p. 18)",
+    "quote": "In 2014, the maximum final maturity of a standard IFL was extended from 30 to 35 years, and the maximum average maturity from 18 to 20 years [18]."
+   },
+   {
+    "slide_no": 24,
+    "slide_key": "s24",
+    "ay": "inferred",
+    "ay_text": "World Bank (2014b)",
+    "locator": "World Bank (2014b)",
+    "paper_where": "Table/figure source line (§ 1.4.2)",
+    "quote": "World Bank (2014b); IBRD (2025)"
+   }
+  ],
+  "19": [
+   {
+    "slide_no": 23,
+    "slide_key": "s23",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.2, paragraph 3 (p. 18)",
+    "quote": "For some projects, the final maturity can now reach 50 years [19]."
+   },
+   {
+    "slide_no": 24,
+    "slide_key": "s24",
+    "ay": "certain",
+    "ay_text": "IBRD (2025)",
+    "locator": "IBRD (2025)",
+    "paper_where": "Table/figure source line (§ 1.4.2)",
+    "quote": "World Bank (2014b); IBRD (2025)"
+   }
+  ],
+  "20": [
+   {
+    "slide_no": 23,
+    "slide_key": "s23",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.2, paragraph 3 (p. 18)",
+    "quote": "In October 2024, the IBRD added a Short Maturity Loan with a 7-year final maturity and a 20-basis-point discount on the spread [20]."
+   },
+   {
+    "slide_no": 24,
+    "slide_key": "s24",
+    "ay": "inferred",
+    "ay_text": "World Bank Treasury (n.d.-b)",
+    "locator": "World Bank Treasury (n.d.-b)",
+    "paper_where": "Table/figure source line (§ 1.4.2)",
+    "quote": "World Bank Treasury (n.d.-b)"
+   }
+  ],
+  "21": [
+   {
+    "slide_no": 23,
+    "slide_key": "s23",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.2, paragraph 4 (p. 18)",
+    "quote": "TEP, for example, had a 26-year maturity with a 10-year grace period [21]."
+   },
+   {
+    "slide_no": 33,
+    "slide_key": "s33",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.2, paragraph 3 (p. 23)",
+    "quote": "In TEP, NPT provided US$231.25 million of the planned US$731.25 million [21]."
+   },
+   {
+    "slide_no": 106,
+    "slide_key": "s106",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.1, paragraph 1 (p. 59)",
+    "quote": "TEP received USD 500 million with a 26-year maturity and a 10-year grace period [21], and CCSEP's IBRD loan carried a 29-year maturity [33]."
+   }
+  ],
+  "22": [
+   {
+    "slide_no": 25,
+    "slide_key": "s25",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.3, paragraph 2 (p. 19)",
+    "quote": "It applies to all IPF projects initiated on or after 1 October 2018 [22]."
+   },
+   {
+    "slide_no": 26,
+    "slide_key": "s26",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.3, paragraph 3 (p. 19)",
+    "quote": "It sets out ten Environmental and Social Standards (ESSs) that borrowers must meet throughout the project [22]:"
+   },
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 4 (p. 35)",
+    "quote": "Its Environmental and Social Framework (ESF) applies to new investment project financing initiated on or after 1 October 2018 [22]."
+   }
+  ],
+  "23": [
+   {
+    "slide_no": 25,
+    "slide_key": "s25",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.3, paragraph 2 (p. 19)",
+    "quote": "The two systems are expected to run in parallel for about seven years [23]."
+   }
+  ],
+  "24": [
+   {
+    "slide_no": 25,
+    "slide_key": "s25",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 1.4.3, paragraph 14 (p. 19)",
+    "quote": "The Procurement Framework applies to projects with a concept note on or after 1 July 2016 [24]."
+   }
+  ],
+  "25": [
+   {
+    "slide_no": 28,
+    "slide_key": "s28",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.1, paragraph 1 (p. 21)",
+    "quote": "Every IBRD operation passes through a six-stage project cycle [25]."
+   },
+   {
+    "slide_no": 29,
+    "slide_key": "s29",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Paper § 2.1.1",
+    "quote": "Source: Authors’ compilation from [25].",
+    "from_slide_text": true
+   },
+   {
+    "slide_no": 30,
+    "slide_key": "s30",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Paper § 2.1.1",
+    "quote": "Source: Authors’ compilation from [25].",
+    "from_slide_text": true
+   },
+   {
+    "slide_no": 38,
+    "slide_key": "s38",
+    "ay": "inferred",
+    "ay_text": "World Bank, n.d.-c",
+    "locator": "World Bank, n.d.-c",
+    "paper_where": "Author–year citation in the text (§ 2.2.3)",
+    "quote": "Regular ISRs rate progress to the PDO and implementation (World Bank, n.d.-c)"
+   }
+  ],
+  "26": [
+   {
+    "slide_no": 32,
+    "slide_key": "s32",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.2, paragraph 1 (p. 22)",
+    "quote": "Once a loan is effective, the IBRD releases funds through four disbursement methods, set out in each project's disbursement letter [26; 27]."
+   },
+   {
+    "slide_no": 33,
+    "slide_key": "s33",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.2, paragraph 2 (p. 23)",
+    "quote": "The Bank also sets a minimum value for applications and a disbursement deadline, usually four months after the closing date [26]."
+   }
+  ],
+  "27": [
+   {
+    "slide_no": 32,
+    "slide_key": "s32",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.2, paragraph 1 (p. 22)",
+    "quote": "Once a loan is effective, the IBRD releases funds through four disbursement methods, set out in each project's disbursement letter [26; 27]."
+   },
+   {
+    "slide_no": 36,
+    "slide_key": "s36",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.1, paragraph 2 (p. 25)",
+    "quote": "Where preparation itself is costly, the borrower can use a Project Preparation Advance, which is later refinanced from the loan [27]."
+   }
+  ],
+  "32": [
+   {
+    "slide_no": 34,
+    "slide_key": "s34",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.3, paragraph 3 (p. 24)",
+    "quote": "IEG has found that the choice of DLIs is critical: they must lead clearly to the program's development objective, and monitoring should not focus on DLIs alone [32]."
+   }
+  ],
+  "28": [
+   {
+    "slide_no": 35,
+    "slide_key": "s35",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.3, paragraph 2 (p. 24)",
+    "quote": "The second, approved in May 2011, combined an IBRD loan of US$87.3 million with an IDA credit of US$262.7 million [28]."
+   }
+  ],
+  "29": [
+   {
+    "slide_no": 35,
+    "slide_key": "s35",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.3, paragraph 2 (p. 24)",
+    "quote": "Its reforms aimed to strengthen the public investment cycle and the legal basis for public-private partnerships [29; 30]."
+   }
+  ],
+  "30": [
+   {
+    "slide_no": 35,
+    "slide_key": "s35",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.3, paragraph 2 (p. 24)",
+    "quote": "Its reforms aimed to strengthen the public investment cycle and the legal basis for public-private partnerships [29; 30]."
+   }
+  ],
+  "31": [
+   {
+    "slide_no": 35,
+    "slide_key": "s35",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.1.3, paragraph 2 (p. 24)",
+    "quote": "A similar approach supported power-sector reform: in 2010, a DPF operation combined US$200 million from the IBRD with US$111.8 million from IDA [31]."
+   }
+  ],
+  "33": [
+   {
+    "slide_no": 36,
+    "slide_key": "s36",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.1, paragraph 2 (p. 25)",
+    "quote": "CCSEP, for instance, prepared an environmental and social impact assessment for each city and a resettlement policy framework for all four [33]."
+   },
+   {
+    "slide_no": 79,
+    "slide_key": "s79",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.1, paragraph 1 (p. 47)",
+    "quote": "The sector's investment requirement was estimated at around USD 771 million per year, while expected funding covered only about 27% [33]."
+   },
+   {
+    "slide_no": 80,
+    "slide_key": "s80",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.1, paragraph 2 (p. 48)",
+    "quote": "The borrower was the Government of Vietnam, the World Bank served as the financier, and implementation was decentralized to the four provinces of Quang Binh, Binh Dinh, Khanh Hoa and Ninh Thuan through Project Management Units (PMUs) under the direction of provincial People's Committees [33; 43]."
+   },
+   {
+    "slide_no": 82,
+    "slide_key": "s82",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.1, paragraph 3 (p. 48)",
+    "quote": "Expected outcomes were measured by three main indicators: approximately 290,000 direct beneficiaries, 256,000 people gaining access to sanitation via household sewer connections, and a 100% service cost recovery level [33]."
+   },
+   {
+    "slide_no": 83,
+    "slide_key": "s83",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Data Sheet",
+    "paper_where": "Section 3.3.2, paragraph 1 (p. 49)",
+    "quote": "CCSEP was designed as an Investment Project Financing operation, financing specific investment items rather than policy reforms or results, as the other two instruments do [33, Data Sheet]."
+   },
+   {
+    "slide_no": 84,
+    "slide_key": "s84",
+    "ay": null,
+    "ay_text": "",
+    "locator": "para. 44",
+    "paper_where": "Section 3.3.2, paragraph 2 (p. 49)",
+    "quote": "The IDA credit was denominated in SDR, with a 25-year maturity including a 5-year grace period, an interest rate of 2% per annum (0.75% service charge and 1.25% interest), a commitment fee of 0.5% per annum, and no front-end fee [33, para. 44]."
+   },
+   {
+    "slide_no": 85,
+    "slide_key": "s85",
+    "ay": null,
+    "ay_text": "",
+    "locator": "para. 44",
+    "paper_where": "Section 3.3.2, paragraph 2 (p. 49)",
+    "quote": "The IDA credit was denominated in SDR, with a 25-year maturity including a 5-year grace period, an interest rate of 2% per annum (0.75% service charge and 1.25% interest), a commitment fee of 0.5% per annum, and no front-end fee [33, para. 44]."
+   },
+   {
+    "slide_no": 86,
+    "slide_key": "s86",
+    "ay": null,
+    "ay_text": "",
+    "locator": "para. 31",
+    "paper_where": "Section 3.3.2, paragraph 3 (p. 50)",
+    "quote": "Component 1 (Sanitation Infrastructure Expansion, USD 140.7 million base cost) included flood control works, drainage and wastewater collection networks, wastewater treatment plants, school and public sanitation facilities, revolving funds for household connections, and solid waste management [33, para. 31]."
+   },
+   {
+    "slide_no": 88,
+    "slide_key": "s88",
+    "ay": "inferred",
+    "ay_text": "2017, Annex 2, Table 2.1",
+    "locator": "2017, Annex 2, Table 2.1",
+    "paper_where": "Table/figure source line (§ 3.3.2)",
+    "quote": "Note: The table shows base costs only. The difference from the total project cost comes from contingencies (USD 37.9 million), VAT (USD 22.3 million), and capitalized fees and interest (USD 4.8 million), which are also financed by the three sources. This is why the IBRD total is USD 46.0 million, against USD 31.2 million of base cost for Component 2 (World Bank, 2017, Annex 2, Table 2.1). Minor differences in totals are due to rounding in the PAD."
+   },
+   {
+    "slide_no": 89,
+    "slide_key": "s89",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Annex 2, Tables 2.2–2.5",
+    "paper_where": "Section 3.3.2, paragraph 5 (p. 51)",
+    "quote": "Phan Rang–Thap Cham received the largest share (USD 87.9 million), followed by Nha Trang (USD 72.0 million), Dong Hoi (USD 58.4 million) and Quy Nhon (USD 55.3 million) [33, Annex 2, Tables 2.2–2.5]."
+   },
+   {
+    "slide_no": 90,
+    "slide_key": "s90",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Annex 3, para. 21",
+    "paper_where": "Section 3.3.2, paragraph 6 (p. 52)",
+    "quote": "Each province opened a designated USD account at a commercial bank, with ceiling amounts adjusting based on three-month financial forecasts [33, Annex 3, para. 21]."
+   },
+   {
+    "slide_no": 93,
+    "slide_key": "s93",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Annex 2",
+    "paper_where": "Section 3.3.2, paragraph 8 (p. 53)",
+    "quote": "Counterpart funding increased from USD 37.4 million to USD 50.0 million, raising its share from 13.7% to 20.8% [33, Annex 2; 43]."
+   },
+   {
+    "slide_no": 94,
+    "slide_key": "s94",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 1 (p. 54)",
+    "quote": "The financing agreement became effective on 18 January 2018, about five and a half months behind the original schedule of 3 August 2017, and the loan closing date had to be extended by 18 months, from 31 December 2022 to 30 June 2024 (Table 3.3.1.1) [33; 55; 43]."
+   },
+   {
+    "slide_no": 96,
+    "slide_key": "s96",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 2 (p. 54)",
+    "quote": "The project was classified as Category A for environmental and social safeguards, subject to the involuntary resettlement policy OP 4.12 and procurement under World Bank guidelines [33]."
+   },
+   {
+    "slide_no": 97,
+    "slide_key": "s97",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 3 (p. 55)",
+    "quote": "The PAD estimated 1,486 affected households, of which 329 required relocation [33]."
+   },
+   {
+    "slide_no": 99,
+    "slide_key": "s99",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 4 (p. 55)",
+    "quote": "The goal was for each city to have a service management unit, and for the project to deliver 14 performance-based service contracts, 4 service tariff roadmaps and 4 connection policies [33]."
+   },
+   {
+    "slide_no": 100,
+    "slide_key": "s100",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Annex 2, Table 2.1",
+    "paper_where": "Section 3.3.3, paragraph 6 (p. 56)",
+    "quote": "The IBRD loan was only 16.8% of the planned cost (14.2% after adjustment) and fully financed Component 2, while the larger IDA credit financed the sanitation infrastructure [33, Annex 2, Table 2.1; 43]."
+   },
+   {
+    "slide_no": 101,
+    "slide_key": "s101",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.4, paragraph 2 (p. 57)",
+    "quote": "As Table 3.3.3.1 shows, direct beneficiaries reached 64% of the target and sewer access only 38%, while cost recovery stood at 98% of the 100% target [33; 43]."
+   },
+   {
+    "slide_no": 102,
+    "slide_key": "s102",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.4, paragraph 3 (p. 57)",
+    "quote": "Regarding climate resilience, the PAD set a target to reduce flood risks for approximately 44,000 people and to construct 17 km of embankments, 22 km of roads and 5 bridges [33]."
+   },
+   {
+    "slide_no": 106,
+    "slide_key": "s106",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.1, paragraph 1 (p. 59)",
+    "quote": "TEP received USD 500 million with a 26-year maturity and a 10-year grace period [21], and CCSEP's IBRD loan carried a 29-year maturity [33]."
+   },
+   {
+    "slide_no": 107,
+    "slide_key": "s107",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.2, paragraph 2 (p. 60)",
+    "quote": "In CCSEP, the loan became effective five and a half months late, and three disbursement conditions depended on approvals by the Ministry of Finance and provincial People's Committees [33]."
+   }
+  ],
+  "34": [
+   {
+    "slide_no": 37,
+    "slide_key": "s37",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.2, paragraph 1 (p. 25)",
+    "quote": "Their outputs include analytical reports, policy notes, hands-on advice and knowledge-sharing workshops [34]."
+   }
+  ],
+  "35": [
+   {
+    "slide_no": 37,
+    "slide_key": "s37",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.2, paragraph 2 (p. 25)",
+    "quote": "In 2023, analytical and advisory disbursements totalled US$991 million: 26% from the Bank's administrative budget, 68% from donor trust funds and 6% from Reimbursable Advisory Services [35]."
+   }
+  ],
+  "36": [
+   {
+    "slide_no": 37,
+    "slide_key": "s37",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.2, paragraph 2 (p. 25)",
+    "quote": "RAS is offered mainly to middle- and high-income countries, which makes it increasingly relevant to Vietnam [36]."
+   },
+   {
+    "slide_no": 109,
+    "slide_key": "s109",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.3, paragraph 7 (p. 61)",
+    "quote": "Reimbursable Advisory Services can provide tailored advice where analytical support is needed outside a loan [36]."
+   }
+  ],
+  "37": [
+   {
+    "slide_no": 39,
+    "slide_key": "s39",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.2.3, paragraph 6 (p. 26)",
+    "quote": "TEP's PPAR rated the outcome highly satisfactory, Bank performance satisfactory and the quality of M&E substantial [37]."
+   },
+   {
+    "slide_no": 41,
+    "slide_key": "s41",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.3.2, paragraph 3 (p. 28)",
+    "quote": "IEG found that NPT's regional boards had built capabilities in procurement, contract administration, financial management, safeguards and reporting, partly from earlier World Bank projects [37]."
+   },
+   {
+    "slide_no": 42,
+    "slide_key": "s42",
+    "ay": "inferred",
+    "ay_text": "2023",
+    "locator": "2023",
+    "paper_where": "Table/figure source line (§ 2.3.3)",
+    "quote": "Source: Sections 3.2.3 and 3.3.3, based on World Bank (2022a, 2022b, 2022c, 2023)."
+   },
+   {
+    "slide_no": 48,
+    "slide_key": "s48",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1, paragraph 1 (p. 31)",
+    "quote": "Distinguishing these measures is essential when assessing the IBRD contribution to project financing [44; 41; 37]."
+   },
+   {
+    "slide_no": 55,
+    "slide_key": "s55",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.1, paragraph 1 (p. 35)",
+    "quote": "TEP was financed using Investment Project Financing (IPF), rather than a development-policy or results-based lending instrument [44; 41; 37]."
+   },
+   {
+    "slide_no": 56,
+    "slide_key": "s56",
+    "ay": "inferred",
+    "ay_text": "2023, pp. v-vi",
+    "locator": "2023, pp. v-vi",
+    "paper_where": "Table/figure source line (§ 3.2.1)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, Project Data Sheet), World Bank (2022a, pp. 1-3, 49), and World Bank (2023, pp. v-vi)."
+   },
+   {
+    "slide_no": 57,
+    "slide_key": "s57",
+    "ay": "inferred",
+    "ay_text": "2023, pp. v-vi",
+    "locator": "2023, pp. v-vi",
+    "paper_where": "Table/figure source line (§ 3.2.1)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, Project Data Sheet), World Bank (2022a, pp. 1-3, 49), and World Bank (2023, pp. v-vi)."
+   },
+   {
+    "slide_no": 62,
+    "slide_key": "s62",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. ix–xi, 17",
+    "paper_where": "Section 3.2.2, paragraph 5 (p. 39)",
+    "quote": "At the same time, the conditions attached to reallocation of loan savings reduced flexibility to redirect funds to additional works during the project [37, pp. ix–xi, 17]."
+   },
+   {
+    "slide_no": 63,
+    "slide_key": "s63",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.3, paragraph 1 (p. 39)",
+    "quote": "The project's financing and implementation experience, however, was considerably narrower than this original list suggests [44; 41; 37]."
+   },
+   {
+    "slide_no": 65,
+    "slide_key": "s65",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. ix–x, 15–16",
+    "paper_where": "Section 3.2.3, paragraph 3 (p. 40)",
+    "quote": "Reporting an invented number of trainees would therefore be inappropriate [37, pp. ix–x, 15–16]."
+   },
+   {
+    "slide_no": 66,
+    "slide_key": "s66",
+    "ay": "inferred",
+    "ay_text": "2023, pp. viii-ix, 8",
+    "locator": "2023, pp. viii-ix, 8",
+    "paper_where": "Table/figure source line (§ 3.2.4)",
+    "quote": "Source: World Bank (2023, pp. viii-ix, 8); achievement percentages calculated by the authors."
+   },
+   {
+    "slide_no": 67,
+    "slide_key": "s67",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. viii–ix, 8",
+    "paper_where": "Section 3.2.4, paragraph 1 (p. 41)",
+    "quote": "The omitted Ninh Binh upgrade was cancelled because that substation was scheduled for dismantling [42, pp. 2–3; 37, pp. viii–ix, 8]."
+   },
+   {
+    "slide_no": 67,
+    "slide_key": "s67",
+    "ay": "inferred",
+    "ay_text": "2023, p. 8",
+    "locator": "2023, p. 8",
+    "paper_where": "Table/figure source line (§ 3.2.4)",
+    "quote": "Source: Chart calculated by the authors from World Bank (2023, p. 8). A value of 100% means that the original output target was met, not that all project-wide economic benefits were realised."
+   },
+   {
+    "slide_no": 68,
+    "slide_key": "s68",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. viii–ix, 8–9",
+    "paper_where": "Section 3.2.4, paragraph 2 (p. 42)",
+    "quote": "The latter national-level series is useful contextual evidence of system development, but should not be presented as a measure of electricity supplied solely because of TEP [37, pp. viii–ix, 8–9]."
+   },
+   {
+    "slide_no": 69,
+    "slide_key": "s69",
+    "ay": "inferred",
+    "ay_text": "2023, pp. 9-11, Tables 2.2-2.3",
+    "locator": "2023, pp. 9-11, Tables 2.2-2.3",
+    "paper_where": "Table/figure source line (§ 3.2.4)",
+    "quote": "Source: Authors’ compilation from World Bank (2023, pp. 9-11, Tables 2.2-2.3; underlying EVN data)."
+   },
+   {
+    "slide_no": 70,
+    "slide_key": "s70",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. 11–13",
+    "paper_where": "Section 3.2.4, paragraph 4 (p. 44)",
+    "quote": "At the same time, the number of 500-kV transmission-line faults fell from 42 in 2018 to 29 in 2022, while the corresponding 220-kV fault count rose from 135 to 159; therefore reliability improvements were not uniform across all indicators [37, pp. 11–13]."
+   },
+   {
+    "slide_no": 70,
+    "slide_key": "s70",
+    "ay": "inferred",
+    "ay_text": "2023, Table 2.3, p. 11",
+    "locator": "2023, Table 2.3, p. 11",
+    "paper_where": "Table/figure source line (§ 3.2.4)",
+    "quote": "Source: Chart prepared by the authors from World Bank (2023, Table 2.3, p. 11), which cites EVN as the underlying data source. The system-wide transmission loss ratio is not a TEP-only impact estimate. The IEG executive summary reports 2.50% for 2022, whereas Table 2.3 reports 2.54%."
+   },
+   {
+    "slide_no": 71,
+    "slide_key": "s71",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. 8–13",
+    "paper_where": "Section 3.2.4, paragraph 5 (p. 44)",
+    "quote": "Accordingly, the defensible conclusion is that TEP supported the network's capability to integrate renewables, not that it eliminated renewable curtailment or achieved a verified numerical increase in renewable generation [37, pp. 8–13]."
+   },
+   {
+    "slide_no": 72,
+    "slide_key": "s72",
+    "ay": null,
+    "ay_text": "",
+    "locator": "p. v",
+    "paper_where": "Section 3.2.5, paragraph 1 (p. 44)",
+    "quote": "The original counterpart allocation of USD 231.25 million and the final amount of approximately USD 199.00 million are also different [41, Annex 3; 37, p. v]."
+   },
+   {
+    "slide_no": 73,
+    "slide_key": "s73",
+    "ay": "inferred",
+    "ay_text": "2023, pp. v, x, 17",
+    "locator": "2023, pp. v, x, 17",
+    "paper_where": "Table/figure source line (§ 3.2.5)",
+    "quote": "Source: Authors’ compilation and calculations from World Bank (2022a, Annex 3, Table 3.2) and World Bank (2023, pp. v, x, 17)."
+   },
+   {
+    "slide_no": 74,
+    "slide_key": "s74",
+    "ay": "inferred",
+    "ay_text": "2023, pp. v, x, 17",
+    "locator": "2023, pp. v, x, 17",
+    "paper_where": "Table/figure source line (§ 3.2.5)",
+    "quote": "Source: Authors’ compilation and calculations from World Bank (2022a, Annex 3, Table 3.2) and World Bank (2023, pp. v, x, 17)."
+   },
+   {
+    "slide_no": 75,
+    "slide_key": "s75",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. x–xi, 17–18",
+    "paper_where": "Section 3.2.5, paragraph 3 (p. 46)",
+    "quote": "The independent assessment nevertheless rated the overall outcome highly satisfactory because the principal capacity, efficiency and reliability objectives were substantially achieved [42, pp. 3, 12; 37, pp. x–xi, 17–18]."
+   },
+   {
+    "slide_no": 106,
+    "slide_key": "s106",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.1, paragraph 1 (p. 59)",
+    "quote": "In TEP, competitive bidding under Bank rules lowered capital costs, so the same objectives were achieved with less borrowing [37]."
+   },
+   {
+    "slide_no": 107,
+    "slide_key": "s107",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.2, paragraph 2 (p. 60)",
+    "quote": "In TEP, the choice and approval of smart-grid technology took about four years [37]."
+   },
+   {
+    "slide_no": 108,
+    "slide_key": "s108",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.3, paragraph 2 (p. 61)",
+    "quote": "TEP's four-year delay on smart-grid technology could have been shortened by earlier regulatory coordination [37]."
+   }
+  ],
+  "38": [
+   {
+    "slide_no": 40,
+    "slide_key": "s40",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.3.1, paragraph 2 (p. 27)",
+    "quote": "Its project orientation courses, for example, cover Bank expectations, project and financial management, procurement, environmental and social risk management, and M&E [38]."
+   }
+  ],
+  "39": [
+   {
+    "slide_no": 41,
+    "slide_key": "s41",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.3.2, paragraph 2 (p. 27)",
+    "quote": "In 2014, it launched what it described as the world's first massive open online course (MOOC) on public procurement, with more than 540 certified learners [39]."
+   }
+  ],
+  "40": [
+   {
+    "slide_no": 41,
+    "slide_key": "s41",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 2.3.2, paragraph 2 (p. 27)",
+    "quote": "E-procurement courses on the Open Learning Campus offer certification to participants who pass an examination [40]."
+   }
+  ],
+  "41": [
+   {
+    "slide_no": 42,
+    "slide_key": "s42",
+    "ay": "inferred",
+    "ay_text": "2022a",
+    "locator": "2022a",
+    "paper_where": "Table/figure source line (§ 2.3.3)",
+    "quote": "Source: Sections 3.2.3 and 3.3.3, based on World Bank (2022a, 2022b, 2022c, 2023)."
+   },
+   {
+    "slide_no": 47,
+    "slide_key": "s47",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1, paragraph 1 (p. 31)",
+    "quote": "Distinguishing these measures is essential when assessing the IBRD contribution to project financing [44; 41; 37]."
+   },
+   {
+    "slide_no": 48,
+    "slide_key": "s48",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1, paragraph 1 (p. 31)",
+    "quote": "Distinguishing these measures is essential when assessing the IBRD contribution to project financing [44; 41; 37]."
+   },
+   {
+    "slide_no": 55,
+    "slide_key": "s55",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.1, paragraph 1 (p. 35)",
+    "quote": "TEP was financed using Investment Project Financing (IPF), rather than a development-policy or results-based lending instrument [44; 41; 37]."
+   },
+   {
+    "slide_no": 56,
+    "slide_key": "s56",
+    "ay": "inferred",
+    "ay_text": "2022a, pp. 1-3, 49",
+    "locator": "2022a, pp. 1-3, 49",
+    "paper_where": "Table/figure source line (§ 3.2.1)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, Project Data Sheet), World Bank (2022a, pp. 1-3, 49), and World Bank (2023, pp. v-vi)."
+   },
+   {
+    "slide_no": 57,
+    "slide_key": "s57",
+    "ay": "inferred",
+    "ay_text": "2022a, pp. 1-3, 49",
+    "locator": "2022a, pp. 1-3, 49",
+    "paper_where": "Table/figure source line (§ 3.2.1)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, Project Data Sheet), World Bank (2022a, pp. 1-3, 49), and World Bank (2023, pp. v-vi)."
+   },
+   {
+    "slide_no": 57,
+    "slide_key": "s57",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.1, paragraph 3 (p. 36)",
+    "quote": "The loan also included a USD 1.25 million front-end fee, so the figure for investment components alone must not be equated with the complete financing total [44; 41]."
+   },
+   {
+    "slide_no": 58,
+    "slide_key": "s58",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.2, paragraph 2 (p. 36)",
+    "quote": "The component-level breakdown is particularly informative because it distinguishes the physical and digital assets created by the project from its smaller institutional reform agenda [41]."
+   },
+   {
+    "slide_no": 59,
+    "slide_key": "s59",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.1, p. 48",
+    "locator": "2022a, Annex 3, Table 3.1, p. 48",
+    "paper_where": "Table/figure source line (§ 3.2.2)",
+    "quote": "Source: World Bank (2022a, Annex 3, Table 3.1, p. 48). Figures transcribed from the original table; the fee row is labeled using the PAD (World Bank, 2014)."
+   },
+   {
+    "slide_no": 60,
+    "slide_key": "s60",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.2, p. 49",
+    "locator": "2022a, Annex 3, Table 3.2, p. 49",
+    "paper_where": "Table/figure source line (§ 3.2.2)",
+    "quote": "Source: Adapted from World Bank (2022a, Annex 3, Table 3.2, p. 49). IBRD component allocations and actual costs are taken from the original table."
+   },
+   {
+    "slide_no": 60,
+    "slide_key": "s60",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.1",
+    "locator": "2022a, Annex 3, Table 3.1",
+    "paper_where": "Table/figure source line (§ 3.2.2)",
+    "quote": "Source: Chart prepared by the authors using data from World Bank (2022a, Annex 3, Table 3.1). The USD 1.25 million front-end fee is excluded from the three component bars but included in total project costs."
+   },
+   {
+    "slide_no": 61,
+    "slide_key": "s61",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.2, p. 49",
+    "locator": "2022a, Annex 3, Table 3.2, p. 49",
+    "paper_where": "Table/figure source line (§ 3.2.2)",
+    "quote": "Source: Adapted from World Bank (2022a, Annex 3, Table 3.2, p. 49). IBRD component allocations and actual costs are taken from the original table."
+   },
+   {
+    "slide_no": 61,
+    "slide_key": "s61",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.2",
+    "locator": "2022a, Annex 3, Table 3.2",
+    "paper_where": "Table/figure source line (§ 3.2.2)",
+    "quote": "Source: Chart prepared by the authors using data from World Bank (2022a, Annex 3, Table 3.2). Actual expenditure is not equivalent to contractual loan availability."
+   },
+   {
+    "slide_no": 62,
+    "slide_key": "s62",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.2, paragraph 4 (p. 38)",
+    "quote": "Thus, describing all institutional activities as \"IBRD-financed training\" would incorrectly attribute borrower-funded expenditure to the Bank [41]."
+   },
+   {
+    "slide_no": 63,
+    "slide_key": "s63",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.3, paragraph 1 (p. 39)",
+    "quote": "The project's financing and implementation experience, however, was considerably narrower than this original list suggests [44; 41; 37]."
+   },
+   {
+    "slide_no": 64,
+    "slide_key": "s64",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.2, p. 49",
+    "locator": "2022a, Annex 3, Table 3.2, p. 49",
+    "paper_where": "Table/figure source line (§ 3.2.3)",
+    "quote": "Source: Authors’ synthesis of World Bank (2022a, Annex 3, Table 3.2, p. 49) and World Bank (2022b, pp. 2-3)."
+   },
+   {
+    "slide_no": 71,
+    "slide_key": "s71",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Annex 4",
+    "paper_where": "Section 3.2.4, paragraph 6 (p. 44)",
+    "quote": "The ICR associated the higher re-estimated EIRR partly with substantially lower capital cost; the results are sensitive to the analytical assumptions, including the monetary value assigned to avoid supply interruptions [41, Annex 4]."
+   },
+   {
+    "slide_no": 72,
+    "slide_key": "s72",
+    "ay": null,
+    "ay_text": "",
+    "locator": "Annex 3",
+    "paper_where": "Section 3.2.5, paragraph 1 (p. 44)",
+    "quote": "The original counterpart allocation of USD 231.25 million and the final amount of approximately USD 199.00 million are also different [41, Annex 3; 37, p. v]."
+   },
+   {
+    "slide_no": 73,
+    "slide_key": "s73",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.2",
+    "locator": "2022a, Annex 3, Table 3.2",
+    "paper_where": "Table/figure source line (§ 3.2.5)",
+    "quote": "Source: Authors’ compilation and calculations from World Bank (2022a, Annex 3, Table 3.2) and World Bank (2023, pp. v, x, 17)."
+   },
+   {
+    "slide_no": 74,
+    "slide_key": "s74",
+    "ay": "inferred",
+    "ay_text": "2022a, Annex 3, Table 3.2",
+    "locator": "2022a, Annex 3, Table 3.2",
+    "paper_where": "Table/figure source line (§ 3.2.5)",
+    "quote": "Source: Authors’ compilation and calculations from World Bank (2022a, Annex 3, Table 3.2) and World Bank (2023, pp. v, x, 17)."
+   },
+   {
+    "slide_no": 107,
+    "slide_key": "s107",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.2, paragraph 1 (p. 60)",
+    "quote": "TEP disbursed 63.7% of its IBRD commitment, although this partly reflected lower costs [41]."
+   }
+  ],
+  "42": [
+   {
+    "slide_no": 42,
+    "slide_key": "s42",
+    "ay": "inferred",
+    "ay_text": "2022b",
+    "locator": "2022b",
+    "paper_where": "Table/figure source line (§ 2.3.3)",
+    "quote": "Source: Sections 3.2.3 and 3.3.3, based on World Bank (2022a, 2022b, 2022c, 2023)."
+   },
+   {
+    "slide_no": 58,
+    "slide_key": "s58",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.2, paragraph 1 (p. 36)",
+    "quote": "Such equipment was intended principally to improve operational information and fault management; the second component did not itself constitute the construction of additional transmission capacity [44; 42]."
+   },
+   {
+    "slide_no": 63,
+    "slide_key": "s63",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. 2–3",
+    "paper_where": "Section 3.2.3, paragraph 2 (p. 39)",
+    "quote": "In interpreting the outcome, these financing changes should be treated as substantive modifications to the original division of responsibilities, not as evidence that all activities were completed with IBRD money [41, Annex 3; 42, pp. 2–3]."
+   },
+   {
+    "slide_no": 64,
+    "slide_key": "s64",
+    "ay": "inferred",
+    "ay_text": "2022b, pp. 2-3",
+    "locator": "2022b, pp. 2-3",
+    "paper_where": "Table/figure source line (§ 3.2.3)",
+    "quote": "Source: Authors’ synthesis of World Bank (2022a, Annex 3, Table 3.2, p. 49) and World Bank (2022b, pp. 2-3)."
+   },
+   {
+    "slide_no": 67,
+    "slide_key": "s67",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. 2–3",
+    "paper_where": "Section 3.2.4, paragraph 1 (p. 41)",
+    "quote": "The omitted Ninh Binh upgrade was cancelled because that substation was scheduled for dismantling [42, pp. 2–3; 37, pp. viii–ix, 8]."
+   },
+   {
+    "slide_no": 75,
+    "slide_key": "s75",
+    "ay": null,
+    "ay_text": "",
+    "locator": "pp. 3, 12",
+    "paper_where": "Section 3.2.5, paragraph 3 (p. 46)",
+    "quote": "The independent assessment nevertheless rated the overall outcome highly satisfactory because the principal capacity, efficiency and reliability objectives were substantially achieved [42, pp. 3, 12; 37, pp. x–xi, 17–18]."
+   }
+  ],
+  "43": [
+   {
+    "slide_no": 42,
+    "slide_key": "s42",
+    "ay": "inferred",
+    "ay_text": "2022c",
+    "locator": "2022c",
+    "paper_where": "Table/figure source line (§ 2.3.3)",
+    "quote": "Source: Sections 3.2.3 and 3.3.3, based on World Bank (2022a, 2022b, 2022c, 2023)."
+   },
+   {
+    "slide_no": 80,
+    "slide_key": "s80",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.1, paragraph 2 (p. 48)",
+    "quote": "The borrower was the Government of Vietnam, the World Bank served as the financier, and implementation was decentralized to the four provinces of Quang Binh, Binh Dinh, Khanh Hoa and Ninh Thuan through Project Management Units (PMUs) under the direction of provincial People's Committees [33; 43]."
+   },
+   {
+    "slide_no": 91,
+    "slide_key": "s91",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.2, paragraph 7 (p. 52)",
+    "quote": "The reasons given were savings after the bidding process, changes in the source of payment for IBRD fees and interest as stipulated by the Government, and the depreciation of the SDR, while the project scope remained unchanged [43]."
+   },
+   {
+    "slide_no": 93,
+    "slide_key": "s93",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.2, paragraph 8 (p. 53)",
+    "quote": "Counterpart funding increased from USD 37.4 million to USD 50.0 million, raising its share from 13.7% to 20.8% [33, Annex 2; 43]."
+   },
+   {
+    "slide_no": 94,
+    "slide_key": "s94",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 1 (p. 54)",
+    "quote": "The financing agreement became effective on 18 January 2018, about five and a half months behind the original schedule of 3 August 2017, and the loan closing date had to be extended by 18 months, from 31 December 2022 to 30 June 2024 (Table 3.3.1.1) [33; 55; 43]."
+   },
+   {
+    "slide_no": 96,
+    "slide_key": "s96",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 2 (p. 54)",
+    "quote": "Procurement, financial management and safeguards were all rated Moderately Satisfactory, and legal covenants were fully complied with [43]."
+   },
+   {
+    "slide_no": 97,
+    "slide_key": "s97",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 3 (p. 55)",
+    "quote": "In Phan Rang, the Phan Dang Luu resettlement site was completed, with 1,400 out of 1,586 compensation plans approved, while Dong Hoi and Quy Nhon largely completed their resettlement activities [43]."
+   },
+   {
+    "slide_no": 99,
+    "slide_key": "s99",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 5 (p. 56)",
+    "quote": "After the restructuring, the World Bank recommended adding qualified staff, improving coordination between PMUs and provincial departments, amending contract terms with contractors and consultants, increasing supervision frequency, and holding monthly progress meetings alongside biweekly site clearance meetings [43]."
+   },
+   {
+    "slide_no": 100,
+    "slide_key": "s100",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 6 (p. 56)",
+    "quote": "The IBRD loan was only 16.8% of the planned cost (14.2% after adjustment) and fully financed Component 2, while the larger IDA credit financed the sanitation infrastructure [33, Annex 2, Table 2.1; 43]."
+   },
+   {
+    "slide_no": 101,
+    "slide_key": "s101",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.4, paragraph 2 (p. 57)",
+    "quote": "As Table 3.3.3.1 shows, direct beneficiaries reached 64% of the target and sewer access only 38%, while cost recovery stood at 98% of the 100% target [33; 43]."
+   },
+   {
+    "slide_no": 102,
+    "slide_key": "s102",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.4, paragraph 3 (p. 57)",
+    "quote": "Each city established a PSMU; drainage and wastewater assets were handed over to local People's Committees; road assets were transferred to transport departments; household connection policies and septic tank sludge management plans were issued; and tariff roadmaps were approved [43]."
+   },
+   {
+    "slide_no": 105,
+    "slide_key": "s105",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.4, paragraph 6 (p. 59)",
+    "quote": "Three direct causes lie behind these problems, as analyzed in Section 3.3.3: disagreements over land prices and compensation, which led one-third of the approved plans to be rejected; land-use restrictions imposed since 2016 without completed acquisition, which prolonged residents' waiting; and weak PMU capacity and coordination with provincial authorities, which delayed compensation and contract execution [43]."
+   },
+   {
+    "slide_no": 106,
+    "slide_key": "s106",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.1, paragraph 3 (p. 59)",
+    "quote": "In CCSEP, the reforms under Decree No. 80/2014/ND-CP produced service management units, connection policies and tariff roadmaps, and cost recovery reached 98% [43]."
+   },
+   {
+    "slide_no": 107,
+    "slide_key": "s107",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.2, paragraph 1 (p. 60)",
+    "quote": "CCSEP disbursed nothing in 2017 and 2018 and only about 36% of its loan capital by late 2022 [43]."
+   }
+  ],
+  "45": [
+   {
+    "slide_no": 47,
+    "slide_key": "s47",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.1, paragraph 1 (p. 31)",
+    "quote": "This re-engagement coincided with the early institutional and market reforms introduced under Đổi Mới and signalled the return of large-scale multilateral financing for infrastructure and human development [45; 46]."
+   }
+  ],
+  "46": [
+   {
+    "slide_no": 47,
+    "slide_key": "s47",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.1, paragraph 1 (p. 31)",
+    "quote": "This re-engagement coincided with the early institutional and market reforms introduced under Đổi Mới and signalled the return of large-scale multilateral financing for infrastructure and human development [45; 46]."
+   }
+  ],
+  "44": [
+   {
+    "slide_no": 47,
+    "slide_key": "s47",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1, paragraph 1 (p. 31)",
+    "quote": "Distinguishing these measures is essential when assessing the IBRD contribution to project financing [44; 41; 37]."
+   },
+   {
+    "slide_no": 48,
+    "slide_key": "s48",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1, paragraph 1 (p. 31)",
+    "quote": "Distinguishing these measures is essential when assessing the IBRD contribution to project financing [44; 41; 37]."
+   },
+   {
+    "slide_no": 50,
+    "slide_key": "s50",
+    "ay": "inferred",
+    "ay_text": "2014",
+    "locator": "2014",
+    "paper_where": "Table/figure source line (§ 3.1.3)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, 2017), project appraisal documents."
+   },
+   {
+    "slide_no": 51,
+    "slide_key": "s51",
+    "ay": "inferred",
+    "ay_text": "2014",
+    "locator": "2014",
+    "paper_where": "Table/figure source line (§ 3.1.3)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, 2017), project appraisal documents."
+   },
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 4 (p. 35)",
+    "quote": "Applying the later ESF standards retroactively to the 2014 operation would be methodologically incorrect [44]."
+   },
+   {
+    "slide_no": 55,
+    "slide_key": "s55",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.1, paragraph 1 (p. 35)",
+    "quote": "TEP was financed using Investment Project Financing (IPF), rather than a development-policy or results-based lending instrument [44; 41; 37]."
+   },
+   {
+    "slide_no": 56,
+    "slide_key": "s56",
+    "ay": "inferred",
+    "ay_text": "2014, Project Data Sheet",
+    "locator": "2014, Project Data Sheet",
+    "paper_where": "Table/figure source line (§ 3.2.1)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, Project Data Sheet), World Bank (2022a, pp. 1-3, 49), and World Bank (2023, pp. v-vi)."
+   },
+   {
+    "slide_no": 57,
+    "slide_key": "s57",
+    "ay": "inferred",
+    "ay_text": "2014, Project Data Sheet",
+    "locator": "2014, Project Data Sheet",
+    "paper_where": "Table/figure source line (§ 3.2.1)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, Project Data Sheet), World Bank (2022a, pp. 1-3, 49), and World Bank (2023, pp. v-vi)."
+   },
+   {
+    "slide_no": 57,
+    "slide_key": "s57",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.1, paragraph 3 (p. 36)",
+    "quote": "The loan also included a USD 1.25 million front-end fee, so the figure for investment components alone must not be equated with the complete financing total [44; 41]."
+   },
+   {
+    "slide_no": 58,
+    "slide_key": "s58",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.2, paragraph 1 (p. 36)",
+    "quote": "Such equipment was intended principally to improve operational information and fault management; the second component did not itself constitute the construction of additional transmission capacity [44; 42]."
+   },
+   {
+    "slide_no": 59,
+    "slide_key": "s59",
+    "ay": "inferred",
+    "ay_text": "2014",
+    "locator": "2014",
+    "paper_where": "Table/figure source line (§ 3.2.2)",
+    "quote": "Source: World Bank (2022a, Annex 3, Table 3.1, p. 48). Figures transcribed from the original table; the fee row is labeled using the PAD (World Bank, 2014)."
+   },
+   {
+    "slide_no": 63,
+    "slide_key": "s63",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.2.3, paragraph 1 (p. 39)",
+    "quote": "The project's financing and implementation experience, however, was considerably narrower than this original list suggests [44; 41; 37]."
+   }
+  ],
+  "47": [
+   {
+    "slide_no": 49,
+    "slide_key": "s49",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.3, paragraph 1 (p. 32)",
+    "quote": "The project sought to improve the research, teaching and institutional capacity of selected autonomous universities and strengthen national higher-education management [47]."
+   },
+   {
+    "slide_no": 50,
+    "slide_key": "s50",
+    "ay": "inferred",
+    "ay_text": "2017",
+    "locator": "2017",
+    "paper_where": "Table/figure source line (§ 3.1.3)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, 2017), project appraisal documents."
+   },
+   {
+    "slide_no": 51,
+    "slide_key": "s51",
+    "ay": "inferred",
+    "ay_text": "2017",
+    "locator": "2017",
+    "paper_where": "Table/figure source line (§ 3.1.3)",
+    "quote": "Source: Authors’ compilation from World Bank (2014, 2017), project appraisal documents."
+   }
+  ],
+  "48": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 2 (p. 34)",
+    "quote": "At the time of TEP approval in 2014, the overarching ODA and concessional-loan decree was Decree No. 38/2013/ND-CP [48]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2013",
+    "locator": "2013",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   }
+  ],
+  "49": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 2 (p. 34)",
+    "quote": "It was subsequently replaced by Decree No. 16/2016/ND-CP [49], and later by Decree No. 56/2020/ND-CP [50]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2016",
+    "locator": "2016",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   }
+  ],
+  "50": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 2 (p. 34)",
+    "quote": "It was subsequently replaced by Decree No. 16/2016/ND-CP [49], and later by Decree No. 56/2020/ND-CP [50]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2020",
+    "locator": "2020",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   }
+  ],
+  "51": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 2 (p. 34)",
+    "quote": "Decree No. 114/2021/ND-CP, as amended by Decree No. 20/2023/ND-CP, is useful for understanding an earlier phase of ODA administration but should not be presented as the current principal decree [51; 52]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2021",
+    "locator": "2021",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   }
+  ],
+  "52": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 2 (p. 34)",
+    "quote": "Decree No. 114/2021/ND-CP, as amended by Decree No. 20/2023/ND-CP, is useful for understanding an earlier phase of ODA administration but should not be presented as the current principal decree [51; 52]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2023",
+    "locator": "2023",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   }
+  ],
+  "53": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 3 (p. 34)",
+    "quote": "As at October 2026, Decree No. 242/2025/ND-CP (effective 10 September 2025), as amended by Decree No. 119/2026/ND-CP (issued 3 April 2026), forms the principal current decree-level framework [53; 54]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2025",
+    "locator": "2025",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   },
+   {
+    "slide_no": 109,
+    "slide_key": "s109",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.3, paragraph 6 (p. 61)",
+    "quote": "Under Decree No. 242/2025/ND-CP, approval steps for project proposals, investment decisions, on-lending and counterpart allocation should be shortened and scheduled to match the World Bank project cycle [53]."
+   }
+  ],
+  "54": [
+   {
+    "slide_no": 52,
+    "slide_key": "s52",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.1.4, paragraph 3 (p. 34)",
+    "quote": "As at October 2026, Decree No. 242/2025/ND-CP (effective 10 September 2025), as amended by Decree No. 119/2026/ND-CP (issued 3 April 2026), forms the principal current decree-level framework [53; 54]."
+   },
+   {
+    "slide_no": 53,
+    "slide_key": "s53",
+    "ay": "certain",
+    "ay_text": "2026",
+    "locator": "2026",
+    "paper_where": "Table/figure source line (§ 3.1.4)",
+    "quote": "Source: Authors’ compilation from Government of Viet Nam (2013, 2016, 2020, 2021, 2023, 2025, 2026)."
+   }
+  ],
+  "56": [
+   {
+    "slide_no": 82,
+    "slide_key": "s82",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.1, paragraph 3 (p. 48)",
+    "quote": "This objective was pursued through infrastructure investments including flood control, wastewater collection and treatment, solid waste management and urban connectivity, alongside institutional reforms under Decree No. 80/2014/ND-CP [56], comprising performance-based service contracts and cost-reflective service tariff roadmaps."
+   }
+  ],
+  "55": [
+   {
+    "slide_no": 94,
+    "slide_key": "s94",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.3, paragraph 1 (p. 54)",
+    "quote": "The financing agreement became effective on 18 January 2018, about five and a half months behind the original schedule of 3 August 2017, and the loan closing date had to be extended by 18 months, from 31 December 2022 to 30 June 2024 (Table 3.3.1.1) [33; 55; 43]."
+   }
+  ],
+  "57": [
+   {
+    "slide_no": 101,
+    "slide_key": "s101",
+    "ay": null,
+    "ay_text": "",
+    "locator": "paras. 6, 55",
+    "paper_where": "Section 3.3.4, paragraph 2 (p. 57)",
+    "quote": "Disbursement continued to rise after the restructuring and, according to the Inspection Panel, stood at 57.43% in August 2023, when the request for inspection was received [57, paras. 6, 55]."
+   },
+   {
+    "slide_no": 103,
+    "slide_key": "s103",
+    "ay": null,
+    "ay_text": "",
+    "locator": "executive summary, paras. 10, 29",
+    "paper_where": "Section 3.3.4, paragraph 4 (p. 58)",
+    "quote": "Of the 585 households originally identified for compensation, only 160 had approved plans after the restructuring, and two work packages were delayed and then cancelled, so the works could not be completed within the project period [57, executive summary, paras. 10, 29]."
+   },
+   {
+    "slide_no": 104,
+    "slide_key": "s104",
+    "ay": null,
+    "ay_text": "",
+    "locator": "paras. 13, 17, 19, 23",
+    "paper_where": "Section 3.3.4, paragraph 5 (p. 58)",
+    "quote": "According to a request submitted by 31 residents of Ngoc Hiep Ward to the Inspection Panel on 27 August 2023, residents faced land use and construction restrictions since 2016, inconsistent resettlement policies, inadequate land compensation prices, and security pressure due to police presence [57, paras. 13, 17, 19, 23]."
+   },
+   {
+    "slide_no": 107,
+    "slide_key": "s107",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.4.2, paragraph 4 (p. 60)",
+    "quote": "In Nha Trang, only 160 of 585 compensation plans had been approved by late 2022, residents rejected a third of the approved plans, two work packages were cancelled, and residents filed a complaint with the Inspection Panel [43; 57]."
+   }
+  ],
+  "58": [
+   {
+    "slide_no": 104,
+    "slide_key": "s104",
+    "ay": null,
+    "ay_text": "",
+    "locator": "",
+    "paper_where": "Section 3.3.4, paragraph 5 (p. 58)",
+    "quote": "As the complainants withdrew from the process, the case returned to the Inspection Panel, and no final findings have been issued to date [58]."
+   }
+  ]
+ },
+ "card_pages": {
+  "1": 1,
+  "2": 2,
+  "3": 1,
+  "4": 1,
+  "5": 1,
+  "6": 1,
+  "7": 1,
+  "8": 1,
+  "9": 1,
+  "10": 1,
+  "11": 1,
+  "12": 1,
+  "13": 1,
+  "14": 1,
+  "15": 1,
+  "16": 1,
+  "17": 1,
+  "18": 1,
+  "19": 1,
+  "20": 1,
+  "21": 1,
+  "22": 1,
+  "23": 1,
+  "24": 1,
+  "25": 1,
+  "26": 1,
+  "27": 1,
+  "28": 1,
+  "29": 1,
+  "30": 1,
+  "31": 1,
+  "32": 1,
+  "33": 8,
+  "34": 1,
+  "35": 1,
+  "36": 1,
+  "37": 7,
+  "38": 1,
+  "39": 1,
+  "40": 1,
+  "41": 6,
+  "42": 2,
+  "43": 5,
+  "44": 3,
+  "45": 1,
+  "46": 1,
+  "47": 1,
+  "48": 1,
+  "49": 1,
+  "50": 1,
+  "51": 1,
+  "52": 1,
+  "53": 1,
+  "54": 1,
+  "55": 1,
+  "56": 1,
+  "57": 2,
+  "58": 1
+ },
+ "warnings": []
+}

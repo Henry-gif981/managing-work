@@ -1,0 +1,1605 @@
+# ---------------------------------------------------------------------------
+# META + SLIDES — the slide plan. Every bullet is condensed from the paper with
+# numbers, names, dates and citation numbers kept exactly. Speaker notes are
+# pulled VERBATIM from content/content-ibrd.md via "notes:" ids:
+#   "3.2.4"      whole section        "3.2.4#2-3"  paragraphs 2..3
+#   "T14"        full table (all cells, caption, source)   "F3"  figure caption + basis
+# Bullet markup: **Lead phrase** rest of text [n; m, locator]
+# ---------------------------------------------------------------------------
+meta:
+  title: "IBRD and its Development Project Financing Activities in Vietnam"
+  course: "Project Finance"
+  university: "National Economics University"
+  faculty: "AEP"
+  group: "Group 6"
+  members:
+    - "Đặng Việt Hoàng - 11232291"
+    - "Trần Lan Quyên - 11232506"
+    - "Đào Bảo Bình - 11230612"
+    - "Nguyễn Anh Đức - 11232399"
+    - "Lê Thị Yến Nhi - 11233123"
+  class: "Investment Economics 65"
+  lecturer: "Lecturer: [TO BE CONFIRMED]"
+  place: "Hanoi, 2026"
+
+sections:
+  cover: {giant: "", label: ""}
+  intro: {giant: "INTRO", label: "INTRODUCTION"}
+  ch1: {giant: "BANK", label: "CHAPTER 1 · OVERVIEW OF THE IBRD"}
+  ch2: {giant: "SUPPORT", label: "CHAPTER 2 · HOW THE IBRD SUPPORTS PROJECT FINANCING"}
+  ch3: {giant: "CASES", label: "CHAPTER 3 · THE IBRD AND SELECTED PROJECTS IN VIETNAM"}
+  tep: {giant: "TEP", label: "CHAPTER 3 · CASE STUDY 1 · TEP"}
+  ccsep: {giant: "CCSEP", label: "CHAPTER 3 · CASE STUDY 2 · CCSEP"}
+  lessons: {giant: "CASES", label: "CHAPTER 3 · ACHIEVEMENTS, LIMITATIONS, RECOMMENDATIONS"}
+  concl: {giant: "CONCLUSION", label: "CONCLUSION"}
+  refs: {giant: "SOURCES", label: "REFERENCES"}
+
+slides:
+  # ======================================================== COVER + AGENDA
+  - kind: cover
+    section: cover
+    notes: ["cover"]
+  - kind: agenda
+    section: cover
+    title: "Contents"
+    items:
+      - {h: "Introduction", b: "Rationale, research problem and questions, objectives, methodology, scope"}
+      - {h: "Chapter 1", b: "Overview of the IBRD"}
+      - {h: "Chapter 2", b: "How the IBRD supports project financing"}
+      - {h: "Chapter 3", b: "The IBRD and selected projects in Vietnam: TEP and CCSEP"}
+      - {h: "Conclusion", b: "Findings, significance, limitations, further research"}
+    notes: ["intro-6"]
+
+  # ======================================================== INTRODUCTION
+  - kind: divider
+    section: intro
+    title: "Introduction"
+    sub: "Why the IBRD matters for Vietnam after IDA"
+    art: globe
+    notes: []
+  - kind: bullets
+    section: intro
+    ref: "Introduction · 1.1"
+    title: "The role of multilateral development finance"
+    art: globe
+    bullets:
+      - "**Funding gap:** long-term investment needs far exceed domestic resources"
+      - "**Costly markets:** international borrowing is costly, short-term or unavailable"
+      - "**MDB advantage:** cheap funds passed on as longer maturities, lower rates"
+      - "**Crisis role:** MDBs expanded lending in 2008 and COVID-19"
+      - "**Beyond finance:** co-financing, guarantees, appraisal, technical assistance, standards"
+    notes: ["intro-1.1"]
+  - kind: timeline
+    section: intro
+    ref: "Introduction · 1.2"
+    title: "Vietnam's shift from IDA to IBRD"
+    items:
+      - {d: "2007", t: "Bank declares Vietnam IBRD-eligible"}
+      - {d: "December 2009", t: "First IBRD loan: US$500 million Public Investment Reform [1; 2]"}
+      - {d: "July 2017", t: "Graduates from IDA; no more regular IDA credits"}
+      - {d: "2018 →", t: "IBRD and non-concessional IDA only; IDA18 transitional support (FY18–20) [3]"}
+      - {d: "July 2026", t: "Reclassified as an upper-middle-income economy [4]"}
+    notes: ["intro-1.2#1"]
+  - kind: bullets
+    section: intro
+    ref: "Introduction · 1.2"
+    title: "Why the IBRD matters now"
+    art: bank
+    bullets:
+      - "**Main source:** the IBRD is now Vietnam's main source of World Bank financing"
+      - "**Middle path:** dearer than IDA credits, but cheaper and longer-term than most commercial loans"
+      - "**Growing needs:** official financing alone will not be enough; capital markets at higher cost [3]"
+      - "**Careful choices:** higher costs mean projects must be chosen and managed more carefully"
+      - "**Beyond money:** appraisal, technical advice and international standards"
+    notes: ["intro-1.2#2-4"]
+  - kind: cards
+    section: intro
+    ref: "Introduction · 2"
+    title: "Research problem and four questions"
+    lead: "IBRD loans have different terms and procedures from the concessional credits Vietnam knew."
+    cols: 2
+    cards:
+      - {h: "Q1", b: "What is the IBRD, and how was it formed and developed?"}
+      - {h: "Q2", b: "How is the IBRD organized and funded, and on what terms does it lend?"}
+      - {h: "Q3", b: "How does the IBRD support project financing through financial, technical and training assistance?"}
+      - {h: "Q4", b: "What results and limitations have selected IBRD-supported projects in Vietnam shown, and what lessons follow?"}
+    notes: ["intro-2"]
+  - kind: cards
+    section: intro
+    ref: "Introduction · 3"
+    title: "Research objectives"
+    cols: 2
+    cards:
+      - {h: "3.1 Mechanisms", b: "How the IBRD raises funds (member capital, bonds), lends (IPF, DPF, PforR, guarantees) and runs the project cycle with borrowers and co-financiers"}
+      - {h: "3.2 Practice in Vietnam", b: "Transmission Efficiency Project (2015-2021), fully IBRD-financed; judged on relevance, effectiveness, efficiency, sustainability"}
+    notes: ["intro-3.1", "intro-3.2"]
+  - kind: bullets
+    section: intro
+    ref: "Introduction · 4"
+    title: "Research methodology"
+    art: ledger
+    bullets:
+      - "**Qualitative approach:** literature review combined with case study analysis, mainly secondary data"
+      - "**Sources:** World Bank reports and documents; Vietnamese government and ministry documents"
+      - "**Case study:** TEP planned targets vs actual results, on the four criteria of Section 3.2"
+      - "**Reducing bias:** World Bank data checked against IEG and Vietnamese government sources"
+      - "**Limits:** no field surveys or interviews; some data from World Bank's own reports"
+    notes: ["intro-4"]
+  - kind: cards
+    section: intro
+    ref: "Introduction · 5"
+    title: "Research scope"
+    cols: 2
+    cards:
+      - {h: "Subject", b: "The IBRD and its project financing; IDA, IFC, MIGA only for comparison"}
+      - {h: "Content", b: "Formation, funding, instruments, project cycle, financial, technical and training support"}
+      - {h: "Space", b: "Vietnam; international examples only to explain how the IBRD works"}
+      - {h: "Time", b: "2014 to the present, with special attention to the years after 2017"}
+    notes: ["intro-5"]
+
+  # ======================================================== CHAPTER 1
+  - kind: divider
+    section: ch1
+    title: "Overview of the IBRD"
+    sub: "Chapter 1"
+    art: bank
+    notes: ["ch1"]
+  - kind: bullets
+    section: ch1
+    ref: "1.1.1"
+    title: "Definition, mission and borrowers"
+    art: bank
+    bullets:
+      - "**Cooperative:** a global development cooperative owned by 189 member countries [7]"
+      - "**World Bank:** one of five World Bank Group institutions; with IDA forms the World Bank [7]"
+      - "**Not profit-maximizing:** raises funds on capital markets and lends for development purposes"
+      - "**Mission:** end extreme poverty and boost shared prosperity on a livable planet; jobs central"
+      - "**Borrowers:** middle-income and creditworthy poorer countries, usually governments"
+    notes: ["1.1.1"]
+  - kind: table
+    section: ch1
+    ref: "1.1.2"
+    title: "The five institutions (1/2)"
+    table: T1
+    cols: [0, 1, 2]
+    notes: ["1.1.2#1", "T1"]
+  - kind: table
+    section: ch1
+    ref: "1.1.2"
+    title: "The five institutions (2/2)"
+    table: T1
+    cols: [0, 3, 4]
+    notes: ["T1"]
+  - kind: bullets
+    section: ch1
+    ref: "1.1.2"
+    title: "How the IBRD differs"
+    art: globe
+    bullets:
+      - "**Oldest and largest:** founded in 1944; the largest development bank in the world"
+      - "**IBRD vs IDA:** market-based interest rates vs much cheaper, donor-funded terms"
+      - "**IBRD vs IFC:** governments or guaranteed entities vs private companies without guarantee"
+      - "**MIGA and ICSID:** no direct finance; reduce investor risk and settle disputes"
+      - "**Main channel:** public financing to middle-income countries, hence its importance for Vietnam"
+    notes: ["1.1.2#1-3"]
+  - kind: cards
+    section: ch1
+    ref: "1.2"
+    title: "History in four stages"
+    cols: 2
+    cards:
+      - {h: "1944–1950s · Reconstruction", b: "Bretton Woods, July 1944; first loan US$250 million to France in 1947 [9]; Marshall Plan turns focus to developing countries [8]"}
+      - {h: "1950s–1970s · Development", b: "Power, roads, railways, irrigation; IFC 1956, IDA 1960; McNamara era poverty focus [8]"}
+      - {h: "1980s–1990s · Crisis and reform", b: "Structural adjustment lending after the debt crisis; then governance, anti-corruption, safeguards"}
+      - {h: "2000–present · Global goals", b: "Counter-cyclical lending in 2008 and COVID-19; 2013 twin goals; livable planet, jobs [8]"}
+    notes: ["1.2"]
+  - kind: cards
+    section: ch1
+    ref: "1.3.1"
+    title: "Governance: three levels"
+    cols: 3
+    cards:
+      - {h: "Board of Governors", b: "Highest body; one Governor per member; meets once a year; admits members, changes capital"}
+      - {h: "Board of Executive Directors", b: "President and 25 Executive Directors; meets several times a week; approves loans, budget"}
+      - {h: "President", b: "Chairs the Board, leads the Group; five-year term; Ajay Banga since 2 June 2023 [10]"}
+    notes: ["1.3.1"]
+  - kind: bignums
+    section: ch1
+    ref: "1.3.2"
+    title: "Voting power follows shares"
+    nums:
+      - {v: "15–16%", l: "United States share of votes"}
+      - {v: "85%", l: "majority for amending the Articles"}
+      - {v: "0.21%", l: "Vietnam's votes, April 2026 [11]"}
+    bullets:
+      - "**One share, one vote:** basic votes shared equally plus one vote per share held"
+      - "**Effective veto:** the United States can block decisions needing an 85 percent majority"
+      - "**Reforms:** 2008–2010 reforms raised basic votes, shifting power to developing and transition countries"
+      - "**Vietnam:** votes through a constituency sharing one Executive Director"
+    notes: ["1.3.2"]
+  - kind: flow
+    section: ch1
+    ref: "1.3.3"
+    title: "Source of funds"
+    steps:
+      - {h: "Member capital", b: "Small paid-in share; callable capital never called; 2018 capital increase [12]"}
+      - {h: "Bond issuance", b: "Largest source; AAA rating for decades; sustainable and green bonds [13]"}
+      - {h: "IBRD", b: "Financial intermediary between global markets and member countries"}
+      - {h: "Loans", b: "Long maturities, reasonable costs; repayments recycled into new loans"}
+    bullets:
+      - "**Versus IDA:** IDA depends on donations; the IBRD funds itself through the market"
+      - "**New tools:** hybrid capital and shareholder guarantees"
+    notes: ["1.3.3"]
+  - kind: cards
+    section: ch1
+    ref: "1.4.1"
+    title: "Three lending instruments"
+    lead: "Under IPF the IBRD pays for inputs; under DPF, for reforms; under PforR, for results."
+    cols: 3
+    cards:
+      - {h: "IPF", b: "Ring-fenced activities; disbursed as eligible expenditures are incurred [14]; TEP and CCSEP"}
+      - {h: "DPF", b: "Reforms; prior actions before approval; funds to the budget [14]; Vietnam's first IBRD loan [2]"}
+      - {h: "PforR", b: "Since 2012, third instrument since 1944 [15]; disbursed on verified DLIs [14]"}
+    notes: ["1.4#1", "1.4.1#1-3"]
+  - kind: table
+    section: ch1
+    ref: "1.4.1"
+    title: "Instruments compared"
+    table: T2
+    notes: ["1.4.1#4", "T2"]
+  - kind: bullets
+    section: ch1
+    ref: "1.4.2"
+    title: "Loan terms: price (1/2)"
+    art: ledger
+    bullets:
+      - "**IBRD Flexible Loan:** leading product for public borrowers in middle-income countries [16]"
+      - "**Three cost parts:** interest rate, front-end fee and commitment fee [16]"
+      - "**Interest:** reference rate plus spread; SOFR replaced LIBOR for US dollar loans [17]"
+      - "**Spread:** contractual spread plus maturity premium; fixed-spread option suspended in 2021 [17]"
+      - "**Commitment fee:** slow disbursement raises the effective cost of the loan"
+    notes: ["1.4.2#1-2", "1.4.2#5"]
+  - kind: bullets
+    section: ch1
+    ref: "1.4.2"
+    title: "Loan terms: maturity (2/2)"
+    art: ledger
+    bullets:
+      - "**2014 extension:** maximum final maturity 30 → 35 years; average maturity 18 → 20 years [18]"
+      - "**Up to 50 years:** final maturity for some projects [19]"
+      - "**Short Maturity Loan:** October 2024; 7-year final maturity, 20-basis-point spread discount [20]"
+      - "**TEP:** 26-year maturity with a 10-year grace period [21]"
+      - "**CCSEP:** IBRD 29 years, 10-year grace; IDA credit 25 years, 5-year grace"
+    notes: ["1.4.2#3-4"]
+  - kind: table
+    section: ch1
+    ref: "1.4.2"
+    title: "Main terms of the IBRD Flexible Loan"
+    table: T3
+    notes: ["T3"]
+  - kind: bullets
+    section: ch1
+    ref: "1.4.3"
+    title: "Safeguards and procurement"
+    art: scroll
+    bullets:
+      - "**ESF:** approved 4 August 2016; applies to IPF initiated on or after 1 October 2018 [22]"
+      - "**Older policies:** earlier projects keep Safeguard Policies (OP 4.12); parallel about seven years [23]"
+      - "**TEP and CCSEP:** prepared before 2018, so followed the Safeguard Policies"
+      - "**Procurement Framework:** concept note on or after 1 July 2016 [24]; PPSD for CCSEP"
+      - "**Stricter rules:** gaps with domestic land rules cause delays or, in Nha Trang, lost financing"
+    notes: ["1.4.3#1-2", "1.4.3#14-15"]
+  - kind: grid
+    section: ch1
+    ref: "1.4.3"
+    title: "Ten Environmental and Social Standards"
+    lead: "The ESF shifts more responsibility to the borrower [22]."
+    items:
+      - "ESS1: Assessment and Management of Environmental and Social Risks and Impacts"
+      - "ESS2: Labor and Working Conditions"
+      - "ESS3: Resource Efficiency and Pollution Prevention and Management"
+      - "ESS4: Community Health and Safety"
+      - "ESS5: Land Acquisition, Restrictions on Land Use and Involuntary Resettlement"
+      - "ESS6: Biodiversity Conservation and Sustainable Management of Living Natural Resources"
+      - "ESS7: Indigenous Peoples"
+      - "ESS8: Cultural Heritage"
+      - "ESS9: Financial Intermediaries"
+      - "ESS10: Stakeholder Engagement and Information Disclosure"
+    notes: ["1.4.3#3-13"]
+
+  # ======================================================== CHAPTER 2
+  - kind: divider
+    section: ch2
+    title: "How the IBRD supports project financing"
+    sub: "Chapter 2"
+    art: ledger
+    notes: ["ch2", "2.1#1"]
+  - kind: cycle
+    section: ch2
+    ref: "2.1.1"
+    title: "The six-stage project cycle"
+    lead: "The borrower owns and implements; the Bank advises, appraises, finances and supervises [25]."
+    steps: ["Identification", "Preparation", "Appraisal", "Negotiation and Board approval", "Implementation and supervision", "Completion and evaluation"]
+    notes: ["2.1.1#1"]
+  - kind: table
+    section: ch2
+    ref: "2.1.1"
+    title: "Stages of the project cycle (1/2)"
+    table: T4
+    rows: [0, 3]
+    notes: ["T4"]
+  - kind: table
+    section: ch2
+    ref: "2.1.1"
+    title: "Stages of the project cycle (2/2)"
+    table: T4
+    rows: [3, 6]
+    notes: ["T4"]
+  - kind: bullets
+    section: ch2
+    ref: "2.1.1"
+    title: "The cycle does not end at approval"
+    art: compass
+    bullets:
+      - "**Restructuring:** TEP restructured in 2019 and extended by two years"
+      - "**Cancellation:** CCSEP restructured in 2022; about US$45.6 million of loan funds cancelled"
+      - "**Two systems:** domestic approvals, counterpart funds and on-lending run alongside each stage"
+      - "**Joint delays:** CCSEP became effective about five and a half months later than planned"
+    notes: ["2.1.1#2-3"]
+  - kind: table
+    section: ch2
+    ref: "2.1.2"
+    title: "Four disbursement methods"
+    table: T5
+    notes: ["2.1.2#1", "T5"]
+  - kind: bullets
+    section: ch2
+    ref: "2.1.2"
+    title: "Counterpart funding as the constraint"
+    art: ledger
+    bullets:
+      - "**Documentation:** each withdrawal documented; deadline usually four months after closing [26]"
+      - "**Counterpart share:** CCSEP funds covered land, resettlement, staff, operating costs, training"
+      - "**TEP:** NPT provided US$231.25 million of the planned US$731.25 million [21]"
+      - "**Binding constraint:** CCSEP allocations began July 2019; no disbursement in 2017 and 2018"
+      - "**Real debt:** where loans are on-lent, provinces take on real debt obligations"
+    notes: ["2.1.2#2-4"]
+  - kind: bullets
+    section: ch2
+    ref: "2.1.3"
+    title: "Instruments in practice: IPF and PforR"
+    art: pylon
+    bullets:
+      - "**IPF:** components, results framework, implementing agency; funds follow contract progress"
+      - "**TEP model:** three components via NPT boards; land or bidding delays slow funds"
+      - "**PforR:** funds released only after verified Disbursement-Linked Indicators"
+      - "**IEG on DLIs:** choice is critical; monitoring should not focus on DLIs alone [32]"
+      - "**For Vietnam:** results-based design shifts responsibility, and risk, to domestic agencies"
+    notes: ["2.1.3#1", "2.1.3#3-4"]
+  - kind: chart
+    section: ch2
+    ref: "2.1.3"
+    title: "DPF in Vietnam: policy matrix to budget"
+    chart: DPF
+    bullets:
+      - "**PIR 1:** US$500 million IBRD, December 2009 [2]"
+      - "**PIR 2:** May 2011; IBRD US$87.3 million, IDA US$262.7 million [28]"
+      - "**Aims:** investment cycle; legal basis for public-private partnerships [29; 30]"
+      - "**Power sector:** 2010; IBRD US$200 million, IDA US$111.8 million [31]"
+    notes: ["2.1.3#2", "DPF"]
+  - kind: bullets
+    section: ch2
+    ref: "2.2.1"
+    title: "Technical support: preparation"
+    art: compass
+    bullets:
+      - "**Task team:** technical, financial, procurement and safeguard specialists advise the borrower"
+      - "**Viability check:** TEP appraisal estimated an EIRR of 31.4%"
+      - "**E&S instruments:** CCSEP: an ESIA per city, one resettlement framework [33]"
+      - "**Preparation Advance:** finances preparation; refinanced from the loan [27]"
+      - "**Quality matters:** better TEP smart-grid preparation would have avoided the extension"
+    notes: ["2.2#1", "2.2.1"]
+  - kind: chart
+    section: ch2
+    ref: "2.2.2"
+    title: "Advisory Services and Analytics"
+    chart: ASA
+    bullets:
+      - "**ASA:** reports, policy notes, advice, workshops [34]"
+      - "**2023:** US$991 million disbursed [35]"
+      - "**RAS:** client-paid [34]; mainly middle- and high-income countries [36]"
+      - "**Vietnam:** PIR dialogue [2]; PPIAF US$350,000 and GIZ for CCSEP"
+    notes: ["2.2.2"]
+  - kind: cards
+    section: ch2
+    ref: "2.2.3"
+    title: "Monitoring and evaluation: three levels"
+    lead: "CCSEP results framework: about 290,000 beneficiaries, 256,000 sewer connections, 100% cost recovery."
+    cols: 3
+    cards:
+      - {h: "Supervision", b: "Regular ISRs rate progress to the PDO and implementation ({{ay:World Bank, n.d.-c|25|inferred}})"}
+      - {h: "Completion", b: "ICR at closing compares results with targets"}
+      - {h: "Independent evaluation", b: "IEG validates the ICR; PPAR for selected projects"}
+    notes: ["2.2.3#1-5"]
+  - kind: bullets
+    section: ch2
+    ref: "2.2.3"
+    title: "What M&E shows and its limits"
+    art: compass
+    bullets:
+      - "**TEP PPAR:** outcome highly satisfactory, Bank performance satisfactory, M&E quality substantial [37]"
+      - "**Early warning:** in 2022, CCSEP's likelihood of achieving its PDO was downgraded to moderately unsatisfactory"
+      - "**Attribution:** system-wide indicators such as transmission losses are not the project alone"
+      - "**No ICR:** for CCSEP, the assessment must rely on interim reports"
+    notes: ["2.2.3#6-7"]
+  - kind: bullets
+    section: ch2
+    ref: "2.3.1"
+    title: "Training project management units"
+    art: ledger
+    bullets:
+      - "**PMUs:** TEP used NPT's northern, central and southern boards; CCSEP one PMU per province"
+      - "**Training:** project and financial management, procurement and safeguards"
+      - "**Open Learning Campus:** orientation courses from Bank expectations to M&E [38]"
+      - "**Staff continuity:** the new PMU in Phan Rang drew 10 of its 12 staff from other ODA units"
+      - "**Still weak:** PMU capacity remained a main cause of CCSEP delay"
+    notes: ["2.3#1", "2.3.1"]
+  - kind: bullets
+    section: ch2
+    ref: "2.3.2"
+    title: "Knowledge transfer by doing"
+    art: scroll
+    bullets:
+      - "**Learning by doing:** staff apply Bank rules on real contracts; Bank specialists review key steps"
+      - "**MOOC:** 2014 public procurement course, more than 540 certified learners [39]"
+      - "**E-procurement:** certification after an examination [40]"
+      - "**TEP:** NPT boards built procurement, financial and safeguard capabilities [37]"
+      - "**Harder to transfer:** in Nha Trang, local compensation rules clashed with Bank standards"
+    notes: ["2.3.2"]
+  - kind: table
+    section: ch2
+    ref: "2.3.3"
+    title: "Institutional reform in the two cases"
+    table: T6
+    notes: ["2.3.3#1", "T6"]
+  - kind: bignums
+    section: ch2
+    ref: "2.3.3"
+    title: "Reform depends on the borrower"
+    nums:
+      - {v: "5.50", l: "US$ million from NPT"}
+      - {v: "5.74", l: "US$ million, TEP capacity-building cost"}
+      - {v: "0.24", l: "US$ million from the IBRD"}
+    bullets:
+      - "**National level:** the PIR series strengthened selection and implementation of public investment [2]"
+      - "**CCSEP:** all of Component 4 financed by counterpart funds; many reforms stopped at setup"
+      - "**Lesson:** the IBRD can design and advise; the borrower must fund and sustain reform"
+    notes: ["2.3.3#2-3"]
+  - kind: table
+    section: ch2
+    ref: "2.4"
+    title: "Three forms of support across the cycle"
+    table: T7
+    notes: ["2.4#1", "T7"]
+  - kind: cards
+    section: ch2
+    ref: "2.4"
+    title: "One package, one dependency"
+    lead: "The package works only when domestic systems are ready to absorb it."
+    cols: 3
+    cards:
+      - {h: "Money gives weight to advice", b: "Standards are adopted when they are loan conditions"}
+      - {h: "Advice protects the money", b: "Appraisal and supervision reduce the risk of wasted funds"}
+      - {h: "Training protects results", b: "Assets work only if local institutions run them"}
+    notes: ["2.4#2-3"]
+
+  # ======================================================== CHAPTER 3
+  - kind: divider
+    section: ch3
+    title: "The IBRD and selected projects in Vietnam"
+    sub: "Chapter 3"
+    art: coast
+    notes: ["ch3"]
+  - kind: timeline
+    section: ch3
+    ref: "3.1 · 3.1.1"
+    title: "Vietnam and the World Bank since 1993"
+    items:
+      - {d: "October 1993", t: "Lending resumes; IDA credits: approximately USD 70 million primary education, USD 158.5 million highways [45; 46]"}
+      - {d: "1994", t: "Resident office opens in Hanoi, alongside Đổi Mới reforms [45; 46]"}
+      - {d: "7 August 2014", t: "TEP IBRD loan approved, almost three years before graduation [44; 41]"}
+      - {d: "1 July 2017", t: "IDA graduation; IDA18 transitional SDR 1.593 billion [3]"}
+      - {d: "July 2026", t: "Upper-middle-income reclassification, distinct from graduation [4]"}
+    notes: ["3.1", "3.1.1#1", "3.1.2#1-3"]
+  - kind: bullets
+    section: ch3
+    ref: "3.1.1 · 3.1.2"
+    title: "A shift in lending mix"
+    art: globe
+    bullets:
+      - "**Planned vs actual:** appraisal figures are plans; closing amounts are reported spending [44; 41; 37]"
+      - "**Umbrella term:** \"World Bank financing\" may be IDA or IBRD; check legal documents"
+      - "**Market pricing:** debt capacity, selection, returns and fiscal risk matter more"
+      - "**Coexistence:** IBRD-financed TEP ran alongside IDA before 2017 [44; 41]"
+      - "**Not substitution:** graduation shifted lending mix and conditions"
+    notes: ["3.1", "3.1.1#2", "3.1.2#2-3"]
+  - kind: bullets
+    section: ch3
+    ref: "3.1.3"
+    title: "A late IDA project: SAHEP (2017)"
+    art: scroll
+    bullets:
+      - "**Approval:** SAHEP (P156849) approved by the Board on 15 May 2017 [47]"
+      - "**IDA credit:** SDR 114.3 million, equivalent to USD 155 million at appraisal [47]"
+      - "**Cost:** USD 174.60 million total, including USD 19.60 million counterpart [47]"
+      - "**Caution:** illustrative of the late IDA pipeline, not proof IDA stopped in July 2017"
+      - "**Comparison:** institutional only; outputs not comparable with TEP's indicators"
+    notes: ["3.1.3"]
+  - kind: table
+    section: ch3
+    ref: "3.1.3"
+    title: "TEP and SAHEP at appraisal (1/2)"
+    table: T8
+    rows: [0, 3]
+    extra_rows: [6]
+    notes: ["T8"]
+  - kind: table_chart
+    section: ch3
+    ref: "3.1.3"
+    title: "TEP and SAHEP at appraisal (2/2)"
+    table: T8
+    rows: [3, 6]
+    chart: T8C
+    notes: ["T8"]
+  - kind: bullets
+    section: ch3
+    ref: "3.1.4"
+    title: "Two overlapping legal systems"
+    art: scroll
+    bullets:
+      - "**Domestic rules:** approval, external loans, on-lending, counterpart funds"
+      - "**Bank rules:** eligible spending, procurement, financial management, safeguards"
+      - "**Decree chain:** 38/2013 [48] → 16/2016 [49] → 56/2020 [50]; 114/2021, 20/2023 [51; 52]"
+      - "**Current:** 242/2025, effective 10 September 2025, amended by 119/2026 [53; 54]"
+      - "**ESF timing:** applies from 1 October 2018 [22]; TEP, Category B, predates it [44]"
+    notes: ["3.1.4#1-5"]
+  - kind: table
+    section: ch3
+    ref: "3.1.4"
+    title: "Regulatory milestones"
+    table: T9
+    notes: ["T9"]
+
+  # ======================================================== CASE 1 TEP
+  - kind: divider
+    section: tep
+    title: "Case study 1: Transmission Efficiency Project"
+    sub: "3.2 · energy sector"
+    art: pylon
+    notes: ["3.2"]
+  - kind: bullets
+    section: tep
+    ref: "3.2.1"
+    title: "TEP: project overview"
+    art: pylon
+    bullets:
+      - "**TEP (P131558, loan 8417-VN):** approved 7 August 2014, effective 10 February 2015 [44; 41; 37]"
+      - "**Closing:** 31 December 2019 extended to 31 December 2021"
+      - "**Objective:** capacity, efficiency and reliability of transmission; financed via IPF"
+      - "**Agencies:** NPT (EVN subsidiary) through three regional project boards [44; 37]"
+      - "**Network:** 220-kV and 500-kV lines and substations in three regions [44; 37]"
+    notes: ["3.2.1#1-2"]
+  - kind: table
+    section: tep
+    ref: "3.2.1"
+    title: "TEP profile and milestones (1/2)"
+    table: T10
+    rows: [0, 5]
+    notes: ["T10"]
+  - kind: table_nums
+    section: tep
+    ref: "3.2.1"
+    title: "TEP profile and milestones (2/2)"
+    table: T10
+    rows: [5, 9]
+    nums:
+      - {v: "731.25", l: "USD million total at appraisal [44; 41]"}
+      - {v: "500.00", l: "USD million IBRD loan"}
+      - {v: "1.25", l: "USD million front-end fee [44; 41]"}
+    notes: ["3.2.1#3", "T10"]
+  - kind: cards
+    section: tep
+    ref: "3.2.2"
+    title: "Three components"
+    cols: 3
+    cards:
+      - {h: "1 · Transmission infrastructure", b: "Build, rehabilitate, upgrade high-voltage infrastructure [44; 42]; USD 625.00 million at appraisal [41]"}
+      - {h: "2 · Smart-grid network", b: "Monitoring, control, protection equipment; not new capacity [44; 42]; USD 80.00 million [41]"}
+      - {h: "3 · Capacity building", b: "NPT's institutional reform agenda; USD 25.00 million [41]"}
+    notes: ["3.2.2#1-2"]
+  - kind: table
+    section: tep
+    ref: "3.2.2"
+    title: "Cost by component (million USD)"
+    table: T11
+    notes: ["3.2.2#3", "T11"]
+  - kind: table_chart
+    section: tep
+    ref: "3.2.2"
+    title: "Financing by source: totals (1/2)"
+    table: T12
+    cols: [0, 1, 2]
+    chart: F2
+    notes: ["T12", "F2"]
+  - kind: table_chart
+    section: tep
+    ref: "3.2.2"
+    title: "Financing by source: IBRD (2/2)"
+    table: T12
+    cols: [0, 3, 4]
+    chart: F1
+    notes: ["T12", "F1"]
+  - kind: bullets
+    section: tep
+    ref: "3.2.2"
+    title: "What the closing accounts show"
+    art: ledger
+    bullets:
+      - "**IBRD at closing:** USD 289.03 million transmission, USD 28.01 million smart grid [41]"
+      - "**Capacity building:** USD 5.50 of 5.74 million from the borrower; USD 0.24 million IBRD [41]"
+      - "**Disciplines:** spending tied to procurement, financial, technical and E&S rules"
+      - "**Savings:** competitive bidding under Bank guidelines [37, pp. ix–xi, 17]"
+      - "**Less flexibility:** limits on reallocating savings to additional works"
+    notes: ["3.2.2#4-5"]
+  - kind: bullets
+    section: tep
+    ref: "3.2.3"
+    title: "Capacity building narrowed to the AMS"
+    art: compass
+    bullets:
+      - "**Four strands:** AMS, cost-reflective tariffs, IFRS reporting, testing laboratory [44; 41; 37]"
+      - "**AMS:** fully operational; informs investment and maintenance decisions"
+      - "**Counterpart-funded:** tariff, IFRS, laboratory, metering [41, Annex 3; 42, pp. 2–3]"
+      - "**Cancelled:** planned upgrade of the operations and equipment information system"
+      - "**Interpretation:** a change in responsibilities, not evidence all used IBRD money"
+    notes: ["3.2.3#1-2"]
+  - kind: table
+    section: tep
+    ref: "3.2.3"
+    title: "Institutional and digital workstreams"
+    table: T13
+    notes: ["T13"]
+  - kind: bullets
+    section: tep
+    ref: "3.2.3"
+    title: "Learning platform and technology friction"
+    art: pylon
+    bullets:
+      - "**Capabilities:** procurement, contracts, finance, monitoring, safeguards [37, pp. ix–x, 15–16]"
+      - "**Mixed sources:** built partly through TEP, partly through earlier operations"
+      - "**No trainee count:** the evaluation gives none, so none is reported"
+      - "**Smart-grid friction:** technology choice, approvals and substation outages took longer"
+      - "**IEG view:** better advance preparation would have reduced the extension [37, pp. x–xi]"
+    notes: ["3.2.3#3-4"]
+  - kind: table
+    section: tep
+    ref: "3.2.4"
+    title: "Physical outputs vs targets"
+    table: T14
+    notes: ["3.2.4#1", "T14"]
+  - kind: chart
+    section: tep
+    ref: "3.2.4"
+    title: "Output achievement (%)"
+    chart: F3
+    bullets:
+      - "**Lines:** 981 km new, 261 km rehabilitated [42, pp. 2–3; 37, pp. viii–ix, 8]"
+      - "**Transformers:** 4,263 MW vs 3,950 MW"
+      - "**Smart grid:** five 500-kV; 10 of 11 220-kV"
+      - "**Ninh Binh:** cancelled, substation to be dismantled"
+    notes: ["3.2.4#1", "F3"]
+  - kind: chart
+    section: tep
+    ref: "3.2.4"
+    title: "Capacity and electricity transmitted"
+    chart: TWH
+    bullets:
+      - "**Capacity:** almost +80% by closing; +85.6% by March 2023 [37, pp. viii–ix, 8–9]"
+      - "**NPT system:** 184.50, 200.86, 211.47 TWh"
+      - "**Context only:** not supplied solely because of TEP"
+    notes: ["3.2.4#2", "TWH"]
+  - kind: table
+    section: tep
+    ref: "3.2.4"
+    title: "System-level service indicators"
+    table: T15
+    notes: ["3.2.4#3", "T15"]
+  - kind: chart
+    section: tep
+    ref: "3.2.4"
+    title: "Transmission losses, 2015-2022 (%)"
+    chart: F4
+    bullets:
+      - "**Trend:** 2.15% (2019), 2.29% (2021), 2.54% (2022) [37, pp. 11–13]"
+      - "**Causes:** wind and solar flows, congestion, too little new investment"
+      - "**Faults:** 500-kV 42 → 29; 220-kV 135 → 159"
+    notes: ["3.2.4#4", "F4"]
+  - kind: bullets
+    section: tep
+    ref: "3.2.4"
+    title: "Renewables and economic return"
+    art: globe
+    bullets:
+      - "**Renewables:** better conditions for intermittent generation [37, pp. 8–13]"
+      - "**Not quantified:** no verified extra solar or wind MWh; curtailment continued"
+      - "**EIRR:** re-estimated 52.6% vs 31.4% at appraisal [41, Annex 4]"
+      - "**ENPV:** around USD 1,089 million at a 10% discount rate"
+      - "**Model result:** not a cash return to IBRD or NPT; sensitive to assumptions"
+    notes: ["3.2.4#5-6"]
+  - kind: bignums
+    section: tep
+    ref: "3.2.5"
+    title: "Commitment vs disbursement"
+    nums:
+      - {v: "500.00", l: "USD million committed"}
+      - {v: "318.53", l: "USD million disbursed (63.7%)"}
+      - {v: "181.47", l: "USD million gap (36.3%)"}
+    bullets:
+      - "**Project cost:** USD 517.53 million, USD 213.72 million below appraisal [41, Annex 3; 37, p. v]"
+      - "**Counterpart:** USD 231.25 million planned vs approximately USD 199.00 million"
+      - "**Not failure:** lower steel prices, competition, fewer activities [37, pp. x, 17]"
+      - "**Different concept:** ~USD 160 million cancelled is not the USD 181.47 million gap"
+    notes: ["3.2.5#1-2"]
+  - kind: table
+    section: tep
+    ref: "3.2.5"
+    title: "Financing gap: definitions (1/2)"
+    table: T16
+    rows: [0, 4]
+    notes: ["T16"]
+  - kind: table
+    section: tep
+    ref: "3.2.5"
+    title: "Financing gap: definitions (2/2)"
+    table: T16
+    rows: [4, 7]
+    notes: ["T16"]
+  - kind: bullets
+    section: tep
+    ref: "3.2.5"
+    title: "Delays, safeguards, sustainability"
+    art: pylon
+    bullets:
+      - "**Smart grid:** selection and approval took roughly four years [42, pp. 3, 12; 37, pp. x–xi, 17–18]"
+      - "**Two years late:** bidding, compensation and land acquisition also delayed works"
+      - "**Still highly satisfactory:** main capacity, efficiency and reliability objectives achieved"
+      - "**E&S:** about 2,500 affected households, 80 relocated [37, pp. x–xi, Appendix B]"
+      - "**Sustainability:** depends on adequate tariffs and timely investment [37, pp. 18–20]"
+    notes: ["3.2.5#3-5"]
+  - kind: cards
+    section: tep
+    ref: "3.2.6"
+    title: "TEP: overall assessment"
+    cols: 2
+    cards:
+      - {h: "Strengths", b: "Physical outputs; better operating indicators; lower capital costs than the appraisal budget"}
+      - {h: "Weaknesses", b: "Long smart-grid preparation; commitment–disbursement gap; counterpart-funded capacity building; sector constraints"}
+    notes: ["3.2.6#1"]
+  - kind: cards
+    section: tep
+    ref: "3.2.6"
+    title: "Three conclusions from TEP"
+    lead: "Next: CCSEP blended IBRD and IDA with decentralized provincial implementation."
+    cols: 3
+    cards:
+      - {h: "1 · Before 2017", b: "IBRD participation existed alongside IDA; not a purely post-IDA arrangement"}
+      - {h: "2 · Two measures", b: "Evaluate approved and disbursed funds, with borrower spending shown separately"}
+      - {h: "3 · Attribution", b: "Outputs do not prove that all later system gains were caused by TEP"}
+    notes: ["3.2.6#2-3"]
+
+  # ======================================================== CASE 2 CCSEP
+  - kind: divider
+    section: ccsep
+    title: "Case study 2: Coastal Cities Sustainable Environment Project"
+    sub: "3.3 · urban and environment sector"
+    art: coast
+    notes: ["3.3"]
+  - kind: bignums
+    section: ccsep
+    ref: "3.3.1"
+    title: "Why CCSEP was needed"
+    nums:
+      - {v: "~10%", l: "of urban wastewater treated"}
+      - {v: "771", l: "USD million a year needed"}
+      - {v: "~27%", l: "of needs covered by expected funding [33]"}
+    bullets:
+      - "**Strain:** rapid urbanization with limited resources in a lower-middle-income economy"
+      - "**Overflows:** combined drains discharged untreated wastewater onto streets and beaches"
+      - "**Response:** IBRD loan plus IDA credits gave provinces upfront investment capital"
+    notes: ["3.3.1#1"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.1"
+    title: "CCSEP: project overview"
+    art: coast
+    bullets:
+      - "**CCSEP (P156143):** appraised April 2017 under IPF; approved 5 May 2017"
+      - "**Continuity:** follows CCESP (2007–2014); adds Phan Rang–Thap Cham"
+      - "**Dates:** signed 27 October 2017; effective 18 January 2018; closed 30 June 2024"
+      - "**Cost:** USD 273.6 million at appraisal [33; 43]"
+      - "**Implementation:** PMUs in Quang Binh, Binh Dinh, Khanh Hoa, Ninh Thuan"
+    notes: ["3.3.1#2"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.1"
+    title: "Planned and actual timeline"
+    table: T17
+    notes: ["T17"]
+  - kind: bignums
+    section: ccsep
+    ref: "3.3.1"
+    title: "Objective and key indicators"
+    nums:
+      - {v: "290,000", l: "direct beneficiaries"}
+      - {v: "256,000", l: "people with sewer connections"}
+      - {v: "100%", l: "service cost recovery [33]"}
+    bullets:
+      - "**PDO:** access to sanitation and operational efficiency of service providers in four cities"
+      - "**Investments:** flood control, wastewater, solid waste, urban connectivity"
+      - "**Reforms:** Decree No. 80/2014/ND-CP [56]: service contracts and tariff roadmaps"
+    notes: ["3.3.1#3"]
+  - kind: chart
+    section: ccsep
+    ref: "3.3.2"
+    title: "A blended financing package"
+    chart: F5
+    bullets:
+      - "**Total:** USD 273.6 million [33, Data Sheet, para. 43]"
+      - "**Shares:** World Bank 86.3%, counterpart 13.7%"
+      - "**Blend:** IBRD USD 46 million, IDA USD 190.2 million [33, para. 66]"
+      - "**Why:** blend terms before IDA graduation [33, paras. 1, 44]"
+    notes: ["3.3.2#1", "F5"]
+  - kind: cards
+    section: ccsep
+    ref: "3.3.2"
+    title: "Two sources, two sets of terms"
+    lead: "Terms as stated in the PAD [33, para. 44]."
+    cols: 2
+    cards:
+      - {h: "IBRD loan", b: "USD; floating rate then based on LIBOR; 29 years incl. 10-year grace; equal principal repayments"}
+      - {h: "IDA credit", b: "SDR; 25 years incl. 5-year grace; 2% a year (0.75% + 1.25%); 0.5% commitment fee; no front-end fee"}
+    notes: ["3.3.2#2"]
+  - kind: chart
+    section: ccsep
+    ref: "3.3.2"
+    title: "On-granting vs on-lending"
+    chart: F6
+    bullets:
+      - "**IDA on-granted:** 80%, 80%, 70%, 50% by city [33, para. 45]"
+      - "**Overall:** 49.1% on-granted, 37.2% on-lent [33, Annex 5, Table 5.1]"
+      - "**Debt:** about USD 101.8 million on-lent; Binh Dinh projected to slightly exceed its ceiling [33, paras. 66, 75–76, Annex 5]"
+    notes: ["3.3.2#2", "F6"]
+  - kind: cards
+    section: ccsep
+    ref: "3.3.2"
+    title: "Four components"
+    lead: "IBRD fully financed Component 2 [33, para. 34, Annex 2 Table 2.1, Annex 5 Table 5.2]."
+    cols: 2
+    cards:
+      - {h: "1 · Sanitation (USD 140.7 million)", b: "Flood control, drainage, treatment plants, connections, solid waste [33, para. 31]"}
+      - {h: "2 · Urban connectivity (USD 31.2 million)", b: "Over 7 km of roads and 5 bridges along canals and rivers [33, paras. 20, 33]"}
+      - {h: "3 · Compensation, site clearance (USD 25.1 million)", b: "Land acquisition and resettlement costs [33, para. 34]"}
+      - {h: "4 · Support and reform (USD 11.7 million)", b: "PMU capacity; Decree 80/2014/ND-CP reforms [33, para. 35]"}
+    notes: ["3.3.2#3"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.2"
+    title: "Components by source (1/2)"
+    table: T18
+    cols: [0, 1, 2]
+    notes: ["T18"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.2"
+    title: "Components by source (2/2)"
+    table: T18
+    cols: [0, 3, 4]
+    show_note: true
+    notes: ["T18", "3.3.2#4"]
+  - kind: chart
+    section: ccsep
+    ref: "3.3.2"
+    title: "Funding by city as planned"
+    chart: F7
+    bullets:
+      - "**Largest:** Phan Rang–Thap Cham 87.9 [33, Annex 2, Tables 2.2–2.5]"
+      - "**New locality:** own resettlement site [33, paras. 34, 63]"
+      - "**IBRD:** Nha Trang 16.4, Dong Hoi 14.3 [33, para. 46, Table 1]"
+    notes: ["3.3.2#5", "F7"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.2"
+    title: "Decentralized disbursement"
+    art: ledger
+    bullets:
+      - "**Accounts:** a designated USD account per province [33, Annex 3, para. 21]"
+      - "**Methods:** advances, reimbursements, special commitments, direct payments [33, Annex 3, para. 22]"
+      - "**100% financing:** eligible goods, works, consulting, incl. taxes [33, Annex 3, para. 24]"
+      - "**Three conditions:** on-lending, counterpart and tariff approvals [33, Data Sheet, para. 62]"
+    notes: ["3.3.2#6"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.2"
+    title: "Plan vs adjusted: amounts (1/2)"
+    table: T19
+    cols: [0, 1, 3, 5]
+    lead: "23 November 2022: USD 11.8 million IBRD and about USD 34 million IDA cancelled [43]."
+    notes: ["3.3.2#7", "T19"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.2"
+    title: "Plan vs adjusted: shares (2/2)"
+    table: T19
+    cols: [0, 2, 4]
+    notes: ["T19"]
+  - kind: chart_image
+    section: ccsep
+    ref: "3.3.2"
+    title: "Adjusted commitments by city"
+    chart: F8
+    image: F8img
+    bullets:
+      - "**Totals:** loans 236.2 → 190.6; cost 273.6 → 240.6; counterpart 37.4 → 50.0 [33, Annex 2; 43]"
+      - "**Cities:** Quy Nhon 55.3 → 33.2; Phan Rang 87.9 → 97.9"
+    notes: ["3.3.2#8", "F8"]
+  - kind: chart
+    section: ccsep
+    ref: "3.3.3"
+    title: "Slow start, slow disbursement"
+    chart: DISB
+    bullets:
+      - "**Late start:** effective 18 January 2018, not 3 August 2017 [33; 55; 43]"
+      - "**Disbursed:** IBRD 16.47, IDA 68.34; about 36%"
+      - "**Root cause:** counterpart budgets only from July 2019"
+      - "**Execution:** works about 45% of USD 160.9 million contracts [43]"
+    notes: ["3.3.3#1", "DISB"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.3"
+    title: "Timeline (Table 20)"
+    table: T20
+    notes: ["T20"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.3"
+    title: "Technical support and delay factors"
+    art: compass
+    bullets:
+      - "**Safeguards:** Category A; OP 4.12 and Bank procurement guidelines [33]"
+      - "**Ratings, end-2022:** progress Moderately Satisfactory; PDO likelihood Moderately Unsatisfactory"
+      - "**Fiduciary:** all Moderately Satisfactory; legal covenants fully complied with [43]"
+      - "**Delays:** site clearance, weak contractors, 2020 storms, COVID-19, weak contract management"
+    notes: ["3.3.3#2"]
+  - kind: bignums
+    section: ccsep
+    ref: "3.3.3"
+    title: "Resettlement: the main bottleneck"
+    nums:
+      - {v: "1,486", l: "affected households (PAD), 329 to relocate [33]"}
+      - {v: "160 / 585", l: "Nha Trang plans approved"}
+      - {v: "1,400 / 1,586", l: "Phan Rang plans approved [43]"}
+    bullets:
+      - "**Nha Trang:** a third of approved plans rejected; most Component 2 contracts halted"
+      - "**Cancelled:** NT-2.1 partially, NT-2.2 completely; affected households about 35% fewer"
+      - "**Elsewhere:** Dong Hoi and Quy Nhon largely completed resettlement [43]"
+    notes: ["3.3.3#3"]
+  - kind: table
+    section: ccsep
+    ref: "3.3.3"
+    title: "Key indicators at 31/10/2022"
+    table: T21
+    notes: ["T21"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.3"
+    title: "Training and institutional reform"
+    art: scroll
+    bullets:
+      - "**PMUs:** inherited from CCESP; Phan Rang new, 10 of 12 staff from water-sector ODA units"
+      - "**Support:** training, audit teams, manuals; PPIAF (USD 350,000) and GIZ [33]"
+      - "**Targets:** 14 service contracts, 4 tariff roadmaps, 4 connection policies [33]"
+      - "**Bank advice:** more qualified staff, coordination, supervision, monthly meetings [43]"
+      - "**Outcome:** PSMUs set up; most service contracts unexecuted except Nha Trang plant"
+    notes: ["3.3.3#4-5"]
+  - kind: bignums
+    section: ccsep
+    ref: "3.3.3"
+    title: "Same bottleneck for all three forms"
+    nums:
+      - {v: "36%", l: "of original loan capital disbursed by late 2022"}
+      - {v: "45.6", l: "USD million cancelled"}
+      - {v: "16.8%", l: "IBRD share of plan (14.2% adjusted)"}
+    bullets:
+      - "**Funds idle:** World Bank money available, counterpart funding late"
+      - "**Limited IBRD weight:** fully financed Component 2; IDA financed sanitation [33, Annex 2, Table 2.1; 43]"
+      - "**Scope cut:** Nha Trang scaled back; 18-month extension needed"
+    notes: ["3.3.3#6"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.4"
+    title: "Results so far"
+    art: coast
+    bullets:
+      - "**No ICR yet:** figures as of 31 October 2022, plus Inspection Panel milestones 2023–2025"
+      - "**Indicators:** beneficiaries 64%, sewer access 38%, cost recovery 98% [33; 43]"
+      - "**Works:** Dong Hoi and Quy Nhon largely complete; Nha Trang, Phan Rang incomplete"
+      - "**Disbursement:** 57.43% in August 2023 [57, paras. 6, 55]; base may differ from 36%"
+    notes: ["3.3.4#1-2"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.4"
+    title: "Climate resilience and institutions"
+    art: bridge
+    bullets:
+      - "**Targets:** about 44,000 people, 17 km embankments, 22 km roads, 5 bridges [33]"
+      - "**Done:** 4.38 km of roads and 3 bridges; other figures not yet public"
+      - "**Institutions:** PSMUs, asset handovers, connection policies, tariff roadmaps [43]"
+      - "**Exception:** Nha Trang plant already under a performance-based contract"
+      - "**38% coverage:** benefits need networks and household connections"
+    notes: ["3.3.4#3"]
+  - kind: bullets
+    section: ccsep
+    ref: "3.3.4"
+    title: "Nha Trang: resettlement bottleneck"
+    art: coast
+    bullets:
+      - "**Plans:** only 160 of 585 approved; two packages cancelled [57, executive summary, paras. 10, 29]"
+      - "**Affected:** about 464 households, per Management Response [57, executive summary]"
+      - "**Land:** about 5 ha not acquired; 6 ha in 2018; 2.5 ha in 2021 [57, paras. 11, 63]"
+      - "**Management:** \"technical reasons\"; PDO not affected [57, paras. 49, 59]"
+    notes: ["3.3.4#4"]
+  - kind: timeline
+    section: ccsep
+    ref: "3.3.4"
+    title: "From bottleneck to formal complaint"
+    items:
+      - {d: "June 2023", t: "19 of 222 plans non-compliant; eighteen on low land prices [57, paras. 37, 40, 41]"}
+      - {d: "27 August 2023", t: "31 Ngoc Hiep residents file request; allegations, not conclusions [57, paras. 13, 17, 19, 23]"}
+      - {d: "Late August 2023", t: "Compensation plan for the 5 ha area revoked [57, paras. 37, 40, 41]"}
+      - {d: "5 February 2024", t: "Board approves the investigation [58]"}
+      - {d: "2 March 2025", t: "Confidential memorandum signed [58]"}
+      - {d: "7 August 2025", t: "Dispute resolution ends without agreement; case back to the Panel [58]"}
+    notes: ["3.3.4#5"]
+  - kind: cards
+    section: ccsep
+    ref: "3.3.4"
+    title: "Three direct causes"
+    lead: "Resettlement was a precondition for the drainage infrastructure, not an auxiliary component [43]."
+    cols: 3
+    cards:
+      - {h: "Land prices", b: "Disagreements led one-third of approved plans to be rejected"}
+      - {h: "Restrictions since 2016", b: "Land-use limits without completed acquisition prolonged waiting"}
+      - {h: "Weak PMU capacity", b: "Poor coordination delayed compensation and contracts"}
+    notes: ["3.3.4#6"]
+
+  # ======================================================== 3.4 LESSONS
+  - kind: cards
+    section: lessons
+    ref: "3.4.1"
+    title: "Achievements"
+    cols: 3
+    cards:
+      - {h: "Financial mobilization", b: "TEP USD 500 million, 26-year maturity, 10-year grace [21]; CCSEP 29 years [33]; lower costs [37]"}
+      - {h: "Technical standards", b: "Smart grid in five 500-kV, ten 220-kV substations; 4,263 MW; O&M USD 0.87 → 0.67 [37]"}
+      - {h: "Management standards", b: "Procurement and safeguard skills; NPT asset management system; CCSEP cost recovery 98% [43]"}
+    notes: ["3.4.1"]
+  - kind: cards
+    section: lessons
+    ref: "3.4.2"
+    title: "Limitations"
+    cols: 2
+    cards:
+      - {h: "Slow disbursement", b: "TEP 63.7% [41]; CCSEP nothing in 2017 and 2018, about 36% by late 2022 [43]"}
+      - {h: "Procedural complexity", b: "TEP smart grid about four years [37]; CCSEP effective five and a half months late [33]"}
+      - {h: "Counterpart funding", b: "CCSEP allocations from July 2019 [43]; TEP: USD 5.50 million of USD 5.74 million [41]; Binh Dinh [33]"}
+      - {h: "Safeguard gaps", b: "Nha Trang 160 of 585 plans, complaint [43; 57]; TEP about 2,500 households [37]"}
+    notes: ["3.4.2"]
+  - kind: cards
+    section: lessons
+    ref: "3.4.3"
+    title: "Recommendations (1/2)"
+    lead: "As an upper-middle-income economy, future borrowing will rely on IBRD terms [4]."
+    cols: 3
+    cards:
+      - {h: "1 · Prepare fully", b: "Settle technology, approvals, land before signing [37]; use a Project Preparation Advance"}
+      - {h: "2 · Secure counterpart funds", b: "In the medium-term investment plan at approval; check provincial debt capacity"}
+      - {h: "3 · Align compensation", b: "Meet ESS5 from preparation; independent valuation; early consultation"}
+    notes: ["3.4.3#1-4"]
+  - kind: cards
+    section: lessons
+    ref: "3.4.3"
+    title: "Recommendations (2/2)"
+    cols: 3
+    cards:
+      - {h: "4 · Stabilize PMUs", b: "Professional PMUs across projects; Open Learning Campus training"}
+      - {h: "5 · Streamline procedures", b: "Decree No. 242/2025/ND-CP steps matched to the Bank cycle [53]"}
+      - {h: "6 · Choose instruments", b: "PforR or DPF for measurable reforms; RAS for advice [36]"}
+    notes: ["3.4.3#5-7"]
+
+  # ======================================================== CONCLUSION
+  - kind: divider
+    section: concl
+    title: "Conclusion"
+    sub: "Findings, significance, limitations, further research"
+    art: compass
+    notes: ["concl", "concl-1"]
+  - kind: cards
+    section: concl
+    ref: "Conclusion · 1.1"
+    title: "Three pillars, one package"
+    lead: "AAA-rated market funding lent on long maturities through IPF, DPF and PforR."
+    cols: 3
+    cards:
+      - {h: "Finance", b: "Pays for investment through the project cycle and disbursement methods"}
+      - {h: "Technical support", b: "Improves project design, policy and monitoring"}
+      - {h: "Training", b: "Strengthens the people and institutions that carry out projects"}
+    notes: ["concl-1.1"]
+  - kind: cards
+    section: concl
+    ref: "Conclusion · 1.2"
+    title: "What the two cases show"
+    lead: "Binding constraints lay mainly on the domestic side, not in the availability of IBRD money."
+    cols: 2
+    cards:
+      - {h: "TEP", b: "Outputs above targets, lower operating costs, highly satisfactory; but disbursed far less than committed"}
+      - {h: "CCSEP", b: "Late counterpart funds, weak PMUs, resettlement disputes; cancelled funds, formal complaint"}
+    notes: ["concl-1.2"]
+  - kind: cards
+    section: concl
+    ref: "Conclusion · 2 · 3"
+    title: "Significance and limitations"
+    cols: 2
+    cards:
+      - {h: "Significance", b: "One framework applied to two projects; planned vs actual, IBRD vs IDA and counterpart funds"}
+      - {h: "Limitations", b: "Secondary data; many sources prepared by the World Bank; no CCSEP completion report; two cases; system-wide indicators"}
+    notes: ["concl-2", "concl-3"]
+  - kind: cards
+    section: concl
+    ref: "Conclusion · 4"
+    title: "Directions for further research"
+    cols: 2
+    cards:
+      - {h: "Update CCSEP", b: "Once its completion report is published"}
+      - {h: "Post-IDA projects", b: "Binh Duong water environment project and the southern waterway program"}
+      - {h: "Other lenders", b: "Compare IBRD lending with the Asian Development Bank"}
+      - {h: "Quantify delays", b: "Cost of counterpart and land delays in commitment fees and lost time"}
+    notes: ["concl-4"]
+
+  # ======================================================== BACK MATTER
+  - kind: references
+    section: refs
+    title: "References"
+    notes: []
+  - kind: index
+    section: refs
+    title: "Index of sources"
+    notes: []
+  - kind: credits
+    section: refs
+    title: "Credits"
+    notes: []
+  - kind: thanks
+    section: refs
+    notes: []
+
+extra_charts:
+  T8C:
+    caption: "TEP and SAHEP financing at appraisal (million USD) — from Table 8"
+    type: bar_stacked
+    categories: ["TEP", "SAHEP"]
+    series:
+      - {name: "World Bank financing", values: [500.00, 155.00]}
+      - {name: "Counterpart financing", values: [231.25, 19.60]}
+    number_format: '0.00'
+    basis: "Table 8 rows “World Bank financing” and “Counterpart financing”; totals 731.25 and 174.60."
+    source: "Data: Table 8 of the paper."
+# ---------------------------------------------------------------------------
+# TABLES — transcribed cell by cell from the paper (PDF pages given).
+# Cells are verbatim; table rows broken across pages are re-joined.
+# "short" (optional) = shortened on-slide wording when a cell is > ~14 words;
+# the full cell always goes to the speaker notes.
+# ---------------------------------------------------------------------------
+tables:
+  T1:
+    caption: "Table 1. The five institutions of the World Bank Group"
+    section: "1.1.2"
+    page: 11
+    header: ["Institution", "Year founded", "Main clients", "Main activities", "Source of funds"]
+    rows:
+      - ["IBRD", "1944", "Governments of middle-income and creditworthy poorer countries", "Loans, guarantees, risk management, advisory services", "Bonds on international capital markets, member capital"]
+      - ["IDA", "1960", "Governments of the poorest countries", "Grants and very low-interest or interest-free loans", "Contributions from donor countries"]
+      - ["IFC", "1956", "Private enterprises in developing countries", "Loans, equity investment, advisory services", "Own capital and market borrowing"]
+      - ["MIGA", "1988", "Foreign investors and lenders", "Insurance against political risks such as war or expropriation", "Member capital and premiums"]
+      - ["ICSID", "1966", "Governments and foreign investors", "Settling investment disputes through arbitration and conciliation", "Contributions from the World Bank and fees"]
+    source: "Source: Authors' compilation from [7] and [8]."
+  T2:
+    caption: "Table 2. The IBRD’s three lending instruments"
+    section: "1.4.1"
+    page: 17
+    header: ["Instrument", "What it finances", "Disbursed against", "Best suited to"]
+    rows:
+      - ["Investment Project Financing (IPF)", "Ring-fenced project activities: works, goods, consulting services", "Eligible expenditures actually incurred", "Infrastructure and other projects with a defined scope"]
+      - ["Development Policy Financing (DPF)", "A program of policy and institutional actions", "Completion of agreed prior actions", "Sector or economy-wide reforms; budget support"]
+      - ["Program-for-Results (PforR)", "Part of a government’s own expenditure program", "Verified achievement of Disbursement-Linked Indicators", "Programs where results can be measured and verified"]
+    source: "Source: Authors’ compilation from {{ay:Wes (2023)|14|certain}} and {{ay:Gelb et al. (2016)|15|certain}}."
+  T3:
+    caption: "Table 3. Main terms of the IBRD Flexible Loan"
+    section: "1.4.2"
+    page: 18
+    header: ["Term", "Current setting", "Source"]
+    rows:
+      - ["Interest rate", "Reference rate (SOFR for USD) + variable spread", "{{ay:World Bank Treasury (2020)|17|certain}}"]
+      - ["Final maturity", "Up to 35 years; up to 50 years for some projects", "{{ay:World Bank (2014b)|18|inferred}}; {{ay:IBRD (2025)|19|certain}}"]
+      - ["Average maturity", "Up to 20 years", "{{ay:World Bank (2014b)|18|inferred}}"]
+      - ["Short Maturity Loan", "7-year final maturity, 20 bps spread discount", "{{ay:World Bank Treasury (n.d.-b)|20|inferred}}"]
+      - ["Front-end fee", "0.25% of the committed amount, charged once", "{{ay:World Bank Treasury (n.d.-a)|16|inferred}}"]
+      - ["Commitment fee", "0.25% a year on the undisbursed balance, from 60 days after signing", "{{ay:World Bank Treasury (n.d.-a)|16|inferred}}"]
+    source: "Note: Terms are reviewed annually and may change; figures are as at October 2026."
+  T4:
+    caption: "Table 4. Stages of the World Bank project cycle"
+    section: "2.1.1"
+    page: 21
+    header: ["Stage", "Main activities", "Lead role", "Key document"]
+    rows:
+      - ["1. Identification", "Bank and government agree on a project concept consistent with the Country Partnership Framework", "Borrower and Bank", "Project Concept Note, Project Information Document"]
+      - ["2. Preparation", "Feasibility studies, technical design, environmental and social instruments, procurement plan", "Borrower, with Bank advice", "Feasibility study, ESIA, resettlement plan"]
+      - ["3. Appraisal", "Bank reviews technical, economic, financial, institutional and E&S aspects", "Bank", "Project Appraisal Document (PAD)"]
+      - ["4. Negotiation and Board approval", "Legal agreements negotiated; Board of Executive Directors approves; loan signed and declared effective", "Borrower and Bank", "Loan Agreement"]
+      - ["5. Implementation and supervision", "Borrower carries out the project; Bank supervises and may restructure", "Borrower; Bank supervises", "Implementation Status and Results Report (ISR)"]
+      - ["6. Completion and evaluation", "Results assessed; lessons recorded; independent validation", "Bank, then IEG", "Implementation Completion and Results Report (ICR)"]
+    short:
+      "3,1": "Legal agreements negotiated; Board approves; loan signed and declared effective"
+    source: "Source: Authors’ compilation from [25]."
+  T5:
+    caption: "Table 5. IBRD disbursement methods for investment projects"
+    section: "2.1.2"
+    page: 22
+    header: ["Method", "How it works", "Typical use"]
+    rows:
+      - ["Advance", "Bank deposits funds in a borrower’s designated account; the borrower pays eligible expenses and documents them later", "Many small and recurring payments"]
+      - ["Reimbursement", "Borrower pays first from its own funds; the Bank then refunds eligible expenditures", "Expenses the borrower can pre-finance"]
+      - ["Direct payment", "Bank pays a supplier, contractor or consultant directly at the borrower’s request", "Large contract payments"]
+      - ["Special commitment", "Bank commits to pay a third party under a letter of credit opened by a commercial bank", "Imported goods and equipment"]
+    short:
+      "0,1": "Bank deposits funds in a designated account; borrower pays eligible expenses, documents them later"
+    source: "Source: Authors’ compilation from [26;27]."
+  T6:
+    caption: "Table 6. Institutional reform activities in the two case studies"
+    section: "2.3.3"
+    page: 28
+    header: ["Project", "Reform activity", "Position at the latest report"]
+    rows:
+      - ["TEP", "Asset management system for NPT", "Fully operational; used for investment and maintenance decisions"]
+      - ["TEP", "Cost-reflective transmission tariff, IFRS reporting, testing laboratory", "Carried out mainly with NPT/EVN funds"]
+      - ["CCSEP", "Public Service Management Units in each city", "Established"]
+      - ["CCSEP", "Wastewater tariff roadmaps, household connection policies", "Approved or issued; implementation varies by city"]
+      - ["CCSEP", "Performance-based service contracts", "Largely not yet in use, except at the Nha Trang treatment plant"]
+    source: "Source: Sections 3.2.3 and 3.3.3, based on World Bank ({{ay:2022a|41|inferred}}, {{ay:2022b|42|inferred}}, {{ay:2022c|43|inferred}}, {{ay:2023|37|inferred}})."
+  T7:
+    caption: "Table 7. The three forms of IBRD support across the project cycle"
+    section: "2.4"
+    page: 29
+    header: ["Stage", "Financial support", "Technical support", "Training and capacity building"]
+    rows:
+      - ["Preparation and appraisal", "Loan size, instrument and terms agreed; Project Preparation Advance if needed", "Feasibility, economic analysis, safeguard instruments, results framework", "Assessment of the implementing agency’s capacity"]
+      - ["Implementation", "Disbursement against eligible expenditures or results", "Supervision, ISRs, restructuring when needed", "PMU training in procurement, financial management and safeguards"]
+      - ["Completion and after", "Loan repayment; savings cancelled", "ICR and IEG evaluation; lessons for new projects", "Systems and institutions left in place (e.g. TEP’s asset management system)"]
+    source: "Source: Authors’ synthesis of Sections 2.1-2.3."
+  T8:
+    caption: "Table 8. Selected project financing characteristics at appraisal: TEP and SAHEP"
+    section: "3.1.3"
+    page: 33
+    header: ["Indicator", "Transmission Efficiency Project (TEP)", "Support for Autonomous Higher Education Project (SAHEP)"]
+    rows:
+      - ["World Bank project ID", "P131558", "P156849"]
+      - ["Approval date", "7 August 2014", "15 May 2017"]
+      - ["Financing institution", "IBRD (loan 8417-VN)", "IDA (credit 6036-VN)"]
+      - ["World Bank financing (million USD)", "500.00", "155.00"]
+      - ["Counterpart financing (million USD)", "231.25", "19.60"]
+      - ["Total appraisal cost (million USD)", "731.25", "174.60"]
+      - ["Primary sector", "Electricity transmission", "Higher education"]
+    source: "Source: Authors’ compilation from World Bank ({{ay:2014|44|inferred}}, {{ay:2017|47|inferred}}), project appraisal documents."
+  T9:
+    caption: "Table 9. Selected milestones in Vietnam’s regulatory framework for ODA and concessional loans"
+    section: "3.1.4"
+    page: 34
+    header: ["Instrument", "Effective date / period", "Relevance for the analysis"]
+    rows:
+      - ["Decree 38/2013/ND-CP", "Issued 23 April 2013", "Principal ODA framework at TEP approval in 2014"]
+      - ["Decree 16/2016/ND-CP", "Effective 2 May 2016", "Replaced Decree 38/2013; historical implementation period"]
+      - ["Decree 56/2020/ND-CP", "Effective 25 May 2020", "Replaced Decree 16/2016; pre-2021 ODA framework"]
+      - ["Decree 114/2021/ND-CP and Decree 20/2023/ND-CP", "2021-9 September 2025", "Subsequent ODA framework; superseded"]
+      - ["Decree 242/2025/ND-CP", "Effective 10 September 2025", "Current principal decree as at October 2026"]
+      - ["Decree 119/2026/ND-CP", "Issued 3 Apr 2026; effective 1 Jan 2026", "Amends Decree 242/2025; includes transition rules"]
+    source: "Source: Authors’ compilation from Government of Viet Nam ({{ay:2013|48|certain}}, {{ay:2016|49|certain}}, {{ay:2020|50|certain}}, {{ay:2021|51|certain}}, {{ay:2023|52|certain}}, {{ay:2025|53|certain}}, {{ay:2026|54|certain}})."
+  T10:
+    caption: "Table 10. TEP: basic project profile and implementation milestones"
+    section: "3.2.1"
+    page: 36
+    header: ["Item", "Verified information"]
+    rows:
+      - ["Project name / ID", "Transmission Efficiency Project (TEP) / P131558"]
+      - ["Loan number / instrument", "IBRD loan 8417-VN / Investment Project Financing"]
+      - ["Borrower / responsible agency", "Socialist Republic of Viet Nam / NPT (EVN subsidiary)"]
+      - ["Approval / effectiveness", "7 August 2014 / 10 February 2015"]
+      - ["Original / actual closing", "31 December 2019 / 31 December 2021"]
+      - ["Appraisal IBRD loan", "USD 500.00 million"]
+      - ["Appraisal borrower contribution", "USD 231.25 million"]
+      - ["Appraisal total project cost", "USD 731.25 million"]
+      - ["Actual total project cost at closing", "USD 517.53 million"]
+    source: "Source: Authors’ compilation from World Bank ({{ay:2014, Project Data Sheet|44|inferred}}), World Bank ({{ay:2022a, pp. 1-3, 49|41|inferred}}), and World Bank ({{ay:2023, pp. v-vi|37|inferred}})."
+  T11:
+    caption: "Table 11. TEP project cost by component at approval and at closing (million USD)"
+    section: "3.2.2"
+    page: 37
+    header: ["Project component", "Amount at approval", "Actual at closing", "Actual / approval (%)"]
+    rows:
+      - ["Enhancing Transmission Infrastructure", "625.00", "464.53", "74.30"]
+      - ["Developing Smart Grid Network", "80.00", "46.01", "57.50"]
+      - ["Capacity Building", "25.00", "5.74", "22.96"]
+      - ["Front-end fee", "1.25", "1.25", "100.00"]
+      - ["Total project cost", "731.25", "517.53", "70.77"]
+    source: "Source: World Bank ({{ay:2022a, Annex 3, Table 3.1, p. 48|41|inferred}}). Figures transcribed from the original table; the fee row is labeled using the PAD (World Bank, {{ay:2014|44|inferred}})."
+  T12:
+    caption: "Table 12. TEP component financing by source: appraisal versus actual (million USD)"
+    section: "3.2.2"
+    page: 37
+    header: ["Component", "Appraisal total", "Actual total", "Appraisal IBRD", "Actual IBRD"]
+    rows:
+      - ["1. Transmission infrastructure", "625.00", "464.53", "429.45", "289.03"]
+      - ["2. Smart-grid network", "80.00", "46.01", "55.00", "28.01"]
+      - ["3. Capacity building", "25.00", "5.74", "14.30", "0.24"]
+      - ["Front-end fee", "1.25", "1.25", "1.25", "1.25"]
+      - ["TOTAL", "731.25", "517.53", "500.00", "318.53"]
+    source: "Source: Adapted from World Bank ({{ay:2022a, Annex 3, Table 3.2, p. 49|41|inferred}}). IBRD component allocations and actual costs are taken from the original table."
+  T13:
+    caption: "Table 13. Selected institutional and digital systems activities under TEP"
+    section: "3.2.3"
+    page: 39
+    header: ["Workstream", "Original purpose", "Position by project closing"]
+    rows:
+      - ["Asset management system (AMS)", "Data-supported maintenance and capital-investment decisions", "Operational; actual subcomponent cost USD 2.24 million, including USD 0.24 million IBRD"]
+      - ["Cost-reflective transmission tariff", "Support financial sustainability and tariff-related analysis", "USD 0.20 million actual cost; financed by NPT/borrower"]
+      - ["IFRS-related reporting capacity", "Improve financial reporting and governance", "USD 0.30 million actual cost; financed by NPT/borrower"]
+      - ["Electrical testing laboratory", "Improve capacity for specialised testing", "Partial upgrade; USD 3.00 million actual cost; financed by NPT/borrower"]
+      - ["Operation/equipment information system (Component 2)", "Upgrade related digital management information system", "Cancelled after existing system judged adequate"]
+    source: "Source: Authors’ synthesis of World Bank ({{ay:2022a, Annex 3, Table 3.2, p. 49|41|inferred}}) and World Bank ({{ay:2022b, pp. 2-3|42|inferred}})."
+  T14:
+    caption: "Table 14. TEP selected physical outputs: original target and independently reported achievement"
+    section: "3.2.4"
+    page: 41
+    header: ["Indicator", "Target", "Actual", "Achieved / target"]
+    rows:
+      - ["New transmission lines", "920 km", "981 km", "106.6%"]
+      - ["Rehabilitated transmission lines", "120 km", "261 km", "217.5%"]
+      - ["Additional transformer capacity", "3,950 MW", "4,263 MW", "107.9%"]
+      - ["500-kV smart-grid substations", "5", "5", "100.0%"]
+      - ["220-kV smart-grid substations", "11", "10", "90.9%"]
+    source: "Source: World Bank ({{ay:2023, pp. viii-ix, 8|37|inferred}}); achievement percentages calculated by the authors."
+  T15:
+    caption: "Table 15. Selected system-level service and efficiency indicators around TEP completion"
+    section: "3.2.4"
+    page: 42
+    header: ["Indicator", "Earlier observation", "Later observation", "Interpretation / scope"]
+    rows:
+      - ["O&M cost per energy transmitted", "USD 0.87/MWh (baseline)", "USD 0.67/MWh (2021 and 2022)", "Lower unit costs; NPT-wide"]
+      - ["Unserved energy caused by transmission failures", "4,875 MWh (2012)", "817 MWh (2021)", "Large reduction; system indicator"]
+      - ["Avg. interruption duration per customer", "724.28 min (2018)", "356.12 min (2021)", "Improved reliability indicator"]
+      - ["Avg. interruption frequency per customer", "4.97 times (2018)", "3.11 times (2021)", "Improved reliability indicator"]
+      - ["Transmission losses", "2.34% (2015)", "2.29% (2021); 2.54% (2022)", "Improved by closing then worsened"]
+    source: "Source: Authors’ compilation from World Bank ({{ay:2023, pp. 9-11, Tables 2.2-2.3|37|inferred}}; underlying EVN data)."
+  T16:
+    caption: "Table 16. TEP financing gap: definitions and derived comparisons (million USD)"
+    section: "3.2.5"
+    page: 45
+    header: ["Measure", "million USD", "Meaning"]
+    rows:
+      - ["IBRD amount committed at appraisal", "500.00", "Original approved financing envelope"]
+      - ["IBRD amount actually disbursed", "318.53", "World Bank financing used through project closing"]
+      - ["Commitment minus disbursement", "181.47", "Derived arithmetic gap: 36.3% of commitment"]
+      - ["Loan savings reported cancelled by IEG", "~160.00", "Separate approximate cancellation figure in IEG assessment"]
+      - ["Total project cost at appraisal", "731.25", "Initial budget; includes fee"]
+      - ["Total actual project cost", "517.53", "Closing expenditure"]
+      - ["Appraisal minus actual project cost", "213.72", "Derived reduction in overall project cost (29.2%)"]
+    source: "Source: Authors’ compilation and calculations from World Bank ({{ay:2022a, Annex 3, Table 3.2|41|inferred}}) and World Bank ({{ay:2023, pp. v, x, 17|37|inferred}})."
+  T17:
+    caption: "Table 17. Planned and actual project implementation timeline"
+    section: "3.3.1"
+    page: 48
+    header: ["Milestone", "Planned", "Actual"]
+    rows:
+      - ["Approval", "5/5/2017", "5/5/2017"]
+      - ["Agreement signing", "-", "27/10/2017"]
+      - ["Effectiveness date", "3/8/2017", "18/1/2018"]
+      - ["Implementation start", "5/5/2017", "18/1/2018"]
+      - ["Implementation end", "30/6/2022", "-"]
+      - ["Loan closing", "31/12/2022", "30/6/2024"]
+    source: "Source: projects.worldbank.org"
+  T18:
+    caption: "Table 18. Project components and financing sources (base cost, million USD)"
+    section: "3.3.2"
+    page: 51
+    header: ["Component", "Total", "IDA", "IBRD", "Counterpart funding"]
+    rows:
+      - ["1. Sanitation Infrastructure Expansion", "140,7", "140,7", "-", "-"]
+      - ["2. Urban Connectivity Improvement", "31,2", "-", "31,2", "-"]
+      - ["3. Compensation and Site Clearance", "25,1", "3,4", "-", "21,7"]
+      - ["4. Implementation Support and Institutional Reform", "11,7", "-", "-", "11,7"]
+      - ["Total Base Cost", "208,7", "144,1", "31,2", "33,4"]
+    source: "Source: projects.worldbank.org"
+    note: "Note: The table shows base costs only. The difference from the total project cost comes from contingencies (USD 37.9 million), VAT (USD 22.3 million), and capitalized fees and interest (USD 4.8 million), which are also financed by the three sources. This is why the IBRD total is USD 46.0 million, against USD 31.2 million of base cost for Component 2 (World Bank, {{ay:2017, Annex 2, Table 2.1|33|inferred}}). Minor differences in totals are due to rounding in the PAD."
+  T19:
+    caption: "Table 19. Funding structure: plan vs. adjusted (million USD)"
+    section: "3.3.2"
+    page: 52
+    header: ["Funding source", "Appraisal amount", "Appraisal share", "Adjusted amount", "Adjusted share", "Difference"]
+    rows:
+      - ["Total WB financing", "236,2", "86,33%", "190,6", "79,22%", "45,6"]
+      - ["IBRD", "46", "16,81%", "34,2", "14,21%", "11,8"]
+      - ["IDA", "190,2", "69,52%", "156,4", "65,00%", "33,8"]
+      - ["Counterpart funding", "37,4", "13,67%", "50", "20,78%", "-12,6"]
+      - ["Total project cost", "273,6", "100,00%", "240,6", "100,00%", "33"]
+    source: "Source: projects.worldbank.org"
+  T20:
+    caption: "Table 20. Planned and actual project implementation timeline"
+    section: "3.3.3"
+    page: 55
+    header: ["Milestone", "Planned", "Actual"]
+    rows:
+      - ["Approval", "5/5/2017", "5/5/2017"]
+      - ["Agreement signing", "-", "27/10/2017"]
+      - ["Effectiveness date", "3/8/2017", "18/1/2018"]
+      - ["Implementation start", "5/5/2017", "18/1/2018"]
+      - ["Implementation end", "30/6/2022", "-"]
+      - ["Loan closing", "31/12/2022", "30/6/2024"]
+    source: "Source: projects.worldbank.org"
+  T21:
+    caption: "Table 21. Progress on key performance indicators as of 31/10/2022"
+    section: "3.3.3"
+    page: 56
+    header: ["Indicator", "Target (PAD)", "Actual", "Ratio"]
+    rows:
+      - ["Direct beneficiaries", "290.000", "185.559", "64%"]
+      - ["People with access to sewer connections", "256.000", "97.400", "38%"]
+      - ["Cost recovery level", "100%", "98%", "98%"]
+      - ["Roads (km)", "22", "4,38", "20%"]
+      - ["Bridges", "5", "3", "60%"]
+    source: "Source: projects.worldbank.org"
+# ---------------------------------------------------------------------------
+# CHARTS — rebuilt as native PowerPoint charts ONLY from numbers printed in the
+# paper's tables/text (or printed as data labels on the paper's own figure).
+# "basis" says exactly where every number comes from.
+# ---------------------------------------------------------------------------
+charts:
+  F1:
+    caption: "Figure 1. TEP financing structure: committed/appraised resources versus actual closing expenditure (million USD)"
+    type: bar_stacked
+    categories: ["Appraisal financing", "Actual expenditure"]
+    series:
+      - {name: "IBRD financing", values: [500.00, 318.53]}
+      - {name: "Borrower financing", values: [231.25, 199.00]}
+    number_format: '0.00'
+    basis: "Table 12 (Total row): appraisal 731.25 = IBRD 500.00 + borrower 231.25; actual 517.53 = IBRD 318.53 + borrower 199.00 (calculated: 517.53 − 318.53; the paper states “approximately USD 199.00 million”, Section 3.2.5)."
+    source: "Source: Chart prepared by the authors using data from World Bank ({{ay:2022a, Annex 3, Table 3.2|41|inferred}}). Actual expenditure is not equivalent to contractual loan availability."
+  F2:
+    caption: "Figure 2. TEP expenditure by investment component at appraisal and at closing (million USD)"
+    type: bar_clustered
+    categories: ["Transmission infrastructure", "Smart-grid network", "Capacity building"]
+    series:
+      - {name: "Appraisal cost", values: [625.00, 80.00, 25.00]}
+      - {name: "Actual cost", values: [464.53, 46.01, 5.74]}
+    number_format: '0.00'
+    basis: "Table 11 / Table 12 (component rows)."
+    source: "Source: Chart prepared by the authors using data from World Bank ({{ay:2022a, Annex 3, Table 3.1|41|inferred}}). The USD 1.25 million front-end fee is excluded from the three component bars but included in total project costs."
+  F3:
+    caption: "Figure 3. TEP output achievement relative to original results targets (%)"
+    type: bar_horizontal
+    categories: ["New lines", "Rehabilitated lines", "Transformer capacity", "500-kV substations", "220-kV substations"]
+    series:
+      - {name: "Achievement of appraisal target (%)", values: [106.6, 217.5, 107.9, 100.0, 90.9]}
+    number_format: '0.0"%"'
+    basis: "Table 14, column “Achieved / target” (percentages calculated by the authors of the paper)."
+    source: "Source: Chart calculated by the authors from World Bank ({{ay:2023, p. 8|37|inferred}}). A value of 100% means that the original output target was met, not that all project-wide economic benefits were realised."
+  F4:
+    caption: "Figure 4. Vietnam’s electricity transmission loss ratio, 2015-2022 (%)"
+    type: line
+    categories: ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]
+    series:
+      - {name: "Transmission loss ratio (%)", values: [2.34, 2.36, 2.45, 2.44, 2.15, 2.23, 2.29, 2.54]}
+    number_format: '0.00'
+    basis: "2015 (2.34), 2019 (2.15), 2021 (2.29) and 2022 (2.54) are stated in Table 15 and Section 3.2.4. 2016 (2.36), 2017 (2.45), 2018 (2.44) and 2020 (2.23) are the data labels printed on the paper’s own Figure 4."
+    source: "Source: Chart prepared by the authors from World Bank ({{ay:2023, Table 2.3, p. 11|37|inferred}}), which cites EVN as the underlying data source. The system-wide transmission loss ratio is not a TEP-only impact estimate. The IEG executive summary reports 2.50% for 2022, whereas Table 2.3 reports 2.54%."
+  F5:
+    caption: "Figure 5. Project financing structure as planned at appraisal"
+    type: doughnut
+    categories: ["IBRD", "IDA", "Counterpart funding"]
+    series:
+      - {name: "Share of total project cost (%)", values: [16.8, 69.5, 13.7]}
+    number_format: '0.0"%"'
+    basis: "Section 3.3.2: IBRD USD 46 million (16.8%), IDA USD 190.2 million (69.5%), counterpart USD 37.4 million (13.7%)."
+    source: "Source: projects.worldbank.org"
+  F6:
+    caption: "Figure 6. Share of on-granting and on-lending by financing source"
+    type: bar_horizontal_stacked100
+    categories: ["IBRD loan (all four cities)", "IDA credit – Dong Hoi", "IDA credit – Phan Rang", "IDA credit – Quy Nhon", "IDA credit – Nha Trang"]
+    series:
+      - {name: "On-granted (%)", values: [0, 80, 80, 70, 50]}
+      - {name: "On-lent (%)", values: [100, 20, 20, 30, 50]}
+    number_format: '0"%"'
+    basis: "Section 3.3.2: entire IBRD loan on-lent; IDA on-granted 80% (Dong Hoi, Phan Rang), 70% (Quy Nhon), 50% (Nha Trang). On-lent shares = 100 − on-granted (calculated)."
+    source: "Source: projects.worldbank.org"
+  F7:
+    caption: "Figure 7. Sources of funding by city (million USD)"
+    type: bar_stacked
+    categories: ["Dong Hoi", "Nha Trang", "Phan Rang–Thap Cham", "Quy Nhon"]
+    series:
+      - {name: "IDA on-granted", values: [28.7, 22.1, 52.1, 31.5]}
+      - {name: "IDA on-lent", values: [7.2, 22.1, 13.0, 13.5]}
+      - {name: "IBRD (100% on-lent)", values: [14.3, 16.4, 10.2, 5.1]}
+      - {name: "Counterpart funding", values: [8.2, 11.4, 12.7, 5.2]}
+    number_format: '0.0'
+    basis: "Data labels printed on the paper’s own Figure 7. Cross-check with Section 3.3.2: city totals 58.4 / 72.0 / 87.9 / 55.3; IBRD Nha Trang 16.4, Dong Hoi 14.3. The printed Phan Rang labels sum to 88.0 (text: 87.9) — rounding, see ISSUES.md."
+    source: "Source: projects.worldbank.org"
+  F8:
+    caption: "Figure 8. Total funding by city: plan vs. adjusted (million USD)"
+    type: bar_clustered
+    categories: ["Dong Hoi", "Quy Nhon", "Nha Trang", "Phan Rang–Thap Cham"]
+    series:
+      - {name: "Plan", values: [58.4, 55.3, 72.0, 87.9]}
+      - {name: "Adjusted", values: [null, 33.2, null, 97.9]}
+    number_format: '0.0'
+    basis: "Section 3.3.2 text only: plan totals for all four cities; adjusted totals are stated only for Quy Nhon (33.2) and Phan Rang–Thap Cham (97.9). Dong Hoi and Nha Trang adjusted values appear only as unlabeled bars in the paper’s figure and are NOT estimated here; the original figure is shown beside the chart."
+    source: "Source: projects.worldbank.org"
+  F8img:
+    caption: "Figure 8 (original image from the paper, unlabeled bars)"
+    type: image
+    files: ["fig8-plan.png", "fig8-adjusted.png"]
+  DPF:
+    caption: "DPF operations named in Section 2.1.3 (million USD)"
+    type: bar_stacked
+    categories: ["PIR 1 (Dec 2009)", "PIR 2 (May 2011)", "Power-sector DPF (2010)"]
+    series:
+      - {name: "IBRD", values: [500, 87.3, 200]}
+      - {name: "IDA", values: [null, 262.7, 111.8]}
+    number_format: '0.0'
+    basis: "Section 2.1.3 text: PIR 1 US$500 million IBRD [2]; PIR 2 IBRD US$87.3 million + IDA US$262.7 million [28]; power-sector DPF US$200 million IBRD + US$111.8 million IDA [31]. Not a figure in the paper — a chart of figures stated in the text."
+    source: "Data: Section 2.1.3 of the paper ([2], [28], [31])."
+  ASA:
+    caption: "Analytical and advisory disbursements, 2023 (US$991 million)"
+    type: doughnut
+    categories: ["Donor trust funds", "Bank administrative budget", "Reimbursable Advisory Services"]
+    series:
+      - {name: "Share (%)", values: [68, 26, 6]}
+    number_format: '0"%"'
+    basis: "Section 2.2.2 text [35]. Not a figure in the paper."
+    source: "Data: Section 2.2.2 of the paper ([35])."
+  TWH:
+    caption: "Electricity transmitted by the NPT system (TWh)"
+    type: bar_clustered
+    categories: ["2018", "2021", "2022"]
+    series:
+      - {name: "Electricity transmitted (TWh)", values: [184.50, 200.86, 211.47]}
+    number_format: '0.00'
+    basis: "Section 3.2.4 text [37, pp. viii–ix, 8–9]. National-level context, not a TEP-only result."
+    source: "Data: Section 3.2.4 of the paper ([37, pp. viii–ix, 8–9]). Not a measure of electricity supplied solely because of TEP."
+  DISB:
+    caption: "CCSEP disbursement: PAD projection vs. reported by late 2022 (million USD)"
+    type: bar_stacked
+    categories: ["PAD projection (end FY2022)", "Disbursed by late 2022"]
+    series:
+      - {name: "Total (PAD projection)", values: [212.3, null]}
+      - {name: "IBRD", values: [null, 16.47]}
+      - {name: "IDA", values: [null, 68.34]}
+    number_format: '0.00'
+    basis: "Section 3.3.3 text [43]: PAD projected USD 212.3 million by end FY2022; IBRD 16.47 + IDA 68.34 ≈ USD 84.8 million (36% of original loan capital)."
+    source: "Data: Section 3.3.3 of the paper ([33; 55; 43])."

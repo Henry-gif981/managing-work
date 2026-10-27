@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""verify-content — compare the slides and notes of IBRD-Presentation.pptx with the paper.
+
+1. Anti-fabrication: every number, year, code (P131558, 8417-VN, 80/2014/ND-CP …) and proper noun on a
+   visible content slide must occur in the paper section(s) the slide is built from (its notes sources).
+   - found in those sections ............ OK
+   - found elsewhere in the paper ........ WARN (listed)
+   - not found anywhere in the paper ..... ERROR, unless it is a chart value documented in the chart's
+     "basis" as read from a figure label or calculated (then INFO, listed)
+2. Coverage: every paragraph of the paper (Introduction → Conclusion) is in some slide's speaker notes;
+   every Table 1–21 and Figure 1–8 appears on a slide; every section heading is represented.
+3. Notes are verbatim: each paragraph placed in notes equals the paper paragraph (drafting marks removed).
+4. Drafting marks ("( lỗi )", "( check … )", "quên mất tên cô", trailing "|") appear nowhere in the deck.
+Exit 1 on errors. Usage: scripts/verify-content [deck.pptx]
+"""
+import sys, re, json, pathlib, unicodedata
+from pptx import Presentation
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import deckkit as K
+
+PPTX = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else K.ROOT / "IBRD-Presentation.pptx"
+INFO = K.ROOT / "build/build-info.json"
+SKIP_SHAPES = ("!!section", "!!ref", "Slide number", "Index hint")
+NAV_KINDS = {"references", "index", "credits", "thanks", "cover", "agenda", "divider"}
+# words that are slide furniture, not claims
+STOP = set("""Paper Slide Section Source Table Figure Note Data Q1 Q2 Q3 Q4 Chapter Introduction Conclusion
+Strengths Weaknesses Supervision Completion Independent Finance Training Subject Content Space Time Click
+""".split())
+
+
+def norm(s):
+    s = unicodedata.normalize("NFC", s)
+    s = s.replace("‑", "-").replace("‑", "-").replace("’", "'").replace("“", '"').replace("”", '"')
+    return re.sub(r"\s+", " ", s)
+
+
+def tokens(text):
+    """Claim tokens of ONE paragraph: numbers/codes everywhere; proper nouns outside the bold lead label."""
+    t = norm(text)
+    t = re.sub(r"\((\d)/(\d)\)", "", t)            # "(1/2)" slide-part markers
+    out = set()
+    for m in re.finditer(r"[A-Z]*\d[\w./,\-–]*", t):
+        tok = m.group(0).rstrip(".,-–/")
+        if tok:
+            out.add(tok)
+    body = t.split(":", 1)[1] if re.match(r"^[^:]{1,45}:", t) else t   # drop "Lead label:"
+    body = body.replace("US$", "").replace("'s ", " ")
+    for m in re.finditer(r"(?<=[a-z,;(] )([A-Z][\w'’\-–]+(?: [A-Z][\w'’\-–]+)*)", body):
+        w = m.group(1)
+        if w.split()[0] not in STOP:
+            out.add(w)
+    for m in re.finditer(r"\b(\w*[Đđạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]\w*)\b", t):
+        out.add(m.group(1))
+    return out
+
+
+def variants(tok):
+    """Equivalent spellings tolerated when searching the paper."""
+    v = {tok}
+    v.add(tok.replace("–", "-")); v.add(tok.replace("-", "–"))
+    if re.fullmatch(r"\d{1,3}(,\d{3})+", tok):  # 290,000 ~ 290.000 (paper tables use dots)
+        v.add(tok.replace(",", "."))
+    if re.fullmatch(r"\d+\.\d+", tok):          # 140.7 ~ 140,7 (paper tables use commas)
+        v.add(tok.replace(".", ","))
+    if re.fullmatch(r"\d+,\d+", tok):
+        v.add(tok.replace(",", "."))
+    return v
+
+
+def found(tok, hay):
+    for v in variants(tok):
+        if re.search(r"(?<![\w.])" + re.escape(v) + r"(?![\w])", hay):
+            return True
+    return False
+
+
+def main():
+    P = K.load_paper()
+    secs = P["sections"]
+    whole = norm(K.CONTENT_MD.read_text(encoding="utf-8"))
+    info = json.loads(INFO.read_text(encoding="utf-8"))
+    prs = Presentation(PPTX)
+    slides = list(prs.slides)
+    errors, warns, infos = [], [], []
+    charts = K.all_charts()
+    tables = K.load_deck()["tables"]
+    covered_paras, covered_tables, covered_figs = set(), set(), set()
+    for rec in info["slides"]:
+        sl = slides[rec["no"] - 1]
+        # ---- coverage from the plan
+        for kind, sid, item in K.resolve_notes(rec["notes"]):
+            if kind == "para":
+                covered_paras.add((sid, item["n"]))
+            elif kind == "table":
+                covered_tables.add(sid)
+            elif kind == "chart":
+                covered_figs.add(sid)
+        # ---- notes verbatim
+        notes = norm(sl.notes_slide.notes_text_frame.text) if sl.has_notes_slide else ""
+        for kind, sid, item in K.resolve_notes(rec["notes"]):
+            if kind == "para" and norm(K.strip_draft(item["text"])) not in notes:
+                errors.append(f"slide {rec['no']}: notes missing verbatim paragraph {sid}#{item['n']}")
+        # ---- drafting marks
+        alltext = notes + " " + " ".join(norm(sh.text_frame.text) for sh in sl.shapes if sh.has_text_frame)
+        for pat in (r"\(\s*lỗi\s*\)", r"\(\s*check", r"quên mất", r"\s\|\s*$", r"Cô Vân"):
+            if re.search(pat, alltext, re.M):
+                errors.append(f"slide {rec['no']}: drafting mark /{pat}/ present")
+        if rec["kind"] in NAV_KINDS:
+            continue
+        # ---- anti-fabrication
+        hay = []
+        for kind, sid, item in K.resolve_notes(rec["notes"]):
+            if kind == "para":
+                hay.append(item["text"])
+            elif kind == "table":
+                T = tables[sid]
+                hay += [T["caption"], K.plain_text(T["source"]), K.plain_text(T.get("note", ""))]
+                hay += [K.plain_text(c) for r in T["rows"] for c in r] + T["header"]
+            elif kind == "chart":
+                hay += [charts[sid]["caption"], K.plain_text(charts[sid].get("source", ""))]
+        # tables/charts shown on the slide also count as the slide's own sources
+        spec = next(s for s in K.load_deck()["slides"] if s.get("title") == rec["title"])
+        for key in ("table", "chart", "image"):
+            if spec.get(key):
+                k = spec[key]
+                if k in tables:
+                    T = tables[k]
+                    hay += [T["caption"], K.plain_text(T["source"]), K.plain_text(T.get("note", ""))]
+                    hay += [K.plain_text(c) for r in T["rows"] for c in r] + T["header"]
+                if k in charts:
+                    hay += [charts[k]["caption"], K.plain_text(charts[k].get("source", ""))]
+                    covered_figs.add(k)
+                if k in tables:
+                    covered_tables.add(k)
+        local = norm(" ".join(hay))
+        texts = []
+        for sh in sl.shapes:
+            if sh.name in SKIP_SHAPES or sh.name.startswith("Source line"):
+                continue
+            if sh.has_text_frame:
+                texts += [p_.text for p_ in sh.text_frame.paragraphs]
+            if sh.has_table:
+                texts += [c.text_frame.text for row in sh.table.rows for c in row.cells]
+        for tok in sorted(set().union(*[tokens(t) for t in texts])):
+            if tok in STOP or found(tok, local):
+                continue
+            if found(tok, whole):
+                warns.append(f"slide {rec['no']} ({rec['ref']}): '{tok}' is in the paper but not in this slide's sections")
+            else:
+                errors.append(f"slide {rec['no']} ({rec['ref']}): '{tok}' NOT FOUND in the paper")
+        # chart values
+        for sh in sl.shapes:
+            if sh.has_chart:
+                key = next((k for k, c in charts.items() if c.get("caption") and sh.chart.has_title
+                            and sh.chart.chart_title.text_frame.text == c["caption"]), None)
+                ch = charts.get(key)
+                for s in ch["series"]:
+                    for v in s["values"]:
+                        if v is None:
+                            continue
+                        strs = {f"{v}", f"{v:.2f}", f"{v:.1f}", f"{v:,.2f}", f"{int(v)}" if float(v).is_integer() else f"{v}"}
+                        if not any(found(x, whole) for x in strs):
+                            infos.append(f"slide {rec['no']} chart {key}: value {v} not printed in the paper text — basis: {ch['basis']}")
+    # ---- coverage report
+    for sid in P["order"]:
+        if sid in ("cover", "refs"):
+            continue
+        for p in secs[sid]["paras"]:
+            if (sid, p["n"]) not in covered_paras:
+                errors.append(f"paper {sid} ¶{p['n']} (p. {p['page']}) not in any slide's notes")
+    for k in tables:
+        if k not in covered_tables:
+            errors.append(f"{k} not shown on any slide")
+    for k in ("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8"):
+        if k not in covered_figs:
+            errors.append(f"{k} not shown on any slide")
+    print(f"# verify-content: {PPTX.name}")
+    print(f"- paragraphs in paper: {sum(len(secs[s]['paras']) for s in P['order'] if s not in ('cover','refs'))}; "
+          f"covered in notes: {len(covered_paras)}")
+    print(f"- tables shown: {len(covered_tables)}/21; figures rebuilt: {len([f for f in covered_figs if f in ('F1','F2','F3','F4','F5','F6','F7','F8')])}/8")
+    print(f"\nResult: {len(errors)} errors, {len(warns)} warnings, {len(infos)} info")
+    for e in errors:
+        print("ERROR", e)
+    for w in warns:
+        print("WARN ", w)
+    for i in sorted(set(infos)):
+        print("INFO ", i)
+    return 1 if errors else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

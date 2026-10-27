@@ -1,0 +1,5 @@
+build/*.pdf
+build/*.jpg
+build/x/
+build/qa-cards-unhidden.*
+__pycache__/

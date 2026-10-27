@@ -1,0 +1,7 @@
+# check-links: IBRD-Presentation.pptx
+- slides: 208 (123 visible, 85 hidden card pages for 58 sources)
+- hyperlinks checked: 981; citation links on visible slides: 363
+- sources cited in the paper body: 56; cited on slides: 56
+- references never cited in the paper body (cards say 'Not cited in the body text'): [5, 6]
+
+Result: 0 errors

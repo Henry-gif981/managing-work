@@ -1,0 +1,212 @@
+#!/usr/bin/env python3
+"""check-links — verify every citation in IBRD-Presentation.pptx is a working internal link.
+
+Reads the package XML directly (no PowerPoint needed):
+  1. every [n] number on a visible slide (bullets, cards, tables, captions, Source lines) is its OWN run
+     carrying <a:hlinkClick action="ppaction://hlinksldjump"> whose relationship targets the source card
+     of n (title "[n]"), and every author–year link targets the card the mapping table says;
+  2. no dead links: every hlinkClick r:id resolves; slide-jump targets are slides of this deck;
+  3. every source card is hidden (show="0"), has a Back button (jump=lastslideviewed) and an Index link;
+  4. cards exist for all references [1]–[58]; Index of sources links to each card;
+  5. the set of citation numbers used on the slides equals the set cited in the paper body
+     (content/content-ibrd.md, including table/figure source lines) — nothing missing, nothing extra.
+Exit 1 on any error. Usage: scripts/check-links [deck.pptx]
+"""
+import sys, re, zipfile, pathlib, posixpath
+from lxml import etree
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import deckkit as K
+
+PPTX = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else K.ROOT / "IBRD-Presentation.pptx"
+NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main",
+      "p": "http://schemas.openxmlformats.org/presentationml/2006/main",
+      "r": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
+      "rel": "http://schemas.openxmlformats.org/package/2006/relationships"}
+RID = "{%s}id" % NS["r"]
+errors, notes = [], []
+
+
+def rels_of(z, part):
+    d, f = posixpath.split(part)
+    rp = f"{d}/_rels/{f}.rels"
+    if rp not in z.namelist():
+        return {}
+    x = etree.fromstring(z.read(rp))
+    out = {}
+    for r in x.findall("rel:Relationship", NS):
+        tgt = r.get("Target")
+        if r.get("TargetMode") != "External":
+            tgt = posixpath.normpath(posixpath.join(d, tgt))
+        out[r.get("Id")] = (r.get("Type").rsplit("/", 1)[-1], tgt, r.get("TargetMode"))
+    return out
+
+
+def main():
+    z = zipfile.ZipFile(PPTX)
+    pres = etree.fromstring(z.read("ppt/presentation.xml"))
+    prels = rels_of(z, "ppt/presentation.xml")
+    order = [prels[s.get(RID)][1] for s in pres.find("p:sldIdLst", NS)]
+    num = {part: i + 1 for i, part in enumerate(order)}
+    xml = {part: etree.fromstring(z.read(part)) for part in order}
+    rels = {part: rels_of(z, part) for part in order}
+
+    def title_of(part):
+        for sp in xml[part].iter("{%s}sp" % NS["p"]):
+            ph = sp.find(".//p:nvPr/p:ph", NS)
+            if ph is not None and ph.get("type") in ("title", "ctrTitle"):
+                return "".join(t.text or "" for t in sp.iter("{%s}t" % NS["a"]))
+        return ""
+
+    cards = {}
+    for part in order:
+        if xml[part].get("show") == "0":
+            m = re.fullmatch(r"\[(\d+)\]", title_of(part).strip())
+            if not m:
+                errors.append(f"hidden slide {num[part]} is not a source card")
+                continue
+            cards.setdefault(int(m.group(1)), []).append(part)
+    refs = K.load_paper()["refs"]
+    for n in refs:
+        if n not in cards:
+            errors.append(f"no source card for [{n}]")
+    # ---- every hlinkClick resolves
+    n_links = 0
+    for part in order:
+        for h in xml[part].iter("{%s}hlinkClick" % NS["a"]):
+            n_links += 1
+            rid, act = h.get(RID), h.get("action") or ""
+            if "lastslideviewed" in act:
+                continue
+            if rid not in rels[part]:
+                errors.append(f"slide {num[part]}: dead link r:id={rid}")
+                continue
+            typ, tgt, mode = rels[part][rid]
+            if act == "ppaction://hlinksldjump" and tgt not in num:
+                errors.append(f"slide {num[part]}: slide link to missing part {tgt}")
+    # ---- cards: hidden, back, index
+    index_part = next((p for p in order if title_of(p).strip() == "Index of sources"), None)
+    for n, parts in cards.items():
+        for part in parts:
+            acts = [h.get("action") for h in xml[part].iter("{%s}hlinkClick" % NS["a"])]
+            if "ppaction://hlinkshowjump?jump=lastslideviewed" not in acts:
+                errors.append(f"card [{n}] (slide {num[part]}) has no Back button")
+            tg = [rels[part][h.get(RID)][1] for h in xml[part].iter("{%s}hlinkClick" % NS["a"])
+                  if h.get(RID) in rels[part]]
+            if index_part not in tg:
+                errors.append(f"card [{n}] (slide {num[part]}) has no Index link")
+            if xml[part].find("p:transition", NS) is not None:
+                errors.append(f"card [{n}] has a transition")
+    # index links
+    if index_part:
+        tg = {rels[index_part][h.get(RID)][1] for h in xml[index_part].iter("{%s}hlinkClick" % NS["a"])}
+        for n in refs:
+            if cards.get(n) and cards[n][0] not in tg:
+                errors.append(f"Index of sources: no link to card [{n}]")
+    else:
+        errors.append("no 'Index of sources' slide")
+    # ---- citations on visible slides
+    ay_map = author_year_map()
+    used = set()
+    n_cit = 0
+    card_parts = {p: n for n, ps in cards.items() for p in ps}
+    for part in order:
+        if part in card_parts:
+            continue
+        nav = title_of(part).strip().startswith(("References", "Index of sources"))
+        for p in xml[part].iter("{%s}p" % NS["a"]):
+            runs = [r for r in p if r.tag in ("{%s}r" % NS["a"], "{%s}fld" % NS["a"])]
+            text, spans = "", []
+            for r in runs:
+                t = r.find("a:t", NS)
+                s = t.text if t is not None and t.text else ""
+                spans.append((len(text), len(text) + len(s), r))
+                text += s
+            for m in K.CIT.finditer(text):
+                grp = K.parse_citation_group(m.group(1))
+                if grp is None:
+                    continue
+                # locate each number inside the bracket
+                pos = m.start(1)
+                for (n, loc) in grp:
+                    k = text.index(str(n), pos)
+                    pos = k + len(str(n))
+                    run = next((r for a, b, r in spans if a <= k < b), None)
+                    n_cit += 1
+                    if not nav:
+                        used.add(n)
+                    rt = run.find("a:t", NS).text
+                    h = run.find("a:rPr/a:hlinkClick", NS)
+                    where = f"slide {num[part]} [{m.group(1)}]"
+                    if rt != str(n):
+                        errors.append(f"{where}: number {n} not in its own run (run text {rt!r})")
+                        continue
+                    if h is None:
+                        errors.append(f"{where}: [{n}] has no hyperlink")
+                        continue
+                    tgt = rels[part].get(h.get(RID), (None, None, None))[1]
+                    if card_parts.get(tgt) != n:
+                        errors.append(f"{where}: [{n}] links to {('card [%s]' % card_parts.get(tgt)) if tgt in card_parts else tgt}")
+            # author–year links: linked runs that are not digits
+            for a, b, r in spans:
+                h = r.find("a:rPr/a:hlinkClick", NS)
+                rt = (r.find("a:t", NS).text or "") if r.find("a:t", NS) is not None else ""
+                if h is not None and not re.fullmatch(r"\[?\d+\]?", rt) and h.get("action") == "ppaction://hlinksldjump":
+                    tgt = rels[part][h.get(RID)][1]
+                    if tgt in card_parts:
+                        exp = ay_map.get(rt)
+                        if exp is None:
+                            errors.append(f"slide {num[part]}: linked text {rt!r} not in author–year mapping")
+                        elif exp != card_parts[tgt]:
+                            errors.append(f"slide {num[part]}: {rt!r} -> [{card_parts[tgt]}], expected [{exp}]")
+                        used.add(card_parts[tgt])
+                        n_cit += 1
+    # ---- compare with the paper
+    paper = paper_citations()
+    missing = sorted(paper - used)
+    extra = sorted(used - paper)
+    print(f"# check-links: {PPTX.name}")
+    print(f"- slides: {len(order)} ({len(order) - len(card_parts)} visible, {len(card_parts)} hidden card pages for {len(cards)} sources)")
+    print(f"- hyperlinks checked: {n_links}; citation links on visible slides: {n_cit}")
+    print(f"- sources cited in the paper body: {len(paper)}; cited on slides: {len(used)}")
+    if missing:
+        errors.append(f"cited in the paper but not on any slide: {missing}")
+    if extra:
+        errors.append(f"cited on slides but not in the paper body: {extra}")
+    uncited = sorted(set(refs) - paper)
+    print(f"- references never cited in the paper body (cards say 'Not cited in the body text'): {uncited}")
+    print(f"\nResult: {len(errors)} errors")
+    for e in errors:
+        print("ERROR", e)
+    return 1 if errors else 0
+
+
+def author_year_map():
+    d = K.load_deck()
+    out = {}
+    blob = yaml_dump(d)
+    for m in K.AY.finditer(blob):
+        out[m.group(1)] = int(m.group(2))
+    return out
+
+
+def yaml_dump(d):
+    import json
+    return json.dumps(d, ensure_ascii=False)
+
+
+def paper_citations():
+    t = K.CONTENT_MD.read_text(encoding="utf-8")
+    body = t[: t.index("## [refs]")]
+    s = set()
+    for m in K.CIT.finditer(body):
+        g = K.parse_citation_group(m.group(1))
+        if g:
+            s |= {n for n, _ in g}
+    # author–year citations in table/figure source lines resolve through the mapping table
+    s |= set(author_year_map().values())
+    return s
+
+
+if __name__ == "__main__":
+    sys.exit(main())

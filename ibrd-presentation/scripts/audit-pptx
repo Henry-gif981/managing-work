@@ -1,0 +1,210 @@
+#!/usr/bin/env python3
+"""audit-pptx — typography, glyph, geometry and Morph audit of IBRD-Presentation.pptx.
+
+Checks (per run / shape / slide):
+  * every font face used (run-level, with theme fonts resolved) and its sizes
+  * size thresholds: title >= 36 pt, bullet level 1 >= 24, level 2 >= 20, table cell >= 14,
+    citation numbers >= 14, nothing < 12 pt
+  * fonts outside the allowed families; glyphs missing from the font actually used (fontTools cmap)
+  * shapes outside the slide; text overflowing its box (measured with the real TTF metrics)
+  * duplicate shape names on a slide; Morph pairing (shared "!!" names between adjacent slides)
+  * autofit disabled everywhere; transition XML (Morph + fade fallback) well formed
+Exit code 1 when an ERROR is found. Usage: scripts/audit-pptx [deck.pptx]
+"""
+import sys, re, pathlib, collections
+from fontTools.ttLib import TTFont
+from pptx import Presentation
+from pptx.util import Emu
+from pptx.oxml.ns import qn
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import deckkit as K
+
+PPTX = pathlib.Path(sys.argv[1]) if len(sys.argv) > 1 else K.ROOT / "IBRD-Presentation.pptx"
+ALLOWED = {K.DISPLAY, K.BODY}
+THEME = {"+mj-lt": K.DISPLAY, "+mn-lt": K.BODY}
+errors, warns, info = [], [], []
+CMAPS = {}
+
+
+def cmap(face, bold, italic):
+    key = (face, bold, italic)
+    if key not in CMAPS:
+        f = K.FONT_FILES.get((face, bold, italic))
+        CMAPS[key] = set(TTFont(str(K.FONTS / f))["cmap"].getBestCmap()) if f else None
+    return CMAPS[key]
+
+
+def emu_in(v):
+    return Emu(v).inches if v is not None else 0
+
+
+def main():
+    prs = Presentation(PPTX)
+    W, H = emu_in(prs.slide_width), emu_in(prs.slide_height)
+    usage = collections.Counter()
+    sizes = collections.defaultdict(set)
+    prev_names, prev_no = None, None
+    morph_report = []
+    for no, slide in enumerate(prs.slides, 1):
+        hidden = slide._element.get("show") == "0"
+        names = collections.Counter()
+        for shp in slide.shapes:
+            names[shp.name] += 1
+            x, y, w, h = (emu_in(shp.left), emu_in(shp.top), emu_in(shp.width), emu_in(shp.height))
+            if x < -0.01 or y < -0.01 or x + w > W + 0.01 or y + h > H + 0.01:
+                errors.append(f"slide {no}: shape '{shp.name}' outside slide ({x:.2f},{y:.2f},{w:.2f},{h:.2f})")
+            for bp in shp._element.iter(qn("a:bodyPr")):
+                if bp.find(qn("a:normAutofit")) is not None or bp.find(qn("a:spAutoFit")) is not None:
+                    errors.append(f"slide {no}: autofit enabled on '{shp.name}'")
+            if shp.has_text_frame:
+                check_text(no, shp, shp.text_frame, usage, sizes, role_of(shp))
+                check_overflow(no, shp)
+            if shp.has_table:
+                for row in shp.table.rows:
+                    for c in row.cells:
+                        check_text(no, shp, c.text_frame, usage, sizes, "cell")
+            if shp.has_chart:
+                ch = shp.chart
+                for el in ch._chartSpace.iter(qn("a:defRPr")):
+                    sz = el.get("sz")
+                    if sz and int(sz) < 1200:
+                        errors.append(f"slide {no}: chart text {int(sz)/100}pt < 12pt")
+                for el in ch._chartSpace.iter(qn("a:latin")):
+                    usage[el.get("typeface")] += 1
+        for nm, k in names.items():
+            if k > 1:
+                errors.append(f"slide {no}: duplicate shape name '{nm}' x{k}")
+        morph_names = {n for n in names if n.startswith("!!")}
+        if len(morph_names) > 15:
+            warns.append(f"slide {no}: {len(morph_names)} Morph-named shapes (> 15)")
+        # transitions
+        sld = slide._element
+        ac = sld.findall("{http://schemas.openxmlformats.org/markup-compatibility/2006}AlternateContent")
+        if hidden:
+            if ac:
+                warns.append(f"slide {no} (source card) has a transition; expected none")
+        else:
+            if len(ac) != 1 or ac[0].find(".//{http://schemas.microsoft.com/office/powerpoint/2015/09/main}morph") is None \
+                    or ac[0].find(".//" + qn("p:fade")) is None:
+                errors.append(f"slide {no}: Morph transition with fade fallback missing")
+            if prev_names is not None:
+                shared = prev_names & morph_names
+                morph_report.append((prev_no, no, len(shared)))
+                if len(shared) < 3:
+                    errors.append(f"slides {prev_no}->{no}: only {len(shared)} shared Morph names")
+            prev_names, prev_no = morph_names, no
+    # report
+    print(f"# audit-pptx: {PPTX.name}\n")
+    print("## Fonts used (runs)")
+    for f, n in usage.most_common():
+        print(f"- {f}: {n} runs; sizes {sorted(sizes[f])}")
+    bad = [f for f in usage if f not in ALLOWED and f not in THEME]
+    for f in bad:
+        errors.append(f"font outside allowed families: {f}")
+    m = [k for _, _, k in morph_report]
+    print(f"\n## Morph pairing: {len(morph_report)} adjacent visible pairs; shared '!!' names min {min(m)}, "
+          f"median {sorted(m)[len(m)//2]}, max {max(m)}")
+    print(f"\n## Result: {len(errors)} errors, {len(warns)} warnings")
+    for e in errors:
+        print("ERROR", e)
+    for w in warns:
+        print("WARN ", w)
+    return 1 if errors else 0
+
+
+def role_of(shp):
+    n = shp.name
+    if n == "!!title":
+        return "title"
+    if n == "!!body":
+        return "body"
+    return "text"
+
+
+def run_face(r, para_level_default=None):
+    lat = r._r.find(qn("a:rPr") + "/" + qn("a:latin")) if r._r.find(qn("a:rPr")) is not None else None
+    face = lat.get("typeface") if lat is not None else None
+    return THEME.get(face, face)
+
+
+def check_text(no, shp, tf, usage, sizes, role):
+    for p in tf.paragraphs:
+        lvl = int(p._p.pPr.get("lvl", "0")) if p._p.pPr is not None else 0
+        for r in p.runs:
+            if not r.text:
+                continue
+            face = run_face(r) or (K.DISPLAY if role == "title" else K.BODY)
+            sz = r.font.size.pt if r.font.size else None
+            if sz is None:
+                warns.append(f"slide {no}: run without explicit size in '{shp.name}': {r.text[:30]!r}")
+                continue
+            usage[face] += 1
+            sizes[face].add(sz)
+            linked = r._r.find(qn("a:rPr") + "/" + qn("a:hlinkClick")) is not None
+            txt = r.text.strip()
+            if sz < 12:
+                errors.append(f"slide {no}: {sz}pt < 12pt in '{shp.name}': {txt[:40]!r}")
+            if role == "title" and sz < 36:
+                errors.append(f"slide {no}: title {sz}pt < 36pt")
+            if role == "body" and ((lvl == 0 and sz < 24) or (lvl >= 1 and sz < 20)):
+                errors.append(f"slide {no}: bullet level {lvl+1} at {sz}pt: {txt[:40]!r}")
+            if role == "cell" and sz < 14:
+                errors.append(f"slide {no}: table cell {sz}pt < 14pt")
+            if linked and re.fullmatch(r"\d+", txt) and sz < 14:
+                errors.append(f"slide {no}: citation [{txt}] at {sz}pt < 14pt")
+            cm = cmap(face, bool(r.font.bold), bool(r.font.italic)) if face in ALLOWED else None
+            if cm is not None:
+                miss = sorted({ch for ch in r.text if ord(ch) not in cm and ch not in "\n\t"})
+                if miss:
+                    errors.append(f"slide {no}: glyphs missing in {face}"
+                                  f"{' Bold' if r.font.bold else ''}{' Italic' if r.font.italic else ''}: "
+                                  + " ".join(f"U+{ord(c):04X}({c})" for c in miss))
+        # bullet glyph font
+        if p._p.pPr is not None:
+            bf = p._p.pPr.find(qn("a:buFont"))
+            bc = p._p.pPr.find(qn("a:buChar"))
+            if bf is not None and bf.get("typeface") not in ALLOWED:
+                errors.append(f"slide {no}: bullet font {bf.get('typeface')}")
+            if bc is not None:
+                cm = cmap(bf.get("typeface") if bf is not None else K.BODY, False, False)
+                if cm is not None and ord(bc.get("char")) not in cm:
+                    errors.append(f"slide {no}: bullet glyph {bc.get('char')!r} missing")
+
+
+def check_overflow(no, shp):
+    tf = shp.text_frame
+    if not tf.text.strip():
+        return
+    w = emu_in(shp.width) - emu_in(tf.margin_left) - emu_in(tf.margin_right)
+    h = emu_in(shp.height) - emu_in(tf.margin_top) - emu_in(tf.margin_bottom)
+    total = 0.0
+    for p in tf.paragraphs:
+        segs, size, face = [], None, K.BODY
+        for r in p.runs:
+            f = run_face(r) or K.BODY
+            face = f if f in K.FONT_FILES and False else f
+            size = r.font.size.pt if r.font.size else size
+            segs.append({"text": r.text, "bold": bool(r.font.bold), "italic": bool(r.font.italic), "cite": None})
+        if not segs or size is None:
+            continue
+        ind = 0.0
+        if p._p.pPr is not None and p._p.pPr.get("marL"):
+            ind = int(p._p.pPr.get("marL")) / 914400
+        face = run_face(p.runs[0]) or K.BODY
+        if face not in (K.DISPLAY, K.BODY):
+            continue
+        spc = 0
+        rpr = p.runs[0]._r.find(qn("a:rPr"))
+        if rpr is not None and rpr.get("spc"):
+            spc = int(rpr.get("spc")) / 100
+        lines = K.wrap_segments(segs, w - ind, face, size, spc)
+        ls = p.line_spacing.pt if hasattr(p.line_spacing, "pt") else size * K.LINE
+        after = p.space_after.pt if p.space_after is not None else 0
+        total += lines * ls / 72 + after / 72
+    if total > h + 0.03:
+        errors.append(f"slide {no}: text overflow in '{shp.name}' ({total:.2f}in > {h:.2f}in)")
+
+
+if __name__ == "__main__":
+    sys.exit(main())

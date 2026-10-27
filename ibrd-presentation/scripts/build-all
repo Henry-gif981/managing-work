@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# Rebuild everything from the paper and the slide plan, then run every check.
+#   scripts/build-all            full rebuild + checks + PDF + QA renders
+#   SKIP_RENDER=1 scripts/build-all   skip LibreOffice (PDF / qa/ images)
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+PDF_SRC="src/Bản sao của IBRD - NHÓM 6 (2).pdf"
+echo "== 1. extract paper text"
+pdftotext -layout "$PDF_SRC" content/raw.txt
+cat content/slides.part.yaml content/tables.part.yaml content/charts.part.yaml > content/deck.yaml
+python3 scripts/extract_content.py
+
+echo "== 2. illustrations"
+python3 scripts/make_art.py >/dev/null
+
+echo "== 3. build deck"
+python3 scripts/build_deck.py
+
+echo "== 4. checks"
+status=0
+python3 scripts/audit-pptx      > build/audit-pptx.txt     || status=1
+python3 scripts/check-links     > build/check-links.txt    || status=1
+python3 scripts/verify-content  > build/verify-content.txt || status=1
+grep -h "^Result\|^## Result" build/audit-pptx.txt build/check-links.txt build/verify-content.txt
+python3 scripts/make_docs.py
+
+if [ -z "${SKIP_RENDER:-}" ]; then
+  echo "== 5. render (LibreOffice: Morph shows as no transition; hidden source cards are not exported)"
+  SOFFICE=${SOFFICE:-soffice}
+  (cd build && rm -f IBRD-Presentation.pdf && timeout 900 $SOFFICE --headless --convert-to pdf ../IBRD-Presentation.pptx >/dev/null 2>&1)
+  cp build/IBRD-Presentation.pdf IBRD-Presentation.pdf
+  rm -f qa/slide-*.jpg
+  pdftoppm -jpeg -jpegopt quality=72 -scale-to-x 1200 -scale-to-y -1 IBRD-Presentation.pdf qa/slide
+  echo "PDF + $(ls qa/slide-*.jpg | wc -l) QA images written"
+fi
+exit $status
