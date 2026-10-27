@@ -27,7 +27,7 @@ parts:
   intro:   {label: "Introduction", roman: "Intro", giant: "2017", hero3d: globe, art: globe}
   ch1a:    {label: "Chapter 1 · Overview of the IBRD", roman: "I", giant: "1944", hero3d: temple, art: temple}
   ch1b:    {label: "Chapter 1 · Organization and funds", roman: "I", giant: "AAA", hero3d: tiers, art: scales}
-  ch1c:    {label: "Chapter 1 · Instruments and loan terms", roman: "I", giant: "IPF", hero3d: trio, art: ledger}
+  ch1c:    {label: "Chapter 1 · Instruments and loan terms", roman: "I", giant: "IPF", heroGiant: "LOAN", hero3d: trio, art: ledger}
   ch2:     {label: "Chapter 2 · How the IBRD supports project financing", roman: "II", giant: "CYCLE", hero3d: ring, art: gears}
   ch3:     {label: "Chapter 3 · The IBRD and selected projects in Vietnam", roman: "III", giant: "1993", hero3d: globe, art: map}
   tep:     {label: "Chapter 3 · Case study 1 · TEP", roman: "III", giant: "TEP", hero3d: pylon, art: pylon}

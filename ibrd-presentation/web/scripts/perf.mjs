@@ -35,7 +35,7 @@ for (const [label, url] of [['stage', '/#/1'], ['reading mode', '/#read']]) {
   const ctx = await b.newContext({ viewport: { width: 1920, height: 1080 } });
   const p = await ctx.newPage();
   let bytes = 0; const types = {};
-  p.on('response', async (r) => { try { const len = Number(r.headers()['content-length'] || (await r.body()).length); bytes += len; const t = (r.url().split('?')[0].split('.').pop() || 'doc').slice(0, 5); types[t] = (types[t] || 0) + len; } catch { /* ignore */ } });
+  p.on('response', async (r) => { try { const len = Number(r.headers()['content-length'] || (await r.body()).length); bytes += len; const u = r.url().split('?')[0]; const t = /\.[a-z0-9]{2,5}$/.test(u) ? u.split('.').pop() : 'html'; types[t] = (types[t] || 0) + len; } catch { /* ignore */ } });
   const t0 = Date.now();
   await p.goto(BASE + url, { waitUntil: 'networkidle' });
   await p.waitForFunction(() => document.body.classList.contains('ready'), null, { timeout: 60000 });
@@ -54,13 +54,17 @@ await page.waitForFunction(() => window.__deck && window.__deck.three, null, { t
 const deck = await page.evaluate(() => window.__deckData.slides.map((s) => ({ n: s.n, obj: s.obj, kind: s.hero3d })));
 const threeSlides = deck.filter((s) => s.obj);
 R.fps = [];
-for (const s of [1, 16, 19, 28, 53, 71, 79, 103, 119]) {
+for (const s of [1, 16, 19, 28, 53, 70, 80, 103, 119]) {
   await page.evaluate((n) => window.__deck.go(n, 0), s);
   await page.waitForTimeout(1500);
   const f = await frameStats(page, 3000);
   const st = await page.evaluate(() => window.__deck.three.stats());
   R.fps.push({ n: s, kind: st.current, tris: st.triangles, calls: st.drawCalls, ...f });
 }
+// baseline: the same 1920×1080 page with 3D switched off (cost of the software compositor alone)
+await page.evaluate(() => { window.__deck.setThree(false); window.__deck.go(70, 0); }); await page.waitForTimeout(1200);
+R.baseline2D = await frameStats(page, 3000);
+await page.evaluate(() => window.__deck.setThree(true)); await page.waitForTimeout(800);
 await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
 await page.evaluate(() => window.__deck.go(53, 0)); await page.waitForTimeout(1500);
 R.throttled = await frameStats(page, 4000);
@@ -110,6 +114,7 @@ L.push('## First load', '', '| View | Transferred | By type (KB) | DOMContentLoa
   ...['stage', 'reading mode'].map((k) => `| ${k} | ${R[k].kb} KB | ${Object.entries(R[k].byType).map(([a, v]) => `${a} ${v}`).join(', ')} | ${R[k].dcl} ms | ${R[k].fcp} ms | ${R[k].readyMs} ms |`), '');
 L.push('## Frame times on 3D sections (preset Full, 1920×1080, SwiftShader)', '', '| Section | Object | Triangles | Draw calls | Avg frame | p95 | FPS |', '|---|---|---|---|---|---|---|',
   ...R.fps.map((f) => `| ${f.n} | ${f.kind} | ${f.tris} | ${f.calls} | ${f.avgMs} ms | ${f.p95Ms} ms | ${f.fps} |`), '',
+  `Baseline with 3D switched off (section 70, same page, nothing animating in WebGL): avg ${R.baseline2D.avgMs} ms, ${R.baseline2D.fps} FPS — this is the cost of software compositing in this container, not of the 3D scene.`, '',
   `CPU throttled 4× (section 53, pylon): avg ${R.throttled.avgMs} ms, p95 ${R.throttled.p95Ms} ms, ${R.throttled.fps} FPS. Preset after the run: **${R.throttledPreset}**` +
   (R.throttledPreset === 'light' ? ' (auto-downgrade fired: frame time > 24 ms for ~3 s; the "Chế độ nhẹ" chip appeared).' : '.'), '');
 L.push(`## Memory across ${PASSES} full passes (preset Light, every section visited)`, '', '| Pass | JS heap | DOM nodes | GL geometries | GL textures | Live rigs |', '|---|---|---|---|---|---|',

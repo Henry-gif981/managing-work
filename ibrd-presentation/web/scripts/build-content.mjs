@@ -102,7 +102,7 @@ const slides = planned.map((s, i) => {
   if (!part) errors.push(`slide ${i + 1}: unknown part ${s.part}`);
   if (s.table && !tables[s.table]) errors.push(`slide ${i + 1}: table ${s.table} missing`);
   for (const c of s.charts || []) if (!charts[c]) errors.push(`slide ${i + 1}: chart ${c} missing`);
-  const out = { ...s, i, n: i + 1, id: `s${i + 1}`, partLabel: part?.label || '', giant: s.giant || part?.giant || '',
+  const out = { ...s, i, n: i + 1, id: `s${i + 1}`, partLabel: part?.label || '', giant: s.giant || (s.tpl === 'hero' && part?.heroGiant) || part?.giant || '',
     hero3d: part?.hero3d, roman: part?.roman || '' };
   out.notes = (s.notes || []).map(resolveNote);
   if (s.table) out.tableData = tables[s.table];

@@ -60,6 +60,10 @@ lessons); "Thank you" is the only presentational phrase. Nothing printed on an o
   "blended package", recommendations, thanks.
 * Cream sections that are text-dense keep the hero object small (medallion slot, 260–360 px) with a warm rim light,
   or rely on the 2D engraving when the layout has no free zone.
+* Slots (stage px, `SLOTS` in `src/deck/render.js`): cover centre 960,445 (box 600×540); chapter openers right of
+  centre 1190,470 (700×560) so the title block on the left stays clear; galleries left 540,560 (780×600); IPF/DPF/PforR
+  carousel 540,500 (840×500); project-cycle ring 520,580 (840×520). The object is scaled to fit **both** box
+  dimensions (×0.88 margin for perspective), so wide objects (bridge, ring, compass) never spill onto the text.
 * Safe zones: every template declares the rectangle the object may occupy; the object is scaled/offset to fit it,
   never over bullets, tables, [n] links or controls. The canvas has `pointer-events: none`; only the carousel strip
   receives pointer events.

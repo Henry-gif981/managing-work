@@ -5,7 +5,7 @@ import { toHTML } from '../lib/markup.js';
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 export function createDrawer(deck, host, { onJump }) {
-  const el = document.createElement('aside');
+  const el = document.createElement('div');
   el.className = 'drawer';
   el.setAttribute('role', 'dialog');
   el.setAttribute('aria-modal', 'false');
@@ -32,10 +32,10 @@ export function createDrawer(deck, host, { onJump }) {
         <button class="back" type="button" data-close>↩ Back</button></div>
       <div class="dbody">
         ${inferred}
-        <section><h4>Cited for</h4>${cited}</section>
-        <section><h4>Locator in source</h4><p class="muted">${loc}</p></section>
-        <section><h4>Paper section</h4><p class="muted">${where}</p></section>
-        <section><h4>Shown on sections</h4><p class="muted">${shown}</p></section>
+        <section><h3>Cited for</h3>${cited}</section>
+        <section><h3>Locator in source</h3><p class="muted">${loc}</p></section>
+        <section><h3>Paper section</h3><p class="muted">${where}</p></section>
+        <section><h3>Shown on sections</h3><p class="muted">${shown}</p></section>
         <p class="notret">Source text not retrieved – shown: citation details from the paper only.</p>
       </div>`;
   }

@@ -19,6 +19,7 @@
     "@ibm/plex-sans": "^1.1.0",
     "@ibm/plex-serif": "^2.0.0",
     "js-yaml": "^4.1.0",
+    "lighthouse": "^12.2.1",
     "topojson-client": "^3.1.0",
     "vite": "^5.4.10",
     "world-atlas": "^2.0.2"
@@ -27,7 +28,7 @@
     "three": "^0.169.0"
   },
   "scripts": {
-    "content": "pdftotext -layout \"paper/IBRD - NH\u00d3M 6(1).pdf\" content/raw.txt && python3 scripts/extract_content.py && node scripts/build-content.mjs && node scripts/make-docs.mjs",
+    "content": "pdftotext -layout \"paper/IBRD - NHÓM 6(1).pdf\" content/raw.txt && python3 scripts/extract_content.py && node scripts/build-content.mjs && node scripts/make-docs.mjs",
     "assets": "node scripts/copy-fonts.mjs && python3 scripts/make-textures.py && node scripts/make-vietnam.mjs",
     "dev": "node scripts/build-content.mjs && vite",
     "build": "node scripts/build-content.mjs && node scripts/make-docs.mjs && vite build",

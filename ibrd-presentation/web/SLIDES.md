@@ -641,7 +641,7 @@ Total: **119 sections**.
 - Model result: not a cash return to IBRD or NPT; sensitive to assumptions
 - [number] 52.6% — re-estimated EIRR, 2022 completion report [41, Annex 4]
 - [number] 31.4% — EIRR in the appraisal economic analysis
-- [number] USD 1,089 million — economic NPV at a 10% discount rate
+- [number] USD 1,089 million — economic net present value at a 10% discount rate
 - _Notes (verbatim):_ 3.2.4#5-6
 
 **70. Commitment vs disbursement** — Night gallery: 3D hero + giant word + bullets · ground: night · ref: 3.2.5

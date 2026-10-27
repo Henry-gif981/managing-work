@@ -13,7 +13,7 @@ function body(s, d) {
   const out = [];
   if (s.tpl === 'cover') {
     const m = d.meta;
-    out.push(`<p class="eyebrow">${esc(m.university)} · ${esc(m.course)}</p><h1>${esc(m.title)}</h1><p>${esc(m.group)}: ${m.members.map(esc).join(', ')}<br>Class: ${esc(m.class)}<br><span class="ph">${esc(m.lecturer)}</span><br>${esc(m.place)}</p>`);
+    out.push(`<p class="eyebrow">${esc(m.university)} · ${esc(m.course)}</p><h2 class="ctitle">${esc(m.title)}</h2><p>${esc(m.group)}: ${m.members.map(esc).join(', ')}<br>Class: ${esc(m.class)}<br><span class="ph">${esc(m.lecturer)}</span><br>${esc(m.place)}</p>`);
     return out.join('');
   }
   if (s.lead) out.push(`<p class="lead">${h(s.lead)}</p>`);
@@ -53,10 +53,20 @@ export function startReading(deck) {
     const full = s.notes.length ? `<details open><summary>Full text from the paper (verbatim)</summary>${s.notes.map((nt) => `<h4>${esc(nt.label)}${nt.page ? ` · PDF p. ${nt.page}` : ''}</h4>${nt.paras.map((p) => `<p>${h(p.text).replace(/\n/g, '<br>')}</p>`).join('')}`).join('')}</details>` : '';
     const title = s.title || (s.tpl === 'thanks' ? 'Thank you' : '');
     parts.push(`<article id="s${s.n}" class="sec ${s.ground}"><div class="meta"><a href="#/${s.n}" data-present="${s.n}">${s.n} / ${deck.slides.length}</a>${s.ref ? ` · ${esc(s.ref)}` : ''}</div>
-      ${title && s.tpl !== 'cover' ? `<h3>${h(title)}</h3>` : ''}${s.art ? `<div class="ra" aria-hidden="true">${art(s.art)}</div>` : ''}${body(s, deck)}${full}</article>`);
+      ${title && s.tpl !== 'cover' ? `<h3>${h(title)}</h3>` : ''}${s.art ? `<div class="ra" aria-hidden="true" data-art="${s.art}"></div>` : ''}${body(s, deck)}${full}</article>`);
   }
-  document.body.innerHTML = `<header class="rhead"><a href="#/1" data-present="1">◀ Back to presentation</a><span>${esc(deck.meta.title)} — reading mode</span></header>
-    <main class="read">${parts.join('')}</main><div class="scrim"></div>`;
+  document.body.innerHTML = `<header class="rhead"><a href="#/1" data-present="1">◀ Back to presentation</a><h1>${esc(deck.meta.title)} — reading mode</h1></header>
+    <main class="read">${parts.slice(0, 12).join('')}</main><div class="scrim"></div>`;
+  // the rest is appended in small idle chunks so the main thread never blocks for long
+  const main = document.querySelector('main.read');
+  let i = 12;
+  const idle = window.requestIdleCallback || ((f) => setTimeout(() => f({ timeRemaining: () => 8 }), 16));
+  const pump = (dl) => { while (i < parts.length && dl.timeRemaining() > 4) main.insertAdjacentHTML('beforeend', parts[i++]); if (i < parts.length) idle(pump); else watchArt(); };
+  idle(pump);
+  // engravings are drawn only when their section scrolls near the viewport
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.innerHTML = art(e.target.dataset.art); io.unobserve(e.target); } }), { rootMargin: '400px' });
+  function watchArt() { document.querySelectorAll('.ra[data-art]:empty').forEach((el) => io.observe(el)); }
+  watchArt();
   const host = document.body;
   const drawer = createDrawer(deck, host, { onJump: (n) => { drawer.close(); document.getElementById('s' + n)?.scrollIntoView({ behavior: 'smooth' }); } });
   document.addEventListener('click', (e) => {
