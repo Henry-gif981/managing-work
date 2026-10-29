@@ -5755,3 +5755,5 @@ html.frame .pl-hint {
   }
 }
 
+.wf .wf-row.is-neg .wf-bar { background-color: var(--bad); }
+.wf .is-neg .wf-val { color: var(--bad); }

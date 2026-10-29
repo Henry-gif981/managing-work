@@ -318,7 +318,7 @@
   }
 
   /* ---------- Lightbox: ảnh báo cáo gốc ---------- */
-  // BCTC BQLDA: 12 trang scan (bctc_bqlda.pdf), dùng cho chip nguồn, nút "Xem bản gốc" và Phụ lục 3
+  // BCTC BQLDA: 12 trang scan (bctc_bqlda.pdf), dùng cho chip nguồn, nút "Xem bản gốc" và Phụ lục 1
   var PAGE_IMG = ["assets/bctc-p01.webp", "assets/bctc-p02.webp", "assets/bctc-p03.webp", "assets/bctc-p04.webp", "assets/bctc-p05.webp", "assets/bctc-p06.webp",
     "assets/bctc-p07.webp", "assets/bctc-p08.webp", "assets/bctc-p09.webp", "assets/bctc-p10.webp", "assets/bctc-p11.webp", "assets/bctc-p12.webp"];
   var PAGES = [
@@ -340,7 +340,7 @@
     }
     return FORM_PAGE[k] || 0;
   }
-  // BCTC hợp nhất Hòa Phát 2024 (hpg_bctc_2024.pdf): chỉ nhúng các trang được trích dẫn.
+  // BCTC riêng Hòa Phát 2024 (hpg_bctc_rieng_2024.pdf, 40 trang): ảnh từng trang cho chip nguồn.
   // Khóa là số trang in "tr.N" (trang PDF = N + 1). Danh sách sinh bởi tools/build_hp_pages.py.
   var HP_IMG = window.HP_PAGES || {};
   function hpPages(txt) {
@@ -353,37 +353,9 @@
   }
   function hpList(pages) {
     return pages.map(function (n) {
-      var t = "BCTC hợp nhất Hòa Phát 2024, " + (n ? "trang " + n : "trang bìa");
+      var t = "BCTC riêng Hòa Phát 2024, " + (n ? "trang " + n : "trang bìa");
       return { title: t, bq: HP_IMG[n], capBq: t };
     });
-  }
-  // Phụ lục 4: toàn bộ báo cáo; mục lục nhanh theo trang in (đã xem ảnh từng trang đầu mục)
-  var HP_ALL = Object.keys(HP_IMG).map(Number).sort(function (a, b) { return a - b; });
-  var HP_TOC = [
-    ["Báo cáo của Ban Giám đốc", 1, 3], ["Báo cáo kiểm toán độc lập", 4, 5], ["Bảng cân đối kế toán", 6, 9],
-    ["Báo cáo kết quả hoạt động kinh doanh", 10, 11], ["Báo cáo lưu chuyển tiền tệ", 12, 13], ["Thuyết minh báo cáo tài chính", 14, HP_ALL.length - 1]
-  ];
-  function buildHpGal() {
-    var g = doc.getElementById("hpgal"), toc = doc.getElementById("hpgToc");
-    if (!g || !HP_ALL.length) return;
-    var TH = window.HP_THUMBS || {};
-    toc.innerHTML = HP_TOC.map(function (t) {
-      return '<button type="button" class="hpg-j" data-hpg="' + t[1] + '"><b>' + t[0] + "</b><small>tr." + t[1] + "–" + t[2] + "</small></button>";
-    }).join("");
-    g.innerHTML = HP_ALL.map(function (n) {
-      return '<button type="button" class="pg" data-hpg="' + n + '"><img data-src="' + TH[n] + '" alt="BCTC hợp nhất Hòa Phát 2024, ' + (n ? "trang " + n : "trang bìa") + '"><span>' + (n ? "tr." + n : "Bìa") + "</span></button>";
-    }).join("");
-    // ảnh thu nhỏ chỉ giải mã khi cuộn tới
-    var imgs = g.querySelectorAll("img[data-src]");
-    if ("IntersectionObserver" in window) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { loadThumb(e.target); io.unobserve(e.target); } });
-      }, { rootMargin: "400px" });
-      imgs.forEach(function (i) { io.observe(i); });
-    } else imgs.forEach(loadThumb);
-  }
-  function loadThumb(i) {
-    if (i.dataset.src) { i.src = i.dataset.src; i.removeAttribute("data-src"); }
   }
   function initChips() {
     doc.querySelectorAll(".src.hp").forEach(function (c) {
@@ -394,7 +366,7 @@
       c.setAttribute("role", "button");
       c.setAttribute("tabindex", "0");
       c.setAttribute("data-hp", ps.join(","));
-      c.setAttribute("title", "Mở BCTC hợp nhất Hòa Phát 2024, trang " + ps.join(", "));
+      c.setAttribute("title", "Mở BCTC riêng Hòa Phát 2024, trang " + ps.join(", "));
     });
     doc.querySelectorAll(".src:not(.hp):not(.bai)").forEach(function (c) {
       if (c.closest(".tip-src")) return;
@@ -445,10 +417,7 @@
       var pg = e.target.closest("[data-page]");
       var sc = e.target.closest("[data-scan]");
       var hp = e.target.closest("[data-hp]");
-      var hg = e.target.closest("[data-hpg]");
-      if (hg) {
-        lbOpen(hpList(HP_ALL), HP_ALL.indexOf(+hg.getAttribute("data-hpg")), hg);
-      } else if (hp) {
+      if (hp) {
         lbOpen(hpList(hp.getAttribute("data-hp").split(",").map(Number)), 0, hp);
       } else if (pg) {
         lbOpen(PAGES, +pg.getAttribute("data-page") - 1, pg);
@@ -542,7 +511,6 @@
 
   function finalizeAll() {
     doc.querySelectorAll(".reveal").forEach(function (t) { t.classList.add("in"); });
-    doc.querySelectorAll("#hpgal img[data-src]").forEach(loadThumb);
     doc.querySelectorAll(".cu").forEach(function (el) {
       el.dataset.counted = "1";
       el.dataset.final = "1";
@@ -1128,7 +1096,6 @@
   buildF03A();
   buildDeadline();
   buildPgal();
-  buildHpGal();
   shortHeads();
   fillNumbers();
   fillWidths();

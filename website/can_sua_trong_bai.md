@@ -107,3 +107,17 @@ Kết quả: **không có số nào lệch**. Tất cả các số bài dùng đ
 | B3 | Danh sách phụ lục của bài | Web thêm **Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát (đã kiểm toán)**, 67 trang scan; bài chưa có phụ lục này. | Thêm Phụ lục 4 vào danh sách phụ lục của bài (đính kèm hpg_bctc_2024.pdf). |
 | B4 | Vị trí Phụ lục | Web đặt Phụ lục ngay sau tiêu đề Chương 2, trước mục 2.1, để có sẵn báo cáo gốc khi đọc Chương 2; bài để phụ lục ở cuối. | Không bắt buộc sửa bài; ghi nhận để nhóm biết khi trình bày. |
 | B5 | Danh sách phụ lục của bài | Bài liệt kê Phụ lục 1, 2, 3; web chỉ hiển thị **Phụ lục 3** (Bộ BCTC mẫu BQLDA Đồng Bằng 2015) và **Phụ lục 4** (BCTC hợp nhất Hòa Phát 2024), giữ nguyên số hiệu; Phụ lục 1 ẩn vì chưa có nội dung, Phụ lục 2 đã bỏ. | Cập nhật danh sách phụ lục trong bài cho khớp (bỏ hoặc hoàn thiện Phụ lục 1, 2; thêm Phụ lục 4). |
+
+## Bản 9: chuyển sang BCTC riêng (công ty mẹ) Hòa Phát 2024
+
+| Mã | Chỗ trong bài | Bài ghi | Theo BCTC riêng / web |
+|---|---|---|---|
+| R1 | Mở đầu, phạm vi | "Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát" | BCTC riêng năm 2024 của Công ty CP Tập đoàn Hòa Phát |
+| R2 | TLTK [7] | BCTC BQLDA năm 2016 | Năm 2015 (năm của bộ BCTC) |
+| R3 | TLTK [8] | BCTC hợp nhất | BCTC riêng, kiểm toán KPMG |
+| R4 | Mục 2.2.4 | Quỹ KTPL chiếm 92,6% nợ phải trả | 938,462 / 1.012,890 = 92,7% |
+| R5 | Mục 3.2, Kết luận | Vốn chủ sở hữu 114.647; LNCPP 49.599 (số hợp nhất) | 80.780 và 16.029 |
+| R6 | Mục lục hình | Hình 2.1–2.8 theo tên cũ | Thân bài có Hình 2.1–2.9 tên mới; web dùng tên ở thân bài |
+| R7 | Mục lục | 2.4.1 "… kinh doanh hợp nhất" | Thân bài: "… kinh doanh riêng" |
+| R8 | Mục 2.2.x | Ký hiệu (nhóm A/B/C/D) chưa định nghĩa | Web không hiển thị |
+| R9 | LCTT mã 21–27 | Dẫn tr.11 | Nằm ở trang in 10 |

@@ -4,11 +4,11 @@
  * Quy ước đơn vị:
  *  - bq.*  (BQLDA Đồng Bằng 2015): ĐỒNG, chép nguyên từ BCTC scan (bctc_bqlda.pdf).
  *          Trang hiển thị theo tỷ đồng, làm tròn nửa lên trên số nguyên đồng.
- *  - hp.*  (Tập đoàn Hòa Phát hợp nhất 2024): TỶ ĐỒNG, đúng như bài (baocao.pdf).
- *          Chip nguồn ghi số trang BCTC Hòa Phát theo chú dẫn của bài; chỗ bài không ghi trang thì ghi "Bài, mục x.y".
- *  - pct:  tỷ lệ % đúng như bài / BCTC (1 chữ số thập phân).
+ *  - hp.*  (Công ty CP Tập đoàn Hòa Phát, BCTC riêng năm 2024): TỶ ĐỒNG, chép từ BCTC riêng đã kiểm toán.
+ *          Chip nguồn ghi "Hòa Phát tr.N" hoặc "tm X, tr.N" với N là trang in (1–39).
+ *  - pct:  tỷ lệ % của BQLDA đúng như bài; tỷ lệ % của Hòa Phát tính bằng code (calc.hp*), 1 chữ số thập phân.
  *  - Số trang "tr." của BQLDA là số trang trong bctc_bqlda.pdf;
- *    số trang của Hòa Phát là số trang BCTC Hòa Phát mà bài trích dẫn.
+ *    số trang của Hòa Phát là trang in của BCTC riêng (trang PDF = trang in + 1).
  */
 window.DATA = {
   /* QUY ƯỚC LÀM TRÒN TOÀN TRANG (bản 4, mục A7). Đổi ở đây là đổi toàn trang.
@@ -181,126 +181,83 @@ window.DATA = {
     }
   },
 
-  /* ---------------- Tập đoàn Hòa Phát hợp nhất 31/12/2024 (theo bài, tỷ đồng) ---------------- */
+  /* ---------------- Hòa Phát: BCTC riêng (công ty mẹ) 31/12/2024, tỷ đồng ---------------- */
+  /* Công ty CP Tập đoàn Hòa Phát, BÁO CÁO TÀI CHÍNH RIÊNG năm 2024 (công ty mẹ, không hợp nhất công ty con),
+   * đã kiểm toán bởi Công ty TNHH KPMG (báo cáo kiểm toán số 22-02-00117-25-1, ngày 24/3/2025).
+   * Đơn vị: tỷ đồng, làm tròn 3 chữ số thập phân từ số đồng trên BCTC. Trang = trang in (1–39);
+   * trang PDF = trang in + 1. tm = số thuyết minh (1–28). Các tỷ lệ % tính bằng code ở cuối file. */
   hp: {
     ngayKy: "24/03/2025",
-    tongTS: 224490,
-    tsnh: 86674,
-    tsdh: 137815,
-    xdcb: 63655.9,
-    tscdhh: 67244.2,
-    htk: 46091.2,
-    no: 109842, // mã 300 = 310 + 330: 109.842.249.570.282 đồng (B01 Hòa Phát tr.8)
-    vay: 82963.1, // = vay ngắn hạn (mã 320, tm 23.1) 55.882,7 + vay dài hạn (mã 338, tm 23.2) 27.080,4; B01 Hòa Phát tr.8
-    vayNH: 55882.7,
-    vayDH: 27080.4,
-    vcsh: 114647, // bài ghi 114.647 khi làm tròn tỷ
-    vcshChiTiet: 114647.5, // bài ghi 114.647,5 khi có 1 chữ số thập phân
-    vcshDauNam: 102836.4, // 1/1/2024: 102.836.419.239.379 đồng (B01 Hòa Phát tr.9, Hình 2.7 trong bài)
-    lnChuaPP: 49599,
-    pct: { tsnh: 38.6, tsdh: 61.4, xdcb: 28.4, tscd: 30.0, htk: 20.5, no: 48.9, vcsh: 51.1 },
+    soBCKT: "22-02-00117-25-1",
+    nhanVien: 154, nhanVienDau: 127, ctyConCap1: 5, // tm 1.4, tr.12
 
-    // Tài sản ngắn hạn (đầu 1)
-    tien: 6887.6,
-    tienMat: 13.8,
-    tienGui: 2905.7,
-    tuongDuongTien: 3968.1,
-    dauTuTC: 18974.7,
-    phaiThuKH: 4352.1,
-    phaiThuKhac: 1249.0,
-    duPhongPTKD: 159.99,
-    gtgt: 6636.7,
-    cpTraTruocNH: 426.1,
-    traTruocNH: 2118.8,
-    traTruocDH: 82.8,
-    htkGoc: 46192.3,
-    htkDuPhong: 101.1,
+    // B01 riêng (tr.6–8): 31/12/2024 | 1/1/2024
+    tongTS: 81793.077, tongTSDau: 71986.602,
+    tsnh: 1015.072, tsnhDau: 1952.863,
+    tien: 319.258, tienDau: 140.728, tienMat: 0.383, tienGui: 46.075, tuongDuongTien: 272.800, // tm 4.1, tr.18
+    laiTDTtu: 4.2, laiTDTden: 4.75, // %/năm, tương đương tiền (tm 4.1)
+    dauTuTC: 281.047, dauTuTCDau: 1723.200, // tm 11.1, tr.24
+    laiDTTCtu: 4.6, laiDTTCden: 5.4, laiDTTCtuDau: 5.5, laiDTTCdenDau: 9.2,
+    phaiThuNH: 382.020, phaiThuNHDau: 60.798,
+    phaiThuKH: 146.311, phaiThuKHPctCtyCon: 99.3, // tm 5, tr.18
+    traTruocNH: 19.125,
+    choVayNH: 196.900, choVayDH: 19.000, // tm 6, tr.19
+    phaiThuKhac: 19.683, ptkLaiDuThu: 9.885, ptkThanhToanHo: 7.548, ptkKhac: 2.250, // tm 7.1, tr.20
+    htk: 0.722, htkDau: 0,
+    tsnhKhac: 32.026, cpTraTruocNH: 29.956, gtgt: 0.923, thuePhaiThu: 1.147,
+    cpttQuangCao: 11.388, cpttThueVP: 13.710, cpttKhac: 4.859, // tm 12.1, tr.25
+    tsdh: 80778.004, tsdhDau: 70033.739,
+    phaiThuDH: 23.095, phaiThuDHDau: 238.495,
+    tscd: 67.613, tscdDau: 89.972,
+    tscdhh: 59.554, nguyenGia: 186.038, haoMon: 126.483, tsVoHinh: 8.059,
+    bdsDauTu: 92.443, bdsDauTuDau: 105.404, bdsNguyenGia: 259.227, // tm 10, tr.23
+    xdcb: 5.560, xdcbDau: 0.878, // mã 242
+    dauTuCtyCon: 80585.847, dauTuCtyConDau: 69595.845, // tm 11.2, tr.24–25
+    cpTraTruocDH: 3.445, cpTraTruocDHDau: 3.145,
+    no: 1012.890, noDau: 1185.507, // mã 300 = 310 (toàn bộ ngắn hạn, không có vay)
+    ptnb: 20.303, ptnbBLQ: 0.756, // tm 13, tr.26
+    thuePhaiNop: 11.898, thueGTGTPN: 9.141, thueTNCNPN: 2.757, // tm 14, tr.27
+    ptld: 8.110, cpPhaiTra: 0.481, dtChuaTH: 3.151,
+    phaiTraKhac: 30.485, coTucPhaiTra: 0.752, coTucPhaiTraDau: 0.850, ptkConLai: 29.733, // tm 15, tr.28
+    quyKTPL: 938.462, quyKTPLDau: 1118.614, trichQuy: 265.750, suDungKTPL: 445.903, // tm 16, tr.28
+    vcsh: 80780.187, vcshDau: 70801.095,
+    vonCoPhan: 63962.502, vonCoPhanDau: 58147.857,
+    thangDu: 0, thangDuDauNam: 3211.560,
+    quyDTPT: 788.438, quyDTPTDau: 790.997,
+    lnChuaPP: 16029.247, lnChuaPPDau: 8650.681,
 
-    // Tài sản dài hạn (đầu 2)
-    nguyenGia: 108146.6,
-    haoMon: 40902.4,
-    khauHaoPhanBo: 6915.7,
-    tsHetKH: 11515,
-    tsDoDangDH: 63750.7,
-    tsVoHinh: 184.2,
-    bdsDauTu: 559.6,
-    dauTuDH: 136.5,
-    cpTraTruocDH: 4269.1,
-    tsThueHoanLai: 254.7,
-    loiTheTM: 63.6,
-    duAnDungQuat: 60108.1,
+    // B02 riêng (tr.9): năm 2024 | 2023
+    dtBH: 336.845, dtGiamTru: 0.006, dtt: 336.838, dtt2023: 269.468,
+    dtDichVu: 293.240, dtChoThueBDS: 43.605, // tm 21, tr.32
+    giaVon: 269.172, giaVon2023: 146.764, gvDichVu: 256.210, gvBDS: 12.961, // tm 22, tr.32
+    lnGop: 67.667, lnGop2023: 122.704,
+    dtTaiChinh: 10300.211, dtTaiChinh2023: 2753.143,
+    lnCtyCon: 10242.531, lnCtyCon2023: 2483.067, laiTienGuiChoVay: 57.680, laiTyGiaDong: 88322, // tm 23, tr.32
+    cpTaiChinh: 0, cpTaiChinh2023: 144.038, laiVay2023: 143.338,
+    cpBanHang: 0.003, cpQLDN: 121.220, cpQLDN2023: 225.534,
+    qlMuaNgoai: 43.565, qlKhauHao: 21.862, qlNhanVien: 14.676, qlPhanBo: 1.255, qlKiemToan: 0.999, qlKhac: 38.864, // tm 24, tr.33
+    lnThuanHDKD: 10246.655, // mã 30
+    thuNhapKhac: 1.951, cpKhac: 1.206, kqKhac: 0.746,
+    lnTruocThue: 10247.400, thueTNDN: 0, thueTNDN2023: 18.436, lnst: 10247.400,
+    thueSuat: 20, coTucKhongChiuThue: 2048.506, loTinhThueDung: 10.097, thueHLChuaGN: 15.188, loTinhThueChuaDung: 75.940, // tm 26, tr.34
 
-    // Nợ phải trả (đầu 3)
-    ptnbNH: 14046.8,
-    ptnbDH: 6283.6,
-    thuePhaiNop: 1743.4,
-    ptld: 890.9,
-    cpPhaiTraNH: 682.1,
-    cpPhaiTraDH: 1143.7,
-    phaiTraKhac: 188.1,
-    quyKTPL: 1027.3,
+    // B03 riêng (tr.10–11, năm 2024; tiền ra ghi số âm)
+    khauHaoPhanBo: 46.968, // mã 02
+    lcttKD: -583.973, lcttDT: 762.602, lcttTC: -0.098, tienThuan: 178.530,
+    m21: -18.154, m22: 1.951, m23: -1774.797, m24: 3235.450, m25: -11290.000, m26: 299.998, m27: 10308.153,
+    coTucTraTienTrieu: 98.469, // mã 36: trả cổ tức 98,469 triệu đồng
+    vay2023: 760.000, traGoc2023: 4593.308,
 
-    // Vốn chủ sở hữu (đầu 4)
-    vonCoPhan: 63962.5,
-    thangDuDauNam: 3211.6,
-    quyDTPT: 794.8,
-
-    // Kết quả kinh doanh (đầu 5–9)
-    dtt: 138855.1,
-    dtTaiChinh: 2618.9,
-    giaVon: 120357.6,
-    lnGop: 18497.5,
-    bienGop: 13.3,
-    cpBanHang: 2337.3,
-    cpQLDN: 1545.5,
-    cpTaiChinh: 3966.6,
-    thuNhapKhac: 1159.8,
-    cpKhac: 733.3,
-    thueTNDN: 1673.5,
-    lnTruocThue: 13693.5,
-    lnst: 12020.0,
-    lnstPct: 8.7,
-    laiTyGia: 1319.8,
-    loTyGia: 1473.2,
-
-    // Biến động vốn chủ sở hữu (tm 26)
-    gopVonCDKKS: 233.1,
-    trichQuy: 433.1,
-
-    // Ngoài bảng
-    usd: 14517852,
-    usdTy: 366.6,
-
-    // XDCB dở dang (tm 14)
-    xdcbTang: 39906.8,
-    laiVayVonHoa: 1310.4,
-    chuyenTSCD: 2925.6,
-    khauHao: 6810.7,
-    xoaSoXDCB: 16.1,
-
-    // Chi tiết khác theo bài (mục 2.2–2.5)
-    laiDTTCtu: 1.9, laiDTTCden: 6.7, // %/năm, tiền gửi kỳ hạn gốc trên 3 tháng
-    laiTDTtu: 1.6, laiTDTden: 5.5, // %/năm, tương đương tiền
-    pthMarcegaglia: 482.4, pthHPTrading: 558.7, pthHoaSen: 218.6,
-    ptkLaiTienGui: 409.6, ptkKyCuoc: 350.2, ptkThueNK: 176.3, ptkBoiThuong: 125.7,
-    htkDiDuong: 5559.0, htkNVL: 20324.5, htkThanhPham: 12155.7, htkDoDang: 4048.6,
-    khNhaCuaTu: 5, khNhaCuaDen: 50, khMayMocTu: 1, khMayMocDen: 25,
-    duAnDungQuatPct: 94.4, duAnContainer: 2232.0, duAnOngThep: 585.1, duAnNongNghiep: 326.2, duAnHaiDuong: 143,
-    // tm 30 (tr.58): 137.852,9 + 725,5 + 1.826,7 + 147,9 + 8,4 (doanh thu khác, bài chưa nêu) = 140.561,4; − giảm trừ 1.706,3 = 138.855,1
-    dtBanHang: 137852.9, dtDichVu: 725.5, dtChoThueDat: 1826.7, dtChoThueBDS: 147.9, dtKhac: 8.4, dtGiamTru: 1706.3,
-    gvThanhPham: 118828.1,
-    bhVanChuyen: 563.2, bhXuatKhau: 1017.4, bhNhanVien: 209.3,
-    dtcLaiTienGui: 1258.7, cptcDiVay: 2287.4,
-    cpkGiaVonDienNuoc: 552.7, cpkBoiThuong: 97.2,
-    thueHienHanh: 1765.8, thueHoanLai: -92.3, thueSuatHieuDung: 12.2,
-    cdkksCoTuc: 6.3, suDungQuy: 2.6, traVonCDKKS: 0.1,
-    coTucCP: 5814.6, coTucCPPct: 10, coTucTuThangDu: 3211.6, coTucTuLNCPP: 2603.1, hoanNhapQuyDTPT: 20.8,
-    lcttThuDiVay: 174466.0, lcttTraNoGoc: 156878.9, lcttTraCoTuc: 5.0,
-    chuyenTSCDVoHinh: 9.6, chuyenCPTTDH: 557.2, chuyenCPTTNH: 105.3,
-
-    // Ước tính trong bài: tỷ lệ chi phí đi vào tài sản / kết quả kinh doanh
-    ratioTaiSan: 23.6,
-    ratioKetQua: 76.4
+    // Thuyết minh
+    vcshTrichQuy: 265.750, suDungQuyDTPT: 2.559, // tm 17, tr.29
+    coTucCP: 5814.645, coTucCPPct: 10, coTucTuThangDu: 3211.560, coTucTuLNCPP: 2603.085, cpPhatHanhCoTuc: 581464500, // tm 17–19
+    tangNG: 13.472, tangPTVT: 10.486, tangTBVP: 2.242, tangMMTB: 0.744, // tm 8, tr.21
+    khauHao: 32.359, tlNguyenGia: 17.598, tlHaoMon: 16.506, tsHetKH: 38.860, tsHetKHDau: 48.842,
+    xoaPhanMem: 1.040, khVoHinh: 2.379, tsHetKHVoHinh: 17.865, // tm 9, tr.22
+    khBDS: 12.961, // tm 10, tr.23
+    khNhaCua: 10, khMayMocTu: 3, khMayMocDen: 10, khPTVTtu: 6, khPTVTden: 10, khTBVPtu: 3, khTBVPden: 10, khBDSNam: 20, // tm 3.6, 3.8
+    usd: 407, usdTrieu: 9.309, // tm 4.2
+    camKetThue: 336.347, camKetThueDau: 411.869 // tm 20, tr.31
   },
 
   /* ============ SỐ TÍNH THÊM TỪ SỐ LIỆU CỦA BÀI / BCTC (bản 3) ============
@@ -313,30 +270,10 @@ window.DATA = {
     bqTsnhPhaiThuPct: 29.7,   // 3.547.400.000 / 11.947.250.000
     bqTsnhHtkPct: 15.9,       // 1.895.000.000 / 11.947.250.000
     bqTsnhGtgtPct: 19.6,      // 2.340.000.000 / 11.947.250.000
-    // 2.2.2: TSNH Hòa Phát, phần còn lại = 86.674 − 6.887,6 − 18.974,7 − 4.352,1 − 46.091,2
-    hpTsnhConLai: 10368.4,
-    // 2.2.1: tài sản Hòa Phát ngoài 6 khoản bài nêu = 224.490 − (67.244,2 + 63.655,9 + 46.091,2 + 18.974,7 + 6.887,6 + 4.352,1)
-    hpTsConLai: 17284.3,
     // 2.2.4: cơ cấu nợ
     bqNoPtnbPct: 91.4,        // 9.820.000.000 / 10.746.300.000
     bqNoKhacPct: 8.6,         // 100 − 91,4
     bqNoKhac: 926300000,      // 10.746.300.000 − 9.820.000.000
-    hpNoVayPct: 75.5,         // 82.963 / 109.842
-    hpNoKhacPct: 24.5,        // 100 − 75,5
-    hpNoKhac: 26879,          // còn lại = nợ phải trả mã 300 109.842,2 − vay 82.963,1 (không phải chỉ tiêu trên báo cáo)
-    // 2.4.1: các bậc trung gian của chuỗi kết quả kinh doanh Hòa Phát
-    hpSauBhQl: 14614.7,       // 18.497,5 − 2.337,3 − 1.545,5
-    hpSauTaiChinh: 13267.0,   // 14.614,7 + 2.618,9 − 3.966,6
-    // 2.3.1: vốn chủ sở hữu Hòa Phát đầu năm suy ngược từ cuối năm và các khoản bài nêu
-    // = 114.647,5 − 12.020,0 − 233,1 + 433,1 + 6,3 + 2,6 + 0,1  (Hình 2.7 của bài in 102.836,4; lệch 0,1 do làm tròn)
-    // Chênh lệch làm tròn của thác nước vốn chủ sở hữu: 114.647,5 − (102.836,4 + 12.020,0 + 233,1 − 433,1 − 6,3 − 2,6 − 0,1)
-    hpVcshLamTron: 0.1,
-    // 3.2: phần tài sản Hòa Phát ngoài ba khoản bài nêu = 100 − (30,0 + 28,4 + 20,5)
-    hpPctTsConLai: 21.1,
-    // 2.5: tổng giá trị XDCB chuyển đi = 2.925,6 + 557,2 + 105,3 + 9,6 (thuyết minh 14)
-    hpChuyenTong: 3597.7,
-    // 3.2: vốn chủ sở hữu Hòa Phát ngoài lợi nhuận chưa phân phối = 114.647 − 49.599
-    hpVcshKhacLNCPP: 65048,
     // 2.4.2: tỷ trọng từng hạng mục F03A trong số dư cuối năm 186.742.500.000
     f03aPct: [44.2, 16.2, 10.0, 8.8, 4.6, 16.2, 0],
     // 2.5: tỷ trọng cơ cấu giá trị quyết toán trong 4.582.450.000
@@ -378,3 +315,44 @@ window.DATA = {
   /* Ví dụ hạch toán (Bảng 1.5, triệu đồng) */
   viDu: { nhanVon: 2000, nghiemThu: 1000, luong: 50, banGiaoBq: 1050, banGiaoDn: 1000, chiPhiKy: 50 }
 };
+
+/* SỐ TÍNH THÊM CỦA HÒA PHÁT: tính bằng code từ số trên BCTC riêng (không gõ tay), tỷ lệ % làm tròn 1 chữ số thập phân
+ * (trừ các tỷ lệ rất nhỏ hoặc sát 100% cần thêm chữ số để không hiện thành 0,0% hay 100,0%).
+ * Trên trang, số tính thêm đi kèm chú thích "tính từ số liệu trên báo cáo" và viền đứt ở Chế độ rà soát. */
+(function (D) {
+  var h = D.hp, c = D.calc, b01 = D.bq.b01;
+  function rd(x, n) { var k = Math.pow(10, n); return Math.round(x * k) / k; }
+  function pct(a, t, n) { return rd((a / t) * 100, n == null ? 1 : n); }
+  c.hpPct = {
+    tsnh: pct(h.tsnh, h.tongTS), tsdh: pct(h.tsdh, h.tongTS),
+    ctyCon: pct(h.dauTuCtyCon, h.tongTS), xdcb: pct(h.xdcb, h.tongTS, 3),
+    no: pct(h.no, h.tongTS), vcsh: pct(h.vcsh, h.tongTS),
+    // cơ cấu tài sản ngắn hạn
+    phaiThuNH: pct(h.phaiThuNH, h.tsnh), tien: pct(h.tien, h.tsnh), dauTuTC: pct(h.dauTuTC, h.tsnh),
+    tsnhKhac: pct(h.tsnhKhac, h.tsnh), htk: pct(h.htk, h.tsnh, 2),
+    // cơ cấu nợ phải trả
+    quyKTPL: pct(h.quyKTPL, h.no), noConLai: pct(h.no - h.quyKTPL, h.no),
+    // biến động vốn
+    vcshTang: pct(h.vcsh - h.vcshDau, h.vcshDau), bqVonTang: pct(D.bq.b02.cuoi - D.bq.b02.dau, D.bq.b02.dau),
+    // kết quả kinh doanh
+    bienGop: pct(h.lnGop, h.dtt), lnCtyConLnst: pct(h.lnCtyCon, h.lnst, 2), lnCtyConDttc: pct(h.lnCtyCon, h.dtTaiChinh),
+    tangPTVT: pct(h.tangPTVT, h.tangNG),
+    // ước tính thô của bài: chi phí 2024 đi vào tài sản (tiền chi mua sắm TSCĐ, mã 21) và vào kết quả kinh doanh
+    vaoTaiSan: pct(-h.m21, -h.m21 + h.giaVon + h.cpQLDN + h.cpBanHang + h.cpKhac + h.cpTaiChinh),
+    vaoKetQua: pct(h.giaVon + h.cpQLDN + h.cpBanHang + h.cpKhac + h.cpTaiChinh, -h.m21 + h.giaVon + h.cpQLDN + h.cpBanHang + h.cpKhac + h.cpTaiChinh)
+  };
+  c.hpLnstLanDtt = rd(h.lnst / h.dtt, 1);              // lợi nhuận sau thuế gấp bao nhiêu lần doanh thu thuần
+  c.hpQuyMoLan = Math.round(h.tongTS / (b01.tongTS / 1e9)); // tổng tài sản Hòa Phát / tổng tài sản BQLDA
+  c.hpNoConLai = rd(h.no - h.quyKTPL, 3);             // nợ phải trả ngoài quỹ khen thưởng, phúc lợi
+  c.hpTsConLai = rd(h.tongTS - (h.dauTuCtyCon + h.phaiThuNH + h.tien + h.dauTuTC + h.bdsDauTu + h.tscdhh), 3);
+  c.hpSauBhQl = rd(h.lnGop - h.cpBanHang - h.cpQLDN, 3); // âm: hoạt động bán hàng, dịch vụ chưa bù chi phí quản lý
+  c.hpXdcbTang = rd(h.xdcb - h.xdcbDau, 3);
+  c.hpTlConLai = rd(h.tlNguyenGia - h.tlHaoMon, 3);   // giá trị còn lại của TSCĐ hữu hình thanh lý, xóa sổ
+  c.hpGopVon = -h.m25;                                 // tiền chi góp vốn vào công ty con (LCTT mã 25)
+  c.hpMuaTSCD = -h.m21;                                // tiền chi mua sắm TSCĐ, tài sản dài hạn khác (mã 21)
+  c.hpSauBhQlAbs = -c.hpSauBhQl;
+  c.hpChoVay = rd(h.choVayNH + h.choVayDH, 3);        // dư nợ cho công ty con vay, ngắn và dài hạn
+  c.hpVcshKhacLNCPP = rd(h.vcsh - h.lnChuaPP, 3);
+  c.hpTsKhacCtyCon = rd(h.tongTS - h.dauTuCtyCon, 3);
+  c.hpPctTsKhacCtyCon = rd(100 - c.hpPct.ctyCon, 1);
+})(window.DATA);

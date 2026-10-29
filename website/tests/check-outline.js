@@ -7,7 +7,7 @@ const PAGE = process.env.PAGE || 'index.html';
 
 // Mỗi dòng: [mục, [các đoạn chữ phải có mặt trên trang]]
 const CHECKLIST = [
-  ['Danh mục từ viết tắt', ['Danh mục từ viết tắt', 'BQLDA', 'BCTC', 'CĐT', 'TSCĐ', 'XDCB', 'TNDN', 'GTGT']],
+  ['Danh mục từ viết tắt', ['Danh mục từ viết tắt', 'BQLDA', 'BCTC', 'CĐT', 'TSCĐ', 'XDCB', 'GTGT', 'ODA', 'QH13', 'B01-DN, B02-DN, B03-DN, B09-DN']],
   ['Ch.1 đoạn dẫn + 3 phần', ['cùng dùng phương pháp ghi sổ kép', 'MỤC 1.1', 'MỤC 1.2', 'MỤC 1.3']],
   ['1.1.1 + Bảng 1.1', ['1.1.1', 'Tập hợp các hoạt động có liên quan với nhau', 'Tập hợp các đề xuất bỏ vốn trung hạn hoặc dài hạn', 'Bảng 1.1', 'Có mục tiêu rõ ràng', 'Có thời hạn xác định', 'Mang tính duy nhất', 'Nguồn lực giới hạn', 'Có tính bất định, rủi ro']],
   ['1.1.2 + Bảng 1.2 (5 tiêu thức) + câu chốt', ['1.1.2', 'Bảng 1.2', 'Theo nguồn vốn', 'Theo quy mô, tính chất', 'Theo lĩnh vực', 'Theo tính chất đầu tư', 'Theo chủ thể quản lý', 'cơ sở trực tiếp để chọn chế độ kế toán']],
@@ -24,13 +24,13 @@ const CHECKLIST = [
   ['2.1.2 bộ BCTC, số liệu, Bảng 2.2, nhận xét', ['2.1.2', 'B01-CĐT', 'B02-CĐT', 'B03-CĐT', 'B04-CĐT', 'F02-CĐT', 'F03A-CĐT', 'F03B-CĐT', 'F03C-CĐT', 'F03D-CĐT', '191,325', '186,743', '4,582', 'Bảng 2.2', 'Vì sao khác:', 'hình ảnh của một dự án đang thi công']],
   ['2.2 mở đầu', ['B01-CĐT vẫn là một bảng cân đối đúng nghĩa', '199,46', 'TK 3361 thuộc đầu 3']],
   ['2.2.1 cơ cấu chung', ['2.2.1', 'Cơ cấu chung', 'Tài sản dài hạn', 'Khoản mục lớn nhất', 'Phần nguồn vốn còn lại']],
-  ['2.2.2 chín khoản mục + hình', ['2.2.2', 'Tiền', 'Đầu tư tài chính (mã 120)', 'Phải thu khách hàng (mã 131)', 'Phải thu khác (mã 138)', 'Dự phòng phải thu khó đòi', 'Thuế GTGT được khấu trừ', 'Chi phí trả trước ngắn hạn', 'Trả trước cho người bán', 'Hàng tồn kho (mã 140)', 'Hình 2.1', 'Hình 2.2', 'Hình 2.3']],
-  ['2.2.3 TK đầu 2 + TK 241 bốn điểm + hình', ['2.2.3', 'TSCĐ hữu hình (TK 211, 214)', 'Khấu hao', 'Tài sản đã hết khấu hao còn sử dụng', 'Chi phí đầu tư xây dựng dở dang (TK 241', 'Tài sản vô hình, bất động sản đầu tư', 'Tài sản thuế hoãn lại', 'Đối với riêng TK 241', 'Tỷ trọng', 'Mục đích', 'Mức độ chi tiết', 'Chi phí quản lý', 'Hình 2.4', 'Hình 2.5']],
-  ['2.2.4 TK đầu 3 + 3 lý do + hình', ['2.2.4', 'Phải trả người bán (TK 331)', 'Thuế và các khoản phải nộp Nhà nước', 'Phải trả người lao động', 'Chi phí phải trả', 'Phải trả nội bộ (TK 336)', 'Phải trả khác (TK 338)', 'Quỹ khen thưởng, phúc lợi', 'Vay ngắn hạn, dài hạn', 'Nguồn vốn đầu tư (TK 3361, mã 410)', 'không phải là vốn chủ sở hữu, vì ba lý do', 'Hình 2.6', 'Hình 2.7']],
+  ['2.2.2 chín khoản mục + hình', ['2.2.2', 'Tiền', 'Đầu tư tài chính (mã 120)', 'Phải thu khách hàng (mã 131)', 'Phải thu khác (mã 138)', 'Phải thu về cho vay ngắn hạn (mã 135)', 'Thuế GTGT được khấu trừ', 'Chi phí trả trước ngắn hạn', 'Trả trước cho người bán', 'Hàng tồn kho (mã 140)', 'Hình 2.1']],
+  ['2.2.3 TK đầu 2 + TK 241 bốn điểm + hình', ['2.2.3', 'TSCĐ hữu hình (TK 211, 214)', 'Khấu hao', 'Tài sản đã hết khấu hao còn sử dụng', 'Chi phí đầu tư xây dựng dở dang (TK 241', 'Tài sản vô hình, bất động sản đầu tư', 'Tài sản thuế hoãn lại', 'Đối với riêng TK 241', 'Tỷ trọng', 'Mục đích', 'Mức độ chi tiết', 'Chi phí quản lý', 'Hình 2.2']],
+  ['2.2.4 TK đầu 3 + 3 lý do + hình', ['2.2.4', 'Phải trả người bán (TK 331)', 'Thuế và các khoản phải nộp Nhà nước', 'Phải trả người lao động', 'Chi phí phải trả', 'Phải trả nội bộ (TK 336)', 'Phải trả khác (TK 338)', 'Quỹ khen thưởng, phúc lợi', 'Vay ngắn hạn, dài hạn', 'Nguồn vốn đầu tư (TK 3361, mã 410)', 'không phải là vốn chủ sở hữu, vì ba lý do', 'Hình 2.3', 'Hình 2.4']],
   ['2.2.5 TK đầu 4', ['2.2.5', 'Vốn đầu tư của chủ sở hữu (TK 411)', 'Thặng dư vốn cổ phần', 'Quỹ đầu tư phát triển (TK 418)', 'đầu 4 của BQLDA hoàn toàn trống', 'chỉ giảm khi quyết toán, bàn giao']],
-  ['2.2.6 TK đầu 5–9', ['2.2.6', 'Bảng cân đối chỉ ghi số dư', 'Đầu 5: Doanh thu', 'Đầu 6: Chi phí', 'Đầu 7: Thu nhập khác', 'Đầu 8: Chi phí khác', 'Đầu 9: Xác định kết quả', 'TK 642 có cùng số hiệu nhưng đi hai đường khác nhau', 'TK 3362']],
-  ['2.2.7 ngoài bảng', ['2.2.7', 'Ngoại tệ các loại (mã 007)', 'giữ hộ', 'mẫu B01-DN/HN (hợp nhất) không có dòng này']],
-  ['2.3.1 đối chiếu + Hình 2.8 + nhận xét', ['2.3.1', 'Tăng trong năm', 'Giảm trong năm', 'Chuyển trong nội bộ vốn', 'Cổ tức bằng cổ phiếu', 'hoàn nhập quỹ đầu tư phát triển', 'Số dư cuối năm', 'Hình 2.8', 'không cùng bản chất kinh tế']],
+  ['2.2.6 TK đầu 5–9', ['2.2.6', 'Bảng cân đối chỉ ghi số dư', 'Đầu 5: Doanh thu', 'Đầu 6: Chi phí', 'Đầu 7: Thu nhập khác', 'Đầu 8: Chi phí khác', 'Đầu 9: Xác định kết quả', 'TK 642 có cùng số hiệu nhưng đi hai đường khác nhau', 'TK 3362', 'Hình 2.5', 'Hình 2.6', 'Hình 2.7', 'Hình 2.8', 'Hình 2.9']],
+  ['2.2.7 ngoài bảng', ['2.2.7', 'Ngoại tệ các loại (mã 007)', 'giữ hộ', 'mẫu B01-DN không có dòng này']],
+  ['2.3.1 đối chiếu + nhận xét', ['2.3.1', 'Tăng trong năm', 'Giảm trong năm', 'Chuyển trong nội bộ vốn', 'Cổ tức bằng cổ phiếu', 'Số dư cuối năm', 'không cùng bản chất kinh tế']],
   ['2.3.2 chín dòng + Tóm lại', ['2.3.2', 'Số khoản được theo dõi', 'Nguyên nhân tăng', 'Nguyên nhân giảm', 'Hình thức vốn', 'Phân loại theo nguồn', 'Dòng tiền liên quan đến vốn', 'Tổng mức và tiến độ', 'Xác nhận số dư', 'Đối chiếu chéo giữa các báo cáo', 'Tóm lại']],
   ['2.4.1 B03 vs KQHĐKD', ['2.4.1', 'đích đến của chi phí', 'Doanh thu', 'Giá vốn', 'Chi phí xây dựng, thiết bị, tư vấn, bồi thường', 'Chi phí bán hàng', 'Hoạt động tài chính', 'Chi phí khác', 'Thuế thu nhập doanh nghiệp', 'Chỉ tiêu cuối cùng', '100%', '0%']],
   ['2.4.2 F03A', ['2.4.2', 'Nhà xưởng chế biến chính', 'Kho lạnh và kho thành phẩm', 'Hệ thống xử lý nước thải', 'Hạ tầng kỹ thuật', 'Nhà điều hành và công trình phụ trợ', 'Chi phí chung toàn dự án', 'Nhà bảo vệ, hàng rào, cổng', 'Trong đó cuối năm', 'Đơn vị theo dõi', 'Trạng thái hoàn thành', 'nhu cầu quản trị']],
@@ -38,9 +38,9 @@ const CHECKLIST = [
   ['3.1 Bảng 3.1 + 2 đoạn', ['3.1', 'Bảng 3.1', 'Quản trị chi phí (TK 241)', 'Quản lý nguồn vốn (TK 336)', 'Phân bổ chi phí BQLDA (TK 642)', 'ĐIỂM NỔI BẬT', 'ĐIỂM HẠN CHẾ']],
   ['3.2 Bảng 3.2 (3 hàng) + 2 khác biệt', ['3.2', 'Bảng 3.2', 'Cơ cấu tài sản', 'Cơ cấu nguồn vốn', 'Hiệu quả hoạt động', 'KHÁC BIỆT 1', 'KHÁC BIỆT 2']],
   ['3.3 kiến nghị', ['3.3', 'ĐỐI VỚI NGƯỜI LÀM KẾ TOÁN VÀ NGƯỜI ĐỌC BÁO CÁO TÀI CHÍNH', 'ĐỐI VỚI CƠ QUAN QUẢN LÝ NHÀ NƯỚC', 'Thông tư 99/2025/TT-BTC', 'TK 3361', 'TK 3368', 'F03A, F03B', 'chưa hoàn tất thủ tục ghi tăng tài sản cố định']],
-  ['Kết luận 3 đoạn', ['Kết luận', 'chế độ kế toán luôn phản ánh đúng chức năng', 'Tài khoản 336', 'thích ứng nhanh chóng với cơ chế hạch toán hợp nhất']],
-  ['Phụ lục 3, 4 (Phụ lục 1 ẩn đến khi có nội dung)', ['Phụ lục 3: Bộ BCTC mẫu đầy đủ', 'B01-CĐT · Bảng cân đối kế toán (tr.2)', 'F03D-CĐT · Chi phí Ban QLDA (tr.12)', 'Phụ lục 4: Báo cáo tài chính hợp nhất năm 2024 của Tập đoàn Hòa Phát', 'Báo cáo tài chính gốc để đối chiếu cho Chương 2']],
-  ['Tài liệu tham khảo 6', ['Luật Kế toán số 88/2015/QH13.', 'Nghị định số 174/2016/NĐ-CP', 'Thông tư số 195/2012/TT-BTC', 'Thông tư số 200/2014/TT-BTC', 'Thông tư số 79/2019/TT-BTC', 'Thông tư số 99/2025/TT-BTC']]
+  ['Kết luận 3 đoạn', ['Kết luận', 'chế độ kế toán luôn phản ánh đúng chức năng', 'Tài khoản 336', 'thích ứng nhanh chóng với cơ chế hạch toán thống nhất']],
+  ['Phụ lục 1 (duy nhất)', ['Phụ lục 1: Bộ BCTC mẫu đầy đủ (TT 195/2012/TT-BTC)', 'B01-CĐT · Bảng cân đối kế toán (tr.2)', 'F03D-CĐT · Chi phí Ban QLDA (tr.12)', 'Báo cáo tài chính gốc để đối chiếu cho Chương 2']],
+  ['Tài liệu tham khảo 8', ['Luật Kế toán số 88/2015/QH13.', 'Nghị định số 174/2016/NĐ-CP', 'Thông tư số 195/2012/TT-BTC', 'Thông tư số 200/2014/TT-BTC', 'Thông tư số 79/2019/TT-BTC', 'Thông tư số 99/2025/TT-BTC', 'BCTC Ban quản lý dự án Nhà máy Chế biến Nông sản Đồng Bằng, năm 2015', 'Báo cáo tài chính riêng cho năm kết thúc ngày 31/12/2024, đã kiểm toán bởi Công ty TNHH KPMG']]
 ];
 
 let lostB3 = 0;
@@ -130,7 +130,7 @@ let lostB3 = 0;
     const labels = [...document.querySelectorAll('.dual-cap, .stage-title, .tcap, .fig-thumb .ft-cap b')].map(e => (e.textContent.match(/^(Hình|Bảng) \d\.\d/) || [])[0]).filter(Boolean);
     const seen = {}; labels.forEach(l => { seen[l] = (seen[l] || 0) + 1; });
     Object.keys(seen).forEach(k => { if (seen[k] > 1) out.push(k + ' trùng ' + seen[k] + ' lần'); });
-    const want = ['Bảng 1.1', 'Bảng 1.2', 'Bảng 1.3', 'Bảng 1.4', 'Bảng 1.5', 'Bảng 2.1', 'Bảng 2.2', 'Bảng 3.1', 'Bảng 3.2', 'Hình 1.1', 'Hình 1.2', 'Hình 1.3', 'Hình 1.4', 'Hình 2.1', 'Hình 2.2', 'Hình 2.3', 'Hình 2.4', 'Hình 2.5', 'Hình 2.6', 'Hình 2.7', 'Hình 2.8'];
+    const want = ['Bảng 1.1', 'Bảng 1.2', 'Bảng 1.3', 'Bảng 1.4', 'Bảng 1.5', 'Bảng 2.1', 'Bảng 2.2', 'Bảng 3.1', 'Bảng 3.2', 'Hình 1.1', 'Hình 1.2', 'Hình 1.3', 'Hình 1.4', 'Hình 2.1', 'Hình 2.2', 'Hình 2.3', 'Hình 2.4', 'Hình 2.5', 'Hình 2.6', 'Hình 2.7', 'Hình 2.8', 'Hình 2.9'];
     want.forEach(w => { if (!seen[w]) out.push('thiếu nhãn ' + w); });
     // bản 8: hình web vẽ chỉ ghi tên, không mã "Minh họa X-Y", không "(minh họa)"; tên không trùng; mã nội bộ chỉ ở Chế độ rà soát
     const names = {};
@@ -155,18 +155,18 @@ let lostB3 = 0;
       if (k !== wantK) out.push(lp.parentElement.id + ': ' + k + ' ý chính');
     });
     const thumbs = document.querySelectorAll('.fig-thumb').length;
-    if (thumbs !== 8) out.push('ảnh Hình 2.x: ' + thumbs + '/8');
+    if (thumbs !== 9) out.push('ảnh Hình 2.x: ' + thumbs + '/9');
     const scans = document.querySelectorAll('[data-scan]').length;
     const links = document.querySelectorAll('.src-link').length;
     const pages = document.querySelectorAll('#pgal .pg').length;
-    if (pages !== 12) out.push('Phụ lục 3: ' + pages + '/12 trang');
+    if (pages !== 12) out.push('Phụ lục 1: ' + pages + '/12 trang');
     const broken = [...document.images].filter(i => !i.hasAttribute('data-src') && (!i.complete || !i.naturalWidth)).map(i => i.getAttribute('alt') || i.src.slice(0, 40));
     if (broken.length) out.push('ảnh lỗi: ' + broken.join('; '));
     if (!document.querySelector('.hero-logo') || !/Giảng viên:/.test(body)) out.push('bìa thiếu logo hoặc dòng Giảng viên');
     if (/61,3/.test(document.getElementById('m-kl').innerText)) out.push('Kết luận còn 61,3%');
     return { out, thumbs, scans, links, pages };
   });
-  console.log(`Bản 4: ${b4.thumbs} ảnh Hình 2.x, ${b4.scans} hình scan Hình 1.x, ${b4.links} chip mở được trang scan, ${b4.pages} trang Phụ lục 3; ${b4.out.length ? 'LỖI: ' + b4.out.join('; ') : 'đạt'}`);
+  console.log(`Bản 4: ${b4.thumbs} ảnh Hình 2.x, ${b4.scans} hình scan Hình 1.x, ${b4.links} chip mở được trang scan, ${b4.pages} trang Phụ lục 1; ${b4.out.length ? 'LỖI: ' + b4.out.join('; ') : 'đạt'}`);
   lostB3 += b4.out.length;
   // Bản 5: số trong tab ẩn hiện ngay, chip Hòa Phát mở trang BCTC, trang cảm ơn, không còn 23,6 / 76,4
   const b5 = await page.evaluate(() => {
@@ -202,7 +202,7 @@ let lostB3 = 0;
     if (!pl.previousElementSibling.matches('#ch2 .sec-head') || pl.nextElementSibling.id !== 'm-2-1-1') out.push('Phụ lục không nằm ngay sau tiêu đề Chương 2, trước 2.1');
     if (document.getElementById('pl2') || /Phụ lục 2/.test(document.body.innerText)) out.push('còn Phụ lục 2');
     if (document.querySelector('#ch4 .pl')) out.push('còn phụ lục ở cuối');
-    if (document.querySelectorAll('#hpgal .pg').length !== 67) out.push('Phụ lục 4 không đủ 67 trang');
+    if (document.querySelectorAll('#m-pl .pl').length !== 1 || /Phụ lục [34]/.test(document.body.innerText)) out.push('Phụ lục phải chỉ còn một (Phụ lục 1)');
     return out;
   });
   const fam = srcAll.match(/font-family:[^;]*;|--f-(head|body):[^;]*;/g) || [];
@@ -210,8 +210,26 @@ let lostB3 = 0;
   if (/fonts\.googleapis/.test(srcAll)) b6.push('còn link Google Fonts');
   console.log(`Bản 6+7: ${b6.length ? 'LỖI: ' + b6.join('; ') : 'đạt'}`);
   lostB3 += b6.length;
+  // Bản 9: số Hòa Phát theo BCTC riêng; không còn số, thuật ngữ hợp nhất cũ; chip trong phạm vi 40 trang
+  const b9 = await page.evaluate(() => {
+    const out = [];
+    const body = document.body.innerText;
+    ['/HN', 'Marcegaglia', 'Dung Quất', 'tập đoàn kinh doanh', 'chuỗi sản xuất', 'Công ty mẹ và các công ty con', 'nhóm A/B', '(nhóm A)', '(nhóm B)', '(nhóm C)', '(nhóm D)'].forEach(w => { if (body.includes(w)) out.push('còn “' + w + '”'); });
+    ['224.490', '224,49', '114.647', '109.842', '86.674', '137.815', '138.855', '120.357', '12.020', '13.693', '63.655', '63.656', '2.925', '6.887', '46.091', '82.963', '55.882', '27.080', '49.599', '1.545', '2.337', '3.966', '2.618', '1.673', '1.159', '733,3', '6.915', '6.810', '108.146', '40.902', '11.515', '18.974', '4.352', '1.249', '159,99', '6.636', '2.118', '14.046', '1.743', '890,9', '1.027,3', '794,8', '102.836', '174.466', '233,1', '39.906'].forEach(w => { if (body.includes(w)) out.push('còn số cũ ' + w); });
+    (body.match(/[^.\n]*hợp nhất[^.\n]*/g) || []).filter(x => !/không hợp nhất|chỉ có ở BCTC hợp nhất|hợp nhất \(nếu có\)|\(mẫu “-DN\/HN”\)|^\s*Hợp nhất\s*$/.test(x) && !/^HN/.test(x.trim())).forEach(x => out.push('còn “hợp nhất”: ' + x.trim().slice(0, 60)));
+    document.querySelectorAll('.src.hp').forEach(c => {
+      (c.textContent.match(/tr\.\s?(\d+)/g) || []).forEach(m => { if (+m.replace(/\D/g, '') > 39) out.push('chip trang > 39: ' + c.textContent); });
+      (c.textContent.match(/tm (\d+)/g) || []).forEach(m => { if (+m.replace(/\D/g, '') > 28) out.push('chip tm > 28: ' + c.textContent); });
+    });
+    if (document.querySelector('.src.bai') && /Hòa Phát, theo bài/.test(body)) out.push('còn chip “Hòa Phát, theo bài”');
+    if (!document.querySelector('#m-2-4-1 .wf-row.is-neg')) out.push('waterfall KQKD không có bậc âm');
+    if (document.querySelectorAll('#m-2-3-2 .pipes6 .pp').length !== 4) out.push('2.3.2 không đủ bốn cột');
+    return out;
+  });
+  console.log(`Bản 9 (BCTC riêng): ${b9.length ? 'LỖI: ' + b9.join('; ') : 'đạt'}`);
+  lostB3 += b9.length;
   const md = fs.readFileSync(path.join(__dirname, '../content/phan_mo_dau.md'), 'utf8');
-  ['## 1. Lý do chọn đề tài', '## 2. Mục tiêu, đối tượng và phạm vi nghiên cứu', '## 3. Phương pháp nghiên cứu'].forEach(h => { if (!md.includes(h)) { console.log('content/phan_mo_dau.md thiếu ' + h); lostB3++; } });
+  ['## 1. Lý do chọn đề tài', '## 2. Mục tiêu, đối tượng và phạm vi nghiên cứu', '## 3. Phương pháp nghiên cứu', '## 4. Kết cấu của đề tài'].forEach(h => { if (!md.includes(h)) { console.log('content/phan_mo_dau.md thiếu ' + h); lostB3++; } });
   await browser.close();
   console.log(missing || sides.bad.length || lost.length || lostB3 ? `\n${missing} mục thiếu` : '\nĐủ mọi mục trong bảng đối chiếu.');
   process.exit(missing || sides.bad.length || lost.length || lostB3 ? 1 : 0);
