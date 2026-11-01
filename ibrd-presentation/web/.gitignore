@@ -3,3 +3,4 @@ dist/
 content/.paper-index.json
 qa/tmp/
 dist-standalone/
+screenshots/.bg-*/
