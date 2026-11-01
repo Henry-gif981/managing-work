@@ -195,3 +195,4 @@
 .tpl-chapter .toc b { font-size: 24px; line-height: 1.4; margin-bottom: 6px; }
 .tpl-chapter .toc .tag { font-family: var(--f-text); font-variant-numeric: lining-nums tabular-nums; color: var(--mist); border: 1px solid rgba(201, 162, 74, .55); border-radius: 3px; padding: 6px 10px; margin-left: 10px; display: inline-block; line-height: 1; }
 .tpl-chapter .toc .sep { font-size: 0; }
+.tpl-gallery .mini-stamp .l { font-size: 24px; } /* label floor for cards (24px) */

@@ -123,3 +123,7 @@ Contrast ratios above are computed (WCAG relative luminance). Text never sits di
 on `wash` slides the copy is on a cream card or on the `wash-deep` panel. Engravings and 3D never overlap bullets,
 tables, citation links or buttons (layout reserves the zones; the QA script checks bounding boxes).
 `prefers-reduced-motion` disables slide/fade offsets, line drawing, idle rotation and particles.
+
+## Design pass (2026-11)
+
+The wash ground is now dark navy-slate, content sections use the flow layout (head / zone / takeaway band), and all display values are tokens. See `reports/design-changelog.md` for what changed, the measurements and how to adjust the tokens.

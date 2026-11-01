@@ -4,5 +4,3 @@ content/.paper-index.json
 qa/tmp/
 dist-standalone/
 screenshots/.bg-*/
-# screenshots/after is committed once, at the end of the design pass
-screenshots/after/

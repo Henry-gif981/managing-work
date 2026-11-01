@@ -11,7 +11,8 @@ export async function startPrint(deck) {
     .page .layer { position: absolute; inset: 0; } .page .vig { position: absolute; inset: 0; background: radial-gradient(ellipse 75% 80% at 50% 45%, transparent 55%, rgba(2,5,11,.62) 100%); }
     .page .draw .stroke { animation: none !important; stroke-dashoffset: 0 !important; }
     .page .giant.metal { background: none !important; -webkit-background-clip: border-box !important; background-clip: border-box !important; color: #BAC5D3 !important; } /* Chrome prints clip-text gradients with a hairline box */
-    .page .pnum { position: absolute; right: 34px; bottom: 18px; font-family: var(--f-display); font-size: 24px; color: #6b7a88; z-index: 9; }`;
+    .page .pnum { position: absolute; right: 34px; bottom: 18px; font-family: var(--f-display); font-weight: 600; font-size: 26px; color: var(--slate-soft); z-index: 9; }
+    .page .pnum.dark { color: var(--on-dark-soft); }`;
   document.head.appendChild(style);
   document.body.className = 'printing';
   const only = new URLSearchParams(location.search).get('only');
@@ -21,7 +22,7 @@ export async function startPrint(deck) {
     const slot = slotOf(s);
     let fb = '';
     if (slot) { const S = SLOTS[slot]; fb = `<div class="fb-wrap"><img alt="" src="${fallbackSrc(s.hero3d, slot)}" style="position:absolute;left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px;object-fit:contain" onerror="this.remove()"></div>`; }
-    return `<div class="page">${r.ground}<div class="layer">${r.giant}</div>${fb}${s.ground === 'night' ? '<div class="vig"></div>' : ''}<div class="layer">${r.content}</div><div class="pnum">${s.n} / ${deck.slides.length}</div></div>`;
+    return `<div class="page">${r.ground}<div class="layer">${r.giant}</div>${fb}${s.ground === 'night' ? '<div class="vig"></div>' : ''}<div class="layer">${r.content}</div><div class="pnum${s.ground === 'paper' ? '' : ' dark'}">${s.n} / ${deck.slides.length}</div></div>`;
   });
   document.body.innerHTML = pages.join('');
   document.querySelectorAll('.page').forEach((p) => p.querySelectorAll('.giant').forEach((g) => {
