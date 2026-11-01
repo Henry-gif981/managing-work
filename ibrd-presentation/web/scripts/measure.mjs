@@ -49,15 +49,18 @@ for (let n = 1; n <= N; n++) {
     for (let t = walker.nextNode(); t; t = walker.nextNode()) {
       if (!t.textContent.trim()) continue;
       const el = t.parentElement;
-      if (el.closest('.runner,.art,[aria-hidden="true"]')) continue;
+      if (el.closest('.art,[aria-hidden="true"]')) continue;
       const cs = getComputedStyle(el);
       if (cs.visibility === 'hidden' || cs.display === 'none') continue;
       const rg = document.createRange(); rg.selectNodeContents(t);
       const boxes = [...rg.getClientRects()].map(rel).filter((b) => b.w > 1 && b.h > 1);
       if (!boxes.length) continue;
-      texts.push({ el: label(el), text: t.textContent.trim().slice(0, 60), size: parseFloat(cs.fontSize) * scale / scale, weight: Number(cs.fontWeight) || 400,
+      texts.push({ chrome: !!el.closest('.runner'), el: label(el), text: t.textContent.trim().slice(0, 60), size: parseFloat(cs.fontSize) * scale / scale, weight: Number(cs.fontWeight) || 400,
         color: el instanceof SVGElement ? cs.fill : cs.webkitTextFillColor && cs.webkitTextFillColor !== cs.color && !/rgba\(0, 0, 0, 0\)/.test(cs.webkitTextFillColor) ? cs.webkitTextFillColor : cs.color, opacity: opac(el), boxes });
     }
+    // slide counter: chrome, judged for contrast and size only
+    const ctr = document.querySelector('.counter');
+    if (ctr && ctr.textContent.trim()) { const cs = getComputedStyle(ctr); texts.push({ chrome: true, el: 'counter', text: ctr.textContent.trim(), size: parseFloat(cs.fontSize), weight: Number(cs.fontWeight) || 400, color: cs.color, opacity: opac(ctr), boxes: [rel(ctr.getBoundingClientRect())] }); }
     // graphic blocks: charts, tables, cards and stamps (decorative engravings and 3D stills excluded)
     const blocks = [...sec.querySelectorAll('table, .chartbox, .cert, .stamp, .mini-stamp, .col, .stn .card, .qbox, .refcols, .idx, svg:not(.art svg)')]
       .filter((e) => !e.closest('.art,[aria-hidden="true"]')).map((e) => ({ el: label(e), ...rel(e.getBoundingClientRect()) })).filter((b) => b.w > 2 && b.h > 2);
@@ -65,7 +68,7 @@ for (let n = 1; n <= N; n++) {
       text: sec.innerText, texts, blocks };
   });
   // background pass: hide content text (keep layout), screenshot again
-  await page.addStyleTag({ content: 'section.slide.is-current, section.slide.is-current * { color: transparent !important; -webkit-text-fill-color: transparent !important; text-shadow: none !important; text-decoration-color: transparent !important; } section.slide.is-current svg text, section.slide.is-current svg tspan { fill: transparent !important; stroke: transparent !important; }' }).then((h) => page.evaluate(() => document.querySelectorAll('style').length));
+  await page.addStyleTag({ content: 'section.slide.is-current, section.slide.is-current *, .counter { color: transparent !important; -webkit-text-fill-color: transparent !important; text-shadow: none !important; text-decoration-color: transparent !important; } section.slide.is-current svg text, section.slide.is-current svg tspan { fill: transparent !important; stroke: transparent !important; }' }).then((h) => page.evaluate(() => document.querySelectorAll('style').length));
   await page.waitForTimeout(60);
   const bg = path.join(bgDir, `s${String(n).padStart(3, '0')}.png`);
   await page.screenshot({ path: bg });

@@ -11,6 +11,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 1,cover,night,div.cgroup>div.c,Class: Investment Economics 65,24,400,"rgb(174, 185, 199)",1,#0a0f1a,9.35,4.5,ok
 1,cover,night,div.cgroup>div.lect,Lecturer: [TO BE CONFIRMED],24,600,"rgb(255, 217, 160)",1,#0a0f1a,13.97,4.5,ok
 1,cover,night,div.cgroup>div.place,"Hanoi, 2026",24,400,"rgb(174, 185, 199)",1,#080d17,9.65,4.5,ok
+1,cover,night,[chrome] counter,1 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+2,agenda,wash,[chrome] div.runner>span,Project Finance · Group 6,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
 2,agenda,wash,div.head.wide>h1.title,Contents,68,500,"rgb(255, 248, 234)",1,#98a4ab,2.37,3.0,FAIL
 2,agenda,wash,div.cardrow.c5>div.cert>div.k,Intro,120,300,"rgb(161, 61, 45)",1,#f7efdc,5.69,3.0,ok
 2,agenda,wash,div.cardrow.c5>div.cert>div.h,Introduction,38,600,"rgb(47, 68, 88)",1,#f7f0dc,8.83,4.5,ok
@@ -27,10 +29,15 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 2,agenda,wash,div.cardrow.c5>div.cert>div.k,End,120,300,"rgb(161, 61, 45)",1,#f7f0dc,5.69,3.0,ok
 2,agenda,wash,div.cardrow.c5>div.cert>div.h,Conclusion,38,600,"rgb(47, 68, 88)",1,#f8f0dc,8.83,4.5,ok
 2,agenda,wash,div.cardrow.c5>div.cert>div.b,"Findings, significance, limitations, further research",27,400,"rgb(35, 41, 47)",1,#f8f0dc,12.91,4.5,ok
+2,agenda,wash,[chrome] counter,2 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+3,chapter,night,[chrome] div.runner>span,Introduction,24,500,"rgb(174, 185, 199)",1,#080e18,9.65,4.5,ok
 3,chapter,night,div.chap>h1.title,Introduction,76,500,"rgb(220, 227, 236)",1,#0c121e,14.02,3.0,ok
 3,chapter,night,div.chap>p.lead,Why the IBRD matters for Vietnam after its shift from IDA le,30,400,"rgb(174, 185, 199)",1,#0a0f1a,9.2,4.5,ok
 3,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 3,chapter,night,div.toc,Introduction,24,400,"rgb(174, 185, 199)",1,#080d17,9.66,4.5,ok
+3,chapter,night,[chrome] counter,3 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+4,hero,paper,[chrome] div.runner>span,Introduction,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+4,hero,paper,[chrome] div.runner>span.ref,Introduction · 1.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 4,hero,paper,div.head>h1.title,The role of multilateral development finance,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 4,hero,paper,ul.bullets>li.shown>strong,Funding gap:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 4,hero,paper,div.body>ul.bullets>li.shown,long-term investment needs far exceed what domestic resource,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -44,6 +51,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 4,hero,paper,div.body>ul.bullets>li.shown,"co-financing, guarantees and risk sharing attract private in",31,400,"rgb(35, 41, 47)",1,#f8eedb,12.4,4.5,ok
 4,hero,paper,ul.bullets>li.shown>strong,Beyond finance:,31,600,"rgb(47, 68, 88)",1,#f5ebd5,8.34,4.5,ok
 4,hero,paper,div.body>ul.bullets>li.shown,"appraisal, technical assistance, procurement and safeguard s",31,400,"rgb(35, 41, 47)",1,#f7edd9,12.4,4.5,ok
+4,hero,paper,[chrome] counter,4 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+5,timeline,wash,[chrome] div.runner>span,Introduction,24,500,"rgb(247, 239, 220)",1,#9aa4ac,2.19,4.5,FAIL
+5,timeline,wash,[chrome] div.runner>span.ref,Introduction · 1.2,20,500,"rgb(247, 239, 220)",1,#9ba5ad,2.19,4.5,FAIL
 5,timeline,wash,div.head.wide>h1.title,Vietnam's shift from IDA to IBRD,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.13,3.0,FAIL
 5,timeline,wash,div.rail.n5>div.stn.shown>div.d,2007,40,600,"rgb(255, 233, 198)",1,#9ca6ae,2.07,3.0,FAIL
 5,timeline,wash,div.rail.n5>div.stn.shown>div.t,The Bank declares Vietnam IBRD-eligible,29,400,"rgb(35, 41, 47)",1,#f7efdd,12.8,4.5,ok
@@ -66,6 +76,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 5,timeline,wash,div.stn.shown>div.t>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f5eedc,5.89,4.5,ok
 5,timeline,wash,div.t>span.cite-group>a.cite,4,22,600,"rgb(161, 61, 45)",1,#f5eedc,5.63,4.5,ok
 5,timeline,wash,div.stn.shown>div.t>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f5eedc,5.89,4.5,ok
+5,timeline,wash,[chrome] counter,5 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+6,hero,paper,[chrome] div.runner>span,Introduction,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+6,hero,paper,[chrome] div.runner>span.ref,Introduction · 1.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 6,hero,paper,div.head>h1.title,Why the IBRD matters now,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 6,hero,paper,ul.bullets>li.shown>strong,Main source:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 6,hero,paper,div.body>ul.bullets>li.shown,the IBRD is now Vietnam's main source of World Bank financin,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -80,6 +93,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 6,hero,paper,div.body>ul.bullets>li.shown,higher borrowing costs mean projects must be chosen and mana,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.51,4.5,ok
 6,hero,paper,ul.bullets>li.shown>strong,Beyond money:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.32,4.5,ok
 6,hero,paper,div.body>ul.bullets>li.shown,"project appraisal, technical advice and international standa",31,400,"rgb(35, 41, 47)",1,#f7edda,12.4,4.5,ok
+6,hero,paper,[chrome] counter,6 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+7,cards,paper,[chrome] div.runner>span,Introduction,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+7,cards,paper,[chrome] div.runner>span.ref,Introduction · 2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 7,cards,paper,div.head.wide>h1.title,Research problem and four questions,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 7,cards,paper,div.head.wide>p.lead,IBRD loans come with different terms and procedures from the,30,400,"rgb(74, 93, 110)",1,#f8eed8,5.75,4.5,ok
 7,cards,paper,div.cardrow.c2>div.cert.shown>div.h,Q1,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
@@ -90,6 +106,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 7,cards,paper,div.cardrow.c2>div.cert.shown>div.b,How does the IBRD support project financing through financia,29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
 7,cards,paper,div.cardrow.c2>div.cert.shown>div.h,Q4,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 7,cards,paper,div.cardrow.c2>div.cert.shown>div.b,What results and limitations have selected IBRD-supported pr,29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
+7,cards,paper,[chrome] counter,7 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+8,compare,wash,[chrome] div.runner>span,Introduction,24,500,"rgb(247, 239, 220)",1,#9aa4ac,2.19,4.5,FAIL
+8,compare,wash,[chrome] div.runner>span.ref,Introduction · 3,20,500,"rgb(247, 239, 220)",1,#9ba5ad,2.19,4.5,FAIL
 8,compare,wash,div.head.wide>h1.title,Two research objectives,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.39,3.0,FAIL
 8,compare,wash,div.cmp>div.col.l>div.ribbon,3.1 · Mechanisms,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 8,compare,wash,ul.bullets>li.shown>strong,Funding:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
@@ -105,6 +124,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 8,compare,wash,div.col.r>ul.bullets>li.shown,"relevance, effectiveness, efficiency and sustainability",30,400,"rgb(35, 41, 47)",1,#f8efdc,12.85,4.5,ok
 8,compare,wash,ul.bullets>li.shown>strong,Context only:,30,600,"rgb(47, 68, 88)",1,#f8efdd,8.8,4.5,ok
 8,compare,wash,div.col.r>ul.bullets>li.shown,"Binh Duong and southern waterway projects, results not yet a",30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
+8,compare,wash,[chrome] counter,8 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+9,hero,paper,[chrome] div.runner>span,Introduction,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+9,hero,paper,[chrome] div.runner>span.ref,Introduction · 4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 9,hero,paper,div.head>h1.title,Research methodology,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.34,3.0,ok
 9,hero,paper,ul.bullets>li.shown>strong,Qualitative approach:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 9,hero,paper,div.body>ul.bullets>li.shown,"literature review with case study analysis, mainly secondary",31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -116,6 +138,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 9,hero,paper,div.body>ul.bullets>li.shown,World Bank data checked against IEG and Vietnamese governmen,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.51,4.5,ok
 9,hero,paper,ul.bullets>li.shown>strong,Limits:,31,600,"rgb(47, 68, 88)",1,#f5ebd5,8.34,4.5,ok
 9,hero,paper,div.body>ul.bullets>li.shown,no field surveys or interviews; some data from the World Ban,31,400,"rgb(35, 41, 47)",1,#f7eedb,12.4,4.5,ok
+9,hero,paper,[chrome] counter,9 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+10,cards,paper,[chrome] div.runner>span,Introduction,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+10,cards,paper,[chrome] div.runner>span.ref,Introduction · 5,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 10,cards,paper,div.head.wide>h1.title,Research scope,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.34,3.0,ok
 10,cards,paper,div.cardrow.c4>div.cert.shown>div.h,Subject,34,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 10,cards,paper,div.cardrow.c4>div.cert.shown>div.b,"The IBRD and its project financing; IDA, IFC and MIGA only f",27,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
@@ -125,11 +150,18 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 10,cards,paper,div.cardrow.c4>div.cert.shown>div.b,Vietnam; international examples only to explain how the IBRD,27,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
 10,cards,paper,div.cardrow.c4>div.cert.shown>div.h,Time,34,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 10,cards,paper,div.cardrow.c4>div.cert.shown>div.b,"2014 to the present, with special attention to the years aft",27,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
+10,cards,paper,[chrome] counter,10 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.39,4.5,ok
+11,chapter,night,[chrome] div.runner>span.roman,I,24,500,"rgb(201, 162, 74)",1,#080d16,8.05,4.5,ok
+11,chapter,night,[chrome] div.runner>span,Chapter 1 · Overview of the IBRD,24,500,"rgb(174, 185, 199)",1,#0b111c,9.19,4.5,ok
 11,chapter,night,div.roman-big,I,120,300,"rgb(201, 162, 74)",1,#090f19,7.87,3.0,ok
 11,chapter,night,div.chap>h1.title,Overview of the IBRD,76,500,"rgb(220, 227, 236)",1,#0d1521,13.61,3.0,ok
 11,chapter,night,div.chap>p.lead,"Definition, history, organization, instruments and loan cond",30,400,"rgb(174, 185, 199)",1,#090f19,9.26,4.5,ok
 11,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 11,chapter,night,div.toc,1.1.1 · 1.1.2 · 1.2,24,400,"rgb(174, 185, 199)",1,#080d17,9.65,4.5,ok
+11,chapter,night,[chrome] counter,11 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+12,hero,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+12,hero,paper,[chrome] div.runner>span,Chapter 1 · Overview of the IBRD,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+12,hero,paper,[chrome] div.runner>span.ref,1.1.1,20,500,"rgb(74, 93, 110)",1,#f2e9d1,5.63,4.5,ok
 12,hero,paper,div.head>h1.title,"Definition, mission and borrowers",68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 12,hero,paper,ul.bullets>li.shown>strong,Cooperative:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 12,hero,paper,div.body>ul.bullets>li.shown,a global development cooperative owned by 189 member countri,31,400,"rgb(35, 41, 47)",1,#f8eedb,12.62,4.5,ok
@@ -149,6 +181,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 12,hero,paper,div.body>ul.bullets>li.shown,"middle-income and creditworthy poorer countries, usually nat",31,400,"rgb(35, 41, 47)",1,#f7eddb,12.4,4.5,ok
 12,hero,paper,ul.bullets>li.shown>strong,Eligibility:,31,600,"rgb(47, 68, 88)",1,#f5ebd5,8.34,4.5,ok
 12,hero,paper,div.body>ul.bullets>li.shown,income level and creditworthiness; Vietnam moved from IDA to,31,400,"rgb(35, 41, 47)",1,#f7edd9,12.4,4.5,ok
+12,hero,paper,[chrome] counter,12 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.53,4.5,ok
+13,table,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+13,table,paper,[chrome] div.runner>span,Chapter 1 · Overview of the IBRD,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+13,table,paper,[chrome] div.runner>span.ref,1.1.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 13,table,paper,div.head.wide>h1.title,The five institutions of the World Bank Group,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 13,table,paper,div.tframe>div.cap,Table 1. The five institutions of the World Bank Group,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 13,table,paper,thead>tr>th,Institution,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -190,6 +226,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 13,table,paper,div.src>span.cite-group>a.cite,8,19,600,"rgb(161, 61, 45)",1,#faf0dc,5.61,4.5,ok
 13,table,paper,div.tframe>div.src>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#faf0dc,5.97,4.5,ok
 13,table,paper,div.tframe>div.src,.,19,400,"rgb(74, 93, 110)",1,#faf0dc,6.02,4.5,ok
+13,table,paper,[chrome] counter,13 / 119,26,600,"rgb(74, 93, 110)",1,#f3e9d1,5.24,4.5,ok
+14,compare,wash,[chrome] div.runner>span.roman,I,24,500,"rgb(255, 226, 184)",1,#96a2aa,2.05,4.5,FAIL
+14,compare,wash,[chrome] div.runner>span,Chapter 1 · Overview of the IBRD,24,500,"rgb(247, 239, 220)",1,#96a2a8,2.21,4.5,FAIL
+14,compare,wash,[chrome] div.runner>span.ref,1.1.2,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 14,compare,wash,div.head.wide>h1.title,How the IBRD differs,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.39,3.0,FAIL
 14,compare,wash,div.cmp>div.col.l>div.ribbon,IBRD,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 14,compare,wash,ul.bullets>li.shown>strong,Oldest and largest:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
@@ -206,6 +246,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 14,compare,wash,ul.bullets>li.shown>strong,MIGA and ICSID:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
 14,compare,wash,div.col.r>ul.bullets>li.shown,"no direct finance; reduce investor risk, settle disputes",30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
 14,compare,wash,div.foot.shown,The IBRD is the main channel for public financing to middle-,34,500,"rgb(255, 248, 234)",1,#9ca6ae,2.01,4.5,FAIL
+14,compare,wash,[chrome] counter,14 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+15,timeline,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+15,timeline,paper,[chrome] div.runner>span,Chapter 1 · Overview of the IBRD,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+15,timeline,paper,[chrome] div.runner>span.ref,1.2,20,500,"rgb(74, 93, 110)",1,#f2e9d1,5.63,4.5,ok
 15,timeline,paper,div.head.wide>h1.title,History in four stages,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 15,timeline,paper,div.rail.n4>div.stn.shown>div.d,1944–1950s,40,600,"rgb(161, 61, 45)",1,#f7edd7,5.55,3.0,ok
 15,timeline,paper,div.rail.n4>div.stn.shown>div.t,"Bretton Woods, July 1944; first loan US$250 million to Franc",29,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
@@ -229,6 +273,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 15,timeline,paper,div.t>span.cite-group>a.cite,8,22,600,"rgb(161, 61, 45)",1,#f9efdc,5.67,4.5,ok
 15,timeline,paper,div.stn.shown>div.t>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9efdc,5.97,4.5,ok
 15,timeline,paper,div.foot.shown,After more than 80 years: from a reconstruction bank for Eur,34,500,"rgb(47, 68, 88)",1,#f7edd6,8.4,4.5,ok
+15,timeline,paper,[chrome] counter,15 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+16,gallery,night,[chrome] div.runner>span.roman,I,24,500,"rgb(201, 162, 74)",1,#080d16,8.05,4.5,ok
+16,gallery,night,[chrome] div.runner>span,Chapter 1 · Organization and funds,24,500,"rgb(174, 185, 199)",1,#0b111d,9.11,4.5,ok
+16,gallery,night,[chrome] div.runner>span.ref,1.3.1,20,500,"rgb(174, 185, 199)",1,#080d16,9.71,4.5,ok
 16,gallery,night,div.side>h1.title,Governance on three levels,62,500,"rgb(220, 227, 236)",1,#101828,12.89,3.0,ok
 16,gallery,night,ul.bullets>li.shown>strong,Board of Governors:,30,600,"rgb(255, 255, 255)",1,#151f32,15.88,4.5,ok
 16,gallery,night,div.side>ul.bullets>li.shown,highest body; one Governor per member; meets once a year,30,400,"rgb(220, 227, 236)",1,#101828,12.43,4.5,ok
@@ -245,6 +293,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 16,gallery,night,ul.bullets>li.shown>span.cite-group,[,22,400,"rgb(174, 185, 199)",1,#0e1624,8.93,4.5,ok
 16,gallery,night,li.shown>span.cite-group>a.cite,10,22,600,"rgb(232, 130, 110)",1,#0e1523,6.7,4.5,ok
 16,gallery,night,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(174, 185, 199)",1,#0e1523,9.02,4.5,ok
+16,gallery,night,[chrome] counter,16 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+17,stats,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+17,stats,paper,[chrome] div.runner>span,Chapter 1 · Organization and funds,24,500,"rgb(74, 93, 110)",1,#f4e9d2,5.63,4.5,ok
+17,stats,paper,[chrome] div.runner>span.ref,1.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 17,stats,paper,div.head.wide>h1.title,Voting power follows shares,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 17,stats,paper,div.stamp.shown>div.stamp-in>div.v,15–16%,84,500,"rgb(47, 68, 88)",1,#f4e7c9,8.2,3.0,ok
 17,stats,paper,div.stamp.shown>div.stamp-in>div.l,United States share of votes,24,400,"rgb(74, 93, 110)",1,#f4e7c9,5.55,4.5,ok
@@ -263,6 +315,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 17,stats,paper,div.body>ul.bullets>li.shown,the United States can block decisions needing an 85 percent ,30,400,"rgb(35, 41, 47)",1,#f9f1dd,12.62,4.5,ok
 17,stats,paper,ul.bullets>li.shown>strong,Vietnam:,30,600,"rgb(47, 68, 88)",1,#f6ecd6,8.49,4.5,ok
 17,stats,paper,div.body>ul.bullets>li.shown,votes through a constituency sharing one Executive Director,30,400,"rgb(35, 41, 47)",1,#f9efdc,12.51,4.5,ok
+17,stats,paper,[chrome] counter,17 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+18,process,wash,[chrome] div.runner>span.roman,I,24,500,"rgb(255, 226, 184)",1,#96a2aa,2.05,4.5,FAIL
+18,process,wash,[chrome] div.runner>span,Chapter 1 · Organization and funds,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+18,process,wash,[chrome] div.runner>span.ref,1.3.3,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 18,process,wash,div.head.wide>h1.title,Where the money comes from,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 18,process,wash,div.stn.shown>div.card>div.h,Member capital,36,600,"rgb(47, 68, 88)",1,#f7f0dc,8.78,4.5,ok
 18,process,wash,div.stn.shown>div.card>div.b,Small paid-in share; callable capital never called; capital ,27,400,"rgb(35, 41, 47)",1,#f7f0dc,12.82,4.5,ok
@@ -282,6 +338,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 18,process,wash,div.body>ul.bullets>li.shown,IDA depends on regular donations; the IBRD funds itself thro,30,400,"rgb(255, 248, 234)",1,#9da7af,2.09,4.5,FAIL
 18,process,wash,ul.bullets>li.shown>strong,New tools:,30,600,"rgb(255, 255, 255)",1,#abb3b9,2.08,4.5,FAIL
 18,process,wash,div.body>ul.bullets>li.shown,hybrid capital and guarantees from shareholders,30,400,"rgb(255, 248, 234)",1,#a2acb3,2.04,4.5,FAIL
+18,process,wash,[chrome] counter,18 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+19,gallery,night,[chrome] div.runner>span.roman,I,24,500,"rgb(201, 162, 74)",1,#080d16,8.05,4.5,ok
+19,gallery,night,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(174, 185, 199)",1,#0c121e,9.1,4.5,ok
+19,gallery,night,[chrome] div.runner>span.ref,1.4 · 1.4.1,20,500,"rgb(174, 185, 199)",1,#080e17,9.65,4.5,ok
 19,gallery,night,div.side>h1.title,Three lending instruments,62,500,"rgb(220, 227, 236)",1,#121c2d,12.26,3.0,ok
 19,gallery,night,div.side>p.lead,"A single loan product, the IBRD Flexible Loan, sets price an",30,400,"rgb(174, 185, 199)",1,#141e31,7.69,4.5,ok
 19,gallery,night,ul.bullets>li.shown>strong,IPF:,30,600,"rgb(255, 255, 255)",1,#1a253b,14.9,4.5,ok
@@ -306,6 +366,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 19,gallery,night,div.carousel-names>button.on,IPF,28,400,"rgb(27, 19, 7)",1,#c9a24a,7.66,4.5,ok
 19,gallery,night,div.carousel-names>button,DPF,28,400,"rgb(174, 185, 199)",1,#0a111c,9.38,4.5,ok
 19,gallery,night,div.carousel-names>button,PforR,28,400,"rgb(174, 185, 199)",1,#0d1420,9.11,4.5,ok
+19,gallery,night,[chrome] counter,19 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+20,quote,wash,[chrome] div.runner>span.roman,I,24,500,"rgb(255, 226, 184)",1,#96a2aa,2.05,4.5,FAIL
+20,quote,wash,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.19,4.5,FAIL
+20,quote,wash,[chrome] div.runner>span.ref,1.4.1,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 20,quote,wash,div.qbox>div.qmark,“,220,400,"rgb(161, 61, 45)",1,#9fa9b1,2.4,3.0,FAIL
 20,quote,wash,div.qbox>blockquote,"Under IPF, it pays for inputs; under DPF, for reforms; under",60,500,"rgb(255, 248, 234)",1,#97a3ab,2.37,3.0,FAIL
 20,quote,wash,div.qbox>div.by,Section 1.4.1 of the paper,26,600,"rgb(255, 226, 184)",1,#98a4ab,2.01,4.5,FAIL
@@ -316,6 +380,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 20,quote,wash,ul.bullets>li.shown>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#a2acb4,2.95,4.5,FAIL
 20,quote,wash,li.shown>span.cite-group>a.cite,2,22,600,"rgb(122, 36, 22)",1,#a2acb4,4.25,4.5,FAIL
 20,quote,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#9fa9b1,2.84,4.5,FAIL
+20,quote,wash,[chrome] counter,20 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+21,table,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+21,table,paper,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+21,table,paper,[chrome] div.runner>span.ref,1.4.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 21,table,paper,div.head.wide>h1.title,The three lending instruments compared,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 21,table,paper,div.tframe>div.cap,Table 2. The IBRD’s three lending instruments,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 21,table,paper,thead>tr>th,Instrument,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -339,6 +407,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 21,table,paper,div.tframe>div.src,and,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.08,4.5,ok
 21,table,paper,div.tframe>div.src>a.cite.cite-ay,Gelb et al. (2016),19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.81,4.5,ok
 21,table,paper,div.tframe>div.src,.,19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.91,4.5,ok
+21,table,paper,[chrome] counter,21 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+22,hero,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+22,hero,paper,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+22,hero,paper,[chrome] div.runner>span.ref,1.4.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 22,hero,paper,div.head>h1.title,Loan terms: the price,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.32,3.0,ok
 22,hero,paper,ul.bullets>li.shown>strong,IBRD Flexible Loan:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 22,hero,paper,div.body>ul.bullets>li.shown,leading product for public-sector borrowers in middle-income,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -362,6 +434,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 22,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f8eedb,5.67,4.5,ok
 22,hero,paper,ul.bullets>li.shown>strong,Commitment fee:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.39,4.5,ok
 22,hero,paper,div.body>ul.bullets>li.shown,"charged on undisbursed balances, so slow disbursement raises",31,400,"rgb(35, 41, 47)",1,#f8eedb,12.4,4.5,ok
+22,hero,paper,[chrome] counter,22 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+23,stats,wash,[chrome] div.runner>span.roman,I,24,500,"rgb(255, 226, 184)",1,#96a2aa,2.05,4.5,FAIL
+23,stats,wash,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.19,4.5,FAIL
+23,stats,wash,[chrome] div.runner>span.ref,1.4.2,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 23,stats,wash,div.head.wide>h1.title,Loan terms: long maturities,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.37,3.0,FAIL
 23,stats,wash,div.stamp.shown>div.stamp-in>div.v.long,35 years,58,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 23,stats,wash,div.stamp.shown>div.stamp-in>div.l,"maximum final maturity since 2014, up from 30",24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -395,6 +471,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 23,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#95a1a8,2.55,4.5,FAIL
 23,stats,wash,ul.bullets>li.shown>strong,CCSEP:,30,600,"rgb(255, 255, 255)",1,#aab3b9,2.04,4.5,FAIL
 23,stats,wash,div.body>ul.bullets>li.shown,"IBRD loan 29 years, 10-year grace; IDA credit 25 years, 5-ye",30,400,"rgb(255, 248, 234)",1,#9ba5ad,2.07,4.5,FAIL
+23,stats,wash,[chrome] counter,23 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+24,table,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+24,table,paper,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+24,table,paper,[chrome] div.runner>span.ref,1.4.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 24,table,paper,div.head.wide>h1.title,Main terms of the IBRD Flexible Loan,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 24,table,paper,div.tframe>div.cap,Table 3. Main terms of the IBRD Flexible Loan,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 24,table,paper,thead>tr>th,Term,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -421,6 +501,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 24,table,paper,tbody>tr>td,"0.25% a year on the undisbursed balance, from 60 days after ",23,400,"rgb(35, 41, 47)",1,#f5ebd2,12.3,4.5,ok
 24,table,paper,tr>td>a.cite.cite-ay.inferred,World Bank Treasury (n.d.-a),22,500,"rgb(161, 61, 45)",1,#f5ebd2,5.4,4.5,ok
 24,table,paper,div.tframe>div.src,Note: Terms are reviewed annually and may change; figures ar,19,400,"rgb(74, 93, 110)",1,#faf0dd,5.96,4.5,ok
+24,table,paper,[chrome] counter,24 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+25,hero,paper,[chrome] div.runner>span.roman,I,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+25,hero,paper,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+25,hero,paper,[chrome] div.runner>span.ref,1.4.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 25,hero,paper,div.head>h1.title,Safeguards and procurement,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 25,hero,paper,ul.bullets>li.shown>strong,ESF:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.56,4.5,ok
 25,hero,paper,div.body>ul.bullets>li.shown,approved 4 August 2016; IPF projects initiated on or after 1,31,400,"rgb(35, 41, 47)",1,#f8eedb,12.62,4.5,ok
@@ -442,6 +526,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 25,hero,paper,div.body>ul.bullets>li.shown,; PPSD prepared by CCSEP,31,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
 25,hero,paper,ul.bullets>li.shown>strong,Stricter rules:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.4,4.5,ok
 25,hero,paper,div.body>ul.bullets>li.shown,"gaps with domestic land rules cause delays or, in Nha Trang,",31,400,"rgb(35, 41, 47)",1,#f8eedb,12.4,4.5,ok
+25,hero,paper,[chrome] counter,25 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+26,grid,wash,[chrome] div.runner>span.roman,I,24,500,"rgb(255, 226, 184)",1,#96a2aa,2.05,4.5,FAIL
+26,grid,wash,[chrome] div.runner>span,Chapter 1 · Instruments and loan terms,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.19,4.5,FAIL
+26,grid,wash,[chrome] div.runner>span.ref,1.4.3,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 26,grid,wash,div.head.wide>h1.title,Ten Environmental and Social Standards,68,500,"rgb(255, 248, 234)",1,#97a4ab,2.07,3.0,FAIL
 26,grid,wash,div.head.wide>p.lead,"The ESF shifts more responsibility to the borrower, who must",30,400,"rgb(247, 239, 220)",1,#99a4ac,1.96,4.5,FAIL
 26,grid,wash,div.head.wide>p.lead>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#9ba5ad,2.72,4.5,FAIL
@@ -468,11 +556,18 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 26,grid,wash,div.cardrow>div.cert>div.b,Financial Intermediaries,26,400,"rgb(35, 41, 47)",1,#f7f0dc,12.82,4.5,ok
 26,grid,wash,div.cardrow>div.cert>div.h,ESS10,44,600,"rgb(161, 61, 45)",1,#f7efdc,5.69,3.0,ok
 26,grid,wash,div.cardrow>div.cert>div.b,Stakeholder Engagement and Information Disclosure,26,400,"rgb(35, 41, 47)",1,#f7f0dc,12.82,4.5,ok
+26,grid,wash,[chrome] counter,26 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+27,chapter,night,[chrome] div.runner>span.roman,II,24,500,"rgb(201, 162, 74)",1,#080d16,8.05,4.5,ok
+27,chapter,night,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(174, 185, 199)",1,#0d1421,8.95,4.5,ok
 27,chapter,night,div.roman-big,II,120,300,"rgb(201, 162, 74)",1,#0a0f1a,7.81,3.0,ok
 27,chapter,night,div.chap>h1.title,How the IBRD supports project financing,76,500,"rgb(220, 227, 236)",1,#0d1420,13.87,3.0,ok
 27,chapter,night,div.chap>p.lead,"Financial support, technical support, training and capacity ",30,400,"rgb(174, 185, 199)",1,#0a0f19,9.26,4.5,ok
 27,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#080e18,7.98,4.5,ok
 27,chapter,night,div.toc,2.1.1 · 2.1.2 · 2.1.3 · 2.2 · 2.2.2 · 2.2.3 · 2.3 · 2.3.2,24,400,"rgb(174, 185, 199)",1,#090e19,9.44,4.5,ok
+27,chapter,night,[chrome] counter,27 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+28,cycle,night,[chrome] div.runner>span.roman,II,24,500,"rgb(201, 162, 74)",1,#080d16,8.05,4.5,ok
+28,cycle,night,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(174, 185, 199)",1,#0d1421,8.95,4.5,ok
+28,cycle,night,[chrome] div.runner>span.ref,2.1.1,20,500,"rgb(174, 185, 199)",1,#080d16,9.71,4.5,ok
 28,cycle,night,div.side>h1.title,The six-stage project cycle,58,500,"rgb(220, 227, 236)",1,#101828,13.03,3.0,ok
 28,cycle,night,div.side>p.lead,The borrower owns and implements the project; the Bank advis,28,400,"rgb(174, 185, 199)",1,#111a2b,8.1,4.5,ok
 28,cycle,night,div.side>p.lead>span.cite-group,[,22,400,"rgb(174, 185, 199)",1,#0e1522,8.96,4.5,ok
@@ -497,6 +592,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 28,cycle,night,ol.stages>li.shown>span.k,6,44,400,"rgb(201, 162, 74)",1,#0f1624,7.4,3.0,ok
 28,cycle,night,ol.stages>li.shown>span.h,Completion and evaluation,30,600,"rgb(220, 227, 236)",1,#0e1522,13.77,4.5,ok
 28,cycle,night,ol.stages>li.shown>span.b,"ICR, then independent validation by IEG",26,400,"rgb(174, 185, 199)",1,#0c131f,9.19,4.5,ok
+28,cycle,night,[chrome] counter,28 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+29,table,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+29,table,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+29,table,paper,[chrome] div.runner>span.ref,2.1.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 29,table,paper,div.head.wide>h1.title,Stages of the World Bank project cycle,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 29,table,paper,div.tframe>div.cap,Table 4. Stages of the World Bank project cycle,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 29,table,paper,thead>tr>th,Stage,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -532,6 +631,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 29,table,paper,div.src>span.cite-group>a.cite,25,19,600,"rgb(161, 61, 45)",1,#f9efdb,5.61,4.5,ok
 29,table,paper,div.tframe>div.src>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9efdb,5.97,4.5,ok
 29,table,paper,div.tframe>div.src,.,19,400,"rgb(74, 93, 110)",1,#f9efdb,5.97,4.5,ok
+29,table,paper,[chrome] counter,29 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+30,hero,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+30,hero,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+30,hero,paper,[chrome] div.runner>span.ref,2.1.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 30,hero,paper,div.head>h1.title,The cycle does not end at approval,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 30,hero,paper,ul.bullets>li.shown>strong,Restructuring:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 30,hero,paper,div.body>ul.bullets>li.shown,TEP restructured in 2019 and extended by two years,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.69,4.5,ok
@@ -541,6 +644,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 30,hero,paper,div.body>ul.bullets>li.shown,"proposal approval, investment decision, counterpart funds an",31,400,"rgb(35, 41, 47)",1,#f9f0dd,12.62,4.5,ok
 30,hero,paper,ul.bullets>li.shown>strong,Joint delays:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 30,hero,paper,div.body>ul.bullets>li.shown,CCSEP became effective about five and a half months later th,31,400,"rgb(35, 41, 47)",1,#f9f0dc,12.51,4.5,ok
+30,hero,paper,[chrome] counter,30 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+31,table,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+31,table,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+31,table,paper,[chrome] div.runner>span.ref,2.1.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 31,table,paper,div.head.wide>h1.title,Four disbursement methods,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 31,table,paper,div.head.wide>p.lead,Methods are set out in each project's disbursement letter,30,400,"rgb(74, 93, 110)",1,#f7edd7,5.75,4.5,ok
 31,table,paper,div.head.wide>p.lead>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f9efdc,5.97,4.5,ok
@@ -572,6 +679,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 31,table,paper,div.src>span.cite-group>a.cite,27,19,600,"rgb(161, 61, 45)",1,#faf0dc,5.76,4.5,ok
 31,table,paper,div.tframe>div.src>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#faf0dd,6.01,4.5,ok
 31,table,paper,div.tframe>div.src,.,19,400,"rgb(74, 93, 110)",1,#faf0dd,6.01,4.5,ok
+31,table,paper,[chrome] counter,31 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+32,hero,wash,[chrome] div.runner>span.roman,II,24,500,"rgb(255, 226, 184)",1,#94a0a7,2.09,4.5,FAIL
+32,hero,wash,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(247, 239, 220)",1,#97a3aa,2.04,4.5,FAIL
+32,hero,wash,[chrome] div.runner>span.ref,2.1.2,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 32,hero,wash,div.head>h1.title,Counterpart funding as the binding constraint,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 32,hero,wash,ul.bullets>li.shown>strong,Documentation:,31,600,"rgb(255, 255, 255)",1,#9aa4ac,2.51,4.5,FAIL
 32,hero,wash,div.body>ul.bullets>li.shown,statements of expenditure or interim financial reports; dead,31,400,"rgb(255, 248, 234)",1,#98a4ab,2.37,4.5,FAIL
@@ -589,6 +700,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 32,hero,wash,div.body>ul.bullets>li.shown,CCSEP provincial allocations began July 2019; no disbursemen,31,400,"rgb(255, 248, 234)",1,#9ca6ae,2.09,4.5,FAIL
 32,hero,wash,ul.bullets>li.shown>strong,Real debt:,31,600,"rgb(255, 255, 255)",1,#a7b1b7,2.08,4.5,FAIL
 32,hero,wash,div.body>ul.bullets>li.shown,"where loans are on-lent, provinces take on real debt obligat",31,400,"rgb(255, 248, 234)",1,#9fa9b1,2.02,4.5,FAIL
+32,hero,wash,[chrome] counter,32 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+33,compare,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+33,compare,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+33,compare,paper,[chrome] div.runner>span.ref,2.1.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 33,compare,paper,div.head.wide>h1.title,IPF and PforR in practice,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 33,compare,paper,div.cmp>div.col.l>div.ribbon,IPF · builds assets,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 33,compare,paper,ul.bullets>li.shown>strong,Structure:,30,600,"rgb(47, 68, 88)",1,#f1e5c8,8.03,4.5,ok
@@ -608,6 +723,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 33,compare,paper,li.shown>span.cite-group>a.cite,32,22,600,"rgb(161, 61, 45)",1,#f1e5c8,5.21,4.5,ok
 33,compare,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f1e5c8,5.45,4.5,ok
 33,compare,paper,div.foot.shown,"For Vietnam, which has mainly used IPF, a results-based desi",34,500,"rgb(47, 68, 88)",1,#f7edd7,8.42,4.5,ok
+33,compare,paper,[chrome] counter,33 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+34,stats,wash,[chrome] div.runner>span.roman,II,24,500,"rgb(255, 226, 184)",1,#94a0a7,2.09,4.5,FAIL
+34,stats,wash,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(247, 239, 220)",1,#97a3aa,2.04,4.5,FAIL
+34,stats,wash,[chrome] div.runner>span.ref,2.1.3,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 34,stats,wash,div.head.wide>h1.title,DPF in Vietnam: from policy matrix to budget,68,500,"rgb(255, 248, 234)",1,#98a4ab,2.09,3.0,FAIL
 34,stats,wash,div.stamp.shown>div.stamp-in>div.v.xlong,US$500 million,46,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 34,stats,wash,div.stamp.shown>div.stamp-in>div.l,"PIR, first operation, December 2009",24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -638,6 +757,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 34,stats,wash,li.shown>span.cite-group>span.cite-sep,;,22,400,"rgb(74, 93, 110)",1,#97a4ab,2.61,4.5,FAIL
 34,stats,wash,li.shown>span.cite-group>a.cite,30,22,600,"rgb(122, 36, 22)",1,#97a4ab,3.85,4.5,FAIL
 34,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#95a1a8,2.58,4.5,FAIL
+34,stats,wash,[chrome] counter,34 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+35,hero,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+35,hero,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+35,hero,paper,[chrome] div.runner>span.ref,2.2 · 2.2.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 35,hero,paper,div.head>h1.title,Technical support: preparation,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 35,hero,paper,ul.bullets>li.shown>strong,Task team:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 35,hero,paper,div.body>ul.bullets>li.shown,"technical, financial, procurement and safeguard specialists ",31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -655,6 +778,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 35,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9efdc,5.75,4.5,ok
 35,hero,paper,ul.bullets>li.shown>strong,Quality matters:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.49,4.5,ok
 35,hero,paper,div.body>ul.bullets>li.shown,better smart-grid preparation would have avoided TEP's exten,31,400,"rgb(35, 41, 47)",1,#f8eedb,12.42,4.5,ok
+35,hero,paper,[chrome] counter,35 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.38,4.5,ok
+36,stats,wash,[chrome] div.runner>span.roman,II,24,500,"rgb(255, 226, 184)",1,#94a0a7,2.09,4.5,FAIL
+36,stats,wash,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(247, 239, 220)",1,#97a3aa,2.04,4.5,FAIL
+36,stats,wash,[chrome] div.runner>span.ref,2.2.2,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 36,stats,wash,div.head.wide>h1.title,Advisory Services and Analytics,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.24,3.0,FAIL
 36,stats,wash,div.stamp.shown>div.stamp-in>div.v.xlong,US$991 million,46,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 36,stats,wash,div.stamp.shown>div.stamp-in>div.l,ASA disbursements in 2023,24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -696,6 +823,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 36,stats,wash,li.shown>span.cite-group>a.cite,2,22,600,"rgb(122, 36, 22)",1,#a2acb4,4.3,4.5,FAIL
 36,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#a0aab2,2.85,4.5,FAIL
 36,stats,wash,div.body>ul.bullets>li.shown,"; PPIAF US$350,000 and GIZ support for CCSEP",30,400,"rgb(255, 248, 234)",1,#96a2aa,2.26,4.5,FAIL
+36,stats,wash,[chrome] counter,36 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+37,process,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+37,process,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+37,process,paper,[chrome] div.runner>span.ref,2.2.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 37,process,paper,div.head.wide>h1.title,Monitoring and evaluation on three levels,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 37,process,paper,div.head.wide>p.lead,"CCSEP's results framework: about 290,000 beneficiaries, 256,",30,400,"rgb(74, 93, 110)",1,#f8eed8,5.75,4.5,ok
 37,process,paper,div.stn.shown>div.card>div.h,Supervision,36,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
@@ -706,6 +837,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 37,process,paper,div.stn.shown>div.card>div.b,The ICR at closing compares results with targets,27,400,"rgb(35, 41, 47)",1,#faf1dd,12.78,4.5,ok
 37,process,paper,div.stn.shown>div.card>div.h,Independent evaluation,36,600,"rgb(47, 68, 88)",1,#f9efdc,8.8,4.5,ok
 37,process,paper,div.stn.shown>div.card>div.b,IEG validates the ICR; a PPAR for selected projects,27,400,"rgb(35, 41, 47)",1,#f9efdc,12.74,4.5,ok
+37,process,paper,[chrome] counter,37 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.39,4.5,ok
+38,hero,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+38,hero,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+38,hero,paper,[chrome] div.runner>span.ref,2.2.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 38,hero,paper,div.head>h1.title,"What M&E shows, and its limits",68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 38,hero,paper,ul.bullets>li.shown>strong,TEP PPAR:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 38,hero,paper,div.body>ul.bullets>li.shown,"outcome highly satisfactory, Bank performance satisfactory, ",31,400,"rgb(35, 41, 47)",1,#f8eedb,12.62,4.5,ok
@@ -718,6 +853,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 38,hero,paper,div.body>ul.bullets>li.shown,system-wide indicators such as transmission losses are not t,31,400,"rgb(35, 41, 47)",1,#f9f0dd,12.62,4.5,ok
 38,hero,paper,ul.bullets>li.shown>strong,No ICR:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.26,4.5,ok
 38,hero,paper,div.body>ul.bullets>li.shown,"for CCSEP, assessment must rely on interim reports",31,400,"rgb(35, 41, 47)",1,#f9f0dd,12.56,4.5,ok
+38,hero,paper,[chrome] counter,38 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+39,hero,wash,[chrome] div.runner>span.roman,II,24,500,"rgb(255, 226, 184)",1,#94a0a7,2.09,4.5,FAIL
+39,hero,wash,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(247, 239, 220)",1,#97a3aa,2.04,4.5,FAIL
+39,hero,wash,[chrome] div.runner>span.ref,2.3 · 2.3.1,20,500,"rgb(247, 239, 220)",1,#99a4ac,2.19,4.5,FAIL
 39,hero,wash,div.head>h1.title,Training project management units,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.09,3.0,FAIL
 39,hero,wash,ul.bullets>li.shown>strong,PMUs:,31,600,"rgb(255, 255, 255)",1,#9aa4ac,2.53,4.5,FAIL
 39,hero,wash,div.body>ul.bullets>li.shown,"TEP used NPT's northern, central and southern boards; CCSEP ",31,400,"rgb(255, 248, 234)",1,#99a4ab,2.37,4.5,FAIL
@@ -732,6 +871,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 39,hero,wash,div.body>ul.bullets>li.shown,Phan Rang's new PMU drew 10 of its 12 staff from other ODA u,31,400,"rgb(255, 248, 234)",1,#9aa4ac,2.07,4.5,FAIL
 39,hero,wash,ul.bullets>li.shown>strong,Still weak:,31,600,"rgb(255, 255, 255)",1,#a7b1b7,2.08,4.5,FAIL
 39,hero,wash,div.body>ul.bullets>li.shown,PMU capacity remained a main cause of delay in CCSEP,31,400,"rgb(255, 248, 234)",1,#9ba6ad,2.09,4.5,FAIL
+39,hero,wash,[chrome] counter,39 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+40,stats,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+40,stats,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+40,stats,paper,[chrome] div.runner>span.ref,2.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 40,stats,paper,div.head.wide>h1.title,Knowledge transfer by doing,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 40,stats,paper,div.stamp.shown>div.stamp-in>div.v,2014,84,500,"rgb(47, 68, 88)",1,#f4e7c9,8.2,3.0,ok
 40,stats,paper,div.stamp.shown>div.stamp-in>div.l,world's first MOOC on public procurement,24,400,"rgb(74, 93, 110)",1,#f4e7c9,5.55,4.5,ok
@@ -757,6 +900,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 40,stats,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#fcf1de,5.96,4.5,ok
 40,stats,paper,ul.bullets>li.shown>strong,Harder to transfer:,30,600,"rgb(47, 68, 88)",1,#f6ecd6,8.49,4.5,ok
 40,stats,paper,div.body>ul.bullets>li.shown,"in Nha Trang, local compensation rules and land prices diffe",30,400,"rgb(35, 41, 47)",1,#f9f0dd,12.62,4.5,ok
+40,stats,paper,[chrome] counter,40 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+41,table,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+41,table,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+41,table,paper,[chrome] div.runner>span.ref,2.3.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 41,table,paper,div.head.wide>h1.title,Institutional reform in the two case studies,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 41,table,paper,div.tframe>div.cap,Table 6. Institutional reform activities in the two case stu,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 41,table,paper,thead>tr>th,Project,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -786,6 +933,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 41,table,paper,div.tframe>div.src,",",19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.06,4.5,ok
 41,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,2023,19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.74,4.5,ok
 41,table,paper,div.tframe>div.src,).,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.06,4.5,ok
+41,table,paper,[chrome] counter,41 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+42,stats,wash,[chrome] div.runner>span.roman,II,24,500,"rgb(255, 226, 184)",1,#94a0a7,2.09,4.5,FAIL
+42,stats,wash,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(247, 239, 220)",1,#97a3aa,2.04,4.5,FAIL
+42,stats,wash,[chrome] div.runner>span.ref,2.3.3,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 42,stats,wash,div.head.wide>h1.title,Reform depends on the borrower,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.18,3.0,FAIL
 42,stats,wash,div.stamp.shown>div.stamp-in>div.v,5.50,84,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 42,stats,wash,div.stamp.shown>div.stamp-in>div.l,US$ million from NPT,24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -802,6 +953,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 42,stats,wash,div.body>ul.bullets>li.shown,all of Component 4 financed by counterpart funds; many refor,30,400,"rgb(255, 248, 234)",1,#9aa5ac,2.09,4.5,FAIL
 42,stats,wash,ul.bullets>li.shown>strong,Lesson:,30,600,"rgb(255, 255, 255)",1,#aab3b9,2.04,4.5,FAIL
 42,stats,wash,div.body>ul.bullets>li.shown,the IBRD can design and advise; the borrower must fund and s,30,400,"rgb(255, 248, 234)",1,#9ca6ae,2.04,4.5,FAIL
+42,stats,wash,[chrome] counter,42 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+43,table,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+43,table,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+43,table,paper,[chrome] div.runner>span.ref,2.4,20,500,"rgb(74, 93, 110)",1,#f2e9d1,5.63,4.5,ok
 43,table,paper,div.head.wide>h1.title,Three forms of support across the cycle,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 43,table,paper,div.head.wide>p.lead,"Finance pays for the investment, technical support makes it ",30,400,"rgb(74, 93, 110)",1,#f8eed9,5.75,4.5,ok
 43,table,paper,div.tframe>div.cap,Table 7. The three forms of IBRD support across the project ,22,600,"rgb(161, 61, 45)",1,#fbf1dd,5.76,4.5,ok
@@ -822,6 +977,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 43,table,paper,tbody>tr>td,ICR and IEG evaluation; lessons for new projects,22,400,"rgb(35, 41, 47)",1,#fbf2de,13.1,4.5,ok
 43,table,paper,tbody>tr>td,Systems and institutions left in place (e.g. TEP’s asset man,22,400,"rgb(35, 41, 47)",1,#fbf1dc,12.84,4.5,ok
 43,table,paper,div.tframe>div.src,Source: Authors’ synthesis of Sections 2.1-2.3.,19,400,"rgb(74, 93, 110)",1,#faf0db,5.91,4.5,ok
+43,table,paper,[chrome] counter,43 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+44,cards,wash,[chrome] div.runner>span.roman,II,24,500,"rgb(255, 226, 184)",1,#94a0a7,2.09,4.5,FAIL
+44,cards,wash,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(247, 239, 220)",1,#97a3aa,2.04,4.5,FAIL
+44,cards,wash,[chrome] div.runner>span.ref,2.4,20,500,"rgb(247, 239, 220)",1,#98a4ac,2.21,4.5,FAIL
 44,cards,wash,div.head.wide>h1.title,How the three forms reinforce one another,68,500,"rgb(255, 248, 234)",1,#98a4ac,2.09,3.0,FAIL
 44,cards,wash,div.cardrow.c3>div.cert.shown>div.h,Money gives weight to advice,38,600,"rgb(47, 68, 88)",1,#f7efdc,8.78,4.5,ok
 44,cards,wash,div.cardrow.c3>div.cert.shown>div.b,Standards are adopted when they are conditions of a loan,29,400,"rgb(35, 41, 47)",1,#f7efdc,12.82,4.5,ok
@@ -830,14 +989,25 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 44,cards,wash,div.cardrow.c3>div.cert.shown>div.h,Training protects the results,38,600,"rgb(47, 68, 88)",1,#f7f0dc,8.78,4.5,ok
 44,cards,wash,div.cardrow.c3>div.cert.shown>div.b,Assets keep working only if local institutions run them,29,400,"rgb(35, 41, 47)",1,#f7f0dc,12.82,4.5,ok
 44,cards,wash,div.foot.shown,Binding constraints usually lie on the domestic side: counte,34,500,"rgb(255, 248, 234)",1,#9ea8af,1.99,4.5,FAIL
+44,cards,wash,[chrome] counter,44 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+45,quote,paper,[chrome] div.runner>span.roman,II,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+45,quote,paper,[chrome] div.runner>span,Chapter 2 · How the IBRD supports project financing,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+45,quote,paper,[chrome] div.runner>span.ref,2.4,20,500,"rgb(74, 93, 110)",1,#f2e9d1,5.63,4.5,ok
 45,quote,paper,div.qbox>div.qmark,“,220,400,"rgb(161, 61, 45)",1,#fbf0dd,5.71,3.0,ok
 45,quote,paper,div.qbox>blockquote.long,The value of the IBRD therefore lies less in any single form,54,500,"rgb(47, 68, 88)",1,#f9f0dd,8.81,3.0,ok
 45,quote,paper,div.qbox>div.by,Section 2.4 of the paper,26,600,"rgb(161, 61, 45)",1,#fbf2de,5.77,4.5,ok
+45,quote,paper,[chrome] counter,45 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+46,chapter,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+46,chapter,night,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(174, 185, 199)",1,#0d1421,8.95,4.5,ok
 46,chapter,night,div.roman-big,III,120,300,"rgb(201, 162, 74)",1,#0a101b,7.76,3.0,ok
 46,chapter,night,div.chap>h1.title,The IBRD and selected projects in Vietnam,76,500,"rgb(220, 227, 236)",1,#0e1522,13.33,3.0,ok
 46,chapter,night,div.chap>p.lead,"Context, TEP (energy) and CCSEP (urban and environment)",30,400,"rgb(174, 185, 199)",1,#0a0f1a,9.2,4.5,ok
 46,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 46,chapter,night,div.toc,3.1.1 · 3.1 · 3.1.3 · 3.1.4,24,400,"rgb(174, 185, 199)",1,#080e17,9.65,4.5,ok
+46,chapter,night,[chrome] counter,46 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+47,timeline,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+47,timeline,paper,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+47,timeline,paper,[chrome] div.runner>span.ref,3.1.1 · 3.1.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 47,timeline,paper,div.head.wide>h1.title,Vietnam and the World Bank since 1993,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 47,timeline,paper,div.rail.n5>div.stn.shown>div.d,October 1993,40,600,"rgb(161, 61, 45)",1,#f7edd7,5.55,3.0,ok
 47,timeline,paper,div.rail.n5>div.stn.shown>div.t,Lending resumes; IDA credits of approximately USD 70 million,29,400,"rgb(35, 41, 47)",1,#f7edd7,12.4,4.5,ok
@@ -870,6 +1040,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 47,timeline,paper,div.stn.shown>div.t>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f9efda,5.45,4.5,ok
 47,timeline,paper,div.t>span.cite-group>a.cite,4,22,600,"rgb(161, 61, 45)",1,#f9efda,5.35,4.5,ok
 47,timeline,paper,div.stn.shown>div.t>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9efda,5.75,4.5,ok
+47,timeline,paper,[chrome] counter,47 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+48,hero,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+48,hero,wash,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(247, 239, 220)",1,#97a4ab,2.02,4.5,FAIL
+48,hero,wash,[chrome] div.runner>span.ref,3.1 · 3.1.1 · 3.1.2,20,500,"rgb(247, 239, 220)",1,#9ba5ad,2.19,4.5,FAIL
 48,hero,wash,div.head>h1.title,"A shift in lending mix, not a substitution",68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 48,hero,wash,ul.bullets>li.shown>strong,Planned vs actual:,31,600,"rgb(255, 255, 255)",1,#9aa4ac,2.51,4.5,FAIL
 48,hero,wash,div.body>ul.bullets>li.shown,appraisal figures are plans; closing amounts are reported sp,31,400,"rgb(255, 248, 234)",1,#97a4ab,2.37,4.5,FAIL
@@ -893,6 +1067,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 48,hero,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#9fa9b0,2.72,4.5,FAIL
 48,hero,wash,ul.bullets>li.shown>strong,Mix and conditions:,31,600,"rgb(255, 255, 255)",1,#a7b1b7,2.11,4.5,FAIL
 48,hero,wash,div.body>ul.bullets>li.shown,graduation changed the lending mix and financing conditions,31,400,"rgb(255, 248, 234)",1,#a0aab2,2.01,4.5,FAIL
+48,hero,wash,[chrome] counter,48 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+49,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+49,hero,paper,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+49,hero,paper,[chrome] div.runner>span.ref,3.1.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 49,hero,paper,div.head>h1.title,A late IDA project: SAHEP (2017),68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 49,hero,paper,ul.bullets>li.shown>strong,Approval:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 49,hero,paper,div.body>ul.bullets>li.shown,SAHEP (,31,400,"rgb(35, 41, 47)",1,#f8eed8,12.62,4.5,ok
@@ -915,6 +1093,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 49,hero,paper,div.body>ul.bullets>li.shown,illustrates the late IDA pipeline; not proof IDA stopped in ,31,400,"rgb(35, 41, 47)",1,#f9f0dc,12.51,4.5,ok
 49,hero,paper,ul.bullets>li.shown>strong,Comparison:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.4,4.5,ok
 49,hero,paper,div.body>ul.bullets>li.shown,institutional only; outputs not comparable with TEP's indica,31,400,"rgb(35, 41, 47)",1,#f8efdc,12.4,4.5,ok
+49,hero,paper,[chrome] counter,49 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+50,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+50,table,paper,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+50,table,paper,[chrome] div.runner>span.ref,3.1.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 50,table,paper,div.head.wide>h1.title,TEP and SAHEP at appraisal,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 50,table,paper,div.tframe>div.cap,Table 8. Selected project financing characteristics at appra,22,600,"rgb(161, 61, 45)",1,#faf0dd,5.72,4.5,ok
 50,table,paper,thead>tr>th,Indicator,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -950,6 +1132,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 50,table,paper,div.tframe>div.src,",",19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.97,4.5,ok
 50,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,2017,19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.7,4.5,ok
 50,table,paper,div.tframe>div.src,"), project appraisal documents.",19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.96,4.5,ok
+50,table,paper,[chrome] counter,50 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+51,process,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+51,process,wash,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(247, 239, 220)",1,#97a4ab,2.02,4.5,FAIL
+51,process,wash,[chrome] div.runner>span.ref,3.1.4,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 51,process,wash,div.head.wide>h1.title,"Two legal systems, one chain of decrees",68,500,"rgb(255, 248, 234)",1,#97a4ab,2.07,3.0,FAIL
 51,process,wash,div.card>div.h>span.code,38/2013/ND-CP,31,500,"rgb(47, 68, 88)",1,#f7f0dc,8.78,4.5,ok
 51,process,wash,div.stn.shown>div.card>div.b,At TEP approval in 2014,26,400,"rgb(35, 41, 47)",1,#f7f0dc,12.91,4.5,ok
@@ -994,6 +1180,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 51,process,wash,ul.bullets>li.shown>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#98a4ab,2.65,4.5,FAIL
 51,process,wash,li.shown>span.cite-group>a.cite,44,22,600,"rgb(122, 36, 22)",1,#96a2aa,3.8,4.5,FAIL
 51,process,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#95a1a8,2.55,4.5,FAIL
+51,process,wash,[chrome] counter,51 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+52,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+52,table,paper,[chrome] div.runner>span,Chapter 3 · The IBRD and selected projects in Vietnam,24,500,"rgb(74, 93, 110)",1,#f4ead4,5.63,4.5,ok
+52,table,paper,[chrome] div.runner>span.ref,3.1.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 52,table,paper,div.head.wide>h1.title,Regulatory milestones for ODA and concessional loans,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 52,table,paper,div.tframe>div.cap,Table 9. Selected milestones in Vietnam’s regulatory framewo,22,600,"rgb(161, 61, 45)",1,#fbf1dd,5.73,4.5,ok
 52,table,paper,thead>tr>th,Instrument,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1040,6 +1230,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 52,table,paper,div.tframe>div.src,",",19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.08,4.5,ok
 52,table,paper,div.tframe>div.src>a.cite.cite-ay,2026,19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.81,4.5,ok
 52,table,paper,div.tframe>div.src,).,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.08,4.5,ok
+52,table,paper,[chrome] counter,52 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+53,chapter,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+53,chapter,night,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(174, 185, 199)",1,#0b111c,9.19,4.5,ok
 53,chapter,night,div.roman-big,III,120,300,"rgb(201, 162, 74)",1,#0a101b,7.76,3.0,ok
 53,chapter,night,div.chap>h1.title,Case study 1 · Transmission Efficiency Project,76,500,"rgb(220, 227, 236)",1,#0c131f,13.9,3.0,ok
 53,chapter,night,div.chap>p.lead,Energy sector ·,30,400,"rgb(174, 185, 199)",1,#080d17,9.65,4.5,ok
@@ -1048,6 +1241,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 53,chapter,night,div.chap>p.lead>span.code,8417-VN,30,500,"rgb(174, 185, 199)",1,#0c131f,9.2,4.5,ok
 53,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 53,chapter,night,div.toc,3.2.1 · 3.2.2 · 3.2.3 · 3.2.4 · 3.2.5 · 3.2.6,24,400,"rgb(174, 185, 199)",1,#090e18,9.53,4.5,ok
+53,chapter,night,[chrome] counter,53 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+54,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+54,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+54,hero,paper,[chrome] div.runner>span.ref,3.2.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 54,hero,paper,div.head>h1.title,TEP: project overview,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.32,3.0,ok
 54,hero,paper,ul.bullets>li.shown>strong,Dates:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 54,hero,paper,div.body>ul.bullets>li.shown,approved 7 August 2014; effective 10 February 2015,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -1076,6 +1273,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 54,hero,paper,li.shown>span.cite-group>span.cite-sep,;,22,400,"rgb(74, 93, 110)",1,#f7edd7,5.58,4.5,ok
 54,hero,paper,li.shown>span.cite-group>a.cite,37,22,600,"rgb(161, 61, 45)",1,#f7edd7,5.4,4.5,ok
 54,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f7edd7,5.75,4.5,ok
+54,hero,paper,[chrome] counter,54 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+55,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+55,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+55,table,paper,[chrome] div.runner>span.ref,3.2.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 55,table,paper,div.head.wide>h1.title,TEP profile and milestones,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 55,table,paper,div.tframe>div.cap,Table 10. TEP: basic project profile and implementation mile,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 55,table,paper,thead>tr>th,Item,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1108,6 +1309,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 55,table,paper,div.tframe>div.src,"), and World Bank (",19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.98,4.5,ok
 55,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,"2023, pp. v-vi",19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.72,4.5,ok
 55,table,paper,div.tframe>div.src,).,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.02,4.5,ok
+55,table,paper,[chrome] counter,55 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+56,stats,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+56,stats,wash,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(247, 239, 220)",1,#95a1a8,2.21,4.5,FAIL
+56,stats,wash,[chrome] div.runner>span.ref,3.2.1,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 56,stats,wash,div.head.wide>h1.title,The planned financing envelope,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.24,3.0,FAIL
 56,stats,wash,div.stamp.shown>div.stamp-in>div.v,731.25,84,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 56,stats,wash,div.stamp.shown>div.stamp-in>div.l,USD million total cost at appraisal,24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -1131,6 +1336,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 56,stats,wash,li.shown>span.cite-group>span.cite-sep,;,22,400,"rgb(74, 93, 110)",1,#94a0a7,2.55,4.5,FAIL
 56,stats,wash,li.shown>span.cite-group>a.cite,41,22,600,"rgb(122, 36, 22)",1,#95a1a8,3.8,4.5,FAIL
 56,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#97a4ab,2.61,4.5,FAIL
+56,stats,wash,[chrome] counter,56 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+57,cards,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+57,cards,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+57,cards,paper,[chrome] div.runner>span.ref,3.2.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 57,cards,paper,div.head.wide>h1.title,Three components,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 57,cards,paper,div.cardrow.c3>div.cert.shown>div.h,1 · Transmission infrastructure,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 57,cards,paper,div.cardrow.c3>div.cert.shown>div.b,"Build, rehabilitate, upgrade high-voltage lines and substati",29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
@@ -1159,6 +1368,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 57,cards,paper,div.cert.shown>div.b>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
 57,cards,paper,div.b>span.cite-group>a.cite,41,22,600,"rgb(161, 61, 45)",1,#fbf2de,5.85,4.5,ok
 57,cards,paper,div.cert.shown>div.b>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
+57,cards,paper,[chrome] counter,57 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+58,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+58,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+58,table,paper,[chrome] div.runner>span.ref,3.2.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 58,table,paper,div.head.wide>h1.title,"Cost by component, approval vs closing",68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 58,table,paper,div.tframe>div.cap,Table 11. TEP project cost by component at approval and at c,22,600,"rgb(161, 61, 45)",1,#faf0dd,5.72,4.5,ok
 58,table,paper,thead>tr>th,Project component,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1190,6 +1403,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 58,table,paper,div.tframe>div.src,). Figures transcribed from the original table; the fee row ,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.08,4.5,ok
 58,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,2014,19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.62,4.5,ok
 58,table,paper,div.tframe>div.src,).,19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.82,4.5,ok
+58,table,paper,[chrome] counter,58 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+59,chart,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+59,chart,wash,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(247, 239, 220)",1,#95a1a8,2.21,4.5,FAIL
+59,chart,wash,[chrome] div.runner>span.ref,3.2.2,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 59,chart,wash,div.head.wide>h1.title,"Appraisal vs closing, in two pictures",68,500,"rgb(255, 248, 234)",1,#97a2aa,2.09,3.0,FAIL
 59,chart,wash,div.charts>div.chartbox>div.cap,Figure 1. TEP financing structure: committed/appraised resou,21,600,"rgb(161, 61, 45)",1,#f1ead9,5.44,4.5,ok
 59,chart,wash,div.chartbox>svg>text,0,18,400,"rgb(74, 93, 110)",1,#f2ebd9,5.68,4.5,ok
@@ -1239,6 +1456,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 59,chart,wash,ul.bullets>li.shown>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#98a2aa,2.56,4.5,FAIL
 59,chart,wash,li.shown>span.cite-group>a.cite,41,22,600,"rgb(122, 36, 22)",1,#94a0a7,3.7,4.5,FAIL
 59,chart,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#95a1a8,2.55,4.5,FAIL
+59,chart,wash,[chrome] counter,59 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+60,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+60,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+60,table,paper,[chrome] div.runner>span.ref,3.2.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 60,table,paper,div.head.wide>h1.title,Financing by source: appraisal vs actual,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 60,table,paper,div.tframe>div.cap,Table 12. TEP component financing by source: appraisal versu,22,600,"rgb(161, 61, 45)",1,#faf0dd,5.72,4.5,ok
 60,table,paper,thead>tr>th,Component,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1274,6 +1495,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 60,table,paper,div.tframe>div.src,Source: Adapted from World Bank (,19,400,"rgb(74, 93, 110)",1,#faf0db,5.97,4.5,ok
 60,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,"2022a, Annex 3, Table 3.2, p. 49",19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.77,4.5,ok
 60,table,paper,div.tframe>div.src,). IBRD component allocations and actual costs are taken fro,19,400,"rgb(74, 93, 110)",1,#fbf2de,6.08,4.5,ok
+60,table,paper,[chrome] counter,60 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+61,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+61,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+61,hero,paper,[chrome] div.runner>span.ref,3.2.2 · 3.2.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 61,hero,paper,div.head>h1.title,Contractual disciplines and the AMS,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 61,hero,paper,ul.bullets>li.shown>strong,Disciplines:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 61,hero,paper,div.body>ul.bullets>li.shown,"spending tied to procurement, finance, supervision, E&S obli",31,400,"rgb(35, 41, 47)",1,#f8eedb,12.62,4.5,ok
@@ -1305,6 +1530,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 61,hero,paper,li.shown>span.cite-group>a.cite,42,22,600,"rgb(161, 61, 45)",1,#f6ecd6,5.55,4.5,ok
 61,hero,paper,li.shown>span.cite-group>span.cite-loc,", pp. 2–3",22,400,"rgb(74, 93, 110)",1,#f6ecd6,5.8,4.5,ok
 61,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f7edd7,5.86,4.5,ok
+61,hero,paper,[chrome] counter,61 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+62,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+62,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+62,table,paper,[chrome] div.runner>span.ref,3.2.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 62,table,paper,div.head.wide>h1.title,Institutional and digital workstreams,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 62,table,paper,div.tframe>div.cap,Table 13. Selected institutional and digital systems activit,22,600,"rgb(161, 61, 45)",1,#faf0dd,5.71,4.5,ok
 62,table,paper,thead>tr>th,Workstream,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1330,6 +1559,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 62,table,paper,div.tframe>div.src,) and World Bank (,19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.98,4.5,ok
 62,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,"2022b, pp. 2-3",19,500,"rgb(161, 61, 45)",1,#fbf1dd,5.81,4.5,ok
 62,table,paper,div.tframe>div.src,).,19,400,"rgb(74, 93, 110)",1,#fcf1de,6.08,4.5,ok
+62,table,paper,[chrome] counter,62 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead1,5.32,4.5,ok
+63,hero,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+63,hero,wash,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(247, 239, 220)",1,#95a1a8,2.21,4.5,FAIL
+63,hero,wash,[chrome] div.runner>span.ref,3.2.3,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 63,hero,wash,div.head>h1.title,"Learning platform, technology friction",68,500,"rgb(255, 248, 234)",1,#97a4ab,2.07,3.0,FAIL
 63,hero,wash,ul.bullets>li.shown>strong,Capabilities:,31,600,"rgb(255, 255, 255)",1,#9aa4ac,2.51,4.5,FAIL
 63,hero,wash,div.body>ul.bullets>li.shown,"procurement, contracts, finance, quality, monitoring, safegu",31,400,"rgb(255, 248, 234)",1,#99a4ab,2.37,4.5,FAIL
@@ -1349,6 +1582,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 63,hero,wash,li.shown>span.cite-group>a.cite,37,22,600,"rgb(122, 36, 22)",1,#a7b1b7,4.55,4.5,ok
 63,hero,wash,li.shown>span.cite-group>span.cite-loc,", pp. x–xi",22,400,"rgb(74, 93, 110)",1,#a6b0b6,2.85,4.5,FAIL
 63,hero,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#9ca6ae,2.72,4.5,FAIL
+63,hero,wash,[chrome] counter,63 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+64,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+64,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+64,table,paper,[chrome] div.runner>span.ref,3.2.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 64,table,paper,div.head.wide>h1.title,Physical outputs against targets,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 64,table,paper,div.head.wide>p.lead,"IEG: 981 km of new lines, 261 km rehabilitated, 4,263 MW ins",30,400,"rgb(74, 93, 110)",1,#f7edd7,5.75,4.5,ok
 64,table,paper,div.head.wide>p.lead>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#fbf0dd,6.04,4.5,ok
@@ -1387,6 +1624,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 64,table,paper,div.tframe>div.src,Source: World Bank (,19,400,"rgb(74, 93, 110)",1,#f9efdb,5.9,4.5,ok
 64,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,"2023, pp. viii-ix, 8",19,500,"rgb(161, 61, 45)",1,#faf0dc,5.66,4.5,ok
 64,table,paper,div.tframe>div.src,); achievement percentages calculated by the authors.,19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.96,4.5,ok
+64,table,paper,[chrome] counter,64 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+65,chart,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+65,chart,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+65,chart,paper,[chrome] div.runner>span.ref,3.2.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 65,chart,paper,div.head.wide>h1.title,Output achievement (%),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 65,chart,paper,div.charts>div.chartbox>div.cap,Figure 3. TEP output achievement relative to original result,21,600,"rgb(161, 61, 45)",1,#fbf2dd,5.8,4.5,ok
 65,chart,paper,div.chartbox>svg>text,0%,18,400,"rgb(74, 93, 110)",1,#faf1dd,6.06,4.5,ok
@@ -1413,6 +1654,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 65,chart,paper,div.body>ul.bullets>li.shown,five 500-kV substations; 10 of 11 targeted 220-kV upgrades,30,400,"rgb(35, 41, 47)",1,#f9efda,12.62,4.5,ok
 65,chart,paper,ul.bullets>li.shown>strong,Ninh Binh:,30,600,"rgb(47, 68, 88)",1,#f9f0dd,8.81,4.5,ok
 65,chart,paper,div.body>ul.bullets>li.shown,upgrade cancelled; substation scheduled for dismantling,30,400,"rgb(35, 41, 47)",1,#f9efdc,12.74,4.5,ok
+65,chart,paper,[chrome] counter,65 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+66,stats,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+66,stats,wash,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(247, 239, 220)",1,#95a1a8,2.21,4.5,FAIL
+66,stats,wash,[chrome] div.runner>span.ref,3.2.4,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 66,stats,wash,div.head.wide>h1.title,Capacity and electricity transmitted,68,500,"rgb(255, 248, 234)",1,#97a2aa,2.09,3.0,FAIL
 66,stats,wash,div.stamp.shown>div.stamp-in>div.v.long,almost 80%,58,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 66,stats,wash,div.stamp.shown>div.stamp-in>div.l,capacity rise in project areas by closing,24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -1428,6 +1673,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 66,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#96a2aa,2.58,4.5,FAIL
 66,stats,wash,ul.bullets>li.shown>strong,Context only:,30,600,"rgb(255, 255, 255)",1,#a7b1b7,2.13,4.5,FAIL
 66,stats,wash,div.body>ul.bullets>li.shown,the national series is not electricity supplied solely becau,30,400,"rgb(255, 248, 234)",1,#97a3ab,2.26,4.5,FAIL
+66,stats,wash,[chrome] counter,66 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+67,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+67,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+67,table,paper,[chrome] div.runner>span.ref,3.2.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 67,table,paper,div.head.wide>h1.title,System-level service and efficiency indicators,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 67,table,paper,div.head.wide>p.lead,Several measures relate to the entire grid and cannot be iso,30,400,"rgb(74, 93, 110)",1,#f8eed8,5.75,4.5,ok
 67,table,paper,div.head.wide>p.lead>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f9efda,5.65,4.5,ok
@@ -1463,6 +1712,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 67,table,paper,div.tframe>div.src,Source: Authors’ compilation from World Bank (,19,400,"rgb(74, 93, 110)",1,#f9efdb,5.9,4.5,ok
 67,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,"2023, pp. 9-11, Tables 2.2-2.3",19,500,"rgb(161, 61, 45)",1,#faf0dd,5.7,4.5,ok
 67,table,paper,div.tframe>div.src,; underlying EVN data).,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.02,4.5,ok
+67,table,paper,[chrome] counter,67 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead1,5.27,4.5,ok
+68,chart,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+68,chart,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+68,chart,paper,[chrome] div.runner>span.ref,3.2.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 68,chart,paper,div.head.wide>h1.title,"Transmission losses, 2015-2022 (%)",68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 68,chart,paper,div.charts>div.chartbox>div.cap,"Figure 4. Vietnam’s electricity transmission loss ratio, 201",21,600,"rgb(161, 61, 45)",1,#fbf2dd,5.8,4.5,ok
 68,chart,paper,div.chartbox>svg>text,2.0,18,400,"rgb(74, 93, 110)",1,#faf1dd,6.06,4.5,ok
@@ -1502,6 +1755,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 68,chart,paper,div.body>ul.bullets>li.shown,"wind and solar flows, congestion, insufficient new transmiss",30,400,"rgb(35, 41, 47)",1,#f9efdc,12.74,4.5,ok
 68,chart,paper,ul.bullets>li.shown>strong,Faults:,30,600,"rgb(47, 68, 88)",1,#f9f1dd,8.91,4.5,ok
 68,chart,paper,div.body>ul.bullets>li.shown,500-kV fell from 42 to 29; 220-kV rose from 135 to 159,30,400,"rgb(35, 41, 47)",1,#f9efdc,12.57,4.5,ok
+68,chart,paper,[chrome] counter,68 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+69,stats,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+69,stats,wash,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(247, 239, 220)",1,#95a1a8,2.21,4.5,FAIL
+69,stats,wash,[chrome] div.runner>span.ref,3.2.4,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 69,stats,wash,div.head.wide>h1.title,Renewables and the economic return,68,500,"rgb(255, 248, 234)",1,#97a3ab,2.09,3.0,FAIL
 69,stats,wash,div.stamp.shown>div.stamp-in>div.v,52.6%,84,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 69,stats,wash,div.stamp.shown>div.stamp-in>div.l,"re-estimated EIRR, 2022 completion report",24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -1523,6 +1780,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 69,stats,wash,div.body>ul.bullets>li.shown,no verified extra solar or wind MWh; curtailment continued,30,400,"rgb(255, 248, 234)",1,#98a4ab,2.24,4.5,FAIL
 69,stats,wash,ul.bullets>li.shown>strong,Model result:,30,600,"rgb(255, 255, 255)",1,#a7b1b7,2.13,4.5,FAIL
 69,stats,wash,div.body>ul.bullets>li.shown,not a cash return to IBRD or NPT; sensitive to assumptions,30,400,"rgb(255, 248, 234)",1,#9ba5ad,2.16,4.5,FAIL
+69,stats,wash,[chrome] counter,69 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+70,gallery,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+70,gallery,night,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(174, 185, 199)",1,#0b111c,9.19,4.5,ok
+70,gallery,night,[chrome] div.runner>span.ref,3.2.5,20,500,"rgb(174, 185, 199)",1,#080d16,9.71,4.5,ok
 70,gallery,night,div.side>h1.title,Commitment vs disbursement,62,500,"rgb(220, 227, 236)",1,#101827,12.71,3.0,ok
 70,gallery,night,div.mini-stamps>div.mini-stamp.shown>div.v,500.00,56,500,"rgb(242, 210, 122)",1,#182339,10.28,3.0,ok
 70,gallery,night,div.mini-stamps>div.mini-stamp.shown>div.l,USD million committed,21,400,"rgb(174, 185, 199)",1,#1a253c,7.42,4.5,ok
@@ -1549,6 +1810,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 70,gallery,night,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(174, 185, 199)",1,#0e1523,9.04,4.5,ok
 70,gallery,night,ul.bullets>li.shown>strong,Different concept:,30,600,"rgb(255, 255, 255)",1,#0f1725,17.47,4.5,ok
 70,gallery,night,div.side>ul.bullets>li.shown,~USD 160 million cancelled is not the USD 181.47 million gap,30,400,"rgb(220, 227, 236)",1,#0d1421,13.85,4.5,ok
+70,gallery,night,[chrome] counter,70 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+71,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+71,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+71,table,paper,[chrome] div.runner>span.ref,3.2.5,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 71,table,paper,div.head.wide>h1.title,Financing gap: definitions,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 71,table,paper,div.tframe>div.cap,Table 16. TEP financing gap: definitions and derived compari,22,600,"rgb(161, 61, 45)",1,#faf0dd,5.71,4.5,ok
 71,table,paper,thead>tr>th,Measure,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1580,6 +1845,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 71,table,paper,div.tframe>div.src,) and World Bank (,19,400,"rgb(74, 93, 110)",1,#fbf2de,6.0,4.5,ok
 71,table,paper,div.tframe>div.src>a.cite.cite-ay.inferred,"2023, pp. v, x, 17",19,500,"rgb(161, 61, 45)",1,#fbf1de,5.74,4.5,ok
 71,table,paper,div.tframe>div.src,).,19,400,"rgb(74, 93, 110)",1,#fcf1de,5.97,4.5,ok
+71,table,paper,[chrome] counter,71 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+72,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+72,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+72,hero,paper,[chrome] div.runner>span.ref,3.2.5,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 72,hero,paper,div.head>h1.title,"Delays, safeguards, sustainability",68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 72,hero,paper,ul.bullets>li.shown>strong,Smart grid:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 72,hero,paper,div.body>ul.bullets>li.shown,selection and approval took roughly four years,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -1606,6 +1875,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 72,hero,paper,li.shown>span.cite-group>a.cite,37,22,600,"rgb(161, 61, 45)",1,#f5ebd5,5.32,4.5,ok
 72,hero,paper,li.shown>span.cite-group>span.cite-loc,", pp. 18–20",22,400,"rgb(74, 93, 110)",1,#f6ecd6,5.75,4.5,ok
 72,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f6ecd6,5.8,4.5,ok
+72,hero,paper,[chrome] counter,72 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+73,compare,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+73,compare,wash,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(247, 239, 220)",1,#95a1a8,2.21,4.5,FAIL
+73,compare,wash,[chrome] div.runner>span.ref,3.2.6,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 73,compare,wash,div.head.wide>h1.title,TEP: overall assessment,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.39,3.0,FAIL
 73,compare,wash,div.cmp>div.col.l>div.ribbon,Strengths,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 73,compare,wash,ul.bullets>li.shown>strong,Outputs:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
@@ -1621,6 +1894,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 73,compare,wash,div.col.r>ul.bullets>li.shown,large gap between loan commitment and final disbursement,30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
 73,compare,wash,ul.bullets>li.shown>strong,Constraints:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
 73,compare,wash,div.col.r>ul.bullets>li.shown,capacity building on the counterpart side; sector-wide netwo,30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
+73,compare,wash,[chrome] counter,73 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+74,cards,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+74,cards,paper,[chrome] div.runner>span,Chapter 3 · Case study 1 · TEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+74,cards,paper,[chrome] div.runner>span.ref,3.2.6,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 74,cards,paper,div.head.wide>h1.title,Three conclusions from TEP,68,500,"rgb(47, 68, 88)",1,#f5ebd6,8.4,3.0,ok
 74,cards,paper,div.cardrow.c3>div.cert.shown>div.h,1 · Before 2017,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 74,cards,paper,div.cardrow.c3>div.cert.shown>div.b,IBRD participation existed alongside IDA; not a purely post-,29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
@@ -1629,12 +1906,19 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 74,cards,paper,div.cardrow.c3>div.cert.shown>div.h,3 · Attribution,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 74,cards,paper,div.cardrow.c3>div.cert.shown>div.b,Outputs do not prove all later system gains or renewables we,29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
 74,cards,paper,div.foot.shown,Next: CCSEP combined IBRD and IDA financing with decentraliz,34,500,"rgb(47, 68, 88)",1,#f6ecd6,8.48,4.5,ok
+74,cards,paper,[chrome] counter,74 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+75,chapter,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+75,chapter,night,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(174, 185, 199)",1,#0b111d,9.13,4.5,ok
 75,chapter,night,div.roman-big,III,120,300,"rgb(201, 162, 74)",1,#0a101b,7.76,3.0,ok
 75,chapter,night,div.chap>h1.title,Case study 2 · Coastal Cities Sustainable Environment Projec,76,500,"rgb(220, 227, 236)",1,#0d1421,13.48,3.0,ok
 75,chapter,night,div.chap>p.lead,Urban and environment sector ·,30,400,"rgb(174, 185, 199)",1,#090e19,9.5,4.5,ok
 75,chapter,night,div.chap>p.lead>span.code,P156143,30,500,"rgb(174, 185, 199)",1,#0c131f,9.2,4.5,ok
 75,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 75,chapter,night,div.toc,3.3.1 · 3.3.2 · 3.3.3 · 3.3.4,24,400,"rgb(174, 185, 199)",1,#080e17,9.65,4.5,ok
+75,chapter,night,[chrome] counter,75 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+76,stats,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+76,stats,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+76,stats,paper,[chrome] div.runner>span.ref,3.3.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 76,stats,paper,div.head.wide>h1.title,Why CCSEP was needed,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.37,3.0,ok
 76,stats,paper,div.stamp.shown>div.stamp-in>div.v,~10%,84,500,"rgb(47, 68, 88)",1,#f4e7c9,8.2,3.0,ok
 76,stats,paper,div.stamp.shown>div.stamp-in>div.l,of urban wastewater treated,24,400,"rgb(74, 93, 110)",1,#f4e7c9,5.55,4.5,ok
@@ -1651,6 +1935,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 76,stats,paper,div.body>ul.bullets>li.shown,combined drains discharged untreated wastewater onto streets,30,400,"rgb(35, 41, 47)",1,#faf1dd,12.74,4.5,ok
 76,stats,paper,ul.bullets>li.shown>strong,Response:,30,600,"rgb(47, 68, 88)",1,#f6ecd6,8.49,4.5,ok
 76,stats,paper,div.body>ul.bullets>li.shown,an IBRD loan with IDA credits gave provinces upfront investm,30,400,"rgb(35, 41, 47)",1,#f9f1dd,12.62,4.5,ok
+76,stats,paper,[chrome] counter,76 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.39,4.5,ok
+77,hero,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+77,hero,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+77,hero,wash,[chrome] div.runner>span.ref,3.3.1,20,500,"rgb(247, 239, 220)",1,#99a4ab,2.21,4.5,FAIL
 77,hero,wash,div.head>h1.title,CCSEP: project overview,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 77,hero,wash,ul.bullets>li.shown>strong,CCSEP (,31,600,"rgb(255, 255, 255)",1,#9aa4ac,2.51,4.5,FAIL
 77,hero,wash,li.shown>strong>span.code,P156143,31,500,"rgb(255, 255, 255)",1,#99a4ab,2.51,4.5,FAIL
@@ -1669,6 +1957,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 77,hero,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#95a1a8,2.58,4.5,FAIL
 77,hero,wash,ul.bullets>li.shown>strong,Implementation:,31,600,"rgb(255, 255, 255)",1,#a6b0b6,2.13,4.5,FAIL
 77,hero,wash,div.body>ul.bullets>li.shown,"PMUs in Quang Binh, Binh Dinh, Khanh Hoa and Ninh Thuan",31,400,"rgb(255, 248, 234)",1,#9ba5ad,2.07,4.5,FAIL
+77,hero,wash,[chrome] counter,77 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+78,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+78,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+78,table,paper,[chrome] div.runner>span.ref,3.3.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 78,table,paper,div.head.wide>h1.title,Planned and actual timeline,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 78,table,paper,div.tframe>div.cap,Table 17. Planned and actual project implementation timeline,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 78,table,paper,thead>tr>th,Milestone,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1693,6 +1985,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 78,table,paper,tbody>tr>td.n,31/12/2022,23,400,"rgb(35, 41, 47)",1,#f5ebd2,12.38,4.5,ok
 78,table,paper,tbody>tr>td.n,30/6/2024,23,400,"rgb(35, 41, 47)",1,#f5ebd1,12.27,4.5,ok
 78,table,paper,div.tframe>div.src,Source: projects.worldbank.org,19,400,"rgb(74, 93, 110)",1,#faf0db,5.97,4.5,ok
+78,table,paper,[chrome] counter,78 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+79,stats,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+79,stats,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+79,stats,paper,[chrome] div.runner>span.ref,3.3.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 79,stats,paper,div.head.wide>h1.title,Objective and key indicators,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 79,stats,paper,div.stamp.shown>div.stamp-in>div.v,"290,000",84,500,"rgb(47, 68, 88)",1,#f4e7c9,8.2,3.0,ok
 79,stats,paper,div.stamp.shown>div.stamp-in>div.l,direct beneficiaries (approximately),24,400,"rgb(74, 93, 110)",1,#f4e7c9,5.55,4.5,ok
@@ -1714,6 +2010,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 79,stats,paper,li.shown>span.cite-group>a.cite,56,22,600,"rgb(161, 61, 45)",1,#f9efdc,5.6,4.5,ok
 79,stats,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9f0dd,5.93,4.5,ok
 79,stats,paper,div.body>ul.bullets>li.shown,: service contracts and tariff roadmaps,30,400,"rgb(35, 41, 47)",1,#faf1de,12.64,4.5,ok
+79,stats,paper,[chrome] counter,79 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+80,gallery,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+80,gallery,night,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(174, 185, 199)",1,#0b111d,9.13,4.5,ok
+80,gallery,night,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(174, 185, 199)",1,#080d16,9.71,4.5,ok
 80,gallery,night,div.side>h1.title,A blended financing package,62,500,"rgb(220, 227, 236)",1,#101828,12.73,3.0,ok
 80,gallery,night,div.mini-stamps>div.mini-stamp.shown>div.v,273.6,56,500,"rgb(242, 210, 122)",1,#19233a,10.28,3.0,ok
 80,gallery,night,div.mini-stamps>div.mini-stamp.shown>div.l,USD million total,21,400,"rgb(174, 185, 199)",1,#19233a,7.59,4.5,ok
@@ -1745,6 +2045,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 80,gallery,night,li.shown>span.cite-group>a.cite,33,22,600,"rgb(232, 130, 110)",1,#0f1624,6.65,4.5,ok
 80,gallery,night,li.shown>span.cite-group>span.cite-loc,", paras. 1, 44",22,400,"rgb(174, 185, 199)",1,#0f1624,8.92,4.5,ok
 80,gallery,night,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(174, 185, 199)",1,#0e1523,9.02,4.5,ok
+80,gallery,night,[chrome] counter,80 / 119,26,600,"rgb(174, 185, 199)",1,#060b14,9.84,4.5,ok
+81,compare,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+81,compare,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+81,compare,wash,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 81,compare,wash,div.head.wide>h1.title,"Two sources, two sets of terms",68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 81,compare,wash,div.cmp>div.col.l>div.ribbon,IBRD loan,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 81,compare,wash,ul.bullets>li.shown>strong,Currency:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
@@ -1766,6 +2070,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 81,compare,wash,div.foot.shown>span.cite-group>span.cite-loc,", para. 44",22,400,"rgb(74, 93, 110)",1,#a4aeb5,2.95,4.5,FAIL
 81,compare,wash,div.foot.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#a2acb4,2.88,4.5,FAIL
 81,compare,wash,div.foot.shown,.,34,500,"rgb(255, 248, 234)",1,#a2acb4,2.04,4.5,FAIL
+81,compare,wash,[chrome] counter,81 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+82,chart,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+82,chart,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+82,chart,paper,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 82,chart,paper,div.head.wide>h1.title,On-granting vs on-lending,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 82,chart,paper,div.charts>div.chartbox>div.cap,Figure 6. Share of on-granting and on-lending by financing s,21,600,"rgb(161, 61, 45)",1,#fbf2dd,5.8,4.5,ok
 82,chart,paper,div.chartbox>svg>text,IBRD loan (all four cities),19,400,"rgb(35, 41, 47)",1,#fbf2dd,13.18,4.5,ok
@@ -1803,6 +2111,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 82,chart,paper,li.shown>span.cite-group>a.cite,33,22,600,"rgb(161, 61, 45)",1,#fbf0dd,5.78,4.5,ok
 82,chart,paper,li.shown>span.cite-group>span.cite-loc,", paras. 66, 75–76, Annex 5",22,400,"rgb(74, 93, 110)",1,#f9efda,5.63,4.5,ok
 82,chart,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9efda,5.59,4.5,ok
+82,chart,paper,[chrome] counter,82 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+83,cards,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+83,cards,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+83,cards,paper,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 83,cards,paper,div.head.wide>h1.title,Four components,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 83,cards,paper,div.cardrow.c2>div.cert.shown>div.h,1 · Sanitation infrastructure expansion · USD 140.7 million,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 83,cards,paper,div.cardrow.c2>div.cert.shown>div.b,"Flood control, drainage, treatment plants, household connect",29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
@@ -1836,6 +2148,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 83,cards,paper,div.foot.shown>span.cite-group>span.cite-loc,", para. 34, Annex 2 Table 2.1, Annex 5 Table 5.2",22,400,"rgb(74, 93, 110)",1,#f7edd7,5.8,4.5,ok
 83,cards,paper,div.foot.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f8eed8,5.91,4.5,ok
 83,cards,paper,div.foot.shown,.,34,500,"rgb(47, 68, 88)",1,#f8eed8,8.72,4.5,ok
+83,cards,paper,[chrome] counter,83 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+84,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+84,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+84,table,paper,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 84,table,paper,div.head.wide>h1.title,Components and financing sources (base cost),68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 84,table,paper,div.tframe>div.cap,Table 18. Project components and financing sources (base cos,22,600,"rgb(161, 61, 45)",1,#faf0dd,5.71,4.5,ok
 84,table,paper,thead>tr>th,Component,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -1872,6 +2188,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 84,table,paper,div.tframe>div.tnote,Note: The table shows base costs only. The difference from t,19,400,"rgb(74, 93, 110)",1,#fbf1dd,5.97,4.5,ok
 84,table,paper,div.tframe>div.tnote>a.cite.cite-ay.inferred,"2017, Annex 2, Table 2.1",22,500,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 84,table,paper,div.tframe>div.tnote,). Minor differences in totals are due to rounding in the PA,19,400,"rgb(74, 93, 110)",1,#fbf1dd,6.02,4.5,ok
+84,table,paper,[chrome] counter,84 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+85,chart,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+85,chart,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+85,chart,wash,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 85,chart,wash,div.head.wide>h1.title,Sources of funding by city,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 85,chart,wash,div.charts>div.chartbox>div.cap,Figure 7. Sources of funding by city (million USD),21,600,"rgb(161, 61, 45)",1,#f1ead9,5.44,4.5,ok
 85,chart,wash,div.chartbox>svg>text,0,18,400,"rgb(74, 93, 110)",1,#f3ecda,5.78,4.5,ok
@@ -1924,6 +2244,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 85,chart,wash,li.shown>span.cite-group>a.cite,33,22,600,"rgb(122, 36, 22)",1,#95a1a8,3.75,4.5,FAIL
 85,chart,wash,li.shown>span.cite-group>span.cite-loc,", para. 46, Table 1",22,400,"rgb(74, 93, 110)",1,#96a2aa,2.55,4.5,FAIL
 85,chart,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#929fa6,2.51,4.5,FAIL
+85,chart,wash,[chrome] counter,85 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+86,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+86,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+86,hero,paper,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 86,hero,paper,div.head>h1.title,Decentralized disbursement,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 86,hero,paper,ul.bullets>li.shown>strong,Accounts:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 86,hero,paper,div.body>ul.bullets>li.shown,a designated USD account per province,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -1949,6 +2273,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 86,hero,paper,li.shown>span.cite-group>a.cite,33,22,600,"rgb(161, 61, 45)",1,#f8eed8,5.4,4.5,ok
 86,hero,paper,li.shown>span.cite-group>span.cite-loc,", Data Sheet, para. 62",22,400,"rgb(74, 93, 110)",1,#f9efdc,5.7,4.5,ok
 86,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#fbefdd,5.76,4.5,ok
+86,hero,paper,[chrome] counter,86 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.46,4.5,ok
+87,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+87,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+87,table,paper,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 87,table,paper,div.head.wide>h1.title,Funding structure: plan vs adjusted,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 87,table,paper,div.head.wide>p.lead,23 November 2022: USD 11.8 million IBRD and about USD 34 mil,30,400,"rgb(74, 93, 110)",1,#f8edd8,5.75,4.5,ok
 87,table,paper,div.head.wide>p.lead>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f7edd7,5.8,4.5,ok
@@ -1993,6 +2321,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 87,table,paper,tbody>tr.shown>td.n,"100,00%",23,400,"rgb(35, 41, 47)",1,#fbf1dd,12.85,4.5,ok
 87,table,paper,tbody>tr.shown>td.n,33,23,400,"rgb(35, 41, 47)",1,#fbf1dc,12.84,4.5,ok
 87,table,paper,div.tframe>div.src,Source: projects.worldbank.org,19,400,"rgb(74, 93, 110)",1,#faf0db,5.9,4.5,ok
+87,table,paper,[chrome] counter,87 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+88,compare,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+88,compare,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+88,compare,wash,[chrome] div.runner>span.ref,3.3.2,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 88,compare,wash,div.head.wide>h1.title,Adjusted commitments,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.39,3.0,FAIL
 88,compare,wash,div.cmp>div.col.l>div.ribbon,Whole project,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 88,compare,wash,div.col.l>div.ribbon>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#2f4458,1.48,4.5,FAIL
@@ -2015,6 +2347,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 88,compare,wash,ul.bullets>li.shown>strong,Its counterpart:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
 88,compare,wash,div.col.r>ul.bullets>li.shown,USD 12.7 million → USD 28.4 million,30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
 88,compare,wash,div.foot.shown,"Adjusted figures are adjusted commitments, not disbursed amo",34,500,"rgb(255, 248, 234)",1,#a6b0b6,1.99,4.5,FAIL
+88,compare,wash,[chrome] counter,88 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+89,stats,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+89,stats,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+89,stats,paper,[chrome] div.runner>span.ref,3.3.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 89,stats,paper,div.head.wide>h1.title,"Slow start, slow disbursement",68,500,"rgb(47, 68, 88)",1,#f5ebd6,8.4,3.0,ok
 89,stats,paper,div.stamp.shown>div.stamp-in>div.v.xlong,18 January 2018,46,500,"rgb(47, 68, 88)",1,#f4e7c9,8.2,3.0,ok
 89,stats,paper,div.stamp.shown>div.stamp-in>div.l,"effective date, not 3 August 2017",24,400,"rgb(74, 93, 110)",1,#f4e7c9,5.55,4.5,ok
@@ -2038,6 +2374,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 89,stats,paper,div.body>ul.bullets>li.shown,IBRD USD 16.47 million and IDA USD 68.34 million,30,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
 89,stats,paper,ul.bullets>li.shown>strong,Root cause:,30,600,"rgb(47, 68, 88)",1,#f6ecd6,8.49,4.5,ok
 89,stats,paper,div.body>ul.bullets>li.shown,counterpart allocations only from July 2019; zero in 2017 an,30,400,"rgb(35, 41, 47)",1,#f9f0dd,12.62,4.5,ok
+89,stats,paper,[chrome] counter,89 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead1,5.27,4.5,ok
+90,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+90,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+90,hero,paper,[chrome] div.runner>span.ref,3.3.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 90,hero,paper,div.head>h1.title,Technical support and delay factors,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 90,hero,paper,ul.bullets>li.shown>strong,Safeguards:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 90,hero,paper,div.body>ul.bullets>li.shown,Category A; OP 4.12 and Bank procurement guidelines,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -2055,6 +2395,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 90,hero,paper,div.body>ul.bullets>li.shown,"site clearance, weak contractors, storms in 2020, COVID-19 i",31,400,"rgb(35, 41, 47)",1,#f9efdc,12.51,4.5,ok
 90,hero,paper,ul.bullets>li.shown>strong,Contracts:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.34,4.5,ok
 90,hero,paper,div.body>ul.bullets>li.shown,"weak management of extensions, payments and completion certi",31,400,"rgb(35, 41, 47)",1,#f7edda,12.4,4.5,ok
+90,hero,paper,[chrome] counter,90 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+91,stats,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+91,stats,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+91,stats,wash,[chrome] div.runner>span.ref,3.3.3,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 91,stats,wash,div.head.wide>h1.title,Resettlement: the main bottleneck,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.12,3.0,FAIL
 91,stats,wash,div.stamp.shown>div.stamp-in>div.v,"1,486",84,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 91,stats,wash,div.stamp.shown>div.stamp-in>div.l,"affected households in the PAD, 329 to relocate",24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -2080,6 +2424,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 91,stats,wash,ul.bullets>li.shown>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#9ba5ad,2.72,4.5,FAIL
 91,stats,wash,li.shown>span.cite-group>a.cite,43,22,600,"rgb(122, 36, 22)",1,#9ba5ad,4.01,4.5,FAIL
 91,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#9aa4ac,2.69,4.5,FAIL
+91,stats,wash,[chrome] counter,91 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+92,table,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+92,table,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+92,table,paper,[chrome] div.runner>span.ref,3.3.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 92,table,paper,div.head.wide>h1.title,Key performance indicators at 31/10/2022,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 92,table,paper,div.tframe>div.cap,Table 21. Progress on key performance indicators as of 31/10,22,600,"rgb(161, 61, 45)",1,#faf0db,5.71,4.5,ok
 92,table,paper,thead>tr>th,Indicator,22,600,"rgb(255, 248, 234)",1,#2f4458,9.51,4.5,ok
@@ -2107,6 +2455,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 92,table,paper,tbody>tr>td.n,3,23,400,"rgb(35, 41, 47)",1,#fbf1dc,12.65,4.5,ok
 92,table,paper,tbody>tr>td.n,60%,23,400,"rgb(35, 41, 47)",1,#fbf1dc,12.98,4.5,ok
 92,table,paper,div.tframe>div.src,Source: projects.worldbank.org,19,400,"rgb(74, 93, 110)",1,#faf0db,5.97,4.5,ok
+92,table,paper,[chrome] counter,92 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+93,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+93,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+93,hero,paper,[chrome] div.runner>span.ref,3.3.3,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 93,hero,paper,div.head>h1.title,Training and institutional reform,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 93,hero,paper,ul.bullets>li.shown>strong,PMUs:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 93,hero,paper,div.body>ul.bullets>li.shown,inherited from CCESP; Phan Rang's new PMU took 10 of 12 staf,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -2127,6 +2479,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 93,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f7edd7,5.86,4.5,ok
 93,hero,paper,ul.bullets>li.shown>strong,Outcome:,31,600,"rgb(47, 68, 88)",1,#f6ecd6,8.32,4.5,ok
 93,hero,paper,div.body>ul.bullets>li.shown,PSMUs set up; service contracts largely unexecuted except Nh,31,400,"rgb(35, 41, 47)",1,#f7eddb,12.4,4.5,ok
+93,hero,paper,[chrome] counter,93 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+94,stats,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+94,stats,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+94,stats,wash,[chrome] div.runner>span.ref,3.3.3,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 94,stats,wash,div.head.wide>h1.title,One bottleneck for all three forms,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.13,3.0,FAIL
 94,stats,wash,div.stamp.shown>div.stamp-in>div.v,36%,84,500,"rgb(47, 68, 88)",1,#fbf2de,9.03,3.0,ok
 94,stats,wash,div.stamp.shown>div.stamp-in>div.l,of original loan capital disbursed by late 2022,24,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
@@ -2146,6 +2502,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 94,stats,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#9da7af,2.78,4.5,FAIL
 94,stats,wash,ul.bullets>li.shown>strong,Scope cut:,30,600,"rgb(255, 255, 255)",1,#a8b1b7,2.06,4.5,FAIL
 94,stats,wash,div.body>ul.bullets>li.shown,Nha Trang scaled back; an 18-month extension needed,30,400,"rgb(255, 248, 234)",1,#9ca6ae,2.07,4.5,FAIL
+94,stats,wash,[chrome] counter,94 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+95,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+95,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+95,hero,paper,[chrome] div.runner>span.ref,3.3.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 95,hero,paper,div.head>h1.title,Results so far,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 95,hero,paper,ul.bullets>li.shown>strong,No ICR yet:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 95,hero,paper,div.body>ul.bullets>li.shown,"figures as of 31 October 2022, plus Inspection Panel milesto",31,400,"rgb(35, 41, 47)",1,#f8efdc,12.62,4.5,ok
@@ -2165,6 +2525,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 95,hero,paper,li.shown>span.cite-group>span.cite-loc,", paras. 6, 55",22,400,"rgb(74, 93, 110)",1,#faf2de,5.99,4.5,ok
 95,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#faf2de,5.9,4.5,ok
 95,hero,paper,div.body>ul.bullets>li.shown,; base may differ from 36%,31,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
+95,hero,paper,[chrome] counter,95 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+96,compare,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+96,compare,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+96,compare,wash,[chrome] div.runner>span.ref,3.3.4,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 96,compare,wash,div.head.wide>h1.title,Climate resilience and institutions,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.13,3.0,FAIL
 96,compare,wash,div.cmp>div.col.l>div.ribbon,PAD targets,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 96,compare,wash,div.col.l>div.ribbon>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#2f4458,1.48,4.5,FAIL
@@ -2185,6 +2549,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 96,compare,wash,li.shown>span.cite-group>a.cite,43,22,600,"rgb(161, 61, 45)",1,#f8f0dd,5.74,4.5,ok
 96,compare,wash,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f8f0dd,6.0,4.5,ok
 96,compare,wash,div.foot.shown,The 38% coverage rate shows benefits are fully realized only,34,500,"rgb(255, 248, 234)",1,#9da7ae,2.0,4.5,FAIL
+96,compare,wash,[chrome] counter,96 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+97,hero,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+97,hero,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+97,hero,paper,[chrome] div.runner>span.ref,3.3.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 97,hero,paper,div.head>h1.title,Nha Trang: the single largest bottleneck,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 97,hero,paper,ul.bullets>li.shown>strong,Plans:,31,600,"rgb(47, 68, 88)",1,#f7edd7,8.56,4.5,ok
 97,hero,paper,div.body>ul.bullets>li.shown,only 160 of 585 approved; two packages cancelled,31,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
@@ -2210,6 +2578,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 97,hero,paper,li.shown>span.cite-group>a.cite,57,22,600,"rgb(161, 61, 45)",1,#f6ecd6,5.46,4.5,ok
 97,hero,paper,li.shown>span.cite-group>span.cite-loc,", paras. 49, 59",22,400,"rgb(74, 93, 110)",1,#f7edd7,5.8,4.5,ok
 97,hero,paper,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f7edd9,5.86,4.5,ok
+97,hero,paper,[chrome] counter,97 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+98,timeline,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+98,timeline,paper,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
+98,timeline,paper,[chrome] div.runner>span.ref,3.3.4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 98,timeline,paper,div.head.wide>h1.title,From bottleneck to formal complaint,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 98,timeline,paper,div.rail.n6>div.stn.shown>div.d,June 2023,40,600,"rgb(161, 61, 45)",1,#f7edd7,5.55,3.0,ok
 98,timeline,paper,div.rail.n6>div.stn.shown>div.t,"19 of 222 plans non-compliant, referred to the PMU; eighteen",27,400,"rgb(35, 41, 47)",1,#f7edd7,12.4,4.5,ok
@@ -2244,6 +2616,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 98,timeline,paper,div.stn.shown>div.t>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f9efda,5.97,4.5,ok
 98,timeline,paper,div.t>span.cite-group>a.cite,58,22,600,"rgb(161, 61, 45)",1,#f9efda,5.51,4.5,ok
 98,timeline,paper,div.stn.shown>div.t>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f9efda,5.97,4.5,ok
+98,timeline,paper,[chrome] counter,98 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+99,cards,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+99,cards,wash,[chrome] div.runner>span,Chapter 3 · Case study 2 · CCSEP,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.21,4.5,FAIL
+99,cards,wash,[chrome] div.runner>span.ref,3.3.4,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 99,cards,wash,div.head.wide>h1.title,Three direct causes,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.37,3.0,FAIL
 99,cards,wash,div.qline,“Resettlement was thus a precondition for the drainage infra,40,500,"rgb(255, 248, 234)",1,#99a4ac,2.33,3.0,FAIL
 99,cards,wash,div.cardrow.c3>div.cert.shown>div.h,Land prices,38,600,"rgb(47, 68, 88)",1,#f7f0dc,8.78,4.5,ok
@@ -2255,11 +2631,18 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 99,cards,wash,div.cert.shown>div.b>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f8f0dc,6.0,4.5,ok
 99,cards,wash,div.b>span.cite-group>a.cite,43,22,600,"rgb(161, 61, 45)",1,#f8f0dc,5.74,4.5,ok
 99,cards,wash,div.cert.shown>div.b>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f8f0dc,6.0,4.5,ok
+99,cards,wash,[chrome] counter,99 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+100,chapter,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+100,chapter,night,[chrome] div.runner>span,"Chapter 3 · Achievements, limitations, recommendations",24,500,"rgb(174, 185, 199)",1,#0d1421,8.95,4.5,ok
 100,chapter,night,div.roman-big,III,120,300,"rgb(201, 162, 74)",1,#0a101b,7.76,3.0,ok
 100,chapter,night,div.chap>h1.title,"Achievements, limitations, recommendations",76,500,"rgb(220, 227, 236)",1,#0c131f,13.89,3.0,ok
 100,chapter,night,div.chap>p.lead,Sections 3.4.1 – 3.4.3,30,400,"rgb(174, 185, 199)",1,#080e18,9.59,4.5,ok
 100,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 100,chapter,night,div.toc,3.4.1 · 3.4.2 · 3.4.3,24,400,"rgb(174, 185, 199)",1,#080d17,9.65,4.5,ok
+100,chapter,night,[chrome] counter,100 / 119,26,600,"rgb(174, 185, 199)",1,#070b14,9.84,4.5,ok
+101,cards,paper,[chrome] div.runner>span.roman,III,24,500,"rgb(161, 61, 45)",1,#f1e8cf,5.34,4.5,ok
+101,cards,paper,[chrome] div.runner>span,"Chapter 3 · Achievements, limitations, recommendations",24,500,"rgb(74, 93, 110)",1,#f5ebd4,5.63,4.5,ok
+101,cards,paper,[chrome] div.runner>span.ref,3.4.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 101,cards,paper,div.head.wide>h1.title,Achievements,68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.32,3.0,ok
 101,cards,paper,div.cardrow.c3>div.cert.shown>div.h,Financial mobilization,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 101,cards,paper,div.cardrow.c3>div.cert.shown>div.b,"TEP USD 500 million, 26-year maturity, 10-year grace",29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
@@ -2285,6 +2668,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 101,cards,paper,div.b>span.cite-group>a.cite,43,22,600,"rgb(161, 61, 45)",1,#fbf2de,5.85,4.5,ok
 101,cards,paper,div.cert.shown>div.b>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#fbf2de,6.12,4.5,ok
 101,cards,paper,div.foot.shown,These changes in institutions are likely to last longer than,34,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,4.5,ok
+101,cards,paper,[chrome] counter,101 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
+102,cards,wash,[chrome] div.runner>span.roman,III,24,500,"rgb(255, 226, 184)",1,#929fa6,2.09,4.5,FAIL
+102,cards,wash,[chrome] div.runner>span,"Chapter 3 · Achievements, limitations, recommendations",24,500,"rgb(247, 239, 220)",1,#97a4ab,1.96,4.5,FAIL
+102,cards,wash,[chrome] div.runner>span.ref,3.4.2,20,500,"rgb(247, 239, 220)",1,#98a4ab,2.21,4.5,FAIL
 102,cards,wash,div.head.wide>h1.title,Limitations,68,500,"rgb(255, 248, 234)",1,#97a3ab,2.37,3.0,FAIL
 102,cards,wash,div.cardrow.c2>div.cert.shown>div.h,Slow disbursement,38,600,"rgb(47, 68, 88)",1,#f7efdc,8.78,4.5,ok
 102,cards,wash,div.cardrow.c2>div.cert.shown>div.b,TEP 63.7% of its commitment,29,400,"rgb(35, 41, 47)",1,#f7efdc,12.82,4.5,ok
@@ -2328,6 +2715,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 102,cards,wash,div.cert.shown>div.b>span.cite-group,[,22,400,"rgb(74, 93, 110)",1,#f7efdc,5.95,4.5,ok
 102,cards,wash,div.b>span.cite-group>a.cite,37,22,600,"rgb(161, 61, 45)",1,#f7efdc,5.69,4.5,ok
 102,cards,wash,div.cert.shown>div.b>span.cite-group,],22,400,"rgb(74, 93, 110)",1,#f7efdc,5.95,4.5,ok
+102,cards,wash,[chrome] counter,102 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+103,gallery,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+103,gallery,night,[chrome] div.runner>span,"Chapter 3 · Achievements, limitations, recommendations",24,500,"rgb(174, 185, 199)",1,#0d1421,8.95,4.5,ok
+103,gallery,night,[chrome] div.runner>span.ref,3.4.3,20,500,"rgb(174, 185, 199)",1,#080d16,9.71,4.5,ok
 103,gallery,night,div.side>h1.title,Recommendations (1/2),62,500,"rgb(220, 227, 236)",1,#121b2b,12.57,3.0,ok
 103,gallery,night,div.side>p.lead,"As an upper-middle-income economy since 2026, future World B",30,400,"rgb(174, 185, 199)",1,#121a2b,7.88,4.5,ok
 103,gallery,night,div.side>p.lead>span.cite-group,[,22,400,"rgb(174, 185, 199)",1,#1b273f,7.31,4.5,ok
@@ -2344,6 +2735,10 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 103,gallery,night,div.side>ul.bullets>li.shown,in the medium-term investment plan at approval; check provin,30,400,"rgb(220, 227, 236)",1,#101827,12.89,4.5,ok
 103,gallery,night,ul.bullets>li.shown>strong,3 · Align compensation early:,30,600,"rgb(255, 255, 255)",1,#101826,17.23,4.5,ok
 103,gallery,night,div.side>ul.bullets>li.shown,"meet ESS5 from preparation; independent valuation, early con",30,400,"rgb(220, 227, 236)",1,#0e1522,13.72,4.5,ok
+103,gallery,night,[chrome] counter,103 / 119,26,600,"rgb(174, 185, 199)",1,#070b14,9.84,4.5,ok
+104,gallery,night,[chrome] div.runner>span.roman,III,24,500,"rgb(201, 162, 74)",1,#070c16,8.05,4.5,ok
+104,gallery,night,[chrome] div.runner>span,"Chapter 3 · Achievements, limitations, recommendations",24,500,"rgb(174, 185, 199)",1,#0d1421,8.95,4.5,ok
+104,gallery,night,[chrome] div.runner>span.ref,3.4.3,20,500,"rgb(174, 185, 199)",1,#080d16,9.71,4.5,ok
 104,gallery,night,div.side>h1.title,Recommendations (2/2),62,500,"rgb(220, 227, 236)",1,#141d2f,11.97,3.0,ok
 104,gallery,night,ul.bullets>li.shown>strong,4 · Stabilize PMUs:,30,600,"rgb(255, 255, 255)",1,#172237,15.12,4.5,ok
 104,gallery,night,div.side>ul.bullets>li.shown,professional units managing several projects; Open Learning ,30,400,"rgb(220, 227, 236)",1,#101828,12.26,4.5,ok
@@ -2359,10 +2754,15 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 104,gallery,night,ul.bullets>li.shown>span.cite-group,[,22,400,"rgb(174, 185, 199)",1,#0b111c,9.36,4.5,ok
 104,gallery,night,li.shown>span.cite-group>a.cite,36,22,600,"rgb(232, 130, 110)",1,#0b101b,6.96,4.5,ok
 104,gallery,night,ul.bullets>li.shown>span.cite-group,],22,400,"rgb(174, 185, 199)",1,#090f1a,9.44,4.5,ok
+104,gallery,night,[chrome] counter,104 / 119,26,600,"rgb(174, 185, 199)",1,#070b14,9.84,4.5,ok
+105,chapter,night,[chrome] div.runner>span,Conclusion,24,500,"rgb(174, 185, 199)",1,#080d17,9.65,4.5,ok
 105,chapter,night,div.chap>h1.title,Conclusion,76,500,"rgb(220, 227, 236)",1,#0b121d,14.14,3.0,ok
 105,chapter,night,div.chap>p.lead,"Findings, significance, limitations, directions for further ",30,400,"rgb(174, 185, 199)",1,#0a0f1a,9.2,4.5,ok
 105,chapter,night,div.toc>b,In this part,24,600,"rgb(201, 162, 74)",1,#090e18,7.99,4.5,ok
 105,chapter,night,div.toc,Conclusion,24,400,"rgb(174, 185, 199)",1,#080d17,9.66,4.5,ok
+105,chapter,night,[chrome] counter,105 / 119,26,600,"rgb(174, 185, 199)",1,#070b14,9.84,4.5,ok
+106,cards,paper,[chrome] div.runner>span,Conclusion,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+106,cards,paper,[chrome] div.runner>span.ref,Conclusion · 1.1,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 106,cards,paper,div.head.wide>h1.title,"Three pillars, one package",68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.4,3.0,ok
 106,cards,paper,div.head.wide>p.lead,"AAA-rated market funding, lent on long maturities through IP",30,400,"rgb(74, 93, 110)",1,#f7edd8,5.75,4.5,ok
 106,cards,paper,div.cardrow.c3>div.cert.shown>div.h,Finance,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
@@ -2371,6 +2771,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 106,cards,paper,div.cardrow.c3>div.cert.shown>div.b,"Improves project design, policy and monitoring",29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
 106,cards,paper,div.cardrow.c3>div.cert.shown>div.h,Training and capacity building,38,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 106,cards,paper,div.cardrow.c3>div.cert.shown>div.b,Strengthens the people and institutions that carry out proje,29,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
+106,cards,paper,[chrome] counter,106 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+107,compare,wash,[chrome] div.runner>span,Conclusion,24,500,"rgb(247, 239, 220)",1,#9aa4ac,2.19,4.5,FAIL
+107,compare,wash,[chrome] div.runner>span.ref,Conclusion · 1.2,20,500,"rgb(247, 239, 220)",1,#9ba5ad,2.19,4.5,FAIL
 107,compare,wash,div.head.wide>h1.title,What the two cases show,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 107,compare,wash,div.cmp>div.col.l>div.ribbon,TEP,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 107,compare,wash,ul.bullets>li.shown>strong,Results:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
@@ -2382,9 +2785,15 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 107,compare,wash,div.col.r>ul.bullets>li.shown,"late counterpart funding, weak PMU capacity, resettlement di",30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
 107,compare,wash,ul.bullets>li.shown>strong,Consequences:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
 107,compare,wash,div.col.r>ul.bullets>li.shown,"results below targets, cancelled funds and a formal complain",30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
+107,compare,wash,[chrome] counter,107 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+108,quote,paper,[chrome] div.runner>span,Conclusion,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+108,quote,paper,[chrome] div.runner>span.ref,Conclusion · 1.2,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 108,quote,paper,div.qbox>div.qmark,“,220,400,"rgb(161, 61, 45)",1,#fbf0dd,5.71,3.0,ok
 108,quote,paper,div.qbox>blockquote.long,"Across both cases, the binding constraints lay mainly on the",54,500,"rgb(47, 68, 88)",1,#f9f0dd,8.81,3.0,ok
 108,quote,paper,div.qbox>div.by,Conclusion of the paper,26,600,"rgb(161, 61, 45)",1,#faf2de,5.67,4.5,ok
+108,quote,paper,[chrome] counter,108 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+109,compare,wash,[chrome] div.runner>span,Conclusion,24,500,"rgb(247, 239, 220)",1,#9aa4ac,2.19,4.5,FAIL
+109,compare,wash,[chrome] div.runner>span.ref,Conclusion · 2 · 3,20,500,"rgb(247, 239, 220)",1,#9ba5ad,2.19,4.5,FAIL
 109,compare,wash,div.head.wide>h1.title,Significance and limitations,68,500,"rgb(255, 248, 234)",1,#95a1a8,2.37,3.0,FAIL
 109,compare,wash,div.cmp>div.col.l>div.ribbon,Significance,40,600,"rgb(255, 248, 234)",1,#2f4458,9.51,3.0,ok
 109,compare,wash,ul.bullets>li.shown>strong,One framework:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
@@ -2400,6 +2809,9 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 109,compare,wash,div.col.r>ul.bullets>li.shown,many prepared by the World Bank; IEG and Inspection Panel us,30,400,"rgb(35, 41, 47)",1,#f8efdd,12.85,4.5,ok
 109,compare,wash,ul.bullets>li.shown>strong,Scope:,30,600,"rgb(47, 68, 88)",1,#f8efdc,8.8,4.5,ok
 109,compare,wash,div.col.r>ul.bullets>li.shown,no CCSEP completion report; two cases; system-wide indicator,30,400,"rgb(35, 41, 47)",1,#f8efdc,12.85,4.5,ok
+109,compare,wash,[chrome] counter,109 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+110,cards,paper,[chrome] div.runner>span,Conclusion,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
+110,cards,paper,[chrome] div.runner>span.ref,Conclusion · 4,20,500,"rgb(74, 93, 110)",1,#f4ead2,5.63,4.5,ok
 110,cards,paper,div.head.wide>h1.title,Directions for further research,68,500,"rgb(47, 68, 88)",1,#f6ecd6,8.4,3.0,ok
 110,cards,paper,div.cardrow.c4>div.cert.shown>div.h,Update CCSEP,34,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 110,cards,paper,div.cardrow.c4>div.cert.shown>div.b,Once its completion report is published,27,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
@@ -2409,6 +2821,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 110,cards,paper,div.cardrow.c4>div.cert.shown>div.b,Compare with the Asian Development Bank: do the same constra,27,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
 110,cards,paper,div.cardrow.c4>div.cert.shown>div.h,Quantify delays,34,600,"rgb(47, 68, 88)",1,#fbf2de,9.03,4.5,ok
 110,cards,paper,div.cardrow.c4>div.cert.shown>div.b,Cost of counterpart and land delays in commitment fees and l,27,400,"rgb(35, 41, 47)",1,#fbf2de,13.19,4.5,ok
+110,cards,paper,[chrome] counter,110 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.46,4.5,ok
+111,refs,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 111,refs,paper,div.head.wide>h1.title,References (1/6),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 111,refs,paper,div.ref>span.rn>a.cite,[1],21,600,"rgb(161, 61, 45)",1,#f5ebd3,5.47,4.5,ok
 111,refs,paper,div.refcols>div.ref,World Bank. (2011). Country Partnership Strategy for the Soc,19,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
@@ -2440,6 +2854,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 111,refs,paper,div.ref>span.rn>a.cite,[10],21,600,"rgb(161, 61, 45)",1,#fbf0dd,5.78,4.5,ok
 111,refs,paper,div.refcols>div.ref,"World Bank. (n.d.). Ajay Banga, President of the World Bank ",19,400,"rgb(35, 41, 47)",1,#fbf0dd,12.43,4.5,ok
 111,refs,paper,div.ref>span.url>a,https://www.worldbank.org/en/about/people/a/ajay-banga,19,400,"rgb(74, 93, 110)",1,#fbf0dd,5.91,4.5,ok
+111,refs,paper,[chrome] counter,111 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.43,4.5,ok
+112,refs,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 112,refs,paper,div.head.wide>h1.title,References (2/6),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 112,refs,paper,div.ref>span.rn>a.cite,[11],21,600,"rgb(161, 61, 45)",1,#f5ebd5,5.47,4.5,ok
 112,refs,paper,div.refcols>div.ref,World Bank. (2026). IBRD voting power: Percentage of total v,19,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
@@ -2471,6 +2887,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 112,refs,paper,div.ref>span.rn>a.cite,[20],21,600,"rgb(161, 61, 45)",1,#faf2de,5.82,4.5,ok
 112,refs,paper,div.refcols>div.ref,World Bank Treasury. (n.d.). IBRD lending rates and fees.,19,400,"rgb(35, 41, 47)",1,#faf0dd,12.6,4.5,ok
 112,refs,paper,div.ref>span.url>a,https://projects.worldbank.org/en/about/unit/treasury/ibrd-f,19,400,"rgb(74, 93, 110)",1,#f9efda,5.65,4.5,ok
+112,refs,paper,[chrome] counter,112 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.49,4.5,ok
+113,refs,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 113,refs,paper,div.head.wide>h1.title,References (3/6),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 113,refs,paper,div.ref>span.rn>a.cite,[21],21,600,"rgb(161, 61, 45)",1,#f5ebd5,5.47,4.5,ok
 113,refs,paper,div.refcols>div.ref,"World Bank. (2014, August 8). Vietnam: Transmission Efficien",19,400,"rgb(35, 41, 47)",1,#f7edd7,12.4,4.5,ok
@@ -2502,6 +2920,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 113,refs,paper,div.ref>span.rn>a.cite,[30],21,600,"rgb(161, 61, 45)",1,#fbf3df,5.9,4.5,ok
 113,refs,paper,div.refcols>div.ref,"DTiNews. (2011, May 26). WB prioritises public investment in",19,400,"rgb(35, 41, 47)",1,#f9efdc,12.74,4.5,ok
 113,refs,paper,div.ref>span.url>a,https://dtinews.dantri.com.vn/print/20110526135305000.htm,19,400,"rgb(74, 93, 110)",1,#f9f0dc,5.91,4.5,ok
+113,refs,paper,[chrome] counter,113 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+114,refs,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 114,refs,paper,div.head.wide>h1.title,References (4/6),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 114,refs,paper,div.ref>span.rn>a.cite,[31],21,600,"rgb(161, 61, 45)",1,#f5ebd5,5.47,4.5,ok
 114,refs,paper,div.refcols>div.ref,"World Bank. (2010, April 6). Vietnam: First Power Sector Ref",19,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
@@ -2533,6 +2953,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 114,refs,paper,div.ref>span.rn>a.cite,[40],21,600,"rgb(161, 61, 45)",1,#fbf3df,5.9,4.5,ok
 114,refs,paper,div.refcols>div.ref,World Bank. (n.d.). E-procurement learning (self-paced) [Ope,19,400,"rgb(35, 41, 47)",1,#f9f0dc,12.86,4.5,ok
 114,refs,paper,div.ref>span.url>a,https://www.worldbank.org/en/olc/course/37108,19,400,"rgb(74, 93, 110)",1,#f9f0dc,5.76,4.5,ok
+114,refs,paper,[chrome] counter,114 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+115,refs,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 115,refs,paper,div.head.wide>h1.title,References (5/6),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 115,refs,paper,div.ref>span.rn>a.cite,[41],21,600,"rgb(161, 61, 45)",1,#f5ebd5,5.47,4.5,ok
 115,refs,paper,div.refcols>div.ref,World Bank. (2022). Implementation completion and results re,19,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
@@ -2561,6 +2983,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 115,refs,paper,div.refcols>div.ref,Government of Vietnam. (2016). Decree No. 16/2016/ND-CP on t,19,400,"rgb(35, 41, 47)",1,#f9f0dc,12.74,4.5,ok
 115,refs,paper,div.ref>span.rn>a.cite,[50],21,600,"rgb(161, 61, 45)",1,#faf2de,5.83,4.5,ok
 115,refs,paper,div.refcols>div.ref,Government of Vietnam. (2020). Decree No. 56/2020/ND-CP on t,19,400,"rgb(35, 41, 47)",1,#faf0dc,12.43,4.5,ok
+115,refs,paper,[chrome] counter,115 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+116,refs,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 116,refs,paper,div.head.wide>h1.title,References (6/6),68,500,"rgb(47, 68, 88)",1,#f5ebd5,8.31,3.0,ok
 116,refs,paper,div.ref>span.rn>a.cite,[51],21,600,"rgb(161, 61, 45)",1,#f5ebd5,5.47,4.5,ok
 116,refs,paper,div.refcols>div.ref,Government of Vietnam. (2021). Decree No. 114/2021/ND-CP on ,19,400,"rgb(35, 41, 47)",1,#f7edd7,12.51,4.5,ok
@@ -2581,6 +3005,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 116,refs,paper,div.ref>span.rn>a.cite,[58],21,600,"rgb(161, 61, 45)",1,#fbf3df,5.84,4.5,ok
 116,refs,paper,div.refcols>div.ref,World Bank Accountability Mechanism. (2025). Case update: Co,19,400,"rgb(35, 41, 47)",1,#f9efdc,12.62,4.5,ok
 116,refs,paper,div.ref>span.url>a,https://accountability.worldbank.org/en/news/2025/conclusion,19,400,"rgb(74, 93, 110)",1,#f9efdc,5.86,4.5,ok
+116,refs,paper,[chrome] counter,116 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.48,4.5,ok
+117,index,wash,[chrome] div.runner>span,References and sources,24,500,"rgb(247, 239, 220)",1,#96a2aa,2.19,4.5,FAIL
 117,index,wash,div.head.wide>h1.title,Index of sources,68,500,"rgb(255, 248, 234)",1,#96a2aa,2.37,3.0,FAIL
 117,index,wash,div.idx>a,1,40,600,"rgb(47, 68, 88)",1,#f6efdc,8.71,3.0,ok
 117,index,wash,div.idx>a>small,World Bank 2011,18,400,"rgb(74, 93, 110)",1,#f6eedc,5.9,4.5,ok
@@ -2699,6 +3125,8 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 117,index,wash,div.idx>a,58,40,600,"rgb(47, 68, 88)",1,#f5eedc,8.69,3.0,ok
 117,index,wash,div.idx>a>small,WB Accountability 2025,18,400,"rgb(74, 93, 110)",1,#f6eedc,5.89,4.5,ok
 117,index,wash,div.idx-note,Dashed tiles: sources 5 and 6 are not cited in the body text,22,400,"rgb(255, 248, 234)",1,#a6b0b6,1.99,4.5,FAIL
+117,index,wash,[chrome] counter,117 / 119,26,600,"rgb(255, 248, 234)",1,#9aa4ac,2.37,4.5,FAIL
+118,credits,paper,[chrome] div.runner>span,References and sources,24,500,"rgb(74, 93, 110)",1,#f2e9d1,5.58,4.5,ok
 118,credits,paper,div.head.wide>h1.title,Credits,68,500,"rgb(47, 68, 88)",1,#f4ead2,8.31,3.0,ok
 118,credits,paper,div.credits>h3,Content,24,600,"rgb(161, 61, 45)",1,#f5ebd5,5.5,4.5,ok
 118,credits,paper,div.credits>p,"All text, figures, tables and citations: Group 6,",21,400,"rgb(35, 41, 47)",1,#f7edd7,12.4,4.5,ok
@@ -2716,5 +3144,7 @@ slide,tpl,tone,element,text,font_px,weight,color,opacity,bg_median,ratio_p10,nee
 118,credits,paper,div.credits>p,"Three.js (MIT), Vite (MIT), js-yaml (MIT). 3D environment li",21,400,"rgb(35, 41, 47)",1,#faf2de,12.88,4.5,ok
 118,credits,paper,div.credits>h3,Style references,24,600,"rgb(161, 61, 45)",1,#faf2de,5.78,4.5,ok
 118,credits,paper,div.credits>p,Two images supplied by the group were studied for style only,21,400,"rgb(35, 41, 47)",1,#fbf1dd,12.91,4.5,ok
+118,credits,paper,[chrome] counter,118 / 119,26,600,"rgb(74, 93, 110)",1,#f4ead2,5.44,4.5,ok
 119,thanks,night,div.tk-sub,Group 6 · Investment Economics 65,30,600,"rgb(201, 162, 74)",1,#0d1420,7.55,4.5,ok
 119,thanks,night,div.tk-sub2,"NATIONAL ECONOMICS UNIVERSITY · AEP · Hanoi, 2026",24,400,"rgb(174, 185, 199)",1,#0b111d,9.35,4.5,ok
+119,thanks,night,[chrome] counter,119 / 119,26,600,"rgb(174, 185, 199)",1,#070b14,9.84,4.5,ok

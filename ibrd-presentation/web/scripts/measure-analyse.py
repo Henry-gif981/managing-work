@@ -39,7 +39,7 @@ for s in data['slides']:
     H, W = bg.shape[:2]
     grid = np.zeros((18, 32), bool)
     bottom = 0
-    fails, minsize = 0, 999
+    fails, minsize, chrome_min = 0, 999, 999
     for t in s['texts']:
         r, g, b, a = parse(t['color'])
         a *= t['opacity']
@@ -50,6 +50,8 @@ for s in data['slides']:
             if x1 <= x0 or y1 <= y0:
                 continue
             px.append(bg[y0:y1:2, x0:x1:2].reshape(-1, 3))
+            if t.get('chrome'):
+                continue
             grid[max(0, y0 // 60):min(18, (y1 - 1) // 60 + 1), max(0, x0 // 60):min(32, (x1 - 1) // 60 + 1)] = True
             bottom = max(bottom, y1)
         if not px:
@@ -62,9 +64,12 @@ for s in data['slides']:
         need = 3.0 if large(t) else 4.5
         ok = worst >= need
         fails += not ok
-        minsize = min(minsize, t['size'])
+        if t.get('chrome'):
+            chrome_min = min(chrome_min, t['size'])
+        else:
+            minsize = min(minsize, t['size'])
         bgc = np.median(p, axis=0).astype(int)
-        contrast.append([s['n'], s['tpl'], s['tone'], t['el'], t['text'], round(t['size'], 1), t['weight'],
+        contrast.append([s['n'], s['tpl'], s['tone'], ('[chrome] ' if t.get('chrome') else '') + t['el'], t['text'], round(t['size'], 1), t['weight'],
                          t['color'], round(t['opacity'], 2), '#%02x%02x%02x' % tuple(bgc), round(worst, 2), need, 'ok' if ok else 'FAIL'])
     for bk in s['blocks']:
         x0, y0, x1, y1 = int(bk['x']), int(bk['y']), int(bk['x'] + bk['w']), int(bk['y'] + bk['h'])
@@ -74,7 +79,7 @@ for s in data['slides']:
     texts[s['n']] = s['text']
     metrics.append(dict(n=s['n'], tpl=s['tpl'], tone=s['tone'], content=s['tpl'] not in NONCONTENT, words=words,
                         occupancy=round(grid.mean() * 100, 1), bottom_empty=round((1080 - bottom) / 1080 * 100, 1),
-                        min_font=round(minsize, 1) if minsize < 999 else '', contrast_fails=fails))
+                        min_font=round(minsize, 1) if minsize < 999 else '', chrome_min_font=round(chrome_min, 1) if chrome_min < 999 else '', contrast_fails=fails))
 
 out = root / 'reports'
 with open(out / f'metrics-{tag}.csv', 'w', newline='') as f:
