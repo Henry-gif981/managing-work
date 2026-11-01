@@ -11,6 +11,9 @@ export function chartSVG(c, count = 1) {
   const defs = `<defs><pattern id="${id}h" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#FBF2DE"/><line x1="0" y1="0" x2="0" y2="7" stroke="#2F4458" stroke-width="2.2"/></pattern></defs>`;
   const fill = (i) => FILLS[i % FILLS.length].replace('HATCH', id + 'h');
   const T = (x, y, t, o = {}) => `<text x="${x}" y="${y}" font-size="${o.s || 20}" text-anchor="${o.a || 'middle'}" fill="${o.c || '#23292F'}" font-weight="${o.w || 400}" font-family="Be Vietnam Pro, sans-serif" style="font-variant-numeric:tabular-nums">${esc(t)}</text>`;
+  // label on a hatched fill: a small cream plate keeps the number readable (>= 4.5:1) without hiding the hatch
+  const TB = (x, y, t, o = {}) => { const s = o.s || 20, w = String(t).length * s * 0.62 + 14;
+    return `<rect x="${x - w / 2}" y="${y - s * 0.86}" width="${w}" height="${s * 1.18}" rx="4" fill="#FBF2DE" fill-opacity=".94"/>` + T(x, y, t, { ...o, c: '#23292F' }); };
   const legend = (series, y) => series.map((s, i) => `<rect x="${20 + i * 250}" y="${y - 15}" width="20" height="20" fill="${fill(i)}" stroke="#2F4458"/>${T(48 + i * 250, y, s.name, { a: 'start', s: 19 })}`).join('');
   let body = '';
   if (c.type === 'bar_stacked' || c.type === 'bar_clustered') {
@@ -28,7 +31,7 @@ export function chartSVG(c, count = 1) {
         let acc = 0;
         c.series.forEach((s, si) => { const v = s.values[ci]; if (!v) return; const y1 = y(acc + v), y0 = y(acc);
           body += `<rect x="${x0}" y="${y1}" width="${bw}" height="${y0 - y1}" fill="${fill(si)}" stroke="#2F4458" stroke-width="1.2"/>`;
-          if (y0 - y1 > 24) body += T(x0 + bw / 2, (y0 + y1) / 2 + 7, fmt(v, c.number_format), { s: 19, c: si === 1 ? '#23292F' : '#FFF8EA', w: 600 });
+          if (y0 - y1 > 24) body += (si === 1 ? TB : T)(x0 + bw / 2, (y0 + y1) / 2 + 7, fmt(v, c.number_format), { s: 19, c: si === 3 ? '#23292F' : '#FFF8EA', w: 600 });
           acc += v; });
         body += T(x0 + bw / 2, y(acc) - 10, fmt(+acc.toFixed(2), c.number_format), { s: 20, w: 600 });
       } else {
@@ -51,7 +54,7 @@ export function chartSVG(c, count = 1) {
       let acc = 0;
       c.series.forEach((s, si) => { const v = s.values[ci]; if (!v) return;
         body += `<rect x="${x(acc)}" y="${yy}" width="${x(acc + v) - x(acc)}" height="${bh}" fill="${fill(st ? si : (v < 100 ? 1 : 0))}" stroke="#2F4458" stroke-width="1.2"/>`;
-        if (st) body += T((x(acc) + x(acc + v)) / 2, yy + bh / 2 + 7, v + '%', { s: 19, w: 600, c: si === 0 ? '#FFF8EA' : '#23292F' });
+        if (st) body += (si === 0 ? T : TB)((x(acc) + x(acc + v)) / 2, yy + bh / 2 + 7, v + '%', { s: 19, w: 600, c: '#FFF8EA' });
         else body += T(x(v) + 10, yy + bh / 2 + 7, fmt(v, c.number_format), { a: 'start', s: 20, w: 600 });
         acc += v; });
     });

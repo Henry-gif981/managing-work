@@ -6,7 +6,7 @@ body.show-chrome .chrome, .chrome:hover, .chrome:focus-within { opacity: 1; }
 .on-night .progress i { background: var(--gold); }
 .counter { position: absolute; right: 34px; bottom: 18px; font-family: var(--f-display); font-weight: 600; font-size: 26px; letter-spacing: .04em; color: var(--slate-soft); font-variant-numeric: lining-nums tabular-nums; pointer-events: none; }
 .on-night .counter { color: var(--mist-soft); }
-.on-wash .counter { color: #FFF8EA; }
+.on-wash .counter { color: var(--on-dark-soft); }
 .chrome button, .chip { background: rgba(251, 242, 222, .94); border: 1px solid rgba(47, 68, 88, .55); color: var(--slate); border-radius: 30px; height: 44px; padding: 0 18px; font-size: 19px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
 .chrome button:hover { background: #fff; }
 .chrome button[aria-pressed="true"] { background: var(--slate); color: #FFF8EA; }

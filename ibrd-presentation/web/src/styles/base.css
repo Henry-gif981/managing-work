@@ -34,7 +34,8 @@ body.ready #stage { opacity: 1; }
 
 .ground { background: var(--paper); }
 .ground.paper { background: var(--paper) url(/assets/textures/paper.webp) center / cover; }
-.ground.wash { background: var(--wash) url(/assets/textures/wash.webp) center / cover; }
+.ground.wash { background: linear-gradient(var(--wash-veil), var(--wash-veil)), url(/assets/textures/wash.webp) center / cover; background-color: var(--wash); }
+.ground.wash .pattern { opacity: var(--wash-pattern); }
 .ground.night { background: radial-gradient(ellipse 62% 70% at 50% 42%, #1B2944 0%, #0C1424 48%, var(--night) 78%); }
 .ground .pattern { position: absolute; pointer-events: none; }
 .ground .grain { position: absolute; inset: 0; background: url(/assets/textures/grain.png); opacity: .035; mix-blend-mode: normal; }
@@ -63,16 +64,16 @@ body.ready #stage { opacity: 1; }
 .runner .ref { margin-left: auto; font-family: var(--f-text); font-size: 20px; letter-spacing: .06em; text-transform: none; color: var(--slate-soft); }
 .night .runner, .night .runner .ref { color: var(--mist-soft); }
 .night .runner .roman { color: var(--gold); }
-.wash .runner, .wash .runner .ref { color: #F7EFDC; }
-.wash .runner .roman { color: #FFE2B8; }
+.wash .runner, .wash .runner .ref { color: var(--on-dark-soft); }
+.wash .runner .roman { color: var(--on-dark-accent); }
 
 h1.title { font-family: var(--f-display); font-weight: 500; font-size: 68px; line-height: 1.02; margin: 0; color: var(--slate); letter-spacing: -.005em; text-wrap: balance; }
 .night h1.title { color: var(--mist); font-weight: 500; }
-.wash h1.title { color: #FFF8EA; }
+.wash h1.title { color: var(--on-dark); }
 .lead { font-size: 30px; line-height: 1.35; color: var(--slate-soft); margin: 0; }
 .lead.it { font-style: italic; }
 .night .lead { color: var(--mist-soft); }
-.wash .lead { color: #F7EFDC; }
+.wash .lead { color: var(--on-dark-soft); }
 
 ul.bullets { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
 ul.bullets > li { position: relative; padding-left: 40px; font-size: 31px; line-height: 1.32; color: var(--ink); }
@@ -90,16 +91,16 @@ ul.bullets ul li::before { content: '–'; position: absolute; left: 0; }
 
 /* citations: every number its own link, big enough to hit on stage */
 .cite-group { white-space: nowrap; font-size: 22px; color: var(--slate-soft); font-weight: 400; }
-a.cite { color: var(--brick); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
+a.cite { color: var(--cite-on-light); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
   display: inline-block; min-width: 28px; padding: 6px 2px; margin: -6px 0; text-align: center; border-radius: 4px; font-size: 22px; }
 a.cite:hover, a.cite:focus-visible { background: rgba(161, 61, 45, .12); outline: none; }
 a.cite-ay { min-width: 0; padding: 4px 2px; text-align: left; font-weight: 500; }
 a.cite.inferred { text-decoration-style: dashed; }
 .cite-loc { font-weight: 400; }
-.night a.cite { color: var(--brick-light); }
+.night a.cite, .wash a.cite { color: var(--cite-on-dark); }
 .night .cite-group { color: var(--mist-soft); }
+.wash .cite-group { color: var(--on-dark-soft); }
 .night a.cite:hover { background: rgba(232, 130, 110, .16); }
-.wash a.cite { color: #7A2416; }
 
 /* --- step reveal -------------------------------------------------------------------------------- */
 [data-step] { transition: opacity 340ms var(--ease), transform 340ms var(--ease); }
