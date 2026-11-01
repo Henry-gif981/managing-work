@@ -31,6 +31,8 @@ function body(s, d) {
   }
   if (s.chartData) out.push(s.chartData.map((c) => `<figure class="chart"><figcaption>${h(c.caption)}</figcaption>${chartSVG(c, 1)}<p class="src">${h(c.source)}</p></figure>`).join(''));
   if (s.foot) out.push(`<p class="foot">${h(s.foot)}</p>`);
+  if (s.extra) out.push(`<div class="foot">${s.extra.map((x) => `<p>${h(x)}</p>`).join('')}</div>`);
+  if (s.note) out.push(`<p class="snote"><em>${h(s.note)}</em></p>`);
   if (s.tpl === 'refs') {
     const [a, b] = s.refRange; const li = [];
     for (let n = a; n <= b; n++) { const r = d.references[n]; li.push(`<li id="ref-${n}"><a class="cite" href="#src-${n}" data-src="${n}">[${n}]</a> ${esc(r.text)} ${r.url ? `<a class="url" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a>` : ''}</li>`); }
@@ -48,11 +50,14 @@ export function startReading(deck) {
   document.body.className = 'reading';
   const parts = [];
   let part = null;
-  for (const s of deck.slides) {
+  // the appendix-only copies (e.g. the KPI table shown as a chart on the main deck) follow their source
+  const seq = deck.slides.flatMap((x) => [x, ...(deck.extra || []).filter((e) => e.after === x.n)]);
+  for (const s of seq) {
     if (s.part !== part) { part = s.part; parts.push(`<h2 class="part" id="part-${part}">${esc(deck.parts[part].label)}</h2>`); }
     const full = s.notes.length ? `<details open><summary>Full text from the paper (verbatim)</summary>${s.notes.map((nt) => `<h4>${esc(nt.label)}${nt.page ? ` · PDF p. ${nt.page}` : ''}</h4>${nt.paras.map((p) => `<p>${h(p.text).replace(/\n/g, '<br>')}</p>`).join('')}`).join('')}</details>` : '';
     const title = s.title || (s.tpl === 'thanks' ? 'Thank you' : '');
-    parts.push(`<article id="s${s.n}" class="sec ${s.ground}"><div class="meta"><a href="#/${s.n}" data-present="${s.n}">${s.n} / ${deck.slides.length}</a>${s.ref ? ` · ${esc(s.ref)}` : ''}</div>
+    const id = s.n ?? s.key;
+    parts.push(`<article id="s${id}" class="sec ${s.ground}"><div class="meta"><a href="#/${id}" data-present="${id}">${id} / ${deck.slides.length}</a>${s.ref ? ` · ${esc(s.ref)}` : ''}</div>
       ${title && s.tpl !== 'cover' ? `<h3>${h(title)}</h3>` : ''}${s.art ? `<div class="ra" aria-hidden="true" data-art="${s.art}"></div>` : ''}${body(s, deck)}${full}</article>`);
   }
   document.body.innerHTML = `<header class="rhead"><a href="#/1" data-present="1">◀ Back to presentation</a><h1>${esc(deck.meta.title)} — reading mode</h1></header>

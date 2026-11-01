@@ -1,0 +1,298 @@
+{
+ "checks": [
+  {
+   "name": "main deck order = deck.config.yml (33 slides)",
+   "ok": true,
+   "info": "1 5 7 11 14 18 19 23 27 28 32 42 44 46 54 56 59 65 70 73 77 80 89 91 92 99 103 104 106 107 108 109 119"
+  },
+  {
+   "name": "main deck ends on 119 (Thank you), → stops there",
+   "ok": true,
+   "info": "119 · \"33 / 33\""
+  },
+  {
+   "name": "clicks per slide match deck.config.yml",
+   "ok": true,
+   "info": "total clicks 50"
+  },
+  {
+   "name": "presses to walk the main deck ≤ 100",
+   "ok": true,
+   "info": "82 presses (reveals + slide changes)"
+  },
+  {
+   "name": "← lands on the previous slide fully revealed",
+   "ok": true,
+   "info": "14.2"
+  },
+  {
+   "name": "End (main) → 119",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "Home (main) → 1",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "A → Appendix divider",
+   "ok": true,
+   "info": "Appendix 1 / 88"
+  },
+  {
+   "name": "End (appendix) → last appendix slide",
+   "ok": true,
+   "info": "118"
+  },
+  {
+   "name": "Home (appendix) → divider",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "M → back to the main slide that was left (59, same reveal)",
+   "ok": true,
+   "info": "59.1"
+  },
+  {
+   "name": "keys 1–8 jump to the parts of the main deck / appendix",
+   "ok": true,
+   "info": "{\"1\":\"1\",\"2\":\"11\",\"3\":\"27\",\"4\":\"46\",\"5\":\"77\",\"6\":\"103\",\"7\":\"106\",\"8\":\"appendix\"}"
+  },
+  {
+   "name": "#/47 → appendix slide 47",
+   "ok": true,
+   "info": "Appendix 34 / 88"
+  },
+  {
+   "name": "#/92 → main deck 92 (chart)",
+   "ok": true,
+   "info": "25 / 33"
+  },
+  {
+   "name": "#/92-table → appendix table copy",
+   "ok": true,
+   "info": "Appendix 69 / 88"
+  },
+  {
+   "name": "#/5.2 → slide 5 at reveal 2",
+   "ok": true,
+   "info": "5.2"
+  },
+  {
+   "name": "appendix shows everything (no reveal steps)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "Detail links hidden until the toolbar shows",
+   "ok": true,
+   "info": "opacity 0 → 1"
+  },
+  {
+   "name": "Detail → opens the appendix slide; Back to main returns",
+   "ok": true,
+   "info": "88 → 89"
+  },
+  {
+   "name": "every configured Detail link is rendered",
+   "ok": true,
+   "info": "5→47 | 7→3,4,6,8,9,10 | 14→13 | 19→21 | 23→24 | 28→29 | 32→31 | 42→41 | 44→43 | 54→55 | 56→58 | 59→60 | 65→64 | 70→71 | 77→78 | 80→84 | 89→87,88 | 91→97,98 | 92→92-table | 99→98"
+  },
+  {
+   "name": "Overview: main deck by part + collapsed appendix",
+   "ok": true,
+   "info": "{\"main\":33,\"appx\":88}"
+  },
+  {
+   "name": "Overview tile opens its slide (60)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "Contents: part entry opens its first slide (77)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "?steps=all shows a main slide fully at once",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "all 119 original sections + appendix-only slides reachable",
+   "ok": true,
+   "info": "119 + 2"
+  },
+  {
+   "name": "clock off by default (C does nothing)",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "clock with ?clock=1: runs, first mark (slide 7, 2:00) marked early",
+   "ok": true,
+   "info": "{\"on\":true,\"t\":\"00:01\",\"first\":\"early\"}"
+  },
+  {
+   "name": "text: only sections 1, 7, 32, 42, 92 differ from the baseline",
+   "ok": true,
+   "info": "1, 7, 32, 42, 92"
+  },
+  {
+   "name": "text: 92-table is identical to the old 92",
+   "ok": true,
+   "info": ""
+  },
+  {
+   "name": "no console errors or warnings",
+   "ok": true,
+   "info": ""
+  }
+ ],
+ "walk": {
+  "order": [
+   "1",
+   "5",
+   "7",
+   "11",
+   "14",
+   "18",
+   "19",
+   "23",
+   "27",
+   "28",
+   "32",
+   "42",
+   "44",
+   "46",
+   "54",
+   "56",
+   "59",
+   "65",
+   "70",
+   "73",
+   "77",
+   "80",
+   "89",
+   "91",
+   "92",
+   "99",
+   "103",
+   "104",
+   "106",
+   "107",
+   "108",
+   "109",
+   "119"
+  ],
+  "presses": 82,
+  "clicks": {
+   "1": 0,
+   "5": 2,
+   "7": 2,
+   "11": 0,
+   "14": 2,
+   "18": 2,
+   "19": 3,
+   "23": 1,
+   "27": 0,
+   "28": 1,
+   "32": 3,
+   "42": 2,
+   "44": 2,
+   "46": 0,
+   "54": 2,
+   "56": 1,
+   "59": 2,
+   "65": 1,
+   "70": 2,
+   "73": 2,
+   "77": 2,
+   "80": 2,
+   "89": 2,
+   "91": 2,
+   "92": 1,
+   "99": 3,
+   "103": 2,
+   "104": 2,
+   "106": 1,
+   "107": 2,
+   "108": 0,
+   "109": 1,
+   "119": 0
+  }
+ },
+ "text": {
+  "changed": [
+   "1",
+   "7",
+   "32",
+   "42",
+   "92"
+  ],
+  "tableCopyIdentical": true,
+  "detail": {
+   "1": {
+    "removed": [
+     "Lecturer: [TO BE CONFIRMED]"
+    ],
+    "added": [
+     "Lecturer: ThS. Phạm Thu Vân"
+    ]
+   },
+   "7": {
+    "removed": [],
+    "added": [
+     "Method: qualitative, mainly secondary data · Scope: Vietnam, 2014 to the present · Cases: TEP and CCSEP",
+     "Preview: the binding constraints lie mainly on the domestic side, not in the availability of IBRD money."
+    ]
+   },
+   "32": {
+    "removed": [],
+    "added": [
+     "TEP and CCSEP are introduced in Chapter 3."
+    ]
+   },
+   "42": {
+    "removed": [],
+    "added": [
+     "TEP and CCSEP are introduced in Chapter 3."
+    ]
+   },
+   "92": {
+    "removed": [
+     "Table 21. Progress on key performance indicators as of 31/10/2022",
+     "Indicator\tTarget (PAD)\tActual\tRatio",
+     "Direct beneficiaries\t290.000\t185.559\t64%",
+     "People with access to sewer connections\t256.000\t97.400\t38%",
+     "Cost recovery level\t100%\t98%\t98%",
+     "Roads (km)\t22\t4,38\t20%",
+     "Bridges\t5\t3\t60%",
+     "IBRD"
+    ],
+    "added": [
+     "Actual as % of PAD target",
+     "0%",
+     "25%",
+     "50%",
+     "75%",
+     "100%",
+     "Target (PAD)",
+     "Direct beneficiaries",
+     "64%",
+     "People with access to sewer connections",
+     "38%",
+     "Cost recovery level",
+     "98%",
+     "Roads (km)",
+     "20%",
+     "Bridges",
+     "60%"
+    ]
+   }
+  }
+ },
+ "errors": []
+}

@@ -220,7 +220,7 @@ export function createEngine(canvas, opts = {}) {
     M = createMaterials(preset);
     dust.material.map = M.dustTex;
     resize();
-    const s = window.__deck ? window.__deckData.slides[window.__deck.state.n - 1] : null;
+    const s = window.__deck ? (window.__deck.slide ? window.__deck.slide() : window.__deckData.slides[window.__deck.state.n - 1]) : null;
     if (s) show(s, { step: window.__deck.state.step, carousel: 0, stepping: window.__deck.state.stepMode !== 'all' });
   }
   return {

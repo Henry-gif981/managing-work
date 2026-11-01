@@ -28,7 +28,8 @@ const corpusLower = corpus.toLowerCase();
 function shown(s) {
   const o = [];
   const add = (x) => { if (typeof x === 'string' && x) o.push(x); };
-  [s.title, s.sub, s.lead, s.quote, s.foot].forEach(add);
+  [s.title, s.sub, s.lead, s.quote, s.foot, s.note].forEach(add);
+  (s.extra || []).forEach(add);
   (s.bullets || []).forEach((b) => add(typeof b === 'string' ? b : b.t));
   (s.items || []).forEach((it) => (typeof it === 'string' ? add(it) : [it.d, it.t, it.h, it.b].forEach(add)));
   (s.cards || []).forEach((c) => { add(c.h); add(c.b); });
@@ -87,7 +88,9 @@ for (const s of deck.slides) {
     if (!/^\*\*[^*]+\*\*/.test(b)) errors.push(`s${s.n}: bullet without a bold key phrase: ${b.slice(0, 50)}`);
   }
 }
-if (!deck.meta.lecturer.includes('[TO BE CONFIRMED]')) errors.push('cover: lecturer placeholder missing');
+// cover lecturer: the placeholder, or (structure pass, requested by the group) the name as printed in the paper
+const lect = deck.meta.lecturer;
+if (!lect.includes('[TO BE CONFIRMED]') && !has(lect.replace(/^Lecturer:\s*(ThS\.\s*)?/, ''))) errors.push(`cover: lecturer "${lect}" is neither the placeholder nor a name found in the paper`);
 
 // ---------------------------------------------------------------- coverage of the paper
 const noted = new Set();

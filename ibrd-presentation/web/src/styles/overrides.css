@@ -1,2 +1,3 @@
 /* Per-section exceptions. Keep this file short: one rule per line, each with the reason.
    Selectors use the section number: .slide[data-n="NN"]. Prefer fixing the template in flow.css. */
+.slide[data-n="7"] .cardrow.c2 .cert { min-height: 0; padding-top: 26px; padding-bottom: 24px; } /* 7: four cards plus the two-line method/preview band must fit one screen */

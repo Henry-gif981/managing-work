@@ -18,7 +18,7 @@ meta:
     - "Nguyễn Anh Đức - 11232399"
     - "Lê Thị Yến Nhi - 11233123"
   class: "Investment Economics 65"
-  lecturer: "Lecturer: [TO BE CONFIRMED]"
+  lecturer: "Lecturer: ThS. Phạm Thu Vân"
   place: "Hanoi, 2026"
 
 # Main parts: label, giant word (paper vocabulary only), 3D hero object, 2D hero engraving set
@@ -117,6 +117,10 @@ slides:
       - {h: "Q2", b: "How is the IBRD organized and funded, and on what terms does it lend?"}
       - {h: "Q3", b: "How does the IBRD support project financing through financial, technical and training assistance?"}
       - {h: "Q4", b: "What results and limitations have selected IBRD-supported projects in Vietnam shown, and what lessons follow?"}
+    # structure pass (group-approved wording pending): rephrases sections 9, 10 and 108; shown with the last click
+    extra:
+      - "Method: qualitative, mainly secondary data · Scope: Vietnam, 2014 to the present · Cases: TEP and CCSEP"
+      - "Preview: the binding constraints lie mainly on the domestic side, not in the availability of IBRD money."
     notes: ["intro-2"]
   - tpl: compare
     part: intro
@@ -431,6 +435,7 @@ slides:
     ground: wash
     ref: "2.1.2"
     title: "Counterpart funding as the binding constraint"
+    note: "TEP and CCSEP are introduced in Chapter 3."   # structure pass: these numbers come before Chapter 3
     art: ledger
     bullets:
       - "**Documentation:** statements of expenditure or interim financial reports; deadline usually four months after closing [26]"
@@ -567,6 +572,7 @@ slides:
     ground: wash
     ref: "2.3.3"
     title: "Reform depends on the borrower"
+    note: "TEP and CCSEP are introduced in Chapter 3."   # structure pass: these numbers come before Chapter 3
     art: scales
     nums:
       - {v: "5.50", l: "US$ million from NPT"}

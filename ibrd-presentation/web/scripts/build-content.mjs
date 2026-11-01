@@ -117,7 +117,8 @@ for (const s of slides) if (!(s.part in partStart)) partStart[s.part] = s.n;
 function slideStrings(s) {
   const out = [];
   const add = (x) => { if (typeof x === 'string' && x) out.push(x); };
-  [s.title, s.sub, s.lead, s.quote, s.foot].forEach(add);
+  [s.title, s.sub, s.lead, s.quote, s.foot, s.note].forEach(add);
+  (s.extra || []).forEach(add);
   (s.bullets || []).forEach((b) => (typeof b === 'string' ? add(b) : (add(b.t), (b.sub || []).forEach(add))));
   (s.items || []).forEach((it) => (typeof it === 'string' ? add(it) : (add(it.d), add(it.t), add(it.h), add(it.b))));
   (s.cards || []).forEach((c) => { add(c.h); add(c.b); });
@@ -200,10 +201,64 @@ for (const s of slides) {
   for (const n of ns) if (cites[n] && !cites[n].slides.includes(s.n)) cites[n].slides.push(s.n);
 }
 
+// ------------------------------------------------------------------ structure (content/deck.config.yml)
+// Main deck (20 minutes) and appendix. Slide keys are the original numbers as strings; slides that exist
+// only in the appendix get their own key ("92-table", "appendix").
+const cfg = yaml.load(rd('content/deck.config.yml'));
+for (const s of slides) s.key = String(s.n);
+const byKey = Object.fromEntries(slides.map((s) => [s.key, s]));
+const extra = [];
+for (const x of cfg.extra || []) {
+  const src = byKey[String(x.copyOf)];
+  if (!src) { errors.push(`extra ${x.id}: copyOf ${x.copyOf} missing`); continue; }
+  extra.push({ ...structuredClone(src), key: String(x.id), copyOf: src.n, after: x.after, n: null, label: String(x.id) });
+}
+const mainParts = cfg.main.map((p) => ({ part: p.part, label: p.label, keys: p.slides.map((x) => String(x.id)) }));
+const mainKeys = mainParts.flatMap((p) => p.keys);
+for (const k of mainKeys) if (!byKey[k]) errors.push(`main: slide ${k} does not exist`);
+if (new Set(mainKeys).size !== mainKeys.length) errors.push('main: a slide is listed twice');
+const stepPlan = {};
+for (const p of cfg.main) for (const x of p.slides) stepPlan[String(x.id)] = { clicks: x.clicks, ...(x.groups ? { groups: x.groups } : {}) };
+for (const [k, plan] of Object.entries(stepPlan)) byKey[k].stepPlan = plan;
+// variant: the KPI table on the main deck becomes a chart of its "Ratio" column (values read from the table,
+// names verbatim); the unchanged table is the appendix copy.
+for (const p of cfg.main) for (const x of p.slides) if (x.variant === 'chart') {
+  const s = byKey[String(x.id)];
+  const t = s.tableData;
+  const col = t.header.indexOf('Ratio');
+  if (col < 0) { errors.push(`variant chart ${x.id}: table has no Ratio column`); continue; }
+  s.chartData = [{ key: `${s.table}-chart`, type: 'bar_kpi', caption: 'Actual as % of PAD target', target: 'Target (PAD)',
+    categories: t.rows.map((r) => r[0]), series: [{ name: 'Actual as % of PAD target', values: t.rows.map((r) => Number(String(r[col]).replace('%', ''))) }],
+    number_format: '0"%"', source: t.source }];
+  s.tpl = 'chart'; s.variant = 'chart'; s.variantOf = s.table;
+  delete s.tableData; delete s.table;
+}
+// appendix: everything not in the main deck, original order, with the extra copies placed after their source
+const inMain = new Set(mainKeys);
+const groupOfPart = {};
+for (const g of cfg.appendix.groups) for (const pt of g.parts) groupOfPart[pt] = g.key;
+const appendixKeys = ['appendix'];
+for (const s of slides) {
+  if (!inMain.has(s.key)) appendixKeys.push(s.key);
+  for (const x of extra) if (x.after === s.n) appendixKeys.push(x.key);
+}
+const groups = cfg.appendix.groups.map((g) => ({ key: g.key, label: g.label,
+  keys: appendixKeys.filter((k) => k !== 'appendix' && groupOfPart[(byKey[k] || extra.find((x) => x.key === k)).part] === g.key) }));
+for (const k of appendixKeys) if (k !== 'appendix' && !groups.some((g) => g.keys.includes(k))) errors.push(`appendix: slide ${k} is in no group`);
+extra.unshift({ key: 'appendix', tpl: 'appendix', ground: 'night', part: 'back', partLabel: 'Appendix', title: 'Appendix', n: null, notes: [], roman: '' });
+const details = Object.fromEntries(Object.entries(cfg.details || {}).map(([k, v]) => [k, v.map(String)]));
+for (const [k, v] of Object.entries(details)) {
+  if (!inMain.has(k)) errors.push(`details: ${k} is not a main slide`);
+  for (const t of v) if (!appendixKeys.includes(t)) errors.push(`details: ${k} -> ${t} is not an appendix slide`);
+}
+const reachable = new Set([...mainKeys, ...appendixKeys]);
+for (const s of slides) if (!reachable.has(s.key)) errors.push(`slide ${s.n} is in neither the main deck nor the appendix`);
+const structure = { main: mainParts, mainKeys, appendixKeys, groups, details, clock: cfg.clock || { enabled: false } };
+
 // ------------------------------------------------------------------ output
 const outDir = path.join(root, 'src/data');
 fs.mkdirSync(outDir, { recursive: true });
-const data = { meta: deck.meta, parts, partStart, slides, references, cites, built: new Date().toISOString().slice(0, 10),
+const data = { meta: deck.meta, parts, partStart, slides, extra, structure, references, cites, built: new Date().toISOString().slice(0, 10),
   paperSections: order.filter((id) => !['refs'].includes(id)).map((id) => ({ id, title: sections[id].title, page: sections[id].page })) };
 fs.writeFileSync(path.join(outDir, 'deck.json'), JSON.stringify(data));
 // paper text index used by verify-content (not shipped to the browser)
@@ -211,5 +266,5 @@ fs.writeFileSync(path.join(root, 'content/.paper-index.json'), JSON.stringify({ 
 
 if (errors.length) { console.error('build-content: ' + errors.length + ' error(s)\n  ' + errors.join('\n  ')); process.exit(1); }
 const uncited = Object.values(cites).filter((c) => !c.citedFor.length).map((c) => c.n);
-console.log(`build-content: ${slides.length} sections, ${Object.keys(references).length} references, sources never cited in body: [${uncited.join(', ')}]`);
+console.log(`build-content: ${slides.length} sections (main ${mainKeys.length}, appendix ${appendixKeys.length}), ${Object.keys(references).length} references, sources never cited in body: [${uncited.join(', ')}]`);
 export { slideStrings };

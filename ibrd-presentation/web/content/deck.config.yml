@@ -1,0 +1,115 @@
+# ---------------------------------------------------------------------------------------------
+# deck.config.yml — the ONE source for the deck's STRUCTURE (content stays in deck.yaml).
+#   main      : the 20-minute deck, in presentation order, grouped in parts (keys 1–7 jump to a part)
+#   clicks    : presses of → / Space after the title appears (0 = everything at once)
+#   groups    : optional — which original reveal steps appear together, one list per click
+#               (original step numbers as the template numbers them; omit to use the template rule)
+#   details   : "Detail →" links shown on a main slide (hover / toolbar visible) to appendix slides
+#   appendix  : every other slide keeps its original order and number; it is grouped for the
+#               Appendix divider, Contents and Overview by the parts listed under each group
+#   extra     : slides that exist only in the appendix (a copy with a new ID)
+# Slide IDs are the original section numbers 1..119, so #/n links, citations and notes keep working.
+# Build: node scripts/build-content.mjs (also run by npm run dev / build).
+# ---------------------------------------------------------------------------------------------
+main:
+  - part: intro
+    label: "Introduction"
+    slides:
+      - {id: 1, clicks: 0}
+      - {id: 5, clicks: 2}                       # timeline: first half / second half of the milestones
+      - {id: 7, clicks: 2}                       # Q1–Q2 / Q3–Q4 + method and preview line
+  - part: ch1
+    label: "Chapter 1 · Overview of the IBRD"
+    slides:
+      - {id: 11, clicks: 0}
+      - {id: 14, clicks: 2}                      # one column per click (takeaway with the second)
+      - {id: 18, clicks: 2, groups: [[1, 2], [3, 4, 5, 6]]}   # stations 1–2 / stations 3–4 + bullets
+      - {id: 19, clicks: 3}                      # IPF / DPF / PforR
+      - {id: 23, clicks: 1}
+  - part: ch2
+    label: "Chapter 2 · How the IBRD supports project financing"
+    slides:
+      - {id: 27, clicks: 0}
+      - {id: 28, clicks: 1}                      # the whole cycle at once
+      - {id: 32, clicks: 3}
+      - {id: 42, clicks: 2}                      # stamps / bullets
+      - {id: 44, clicks: 2, groups: [[1, 2, 3], [4]]}         # the three cards / takeaway
+  - part: tep
+    label: "Chapter 3 · Case study 1 · TEP"
+    slides:
+      - {id: 46, clicks: 0}
+      - {id: 54, clicks: 2}
+      - {id: 56, clicks: 1}
+      - {id: 59, clicks: 2, groups: [[3, 1], [4, 2]]}         # Figure 1 + its bullet / Figure 2 + its bullet
+      - {id: 65, clicks: 1}
+      - {id: 70, clicks: 2}                      # stamps / bullets
+      - {id: 73, clicks: 2}                      # one column per click
+  - part: ccsep
+    label: "Chapter 3 · Case study 2 · CCSEP"
+    slides:
+      - {id: 77, clicks: 2}
+      - {id: 80, clicks: 2}                      # stamps / bullets
+      - {id: 89, clicks: 2}                      # stamps / bullets
+      - {id: 91, clicks: 2}                      # stamps / bullets
+      - {id: 92, clicks: 1, variant: chart}      # the KPI table drawn as a chart; the table is in the appendix
+      - {id: 99, clicks: 3}                      # one cause per click
+  - part: lessons
+    label: "Chapter 3 · Achievements, limitations, recommendations"
+    slides:
+      - {id: 103, clicks: 2}
+      - {id: 104, clicks: 2}
+  - part: concl
+    label: "Conclusion"
+    slides:
+      - {id: 106, clicks: 1}
+      - {id: 107, clicks: 2}                     # one column per click
+      - {id: 108, clicks: 0}
+      - {id: 109, clicks: 1}
+      - {id: 119, clicks: 0}                     # last slide of the main deck
+
+details:
+  5: [47]
+  7: [3, 4, 6, 8, 9, 10]
+  14: [13]
+  19: [21]
+  23: [24]
+  28: [29]
+  32: [31]
+  42: [41]
+  44: [43]
+  54: [55]
+  56: [58]
+  59: [60]
+  65: [64]
+  70: [71]
+  77: [78]
+  80: [84]
+  89: [87, 88]
+  91: [97, 98]
+  92: ["92-table"]
+  99: [98]
+
+appendix:
+  groups:
+    - {key: intro, label: "Introduction", parts: [cover, intro]}
+    - {key: ch1, label: "Chapter 1", parts: [ch1a, ch1b, ch1c]}
+    - {key: ch2, label: "Chapter 2 · How the IBRD supports project financing", parts: [ch2]}
+    - {key: tep, label: "Chapter 3 · Case study 1 · TEP", parts: [ch3, tep]}
+    - {key: ccsep, label: "Chapter 3 · Case study 2 · CCSEP", parts: [ccsep]}
+    - {key: concl, label: "Recommendations and conclusion", parts: [lessons, concl]}
+    - {key: refs, label: "References and sources", parts: [back]}
+
+extra:
+  - {id: "92-table", copyOf: 92, after: 92}      # slide 92 exactly as before (Table 21), appendix only
+
+# Optional presenter clock (key C). Off unless enabled here.
+clock:
+  enabled: false
+  marks:                                          # expected time at the end of a part (mm:ss), by slide
+    - {at: "2:00", slide: 7}
+    - {at: "4:30", slide: 23}
+    - {at: "7:30", slide: 44}
+    - {at: "11:00", slide: 73}
+    - {at: "14:30", slide: 99}
+    - {at: "18:00", slide: 119}
+  tolerance: 30                                   # seconds early/late before the mark changes colour

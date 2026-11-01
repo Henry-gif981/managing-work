@@ -15,14 +15,20 @@ export async function startPrint(deck) {
     .page .pnum.dark { color: var(--on-dark-soft); }`;
   document.head.appendChild(style);
   document.body.className = 'printing';
-  const only = new URLSearchParams(location.search).get('only');
-  const list = only ? deck.slides.filter((s) => String(s.n) === only) : deck.slides;
-  const pages = list.map((s) => {
+  // ?set=main | appendix prints that deck in its order (deck.config.yml); without it, the 119 original sections
+  const q = new URLSearchParams(location.search);
+  const only = q.get('only');
+  const set = q.get('set');
+  const byKey = new Map([...deck.slides, ...(deck.extra || [])].map((x) => [x.key, x]));
+  const keys = set === 'main' ? deck.structure.mainKeys : set === 'appendix' ? deck.structure.appendixKeys : null;
+  const list = only ? [byKey.get(only)].filter(Boolean) : keys ? keys.map((k) => byKey.get(k)) : deck.slides;
+  const pnum = (s, i) => (set === 'main' ? `${i + 1} / ${list.length}` : set === 'appendix' ? `Appendix ${i + 1} / ${list.length}` : `${s.n} / ${deck.slides.length}`);
+  const pages = list.map((s, i) => {
     const r = renderSlide(s, deck);
     const slot = slotOf(s);
     let fb = '';
     if (slot) { const S = SLOTS[slot]; fb = `<div class="fb-wrap"><img alt="" src="${fallbackSrc(s.hero3d, slot)}" style="position:absolute;left:${S.cx - S.w / 2}px;top:${S.cy - S.h / 2}px;width:${S.w}px;height:${S.h}px;object-fit:contain" onerror="this.remove()"></div>`; }
-    return `<div class="page">${r.ground}<div class="layer">${r.giant}</div>${fb}${s.ground === 'night' ? '<div class="vig"></div>' : ''}<div class="layer">${r.content}</div><div class="pnum${s.ground === 'paper' ? '' : ' dark'}">${s.n} / ${deck.slides.length}</div></div>`;
+    return `<div class="page">${r.ground}<div class="layer">${r.giant}</div>${fb}${s.ground === 'night' ? '<div class="vig"></div>' : ''}<div class="layer">${r.content}</div><div class="pnum${s.ground === 'paper' ? '' : ' dark'}">${pnum(s, i)}</div></div>`;
   });
   document.body.innerHTML = pages.join('');
   document.querySelectorAll('.page').forEach((p) => p.querySelectorAll('.giant').forEach((g) => {

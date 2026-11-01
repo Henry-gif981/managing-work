@@ -196,3 +196,18 @@
 .tpl-chapter .toc .tag { font-family: var(--f-text); font-variant-numeric: lining-nums tabular-nums; color: var(--mist); border: 1px solid rgba(201, 162, 74, .55); border-radius: 3px; padding: 6px 10px; margin-left: 10px; display: inline-block; line-height: 1; }
 .tpl-chapter .toc .sep { font-size: 0; }
 .tpl-gallery .mini-stamp .l { font-size: 24px; } /* label floor for cards (24px) */
+
+/* ---- structure pass: appendix divider, chart without bullets, small notes, two-line takeaway ----- */
+.flow.tpl-chart > .zone.solo { grid-template-columns: minmax(0, 1fr); padding: 0 120px; }
+.flow > .snote { grid-row: 3; position: relative; margin-top: 18px; font-size: 22px; font-style: italic; color: var(--slate-soft); }
+.flow.wash > .snote, .flow.night > .snote { color: var(--on-dark-soft); }
+.flow > .foot.extra p { margin: 0; }
+.flow > .foot.extra p + p { margin-top: 6px; }
+.flow > .foot.extra { font-size: 30px; }
+.tpl-appendix .agrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.tpl-appendix .ag { pointer-events: auto; cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 12px; min-height: 190px; padding: 26px 26px 22px;
+  background: rgba(201, 162, 74, .06); border: 1px solid rgba(201, 162, 74, .6); outline: 1px solid rgba(201, 162, 74, .3); outline-offset: 5px; color: var(--mist); font: inherit; }
+.tpl-appendix .ag:hover, .tpl-appendix .ag:focus-visible { background: rgba(201, 162, 74, .16); }
+.tpl-appendix .ag .h { font-family: var(--f-display); font-weight: 600; font-size: 34px; line-height: 1.12; color: var(--mist); }
+.tpl-appendix .ag .c { font-size: 22px; color: var(--mist-soft); }
+.tpl-appendix h1.title { color: var(--mist); }

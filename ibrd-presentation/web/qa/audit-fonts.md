@@ -6,10 +6,10 @@ Sections audited: 119 at 1920×1080 (all bullets shown). Layout shift while load
 
 | Face · size | Text nodes |
 |---|---|
-| Be Vietnam Pro 400 · 22px | 531 |
-| Be Vietnam Pro 600 · 22px | 368 |
+| Be Vietnam Pro 400 · 22px | 532 |
+| Be Vietnam Pro 600 · 22px | 363 |
 | Cormorant SC 600 · 26px | 216 |
-| Be Vietnam Pro 400 · 23px | 213 |
+| Be Vietnam Pro 400 · 23px | 198 |
 | Be Vietnam Pro 400 · 32px | 117 |
 | Be Vietnam Pro 600 · 32px | 112 |
 | Be Vietnam Pro 400 · 21px | 108 |
@@ -19,7 +19,7 @@ Sections audited: 119 at 1920×1080 (all bullets shown). Layout shift while load
 | Be Vietnam Pro 400 · 38px | 87 |
 | Be Vietnam Pro 600 · 38px | 86 |
 | Cormorant 600 · 40px | 83 |
-| Be Vietnam Pro 600 · 23px | 76 |
+| Be Vietnam Pro 600 · 23px | 71 |
 | Cormorant 600 · 36px | 65 |
 | Be Vietnam Pro 400 italic · 20px | 61 |
 | Be Vietnam Pro 400 · 20px | 60 |
@@ -33,11 +33,11 @@ Sections audited: 119 at 1920×1080 (all bullets shown). Layout shift while load
 | Cormorant 500 · 118px | 21 |
 | Cormorant 500 · 62px | 16 |
 | Cormorant SC 600 · 24px | 14 |
+| Be Vietnam Pro 400 italic · 22px | 12 |
 | Cormorant 600 italic · 34px | 12 |
 | Cormorant 500 · 80px | 12 |
 | Cormorant 400 · 22px | 12 |
 | Cormorant 300 · 120px | 11 |
-| Be Vietnam Pro 400 italic · 22px | 10 |
 | Be Vietnam Pro 500 · 22px | 9 |
 | Cormorant 500 · 76px | 8 |
 | Cormorant 600 · 34px | 8 |
@@ -54,6 +54,7 @@ Sections audited: 119 at 1920×1080 (all bullets shown). Layout shift while load
 | Cormorant SC 400 · 28px | 3 |
 | Cormorant 400 · 240px | 3 |
 | IBM Plex Mono 500 · 32px | 3 |
+| Cormorant 600 italic · 30px | 2 |
 | IBM Plex Mono 500 · 38px | 2 |
 | Cormorant 500 · 70px | 1 |
 | Cormorant SC 600 · 28px | 1 |

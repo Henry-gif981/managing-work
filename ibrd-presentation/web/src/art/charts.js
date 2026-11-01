@@ -74,6 +74,19 @@ export function chartSVG(c, count = 1) {
         acc += v; });
     });
     if (st) body += legend(c.series, 24);
+  } else if (c.type === 'bar_kpi') {
+    // actual as % of target: one bar per indicator, dashed 100 % target line, the lowest bar in ochre
+    const v = c.series[0].values, n = v.length, low = Math.min(...v);
+    const left = 470, right = W - 110, top = 54, bot = H - 40, rowH = (bot - top) / n;
+    const x = (val) => left + ((right - left) * val) / 100;
+    [0, 25, 50, 75].forEach((g) => { body += `<line x1="${x(g)}" x2="${x(g)}" y1="${top - 6}" y2="${bot}" stroke="#2F4458" stroke-opacity=".15"/>${T(x(g), H - 10, g + '%', { c: '#4A5D6E' })}`; });
+    body += `<line x1="${x(100)}" x2="${x(100)}" y1="${top - 18}" y2="${bot}" stroke="#2F4458" stroke-width="2.4" stroke-dasharray="8 6"/>${T(x(100), H - 10, '100%', { c: '#4A5D6E', w: 600 })}${T(x(100), top - 26, c.target || '', { w: 600 })}`;
+    v.forEach((val, i) => {
+      const yy = top + rowH * i + rowH * 0.2, bh = rowH * 0.6, hl = val === low;
+      body += T(left - 16, yy + bh / 2 + 8, c.categories[i], { a: 'end' });
+      body += `<rect x="${left}" y="${yy}" width="${Math.max(MINH, x(val) - left)}" height="${bh}" fill="${hl ? '#A87A2A' : '#2F4458'}" stroke="#2F4458" stroke-width="1.2"/>`;
+      body += T(x(val) + 12, yy + bh / 2 + 8, fmt(val, c.number_format), { a: 'start', w: 700, c: hl ? '#7A5410' : '#23292F' });
+    });
   } else if (c.type === 'line') {
     const v = c.series[0].values, min = 2.0, max = 2.7;
     const left = 70, right = W - 30, top = 30, bot = H - 44;

@@ -29,7 +29,7 @@
     "three": "^0.169.0"
   },
   "scripts": {
-    "content": "pdftotext -layout \"paper/IBRD - NH\u00d3M 6(1).pdf\" content/raw.txt && python3 scripts/extract_content.py && node scripts/build-content.mjs && node scripts/make-docs.mjs",
+    "content": "pdftotext -layout \"paper/IBRD - NHÓM 6(1).pdf\" content/raw.txt && python3 scripts/extract_content.py && node scripts/build-content.mjs && node scripts/make-docs.mjs",
     "assets": "node scripts/copy-fonts.mjs && python3 scripts/make-textures.py && node scripts/make-vietnam.mjs",
     "dev": "node scripts/build-content.mjs && vite",
     "build": "node scripts/build-content.mjs && node scripts/make-docs.mjs && vite build",
@@ -39,6 +39,8 @@
     "check": "node scripts/verify-content.mjs && node scripts/check-links.mjs && node scripts/audit-fonts.mjs",
     "qa": "node scripts/qa.mjs",
     "perf": "node scripts/perf.mjs",
-    "standalone": "node scripts/build-standalone.mjs"
+    "standalone": "node scripts/build-standalone.mjs",
+    "pdf:decks": "node scripts/export-decks.mjs",
+    "structure:check": "node scripts/verify-structure.mjs"
   }
 }

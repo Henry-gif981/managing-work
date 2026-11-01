@@ -854,8 +854,8 @@ Total: **119 sections**.
 - [number] 1,400 / 1,586 — Phan Rang compensation plans approved [43]
 - _Notes (verbatim):_ 3.3.3#3
 
-**92. Key performance indicators at 31/10/2022** — Table in certificate frame · ground: paper · ref: 3.3.3
-<br>3D: — (2D only) · table: T21
+**92. Key performance indicators at 31/10/2022** — Engraved chart + bullets · ground: paper · ref: 3.3.3
+<br>3D: — (2D only)
 
 - _Notes (verbatim):_ T21
 

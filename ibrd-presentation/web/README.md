@@ -80,3 +80,7 @@ line, edit `meta.lecturer` in `content/deck.yaml`.
 (section plan) · `CITATIONS.md` (citation map) · `ISSUES.md` (points for the group) · `PERF.md` · `CREDITS.md`.
 Code: `src/deck/` (engine, templates, drawer, reading, print), `src/art/` (engravings, charts, map silhouette),
 `src/three/` (renderer, materials, procedural objects), `scripts/` (pipeline and checks).
+
+## 20-minute deck (main deck + appendix)
+
+The talk uses a **main deck of 33 slides**; every other slide is in the **appendix** (key **A**, back with **M**). Structure, reveal clicks and "Detail →" links are set in `content/deck.config.yml`. Backup PDFs: `npm run pdf:decks` → `exports/main-deck.pdf`, `exports/appendix.pdf`. Details and how to change it: `CHANGELOG-structure.md`.

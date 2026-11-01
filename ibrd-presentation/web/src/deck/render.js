@@ -116,7 +116,8 @@ T.cards = (s, d) => {
   const cards = s.cards.map((c) => `<div class="cert" data-step="${k++}"><div class="h">${h(c.h)}</div><div class="b">${h(c.b)}</div></div>`).join('');
   const q = s.quote ? `<div class="qline">“${h(s.quote)}”</div>` : '';
   const foot = s.foot ? `<div class="foot" data-step="${k++}">${h(s.foot)}</div>` : '';
-  return `${runner(s, d)}${head(s, 'wide')}<div class="zone">${q}<div class="cardrow c${s.cols || 3}">${cards}</div></div>${foot}${artBox(s.art)}`;
+  const extra = s.extra ? `<div class="foot extra" data-step="${k++}">${s.extra.map((x) => `<p>${h(x)}</p>`).join('')}</div>` : '';
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone">${q}<div class="cardrow c${s.cols || 3}">${cards}</div></div>${foot}${extra}${artBox(s.art)}`;
 };
 T.agenda = (s, d) => {
   const cards = s.items.map((c, i) => `<div class="cert" role="link" tabindex="0" data-go="${c.go}"><div class="k">${['Intro', 'I', 'II', 'III', 'End'][i]}</div><div class="h">${h(c.h)}</div><div class="b">${h(c.b)}</div></div>`).join('');
@@ -182,9 +183,11 @@ T.process = (s, d) => {
   return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="line n${s.steps.length}" style="grid-template-columns:repeat(${s.steps.length},1fr)">${st}</div>${s.bullets ? `<div class="body">${b.html}</div>` : ''}</div>${artBox(s.art)}`;
 };
 T.chart = (s, d) => {
-  const boxes = s.chartData.map((c) => `<div class="chartbox"><div class="cap">${h(c.caption)}</div>${chartSVG(c, s.chartData.length)}<div class="src">${h(c.source)}</div></div>`).join('');
   const b = bulletsHTML(s.bullets);
-  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="charts n${s.chartData.length}">${boxes}</div><div class="body">${b.html}</div></div>`;
+  let k = b.next; // figures are reveal steps after the bullets (deck.config.yml groups decide what shows together)
+  const boxes = s.chartData.map((c) => `<div class="chartbox" data-step="${k++}"><div class="cap">${h(c.caption)}</div>${chartSVG(c, s.chartData.length)}<div class="src">${h(c.source)}</div></div>`).join('');
+  const solo = !(s.bullets || []).length;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone${solo ? ' solo' : ''}"><div class="charts n${s.chartData.length}">${boxes}</div>${solo ? '' : `<div class="body">${b.html}</div>`}</div>`;
 };
 T.gallery = (s, d) => {
   let k = 1;
@@ -233,16 +236,49 @@ T.credits = (s, d) => `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div c
   <h3>Software</h3><p>Three.js (MIT), Vite (MIT), js-yaml (MIT). 3D environment lighting: Three.js RoomEnvironment (procedural, no HDRI file).</p>
   <h3>Style references</h3><p>Two images supplied by the group were studied for style only; nothing from them is reproduced.</p></div></div>
   <div class="art draw seal" aria-hidden="true">${art('seal')}</div>`;
+T.appendix = (s, d) => {
+  const st = d.structure;
+  const label = (k) => { const x = d.slides.find((y) => y.key === k) || d.extra.find((y) => y.key === k); return x ? x.label || x.n : k; };
+  const cards = st.groups.map((g) => `<button type="button" class="ag" data-goto="${g.keys[0]}"><span class="h">${esc(g.label)}</span><span class="c">${g.keys.length} slides · ${esc(String(label(g.keys[0])))}–${esc(String(label(g.keys[g.keys.length - 1])))}</span></button>`).join('');
+  return `<div class="runner"><span>Appendix</span></div><div class="head wide"><h1 class="title">Appendix</h1></div><div class="zone"><div class="agrid">${cards}</div></div>`;
+};
 T.thanks = (s, d) => `<div class="tk-sub">${esc(d.meta.group)} · ${esc(d.meta.class)}</div><div class="tk-sub2">${esc(d.meta.university)} · ${esc(d.meta.place)}</div>`;
 
+// Reveal steps of a main-deck slide, from deck.config.yml: `clicks` presses after the title; `groups` lists the
+// template's original step numbers shown together on each press. Without `groups`: compare = one column per
+// press, stats/gallery with stamps = stamps then bullets, otherwise consecutive runs (later runs take the extra).
+const range = (a, b) => Array.from({ length: Math.max(0, b - a + 1) }, (_, i) => a + i);
+function stepGroups(s, S, plan) {
+  const c = plan.clicks;
+  if (c <= 0 || S === 0) return [];
+  if (plan.groups) return plan.groups;
+  if (c === 1) return [range(1, S)];
+  if (c === 2 && s.tpl === 'compare') { const L = s.left.items.length; return [range(1, L), range(L + 1, S)]; }
+  if (c === 2 && s.nums && ['stats', 'gallery'].includes(s.tpl)) { const k = s.nums.length; return [range(1, k), range(k + 1, S)]; }
+  const base = Math.floor(S / c), extra = S % c, out = [];
+  let a = 1;
+  for (let i = 0; i < c; i++) { const n = base + (i >= c - extra ? 1 : 0); out.push(range(a, a + n - 1)); a += n; }
+  return out;
+}
+function regroup(s, content, S, plan) {
+  const groups = stepGroups(s, S, plan);
+  const map = {};
+  groups.forEach((g, i) => g.forEach((k) => { map[k] = i + 1; }));
+  const last = Math.max(1, groups.length);
+  return { content: content.replace(/data-step="(\d+)"/g, (m, k) => `data-step="${map[k] || last}"`), steps: groups.length };
+}
+export { stepGroups };
+
 // Content templates lay out as a grid: head / zone (content, centred vertically) / takeaway band (flow.css)
-const FLOW = new Set(['hero', 'cards', 'agenda', 'grid', 'compare', 'table', 'timeline', 'stats', 'process', 'chart', 'quote', 'refs', 'index', 'credits']);
+const FLOW = new Set(['appendix', 'hero', 'cards', 'agenda', 'grid', 'compare', 'table', 'timeline', 'stats', 'process', 'chart', 'quote', 'refs', 'index', 'credits']);
 // step count = highest data-step in the content
 export function renderSlide(s, deck) {
   const fn = T[s.tpl];
   if (!fn) throw new Error('unknown template ' + s.tpl);
   const hasLead = s.lead && ['cards', 'table', 'process'].includes(s.tpl);
-  const content = `<section class="slide tpl-${s.tpl} ${s.ground}${FLOW.has(s.tpl) ? ' flow' : ''}${hasLead ? ' has-lead' : ''}" data-n="${s.n}" aria-label="${esc(plain(s.title || s.tpl))}">${fn(s, deck)}</section>`;
-  const steps = Math.max(0, ...[...content.matchAll(/data-step="(\d+)"/g)].map((m) => Number(m[1])));
+  const note = s.note ? `<div class="snote">${h(s.note)}</div>` : '';
+  let content = `<section class="slide tpl-${s.tpl} ${s.ground}${FLOW.has(s.tpl) ? ' flow' : ''}${hasLead ? ' has-lead' : ''}" data-n="${s.n ?? s.key}" aria-label="${esc(plain(s.title || s.tpl))}">${fn(s, deck)}${note}</section>`;
+  let steps = Math.max(0, ...[...content.matchAll(/data-step="(\d+)"/g)].map((m) => Number(m[1])));
+  if (s.stepPlan) ({ content, steps } = regroup(s, content, steps, s.stepPlan));
   return { ground: ground(s), giant: giant(s), content, steps };
 }
