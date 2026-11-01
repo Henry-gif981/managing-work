@@ -40,6 +40,37 @@
   --f-text: 'IBRD Sym', 'Be Vietnam Pro', 'Be Vietnam Fallback', Arial, sans-serif;
   --f-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
+  /* ---- layout of content sections (flow.css): head / zone / takeaway band -------------------- */
+  --flow-top: 108px;      /* below the running head */
+  --flow-bottom: 76px;    /* above the slide counter */
+  --flow-gap: 36px;       /* title -> zone -> band */
+  --zone-gap: 34px;       /* between blocks inside the zone */
+  --hero-cols: 62fr 38fr; /* bullets : engraving */
+  --art-max-h: 700px;
+
+  /* ---- type scale on the 1920x1080 stage (never below the floors in DESIGN.md §3) ------------- */
+  --fs-title: 68px;
+  --fs-bullet: 31px;
+  --fs-bullet-hero: 38px;
+  --fs-bullet-side: 32px;   /* bullets beside a chart, under stamps */
+  --fs-card-h: 40px;
+  --fs-card-b: 30px;
+  --fs-card-b-dense: 28px;
+  --fs-stat: 118px;
+  --fs-stat-long: 80px;
+  --fs-stat-xlong: 62px;
+  --fs-stat-label: 26px;
+  --fs-table: 23px;
+  --fs-table-dense: 22px;
+  --fs-caption: 22px;
+  --fs-source: 20px;
+  --fs-cite: 22px;
+  --fs-takeaway: 34px;
+  --fs-quote: 80px;
+  --fs-quote-long: 68px;
+  --fs-quote-xlong: 60px;
+  --fs-ref: 20px;
+
   --m-x: 96px;        /* stage margins */
   --m-y: 72px;
   --gap: 64px;

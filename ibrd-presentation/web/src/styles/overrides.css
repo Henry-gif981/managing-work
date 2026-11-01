@@ -1,0 +1,2 @@
+/* Per-section exceptions. Keep this file short: one rule per line, each with the reason.
+   Selectors use the section number: .slide[data-n="NN"]. Prefer fixing the template in flow.css. */

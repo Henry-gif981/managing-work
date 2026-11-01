@@ -33,7 +33,9 @@ figure .scroll { overflow-x: auto; }
 figure table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: lining-nums tabular-nums; }
 figure th { background: var(--slate); color: #FFF8EA; text-align: left; padding: 6px 8px; }
 figure td { border-bottom: 1px solid rgba(47, 68, 88, .25); padding: 6px 8px; vertical-align: top; }
-figure .src, .foot { font-size: 14px; font-style: italic; color: var(--slate-soft); }
+figure .src { font-size: 14px; font-style: italic; color: var(--slate-soft); }
+/* takeaway sentence (field `foot`): same band as on stage */
+.foot { margin: 14px 0; padding: 10px 16px 12px 20px; font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: 23px; line-height: 1.25; color: var(--slate); background: var(--paper-2); box-shadow: inset 5px 0 0 var(--brick); }
 figure.chart svg { width: 100%; height: auto; background: var(--paper-2); }
 details { margin-top: 12px; background: rgba(241, 229, 200, .55); border-left: 3px solid var(--slate); padding: 8px 14px; }
 details summary { cursor: pointer; font-weight: 600; color: var(--slate); }

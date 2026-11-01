@@ -26,6 +26,7 @@ await page.goto(`${BASE}/?steps=all&preset=static&3d=0`);
 await page.waitForFunction(() => window.__deck && document.fonts.status === 'loaded');
 // presenter toolbar is chrome, not slide: keep it out of every shot so before/after match
 await page.addStyleTag({ content: '.chrome { display: none !important; }' });
+await page.mouse.move(0, 0); // no hover states in the shots
 const N = await page.evaluate(() => window.__deck.N);
 const only = process.env.ONLY ? process.env.ONLY.split(',').map(Number) : null;
 
@@ -62,9 +63,14 @@ for (let n = 1; n <= N; n++) {
     const ctr = document.querySelector('.counter');
     if (ctr && ctr.textContent.trim()) { const cs = getComputedStyle(ctr); texts.push({ chrome: true, el: 'counter', text: ctr.textContent.trim(), size: parseFloat(cs.fontSize), weight: Number(cs.fontWeight) || 400, color: cs.color, opacity: opac(ctr), boxes: [rel(ctr.getBoundingClientRect())] }); }
     // graphic blocks: charts, tables, cards and stamps (decorative engravings and 3D stills excluded)
-    const blocks = [...sec.querySelectorAll('table, .chartbox, .cert, .stamp, .mini-stamp, .col, .stn .card, .qbox, .refcols, .idx, svg:not(.art svg)')]
+    const blocks = [...sec.querySelectorAll('table, .chartbox, .cert, .stamp, .mini-stamp, .col, .stn .card, .rail .t, .qbox, .refcols, .idx, svg:not(.art svg)')]
       .filter((e) => !e.closest('.art,[aria-hidden="true"]')).map((e) => ({ el: label(e), ...rel(e.getBoundingClientRect()) })).filter((b) => b.w > 2 && b.h > 2);
-    return { tpl: [...sec.classList].find((c) => c.startsWith('tpl-')).slice(4), tone: ['paper', 'wash', 'night'].find((c) => sec.classList.contains(c)),
+    // overflow: content spilling out of its zone (above or below) or off the stage
+    let overflow = 0;
+    const z = sec.querySelector(':scope > .zone');
+    if (z) { const zr = z.getBoundingClientRect(); for (const c of z.querySelectorAll('*')) { if (c.closest('a.cite, .art')) continue; const r = c.getBoundingClientRect(); if (!r.height) continue; overflow = Math.max(overflow, (r.bottom - zr.bottom) / scale, (zr.top - r.top) / scale); } }
+    for (const t of texts) for (const b of t.boxes) overflow = Math.max(overflow, b.y + b.h - 1080, b.x + b.w - 1920, -b.x, -b.y);
+    return { overflow: Math.round(overflow), tpl: [...sec.classList].find((c) => c.startsWith('tpl-')).slice(4), tone: ['paper', 'wash', 'night'].find((c) => sec.classList.contains(c)),
       text: sec.innerText, texts, blocks };
   });
   // background pass: hide content text (keep layout), screenshot again

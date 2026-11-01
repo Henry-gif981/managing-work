@@ -79,7 +79,7 @@ for s in data['slides']:
     texts[s['n']] = s['text']
     metrics.append(dict(n=s['n'], tpl=s['tpl'], tone=s['tone'], content=s['tpl'] not in NONCONTENT, words=words,
                         occupancy=round(grid.mean() * 100, 1), bottom_empty=round((1080 - bottom) / 1080 * 100, 1),
-                        min_font=round(minsize, 1) if minsize < 999 else '', chrome_min_font=round(chrome_min, 1) if chrome_min < 999 else '', contrast_fails=fails))
+                        min_font=round(minsize, 1) if minsize < 999 else '', chrome_min_font=round(chrome_min, 1) if chrome_min < 999 else '', contrast_fails=fails, overflow_px=max(0, s.get('overflow', 0))))
 
 out = root / 'reports'
 with open(out / f'metrics-{tag}.csv', 'w', newline='') as f:
@@ -103,6 +103,8 @@ fails = [c for c in contrast if c[-1] == 'FAIL']
 if fails:
     rs = sorted(c[10] for c in fails)
     print(f"  failing ratios: worst {rs[0]}, median {rs[len(rs)//2]}")
+ov = [m for m in metrics if m['overflow_px'] > 2]
+print(f"  sections with overflow > 2px: {len(ov)} {[(m['n'], m['overflow_px']) for m in ov]}")
 print('  by template:')
 by = {}
 for m in metrics:

@@ -74,7 +74,6 @@ function giant(s) {
     thanks: 'left:50%;top:330px;transform:translateX(-50%);font-size:300px',
     gallery: 'left:540px;top:330px;transform:translateX(-50%);font-size:400px',
     cycle: 'left:520px;top:350px;transform:translateX(-50%);font-size:360px',
-    hero: 'left:1520px;top:330px;transform:translateX(-50%);font-size:330px',
   }[s.tpl];
   if (!pos) return '';
   const cls = s.ground === 'night' ? 'metal' : 'faint' + (s.ground === 'wash' ? ' on-wash' : '');
@@ -106,22 +105,23 @@ T.chapter = (s, d) => {
 };
 T.hero = (s, d) => {
   const b = bulletsHTML(s.bullets);
-  return `${runner(s, d)}${head(s)}<div class="body">${b.html}</div>${artBox(s.art)}`;
+  const chars = (s.bullets || []).reduce((a, x) => a + plain(typeof x === 'string' ? x : x.t).length, 0);
+  return `${runner(s, d)}${head(s)}<div class="zone"><div class="body${chars > 440 ? ' dense' : ''}">${b.html}</div>${artBox(s.art, 'frame')}</div>`;
 };
 T.cards = (s, d) => {
   let k = 1;
   const cards = s.cards.map((c) => `<div class="cert" data-step="${k++}"><div class="h">${h(c.h)}</div><div class="b">${h(c.b)}</div></div>`).join('');
   const q = s.quote ? `<div class="qline">“${h(s.quote)}”</div>` : '';
   const foot = s.foot ? `<div class="foot" data-step="${k++}">${h(s.foot)}</div>` : '';
-  return `${runner(s, d)}${head(s, 'wide')}${q}<div class="cardrow c${s.cols || 3}" ${q ? 'style="top:400px"' : ''}>${cards}</div>${foot}${artBox(s.art)}`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone">${q}<div class="cardrow c${s.cols || 3}">${cards}</div></div>${foot}${artBox(s.art)}`;
 };
 T.agenda = (s, d) => {
   const cards = s.items.map((c, i) => `<div class="cert" role="link" tabindex="0" data-go="${c.go}"><div class="k">${['Intro', 'I', 'II', 'III', 'End'][i]}</div><div class="h">${h(c.h)}</div><div class="b">${h(c.b)}</div></div>`).join('');
-  return `${runner(s, d)}${head(s, 'wide')}<div class="cardrow c5" style="top:300px">${cards}</div>${artBox(s.art)}`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="cardrow c5">${cards}</div></div>${artBox(s.art)}`;
 };
 T.grid = (s, d) => {
   const cards = s.items.map((t) => { const [a, b] = t.split(/:\s(.+)/); return `<div class="cert"><div class="h">${esc(a)}</div><div class="b">${esc(b)}</div></div>`; }).join('');
-  return `${runner(s, d)}${head(s, 'wide')}<div class="cardrow">${cards}</div>`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="cardrow">${cards}</div></div>`;
 };
 T.compare = (s, d) => {
   let k = 1;
@@ -129,7 +129,7 @@ T.compare = (s, d) => {
   const L = col(s.left, 'l');
   const R = col(s.right, 'r');
   const foot = s.foot ? `<div class="foot" data-step="${k++}">${h(s.foot)}</div>` : '';
-  return `${runner(s, d)}${head(s, 'wide')}<div class="cmp">${L}<div class="mid">${ornament('rosette-small')}</div>${R}</div>${foot}${artBox(s.art)}`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="cmp">${L}<div class="mid">${ornament('rosette-small')}</div>${R}</div></div>${foot}${artBox(s.art)}`;
 };
 T.table = (s, d) => {
   const t = s.tableData;
@@ -152,16 +152,16 @@ T.table = (s, d) => {
   const headRow = `<tr>${t.header.map((c, ci) => `<th class="${rows.every((r) => numeric(r[ci])) ? 'n' : ''}">${h(c)}</th>`).join('')}</tr>`;
   const note = s.show_note && t.note ? `<div class="tnote">${h(t.note)}</div>` : '';
   return `${runner(s, d)}${head(s, 'wide')}
-  <div class="tframe"><div class="cap">${h(t.caption)}</div>
+  <div class="zone"><div class="tframe"><div class="cap">${h(t.caption)}</div>
     <table class="tbl ${dense ? 'dense' : ''} ${big ? 'xl' : ''}"><thead>${headRow}</thead><tbody>${body}</tbody></table>
-    <div class="src">${h(t.source)}</div>${note}</div>
-  <div class="art" aria-hidden="true" style="right:70px;top:96px;width:150px;height:150px">${ornament('seal-small')}</div>`;
+    <div class="src">${h(t.source)}</div>${note}</div></div>
+  <div class="art" aria-hidden="true">${ornament('seal-small')}</div>`;
 };
 T.timeline = (s, d) => {
   let k = 1;
   const st = s.items.map((it) => `<div class="stn" data-step="${k++}"><div class="d">${h(it.d)}</div><div class="pin"></div><div class="t">${h(it.t)}</div></div>`).join('');
   const foot = s.foot ? `<div class="foot" data-step="${k++}">${h(s.foot)}</div>` : '';
-  return `${runner(s, d)}${head(s, 'wide')}<div class="rail n${s.items.length}" style="grid-template-columns:repeat(${s.items.length},1fr)">${st}</div>${foot}${artBox(s.art)}`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="rail n${s.items.length}" style="grid-template-columns:repeat(${s.items.length},1fr)">${st}</div></div>${foot}${artBox(s.art)}`;
 };
 T.stats = (s, d) => {
   let k = 1;
@@ -170,18 +170,18 @@ T.stats = (s, d) => {
     return `<div class="stamp" data-step="${k++}"><div class="stamp-in"><div class="v ${len > 12 ? 'xlong' : len > 7 ? 'long' : ''}">${h(n.v)}</div><div class="l">${h(n.l)}</div></div></div>`;
   }).join('');
   const b = bulletsHTML(s.bullets, k);
-  return `${runner(s, d)}${head(s, 'wide')}<div class="stamps" style="grid-template-columns:repeat(${s.nums.length},1fr)">${stamps}</div><div class="body">${b.html}</div>${artBox(s.art)}`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="main"><div class="stamps n${s.nums.length}" style="grid-template-columns:repeat(${s.nums.length},1fr)">${stamps}</div><div class="body">${b.html}</div></div>${artBox(s.art, 'frame')}</div>`;
 };
 T.process = (s, d) => {
   let k = 1;
   const st = s.steps.map((x, i) => `<div class="stn" data-k="${i + 1}" data-step="${k++}"><div class="card"><div class="h">${h(x.h)}</div><div class="b">${h(x.b)}</div></div></div>`).join('');
   const b = bulletsHTML(s.bullets, k);
-  return `${runner(s, d)}${head(s, 'wide')}<div class="line n${s.steps.length}" style="grid-template-columns:repeat(${s.steps.length},1fr)">${st}</div>${s.bullets ? `<div class="body">${b.html}</div>` : ''}${artBox(s.art)}`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="line n${s.steps.length}" style="grid-template-columns:repeat(${s.steps.length},1fr)">${st}</div>${s.bullets ? `<div class="body">${b.html}</div>` : ''}</div>${artBox(s.art)}`;
 };
 T.chart = (s, d) => {
   const boxes = s.chartData.map((c) => `<div class="chartbox"><div class="cap">${h(c.caption)}</div>${chartSVG(c, s.chartData.length)}<div class="src">${h(c.source)}</div></div>`).join('');
   const b = bulletsHTML(s.bullets);
-  return `${runner(s, d)}${head(s, 'wide')}<div class="charts">${boxes}</div><div class="body">${b.html}</div>`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="charts n${s.chartData.length}">${boxes}</div><div class="body">${b.html}</div></div>`;
 };
 T.gallery = (s, d) => {
   let k = 1;
@@ -196,10 +196,11 @@ T.cycle = (s, d) => {
   return `${runner(s, d)}<div class="side"><h1 class="title">${h(s.title)}</h1><p class="lead">${h(s.lead)}</p><ol class="stages">${li}</ol></div>`;
 };
 T.quote = (s, d) => {
-  const long = plain(s.quote).length > 120;
+  const len = plain(s.quote).length;
+  const long = len > 150 ? 'xlong' : len > 100 ? 'long' : '';
   const b = s.bullets ? bulletsHTML(s.bullets) : null;
-  return `${runner(s, d)}<div class="qbox"><div class="qmark">“</div><blockquote class="${long ? 'long' : ''}">${h(s.quote)}</blockquote><div class="qrule"></div><div class="by">${esc(s.by)}</div></div>
-  ${b ? `<div class="body">${b.html}</div>` : ''}${artBox(s.art)}`;
+  return `${runner(s, d)}<div class="zone"><div class="qbox"><div class="qmark">“</div><blockquote class="${long}">${h(s.quote)}</blockquote><div class="qrule"></div><div class="by">${esc(s.by)}</div></div>
+  ${b ? `<div class="body">${b.html}</div>` : ''}</div>${artBox(s.art)}`;
 };
 T.refs = (s, d) => {
   const [a, b] = s.refRange;
@@ -208,7 +209,7 @@ T.refs = (s, d) => {
     const r = d.references[n];
     items.push(`<div class="ref" id="ref-${n}"><span class="rn"><a class="cite" href="#src-${n}" data-src="${n}">[${n}]</a></span>${esc(r.text)}${r.url ? ` <span class="url"><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a></span>` : ''}</div>`);
   }
-  return `${runner(s, d)}<div class="head wide" style="top:100px"><h1 class="title">${esc(s.title)}</h1></div><div class="refcols">${items.join('')}</div>`;
+  return `${runner(s, d)}<div class="head wide"><h1 class="title">${esc(s.title)}</h1></div><div class="zone"><div class="refcols">${items.join('')}</div></div>`;
 };
 T.index = (s, d) => {
   const cells = [];
@@ -219,24 +220,26 @@ T.index = (s, d) => {
     const yr = (r.text.match(/\((\d{4}|n\.d\.)/) || [])[1] || '';
     cells.push(`<a href="#src-${n}" data-src="${n}" class="${c.citedFor.length ? '' : 'nc'}">${n}<small>${esc(author.slice(0, 18))} ${esc(yr)}</small></a>`);
   }
-  return `${runner(s, d)}${head(s, 'wide')}<div class="idx">${cells.join('')}</div><div class="idx-note">Dashed tiles: sources 5 and 6 are not cited in the body text. Every tile opens the source card.</div>`;
+  return `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="idx">${cells.join('')}</div><div class="idx-note">Dashed tiles: sources 5 and 6 are not cited in the body text. Every tile opens the source card.</div></div>`;
 };
-T.credits = (s, d) => `${runner(s, d)}${head(s, 'wide')}<div class="credits">
+T.credits = (s, d) => `${runner(s, d)}${head(s, 'wide')}<div class="zone"><div class="credits">
   <h3>Content</h3><p>All text, figures, tables and citations: Group 6, <em>IBRD and its Development Project Financing Activities in Vietnam</em> (NEU, Hanoi, 2026). Bullets condense the paper; full verbatim text is in the presenter notes (N) and reading mode.</p>
   <h3>Typefaces (SIL Open Font License 1.1)</h3><p>Cormorant and Cormorant SC (Christian Thalmann), Be Vietnam Pro (Lâm Bảo, Tony Le, ViệtAnh Nguyễn), IBM Plex Mono and IBM Plex Sans symbol subset (IBM). Self-hosted from the @fontsource and @ibm npm packages.</p>
   <h3>Graphics</h3><p>All engravings, patterns, stamps, seals, charts and 3D objects were drawn for this deck in code (SVG and Three.js procedural geometry). No logo of the World Bank, IBRD or NEU is used. Paper, watercolour and grain textures are generated from procedural noise.</p>
   <h3>Map data</h3><p>Vietnam silhouette (decorative only): Natural Earth 1:50m admin-0 countries, public domain, via the <span class="code">world-atlas</span> npm package (ISC).</p>
   <h3>Software</h3><p>Three.js (MIT), Vite (MIT), js-yaml (MIT). 3D environment lighting: Three.js RoomEnvironment (procedural, no HDRI file).</p>
-  <h3>Style references</h3><p>Two images supplied by the group were studied for style only; nothing from them is reproduced.</p></div>
-  <div class="art draw" aria-hidden="true" style="right:80px;top:220px;width:300px;height:300px">${art('seal')}</div>`;
+  <h3>Style references</h3><p>Two images supplied by the group were studied for style only; nothing from them is reproduced.</p></div></div>
+  <div class="art draw seal" aria-hidden="true">${art('seal')}</div>`;
 T.thanks = (s, d) => `<div class="tk-sub">${esc(d.meta.group)} · ${esc(d.meta.class)}</div><div class="tk-sub2">${esc(d.meta.university)} · ${esc(d.meta.place)}</div>`;
 
+// Content templates lay out as a grid: head / zone (content, centred vertically) / takeaway band (flow.css)
+const FLOW = new Set(['hero', 'cards', 'agenda', 'grid', 'compare', 'table', 'timeline', 'stats', 'process', 'chart', 'quote', 'refs', 'index', 'credits']);
 // step count = highest data-step in the content
 export function renderSlide(s, deck) {
   const fn = T[s.tpl];
   if (!fn) throw new Error('unknown template ' + s.tpl);
   const hasLead = s.lead && ['cards', 'table', 'process'].includes(s.tpl);
-  const content = `<section class="slide tpl-${s.tpl} ${s.ground}${hasLead ? ' has-lead' : ''}" data-n="${s.n}" aria-label="${esc(plain(s.title || s.tpl))}">${fn(s, deck)}</section>`;
+  const content = `<section class="slide tpl-${s.tpl} ${s.ground}${FLOW.has(s.tpl) ? ' flow' : ''}${hasLead ? ' has-lead' : ''}" data-n="${s.n}" aria-label="${esc(plain(s.title || s.tpl))}">${fn(s, deck)}</section>`;
   const steps = Math.max(0, ...[...content.matchAll(/data-step="(\d+)"/g)].map((m) => Number(m[1])));
   return { ground: ground(s), giant: giant(s), content, steps };
 }

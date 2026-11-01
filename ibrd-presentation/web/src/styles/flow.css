@@ -1,0 +1,176 @@
+/* Flow layout for content sections (render.js FLOW): the section is a three-row grid
+     head (title, lead)  /  zone (content, centred vertically, takes all free height)  /  takeaway band
+   so blocks grow into the free space instead of hanging from fixed top offsets, and longer or shorter text
+   reflows instead of overlapping. Sizes come from tokens.css; per-section exceptions go in overrides.css. */
+
+.slide.flow { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; row-gap: var(--flow-gap);
+  padding: var(--flow-top) var(--m-x) var(--flow-bottom); }
+.flow > .head { position: static; width: auto; max-width: 1480px; gap: 14px; }
+.flow > .head h1.title { font-size: var(--fs-title); }
+.flow > .zone { min-height: 0; display: flex; flex-direction: column; justify-content: center; gap: var(--zone-gap); }
+/* everything inside the zone is in normal flow (the templates.css absolute offsets no longer apply) */
+.flow .zone .body, .flow .zone .cardrow, .flow .zone .cmp, .flow .zone .tframe, .flow .zone .rail, .flow .zone .stamps,
+.flow .zone .line, .flow .zone .charts, .flow .zone .qbox, .flow .zone .refcols, .flow .zone .idx, .flow .zone .credits,
+.flow .zone .idx-note, .flow .zone .qline { position: relative; inset: auto; width: auto; height: auto; }
+.flow ul.bullets > li { font-size: var(--fs-bullet); }
+.flow .cite-group, .flow a.cite { font-size: var(--fs-cite); }
+
+/* ---- takeaway band: the section's existing `foot` sentence (deck.yaml field `foot`); no field, no band */
+.flow > .foot { position: relative; inset: auto; margin: 0; padding: 20px 32px 22px 40px; border: 0;
+  font-family: var(--f-display); font-style: italic; font-weight: 600; font-size: var(--fs-takeaway); line-height: 1.22;
+  color: var(--slate); background: var(--paper-2); box-shadow: inset 8px 0 0 var(--brick); }
+.flow.wash > .foot { color: var(--ink); background: var(--paper); box-shadow: inset 8px 0 0 var(--gold); }
+.flow > .foot .cite-group { font-style: normal; }
+
+/* ---- hero: bullets | engraving, both centred in the zone ---------------------------------------- */
+.flow.tpl-hero > .head { max-width: 1120px; }
+.flow.tpl-hero > .zone { display: grid; grid-template-columns: var(--hero-cols); align-items: center; column-gap: 72px; }
+.flow.tpl-hero ul.bullets { gap: 22px; }
+.flow.tpl-hero ul.bullets > li { font-size: var(--fs-bullet-hero); padding-left: 44px; }
+.flow .zone > .art.frame { position: relative; inset: auto; width: 100%; height: 100%; max-height: var(--art-max-h); }
+.flow.tpl-hero .art.frame svg { stroke-width: 1.15; }
+.paper.flow .art.frame { color: var(--ink); }
+
+/* ---- cards, agenda, grid ------------------------------------------------------------------------ */
+.flow .cardrow { gap: 36px; align-items: stretch; }
+.flow .cert { padding: 40px 38px 36px; display: flex; flex-direction: column; justify-content: center; }
+.flow .cert .h { font-size: var(--fs-card-h); }
+.flow .cert .b { font-size: var(--fs-card-b); }
+.flow .cardrow.c4 .cert .b, .flow .cardrow.c5 .cert .b { font-size: var(--fs-card-b-dense); }
+.flow .cardrow.c2 .cert { min-height: 300px; }
+.flow.tpl-agenda .cert { min-height: 0; height: 100%; justify-content: flex-start; }
+.flow.tpl-agenda .zone { justify-content: stretch; }
+.flow.tpl-agenda .cardrow { flex: 1; max-height: 640px; }
+.flow.tpl-grid .cardrow { grid-template-columns: repeat(5, 1fr); gap: 24px; }
+.flow.tpl-grid .cert { padding: 30px 26px 26px; justify-content: flex-start; min-height: 300px; }
+.flow.tpl-grid .cert .b { font-size: var(--fs-card-b-dense); }
+.flow.tpl-cards .qline { right: auto; font-size: 44px; }
+
+/* ---- compare ------------------------------------------------------------------------------------ */
+.flow .cmp { align-items: stretch; }
+.flow .cmp .col { padding-bottom: 40px; }
+.flow .cmp ul.bullets { gap: 22px; }
+.flow .cmp ul.bullets > li { font-size: 32px; }
+
+/* ---- stats: stamps across the width, bullets under them, engraving at the side ------------------ */
+.flow.tpl-stats > .zone { display: grid; grid-template-columns: minmax(0, 1fr) 300px; column-gap: 56px; align-items: center; }
+.flow.tpl-stats .main { display: flex; flex-direction: column; gap: 44px; }
+.flow.tpl-stats .stamps { gap: 32px; }
+.flow .stamp-in { min-height: 250px; padding: 22px 26px 20px; }
+.flow .stamp .v { font-size: var(--fs-stat); }
+.flow .stamp .v.long { font-size: var(--fs-stat-long); }
+.flow .stamp .v.xlong { font-size: var(--fs-stat-xlong); }
+.flow .stamps.n4 .stamp .v { font-size: var(--fs-stat-long); }
+.flow .stamps.n4 .stamp .v.long, .flow .stamps.n4 .stamp .v.xlong { font-size: var(--fs-stat-xlong); }
+.flow .stamp .l { font-size: var(--fs-stat-label); margin-top: 16px; }
+.flow .stamp .l a.cite, .flow .stamp .l .cite-group { font-size: var(--fs-cite); }
+.flow.tpl-stats ul.bullets > li { font-size: var(--fs-bullet-side); }
+.flow.tpl-stats .zone > .art.frame { max-height: 560px; }
+
+/* ---- table -------------------------------------------------------------------------------------- */
+.flow .tframe { padding: 30px 36px 24px; }
+.flow .tframe .cap { font-size: var(--fs-caption); }
+.flow .tframe .src, .flow .tframe .tnote, .flow .tframe .src a.cite { font-size: var(--fs-source); }
+
+/* ---- timeline, process -------------------------------------------------------------------------- */
+.flow .rail { margin-bottom: 8px; }
+.flow .line .b { font-size: 28px; }
+.flow.tpl-process .body ul.bullets > li { font-size: var(--fs-bullet-side); }
+
+/* ---- chart: plot | bullets ---------------------------------------------------------------------- */
+.flow.tpl-chart > .zone { display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); column-gap: 56px; align-items: center; }
+.flow .charts { height: 100%; max-height: 780px; }
+.flow .charts.n1 { height: auto; aspect-ratio: auto; }
+.flow .chartbox { padding: 20px 24px 14px; }
+.flow .chartbox .cap { font-size: var(--fs-caption); }
+.flow .chartbox .src, .flow .chartbox .src a.cite { font-size: var(--fs-source); }
+.flow.tpl-chart ul.bullets { gap: 26px; }
+.flow.tpl-chart ul.bullets > li { font-size: var(--fs-bullet-side); }
+
+/* ---- quote: centred in the frame, large, shrinking with length ---------------------------------- */
+.flow.tpl-quote > .zone { align-items: center; padding: 0 120px; }
+.flow .qbox { left: auto; right: auto; top: auto; max-width: 1500px; }
+.flow.tpl-quote blockquote { font-size: var(--fs-quote); line-height: 1.14; }
+.flow.tpl-quote blockquote.long { font-size: var(--fs-quote-long); }
+.flow.tpl-quote blockquote.xlong { font-size: var(--fs-quote-xlong); }
+.flow.tpl-quote .qmark { font-size: 240px; height: 120px; }
+.flow.tpl-quote .body { left: auto; right: auto; bottom: auto; max-width: 1280px; }
+.flow.tpl-quote > .art { opacity: .35; }
+
+/* ---- refs, index, credits ----------------------------------------------------------------------- */
+.flow .refcols { top: auto; }
+.flow .ref { font-size: var(--fs-ref); }
+.flow .ref .rn a.cite { font-size: var(--fs-cite); }
+.flow.tpl-refs > .zone { justify-content: flex-start; }
+.flow .idx { top: auto; }
+.flow .idx a small { font-size: 20px; }
+.flow .idx-note { bottom: auto; }
+.flow .credits { top: auto; right: auto; margin-right: 300px; font-size: 22px; }
+
+/* ---- blocks grow into the free height of the zone (capped so short content does not balloon) ---- */
+.flow .zone > .cardrow { flex: 1 1 auto; max-height: var(--block-max-h, 560px); }
+.flow.tpl-cards .zone > .cardrow.c2 { max-height: 600px; }
+.flow .zone > .cmp { flex: 1 1 auto; max-height: 680px; }
+.flow .zone > .tframe { flex: 1 1 auto; max-height: 820px; display: flex; flex-direction: column; }
+.flow .zone > .tframe .tbl { flex: 1 1 auto; }
+.flow .zone > .line { flex: 1 1 auto; max-height: 560px; align-items: stretch; }
+.flow .zone > .rail { align-items: start; }
+.flow .line .stn { display: flex; flex-direction: column; }
+.flow .line .card { flex: 1 1 auto; }
+.flow.paper .line .card { display: flex; flex-direction: column; }
+.flow.tpl-chart > .zone { align-items: stretch; }
+.flow .charts { max-height: none; }
+.flow.tpl-chart .body { align-self: center; }
+.flow .stamp-in { min-height: 300px; }
+.flow.tpl-stats ul.bullets { gap: 22px; }
+.flow.tpl-hero ul.bullets { gap: 30px; }
+.flow.tpl-hero ul.bullets > li { font-size: var(--fs-bullet-hero); line-height: 1.3; }
+.flow.tpl-hero .body.dense ul.bullets { gap: 20px; }
+.flow.tpl-hero .body.dense ul.bullets > li { font-size: var(--fs-bullet-side); }
+.flow .ref { font-size: 21px; line-height: 1.42; margin-bottom: 20px; }
+.flow.wash > .foot .cite-group { color: var(--slate-soft); }
+.flow.wash > .foot a.cite { color: var(--cite-on-light); }
+/* timeline stations are cards on every ground, so the rail reads as one block */
+.flow .rail .t { background: var(--paper-2); padding: 18px 20px; border: 1px solid rgba(47, 68, 88, .4); }
+.flow.wash .rail .t { background: rgba(251, 242, 222, .96); }
+.flow.tpl-agenda .cardrow { max-height: 720px; }
+.flow.tpl-refs > .zone { justify-content: center; }
+.flow .stamp-in { min-height: 330px; }
+.flow.tpl-stats .main { gap: 52px; }
+
+.flow.tpl-grid .zone > .cardrow { max-height: none; flex: 0 0 auto; }
+.flow .idx a { height: auto; min-height: 104px; padding: 8px 4px; }
+.flow .idx a small { text-align: center; line-height: 1.15; }
+.flow .chartbox { min-height: 0; }
+.flow .chartbox svg { flex: 1 1 0; height: auto; min-height: 0; }
+.flow .charts { min-height: 0; }
+.flow .idx { gap: 12px; }
+.flow .idx a { min-height: 0; padding: 6px 4px 8px; font-size: 36px; }
+/* hero: the list spreads over most of the zone height so short lists do not float in a band */
+.flow.tpl-hero .body { align-self: stretch; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+.flow.tpl-hero .body ul.bullets { flex: 1 1 auto; max-height: 680px; justify-content: space-evenly; gap: 20px; }
+.flow .rail .t { font-size: 31px; min-height: 230px; }
+.flow .rail.n6 .t { font-size: 28px; }
+.flow .stamp-in { min-height: 360px; }
+.flow.tpl-stats ul.bullets { gap: 26px; }
+.flow.tpl-hero .body.dense ul.bullets { flex: 0 0 auto; justify-content: flex-start; gap: 16px; }
+.flow.tpl-hero .body.dense ul.bullets > li { font-size: var(--fs-bullet); }
+/* rows are fixed so templates without a head (quote) still centre their zone */
+.flow > .head { grid-row: 1; }
+.flow > .zone { grid-row: 2; }
+.flow > .foot { grid-row: 3; }
+.flow .stamp-in { min-height: 280px; }
+.flow .zone > .cmp { flex: 0 1 auto; max-height: none; }
+.flow .cmp ul.bullets { gap: 26px; }
+.flow .zone > .tframe .tbl td { vertical-align: middle; }
+/* corner ornament sits beside the title, clear of the zone */
+.flow > .art:not(.frame) { right: var(--m-x); top: 86px; width: 116px; height: 116px; left: auto; bottom: auto; }
+.flow.tpl-quote > .art { left: var(--m-x); top: auto; bottom: 70px; width: 200px; height: 200px; }
+.flow.tpl-credits > .art.seal { right: var(--m-x); top: 260px; width: 260px; height: 260px; }
+/* spacing between rows lives on the head and band, so a section without a band loses no height */
+.slide.flow { row-gap: 0; }
+.flow > .head { margin-bottom: var(--flow-gap); }
+.flow > .foot { margin-top: var(--flow-gap); }
+.flow .zone > .cardrow { max-height: 520px; }
+.flow.tpl-agenda .zone > .cardrow { max-height: 720px; }
+.flow .zone > .tframe { max-height: 780px; }
