@@ -16,11 +16,14 @@ export function startDeck(deck) {
   const N = deck.slides.length;
   const params = new URLSearchParams(location.search);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // ?lite=1: no WebGL, no stroke-draw entrances, no paper/wash/grain textures (same layout and colours)
+  const lite = params.get('lite') === '1';
+  if (lite) document.body.classList.add('lite', 'no-draw');
   const state = {
     n: 1, step: 0,
     stepMode: params.get('steps') || store.get('stepMode', 'step'),
-    preset: params.get('preset') || store.get('preset', 'full'),
-    three: params.get('3d') !== '0' && store.get('three', '1') === '1',
+    preset: lite ? 'static' : params.get('preset') || store.get('preset', 'full'),
+    three: !lite && params.get('3d') !== '0' && store.get('three', '1') === '1',
     autoLight: false,
   };
   const built = new Map(); // n -> {ground, giant, content, steps}
@@ -88,7 +91,7 @@ export function startDeck(deck) {
   function fitGiant(wrap) {
     const g = wrap?.firstElementChild;
     if (!g) return;
-    const max = { gallery: 900, cycle: 860, hero: 760, cover: 1300, chapter: 1080, thanks: 1700 }[g.dataset.fit] || 1500;
+    const max = { gallery: 900, cycle: 860, hero: 760, cover: 980, chapter: 1080, thanks: 1700 }[g.dataset.fit] || 1500;
     let fs = parseFloat(g.style.fontSize);
     for (let i = 0; i < 12 && g.scrollWidth > max; i++) { fs *= Math.max(0.6, max / g.scrollWidth); g.style.fontSize = fs + 'px'; }
   }
@@ -192,7 +195,7 @@ export function startDeck(deck) {
   async function ensureThree() {
     if (three || !hasWebGL || !state.three || state.preset === 'static') return;
     const mod = await import('../three/engine.js');
-    three = mod.createEngine($('#gl'), { preset: state.preset, reduced: reduced || params.has('capture'), capture: params.has('capture'), onDowngrade: () => { state.autoLight = true; ui.chip.classList.add('on'); setPreset('light', true); } });
+    three = mod.createEngine($('#gl'), { preset: state.preset, reduced: reduced || params.has('capture'), capture: params.has('capture'), onDowngrade: () => { state.autoLight = true; showChip(); setPreset('light', true); } });
     three.resize(scale);
     applyStep();
   }
@@ -215,6 +218,9 @@ export function startDeck(deck) {
     state.step = m === 'all' ? 0 : state.step; applyStep();
   }
   ui.chip.addEventListener('click', () => setPreset('full'));
+  // the auto-light notice is for the presenter: small, bottom-left, fades after 4 s, never shown in fullscreen
+  let chipTimer;
+  function showChip() { ui.chip.classList.add('on'); ui.chip.classList.remove('faded'); clearTimeout(chipTimer); chipTimer = setTimeout(() => ui.chip.classList.add('faded'), 4000); }
 
   // ----------------------------------------------------------------------------- input
   const fullscreen = () => { const p = document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.(); p?.catch?.(() => { /* fullscreen refused (embedded frame): keep presenting */ }); };

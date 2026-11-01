@@ -39,10 +39,6 @@ body.ready #stage { opacity: 1; }
 .ground.night { background: radial-gradient(ellipse 62% 70% at 50% 42%, #1B2944 0%, #0C1424 48%, var(--night) 78%); }
 .ground .pattern { position: absolute; pointer-events: none; }
 .ground .grain { position: absolute; inset: 0; background: url(/assets/textures/grain.png); opacity: .035; mix-blend-mode: normal; }
-.ground .dot { position: absolute; width: 18px; height: 18px; border-radius: 50%; background: var(--brick); opacity: .82; }
-.ground .dot.s { width: 10px; height: 10px; }
-.ground .dot.l { width: 30px; height: 30px; opacity: .7; }
-.ground.night .dot { background: var(--gold); opacity: .35; }
 
 #l-vignette { background: radial-gradient(ellipse 75% 80% at 50% 45%, transparent 55%, rgba(2, 5, 11, .62) 100%); opacity: 0; transition: opacity 400ms var(--ease); }
 #l-vignette.on { opacity: 1; }
@@ -54,12 +50,13 @@ body.ready #stage { opacity: 1; }
 }
 .giant.metal { background: var(--silver); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .giant.ink { color: var(--slate); }
-.giant.faint { color: var(--wash-light); opacity: .62; }
-.ground-wash .giant.faint, .giant.faint.on-wash { color: var(--paper); opacity: .32; }
+.giant.faint { color: var(--wash-light); opacity: var(--giant-op-paper); }
+.ground-wash .giant.faint, .giant.faint.on-wash { color: var(--paper); opacity: var(--giant-op-dark); }
+.giant.metal { opacity: var(--giant-op-night); }
 
 /* --- text --------------------------------------------------------------------------------------- */
 .runner { position: absolute; left: var(--m-x); right: var(--m-x); top: 44px; display: flex; gap: 22px; align-items: baseline;
-  font-family: var(--f-sc); font-weight: 500; font-size: 24px; letter-spacing: .2em; text-transform: lowercase; color: var(--slate-soft); }
+  font-family: var(--f-sc); font-weight: 600; font-size: 26px; letter-spacing: .14em; text-transform: lowercase; color: var(--slate-soft); }
 .runner .roman { color: var(--brick); letter-spacing: .12em; }
 .runner .ref { margin-left: auto; font-family: var(--f-text); font-size: 20px; letter-spacing: .06em; text-transform: none; color: var(--slate-soft); }
 .night .runner, .night .runner .ref { color: var(--mist-soft); }
@@ -91,11 +88,12 @@ ul.bullets ul li::before { content: '–'; position: absolute; left: 0; }
 
 /* citations: every number its own link, big enough to hit on stage */
 .cite-group { white-space: nowrap; font-size: 22px; color: var(--slate-soft); font-weight: 400; }
-a.cite { color: var(--cite-on-light); font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
+a.cite { color: var(--cite-on-light); font-weight: 600; text-decoration: underline; text-decoration-thickness: var(--cite-underline); text-underline-offset: 5px;
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
   display: inline-block; min-width: 28px; padding: 6px 2px; margin: -6px 0; text-align: center; border-radius: 4px; font-size: 22px; }
 a.cite:hover, a.cite:focus-visible { background: rgba(161, 61, 45, .12); outline: none; }
 a.cite-ay { min-width: 0; padding: 4px 2px; text-align: left; font-weight: 500; }
-a.cite.inferred { text-decoration-style: dashed; }
+a.cite.inferred { text-decoration-style: dotted; text-decoration-color: currentColor; }
 .cite-loc { font-weight: 400; }
 .night a.cite, .wash a.cite { color: var(--cite-on-dark); }
 .night .cite-group { color: var(--mist-soft); }
@@ -120,3 +118,9 @@ a.cite.inferred { text-decoration-style: dashed; }
   .is-current .draw .stroke { animation: none; stroke-dashoffset: 0; }
 }
 body.no-draw .draw .stroke, body.static3d .draw .stroke { animation: none !important; stroke-dashoffset: 0 !important; }
+
+/* ?lite=1 — heavy effects off, look unchanged otherwise */
+body.lite .ground.paper, body.lite .ground.wash { background-image: none; }
+body.lite .ground.wash { background: var(--wash); }
+body.lite .ground .grain { display: none; }
+.giant.metal[data-fit="cover"] { opacity: 1; }

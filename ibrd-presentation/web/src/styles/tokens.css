@@ -71,6 +71,12 @@
   --fs-quote-xlong: 60px;
   --fs-ref: 20px;
 
+  /* ---- decoration ---------------------------------------------------------------------------- */
+  --giant-op-paper: .2;    /* giant display word on cream: background, never competes with text */
+  --giant-op-dark: .12;    /* on the navy-slate wash ground */
+  --giant-op-night: .38;   /* engraved-silver word on night (chapters, gallery); the cover word stays solid */
+  --cite-underline: 1.5px;
+
   --m-x: 96px;        /* stage margins */
   --m-y: 72px;
   --gap: 64px;

@@ -174,3 +174,24 @@
 .flow .zone > .cardrow { max-height: 520px; }
 .flow.tpl-agenda .zone > .cardrow { max-height: 720px; }
 .flow .zone > .tframe { max-height: 780px; }
+
+/* the slate column ribbon on the navy-slate ground keeps a cream keyline so it reads as part of the card */
+.flow.wash .cmp .col { border-color: var(--paper-edge); }
+.flow.wash .cmp .col.l .ribbon { box-shadow: inset 0 -3px 0 var(--gold); }
+
+/* ---- cover: two columns on one grid. Left: IBRD word over the title. Right: globe over the group block. */
+.tpl-cover .ctitle { left: var(--m-x); bottom: auto; top: 590px; width: 860px; font-size: 70px; line-height: 1.05; font-weight: 500; }
+.tpl-cover .crule { left: var(--m-x); bottom: auto; top: 838px; width: 860px; }
+.tpl-cover .cgroup { right: var(--m-x); bottom: 96px; width: 600px; }
+.tpl-cover .cgroup .g { font-size: 28px; margin-bottom: 10px; }
+.tpl-cover .cgroup .m { font-size: 22px; line-height: 1.5; color: var(--mist-soft); }
+.tpl-cover .cgroup .c, .tpl-cover .cgroup .place { font-size: 22px; margin-top: 10px; color: var(--mist-soft); }
+.tpl-cover .cgroup .lect { display: inline-block; margin-top: 10px; font-size: 22px; font-weight: 400; color: var(--mist-soft); }
+/* placeholder warning (design-config.js showPlaceholderWarning) — disappears when the line is filled in */
+.tpl-cover .cgroup .lect.warn { font-weight: 600; color: #FFD9A0; padding: 4px 12px; border: 2px dashed #FFB36B; border-radius: 4px; }
+
+/* ---- chapter opener: the section numbers of the part as a row of small tags (separators kept in the text) */
+.tpl-chapter .toc { width: 560px; text-align: right; font-size: 22px; line-height: 2.1; }
+.tpl-chapter .toc b { font-size: 24px; line-height: 1.4; margin-bottom: 6px; }
+.tpl-chapter .toc .tag { font-family: var(--f-text); font-variant-numeric: lining-nums tabular-nums; color: var(--mist); border: 1px solid rgba(201, 162, 74, .55); border-radius: 3px; padding: 6px 10px; margin-left: 10px; display: inline-block; line-height: 1; }
+.tpl-chapter .toc .sep { font-size: 0; }

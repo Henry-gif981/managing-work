@@ -25,7 +25,7 @@ export async function startPrint(deck) {
   });
   document.body.innerHTML = pages.join('');
   document.querySelectorAll('.page').forEach((p) => p.querySelectorAll('.giant').forEach((g) => {
-    const max = { gallery: 900, cycle: 860, hero: 760, cover: 1300, chapter: 1080 }[g.dataset.fit] || 1500;
+    const max = { gallery: 900, cycle: 860, hero: 760, cover: 980, chapter: 1080 }[g.dataset.fit] || 1500;
     let fs = parseFloat(g.style.fontSize);
     for (let i = 0; i < 12 && g.scrollWidth > max; i++) { fs *= Math.max(0.6, max / g.scrollWidth); g.style.fontSize = fs + 'px'; }
   }));

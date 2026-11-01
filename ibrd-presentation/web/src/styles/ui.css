@@ -15,8 +15,12 @@ body.show-chrome .chrome, .chrome:hover, .chrome:focus-within { opacity: 1; }
 .chrome .seg button:first-child { border-radius: 30px 0 0 30px; }
 .chrome .seg button:last-child { border-radius: 0 30px 30px 0; margin-left: -1px; }
 .chrome .spacer { flex: 1; }
-.chip.light { position: absolute; right: 34px; top: 26px; background: rgba(201, 162, 74, .95); color: #1b1307; border: 0; font-weight: 600; display: none; }
+.chip.light { position: absolute; left: 34px; bottom: 22px; height: 36px; padding: 0 14px; font-size: 18px; background: rgba(201, 162, 74, .95); color: #1b1307; border: 0; font-weight: 600; display: none; transition: opacity 600ms var(--ease); }
 .chip.light.on { display: inline-flex; }
+.chip.light.faded { opacity: 0; }
+.show-chrome .chip.light.faded, .chip.light.faded:hover, .chip.light:focus-visible { opacity: 1; }
+:fullscreen .chip.light { display: none !important; }
+.show-chrome .chip.light { bottom: 84px; }
 
 /* ---- drawer (source card) -------------------------------------------------------------------- */
 .scrim { position: absolute; inset: 0; background: rgba(5, 9, 16, .38); opacity: 0; visibility: hidden; transition: opacity 260ms, visibility 0s 260ms; }

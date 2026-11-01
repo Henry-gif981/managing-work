@@ -3,6 +3,7 @@
 import { toHTML, plain } from '../lib/markup.js';
 import { art, pattern, ornament } from '../art/index.js';
 import { chartSVG } from '../art/charts.js';
+import { DESIGN, isPlaceholder } from './design-config.js';
 
 const h = toHTML;
 const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -11,6 +12,7 @@ const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').
 // cx, cy: centre on the stage; h, w: the box the object must fit in (both dimensions).
 export const SLOTS = {
   center: { cx: 960, cy: 445, h: 540, w: 600 },
+  cover: { cx: 1560, cy: 370, h: 440, w: 520 },
   chapter: { cx: 1190, cy: 470, h: 560, w: 700 },
   left: { cx: 540, cy: 560, h: 600, w: 780 },
   carousel: { cx: 540, cy: 500, h: 500, w: 840 },
@@ -21,7 +23,12 @@ export const fallbackSrc = (kind, slot) => {
   const key = `fallbacks/${kind}-${slot}.webp`;
   return (globalThis.__IBRD_INLINE && globalThis.__IBRD_INLINE[key]) || `${import.meta.env.BASE_URL}${key}`;
 };
-export const slotOf = (s) => (s.obj && SLOTS[s.obj] ? (s.obj === 'center' && s.tpl === 'chapter' ? 'chapter' : s.obj) : null);
+export const slotOf = (s) => {
+  if (!s.obj || !SLOTS[s.obj]) return null;
+  if (s.obj === 'center' && s.tpl === 'chapter') return 'chapter';
+  if (s.obj === 'center' && s.tpl === 'cover') return 'cover';
+  return s.obj;
+};
 
 function runner(s, deck) {
   const roman = s.roman ? `<span class="roman">${esc(s.roman === 'Intro' ? '' : s.roman)}</span>` : '';
@@ -39,14 +46,15 @@ function bulletsHTML(list, step0 = 1) {
 const head = (s, cls = '') => `<div class="head ${cls}"><h1 class="title">${h(s.title || '')}</h1>${s.lead ? `<p class="lead">${h(s.lead)}</p>` : ''}</div>`;
 const artBox = (key, cls = '') => (key ? `<div class="art draw ${cls}" aria-hidden="true">${art(key)}</div>` : '');
 
-// Ground layer: texture + engraved patterns + a few red dots. Deterministic per section.
+// Ground layer: texture + engraved patterns. Deterministic per section. (The decorative brick dots were removed:
+// they had no function and read as stains.)
 function ground(s) {
   const g = s.ground;
   const seed = s.n * 7919;
   const rnd = (i) => { const x = Math.sin(seed + i * 12.9898) * 43758.5453; return x - Math.floor(x); };
   let inner = '';
   if (g === 'paper') {
-    inner += pattern('rosette', { x: 1500 + rnd(1) * 200, y: 760 + rnd(2) * 200, r: 360, op: 0.075 });
+    inner += pattern('rosette', { x: 1500 + rnd(1) * 200, y: 760 + rnd(2) * 200, r: 360, op: 0.05 });
     if (['table', 'hero', 'stats'].includes(s.tpl)) inner += pattern('ledger', { op: 0.07 });
     inner += pattern('graticule', { op: 0.05 });
   } else if (g === 'wash') {
@@ -56,11 +64,6 @@ function ground(s) {
     inner += pattern('graticule', { op: 0.05, color: '#9FB4D3' });
     inner += '<div class="grain"></div>';
   }
-  if (g !== 'night' && !['table', 'refs', 'index', 'credits'].includes(s.tpl)) {
-    // brick dots live only in the side margins, never on content
-    const spots = [[30, 0.3 + rnd(5) * 0.3], [1872, 0.42 + rnd(6) * 0.3], [1866, 0.16 + rnd(7) * 0.08]];
-    inner += spots.map(([x, y], i) => `<i class="dot ${['', 's', 'l'][i % 3]}" style="left:${x | 0}px;top:${(y * 1080) | 0}px"></i>`).join('');
-  }
   return `<div class="ground ${g}" data-n="${s.n}">${inner}</div>`;
 }
 
@@ -69,7 +72,7 @@ function giant(s) {
   const word = s.tpl === 'thanks' ? 'THANK YOU' : s.giant;
   if (!word) return '';
   const pos = {
-    cover: 'left:50%;top:270px;transform:translateX(-50%);font-size:430px',
+    cover: 'left:84px;top:190px;font-size:400px',
     chapter: 'left:1190px;top:310px;transform:translateX(-50%);font-size:420px',
     thanks: 'left:50%;top:330px;transform:translateX(-50%);font-size:300px',
     gallery: 'left:540px;top:330px;transform:translateX(-50%);font-size:400px',
@@ -92,7 +95,7 @@ T.cover = (s, d) => {
   <div class="cgroup"><div class="g">${esc(m.group)}</div>
     <div class="m">${m.members.map(esc).join('<br>')}</div>
     <div class="c">Class: ${esc(m.class)}</div>
-    <div class="lect" title="Placeholder — to be filled in by the group">${esc(m.lecturer)}</div>
+    <div class="lect${DESIGN.showPlaceholderWarning && isPlaceholder(m.lecturer) ? ' warn' : ''}">${esc(m.lecturer)}</div>
     <div class="place">${esc(m.place)}</div></div>`;
 };
 T.chapter = (s, d) => {
@@ -101,7 +104,7 @@ T.chapter = (s, d) => {
   return `${runner(s, d)}
   ${s.roman && s.roman !== 'Intro' ? `<div class="roman-big">${esc(s.roman)}</div>` : ''}
   <div class="chap"><h1 class="title">${h(s.title)}</h1><div class="chap-rule"></div>${s.sub ? `<p class="lead">${h(s.sub)}</p>` : ''}</div>
-  ${uniq.length ? `<div class="toc"><b>In this part</b>${uniq.map(esc).join(' · ')}</div>` : ''}`;
+  ${uniq.length ? `<div class="toc"><b>In this part</b>${uniq.map((u) => `<span class="tag">${esc(u)}</span>`).join('<i class="sep"> · </i>')}</div>` : ''}`;
 };
 T.hero = (s, d) => {
   const b = bulletsHTML(s.bullets);
