@@ -11,7 +11,7 @@ const table = (
     width={1440}
     columns={[
       { key: 'inst', label: 'Institution', width: 120 },
-      { key: 'year', label: 'Year founded', width: 175 },
+      { key: 'year', label: 'Year\u00a0founded', width: 175 },
       { key: 'clients', label: 'Main clients' },
       { key: 'act', label: 'Main activities' },
       { key: 'funds', label: 'Source of funds' },

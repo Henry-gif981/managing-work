@@ -2,7 +2,7 @@
  * Content kit: rich-text templates + standard beat layouts used by the scene modules.
  *
  * Rich text template syntax (see R):
- *   {fact-id}      -> fact value with unit (src/data/facts.ts)      {fact-id|n} -> value only
+ *   {fact-id}      -> fact value with unit (src/data/facts.ts)      {fact-id|n} -> value only, {fact-id|2} -> value with 2 decimals
  *   [3] [1; 2]     -> <Cite> superscripts (opens the references panel)  [63, p. iii; 64, p. 18] keeps the page text
  *   **bold**       -> emphasis
  *   blank line     -> new paragraph;  lines "- x" -> bullet list;  lines "1. x" -> numbered list
@@ -15,7 +15,7 @@ import { Cite } from '../primitives/bits';
 import { useFocus } from '../primitives/focus';
 import { WAYPOINTS } from '../camera/waypoints';
 
-const TOKEN = /(\{[a-z0-9.-]+(?:\|n)?\}|\[\d[^\]]*\]|\*\*[^*]+\*\*)/g;
+const TOKEN = /(\{[a-z0-9.-]+(?:\|(?:n|\d))?\}|\[\d[^\]]*\]|\*\*[^*]+\*\*)/g;
 
 function inline(text: string, key = ''): ReactNode[] {
   return text.split(TOKEN).map((part, i) => {
@@ -23,6 +23,7 @@ function inline(text: string, key = ''): ReactNode[] {
     if (!part) return null;
     if (part.startsWith('{')) {
       const [id, mod] = part.slice(1, -1).split('|');
+      if (mod && /^\d$/.test(mod)) return <F key={k} id={id} fixed={Number(mod)} />;
       return <F key={k} id={id} unit={mod !== 'n'} />;
     }
     if (part.startsWith('[')) {
@@ -90,6 +91,8 @@ export interface Slide extends Beat {
   centre?: ReactNode;
   /** optional node in the opposite side zone */
   side?: ReactNode;
+  /** for layout 'centre': which side keeps the 400 px band free for the 3D prop (default 'left') */
+  band?: 'left' | 'right';
 }
 
 function SourceTag({ s }: { s: string }) {
@@ -114,7 +117,7 @@ export function scene(sceneId: string, slides: Slide[]) {
     const kicker = sl.kicker ?? s.sectionRef;
     if (layout === 'centre') {
       return (
-        <div className="k-centre">
+        <div className={'k-centre' + (sl.band === 'right' ? ' k-centre-r' : '')}>
           <div className="k-head">
             <span className="kicker">{kicker}</span>
             <span className="k-title">{sl.title ?? s.title}</span>

@@ -190,4 +190,30 @@ export const NOTES: Record<string, SceneNotes> = {
     vi: 'Chốt chương 2 và chuyển sang chương 3.',
     targetSeconds: 60,
   },
+  // ---------------- Chapter 3 · context ----------------
+  'f3-ch3-title': {
+    en: 'Chapter 3 applies the framework to Vietnam: first the context of the partnership, then TEP on the left of this room and CCSEP on the right, and finally the evaluation in the office at the end. Throughout, we separate planned money from money actually spent.',
+    vi: 'Giới thiệu chương 3 và bố cục tầng: TEP bên trái, CCSEP bên phải.',
+    targetSeconds: 55,
+  },
+  'f3-1993': {
+    en: 'The Bank resumed lending in October 1993 with two IDA credits and opened its Hanoi office in 1994. Over two decades its role went beyond money, and the paper stresses that "World Bank financing" may be either IDA or IBRD.',
+    vi: 'Mốc 1993 – 1994 và phân biệt IDA / IBRD.',
+    targetSeconds: 60,
+  },
+  'f3-ida-graduation': {
+    en: 'Vietnam graduated from IDA on 1 July 2017, with transitional IDA18 support of SDR 1.593 billion. IBRD terms are closer to the market, but the IBRD was not new: TEP was approved for an IBRD loan in August 2014.',
+    vi: 'Tốt nghiệp IDA là thay đổi cơ cấu và điều kiện vay, không phải thay thế toàn bộ.',
+    targetSeconds: 120,
+  },
+  'f3-sahep': {
+    en: 'SAHEP, approved in May 2017 with an IDA credit of SDR 114.3 million, shows the late IDA pipeline. Table 8 puts it next to TEP; the comparison is institutional, not about sector outputs.',
+    vi: 'Đi từng dòng bảng 8, so sánh TEP và SAHEP.',
+    targetSeconds: 230,
+  },
+  'f3-legal': {
+    en: 'Projects live under two systems, Vietnamese rules and World Bank rules, and delays come where they do not align. Table 9 traces the ODA decrees from 38/2013 to today’s 242/2025 as amended by 119/2026; TEP must be judged by the rules of its own period.',
+    vi: 'Khung pháp lý ODA theo thời gian, đọc bảng 9.',
+    targetSeconds: 290,
+  },
 };

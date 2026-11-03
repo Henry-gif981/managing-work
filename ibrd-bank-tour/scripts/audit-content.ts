@@ -15,7 +15,7 @@ const used = new Set<string>();
 const files = ['src/data/tables.ts', ...fs.readdirSync('src/content').filter((f) => f.endsWith('.tsx') && f !== 'kit.tsx').map((f) => path.join('src/content', f))];
 for (const file of files) {
   const src = fs.readFileSync(file, 'utf8');
-  for (const m of src.matchAll(/\{([a-z][a-z0-9.-]*)(\|n)?\}/g)) {
+  for (const m of src.matchAll(/\{([a-z][a-z0-9.-]*)(\|(?:n|\d))?\}/g)) {
     // skip JSX expressions like {r.inst} and object literals
     if (m[1].includes('.')) continue;
     const before = src.slice(Math.max(0, m.index! - 1), m.index!);

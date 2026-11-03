@@ -336,9 +336,9 @@ export function Floor3() {
       <pointLight position={[7, Y + 5, -33]} color={ccsepAccent} intensity={22} distance={16} decay={1.4} />
       <SceneAnchors scene="f3-ch3-title" at={{ aisle: [0, Y + 1.5, -36] }} />
       <SceneAnchors scene="f3-1993" at={{ documents: [-12.8, Y + 2.6, -52.6] }} />
-      <SceneAnchors scene="f3-ida-graduation" at={{ timeline: [-6.8, Y + 0.6, -50.2] }} />
+      <SceneAnchors scene="f3-ida-graduation" at={{ timeline: [-6.8, Y + 0.6, -50.2], tep: [-6, Y + 1.6, -36.5] }} />
       <SceneAnchors scene="f3-sahep" at={{ documents: [12.8, Y + 2.6, -52.6] }} />
-      <SceneAnchors scene="f3-legal" at={{ timeline: [6.8, Y + 0.6, -50.2] }} />
+      <SceneAnchors scene="f3-legal" at={{ timeline: [6.8, Y + 0.6, -50.2], tep: [-6, Y + 1.6, -36.5] }} />
       <SceneAnchors scene="f3-tep-overview" at={{ transformer: [-6, Y + 1.4, -36.5], pylons: [-8.4, Y + 4, -24.5] }} />
       <SceneAnchors scene="f3-tep-cost" at={{ cash: [-3.9, Y + 0.9, -42.1] }} />
       <SceneAnchors scene="f3-tep-financing" at={{ cash: [-3.9, Y + 0.9, -42.1], substation: [-9.6, Y + 1.2, -41.2] }} />

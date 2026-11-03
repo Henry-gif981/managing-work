@@ -20,20 +20,24 @@ export function formatFact(f: Fact, withUnit = true): string {
           : String(v)
         : v.toLocaleString('en-US', { maximumFractionDigits: 3 });
   if (!withUnit || !f.unit || f.unit === 'year') return plain;
-  if (f.unit.startsWith('US$')) {
-    const rest = f.unit.slice(3).trim();
-    return `US$${plain}${rest ? ' ' + rest : ''}`;
+  for (const cur of ['US$', 'SDR']) {
+    if (f.unit.startsWith(cur)) {
+      const rest = f.unit.slice(cur.length).trim();
+      const sep = cur === 'SDR' ? ' ' : '';
+      return `${cur}${sep}${plain}${rest ? (rest.startsWith('/') ? rest : ' ' + rest) : ''}`;
+    }
   }
   if (f.unit === '%') return `${plain}%`;
   return `${plain} ${f.unit}`;
 }
 
 /** Render a fact by id, e.g. <F id="pir1-ibrd" /> -> "US$500 million". Hover shows the source. */
-export function F({ id, unit = true }: { id: string; unit?: boolean }) {
+export function F({ id, unit = true, fixed }: { id: string; unit?: boolean; fixed?: number }) {
   const f = fact(id);
+  const text = fixed !== undefined && typeof f.value === 'number' ? f.value.toFixed(fixed) : formatFact(f, unit);
   return (
     <span className="fact" title={f.source} data-fact={id}>
-      {formatFact(f, unit)}
+      {text}
     </span>
   );
 }

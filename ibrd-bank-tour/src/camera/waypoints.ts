@@ -103,6 +103,9 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f3-sahep': { pos: [5.4, 22.1, -50.0], target: [12.6, 22.5, -52.0] },
   'f3-legal': { pos: [6.6, 22.0, -44.6], target: [6.6, 21.1, -50.2] },
 
+  'f3-ida-graduation-table': { pos: [-10.9, 22.75, -46.38], target: [-3.23, 21.01, -47.84] },
+  'f3-sahep-table': { pos: [9.14, 22.4, -47.85], target: [9.89, 22.56, -55.81] },
+  'f3-legal-table': { pos: [2.45, 21.93, -46.28], target: [4.6, 20.86, -53.91] },
   // ---------------- floor 3 · TEP (left half) ----------------
   'f3-tep-overview': { pos: [-1.0, 23.6, -46.5], target: [-7.0, 21.5, -32.0], fov: 55 },
   'f3-tep-cost': { pos: [-0.4, 22.1, -38.4], target: [-4.0, 20.6, -42.0] },
