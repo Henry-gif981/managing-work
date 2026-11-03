@@ -1,0 +1,49 @@
+import { Suspense, useEffect, useState } from 'react';
+import { useTour } from './state/store';
+import { SCENES } from './scenes';
+import { useDesignScale } from './util/design';
+import { Hud } from './hud/Hud';
+import { Panels } from './hud/Panels';
+import { Toasts } from './hud/Hud';
+import { SceneHost } from './SceneHost';
+import { CalloutLayer } from './primitives/Callout';
+import { LiteBackdrop, liteSetOf } from './lite/LiteBackdrop';
+import { webglAvailable } from './three/Stage';
+import Stage from './three/Stage';
+
+
+export default function App() {
+  const box = useDesignScale();
+  const lite = useTour((s) => s.lite);
+  const fade = useTour((s) => s.fade);
+  const index = useTour((s) => s.index);
+  const [glOk] = useState(webglAvailable);
+  useEffect(() => {
+    if (!glOk) {
+      useTour.getState().setLite(true);
+      useTour.getState().toast({ text: 'WebGL is not available: running in Lite mode.', ttl: 5000 });
+    }
+  }, [glOk]);
+  const show3d = glOk && !lite;
+  return (
+    <div className="viewport">
+      {show3d ? (
+        <Suspense fallback={null}>
+          <Stage />
+        </Suspense>
+      ) : (
+        <LiteBackdrop set={liteSetOf(SCENES[index])} />
+      )}
+      <div className="blueprint" />
+      <div className={'fade' + (fade ? ' on' : '')} />
+      <div className="design" style={{ transform: `translate(${box.ox}px, ${box.oy}px) scale(${box.s})` }}>
+        <SceneHost />
+        <CalloutLayer />
+        <Hud />
+        <Panels />
+        <Toasts />
+        {lite && <div className="lite-badge">LITE MODE · L to switch</div>}
+      </div>
+    </div>
+  );
+}

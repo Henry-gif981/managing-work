@@ -1,0 +1,67 @@
+/*
+ * ONE source of truth for every colour in the app.
+ * The 3D code reads these at runtime through src/theme.ts (getComputedStyle),
+ * so retuning a value here retunes the DOM *and* the 3D scene.
+ */
+:root {
+  /* --- World Bank palette ------------------------------------------- */
+  --wb-navy: #002345;   /* titles, tracker bar, dark cards, ink outlines */
+  --wb-blue: #006c99;   /* primary accent, table headers, chart series 1 */
+  --wb-cyan: #47c4eb;   /* highlights, tracker fill, focus glow, series 2, underline */
+  --page: #ffffff;
+  --surface: #eaf4fa;   /* cards */
+  --surface-2: #d6eaf5; /* table rows, panels */
+  --ink: #0b1b2b;       /* body text */
+  --muted: #5b6b7a;     /* captions */
+  --warn: #e8833a;      /* emphasis, attention, chart highlight */
+  --bad: #c8453a;       /* gaps, shortfalls, limitations */
+  --good: #2e9e6b;      /* targets met */
+
+  /* chart series order: navy, blue, cyan, warn */
+  --series-1: var(--wb-navy);
+  --series-2: var(--wb-blue);
+  --series-3: var(--wb-cyan);
+  --series-4: var(--warn);
+
+  /* --- 3D material tokens (read by src/theme.ts) --------------------- */
+  --stone-1: #dce6ee;   /* pale blue-grey stone */
+  --stone-2: #c5d5e2;   /* darker stone, trims */
+  --steel: #a9b8c6;     /* brushed steel trim and lift cabin */
+  --marble: #f1f4f7;    /* pale grey-white marble floor */
+  --marble-vein: #dfe6ed;
+  --ground: #f3f8fc;    /* very pale blue-white ground */
+  --sky-top: #47c4eb;   /* sky gradient top */
+  --sky-horizon: #ffffff;
+  --ink-line: #002345;  /* engraving outlines */
+  --light-key: #ffffff;
+  --light-ambient: #e6f1f8;
+  --spill: #e9f8ff;     /* door spill / exit daylight (white-cyan) */
+  --accent-tep: #e8833a;
+  --accent-ccsep: #47c4eb;
+  --wood: #b9c6d2;      /* furniture "wood" is a cool lacquer, keeps palette cold */
+  --paper: #fbfdff;     /* ledgers, documents */
+  --glass: #bfe6f5;
+
+  /* --- typography ---------------------------------------------------- */
+  --font-title: 'Playfair Display', Georgia, serif;
+  --font-caption: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Open Sans', 'Segoe UI', Arial, sans-serif;
+
+  /* design-size type scale (px at 1920x1080) */
+  --fs-body: 28px;
+  --fs-table: 26px;
+  --fs-caption: 24px;
+  --fs-h1: 64px;
+  --fs-h2: 44px;
+  --fs-hud: 17px;
+
+  /* safe margins reserved for the HUD (design px) */
+  --safe-top: 84px;
+  --safe-bottom: 72px;
+  --safe-left: 72px;
+  --safe-right: 48px;
+
+  --radius: 10px;
+  --shadow: 0 10px 30px rgba(0, 35, 69, 0.16);
+  --dim-opacity: 0.35;
+}
