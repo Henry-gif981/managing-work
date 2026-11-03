@@ -1,6 +1,17 @@
-import { makePlaceholder } from './_placeholder';
+import { scene } from './kit';
 
-// TODO(content): replace with the real content of f1-ch1-title.
-const p = makePlaceholder('f1-ch1-title', 3);
+const p = scene('f1-ch1-title', [
+  {
+    layout: 'title',
+    kicker: 'Floor 1 · Chapter 1',
+    title: 'Chapter 1 · Overview of the IBRD',
+    source: 'Chapter 1 · pp. 10-20',
+    callouts: [{ from: '.k-titlecard .h1', to: 'anchor:f1-ch1-title:sign' }],
+    body: `- **1.1** What is the IBRD?
+- **1.2** History and development
+- **1.3** Organizational structure
+- **1.4** Financing instruments and loan conditions`,
+  },
+]);
 export const beats = p.beats;
 export default p.View;

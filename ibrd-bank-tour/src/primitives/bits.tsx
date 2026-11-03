@@ -59,12 +59,12 @@ export function Note({ children, id }: { children: ReactNode; id?: string }) {
 }
 
 /** Superscript citation [n]; opens the references panel at entry n. */
-export function Cite({ n }: { n: number | number[] }) {
+export function Cite({ n, label }: { n: number | number[]; label?: string }) {
   const open = useTour((s) => s.openRef);
   const list = Array.isArray(n) ? n : [n];
   return (
     <button className="cite" onClick={() => open(list[0])} title="Open reference">
-      [{list.join('; ')}]
+      [{label ?? list.join('; ')}]
     </button>
   );
 }

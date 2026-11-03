@@ -2,6 +2,9 @@
  * The ordered scene list. Beat counts are NOT stored here: they are the length of the
  * `beats` array exported by src/content/<scene-id>.tsx (see src/content/index.ts).
  */
+import { OBJECTIVES } from './data/objectives';
+import { NOTES } from './data/notes';
+
 export type SceneKind = 'exterior' | 'door' | 'room' | 'lift' | 'exit';
 export type SegmentId =
   | 'entrance'
@@ -148,8 +151,8 @@ export const SCENES: Scene[] = ROWS.map(([id, kind, floor, segment, title, secti
   segment,
   title,
   sectionRef,
-  objective: 'TBD',
-  targetSeconds: targetSeconds ?? 60,
+  objective: OBJECTIVES[id] ?? 'TBD',
+  targetSeconds: NOTES[id]?.targetSeconds ?? targetSeconds ?? 60,
   optional: OPTIONAL.has(id) || undefined,
   camera: id,
 }));

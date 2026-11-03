@@ -33,7 +33,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   // ---------------- floor 1 · lobby (introduction) ----------------
   'f1-rationale-1': { pos: [1.2, 2.0, -1.8], target: [5.5, 1.5, -6.4] },
   'f1-rationale-2': { pos: [5.6, 2.4, -11.2], target: [12.7, 3.0, -10.6] },
-  'f1-problem': { pos: [-5.4, 2.2, -3.4], target: [-12.7, 2.4, -4.4] },
+  'f1-problem': { pos: [-5.0, 2.2, -4.4], target: [-12.7, 2.4, -8.6] },
   'f1-objectives': { pos: [-1.4, 2.3, -4.4], target: [-5.0, 1.2, -11.0] },
   'f1-method': { pos: [-7.4, 2.0, -2.2], target: [-12.7, 2.3, -6.2] },
   'f1-scope': { pos: [2.2, 2.0, -12.6], target: [12.7, 3.1, -9.0] },
@@ -41,7 +41,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
 
   // ---------------- floor 1 · banking hall (chapter 1) ----------------
   'f1-ch1-title': { pos: [0, 3.6, -15.2], target: [0, 4.0, -50], fov: 55 },
-  'f1-what': { pos: [-1.0, 2.5, -42.5], target: [-6.5, 1.8, -52.5] },
+  'f1-what': { pos: [0.6, 2.4, -14.4], target: [5.6, 1.4, -19.4] },
   'f1-wbg': { pos: [-2.8, 2.7, -16.4], target: [1.4, 1.1, -22.6] },
   'f1-history-1': { pos: [6.0, 2.2, -21.0], target: [12.5, 2.2, -26.0] },
   'f1-history-2': { pos: [7.0, 2.0, -33.0], target: [12.5, 2.2, -26.0] },
@@ -49,6 +49,10 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f1-voting': { pos: [-4.0, 2.6, -39.4], target: [-9.8, 0.9, -41.4] },
   'f1-funds': { pos: [4.4, 3.4, -47.4], target: [11.2, 1.7, -46.4] },
   'f1-instruments': { pos: [-1.0, 2.4, -29.0], target: [-10.4, 1.7, -28.6], fov: 55 },
+  'f1-wbg-table': { pos: [5.84, 2.75, -22.57], target: [-0.83, 1.82, -26.88] },
+  'f1-instruments-table': { pos: [-9.3, 3.46, -18.04], target: [-5.37, 2.72, -24.97] },
+  'f1-terms-table': { pos: [2.28, 1.64, -29.85], target: [9.86, 1.35, -32.4] },
+  'f1-safeguards-table': { pos: [-4.24, 2.91, -41.63], target: [-11.38, 1.37, -44.89] },
   'f1-terms': { pos: [4.0, 2.0, -31.4], target: [8.0, 0.9, -36.5] },
   'f1-safeguards': { pos: [-4.2, 2.2, -42.8], target: [-9.8, 0.9, -40.6] },
   'lift-1-2': cabinPose(10),

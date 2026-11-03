@@ -39,7 +39,7 @@ if (new URLSearchParams(location.search).get('demo') === '1') {
   // test hook (Playwright shots / debugging)
   Object.assign(window, {
     __tour: useTour,
-    __scenes: SCENES.map((s) => ({ id: s.id, beats: beatCount(s.id) })),
+    __scenes: SCENES.map((s) => ({ id: s.id, beats: beatCount(s.id), segment: s.segment })),
     __perf: perf,
   });
   startDirector();

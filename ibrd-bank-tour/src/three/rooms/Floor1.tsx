@@ -158,19 +158,45 @@ function buildFloor1(b: Builder) {
     ledger(l, [-0.6, 0.82, 0], false, 'blue');
     for (let i = 0; i < 5; i++) l.box('paper', [0.42, 0.02, 0.3], [0.6, 0.83 + i * 0.022, 0.05], { edges: i === 4 ? 25 : false });
     l.box('navy', [0.8, 0.18, 0.06], [0, 0.95, 0.5], { rot: [-0.4, 0, 0] }); // nameplate
+    // loan-terms props: coin stack (fees), desk calendar (average maturity), clock (short maturity)
+    for (let i = 0; i < 6; i++) l.cyl(i % 2 ? 'steel' : 'stone2', 0.09, 0.09, 0.025, [-1.0, 0.83 + i * 0.026, 0.32], 14, { edges: i === 5 ? 40 : false });
+    l.box('white', [0.26, 0.2, 0.06], [1.05, 0.92, -0.3], { rot: [-0.25, 0, 0] });
+    l.box('cyan', [0.26, 0.05, 0.065], [1.05, 1.0, -0.31], { rot: [-0.25, 0, 0], edges: false });
+    l.cyl('navy', 0.14, 0.14, 0.05, [-0.25, 0.98, -0.38], 20, { rot: [Math.PI / 2 - 0.2, 0, 0], edges: 50 });
+    l.cyl('white', 0.11, 0.11, 0.01, [-0.25, 0.985, -0.35], 20, { rot: [Math.PI / 2 - 0.2, 0, 0], edges: false });
+    // rate board on a stand behind the desk (interest rate)
+    l.box('steel', [0.05, 1.4, 0.05], [-0.7, 0.7, -1.7], { edges: false });
+    l.box('steel', [0.05, 1.4, 0.05], [0.7, 0.7, -1.7], { edges: false });
+    l.box('navy', [1.7, 1.0, 0.05], [0, 1.85, -1.7]);
+    l.box('paper', [1.55, 0.86, 0.02], [0, 1.85, -1.665], { edges: false });
+    l.lines([
+      [-0.65, 1.55, -1.65], [-0.3, 1.7, -1.65], [-0.3, 1.7, -1.65], [0.05, 1.62, -1.65], [0.05, 1.62, -1.65], [0.35, 1.95, -1.65],
+      [0.35, 1.95, -1.65], [0.65, 2.1, -1.65], [-0.7, 1.48, -1.65], [0.7, 1.48, -1.65], [-0.7, 1.48, -1.65], [-0.7, 2.2, -1.65],
+    ]);
+  });
+  // information counter (hall entrance, right of the aisle) at (4.4, 0, -18.8)
+  b.at([4.4, 0, -18.8], 0, (c) => {
+    c.box('stone2', [2.6, 1.1, 0.9], [0, 0.55, 0]);
+    c.box('navy', [2.8, 0.08, 1.05], [0, 1.14, 0]);
+    c.box('cyan', [2.6, 0.06, 0.02], [0, 0.85, 0.46], { edges: false });
+    c.box('steel', [0.06, 1.3, 0.06], [-1.2, 1.8, -0.35], { edges: false });
+    c.box('steel', [0.06, 1.3, 0.06], [1.2, 1.8, -0.35], { edges: false });
+    c.box('navy', [2.6, 0.5, 0.06], [0, 2.4, -0.35]);
+    for (let i = 0; i < 3; i++) c.box('paper', [0.3, 0.02, 0.4], [-0.6 + i * 0.5, 1.19, 0.1], { rot: [0, 0.15 * i, 0], edges: false });
   });
 
   // stamp table (left, between the column rows z -38 / -44) at (-9.8, 0, -41)
   b.at([-9.8, 0, -41], Math.PI / 2, (s) => {
     table(s, [0, 0, 0], 2.2, 1.2, 0.85, 0, 'stone2');
-    for (let i = 0; i < 4; i++) {
-      const x = -0.7 + i * 0.45;
-      s.cyl('navy', 0.07, 0.09, 0.12, [x, 0.95, -0.25], 10);
-      s.sphere('steel', 0.06, [x, 1.07, -0.25], 8);
+    // ten stamps, one per Environmental and Social Standard; ESS5 in cyan
+    for (let i = 0; i < 10; i++) {
+      const x = -0.95 + i * 0.211;
+      s.cyl(i === 4 ? 'cyan' : 'navy', 0.06, 0.08, 0.12, [x, 0.95, -0.25], 10);
+      s.sphere('steel', 0.05, [x, 1.06, -0.25], 8);
     }
-    s.box('blue', [0.5, 0.03, 0.35], [0.6, 0.9, -0.3]); // ink pad
-    for (let i = 0; i < 3; i++) s.box('paper', [0.42, 0.01, 0.3], [-0.4 + i * 0.5, 0.89, 0.25], { rot: [0, 0.2 * i - 0.2, 0] });
-    s.cyl('bad', 0.08, 0.08, 0.01, [0.1, 0.9, 0.28], 16, { edges: false }); // red seal
+    s.box('blue', [0.4, 0.03, 0.3], [0.8, 0.9, 0.28]); // ink pad
+    for (let i = 0; i < 3; i++) s.box('paper', [0.36, 0.01, 0.28], [-0.7 + i * 0.42, 0.89, 0.25], { rot: [0, 0.2 * i - 0.2, 0] });
+    s.cyl('bad', 0.07, 0.07, 0.01, [-0.3, 0.9, 0.28], 16, { edges: false }); // red seal
   });
 }
 
@@ -226,6 +252,15 @@ export function Floor1() {
     () => ['IPF', 'DPF', 'PforR'].map((t) => textTexture([t], { w: 256, h: 96, bg: '--wb-navy', fg: '--page', size: 50 })),
     [],
   );
+  const ch1Sign = useMemo(
+    () => textTexture(['CHAPTER 1 · OVERVIEW OF THE IBRD'], { w: 1536, h: 192, bg: '--wb-navy', fg: '--page', size: 80, underline: true }),
+    [],
+  );
+  const eras = useMemo(
+    () => ['1944-1950s', '1950s-1970s', '1980s-1990s', '2000-present'].map((t) => textTexture([t], { w: 512, h: 128, bg: '--wb-navy', fg: '--wb-cyan', size: 62 })),
+    [],
+  );
+  const info = useMemo(() => textTexture(['INFORMATION'], { w: 1024, h: 192, bg: '--wb-navy', fg: '--page', size: 110 }), []);
   const lobbySign = useMemo(
     () =>
       textTexture(['BANKING HALL'], {
@@ -251,6 +286,15 @@ export function Floor1() {
       {counterSigns.map((t, i) => (
         <TexPlane key={i} tex={t} position={[-9.73, 2.25, -34 + i * 6]} rotation={FACE.east} size={[1.0, 0.38]} />
       ))}
+      {/* hanging chapter sign over the hall */}
+      <TexPlane tex={ch1Sign} position={[3.4, 6.3, -24]} size={[6.4, 0.8]} />
+      <TexPlane tex={info} position={[4.4, 2.4, -19.11]} size={[2.5, 0.47]} />
+      {eras.map((t, i) => (
+        <TexPlane key={i} tex={t} position={[11.6, 5.75, -29.6 + i * 3.1]} rotation={FACE.west} size={[2.4, 0.6]} />
+      ))}
+      <SceneAnchors scene="f1-ch1-title" at={{ sign: [3.4, 6.3, -24] }} />
+      <SceneAnchors scene="f1-method" at={{ board: [-12.6, 2.5, -6] }} />
+      <SceneAnchors scene="f1-structure" at={{ hall: [0, 3.5, -16] }} />
       <SceneAnchors scene="f1-rationale-1" at={{ globe: [5.5, 1.6, -6] }} />
       <SceneAnchors scene="f1-rationale-2" at={{ map: [12.6, 3.2, -9] }} />
       <SceneAnchors scene="f1-problem" at={{ board: [-12.6, 2.5, -6] }} />
@@ -260,15 +304,18 @@ export function Floor1() {
         scene="f1-wbg"
         at={{ ibrd: [-3.2, 1.6, -22.6], ida: [-1.6, 1.6, -22.6], ifc: [0, 1.6, -22.6], miga: [1.6, 1.6, -22.6], icsid: [3.2, 1.6, -22.6] }}
       />
-      <SceneAnchors scene="f1-what" at={{ dais: [-6.5, 1.5, -52] }} />
-      <SceneAnchors scene="f1-gov" at={{ lectern: [-6.5, 1.8, -51.5], chairs: [-6.5, 1.2, -53.4] }} />
-      <SceneAnchors scene="f1-history-1" at={{ archive: [12, 2.5, -25] }} />
-      <SceneAnchors scene="f1-history-2" at={{ archive: [12, 2.5, -25] }} />
-      <SceneAnchors scene="f1-funds" at={{ vault: [12.4, 2.0, -46.5], counter: [9.4, 1.3, -46.5] }} />
+      <SceneAnchors scene="f1-what" at={{ counter: [4.4, 1.3, -18.8] }} />
+      <SceneAnchors scene="f1-gov" at={{ governors: [-6.5, 3.2, -54.3], directors: [-6.5, 1.2, -53.4], president: [-6.5, 1.9, -51.5] }} />
+      <SceneAnchors scene="f1-history-1" at={{ era1: [11.7, 5.5, -29.6], era2: [11.7, 5.5, -26.5] }} />
+      <SceneAnchors scene="f1-history-2" at={{ era3: [11.7, 5.5, -23.4], era4: [11.7, 5.5, -20.3] }} />
+      <SceneAnchors scene="f1-funds" at={{ vault: [12.4, 2.0, -46.5], counter: [9.4, 1.3, -48.0], bonds: [9.4, 1.45, -45.3] }} />
       <SceneAnchors scene="f1-instruments" at={{ ipf: [-9.8, 1.9, -34], dpf: [-9.8, 1.9, -28], pforr: [-9.8, 1.9, -22] }} />
-      <SceneAnchors scene="f1-terms" at={{ desk: [8, 0.9, -36.5] }} />
-      <SceneAnchors scene="f1-voting" at={{ stamps: [-9.55, 1.0, -41.2] }} />
-      <SceneAnchors scene="f1-safeguards" at={{ stamps: [-9.55, 1.0, -41.2] }} />
+      <SceneAnchors
+        scene="f1-terms"
+        at={{ desk: [8, 0.9, -36.5], rate: [8, 1.9, -38.15], contract: [8.6, 0.95, -36.45], calendar: [9.05, 0.95, -36.8], clock: [7.75, 1.0, -36.88], coins: [7.0, 0.95, -36.18], ledger: [7.4, 0.88, -36.5] }}
+      />
+      <SceneAnchors scene="f1-voting" at={{ stamps: [-10.05, 1.05, -41.0] }} />
+      <SceneAnchors scene="f1-safeguards" at={{ stamps: [-10.05, 1.05, -41.0], ess5: [-10.05, 1.08, -40.89], papers: [-9.55, 0.9, -40.6] }} />
     </group>
   );
 }

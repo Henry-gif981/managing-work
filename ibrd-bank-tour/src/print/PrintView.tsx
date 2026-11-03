@@ -47,7 +47,7 @@ export default function PrintView() {
             </FocusContext.Provider>
             <header className="page-head">
               <b>{s.title}</b> · {s.sectionRef} · beat {p.beat + 1}/{c.beats.length}
-              {beat?.label ? ` · ${beat.label}` : ''}
+              {beat?.source ? ` · ${beat.source}` : beat?.label ? ` · ${beat.label}` : ''}
             </header>
             <footer className="page-foot">
               Group 6 – IBRD in Vietnam | {k + 1}/{pages.length}

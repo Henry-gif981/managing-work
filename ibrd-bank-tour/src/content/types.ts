@@ -17,6 +17,8 @@ export interface Beat {
   callouts?: CalloutSpec[];
   /** optional camera waypoint override for this beat */
   camera?: string;
+  /** where this beat's content comes from in the paper, e.g. "Section 1.3.2 · p. 14" */
+  source?: string;
 }
 
 export interface SceneViewProps {
