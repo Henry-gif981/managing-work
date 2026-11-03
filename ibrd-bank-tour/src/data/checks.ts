@@ -1,5 +1,5 @@
 import type { Fact } from './facts';
-import { TABLE1, TABLE2, TABLE3, ESS } from './tables';
+import { TABLE1, TABLE2, TABLE3, TABLE4, TABLE5, TABLE6, TABLE7, ESS } from './tables';
 
 /**
  * Arithmetic and structure assertions over facts and table data.
@@ -20,6 +20,10 @@ export const CHECKS: Check[] = [
   { name: 'Table 2 has 3 rows (three instruments)', run: (f) => count(TABLE2.length, f('table2-rows')) },
   { name: 'Table 2 rows = instruments in the text', run: (f) => count(TABLE2.length, f('instruments')) },
   { name: 'Table 3 has 6 rows', run: (f) => count(TABLE3.length, f('table3-rows')) },
+  { name: 'Table 4 has 6 stages (six-stage project cycle)', run: (f) => count(TABLE4.length, f('cycle-stages')) },
+  { name: 'Table 5 has 4 rows (four disbursement methods)', run: (f) => count(TABLE5.length, f('disb-methods')) },
+  { name: 'Table 6 has 5 rows', run: (f) => count(TABLE6.length, f('table6-rows')) },
+  { name: 'Table 7 has 3 rows', run: (f) => count(TABLE7.length, f('table7-rows')) },
   { name: 'ESS list has exactly 10 items', run: (f) => count(ESS.length, f('ess-count')) },
   // arithmetic
   { name: 'ASA funding shares 26 + 68 + 6 = 100', run: (f) => near(f('asa-admin') + f('asa-trust') + f('asa-ras'), 100) },
@@ -39,6 +43,8 @@ export const CHECKS: Check[] = [
   { name: 'Phan Rang PMU: 10 of 12 staff from other ODA units (10 <= 12)', run: (f) => f('phanrang-from-oda') <= f('phanrang-staff') || '10 > 12' },
   { name: 'CCSEP: sewer connections (256,000) <= direct beneficiaries (290,000)', run: (f) => f('ccsep-sewer') <= f('ccsep-beneficiaries') || 'more connections than beneficiaries' },
   { name: 'TEP counterpart share of the planned cost is about 31.6%', run: (f) => near((f('tep-counterpart') / f('tep-total')) * 100, 31.6, 0.05) },
-  { name: 'Lift card / Table 4: six project-cycle stages', run: (f) => count(f('cycle-stages'), 6) },
-  { name: 'Four disbursement methods', run: (f) => count(f('disb-methods'), 4) },
+  { name: 'TEP capacity building: IBRD share (0.24) smaller than NPT share (5.50)', run: (f) => f('tep-cb-ibrd') < f('tep-cb-npt') || 'order' },
+  { name: 'PIR 2 (May 2011): IDA credit larger than IBRD loan', run: (f) => f('pir2-ida') > f('pir2-ibrd') || 'order' },
+  { name: 'Power-sector DPF (2010): IBRD part larger than IDA part', run: (f) => f('psr-ibrd') > f('psr-ida') || 'order' },
+  { name: 'Phan Rang PMU: 2 of 12 staff were new (12 - 10)', run: (f) => count(f('phanrang-staff') - f('phanrang-from-oda'), 2) },
 ];

@@ -109,4 +109,85 @@ export const NOTES: Record<string, SceneNotes> = {
     vi: 'Khung ESF, 10 tiêu chuẩn ESS (nhấn ESS5), khung đấu thầu và Nha Trang.',
     targetSeconds: 170,
   },
+  // ---------------- Chapter 2 ----------------
+  'f2-ch2-title': {
+    en: 'Chapter 2 asks how the IBRD supports project financing: with money, with technical support, and with training. We end with an overall assessment of how the three fit together.',
+    vi: 'Mở đầu chương 2, đọc 4 mục con.',
+    targetSeconds: 25,
+  },
+  'f2-cycle': {
+    en: 'Every operation passes through six stages, from identification to completion and evaluation. The borrower owns and implements the project, the Bank advises, appraises, finances and supervises, and projects can be restructured, as TEP was in 2019 and CCSEP in 2022.',
+    vi: 'Đi lần lượt 6 giai đoạn của bảng 4; nhấn vai trò bên vay và Ngân hàng.',
+    targetSeconds: 230,
+  },
+  'f2-vn-procedures': {
+    en: 'In Vietnam each Bank stage runs alongside domestic steps: the project proposal, the investment decision, counterpart funds and on-lending. Delays sit at the joint; CCSEP became effective about five and a half months late.',
+    vi: 'Hai làn quy trình song song; chậm trễ ở điểm nối.',
+    targetSeconds: 60,
+  },
+  'f2-disbursement': {
+    en: 'Money is paid out by advance, reimbursement, direct payment or special commitment. Every withdrawal needs documents, there is a minimum value and a deadline up to four months after closing, and CCSEP used all four methods.',
+    vi: 'Bốn phương thức giải ngân trong bảng 5.',
+    targetSeconds: 175,
+  },
+  'f2-counterpart': {
+    en: 'The borrower pays part of the cost: in TEP, NPT provided 231.25 of 731.25 million dollars. Counterpart money is often the binding constraint; CCSEP had no disbursement in 2017 and 2018 because provincial allocations began only in July 2019.',
+    vi: 'Vốn đối ứng: ràng buộc chính đối với giải ngân.',
+    targetSeconds: 90,
+  },
+  'f2-ipf': {
+    en: 'IPF is built from components, a results framework and an implementing agency. TEP had three components run by NPT’s regional boards, so delays in land clearance or bidding slowed disbursement directly.',
+    vi: 'IPF trong thực tế, ví dụ TEP.',
+    targetSeconds: 60,
+  },
+  'f2-dpf': {
+    en: 'DPF releases money to the budget once prior actions are done. Vietnam’s Public Investment Reform series began with a 500 million dollar IBRD loan in 2009, then 87.3 million IBRD plus 262.7 million IDA in May 2011; a 2010 power-sector DPF combined 200 and 111.8 million.',
+    vi: 'Chuỗi PIR và DPF ngành điện, đọc các con số trên thẻ.',
+    targetSeconds: 90,
+  },
+  'f2-pforr': {
+    en: 'PforR pays only when an agreed agency verifies the DLIs, and it relies on the country’s own systems. IPF builds assets, DPF supports reforms, PforR rewards performance; a results-based design moves risk onto domestic agencies.',
+    vi: 'PforR và kết luận về ba công cụ.',
+    targetSeconds: 90,
+  },
+  'f2-prep': {
+    en: 'Technical support starts with preparation: a Bank task team checks design and viability, as with TEP’s 31.4 percent EIRR. CCSEP prepared an ESIA per city, and IEG found better preparation would have avoided TEP’s extension.',
+    vi: 'Hỗ trợ kỹ thuật: chuẩn bị dự án và nghiên cứu khả thi.',
+    targetSeconds: 120,
+  },
+  'f2-asa': {
+    en: 'Advisory Services and Analytics are the Bank’s non-lending work. In 2023 they cost 991 million dollars, 68 percent from trust funds, and paid advice through RAS is becoming relevant for Vietnam.',
+    vi: 'ASA: nguồn tài trợ 26/68/6 và RAS.',
+    targetSeconds: 120,
+  },
+  'f2-me': {
+    en: 'Projects are tracked against a results framework through ISRs, the ICR and IEG validation. TEP was rated highly satisfactory, while CCSEP was downgraded in 2022 and later re-rated, and M&E has limits when indicators measure the whole system.',
+    vi: 'Khung giám sát – đánh giá, ba cấp và các xếp hạng.',
+    targetSeconds: 150,
+  },
+  'f2-training-pmu': {
+    en: 'Training works on people, skills and institutions. TEP used NPT’s three regional boards and CCSEP one PMU per province; training sticks when staff stay, yet weak PMU capacity still caused delays.',
+    vi: 'Đào tạo cho ban quản lý dự án.',
+    targetSeconds: 120,
+  },
+  'f2-training-knowledge': {
+    en: 'Most transfer happens on real contracts, plus courses such as the 2014 public procurement MOOC. TEP’s boards built lasting skills, but Nha Trang shows safeguards are harder to transfer when local rules differ.',
+    vi: 'Chuyển giao kiến thức về đấu thầu và an toàn.',
+    targetSeconds: 90,
+  },
+  'f2-institutional': {
+    en: 'Table 6 lists the institutional reforms in both cases, from NPT’s asset management system to CCSEP’s 14 performance-based contracts. Reform depends on the borrower: NPT paid 5.50 of the 5.74 million dollars for TEP’s capacity building.',
+    vi: 'Bảng 6 và thông điệp: bên vay phải tự tài trợ và duy trì cải cách.',
+    targetSeconds: 250,
+  },
+  'f2-three-forms': {
+    en: 'Table 7 shows finance, technical support and training at each stage of the cycle. They reinforce one another: money gives weight to advice, advice protects the money, and training protects the results.',
+    vi: 'Bảng 7 và ba cách các hình thức hỗ trợ bổ trợ nhau.',
+    targetSeconds: 200,
+  },
+  'f2-package': {
+    en: 'The package only works when domestic systems are ready: counterpart funds, land and PMU capacity are the binding constraints. Chapter 3 tests this on two projects, so we take the lift to Floor 3.',
+    vi: 'Chốt chương 2 và chuyển sang chương 3.',
+    targetSeconds: 60,
+  },
 };

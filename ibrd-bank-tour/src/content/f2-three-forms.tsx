@@ -1,6 +1,73 @@
-import { makePlaceholder } from './_placeholder';
+import { scene, R, FocusItem } from './kit';
+import { DataTable } from '../primitives/DataTable';
+import { TABLE7 } from '../data/tables';
 
-// TODO(content): replace with the real content of f2-three-forms.
-const p = makePlaceholder('f2-three-forms', 3);
+const a = (n: string) => `anchor:f2-three-forms:${n}`;
+const table = (
+  <DataTable
+    id="t7"
+    width={1440}
+    columns={[
+      { key: 'stage', label: 'Stage', width: 230 },
+      { key: 'fin', label: 'Financial support' },
+      { key: 'tech', label: 'Technical support' },
+      { key: 'train', label: 'Training and capacity building' },
+    ]}
+    rows={TABLE7.map((r) => ({ id: r.id, cells: { stage: <b>{r.stage}</b>, fin: r.fin, tech: r.tech, train: r.train } }))}
+    caption={<R t="Table 7. The three forms of IBRD support across the project cycle. Source: Authors' synthesis of Sections 2.1-2.3." />}
+  />
+);
+const row = (i: number) => ({
+  layout: 'centre' as const,
+  title: 'Table 7 · Three forms of support',
+  label: TABLE7[i].stage,
+  source: 'Section 2.4 · Table 7 · p. 29',
+  centre: table,
+  camera: `f2-three-forms-${TABLE7[i].id}`,
+  focus: [`t7-${TABLE7[i].id}`],
+  callouts: [{ from: `#t7-${TABLE7[i].id}-stage`, to: a(TABLE7[i].id), label: TABLE7[i].stage }],
+});
+const WAYS = [
+  ['Money gives weight to advice', "a borrower is more likely to adopt the Bank's procurement and safeguard standards when they are conditions of a loan."],
+  ['Advice protects the money', 'appraisal and supervision reduce the risk that funds are wasted on a poorly designed project.'],
+  ['Training protects the results', 'assets built with IBRD funds keep working only if local institutions can operate and maintain them.'],
+];
+const ways = (
+  <div className="card">
+    <ol className="focus-list ways">
+      {WAYS.map(([h, t], i) => (
+        <FocusItem key={i} id={`way-${i + 1}`}>
+          <b>{['First', 'Second', 'Third'][i]}, {h.toLowerCase()}:</b> {t}
+        </FocusItem>
+      ))}
+    </ol>
+  </div>
+);
+const way = (i: number) => ({
+  title: 'How the forms reinforce one another',
+  label: WAYS[i][0],
+  source: 'Section 2.4 · p. 29',
+  side: ways,
+  focus: [`way-${i + 1}`],
+  body: `The forms reinforce one another in {reinforce-ways|n} ways. **${['First', 'Second', 'Third'][i]}, ${WAYS[i][0].toLowerCase()}**: ${WAYS[i][1]}`,
+});
+const p = scene('f2-three-forms', [
+  {
+    layout: 'centre',
+    title: 'Table 7 · Three forms of support',
+    label: 'One package',
+    source: 'Section 2.4 · p. 29',
+    centre: table,
+    callouts: [{ from: '.k-head', to: a('prep'), label: 'Preparation' }],
+    camera: 'f2-three-forms-prep',
+    body: `The {support-forms|n} forms of support are designed as one package: **finance pays for the investment, technical support makes it sound, and training makes it last**. Each covers a weakness of the others, and each appears at every stage of the project cycle.`,
+  },
+  row(0),
+  row(1),
+  row(2),
+  way(0),
+  way(1),
+  way(2),
+]);
 export const beats = p.beats;
 export default p.View;

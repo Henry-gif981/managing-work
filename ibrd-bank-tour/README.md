@@ -3,7 +3,7 @@
 An interactive 3D "bank tour" for **Group 6 (NEU)**, built around the paper *The IBRD and its development project financing activities in Vietnam*.
 You walk in through the front door. Floor 1 holds the Introduction and Chapter 1, Floor 2 holds Chapter 2, and Floor 3 holds Chapter 3, with TEP on the left, CCSEP on the right and the executive office at the far end. The Conclusion plays as the lift rides down, and the Thank-You is at the exit door.
 
-This version is the **engine and 3D shell**. Every one of the 64 scenes exists with placeholder content (title, section reference, "TBD", 3 beats). The real content of the paper is added later in `src/content/` and `src/data/`.
+**Status:** the Introduction, Chapter 1 (Floor 1) and Chapter 2 (Floor 2) hold the full content of the paper. Chapter 3, the Conclusion and the exit still show placeholder content ("TBD"). See `docs/coverage-ch1-ch2.md` and `docs/paper-inconsistencies.md`.
 
 ## Run
 
@@ -13,9 +13,12 @@ npm run dev            # http://localhost:5173 (dev overlay on by default in dev
 npm run build          # dist/ (normal multi-file build)
 npm run build:single   # dist-single/index.html — ONE file, opens from file:// offline
 npm run export-pdf     # dist/ibrd-bank-tour.pdf — one 1920x1080 page per beat
-npm run test:shots     # docs/screens/NN-<scene>.png — end pose of every scene
+npm run test:shots     # docs/screens/NN-<scene>[-bN].png — first and last beat of every scene
+                       #   options: --only=id,id  --segments=intro,ch1  --all-beats
+                       #   also reports content that is clipped or reaches into the HUD margins
 npm run test:smoke     # opens the single file from file://, walks with keys, fails on console errors
-npm run check-facts    # validates src/data/facts.ts and runs src/data/checks.ts
+npm run check-facts    # validates src/data/facts.ts and runs src/data/checks.ts (arithmetic + table row counts)
+npm run audit-content  # unknown fact ids, citations not in the reference list, beats over ~90 words
 npm run docs:scenes    # regenerates docs/scene-list.md
 ```
 
@@ -77,6 +80,27 @@ A beat can use its own camera: `{ camera: 'some-waypoint-id' }` in its beat entr
 - **Anchors:** every scene has `anchor:<id>:centre`, `:left` and `:right`, made automatically from its waypoint, plus named prop anchors declared in the room files with `<SceneAnchors scene="…" at={{ name: [x, y, z] }} />`. Look one up with `getAnchor(name)`.
 - **Palette:** everything is in `src/tokens.css`. The 3D code reads the same CSS variables through `src/theme.ts`.
 
+## Content conventions (Floors 1-2)
+
+- **Scene modules** use the kit in `src/content/kit.tsx`: `scene(id, slides)` returns `{ beats, View }`. A slide has:
+  - `source` (shown on every beat as "Source · Section 1.3.2 · p. 14", and in the print header)
+  - `layout`: `left` / `right` text card, `centre` for a table, chart or diagram, or `title`
+  - `body`, a rich-text template of at most ~90 words
+  - optional `aside`, `side` (the opposite zone) and `centre` nodes
+  - `focus` and `callouts`
+- **Rich text template** (`R`):
+  - `{fact-id}` renders a fact with its unit, `{fact-id|n}` the value only
+  - `[3]`, `[1; 2]` and `[63, p. iii; 64, p. 18]` render as clickable citations
+  - `**bold**`, blank lines between paragraphs, `- ` bullets and `1. ` numbered lists
+- **Numbers:** every number is a fact in `src/data/facts.ts` (`id`, `value`, `unit`, `source`, optional `digits`). Display rules are in `src/primitives/Fact.tsx`. Identifiers that are not quantities stay as text: student IDs (`src/data/cover.ts`), report numbers, "OP 4.12".
+- **Tables and lists** (Tables 1-7, the ten ESSs) are plain data in `src/data/tables.ts`. `check-facts` counts their rows.
+- **Table beats:**
+  - The table sits in the centre zone (x 400-1848). The 400 px band on the left stays free for the 3D prop that the beat's callout points to.
+  - Each table beat focuses one row and draws a callout to a prop.
+  - Table beats automatically use the waypoint `<scene>-table` (or a per-row waypoint set in the slide's `camera`).
+  - `node scripts/frame-props.mjs '{...}'` searches for a camera pose that puts given anchors inside a screen band. That is how the `*-table` waypoints were found.
+- **Objectives** come from `src/data/objectives.ts`. **Presenter notes and per-scene `targetSeconds`** come from `src/data/notes.ts`, and `scenes.ts` reads both.
+
 ## Architecture
 
 ```
@@ -109,6 +133,30 @@ src/lite/LiteBackdrop    static SVG per area (Lite + Print)     src/print/PrintV
 - **Fonts:** latin and vietnamese subsets of Playfair Display 700, Cormorant Garamond 400/600 italic and Open Sans 400/600/700, woff2 only (the woff fallbacks are stripped at build time).
 - **HUD sizes:** HUD text is smaller (15–20 px at design size) than the 28 / 26 / 24 px minimums, which apply to slide content. The HUD stays inside the reserved margins (top 84, bottom 72, left 72, right 48) and content zones start inside them.
 - **Titles:** scene titles are readable versions of the TOC headings, and objectives are "TBD" until the content arrives.
+
+## Decisions for the content of Floors 1-2
+
+- **Callouts and centring:** to give every table beat a callout to a *visible* prop, tables are centred in the area to the right of a 400 px prop band, not on the exact screen centre. Table beats switch to a dedicated camera.
+- **Props:**
+  - `f1-instruments` uses the three teller counters labelled IPF / DPF / PforR (Table 2 has three rows).
+  - The loan desk got new props for Table 3: a rate board, a contract, a calendar, a clock, a coin stack and a ledger.
+  - Also new: an INFORMATION counter (`f1-what`), a hanging "CHAPTER 1 · OVERVIEW OF THE IBRD" sign, era plates on the archive wall (1944-1950s … 2000-present), ten stamps on the safeguards table (ESS5 in cyan), a "CHAPTER 2 · …" sign on Floor 2, and letter-of-credit papers on the finance desk.
+  - Table 4's six stages map to the six chairs around the round table.
+- **Prose:** text is in English and sentences are shortened, never changed in meaning. Where the paper's wording is a range or qualitative ("around 15-16 percent", the IDA / IBRD / commercial cost ranking), the tour keeps it so and invents no figure.
+- **Cost comparison:** the cost comparison in Introduction 1.2 is drawn as a qualitative "cost ladder", because the paper gives no numbers there.
+- **TEP counterpart chart:** the chart uses TEP's IBRD loan from Section 3.2.2 (USD 500.00 million) and says so in a note. Chapter 2 gives only the counterpart and the total.
+- **Notes:** the presenter notes only restate the paper.
+
+## Engine changes (made for this content; no behaviour removed)
+
+- `Beat.source` was added (`src/content/types.ts`). The print header shows it.
+- `scenes.ts` reads `objective` from `src/data/objectives.ts` and `targetSeconds` from `src/data/notes.ts` (falling back to the list value).
+- `<Cite>` accepts a `label` (e.g. "63, p. iii; 64, p. 18").
+- `Fact` has optional `digits`, and `formatFact()` handles units.
+- `test:shots` captures the first and last beat, adds the `--segments` and `--all-beats` options, and flags clipped content and content in the HUD margins.
+- CSS for the content kit lives in `src/app.css` (`.k-*`, plus the lanes, tiers and proportion-bar styles).
+- `scripts/audit-content.ts` and `scripts/frame-props.mjs` are new.
+- No engine bugs needed fixing for this work.
 
 ## Known limitations
 

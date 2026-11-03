@@ -37,3 +37,33 @@ export const ESS = [
   'Financial Intermediaries',
   'Stakeholder Engagement and Information Disclosure',
 ];
+
+export const TABLE4 = [
+  { id: 's1', stage: '1. Identification', act: 'Bank and government agree on a project concept consistent with the Country Partnership Framework', lead: 'Borrower and Bank', doc: 'Project Concept Note, Project Information Document' },
+  { id: 's2', stage: '2. Preparation', act: 'Feasibility studies, technical design, environmental and social instruments, procurement plan', lead: 'Borrower, with Bank advice', doc: 'Feasibility study, ESIA, resettlement plan' },
+  { id: 's3', stage: '3. Appraisal', act: 'Bank reviews technical, economic, financial, institutional and E&S aspects', lead: 'Bank', doc: 'Project Appraisal Document (PAD)' },
+  { id: 's4', stage: '4. Negotiation and Board approval', act: 'Legal agreements negotiated; Board of Executive Directors approves; loan signed and declared effective', lead: 'Borrower and Bank', doc: 'Loan Agreement' },
+  { id: 's5', stage: '5. Implementation and supervision', act: 'Borrower carries out the project; Bank supervises and may restructure', lead: 'Borrower; Bank supervises', doc: 'Implementation Status and Results Report (ISR)' },
+  { id: 's6', stage: '6. Completion and evaluation', act: 'Results assessed; lessons recorded; independent validation', lead: 'Bank, then IEG', doc: 'Implementation Completion and Results Report (ICR)' },
+];
+
+export const TABLE5 = [
+  { id: 'advance', method: 'Advance', how: 'Bank deposits funds in a borrower’s designated account; the borrower pays eligible expenses and documents them later', use: 'Many small and recurring payments' },
+  { id: 'reimb', method: 'Reimbursement', how: 'Borrower pays first from its own funds; the Bank then refunds eligible expenditures', use: 'Expenses the borrower can pre-finance' },
+  { id: 'direct', method: 'Direct payment', how: 'Bank pays a supplier, contractor or consultant directly at the borrower’s request', use: 'Large contract payments' },
+  { id: 'special', method: 'Special commitment', how: 'Bank commits to pay a third party under a letter of credit opened by a commercial bank', use: 'Imported goods and equipment' },
+];
+
+export const TABLE6 = [
+  { id: 'tep-asset', project: 'TEP', activity: 'Asset management system for NPT', position: 'Fully operational; used for investment and maintenance decisions' },
+  { id: 'tep-tariff', project: 'TEP', activity: 'Cost-reflective transmission tariff, IFRS reporting, testing laboratory', position: 'Carried out mainly with NPT/EVN funds' },
+  { id: 'ccsep-psmu', project: 'CCSEP', activity: 'Public Service Management Units in each city', position: 'Established' },
+  { id: 'ccsep-tariff', project: 'CCSEP', activity: 'Wastewater tariff roadmaps, household connection policies', position: 'Approved or issued; implementation varies by city' },
+  { id: 'ccsep-contracts', project: 'CCSEP', activity: 'Performance-based service contracts', position: 'Largely not yet in use as of {ccsep-contracts-check}, except at the Nha Trang treatment plant; all {ccsep-contracts|n} contracts signed and in operation by closing in {ccsep-closing}' },
+];
+
+export const TABLE7 = [
+  { id: 'prep', stage: 'Preparation and appraisal', fin: 'Loan size, instrument and terms agreed; Project Preparation Advance if needed', tech: 'Feasibility, economic analysis, safeguard instruments, results framework', train: 'Assessment of the implementing agency’s capacity' },
+  { id: 'impl', stage: 'Implementation', fin: 'Disbursement against eligible expenditures or results', tech: 'Supervision, ISRs, restructuring when needed', train: 'PMU training in procurement, financial management and safeguards' },
+  { id: 'after', stage: 'Completion and after', fin: 'Loan repayment; savings cancelled', tech: 'ICR and IEG evaluation; lessons for new projects', train: 'Systems and institutions left in place (e.g. TEP’s asset management system)' },
+];

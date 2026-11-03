@@ -41,6 +41,9 @@ function buildFloor2(b: Builder) {
     for (let i = 0; i < 4; i++) ledger(d, [0.1, 0.92 + i * 0.075, -1.4], false, i % 2 ? 'blue' : 'navy', 0.1 * i);
     for (let i = 0; i < 3; i++) ledger(d, [0.2, 0.92 + i * 0.075, 1.3], false, i % 2 ? 'cyan' : 'navy', -0.15 * i);
     scales(d, [0.1, 0.92, 0.1], 0.75);
+    // letter of credit / documents (special commitment)
+    for (let i = 0; i < 4; i++) d.box('paper', [0.32, 0.012, 0.42], [0.35, 0.93 + i * 0.014, -0.65], { rot: [0, 0.1 * i, 0], edges: i === 3 ? 25 : false });
+    d.box('cyan', [0.3, 0.01, 0.06], [0.35, 0.99, -0.5], { edges: false });
   });
   // filing cabinets behind finance desk
   for (let i = 0; i < 4; i++)
@@ -138,6 +141,11 @@ export function Floor2() {
     () => textTexture(['OPERATIONS FLOOR'], { w: 1024, h: 128, bg: '--stone-2', fg: '--wb-navy', size: 60 }),
     [],
   );
+  const ch2Sign = useMemo(
+    () =>
+      textTexture(['CHAPTER 2 · HOW THE IBRD SUPPORTS PROJECT FINANCING'], { w: 2048, h: 192, bg: '--wb-navy', fg: '--page', size: 76, underline: true }),
+    [],
+  );
   const lib = useMemo(() => textTexture(['LIBRARY'], { w: 512, h: 128, bg: '--wb-navy', fg: '--page', size: 64 }), []);
   return (
     <group name="f2">
@@ -145,7 +153,21 @@ export function Floor2() {
       <TexPlane tex={me} position={[12.69, Y + 2.4, -12]} rotation={FACE.west} size={[3.6, 2.2]} />
       <TexPlane tex={sign} position={[0, Y + 7.4, -0.79]} rotation={FACE.north} size={[6, 0.75]} />
       <TexPlane tex={lib} position={[12.0, Y + 5.6, -30]} rotation={FACE.west} size={[2.4, 0.6]} />
-      <SceneAnchors scene="f2-cycle" at={{ table: [0, Y + 0.9, -30] }} />
+      <TexPlane tex={ch2Sign} position={[-3.6, Y + 5.4, -40]} rotation={FACE.north} size={[5.4, 0.52]} />
+      <SceneAnchors scene="f2-ch2-title" at={{ sign: [-3.6, Y + 5.4, -40] }} />
+      <SceneAnchors scene="f2-cycle" at={{ table: [0, Y + 0.9, -30], 'stage-1': [0.0, Y + 0.85, -27.9], 'stage-2': [1.82, Y + 0.85, -28.95], 'stage-3': [1.82, Y + 0.85, -31.05], 'stage-4': [0.0, Y + 0.85, -32.1], 'stage-5': [-1.82, Y + 0.85, -31.05], 'stage-6': [-1.82, Y + 0.85, -28.95] }} />
+      <SceneAnchors
+        scene="f2-disbursement"
+        at={{ desk: [-8.4, Y + 0.95, -42.5], cabinets: [-12.1, Y + 1.0, -43.4], ledgers: [-8.3, Y + 1.1, -43.9], scales: [-8.3, Y + 1.5, -42.4], papers: [-8.05, Y + 0.97, -43.15] }}
+      />
+      <SceneAnchors scene="f2-counterpart" at={{ scales: [-8.3, Y + 1.5, -42.4] }} />
+      <SceneAnchors
+        scene="f2-institutional"
+        at={{ 'tep-asset': [-12.1, Y + 1.0, -43.4], 'tep-tariff': [-8.3, Y + 1.5, -42.4], 'ccsep-psmu': [0, Y + 0.95, -30], 'ccsep-tariff': [-8.3, Y + 1.1, -43.9], 'ccsep-contracts': [7.4, Y + 1.0, -46.6] }}
+      />
+      <SceneAnchors scene="f2-three-forms" at={{ prep: [7.4, Y + 1.0, -46.6], impl: [-8.4, Y + 1.0, -42.5], after: [12.6, Y + 2.4, -12] }} />
+      <SceneAnchors scene="f2-pforr" at={{ table: [0, Y + 0.95, -30] }} />
+      <SceneAnchors scene="f2-package" at={{ table: [0, Y + 0.95, -30], lift: [0, Y + 2.0, -58.2] }} />
       <SceneAnchors scene="f2-ipf" at={{ dossier: [-0.5, Y + 0.95, -29.3] }} />
       <SceneAnchors scene="f2-dpf" at={{ dossier: [0, Y + 0.95, -29.2] }} />
       <SceneAnchors scene="f2-pforr" at={{ dossier: [0.5, Y + 0.95, -29.3] }} />
