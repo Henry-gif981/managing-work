@@ -16,6 +16,7 @@ import { createRoot } from 'react-dom/client';
 import { PARAMS } from './util/params';
 import App from './App';
 import PrintView from './print/PrintView';
+import Demo from './primitives/Demo';
 import { initHashSync } from './state/hash';
 import { installKeys, openPrintPreview } from './state/keys';
 import { startDirector } from './director';
@@ -25,7 +26,9 @@ import { beatCount } from './content';
 import { perf } from './three/refs';
 
 const root = createRoot(document.getElementById('root')!);
-if (PARAMS.print) {
+if (new URLSearchParams(location.search).get('demo') === '1') {
+  root.render(<Demo />);
+} else if (PARAMS.print) {
   window.addEventListener('keydown', (e) => {
     if (e.key.toLowerCase() === 'p' || e.key === 'Escape') openPrintPreview();
   });

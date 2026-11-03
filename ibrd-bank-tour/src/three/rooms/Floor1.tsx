@@ -160,8 +160,8 @@ function buildFloor1(b: Builder) {
     l.box('navy', [0.8, 0.18, 0.06], [0, 0.95, 0.5], { rot: [-0.4, 0, 0] }); // nameplate
   });
 
-  // stamp table (left far) at (-8.5, 0, -43.5)
-  b.at([-8.5, 0, -43.5], 0, (s) => {
+  // stamp table (left, between the column rows z -38 / -44) at (-9.8, 0, -41)
+  b.at([-9.8, 0, -41], Math.PI / 2, (s) => {
     table(s, [0, 0, 0], 2.2, 1.2, 0.85, 0, 'stone2');
     for (let i = 0; i < 4; i++) {
       const x = -0.7 + i * 0.45;
@@ -267,8 +267,8 @@ export function Floor1() {
       <SceneAnchors scene="f1-funds" at={{ vault: [12.4, 2.0, -46.5], counter: [9.4, 1.3, -46.5] }} />
       <SceneAnchors scene="f1-instruments" at={{ ipf: [-9.8, 1.9, -34], dpf: [-9.8, 1.9, -28], pforr: [-9.8, 1.9, -22] }} />
       <SceneAnchors scene="f1-terms" at={{ desk: [8, 0.9, -36.5] }} />
-      <SceneAnchors scene="f1-voting" at={{ stamps: [-8.5, 1.0, -43.7] }} />
-      <SceneAnchors scene="f1-safeguards" at={{ stamps: [-8.5, 1.0, -43.7] }} />
+      <SceneAnchors scene="f1-voting" at={{ stamps: [-9.55, 1.0, -41.2] }} />
+      <SceneAnchors scene="f1-safeguards" at={{ stamps: [-9.55, 1.0, -41.2] }} />
     </group>
   );
 }

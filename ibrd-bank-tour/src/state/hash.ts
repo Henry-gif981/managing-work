@@ -28,6 +28,9 @@ export function initHashSync() {
       history.replaceState(null, '', location.pathname + location.search + h);
     }
   });
+  const s0 = useTour.getState();
+  last = formatHash(s0.index, s0.beat);
+  history.replaceState(null, '', location.pathname + location.search + last);
   window.addEventListener('hashchange', () => {
     const q = parseHash(location.hash);
     const s = useTour.getState();
