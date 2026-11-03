@@ -32,7 +32,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
 
   // ---------------- floor 1 · lobby (introduction) ----------------
   'f1-rationale-1': { pos: [1.2, 2.0, -1.8], target: [5.5, 1.5, -6.4] },
-  'f1-rationale-2': { pos: [5.6, 2.4, -11.2], target: [12.7, 3.0, -8.2] },
+  'f1-rationale-2': { pos: [5.6, 2.4, -11.2], target: [12.7, 3.0, -10.6] },
   'f1-problem': { pos: [-5.4, 2.2, -3.4], target: [-12.7, 2.4, -4.4] },
   'f1-objectives': { pos: [-1.4, 2.3, -4.4], target: [-5.0, 1.2, -11.0] },
   'f1-method': { pos: [-7.4, 2.0, -2.2], target: [-12.7, 2.3, -6.2] },
@@ -47,7 +47,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f1-history-2': { pos: [7.0, 2.0, -33.0], target: [12.5, 2.2, -26.0] },
   'f1-gov': { pos: [-2.6, 3.0, -46.0], target: [-6.5, 2.0, -53.0] },
   'f1-voting': { pos: [-4.0, 2.6, -39.4], target: [-9.8, 0.9, -41.4] },
-  'f1-funds': { pos: [4.4, 2.4, -47.4], target: [10.8, 1.5, -46.4] },
+  'f1-funds': { pos: [4.4, 3.4, -47.4], target: [11.2, 1.7, -46.4] },
   'f1-instruments': { pos: [-1.0, 2.4, -29.0], target: [-10.4, 1.7, -28.6], fov: 55 },
   'f1-terms': { pos: [4.0, 2.0, -31.4], target: [8.0, 0.9, -36.5] },
   'f1-safeguards': { pos: [-4.2, 2.2, -42.8], target: [-9.8, 0.9, -40.6] },
@@ -82,7 +82,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   // ---------------- floor 3 · TEP (left half) ----------------
   'f3-tep-overview': { pos: [-1.0, 23.6, -46.5], target: [-7.0, 21.5, -32.0], fov: 55 },
   'f3-tep-cost': { pos: [-0.4, 22.1, -38.4], target: [-4.0, 20.6, -42.0] },
-  'f3-tep-financing': { pos: [-2.4, 22.3, -46.4], target: [-6.5, 20.8, -41.0] },
+  'f3-tep-financing': { pos: [-0.5, 22.6, -47.5], target: [-5.0, 20.8, -41.5] },
   'f3-tep-impl': { pos: [-0.4, 22.1, -31.6], target: [-4.2, 21.0, -27.5] },
   'f3-tep-outputs': { pos: [1.5, 22.6, -31.5], target: [-2.0, 21.2, -38.5] },
   'f3-tep-outcomes': { pos: [-1.0, 22.5, -32.0], target: [-8.0, 23.0, -25.0] },
@@ -95,7 +95,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f3-ccsep-cities': { pos: [4.0, 23.0, -30.0], target: [12.6, 23.2, -30.0] },
   'f3-ccsep-impl': { pos: [5.0, 22.4, -38.2], target: [10.0, 20.8, -33.5] },
   'f3-ccsep-results': { pos: [2.0, 22.5, -30.2], target: [6.0, 20.9, -25.0] },
-  'f3-ccsep-nhatrang': { pos: [9.0, 22.2, -29.4], target: [12.6, 21.9, -28.8] },
+  'f3-ccsep-nhatrang': { pos: [7.6, 22.4, -31.6], target: [12.6, 22.0, -28.6] },
 
   // ---------------- floor 3 · executive office (evaluation) ----------------
   'f3-eval-achievements': { pos: [0, 22.8, -16.6], target: [0, 21.0, -6.0], fov: 55 },

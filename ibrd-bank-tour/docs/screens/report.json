@@ -1,82 +1,26 @@
 [
   {
-    "i": 1,
-    "id": "ext-facade",
-    "beats": 1,
-    "calls": 44,
-    "tris": 16954,
-    "fps": 1.3081300281246762
-  },
-  {
-    "i": 2,
-    "id": "ext-door",
-    "beats": 0,
-    "calls": 32,
-    "tris": 16840,
-    "fps": 2.0431791868146187
-  },
-  {
-    "i": 3,
-    "id": "f1-rationale-1",
+    "i": 4,
+    "id": "f1-rationale-2",
     "beats": 3,
-    "calls": 30,
-    "tris": 16802,
-    "fps": 1.9780437147663696
+    "calls": 20,
+    "tris": 16686,
+    "fps": 1.6927156801893173
   },
   {
-    "i": 10,
-    "id": "f1-ch1-title",
+    "i": 17,
+    "id": "f1-funds",
     "beats": 3,
-    "calls": 44,
-    "tris": 13378,
-    "fps": 1.6406890894175554
+    "calls": 15,
+    "tris": 12594,
+    "fps": 2.8625954198473282
   },
   {
-    "i": 21,
-    "id": "lift-1-2",
-    "beats": 0,
-    "calls": 68,
-    "tris": 21290,
-    "fps": 1.1776482364717336
-  },
-  {
-    "i": 22,
-    "id": "f2-ch2-title",
+    "i": 46,
+    "id": "f3-tep-financing",
     "beats": 3,
-    "calls": 18,
-    "tris": 7948,
-    "fps": 3.370123852051166
-  },
-  {
-    "i": 48,
-    "id": "f3-tep-outputs",
-    "beats": 3,
-    "calls": 36,
-    "tris": 11508,
-    "fps": 2.4681201151789387
-  },
-  {
-    "i": 54,
-    "id": "f3-ccsep-cities",
-    "beats": 3,
-    "calls": 14,
-    "tris": 10802,
-    "fps": 2.824060999718089
-  },
-  {
-    "i": 62,
-    "id": "lift-down",
-    "beats": 5,
-    "calls": 58,
-    "tris": 13620,
-    "fps": 1.189980365324005
-  },
-  {
-    "i": 64,
-    "id": "ex-thanks",
-    "beats": 1,
-    "calls": 21,
-    "tris": 1892,
-    "fps": 2.5486364794832745
+    "calls": 22,
+    "tris": 11094,
+    "fps": 2.9214139643590147
   }
 ]
