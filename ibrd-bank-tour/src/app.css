@@ -1714,3 +1714,150 @@ html.shot *::after {
 .nt-stats .stat-value {
   font-size: 52px;
 }
+/* ---- conclusion glass panel (lift-down) ---- */
+.glass-panel {
+  position: absolute;
+  left: 330px;
+  right: 230px;
+  top: 98px;
+  bottom: 84px;
+  display: flex;
+  align-items: center;
+}
+.glass-panel .card.glass {
+  width: 100%;
+  font-size: 26px;
+  line-height: 1.42;
+  background: rgba(234, 244, 250, 0.86);
+}
+.glass-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.glass-floor {
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--wb-navy);
+  color: var(--wb-cyan);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 54px;
+  display: grid;
+  place-items: center;
+}
+.glass-head .h2 {
+  margin-bottom: 6px;
+}
+.glass-cols .rich {
+  column-count: 2;
+  column-gap: 40px;
+}
+.glass-cols .rich p {
+  break-inside: avoid-column;
+}
+.glass-steps {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+}
+.glass-steps li {
+  flex: 1;
+  font-size: 17px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--muted);
+}
+.glass-steps li b {
+  color: var(--wb-navy);
+}
+.glass-steps li.on {
+  background: var(--wb-navy);
+  color: var(--page);
+}
+.glass-steps li.on b {
+  color: var(--wb-cyan);
+}
+.glass-steps li.done {
+  opacity: 0.7;
+}
+/* ---- reference wall ---- */
+.refwall {
+  width: 1000px;
+}
+.refwall .card {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+}
+.refwall-search {
+  padding: 10px 14px;
+  font-size: 22px;
+  border: 2px solid var(--surface-2);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.refwall-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px 0 0;
+  overflow-y: auto;
+  min-height: 0;
+  flex: 1;
+  font-size: 20px;
+  line-height: 1.35;
+}
+.refwall-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid var(--surface-2);
+}
+.refwall-list button {
+  border: 0;
+  background: none;
+  color: var(--wb-blue);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+/* ---- thanks ---- */
+.thanks {
+  position: absolute;
+  left: 50%;
+  bottom: 96px;
+  transform: translateX(-50%);
+  width: 980px;
+}
+.thanks .card {
+  text-align: center;
+}
+.thanks-h {
+  font-size: 88px;
+}
+.thanks-h::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+.thanks-p {
+  margin: 0 0 12px;
+  font-size: 28px;
+}
+.thanks-members {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 24px;
+}
+.thanks-members span {
+  color: var(--wb-cyan);
+  margin-left: 6px;
+}

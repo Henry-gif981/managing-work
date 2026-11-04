@@ -288,4 +288,48 @@ export const NOTES: Record<string, SceneNotes> = {
     vi: 'Nha Trang: tái định cư, khiếu nại và kết luận của Ban Thanh tra.',
     targetSeconds: 240,
   },
+  // ---------------- Chapter 3 · evaluation ----------------
+  'f3-eval-achievements': {
+    en: 'Across both projects, the IBRD mobilized long-term money and counterpart resources, raised technical standards such as smart-grid substations and sewer networks, and raised management standards through Bank procurement, financial and safeguard rules.',
+    vi: 'Thành tựu: huy động vốn, nâng chuẩn kỹ thuật và quản lý.',
+    targetSeconds: 130,
+  },
+  'f3-eval-limitations': {
+    en: 'The limits were slow disbursement, double procedures, counterpart funding as the binding constraint, and gaps between Bank safeguards and domestic land rules, most visible in Nha Trang where only 29 percent of households had been compensated at closing.',
+    vi: 'Hạn chế: giải ngân chậm, thủ tục phức tạp, vốn đối ứng, khác biệt chính sách an toàn.',
+    targetSeconds: 130,
+  },
+  'f3-recs-1': {
+    en: 'Because Vietnam will now borrow on IBRD terms, the paper recommends preparing projects fully before approval, securing counterpart funds and checking provincial debt capacity at the start, and aligning compensation with ESS5 from preparation.',
+    vi: 'Khuyến nghị 1 – 3.',
+    targetSeconds: 120,
+  },
+  'f3-recs-2': {
+    en: 'It also recommends stable professional PMUs trained through the Open Learning Campus, shorter domestic procedures under Decree 242/2025, and a strategic choice of instruments, including PforR, DPF and Reimbursable Advisory Services.',
+    vi: 'Khuyến nghị 4 – 6, rồi đi thang máy xuống.',
+    targetSeconds: 95,
+  },
+  // ---------------- Conclusion + exit ----------------
+  'lift-down': {
+    en: 'As the lift goes down, we summarize: three pillars working as one package, two projects showing value and limits, and the binding constraints on the domestic side. We close with the paper’s significance, its limitations and directions for further research.',
+    vi: 'Kết luận trong thang máy: mỗi tầng một phần.',
+    targetSeconds: 170,
+    beats: [
+      { vi: 'Tầng 3: ba trụ cột hỗ trợ.' },
+      { vi: 'Tầng 2: đánh giá lại tác động TEP, CCSEP.' },
+      { vi: 'Tầng 1: ý nghĩa của đề tài.' },
+      { vi: 'Tầng G: hạn chế nghiên cứu.' },
+      { vi: 'Cửa mở: hướng nghiên cứu tiếp theo.' },
+    ],
+  },
+  'ex-sources': {
+    en: 'All 64 references are on this wall and searchable; any citation number in the tour opens the same list.',
+    vi: 'Giới thiệu danh mục tài liệu tham khảo.',
+    targetSeconds: 25,
+  },
+  'ex-thanks': {
+    en: 'Thank you to our lecturer and to everyone listening. We are happy to take your questions.',
+    vi: 'Cảm ơn cô và các bạn, mời đặt câu hỏi.',
+    targetSeconds: 25,
+  },
 };

@@ -26,7 +26,7 @@ const row = (id: string, label: string, body: string) => ({
   source: 'Section 3.3.1 · Table 17 · p. 48',
   centre: table,
   focus: [`t17-${id}`],
-  callouts: [{ from: `#t17-${id}-act`, to: a('tank'), label }],
+  callouts: [{ from: `#t17-${id}-act`, to: a('map'), label }],
   body,
 });
 const p = scene('f3-ccsep-overview', [

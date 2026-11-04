@@ -57,4 +57,11 @@ export const OBJECTIVES: Record<string, string> = {
   'f3-ccsep-impl': 'Money was available but counterpart funds, resettlement and PMUs slowed it.',
   'f3-ccsep-results': 'Most targets met, IEG rated it satisfactory, but Nha Trang lagged.',
   'f3-ccsep-nhatrang': 'Nha Trang: compensation disputes, cancelled packages and an Inspection Panel case.',
+  'f3-eval-achievements': 'IBRD support mobilized long-term finance and raised technical and management standards.',
+  'f3-eval-limitations': 'Slow disbursement, double procedures, counterpart funds and land rules limited results.',
+  'f3-recs-1': 'Prepare fully, fund counterpart shares at the start, align compensation with ESS5.',
+  'f3-recs-2': 'Stable PMUs, shorter procedures under Decree 242/2025, strategic instrument choice.',
+  'lift-down': 'Conclusion: one package, binding constraints on the domestic side.',
+  'ex-sources': 'All 64 sources of the paper, searchable.',
+  'ex-thanks': 'Thank you: Group 6, questions welcome.',
 };

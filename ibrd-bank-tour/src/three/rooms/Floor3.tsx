@@ -378,7 +378,7 @@ export function Floor3() {
       <SceneAnchors scene="f3-tep-gap" at={{ cash: [-3.9, Y + 0.9, -42.1], substation: [-9.6, Y + 1.2, -41.2], gauge: [-12.6, Y + 2.4, -32.5] }} />
       <SceneAnchors scene="f3-tep-assess" at={{ transformer: [-6, Y + 1.6, -36.5], pylons: [-8.4, Y + 4, -24.5], cash: [-3.9, Y + 0.9, -42.1], gauge: [-12.6, Y + 2.4, -32.5], ccsep: [6.2, Y + 1.2, -40.6] }} />
       <NhaTrangPin />
-      <SceneAnchors scene="f3-ccsep-overview" at={{ ...PINS, pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5], houses: [10.5, Y + 0.8, -21.8] }} />
+      <SceneAnchors scene="f3-ccsep-overview" at={{ ...PINS, map: [MAP.x - 0.1, MAP.y, MAP.z], pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5], houses: [10.5, Y + 0.8, -21.8] }} />
       <SceneAnchors scene="f3-ccsep-structure" at={{ pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5], bridge: [6, Y + 1.1, -24.8], houses: [10.5, Y + 0.8, -21.8], 'nha-trang': PINS['nha-trang'] }} />
       <SceneAnchors scene="f3-ccsep-cities" at={PINS} />
       <SceneAnchors scene="f3-ccsep-impl" at={{ tank: [10, Y + 1.4, -33.5], bridge: [6, Y + 1.1, -24.8], 'nha-trang': PINS['nha-trang'], 'phan-rang': PINS['phan-rang'] }} />

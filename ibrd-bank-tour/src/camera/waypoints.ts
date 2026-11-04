@@ -142,6 +142,7 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f3-ccsep-nhatrang': { pos: [7.6, 22.4, -31.6], target: [12.6, 22.0, -28.6] },
 
   // ---- per-prop cameras for CCSEP table/chart beats (prop in the right band)
+  'f3-propR-map': { pos: [5.65, 22.77, -29.15], target: [11.86, 23.06, -34.19] },
   'f3-propR-pipes': { pos: [8.82, 23.65, -46.02], target: [9.67, 21.81, -38.28] },
   'f3-propR-tank': { pos: [4.85, 23.02, -37.12], target: [12.75, 21.82, -36.7] },
   'f3-propR-bridge': { pos: [7.02, 23.39, -30.82], target: [10, 21.71, -23.58] },
