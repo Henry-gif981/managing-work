@@ -3,7 +3,7 @@
 An interactive 3D "bank tour" for **Group 6 (NEU)**, built around the paper *The IBRD and its development project financing activities in Vietnam*.
 You walk in through the front door. Floor 1 holds the Introduction and Chapter 1, Floor 2 holds Chapter 2, and Floor 3 holds Chapter 3, with TEP on the left, CCSEP on the right and the executive office at the far end. The Conclusion plays as the lift rides down, and the Thank-You is at the exit door.
 
-**Status:** the Introduction, Chapter 1 (Floor 1) and Chapter 2 (Floor 2) hold the full content of the paper. Chapter 3, the Conclusion and the exit still show placeholder content ("TBD"). See `docs/coverage-ch1-ch2.md` and `docs/paper-inconsistencies.md`.
+**Status:** all 64 scenes carry the full content of the paper: Introduction and Chapter 1 (Floor 1), Chapter 2 (Floor 2), Chapter 3 (Floor 3: context at the entrance, TEP on the left half, CCSEP on the right half, evaluation in the executive office), the Conclusion on the lift ride down, and the exit (reference wall and thank-you). Coverage audits: `docs/coverage-ch1-ch2.md` and `docs/coverage-ch3-conclusion.md`. Inconsistencies: `docs/paper-inconsistencies.md`.
 
 ## Run
 
@@ -134,6 +134,39 @@ src/lite/LiteBackdrop    static SVG per area (Lite + Print)     src/print/PrintV
 - **HUD sizes:** HUD text is smaller (15–20 px at design size) than the 28 / 26 / 24 px minimums, which apply to slide content. The HUD stays inside the reserved margins (top 84, bottom 72, left 72, right 48) and content zones start inside them.
 - **Titles:** scene titles are readable versions of the TOC headings, and objectives are "TBD" until the content arrives.
 
+## Retuning colours
+
+Every colour is a CSS variable in `src/tokens.css`. The DOM uses them directly, and the 3D materials read the same variables through `src/theme.ts`, so changing a value retunes both.
+- `--wb-navy`, `--wb-blue` and `--wb-cyan` are the main palette, and `--surface` / `--surface-2` are the card backgrounds.
+- `--warn`, `--bad` and `--good` carry meaning. The Nha Trang pin uses `--bad`.
+- `--stone-*`, `--steel`, `--marble` and `--ground` are the 3D materials.
+- `--accent-tep` / `--accent-ccsep` are the half-room accent lights, and `--spill` is the door light and daylight.
+- Chart series follow `--series-1..4` (navy, blue, cyan, warn).
+
+## Print / PDF
+
+Open `?print=1` (or press **P**). It shows a contents page, then every beat of every scene as a static 1920×1080 page, then the reference pages (14 per page). There is no WebGL and no HUD.
+- Each page has a per-floor SVG background, its header names the scene, section and the beat's source tag, and its footer reads "Group 6 – IBRD in Vietnam | n/N".
+- On table and chart beats, each callout is drawn as a leader from the focused row or bar to a labelled marker naming the 3D prop.
+- `npm run export-pdf` writes `dist/ibrd-bank-tour.pdf` and checks that the PDF page count equals 1 + beats + reference pages.
+
+## Decisions for the content of Floor 3, the Conclusion and the exit
+
+- **Room layout:** TEP sits on the left half and CCSEP on the right. TEP tables and charts are centred with the prop band on the **left**; CCSEP tables use `band: 'right'` (layout `.k-centre-r`), so their props sit in the right band. Either way the camera turns toward the half being discussed.
+- **Prop cameras:** a table or chart beat without a dedicated waypoint uses `<floor>-prop[R]-<anchor>`. This is a pose solved by `scripts/frame-props.mjs`, so the beat's first callout always ends on a visible prop.
+- **Anchors:**
+  - TEP outputs use `anchor:f3-tep-outputs:new-lines`, `:rehab-lines`, `:transformer-capacity`, `:smartgrid-500kv` and `:smartgrid-220kv`.
+  - The CCSEP city callouts point at the four map pins.
+  - The Nha Trang pin is its own mesh and turns red (`--bad`, enlarged) only in `f3-ccsep-nhatrang`.
+- **Figures from images:**
+  - Values that appear only as data labels in the paper's figures (Figure 4: 2016/2017/2018/2020; Figure 7: city segments) were read from the page images and marked as such in `facts.ts`.
+  - Figure 8's adjusted bars are drawn only where the text states a value.
+  - Figure 5 (a pie in the paper) is drawn as a stacked bar.
+- **Fact formatting:** `{id|2}` shows a fact with 2 decimals, matching the paper's tables (625.00, 500.00).
+- **Conclusion:** the brief asks for exactly 5 lift-down beats (display 3 → 2 → 1 → G → G doors open), one per part of the Conclusion. Parts 1.2 and 3 run past ~90 words, so the glass panel switches to two columns for them rather than adding beats.
+- **TEP assessment:** the four criteria (Relevance, Effectiveness, Efficiency, Sustainability) are shown as four doors holding the paper's remarks. The only ratings shown are the PPAR's overall ones, because the paper gives none per criterion (a `<Note>` says so).
+- **Exit:** `ex-sources` is a searchable, scrollable wall of all 64 references (the same data as the R panel); the print version points to the reference pages. `ex-thanks` uses the cover data, and the exit door opens on its beat.
+
 ## Decisions for the content of Floors 1-2
 
 - **Callouts and centring:** to give every table beat a callout to a *visible* prop, tables are centred in the area to the right of a 400 px prop band, not on the exact screen centre. Table beats switch to a dedicated camera.
@@ -157,6 +190,12 @@ src/lite/LiteBackdrop    static SVG per area (Lite + Print)     src/print/PrintV
 - CSS for the content kit lives in `src/app.css` (`.k-*`, plus the lanes, tiers and proportion-bar styles).
 - `scripts/audit-content.ts` and `scripts/frame-props.mjs` are new.
 - No engine bugs needed fixing for this work.
+- Added for Chapter 3:
+  - `Chart` takes an optional `min` (line charts; Figure 4 starts at 2.0% as in the paper).
+  - The `kit` slide has `band` and automatic per-prop cameras.
+  - `{id|2}` fixed-decimal templates.
+  - SDR units in `formatFact`.
+  - The print view has a contents page, reference pages and static callouts.
 
 ## Known limitations
 

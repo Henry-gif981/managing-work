@@ -111,3 +111,82 @@ html.print-mode #root {
   break-after: auto;
   page-break-after: auto;
 }
+.print-callouts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.print-callouts .print-prop {
+  font: italic 400 18px var(--font-caption);
+  fill: var(--muted);
+}
+.toc-page,
+.refs-page {
+  background: var(--page);
+}
+.toc-inner,
+.refs-inner {
+  position: absolute;
+  left: 96px;
+  right: 72px;
+  top: 60px;
+  bottom: 80px;
+}
+.toc-title {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+.toc-cols {
+  column-count: 3;
+  column-gap: 40px;
+}
+.toc-seg {
+  break-inside: avoid;
+  margin-bottom: 10px;
+}
+.toc-seg h4 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wb-blue);
+}
+.toc-seg ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.toc-seg li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 1.32;
+  border-bottom: 1px dotted var(--surface-2);
+}
+.toc-seg li b {
+  color: var(--wb-navy);
+}
+.refs-print {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 21px;
+  line-height: 1.32;
+}
+.refs-print li {
+  display: flex;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--surface-2);
+}
+.refs-print b {
+  color: var(--wb-blue);
+  min-width: 52px;
+}
+.refs-url {
+  font-family: var(--font-caption);
+  font-style: italic;
+  color: var(--muted);
+  word-break: break-all;
+}

@@ -1,19 +1,29 @@
 import type { Beat } from './types';
-import { ScenePanel, Card, Title, Caption } from '../primitives/ScenePanel';
+import { Card } from '../primitives/ScenePanel';
+import { COVER } from '../data/cover';
 
-export const beats: Beat[] = [{ label: 'Doors open to daylight' }];
+export const beats: Beat[] = [{ label: 'Thank you · the door opens to daylight', source: 'Cover page · p. 1' }];
 
 export default function View() {
   return (
-    <ScenePanel
-      bottom={
-        <Card tone="dark">
-          <Title level={1}>Thank you</Title>
-          <Caption>
-            <span className="tbd">TBD</span> Group 6 · Questions welcome
-          </Caption>
-        </Card>
-      }
-    />
+    <div className="thanks">
+      <Card tone="dark">
+        <div className="kicker">{COVER.group} · {COVER.className}</div>
+        <div className="h1 thanks-h">Thank you</div>
+        <p className="thanks-p">
+          Thank you to our lecturer, <b>{COVER.lecturer}</b>, and to everyone listening.
+        </p>
+        <ul className="thanks-members">
+          {COVER.members.map((m) => (
+            <li key={m.id}>
+              {m.name} <span>{m.id}</span>
+            </li>
+          ))}
+        </ul>
+        <div className="k-source">
+          {COVER.university} – {COVER.school} · {COVER.place}
+        </div>
+      </Card>
+    </div>
   );
 }
