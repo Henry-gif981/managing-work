@@ -1717,16 +1717,22 @@ html.shot *::after {
 /* ---- conclusion glass panel (lift-down) ---- */
 .glass-panel {
   position: absolute;
-  left: 330px;
-  right: 230px;
-  top: 98px;
-  bottom: 84px;
+  left: 250px;
+  right: 150px;
+  top: 250px;
+  bottom: 80px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+}
+.glass-panel .h2 {
+  font-size: 36px;
+}
+.glass-panel .card.glass {
+  padding: 22px 30px;
 }
 .glass-panel .card.glass {
   width: 100%;
-  font-size: 26px;
+  font-size: 25px;
   line-height: 1.42;
   background: rgba(234, 244, 250, 0.86);
 }

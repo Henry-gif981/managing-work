@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SCENES, SEGMENTS } from '../scenes';
 import { CONTENT } from '../content';
 import { FocusContext } from '../primitives/focus';
@@ -34,7 +34,14 @@ const pretty = (anchor: string) => anchor.split(':').pop()!.replace(/-/g, ' ');
  */
 function PrintCallouts({ callouts, pageRef }: { callouts: CalloutSpec[]; pageRef: React.RefObject<HTMLElement | null> }) {
   const [geo, setGeo] = useState<{ d: string; mx: number; my: number; label: string; right: boolean }[]>([]);
-  useLayoutEffect(() => {
+  useEffect(() => {
+    // measure after the page ref is attached and fonts have laid out the text
+    let raf = 0;
+    const run = () => measure();
+    raf = requestAnimationFrame(() => (document.fonts?.ready ?? Promise.resolve()).then(run));
+    return () => cancelAnimationFrame(raf);
+  }, [callouts, pageRef]);
+  function measure() {
     const page = pageRef.current;
     if (!page) return;
     const centre = page.querySelector('.k-centre');
@@ -55,7 +62,7 @@ function PrintCallouts({ callouts, pageRef }: { callouts: CalloutSpec[]; pageRef
       out.push({ d: `M${x0},${y0} C${cx},${y0} ${cx},${my} ${mx},${my}`, mx, my, label: c.label ?? pretty(c.to), right });
     });
     setGeo(out);
-  }, [callouts, pageRef]);
+  }
   if (!geo.length) return null;
   return (
     <svg className="callouts print-callouts" width={1920} height={1080} viewBox="0 0 1920 1080">
@@ -183,7 +190,7 @@ export default function PrintView() {
     fit();
     window.addEventListener('resize', fit);
     // signal for export-pdf / tests once fonts are ready
-    document.fonts?.ready.then(() => Object.assign(window, { __printReady: total, __printBeats: beatsCount }));
+    document.fonts?.ready.then(() => setTimeout(() => Object.assign(window, { __printReady: total, __printBeats: beatsCount }), 500));
     return () => window.removeEventListener('resize', fit);
   }, [total, beatsCount]);
   return (

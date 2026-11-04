@@ -42,31 +42,31 @@ Generated from `src/scenes.ts` by `npm run docs:scenes`. Beats are computed from
 | 36 | `f2-three-forms` | room | 2 | Floor 2 · Chapter 2 | Section 2.4 |  | 200 | ? |
 | 37 | `f2-package` | room | 2 | Floor 2 · Chapter 2 | Section 2.4 |  | 60 | ? |
 | 38 | `lift-2-3` | lift | 2 | Floor 2 · Chapter 2 | — |  | 10 | 0 |
-| 39 | `f3-ch3-title` | room | 3 | Floor 3 · Context | Chapter 3 |  | 60 | 3 |
-| 40 | `f3-1993` | room | 3 | Floor 3 · Context | Section 3.1.1 | yes | 60 | 3 |
-| 41 | `f3-ida-graduation` | room | 3 | Floor 3 · Context | Section 3.1.2 |  | 60 | 3 |
-| 42 | `f3-sahep` | room | 3 | Floor 3 · Context | Section 3.1.3 |  | 60 | 3 |
-| 43 | `f3-legal` | room | 3 | Floor 3 · Context | Section 3.1.4 | yes | 60 | 3 |
-| 44 | `f3-tep-overview` | room | 3 | Floor 3 · TEP | Section 3.2.1 |  | 60 | 3 |
-| 45 | `f3-tep-cost` | room | 3 | Floor 3 · TEP | Section 3.2.2 |  | 60 | 3 |
-| 46 | `f3-tep-financing` | room | 3 | Floor 3 · TEP | Section 3.2.2 |  | 60 | 3 |
-| 47 | `f3-tep-impl` | room | 3 | Floor 3 · TEP | Section 3.2.3 |  | 60 | 3 |
-| 48 | `f3-tep-outputs` | room | 3 | Floor 3 · TEP | Section 3.2.4 |  | 60 | 3 |
-| 49 | `f3-tep-outcomes` | room | 3 | Floor 3 · TEP | Section 3.2.4 |  | 60 | 3 |
-| 50 | `f3-tep-gap` | room | 3 | Floor 3 · TEP | Section 3.2.5 |  | 60 | 3 |
-| 51 | `f3-tep-assess` | room | 3 | Floor 3 · TEP | Section 3.2.6 |  | 60 | 3 |
-| 52 | `f3-ccsep-overview` | room | 3 | Floor 3 · CCSEP | Section 3.3.1 |  | 60 | 3 |
-| 53 | `f3-ccsep-structure` | room | 3 | Floor 3 · CCSEP | Section 3.3.2 |  | 60 | 3 |
-| 54 | `f3-ccsep-cities` | room | 3 | Floor 3 · CCSEP | Section 3.3.2 | yes | 60 | 3 |
-| 55 | `f3-ccsep-impl` | room | 3 | Floor 3 · CCSEP | Section 3.3.3 |  | 60 | 3 |
-| 56 | `f3-ccsep-results` | room | 3 | Floor 3 · CCSEP | Section 3.3.4 |  | 60 | 3 |
-| 57 | `f3-ccsep-nhatrang` | room | 3 | Floor 3 · CCSEP | Section 3.3.4 |  | 60 | 3 |
-| 58 | `f3-eval-achievements` | room | 3 | Evaluation | Section 3.4.1 |  | 60 | 3 |
-| 59 | `f3-eval-limitations` | room | 3 | Evaluation | Section 3.4.2 |  | 60 | 3 |
-| 60 | `f3-recs-1` | room | 3 | Evaluation | Section 3.4.3 |  | 60 | 3 |
-| 61 | `f3-recs-2` | room | 3 | Evaluation | Section 3.4.3 |  | 60 | 3 |
-| 62 | `lift-down` | lift | 3 | Conclusion | Conclusion 1–4 |  | 90 | 5 |
-| 63 | `ex-sources` | exit | G | Exit | References |  | 30 | 3 |
-| 64 | `ex-thanks` | exit | G | Exit | — |  | 20 | 1 |
+| 39 | `f3-ch3-title` | room | 3 | Floor 3 · Context | Chapter 3 |  | 55 | ? |
+| 40 | `f3-1993` | room | 3 | Floor 3 · Context | Section 3.1.1 | yes | 60 | ? |
+| 41 | `f3-ida-graduation` | room | 3 | Floor 3 · Context | Section 3.1.2 |  | 120 | ? |
+| 42 | `f3-sahep` | room | 3 | Floor 3 · Context | Section 3.1.3 |  | 230 | ? |
+| 43 | `f3-legal` | room | 3 | Floor 3 · Context | Section 3.1.4 | yes | 290 | ? |
+| 44 | `f3-tep-overview` | room | 3 | Floor 3 · TEP | Section 3.2.1 |  | 240 | ? |
+| 45 | `f3-tep-cost` | room | 3 | Floor 3 · TEP | Section 3.2.2 |  | 330 | ? |
+| 46 | `f3-tep-financing` | room | 3 | Floor 3 · TEP | Section 3.2.2 |  | 250 | ? |
+| 47 | `f3-tep-impl` | room | 3 | Floor 3 · TEP | Section 3.2.3 |  | 270 | ? |
+| 48 | `f3-tep-outputs` | room | 3 | Floor 3 · TEP | Section 3.2.4 |  | 210 | ? |
+| 49 | `f3-tep-outcomes` | room | 3 | Floor 3 · TEP | Section 3.2.4 |  | 300 | ? |
+| 50 | `f3-tep-gap` | room | 3 | Floor 3 · TEP | Section 3.2.5 |  | 360 | ? |
+| 51 | `f3-tep-assess` | room | 3 | Floor 3 · TEP | Section 3.2.6 |  | 270 | ? |
+| 52 | `f3-ccsep-overview` | room | 3 | Floor 3 · CCSEP | Section 3.3.1 |  | 270 | ? |
+| 53 | `f3-ccsep-structure` | room | 3 | Floor 3 · CCSEP | Section 3.3.2 |  | 480 | ? |
+| 54 | `f3-ccsep-cities` | room | 3 | Floor 3 · CCSEP | Section 3.3.2 | yes | 420 | ? |
+| 55 | `f3-ccsep-impl` | room | 3 | Floor 3 · CCSEP | Section 3.3.3 |  | 390 | ? |
+| 56 | `f3-ccsep-results` | room | 3 | Floor 3 · CCSEP | Section 3.3.4 |  | 390 | ? |
+| 57 | `f3-ccsep-nhatrang` | room | 3 | Floor 3 · CCSEP | Section 3.3.4 |  | 240 | ? |
+| 58 | `f3-eval-achievements` | room | 3 | Evaluation | Section 3.4.1 |  | 130 | ? |
+| 59 | `f3-eval-limitations` | room | 3 | Evaluation | Section 3.4.2 |  | 130 | ? |
+| 60 | `f3-recs-1` | room | 3 | Evaluation | Section 3.4.3 |  | 120 | ? |
+| 61 | `f3-recs-2` | room | 3 | Evaluation | Section 3.4.3 |  | 95 | ? |
+| 62 | `lift-down` | lift | 3 | Conclusion | Conclusion 1–4 |  | 170 | ? |
+| 63 | `ex-sources` | exit | G | Exit | References |  | 25 | 1 |
+| 64 | `ex-thanks` | exit | G | Exit | — |  | 25 | 1 |
 
-Full tour ≈ 93 min (5603 s) · core path ≈ 78 min (4688 s).
+Full tour ≈ 166 min (9953 s) · core path ≈ 141 min (8448 s).
