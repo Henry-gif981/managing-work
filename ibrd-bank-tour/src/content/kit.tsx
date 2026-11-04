@@ -103,12 +103,19 @@ function SourceTag({ s }: { s: string }) {
 export function scene(sceneId: string, slides: Slide[]) {
   // table / chart beats use the scene's "-table" waypoint when it exists (props framed beside the table)
   const tableCam = WAYPOINTS[`${sceneId}-table`] ? `${sceneId}-table` : undefined;
-  const beats: Beat[] = slides.map(({ label, focus, callouts, camera, source, title, layout }) => ({
-    label: label ?? title,
-    focus,
-    callouts,
-    camera: camera ?? (layout === 'centre' ? tableCam : undefined),
-    source,
+  // otherwise: a per-prop waypoint "<floor>-prop[R]-<anchor name>" framing the prop of the beat's first callout
+  const floor = sceneId.split('-')[0];
+  const propCam = (sl: Slide) => {
+    const name = sl.callouts?.[0]?.to.split(':').pop();
+    const id = name && `${floor}-prop${sl.band === 'right' ? 'R' : ''}-${name}`;
+    return id && WAYPOINTS[id] ? id : undefined;
+  };
+  const beats: Beat[] = slides.map((sl) => ({
+    label: sl.label ?? sl.title,
+    focus: sl.focus,
+    callouts: sl.callouts,
+    camera: sl.camera ?? (sl.layout === 'centre' ? tableCam ?? propCam(sl) : undefined),
+    source: sl.source,
   }));
   function View({ beat }: SceneViewProps) {
     const s = sceneById(sceneId)!;

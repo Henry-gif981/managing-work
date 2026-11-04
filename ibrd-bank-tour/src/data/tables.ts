@@ -213,3 +213,23 @@ export const RECS = [
   'Streamline domestic procedures',
   'Choose instruments strategically',
 ];
+
+/** Figures rebuilt as SVG: every plotted value is a fact id (checked against the tables by check-facts). */
+export const FIGURES = {
+  /** Figure 1 (p. 38): appraisal vs actual, IBRD + borrower */
+  fig1: { categories: ['Appraisal financing', 'Actual expenditure'], ibrd: ['tep-ibrd', 'tep-ibrd-disb'], borrower: ['tep-counterpart', 'tep-counterpart-final'], totals: ['tep-total', 'tep-actual-total'] },
+  /** Figure 2 (p. 38): component expenditure, fee excluded */
+  fig2: { categories: ['Transmission infrastructure', 'Smart-grid network', 'Capacity building'], appraisal: ['tep-c1-app', 'tep-c2-app', 'tep-c3-app'], actual: ['tep-c1-act', 'tep-c2-act', 'tep-c3-act'] },
+  /** Figure 3 (p. 41): achievement vs target (%) */
+  fig3: { categories: TABLE14.map((r) => r.ind), values: TABLE14.map((r) => r.pct) },
+  /** Figure 4 (p. 43): transmission loss ratio (%) */
+  fig4: { categories: ['2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'], values: ['loss-2015', 'loss-2016', 'loss-2017', 'loss-2018', 'loss-2019', 'loss-2020', 'loss-2021', 'loss-2022'] },
+  /** Figure 5 (p. 49): CCSEP financing structure at appraisal */
+  fig5: { parts: ['ccsep-ibrd', 'ccsep-ida', 'ccsep-cp'], shares: ['ccsep-ibrd-pct', 'ccsep-ida-pct', 'ccsep-cp-pct'], total: 'ccsep-total' },
+  /** Figure 6 (p. 50): on-granted share of each source (rest on-lent) */
+  fig6: { categories: ['IBRD loan (all four cities)', 'IDA credit – Dong Hoi', 'IDA credit – Phan Rang', 'IDA credit – Quy Nhon', 'IDA credit – Nha Trang'], ongrant: [null, 'ongrant-dh', 'ongrant-pr', 'ongrant-qn', 'ongrant-nt'] as (string | null)[] },
+  /** Figure 7 (p. 52): sources by city */
+  fig7: FIG7,
+  /** Figure 8 (p. 54): total funding by city, plan vs adjusted. Adjusted values are stated in the text only for Quy Nhon and Phan Rang-Thap Cham. */
+  fig8: { cities: ['Dong Hoi', 'Quy Nhon', 'Nha Trang', 'Phan Rang-Thap Cham'], plan: ['city-dh', 'city-qn', 'city-nt', 'city-pr'], adjusted: [null, 'city-qn-adj', null, 'city-pr-adj'] as (string | null)[] },
+};

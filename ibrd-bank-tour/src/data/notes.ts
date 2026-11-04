@@ -216,4 +216,76 @@ export const NOTES: Record<string, SceneNotes> = {
     vi: 'Khung pháp lý ODA theo thời gian, đọc bảng 9.',
     targetSeconds: 290,
   },
+  // ---------------- Chapter 3 · TEP ----------------
+  'f3-tep-overview': {
+    en: 'TEP, loan IBRD-84170, was approved on 7 August 2014, became effective in February 2015 and closed in December 2021 after a two-year extension. NPT implemented it through three regional boards, and the planned cost was 731.25 million dollars, including a 500 million IBRD loan.',
+    vi: 'Tổng quan TEP và bảng 10.',
+    targetSeconds: 240,
+  },
+  'f3-tep-cost': {
+    en: 'Table 11 shows every component cost less than planned: infrastructure 74.32 percent, smart grid 57.51 and capacity building 22.96, so the project cost 70.77 percent of its budget. Figure 2 shows the same gap bar by bar.',
+    vi: 'Bảng 11 và biểu đồ 2: chi phí thực tế thấp hơn dự toán.',
+    targetSeconds: 330,
+  },
+  'f3-tep-financing': {
+    en: 'Of the 500 million committed, the IBRD disbursed 318.53 million, 63.7 percent: 289.03 for infrastructure, 28.01 for smart grid, 0.24 for capacity building and the 1.25 fee. Capacity building was almost all paid by NPT.',
+    vi: 'Bảng 12, biểu đồ 1: cam kết và giải ngân IBRD.',
+    targetSeconds: 250,
+  },
+  'f3-tep-impl': {
+    en: 'Capacity building planned four strands, but the IBRD funded mainly the asset management system; NPT paid for tariff, IFRS and laboratory work. Boards gained skills, though the paper refuses to invent trainee numbers, and smart-grid approval took about four years.',
+    vi: 'Bảng 13: hệ thống thể chế và số hoá.',
+    targetSeconds: 270,
+  },
+  'f3-tep-outputs': {
+    en: 'TEP beat most output targets: 981 km of new lines against 920, 261 km rehabilitated against 120, 4,263 MW against 3,950, all five 500-kV substations and ten of eleven 220-kV ones. Each bar points to its piece of equipment in the room.',
+    vi: 'Bảng 14 và biểu đồ 3, chỉ từng thanh vào mô hình.',
+    targetSeconds: 210,
+  },
+  'f3-tep-outcomes': {
+    en: 'O&M cost per MWh fell from 0.87 to 0.67 dollars and unserved energy from 4,875 to 817 MWh, but transmission losses rose again to 2.54 percent in 2022. The re-estimated EIRR is 52.6 percent, a model result, not a cash return.',
+    vi: 'Bảng 15, biểu đồ 4 và EIRR; nhấn mạnh chỉ số toàn hệ thống.',
+    targetSeconds: 300,
+  },
+  'f3-tep-gap': {
+    en: 'The IBRD disbursed 181.47 million less than committed, 36.3 percent, and total cost was 213.72 million below appraisal, partly from lower prices and competition. IEG’s 160 million of cancelled savings is a different accounting concept.',
+    vi: 'Bảng 16: khoảng cách cam kết – giải ngân, chậm trễ, tái định cư.',
+    targetSeconds: 360,
+  },
+  'f3-tep-assess': {
+    en: 'TEP combined capital investment, technology and institutional work, with strong outputs but a long smart-grid preparation and a large undisbursed balance. Its PPAR rated the outcome highly satisfactory; the lessons are to look at disbursed money and not to over-attribute system results.',
+    vi: 'Bốn tiêu chí đánh giá TEP và ba kết luận.',
+    targetSeconds: 270,
+  },
+  // ---------------- Chapter 3 · CCSEP ----------------
+  'f3-ccsep-overview': {
+    en: 'CCSEP addressed coastal cities where only about 10 percent of urban wastewater was treated. It covered Dong Hoi, Quy Nhon, Nha Trang and Phan Rang-Thap Cham, became effective in January 2018 instead of August 2017, and closed in June 2024.',
+    vi: 'Tổng quan CCSEP, bảng 17, bốn thành phố trên bản đồ.',
+    targetSeconds: 270,
+  },
+  'f3-ccsep-structure': {
+    en: 'The 273.6 million dollar project blended a 46 million IBRD loan with a 190.2 million IDA credit and 37.4 million of counterpart funds. The whole IBRD loan was on-lent to provinces, so it was real debt, and it fully financed the roads and bridges of Component 2.',
+    vi: 'Cơ cấu tài chính, biểu đồ 5, 6 và bảng 18.',
+    targetSeconds: 480,
+  },
+  'f3-ccsep-cities': {
+    en: 'Phan Rang received the most, 87.9 million, and Nha Trang and Dong Hoi most of the IBRD money. In 2022 the Bank cancelled 11.8 million of IBRD and about 34 million of IDA funds, and counterpart funding rose to 50 million.',
+    vi: 'Biểu đồ 7, bảng 19, tái cơ cấu 2022.',
+    targetSeconds: 420,
+  },
+  'f3-ccsep-impl': {
+    en: 'By late 2022 only about 36 percent of the loan had been disbursed because counterpart funds arrived only from July 2019 and resettlement stalled, especially in Nha Trang. Reforms such as the 14 performance-based contracts came late but were completed.',
+    vi: 'Triển khai CCSEP: giải ngân chậm, tái định cư, năng lực PMU.',
+    targetSeconds: 390,
+  },
+  'f3-ccsep-results': {
+    en: 'At completion CCSEP reached 94 percent of its beneficiary target and 89 percent of sewer connections, with full cost recovery, 22 km of roads and five bridges. The ICR rated it moderately satisfactory and IEG satisfactory, but Nha Trang lagged far behind.',
+    vi: 'Bảng 20, các xếp hạng và kết quả khí hậu.',
+    targetSeconds: 390,
+  },
+  'f3-ccsep-nhatrang': {
+    en: 'In Nha Trang only 160 of 585 compensation plans were approved and only 138 of 469 households were compensated at closing. Residents complained to the Inspection Panel in August 2023, which later found non-compliance in two areas.',
+    vi: 'Nha Trang: tái định cư, khiếu nại và kết luận của Ban Thanh tra.',
+    targetSeconds: 240,
+  },
 };

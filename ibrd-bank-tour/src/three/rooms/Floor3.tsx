@@ -6,6 +6,9 @@ import { drawTexture, textTexture } from '../textures';
 import { CCSEP_CITIES, paintVietnam, project } from '../vietnam';
 import { cssVar, tokenColor } from '../../theme';
 import { SceneAnchors } from '../anchors';
+import { ownMat } from '../materials';
+import { useTour } from '../../state/store';
+import { SCENES } from '../../scenes';
 
 const Y = 20;
 /** CCSEP map wall: centre and size; faces -x on the right wall. */
@@ -198,7 +201,8 @@ function buildFloor3(b: Builder) {
   for (const c of CCSEP_CITIES) {
     const [x, y, z] = mapPoint(c.lon, c.lat);
     b.cyl('steel', 0.015, 0.015, 0.25, [x - 0.12, y, z], 6, { rot: [0, 0, Math.PI / 2], edges: false });
-    b.sphere('warn', 0.09, [x - 0.26, y, z], 12);
+    // the Nha Trang pin head is a separate mesh (it turns red in f3-ccsep-nhatrang)
+    if (c.id !== 'nha-trang') b.sphere('warn', 0.09, [x - 0.26, y, z], 12);
   }
 
   // ---------- executive office (front, z -14..0) ----------
@@ -246,6 +250,8 @@ function buildFloor3(b: Builder) {
   for (const x of [-9, -4.5, 4.5, 9]) b.box('spill', [3.2, 5, 0.02], [x, Y + 3.2, -0.86], { edges: false });
 }
 
+const PINS: Record<string, V3> = Object.fromEntries(CCSEP_CITIES.map((c) => [c.id, ((p: V3) => [p[0] - 0.26, p[1], p[2]] as V3)(mapPoint(c.lon, c.lat))]));
+
 function archBridge() {
   const s = new THREE.Shape();
   s.moveTo(-0.7, 0);
@@ -254,6 +260,20 @@ function archBridge() {
   s.quadraticCurveTo(0, 0.38, -0.62, 0);
   s.lineTo(-0.7, 0);
   return s;
+}
+
+/** Nha Trang pin head: warn orange, red (--bad) while the Nha Trang scene is shown. */
+function NhaTrangPin() {
+  const index = useTour((s) => s.index);
+  const nt = CCSEP_CITIES.find((c) => c.id === 'nha-trang')!;
+  const [x, y, z] = mapPoint(nt.lon, nt.lat);
+  const red = SCENES[index]?.id === 'f3-ccsep-nhatrang';
+  const m = useMemo(() => ({ warn: ownMat('--warn'), bad: ownMat('--bad', { emissive: tokenColor('--bad'), emissiveIntensity: 0.35 }) }), []);
+  return (
+    <mesh position={[x - 0.26, y, z]} material={red ? m.bad : m.warn} scale={red ? 1.6 : 1}>
+      <sphereGeometry args={[0.09, 16, 12]} />
+    </mesh>
+  );
 }
 
 export function Floor3() {
@@ -321,6 +341,7 @@ export function Floor3() {
   const tepAccent = tokenColor('--accent-tep');
   const ccsepAccent = tokenColor('--accent-ccsep');
   const nt = CCSEP_CITIES.find((c) => c.id === 'nha-trang')!;
+  void nt;
   return (
     <group name="f3">
       <Static build={buildFloor3} />
@@ -339,29 +360,37 @@ export function Floor3() {
       <SceneAnchors scene="f3-ida-graduation" at={{ timeline: [-6.8, Y + 0.6, -50.2], tep: [-6, Y + 1.6, -36.5] }} />
       <SceneAnchors scene="f3-sahep" at={{ documents: [12.8, Y + 2.6, -52.6] }} />
       <SceneAnchors scene="f3-legal" at={{ timeline: [6.8, Y + 0.6, -50.2], tep: [-6, Y + 1.6, -36.5] }} />
-      <SceneAnchors scene="f3-tep-overview" at={{ transformer: [-6, Y + 1.4, -36.5], pylons: [-8.4, Y + 4, -24.5] }} />
-      <SceneAnchors scene="f3-tep-cost" at={{ cash: [-3.9, Y + 0.9, -42.1] }} />
-      <SceneAnchors scene="f3-tep-financing" at={{ cash: [-3.9, Y + 0.9, -42.1], substation: [-9.6, Y + 1.2, -41.2] }} />
-      <SceneAnchors scene="f3-tep-impl" at={{ drafting: [-4.4, Y + 1.1, -27.4] }} />
+      <SceneAnchors scene="f3-tep-overview" at={{ transformer: [-6, Y + 1.6, -36.5], pylons: [-8.4, Y + 4, -24.5], substation: [-9.6, Y + 1.2, -41.2], cash: [-3.9, Y + 0.9, -42.1], drafting: [-4.4, Y + 1.1, -27.4] }} />
+      <SceneAnchors scene="f3-tep-cost" at={{ infra: [-10.4, Y + 4.2, -25.5], smartgrid: [-9.85, Y + 1.15, -41.5], capacity: [-4.4, Y + 1.1, -27.4], cash: [-3.9, Y + 0.9, -42.1] }} />
+      <SceneAnchors scene="f3-tep-financing" at={{ infra: [-10.4, Y + 4.2, -25.5], smartgrid: [-9.85, Y + 1.15, -41.5], capacity: [-4.4, Y + 1.1, -27.4], cash: [-3.9, Y + 0.9, -42.1] }} />
+      <SceneAnchors scene="f3-tep-impl" at={{ drafting: [-4.4, Y + 1.1, -27.4], cash: [-3.9, Y + 0.9, -42.1], transformer: [-6, Y + 1.6, -36.5], substation: [-9.6, Y + 1.2, -41.2] }} />
       <SceneAnchors
         scene="f3-tep-outputs"
-        at={{ transformer: [-6, Y + 1.6, -36.5], substation: [-9.6, Y + 1.2, -41.2], pylon: [-10.4, Y + 4, -25.5] }}
+        at={{
+          'new-lines': [-10.4, Y + 4.6, -25.5],
+          'rehab-lines': [-8.2, Y + 3.6, -24.6],
+          'transformer-capacity': [-6, Y + 1.6, -36.5],
+          'smartgrid-500kv': [-10.6, Y + 1.15, -41.5],
+          'smartgrid-220kv': [-9.1, Y + 1.15, -41.5],
+        }}
       />
-      <SceneAnchors scene="f3-tep-outcomes" at={{ 'pylon-500': [-10.4, Y + 5.5, -25.5], 'pylon-220': [-6.4, Y + 3.8, -23.6] }} />
-      <SceneAnchors scene="f3-tep-gap" at={{ gauge: [-12.6, Y + 2.4, -32.5] }} />
-      <SceneAnchors scene="f3-ccsep-overview" at={{ pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5] }} />
-      <SceneAnchors scene="f3-ccsep-structure" at={{ pipes: [6.2, Y + 1.2, -40.6] }} />
+      <SceneAnchors scene="f3-tep-outcomes" at={{ transformer: [-6, Y + 1.6, -36.5], substation: [-9.6, Y + 1.2, -41.2], 'pylon-220': [-6.4, Y + 3.2, -23.6], 'pylon-500': [-10.4, Y + 4.6, -25.5], gauge: [-12.6, Y + 2.4, -32.5] }} />
+      <SceneAnchors scene="f3-tep-gap" at={{ cash: [-3.9, Y + 0.9, -42.1], substation: [-9.6, Y + 1.2, -41.2], gauge: [-12.6, Y + 2.4, -32.5] }} />
+      <SceneAnchors scene="f3-tep-assess" at={{ transformer: [-6, Y + 1.6, -36.5], pylons: [-8.4, Y + 4, -24.5], cash: [-3.9, Y + 0.9, -42.1], gauge: [-12.6, Y + 2.4, -32.5], ccsep: [6.2, Y + 1.2, -40.6] }} />
+      <NhaTrangPin />
+      <SceneAnchors scene="f3-ccsep-overview" at={{ ...PINS, pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5], houses: [10.5, Y + 0.8, -21.8] }} />
+      <SceneAnchors scene="f3-ccsep-structure" at={{ pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5], bridge: [6, Y + 1.1, -24.8], houses: [10.5, Y + 0.8, -21.8], 'nha-trang': PINS['nha-trang'] }} />
+      <SceneAnchors scene="f3-ccsep-cities" at={PINS} />
+      <SceneAnchors scene="f3-ccsep-impl" at={{ tank: [10, Y + 1.4, -33.5], bridge: [6, Y + 1.1, -24.8], 'nha-trang': PINS['nha-trang'], 'phan-rang': PINS['phan-rang'] }} />
       <SceneAnchors
-        scene="f3-ccsep-cities"
-        at={Object.fromEntries(CCSEP_CITIES.map((c) => [c.id, mapPoint(c.lon, c.lat)]))}
+        scene="f3-ccsep-results"
+        at={{ houses: [10.5, Y + 0.8, -21.8], pipes: [6.2, Y + 1.2, -40.6], tank: [10, Y + 1.4, -33.5], road: [5.2, Y + 0.95, -25.65], bridge: [6, Y + 1.15, -24.8], 'nha-trang': PINS['nha-trang'] }}
       />
-      <SceneAnchors scene="f3-ccsep-impl" at={{ tank: [10, Y + 1.4, -33.5] }} />
-      <SceneAnchors scene="f3-ccsep-results" at={{ bridge: [6, Y + 1.1, -24.8], houses: [10.5, Y + 0.8, -21.8] }} />
-      <SceneAnchors scene="f3-ccsep-nhatrang" at={{ pin: mapPoint(nt.lon, nt.lat) }} />
-      <SceneAnchors scene="f3-eval-achievements" at={{ table: [0, Y + 0.9, -6.8] }} />
-      <SceneAnchors scene="f3-eval-limitations" at={{ scales: [-0.4, Y + 1.5, -8.4] }} />
-      <SceneAnchors scene="f3-recs-1" at={{ compass: [0.55, Y + 1.2, -6.4] }} />
-      <SceneAnchors scene="f3-recs-2" at={{ table: [0, Y + 0.9, -6.8] }} />
+      <SceneAnchors scene="f3-ccsep-nhatrang" at={{ pin: PINS['nha-trang'], houses: [10.5, Y + 0.8, -21.8] }} />
+      <SceneAnchors scene="f3-eval-achievements" at={{ table: [0, Y + 0.9, -6.8], compass: [0.55, Y + 1.2, -6.4], scales: [-0.4, Y + 1.5, -8.4] }} />
+      <SceneAnchors scene="f3-eval-limitations" at={{ scales: [-0.4, Y + 1.5, -8.4], compass: [0.55, Y + 1.2, -6.4] }} />
+      <SceneAnchors scene="f3-recs-1" at={{ compass: [0.55, Y + 1.2, -6.4], scales: [-0.4, Y + 1.5, -8.4] }} />
+      <SceneAnchors scene="f3-recs-2" at={{ table: [0, Y + 0.9, -6.8], compass: [0.55, Y + 1.2, -6.4] }} />
     </group>
   );
 }

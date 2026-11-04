@@ -17,6 +17,8 @@ export interface ChartProps {
   height?: number;
   unit?: string;
   max?: number;
+  /** axis minimum (line charts only); default 0 */
+  min?: number;
   /** for hbar-target: value of the target line (default 100) */
   target?: number;
   caption?: ReactNode;
@@ -64,7 +66,7 @@ function niceMax(v: number) {
   return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 5 ? 5 : 10) * e;
 }
 
-function Axes({ W, H, max, fmt }: { W: number; H: number; max: number; fmt: (v: number) => string }) {
+function Axes({ W, H, max, fmt, min = 0 }: { W: number; H: number; max: number; fmt: (v: number) => string; min?: number }) {
   const ticks = [0, 0.25, 0.5, 0.75, 1];
   const ih = H - PAD.t - PAD.b;
   return (
@@ -75,7 +77,7 @@ function Axes({ W, H, max, fmt }: { W: number; H: number; max: number; fmt: (v: 
           <g key={t}>
             <line className="grid" x1={PAD.l} x2={W - PAD.r} y1={y} y2={y} />
             <text x={PAD.l - 10} y={y + 8} textAnchor="end" fontSize={22}>
-              {fmt(max * t)}
+              {fmt(min + (max - min) * t)}
             </text>
           </g>
         );
@@ -173,10 +175,11 @@ function Lines(p: Inner) {
   const iw = W - PAD.l - PAD.r,
     ih = H - PAD.t - PAD.b;
   const x = (j: number) => PAD.l + (categories.length === 1 ? iw / 2 : (j / (categories.length - 1)) * iw);
-  const y = (v: number) => H - PAD.b - (v / max) * ih;
+  const min = p.min ?? 0;
+  const y = (v: number) => H - PAD.b - ((v - min) / (max - min)) * ih;
   return (
     <g>
-      <Axes W={W} H={H} max={max} fmt={p.fmt} />
+      <Axes W={W} H={H} max={max} min={min} fmt={p.fmt} />
       {categories.map((c, j) => (
         <text key={j} x={x(j)} y={H - PAD.b + 32} textAnchor="middle" fontSize={22}>
           {c}

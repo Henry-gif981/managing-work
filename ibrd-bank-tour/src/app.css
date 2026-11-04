@@ -1652,3 +1652,65 @@ html.shot *::after {
   height: auto !important;
   min-height: 150px;
 }
+.combo {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.combo .dt {
+  font-size: 22px;
+}
+.split-stats .stat-value {
+  font-size: 54px;
+}
+.doors {
+  width: 1420px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.door-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.door-list li {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px 12px 4px 4px;
+  border: 3px solid var(--wb-navy);
+  border-top-width: 14px;
+  padding: 14px 16px;
+  min-height: 330px;
+  box-shadow: var(--shadow);
+}
+.door-name {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+  color: var(--wb-navy);
+  margin-bottom: 8px;
+}
+.door-text {
+  font-size: 22px;
+  line-height: 1.35;
+}
+.door-list li.is-focus {
+  border-color: var(--wb-cyan);
+}
+.door-ratings {
+  padding: 12px 20px;
+}
+.recs li {
+  font-size: 26px;
+  padding: 10px 14px;
+}
+.lim-chips {
+  margin-top: 14px;
+}
+.nt-stats .stat-value {
+  font-size: 52px;
+}

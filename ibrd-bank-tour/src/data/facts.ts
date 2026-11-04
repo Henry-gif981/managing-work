@@ -434,6 +434,7 @@ export const FACTS: Fact[] = [
   f('pad-relocate-hh', 329, undefined, 'Section 3.3.3 / p. 55'),
   f('nt-plans-approved', 160, undefined, 'Section 3.3.3 / p. 55; Section 3.3.4'),
   f('nt-plans', 585, undefined, 'Section 3.3.3 / p. 55; Section 3.3.4'),
+  f('nt-rejected-share', '1/3', undefined, 'Section 3.3.3 / p. 55; Section 3.3.4 / p. 59', 'paper: "A third of the approved plans were rejected by residents"'),
   f('nt-affected-cut', 35, '%', 'Section 3.3.3 / p. 55', 'paper: "approximately 35%"'),
   f('nt-relocated-cut', 43, '%', 'Section 3.3.3 / p. 55', 'paper: "about 43%"'),
   f('pr-plans-approved', 1400, undefined, 'Section 3.3.3 / p. 55'),

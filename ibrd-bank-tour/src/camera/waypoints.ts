@@ -116,6 +116,23 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f3-tep-gap': { pos: [-6.4, 22.4, -30.0], target: [-12.6, 22.4, -32.5] },
   'f3-tep-assess': { pos: [-2.0, 24.0, -20.0], target: [-7.0, 21.0, -36.0], fov: 55 },
 
+  // ---- per-prop cameras for TEP table/chart beats (prop in the left band; scripts/frame-props.mjs)
+  'f3-prop-transformer': { pos: [-2.48, 23.31, -41.69], target: [-9.68, 22.04, -38.46] },
+  'f3-prop-transformer-capacity': { pos: [-10.5, 22.48, -31.89], target: [-2.76, 21.83, -33.82] },
+  'f3-prop-pylons': { pos: [-6.32, 22.06, -30.34], target: [-12.46, 23.51, -25.42] },
+  'f3-prop-infra': { pos: [-7.64, 22.65, -19.82], target: [-6.84, 23.8, -27.7] },
+  'f3-prop-new-lines': { pos: [-4.04, 23.77, -24.45], target: [-10.05, 24.38, -29.69] },
+  'f3-prop-pylon-500': { pos: [-5.4, 23.98, -21.39], target: [-7.99, 24.44, -28.95] },
+  'f3-prop-rehab-lines': { pos: [-10.82, 23.7, -30.55], target: [-11.92, 23.63, -22.63] },
+  'f3-prop-pylon-220': { pos: [-7.53, 23.48, -17.21], target: [-2.21, 23.27, -23.17] },
+  'f3-prop-substation': { pos: [-8.56, 22.69, -47.44], target: [-13.77, 21.58, -41.47] },
+  'f3-prop-smartgrid': { pos: [-4.42, 23.82, -39.13], target: [-8.83, 21.81, -45.49] },
+  'f3-prop-smartgrid-500kv': { pos: [-5.75, 21.92, -45.76], target: [-13.62, 21.35, -44.43] },
+  'f3-prop-smartgrid-220kv': { pos: [-10.41, 22.1, -47.79], target: [-13.13, 21.4, -40.3] },
+  'f3-prop-cash': { pos: [1.24, 23.09, -38.78], target: [-2.13, 21.45, -45.85] },
+  'f3-prop-capacity': { pos: [-1.9, 22.24, -33.29], target: [-8.39, 21.39, -28.69] },
+  'f3-prop-drafting': { pos: [-7.69, 23.06, -32.65], target: [-7.64, 21.6, -24.78] },
+  'f3-prop-gauge': { pos: [-8.25, 21.85, -37.3], target: [-15.93, 22.26, -35.08] },
   // ---------------- floor 3 · CCSEP (right half) ----------------
   'f3-ccsep-overview': { pos: [1.0, 23.6, -46.5], target: [7.0, 21.5, -32.0], fov: 55 },
   'f3-ccsep-structure': { pos: [1.4, 22.1, -36.4], target: [6.0, 20.8, -40.5] },
@@ -124,6 +141,17 @@ export const WAYPOINTS: Record<string, Waypoint> = {
   'f3-ccsep-results': { pos: [2.0, 22.5, -30.2], target: [6.0, 20.9, -25.0] },
   'f3-ccsep-nhatrang': { pos: [7.6, 22.4, -31.6], target: [12.6, 22.0, -28.6] },
 
+  // ---- per-prop cameras for CCSEP table/chart beats (prop in the right band)
+  'f3-propR-pipes': { pos: [8.82, 23.65, -46.02], target: [9.67, 21.81, -38.28] },
+  'f3-propR-tank': { pos: [4.85, 23.02, -37.12], target: [12.75, 21.82, -36.7] },
+  'f3-propR-bridge': { pos: [7.02, 23.39, -30.82], target: [10, 21.71, -23.58] },
+  'f3-propR-road': { pos: [4.53, 22.08, -32.02], target: [9.43, 21.24, -25.75] },
+  'f3-propR-houses': { pos: [6.2, 22.8, -17.35], target: [7.83, 21.31, -25.04] },
+  'f3-propR-documents': { pos: [7.48, 22.98, -48.89], target: [10.61, 22.7, -56.25] },
+  'f3-propR-dong-hoi': { pos: [7.02, 22.76, -34.16], target: [14.92, 23.45, -33.11] },
+  'f3-propR-quy-nhon': { pos: [8.35, 23.21, -23.07], target: [8.79, 22.68, -31.04] },
+  'f3-propR-nha-trang': { pos: [5.51, 22.25, -30.19], target: [13.01, 21.99, -32.98] },
+  'f3-propR-phan-rang': { pos: [5.49, 22.88, -29.36], target: [12.53, 22.01, -33.07] },
   // ---------------- floor 3 · executive office (evaluation) ----------------
   'f3-eval-achievements': { pos: [0, 22.8, -16.6], target: [0, 21.0, -6.0], fov: 55 },
   'f3-eval-limitations': { pos: [-3.6, 22.3, -10.0], target: [0.5, 20.9, -5.5] },
