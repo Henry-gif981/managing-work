@@ -140,9 +140,18 @@ The cancellations took effect on {cancel-effective}; the restructuring was compl
     kicker: 'Section 3.3.2',
     layout: 'right',
     source: 'Section 3.3.2 · p. 53',
-    body: `Unlike Table 18, Table 19 shows **total financing**, including contingencies, VAT and capitalized fees. Loan capital fell from {ccsep-wb} to {adj-wb} and total investment from {ccsep-total} to {adj-total}; counterpart funding rose from {ccsep-cp} to {adj-cp}, from {ccsep-cp-pct} to {cp-share-adj} [36, Annex 2; 57].
+    body: `Unlike Table 18, Table 19 shows **total financing**, including contingencies, VAT and capitalized fees. Loan capital fell from {ccsep-wb} to {adj-wb} and total investment from {ccsep-total} to {adj-total}; counterpart funding rose from {ccsep-cp} to {adj-cp}, from {ccsep-cp-pct} to {cp-share-adj} [36, Annex 2; 57].`,
+  },
+  {
+    title: 'By city, and at closing',
+    kicker: 'Section 3.3.2',
+    layout: 'right',
+    source: 'Section 3.3.2 · p. 53',
+    camera: 'f3-ccsep-cities',
+    callouts: [{ from: '.k-card .h2', to: a('phan-rang'), label: 'Phan Rang-Thap Cham' }],
+    body: `Adjustments varied among cities. **Quy Nhon** saw the sharpest decrease ({city-qn} → {city-qn-adj}); **Phan Rang-Thap Cham** was the only city to increase ({city-pr} → {city-pr-adj}), with counterpart funding rising from {f7-pr-cp} to {city-pr-cp-adj}. These are adjusted commitments, not disbursed amounts.
 
-Quy Nhon fell most ({city-qn} → {city-qn-adj}); Phan Rang-Thap Cham alone rose ({city-pr} → {city-pr-adj}, counterpart {f7-pr-cp} → {city-pr-cp-adj}). These are adjusted commitments, not disbursements. At closing: World Bank {close-wb} (IBRD {close-ibrd}; IDA {close-ida}), counterpart {close-cp}, total {close-total} [63, p. ii].`,
+At closing: World Bank disbursements {close-wb} (IBRD {close-ibrd}; IDA {close-ida}), counterpart spending {close-cp}, total actual cost **{close-total}** [63, p. ii].`,
   },
   {
     layout: 'centre',

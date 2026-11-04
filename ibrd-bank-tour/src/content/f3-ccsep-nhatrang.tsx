@@ -85,7 +85,6 @@ It found the Bank **in compliance** on land-use restrictions, which stemmed from
     layout: 'left',
     side: stats,
     source: 'Section 3.3.4 · p. 59 (Bank standards vs local rules: Sections 2.3.2, 3.4.2)',
-    callouts: [{ from: '.k-card .h2', to: a('houses'), label: 'Households' }],
     body: `{nt-causes|n} direct causes (Section 3.3.3) [57]:
 
 1. disagreements over **land prices and compensation**, which led one-third of approved plans to be rejected;
