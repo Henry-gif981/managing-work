@@ -3,7 +3,7 @@
 An interactive 3D "bank tour" for **Group 6 (NEU)**, built around the paper *The IBRD and its development project financing activities in Vietnam*.
 You walk in through the front door. Floor 1 holds the Introduction and Chapter 1, Floor 2 holds Chapter 2, and Floor 3 holds Chapter 3, with TEP on the left, CCSEP on the right and the executive office at the far end. The Conclusion plays as the lift rides down, and the Thank-You is at the exit door.
 
-**Status:** all 64 scenes carry the full content of the paper: Introduction and Chapter 1 (Floor 1), Chapter 2 (Floor 2), Chapter 3 (Floor 3: context at the entrance, TEP on the left half, CCSEP on the right half, evaluation in the executive office), the Conclusion on the lift ride down, and the exit (reference wall and thank-you). Coverage audits: `docs/coverage-ch1-ch2.md` and `docs/coverage-ch3-conclusion.md`. Inconsistencies: `docs/paper-inconsistencies.md`.
+**Status (paper _10):** 59 scenes. Floors 1-2 show the **key ideas** of the paper (one idea per beat, about 25-50 words; see *Floors 1-2 content policy* below), and Floor 3 shows the full content: Introduction and Chapter 1 (Floor 1), Chapter 2 (Floor 2), Chapter 3 (Floor 3: context at the entrance, TEP on the left half, CCSEP on the right half, evaluation in the executive office), the Conclusion on the lift ride down, and the exit (reference wall and thank-you). What changed in the _10 update: `docs/update-log.md`, `docs/paper-diff-ch1-ch2.md`, `docs/paper-diff-ch3.md`. Coverage audits: `docs/coverage-ch1-ch2.md` (key-idea coverage) and `docs/coverage-ch3-conclusion.md`. Inconsistencies: `docs/paper-inconsistencies.md`.
 
 ## Run
 
@@ -12,7 +12,9 @@ npm install
 npm run dev            # http://localhost:5173 (dev overlay on by default in dev)
 npm run build          # dist/ (normal multi-file build)
 npm run build:single   # dist-single/index.html — ONE file, opens from file:// offline
-npm run export-pdf     # dist/ibrd-bank-tour.pdf — one 1920x1080 page per beat
+npm run capture-bg     # src/assets/print-bg/<scene>.jpg — 3D end-pose background per scene (for print)
+npm run export-pdf     # dist/ibrd-bank-tour.pdf — one page per scene (runs capture-bg first if images are missing)
+npm run check-lines    # leader lines vs text, every beat at 1920x1080 and 1366x768 → docs/line-overlaps.md
 npm run test:shots     # docs/screens/NN-<scene>[-bN].png — first and last beat of every scene
                        #   options: --only=id,id  --segments=intro,ch1  --all-beats
                        #   also reports content that is clipped or reaches into the HUD margins
@@ -104,7 +106,7 @@ A beat can use its own camera: `{ camera: 'some-waypoint-id' }` in its beat entr
 ## Architecture
 
 ```
-src/scenes.ts            scene list (64)            src/content/*.tsx   beats + View per scene
+src/scenes.ts            scene list (59)            src/content/*.tsx   beats + View per scene
 src/state/store.ts       zustand: position, modes   src/state/keys.ts   keyboard + swipe
 src/state/hash.ts        #scene/beat sync           src/director.ts     navigation -> gsap timelines
 src/camera/waypoints.ts  camera poses               src/camera/rig.ts   camera state (pos + quaternion slerp)
@@ -127,9 +129,9 @@ src/lite/LiteBackdrop    static SVG per area (Lite + Print)     src/print/PrintV
 - **Camera:** tweens slerp orientation (quaternions) instead of interpolating look-at targets, so wide turns never flip. Moving between levels without the lift (backwards, or jumps from the grid, tracker or hash) uses a short white fade cut instead of flying through floor slabs.
 - **Performance:** each room is merged into roughly one mesh per material plus one `LineSegments` for all ink outlines (`EdgesGeometry`). Floors outside the current zone are hidden. Measured in `test:shots`: at most 68 draw calls and about 21k triangles in any pose, against a budget of 150 / 300k. DPR is capped at 1.5, there is no post-processing, and tone mapping is off so the palette renders as specified.
 - **Labels in 3D:** canvas textures, redrawn once the fonts have loaded.
-- **Callouts:** hidden in Lite and Print mode (there is no 3D projection there). The tables and charts carry the meaning on their own.
-- **Lite mode:** the toast offers Lite mode after 3 s of average fps below 24 (it starts watching 5 s after load) and switches by itself after 8 s. WebGL failure or context loss switches immediately.
-- **Print mode:** one page per beat. Scenes with 0 beats print no page. The header names the scene, section and beat, and the footer reads "Group 6 – IBRD in Vietnam | n/N".
+- **Callouts:** drawn below the content cards, starting at the card edge nearest the prop and routed around every line of text (straight, elbow or gutter detour), with a white halo and a pin at the prop. When no route is free, the callout becomes a numbered pin on the card and on the prop. `npm run check-lines` measures this on every beat and fails on any overlap. Hidden in Lite mode. `?legacylines=1` measures the old geometry (for the before/after count only).
+- **Lite mode:** 3D is the default and the tour **never switches to Lite by itself** on low fps: it only shows a toast "Switch to Lite mode? (L)". Lite starts only when WebGL is not available (or the context is lost), when you press **L**, or with `?lite=1`. Pressing L remembers the choice in `localStorage` (`ibrd-tour-lite`) for the next visit.
+- **Print mode:** one page per scene (see *Print / PDF*). Scenes with 0 beats print no page.
 - **Fonts:** latin and vietnamese subsets of Playfair Display 700, Cormorant Garamond 400/600 italic and Open Sans 400/600/700, woff2 only (the woff fallbacks are stripped at build time).
 - **HUD sizes:** HUD text is smaller (15–20 px at design size) than the 28 / 26 / 24 px minimums, which apply to slide content. The HUD stays inside the reserved margins (top 84, bottom 72, left 72, right 48) and content zones start inside them.
 - **Titles:** scene titles are readable versions of the TOC headings, and objectives are "TBD" until the content arrives.
@@ -145,10 +147,23 @@ Every colour is a CSS variable in `src/tokens.css`. The DOM uses them directly, 
 
 ## Print / PDF
 
-Open `?print=1` (or press **P**). It shows a contents page, then every beat of every scene as a static 1920×1080 page, then the reference pages (14 per page). There is no WebGL and no HUD.
-- Each page has a per-floor SVG background, its header names the scene, section and the beat's source tag, and its footer reads "Group 6 – IBRD in Vietnam | n/N".
-- On table and chart beats, each callout is drawn as a leader from the focused row or bar to a labelled marker naming the 3D prop.
-- `npm run export-pdf` writes `dist/ibrd-bank-tour.pdf` and checks that the PDF page count equals 1 + beats + reference pages.
+Open `?print=1` (or press **P**). The order is: cover (front of the building), contents, **one page per scene**, then the reference pages (16 per page). There is no WebGL and no HUD.
+- **Scene page:** the scene's 3D end pose as the background (`src/assets/print-bg/<scene>.jpg`, made by `npm run capture-bg` with `?capture=1`, 1920×1080 JPEG at quality 82; the script fails if an image is uniform). On top: the table, chart or diagram once and complete, then every beat as a card in a grid (white cards at about 88% opacity). Focus dimming is off.
+- **Callouts in print:** no leader lines. Each callout is a numbered pin on the card or table row, and a legend at the bottom of the page names the 3D prop for each number.
+- **Footer:** "Group 6 – IBRD in Vietnam | page/total".
+- **Overflow:** a scene gets an extra page only if its cards do not fit (at most 5 parts). Every case is logged in `docs/print-overflow.md`.
+- `npm run export-pdf` runs `capture-bg` if the images are missing, prints, and checks the page count (cover + contents + scenes + overflow + references), that every scene page has a non-blank background, and that no text is clipped. The current PDF has **72 pages**.
+- The backgrounds (about 7 MB) are embedded in the single-file build, which stays at about 11 MB (limit 40 MB).
+
+## Floors 1-2 content policy (update _10)
+
+- One key idea per beat, about 25-50 words, key terms in **bold**, the paper's [n] citations kept.
+- Abbreviations are spelled out at first use in each scene, and amounts are written "USD …".
+- No case-study names or numbers on Floors 1-2 (TEP, CCSEP, NPT, Nha Trang, Phan Rang, 231.25, 31.4%, 290,000 …): the wording is generic. The single exception is `f2-prep` beat 4, which keeps one sentence naming TEP because the Chapter 2 fix list asks for it.
+- Removed scenes: `f1-rationale-1`, `f1-objectives`, `f1-method`, `f1-scope`, `f1-voting`. The Introduction is now `f1-rationale-2`, `f1-problem` and `f1-structure`.
+- Scenes 23-32 (`f2-cycle` … `f2-me`) follow "Fix chap 2.pdf" word for word.
+- Each beat has a cyan label chip, a navy title and the paragraphs. Tables keep the paper's rows and columns with short cell text.
+- Presenter `targetSeconds` is about 20 s per beat.
 
 ## Decisions for the content of Floor 3, the Conclusion and the exit
 
@@ -171,13 +186,13 @@ Open `?print=1` (or press **P**). It shows a contents page, then every beat of e
 
 - **Callouts and centring:** to give every table beat a callout to a *visible* prop, tables are centred in the area to the right of a 400 px prop band, not on the exact screen centre. Table beats switch to a dedicated camera.
 - **Props:**
-  - `f1-instruments` uses the three teller counters labelled IPF / DPF / PforR (Table 2 has three rows).
-  - The loan desk got new props for Table 3: a rate board, a contract, a calendar, a clock, a coin stack and a ledger.
+  - `f1-instruments` uses the three teller counters labelled IPF / DPF / PforR (Table 1.4.1 has three rows).
+  - The loan desk got new props for Table 1.4.2: a rate board, a contract, a calendar, a clock, a coin stack and a ledger.
   - Also new: an INFORMATION counter (`f1-what`), a hanging "CHAPTER 1 · OVERVIEW OF THE IBRD" sign, era plates on the archive wall (1944-1950s … 2000-present), ten stamps on the safeguards table (ESS5 in cyan), a "CHAPTER 2 · …" sign on Floor 2, and letter-of-credit papers on the finance desk.
-  - Table 4's six stages map to the six chairs around the round table.
+  - Table 2.1.1's six stages map to the six chairs around the round table.
 - **Prose:** text is in English and sentences are shortened, never changed in meaning. Where the paper's wording is a range or qualitative ("around 15-16 percent", the IDA / IBRD / commercial cost ranking), the tour keeps it so and invents no figure.
 - **Cost comparison:** the cost comparison in Introduction 1.2 is drawn as a qualitative "cost ladder", because the paper gives no numbers there.
-- **TEP counterpart chart:** the chart uses TEP's IBRD loan from Section 3.2.2 (USD 500.00 million) and says so in a note. Chapter 2 gives only the counterpart and the total.
+- **TEP counterpart chart:** removed in the _10 update (no case numbers on Floor 2).
 - **Notes:** the presenter notes only restate the paper.
 
 ## Engine changes (made for this content; no behaviour removed)
@@ -196,6 +211,16 @@ Open `?print=1` (or press **P**). It shows a contents page, then every beat of e
   - `{id|2}` fixed-decimal templates.
   - SDR units in `formatFact`.
   - The print view has a contents page, reference pages and static callouts.
+
+## Engine changes in the _10 update (needed fixes only)
+
+- `src/primitives/Callout.tsx` rewritten: text-aware routing (obstacles are the client rects of every text line and HUD box), layer below the cards, halo and pin, numbered-pin fallback (`CalloutPinsTop`). The geometry is published on `window.__calloutGeo` for `check-lines`.
+- `?capture=1` (implies `?shot=1` and `?noauto=1`) hides the content and the HUD, for `capture-bg`.
+- Lite mode: no automatic switch, toast only, choice remembered in `localStorage`.
+- The print view was rewritten (`src/print/PrintView.tsx`). The kit attaches its slides to each `View` so print can lay out every beat at once.
+- `formatFact` prints "USD" everywhere instead of "US$".
+- Print backgrounds live in `src/assets/print-bg/` and not in `public/`, because Vite can only embed imported files in the single-file build.
+- `scripts/browser.mjs` launches Chromium with real WebGL through SwiftShader (`--use-gl=angle --use-angle=swiftshader`).
 
 ## Known limitations
 
