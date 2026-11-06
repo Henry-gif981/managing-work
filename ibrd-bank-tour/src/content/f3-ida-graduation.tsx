@@ -32,7 +32,7 @@ const p = scene('f3-ida-graduation', [
   {
     layout: 'centre',
     title: 'Graduation from IDA',
-    source: 'Section 3.1.2 · p. 31',
+    source: 'Section 3.1.2 · p. 30',
     centre: tl,
     focus: ['grad-grad', 'grad-ida18'],
     callouts: [{ from: '#grad-grad', to, label: '1 July 2017' }],
@@ -41,7 +41,7 @@ const p = scene('f3-ida-graduation', [
   {
     layout: 'centre',
     title: 'Closer to market terms',
-    source: 'Section 3.1.2 · pp. 31-32',
+    source: 'Section 3.1.2 · pp. 30-31',
     centre: (
       <div className="card" style={{ width: 1440 }}>
         {terms}
@@ -52,7 +52,7 @@ const p = scene('f3-ida-graduation', [
   {
     layout: 'centre',
     title: 'IBRD was not a new lender',
-    source: 'Section 3.1.2 · p. 32',
+    source: 'Section 3.1.2 · p. 31',
     centre: tl,
     focus: ['grad-tep'],
     callouts: [{ from: '#grad-tep', to: 'anchor:f3-ida-graduation:tep', label: 'TEP' }],
@@ -61,7 +61,7 @@ const p = scene('f3-ida-graduation', [
   {
     layout: 'centre',
     title: 'A shift in lending mix',
-    source: 'Section 3.1.2 · p. 32',
+    source: 'Section 3.1.2 · p. 31',
     centre: tl,
     focus: ['grad-umic'],
     body: `Graduation is therefore **a shift in lending mix and financing conditions**, not a simple substitution of every IDA project by an IBRD project. Differences between the two institutions are most meaningful when traced to actual financing agreements, counterpart obligations and project results, rather than labels such as "soft loan" or "commercial loan". The reclassification as an upper-middle-income economy in {umic-date} is distinct from the 2017 IDA graduation [4].`,

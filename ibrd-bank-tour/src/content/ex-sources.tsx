@@ -4,7 +4,7 @@ import { REFERENCES } from '../data/references';
 import { Card, Title } from '../primitives/ScenePanel';
 import { useTour } from '../state/store';
 
-export const beats: Beat[] = [{ label: 'Reference wall', source: 'References · pp. 66-73' }];
+export const beats: Beat[] = [{ label: 'Reference wall', source: 'References · pp. 60-66' }];
 
 /** Reference wall: all 64 entries, scrollable and searchable (same data as the R panel). */
 export default function View({ print }: SceneViewProps) {
@@ -34,7 +34,7 @@ export default function View({ print }: SceneViewProps) {
           ))}
           {!print && list.length === 0 && <li className="caption">No match.</li>}
         </ol>
-        <div className="k-source">Source · References · pp. 66-73 · press R to open the panel</div>
+        <div className="k-source">Source · References · pp. 60-66 · press R to open the panel</div>
       </Card>
     </div>
   );

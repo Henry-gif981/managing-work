@@ -23,7 +23,7 @@ const table = (
       kind: r.id === 'total' ? 'total' : undefined,
       cells: { comp: <b>{r.comp}</b>, appT: <F id={r.appT} fixed={2} />, actT: <F id={r.actT} fixed={2} />, appI: <F id={r.appI} fixed={2} />, actI: <F id={r.actI} fixed={2} /> },
     }))}
-    caption={<R t="Table 12. TEP component financing by source: appraisal versus actual (million USD). Source: Adapted from [46, Annex 3, Table 3.2, p. 49]. IBRD component allocations and actual costs are taken from the original table." />}
+    caption={<R t="Table 3.2.3. TEP component financing by source: appraisal versus actual (million USD). Source: Adapted from [46, Annex 3, Table 3.2, p. 49]. IBRD component allocations and actual costs are taken from the original table." />}
   />
 );
 const fig1 = (
@@ -39,15 +39,15 @@ const fig1 = (
     ]}
     max={800}
     format={(v) => `${v}`}
-    caption={<R t="Figure 1. TEP financing structure: committed/appraised resources ({tep-total|2}) versus actual closing expenditure ({tep-actual-total|2}) (million USD). Source: [46, Annex 3, Table 3.2]. Actual expenditure is not equivalent to contractual loan availability." />}
+    caption={<R t="Figure 3.2.1. TEP financing structure: committed/appraised resources ({tep-total|2}) versus actual closing expenditure ({tep-actual-total|2}) (million USD). Source: [46, Annex 3, Table 3.2]. Actual expenditure is not equivalent to contractual loan availability." />}
   />
 );
 const ANCH: Record<string, string> = { c1: 'infra', c2: 'smartgrid', c3: 'capacity', fee: 'cash', total: 'cash' };
 const row = (i: number) => ({
   layout: 'centre' as const,
-  title: 'Table 12 · Financing by source',
+  title: 'Table 3.2.3 · Financing by source',
   label: TABLE12[i].comp,
-  source: 'Section 3.2.2 · Table 12 · p. 37',
+  source: 'Section 3.2.2 · Table 3.2.3 · p. 35',
   centre: table,
   focus: [`t12-${TABLE12[i].id}`],
   callouts: [{ from: `#t12-${TABLE12[i].id}-comp`, to: a(ANCH[TABLE12[i].id]), label: TABLE12[i].comp.replace(/^\d\.\s/, '') }],
@@ -68,9 +68,9 @@ const p = scene('f3-tep-financing', [
   row(4),
   {
     layout: 'centre',
-    title: 'Figure 1 · Committed vs actual',
+    title: 'Figure 3.2.1 · Committed vs actual',
     label: 'IBRD 500.00 vs 318.53',
-    source: 'Section 3.2.2 · Figure 1 · p. 38',
+    source: 'Section 3.2.2 · Figure 3.2.1 · p. 36',
     centre: fig1,
     focus: ['f1-s0'],
     callouts: [{ from: '#f1-0-1', to: a('cash'), label: 'IBRD disbursed' }],
@@ -79,7 +79,7 @@ const p = scene('f3-tep-financing', [
   {
     title: 'Where the US$318.53 million went',
     kicker: 'Section 3.2.2',
-    source: 'Section 3.2.2 · p. 38',
+    source: 'Section 3.2.2 · p. 36',
     side: split,
     focus: ['sp-cb'],
     callouts: [{ from: '#sp-cb', to: a('capacity'), label: 'Capacity building' }],
@@ -90,7 +90,7 @@ const p = scene('f3-tep-financing', [
   {
     title: 'Contractual disciplines',
     kicker: 'Section 3.2.2',
-    source: 'Section 3.2.2 · p. 38',
+    source: 'Section 3.2.2 · p. 36',
     callouts: [{ from: '.k-card .h2', to: a('infra'), label: 'Competitive bidding' }],
     body: `Financing came with contractual disciplines. The Bank's IPF arrangement linked eligible expenditure to procurement, financial management, technical supervision and social and environmental obligations.
 

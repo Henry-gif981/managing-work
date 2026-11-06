@@ -14,7 +14,7 @@ const p = scene('f3-ch3-title', [
   {
     title: 'Planned versus actual money',
     kicker: 'Section 3.1',
-    source: 'Section 3.1 · p. 31',
+    source: 'Section 3.1 · p. 30',
     callouts: [{ from: '.k-card .h2', to: 'anchor:f3-ch3-title:aisle', label: 'Two case studies' }],
     body: `In the following analysis, monetary amounts are expressed in **USD**.
 

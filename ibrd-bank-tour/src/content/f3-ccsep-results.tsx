@@ -19,15 +19,15 @@ const table = (
       id: r.id,
       cells: { ind: <b>{r.ind}</b>, target: <F id={r.target} unit={r.id === 'cost'} />, actual: <F id={r.actual} unit={r.id === 'cost'} />, ratio: <F id={r.ratio} /> },
     }))}
-    caption={<R t="Table 20. Key performance indicators at project completion (30/6/2024). Source: [63, Table 1, Table 5 and Annex 1] and [64, pp. 6–10]." />}
+    caption={<R t="Table 3.3.4. Key performance indicators at project completion (30/6/2024). Source: [63, Table 1, Table 5 and Annex 1] and [64, pp. 6–10]." />}
   />
 );
 const row = (i: number, body?: string) => ({
   layout: 'centre' as const,
   band: 'right' as const,
-  title: 'Table 20 · KPIs at completion',
+  title: 'Table 3.3.4 · KPIs at completion',
   label: TABLE20[i].ind,
-  source: 'Section 3.3.4 · Table 20 · p. 56',
+  source: 'Section 3.3.4 · Table 3.3.4 · p. 51',
   centre: table,
   focus: [`t20-${TABLE20[i].id}`],
   callouts: [{ from: `#t20-${TABLE20[i].id}-ratio`, to: a(TABLE20[i].anchor), label: TABLE20[i].ind }],
@@ -38,7 +38,7 @@ const p = scene('f3-ccsep-results', [
     title: 'Closing reports and ratings',
     kicker: 'Section 3.3.4',
     layout: 'right',
-    source: 'Section 3.3.4 · p. 57',
+    source: 'Section 3.3.4 · p. 52',
     aside: (
       <div className="ratings">
         <div>
@@ -77,9 +77,9 @@ const p = scene('f3-ccsep-results', [
   {
     layout: 'centre',
     band: 'right',
-    title: 'Table 20 · Which totals?',
+    title: 'Table 3.3.4 · Which totals?',
     label: 'ICR vs Annex 1',
-    source: 'Section 3.3.4 · Table 20 note · p. 56',
+    source: 'Section 3.3.4 · Table 3.3.4 note · p. 51',
     centre: table,
     focus: ['t20-ben', 't20-sewer'],
     callouts: [{ from: '#t20-ben-actual', to: a('houses'), label: 'Beneficiaries' }],
@@ -93,14 +93,14 @@ const p = scene('f3-ccsep-results', [
     title: 'Targets met, except Nha Trang',
     kicker: 'Section 3.3.4',
     layout: 'right',
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     body: `The project met most sanitation targets, except in Nha Trang. **Dong Hoi, Quy Nhon and Phan Rang exceeded their targets**, while **Nha Trang reached only about {nt-target-pct}** because some works were not completed and its new wastewater treatment plant was still in trial operation at closing [63, pp. 8–10]. All four cities reached full cost recovery [63, Table 5].`,
   },
   {
     title: 'Disbursement after restructuring',
     kicker: 'Section 3.3.4',
     layout: 'right',
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     side: (
       <div className="card k-stats">
         <Stat value={<F id="panel-disb" />} label="disbursed, Inspection Panel, August 2023" />
@@ -117,7 +117,7 @@ The **IBRD portion was the least used**: only {close-ibrd} of the {ccsep-ibrd} l
     title: 'Climate resilience',
     kicker: 'Section 3.3.4',
     layout: 'right',
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     body: `The PAD targeted reduced flood risk for approximately {flood-people-target} people, {embank-target} of embankments, {kpi-roads} of roads and {kpi-bridges|n} bridges [36]; the restructuring revised these to {flood-people-rev} people, {embank-rev} and {rev-roads}, bridges unchanged [64, pp. 8–9]. The paper compares with the original targets.
 
 At completion: **{flood-people} people** with reduced flood risk, **{embank}** of embankments and channels, **{networks}** of drainage and wastewater networks, **{kpi-roads} of roads and {kpi-bridges|n} bridges**, meeting the original road target but just short of the revised one [63, Table 2, Annex 1; 64, pp. 6–7].`,
@@ -126,14 +126,14 @@ At completion: **{flood-people} people** with reduced flood risk, **{embank}** o
     title: 'The gap behind the totals',
     kicker: 'Section 3.3.4',
     layout: 'right',
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     body: `These totals hide the gap in **Nha Trang**: only **{nt-embank-pct} of the embankment works** were completed, and {nt-roads-left} of roads, a flood retention lake and a flood pumping station were left to be finished with counterpart funds [63, pp. 9, 20, 25].`,
   },
   {
     title: 'Lasting institutional results',
     kicker: 'Section 3.3.4',
     layout: 'right',
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     body: `More sustainable results lie in institutional capacity. Each city has a **PSMU** (Dong Hoi and Phan Rang set theirs up under the project); drainage and wastewater assets went to People's Committees, road assets to transport departments; connection policies and septage plans were issued; tariff roadmaps approved [57; 63, p. 12].
 
 All {ccsep-contracts|n} performance-based contracts were signed and operating by closing, but ran **{contract-years-actual} years** instead of the {contract-years-plan} envisaged [64, pp. 10–11]. Nha Trang shows drainage benefits are fully realized only when networks and household connections are complete.`,

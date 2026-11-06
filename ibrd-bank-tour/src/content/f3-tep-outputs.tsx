@@ -19,7 +19,7 @@ const combo = (
       target={100}
       max={230}
       format={(v) => `${v.toFixed(1)}%`}
-      caption={<R t="Figure 3. TEP output achievement relative to original results targets (%). Source: calculated by the authors from [41, p. 8]. 100% means the original output target was met, not that all project-wide economic benefits were realised." />}
+      caption={<R t="Figure 3.2.3. TEP output achievement relative to original results targets (%). Source: calculated by the authors from [41, p. 8]. 100% means the original output target was met, not that all project-wide economic benefits were realised." />}
     />
     <DataTable
       id="t14"
@@ -30,15 +30,15 @@ const combo = (
         { key: 'actual', label: 'Actual', align: 'right' },
       ]}
       rows={TABLE14.map((r) => ({ id: r.id, cells: { ind: r.ind, target: <F id={r.target} />, actual: <F id={r.actual} /> } }))}
-      caption={<R t="Table 14. Selected physical outputs [41, pp. viii–ix, 8]." />}
+      caption={<R t="Table 3.2.5. Selected physical outputs [41, pp. viii–ix, 8]." />}
     />
   </div>
 );
 const bar = (i: number, body: string) => ({
   layout: 'centre' as const,
-  title: 'Table 14 · Figure 3 · Physical outputs',
+  title: 'Table 3.2.5 · Figure 3.2.3 · Physical outputs',
   label: TABLE14[i].ind,
-  source: 'Section 3.2.4 · Table 14 · Figure 3 · p. 41',
+  source: 'Section 3.2.4 · Table 3.2.5 · Figure 3.2.3 · p. 39',
   centre: combo,
   focus: [`f3o-0-${i}`, `t14-${TABLE14[i].id}`],
   callouts: [{ from: `#f3o-0-${i}`, to: a(TABLE14[i].anchor), label: TABLE14[i].ind }],
@@ -48,7 +48,7 @@ const p = scene('f3-tep-outputs', [
   {
     title: 'Physical outputs',
     kicker: 'Section 3.2.4',
-    source: 'Section 3.2.4 · p. 41',
+    source: 'Section 3.2.4 · p. 38',
     callouts: [{ from: '.k-card .h2', to: a('new-lines'), label: 'New lines' }],
     body: `The evaluation record supports a favourable assessment of the main physical outputs. IEG reported **{tep-new-lines}** of new high-voltage lines and **{tep-rehab}** of rehabilitated lines, against targets of {tep-new-lines-target} and {tep-rehab-target}. A total of **{tep-mw}** of transformer capacity was installed against {tep-mw-target}.
 
@@ -62,7 +62,7 @@ Five 500-kV substations were upgraded with smart-grid technology, meeting the ta
   {
     title: 'Capacity and electricity transmitted',
     kicker: 'Section 3.2.4',
-    source: 'Section 3.2.4 · p. 42',
+    source: 'Section 3.2.4 · p. 39',
     side: (
       <div className="card k-stats">
         <Stat id="st-cap" value={<F id="tep-capacity-2023" />} label="rise in transmission capacity vs baseline, March 2023 (almost 80% at closing)" tone="good" />

@@ -1,4 +1,4 @@
-/** The paper's REFERENCES section (pp. 65-73), all 64 entries, numbered as cited in the text ([1], [2]...). */
+/** The paper's REFERENCES section (_10 version, p. 60 onwards), all 64 entries, numbered as cited in the text ([1], [2]...). */
 export interface Reference {
   n: number;
   text: string;
@@ -73,7 +73,7 @@ export const REFERENCES: Reference[] = [
   },
   {
     "n": 14,
-    "text": "Reuters. (2018, April 22). World Bank shareholders back US$13b capital increase. Malay Mail.",
+    "text": "Reuters. (2018, April 22). World Bank shareholders back USD 13b capital increase. Malay Mail.",
     "url": "https://www.malaymail.com/news/money/2018/04/22/world-bank-shareholders-back-us13b-capital-increase/1622814"
   },
   {
@@ -118,7 +118,7 @@ export const REFERENCES: Reference[] = [
   },
   {
     "n": 23,
-    "text": "EVNNPT. (2014, October 10). Negotiation of a loan of USD 500 million – Transmission Efficiency Project (TEP) funded by World Bank. National Power Transmission Corporation.",
+    "text": "EVNNPT. (2014, October 10). Negotiation of a loan of USD 500 million -Transmission Efficiency Project (TEP) funded by World Bank. National Power Transmission Corporation.",
     "url": "https://www.npt.com.vn/d6/en-US/news/Negotiation-of-a-loan-of-USD-500-milion-Transmission-Efficiency-Project-TEP-funded-by-World-Bank-1-397-3805"
   },
   {
@@ -313,7 +313,7 @@ export const REFERENCES: Reference[] = [
   },
   {
     "n": 62,
-    "text": "World Bank Accountability Mechanism. (2025, August 7). Notice of conclusion of the dispute resolution process: Viet Nam – Coastal Cities Sustainable Environment Project (P156143). World Bank.",
+    "text": "World Bank Accountability Mechanism. (2025, August 7). Notice of conclusion of the dispute resolution process: Viet Nam - Coastal Cities Sustainable Environment Project (P156143). World Bank.",
     "url": "https://thedocs.worldbank.org/en/doc/751b59713eaa76b5dbb4114d08ada702-0490092025/original/Vietnam-notice-of-conclusion.pdf"
   },
   {

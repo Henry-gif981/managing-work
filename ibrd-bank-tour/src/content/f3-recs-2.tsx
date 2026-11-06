@@ -5,7 +5,7 @@ const a = (n: string) => `anchor:f3-recs-2:${n}`;
 const p = scene('f3-recs-2', [
   {
     title: '4 · Strengthen and stabilize PMUs',
-    source: 'Section 3.4.3 · p. 63',
+    source: 'Section 3.4.3 · p. 57',
     side: recList,
     focus: ['rec-4'],
     callouts: [{ from: '#rec-4', to: a('table'), label: 'Professional PMUs' }],
@@ -15,14 +15,14 @@ Training through the World Bank's **Open Learning Campus** should focus on contr
   },
   {
     title: '5 · Streamline domestic procedures',
-    source: 'Section 3.4.3 · p. 63',
+    source: 'Section 3.4.3 · p. 57',
     side: recList,
     focus: ['rec-5'],
     body: `Under **Decree No. 242/2025/ND-CP**, approval steps for project proposals, investment decisions, on-lending and counterpart allocation should be **shortened and scheduled to match the World Bank project cycle** [54].`,
   },
   {
     title: '6 · Choose instruments strategically',
-    source: 'Section 3.4.3 · p. 63',
+    source: 'Section 3.4.3 · p. 57',
     side: recList,
     focus: ['rec-6'],
     callouts: [{ from: '#rec-6', to: a('compass'), label: 'Instrument choice' }],

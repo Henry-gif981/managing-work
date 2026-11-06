@@ -20,7 +20,7 @@ const fig5 = (
     ]}
     max={300}
     format={(v) => `${v}`}
-    caption={<R t="Figure 5. Project financing structure as planned at appraisal (million USD; total {ccsep-total}, World Bank {ccsep-wb}). Source: projects.worldbank.org (shown in the paper as a pie chart)." />}
+    caption={<R t="Figure 3.3.1. Project financing structure as planned at appraisal (million USD; total {ccsep-total}, World Bank {ccsep-wb}). Source: projects.worldbank.org (shown in the paper as a pie chart)." />}
   />
 );
 const fig6 = (
@@ -36,7 +36,7 @@ const fig6 = (
     ]}
     max={100}
     format={(v) => `${v}`}
-    caption={<R t="Figure 6. Share of on-granting and on-lending by financing source (%). Source: projects.worldbank.org; shares from [36, para. 45]." />}
+    caption={<R t="Figure 3.3.2. Share of on-granting and on-lending by financing source (%). Source: projects.worldbank.org; shares from [36, para. 45]." />}
   />
 );
 const cell = (id: string | null) => (id ? <F id={id} /> : '-');
@@ -56,16 +56,16 @@ const t18 = (
       kind: r.id === 'total' ? 'total' : undefined,
       cells: { comp: <b>{r.comp}</b>, total: <F id={r.total} unit={false} />, ida: r.ida ? <F id={r.ida} unit={false} /> : '-', ibrd: r.ibrd ? <F id={r.ibrd} unit={false} /> : '-', cp: r.cp ? <F id={r.cp} unit={false} /> : '-' },
     }))}
-    caption={<R t="Table 18. Project components and financing sources (base cost, million USD). Source: projects.worldbank.org." />}
+    caption={<R t="Table 3.3.2. Project components and financing sources (base cost, million USD). Source: projects.worldbank.org." />}
   />
 );
 void cell;
 const comp = (i: number) => ({
   layout: 'centre' as const,
   band: 'right' as const,
-  title: 'Table 18 · Components and sources',
+  title: 'Table 3.3.2 · Components and sources',
   label: TABLE18[i].comp,
-  source: 'Section 3.3.2 · Table 18 · p. 51',
+  source: 'Section 3.3.2 · Table 3.3.2 · p. 47',
   centre: t18,
   focus: [`t18-${TABLE18[i].id}`],
   callouts: [{ from: `#t18-${TABLE18[i].id}-cp`, to: a(TABLE18[i].anchor), label: TABLE18[i].comp.replace(/^\d\.\s/, '') }],
@@ -73,9 +73,9 @@ const comp = (i: number) => ({
 const part = (k: number, prop: string, label: string, body: string) => ({
   layout: 'centre' as const,
   band: 'right' as const,
-  title: 'Figure 5 · Financing structure',
+  title: 'Figure 3.3.1 · Financing structure',
   label,
-  source: 'Section 3.3.2 · Figure 5 · p. 49',
+  source: 'Section 3.3.2 · Figure 3.3.1 · p. 45',
   centre: fig5,
   focus: [`f5-s${k}`],
   callouts: [{ from: `#f5-${k}-0`, to: a(prop), label }],
@@ -86,7 +86,7 @@ const p = scene('f3-ccsep-structure', [
     title: 'A blended financing package',
     kicker: 'Section 3.3.2',
     layout: 'right',
-    source: 'Section 3.3.2 · p. 49',
+    source: 'Section 3.3.2 · p. 45',
     body: `CCSEP was an **Investment Project Financing** operation, financing specific investment items rather than policy reforms or results [36, Data Sheet]. Total cost at appraisal was {ccsep-total}: World Bank financing {ccsep-wb} ({ccsep-wb-pct}) and Vietnamese counterpart funding {ccsep-cp} ({ccsep-cp-pct}) [36, Data Sheet, para. 43].
 
 The World Bank portion blended an **IBRD loan of {ccsep-ibrd} ({ccsep-ibrd-pct})** with an **IDA credit of {ccsep-ida} ({ccsep-ida-pct})** [36, para. 66], reflecting Vietnam's status as a lower-middle-income country on blend terms shortly before IDA graduation [36, paras. 1, 44].`,
@@ -98,7 +98,7 @@ The World Bank portion blended an **IBRD loan of {ccsep-ibrd} ({ccsep-ibrd-pct})
     title: 'Two sets of terms',
     kicker: 'Section 3.3.2',
     layout: 'right',
-    source: 'Section 3.3.2 · p. 49',
+    source: 'Section 3.3.2 · p. 45',
     body: `The terms differed significantly [36, para. 44]:
 
 - **IBRD loan:** denominated in USD, floating interest rate then based on LIBOR, **{ccsep-ibrd-maturity} maturity including a {ccsep-ibrd-grace} grace period**, equal principal repayments.
@@ -107,9 +107,9 @@ The World Bank portion blended an **IBRD loan of {ccsep-ibrd} ({ccsep-ibrd-pct})
   {
     layout: 'centre',
     band: 'right',
-    title: 'Figure 6 · On-granting and on-lending',
+    title: 'Figure 3.3.2 · On-granting and on-lending',
     label: 'On-lending policy',
-    source: 'Section 3.3.2 · Figure 6 · p. 50',
+    source: 'Section 3.3.2 · Figure 3.3.2 · p. 46',
     centre: fig6,
     focus: ['f6-c0'],
     callouts: [{ from: '#f6-1-0', to: a('nha-trang'), label: 'Provinces' }],
@@ -119,7 +119,7 @@ The World Bank portion blended an **IBRD loan of {ccsep-ibrd} ({ccsep-ibrd-pct})
     title: 'Real debt for the provinces',
     kicker: 'Section 3.3.2',
     layout: 'right',
-    source: 'Section 3.3.2 · p. 50',
+    source: 'Section 3.3.2 · p. 46',
     body: `As a result, about **{ongrant-total-pct}** of total project cost was on-granted to local authorities, **{onlend-total-pct}** was on-lent and {ccsep-cp-pct} was counterpart funding [36, Annex 5, Table 5.1].
 
 The on-lent funds, namely the entire IBRD loan and about {onlend-ida-pct} of the IDA credit (about **{onlend-total}** in total), were genuine debt-service obligations. The PAD warned that the project would significantly increase the debt burden of all four provinces, with **Binh Dinh** projected to slightly exceed its debt ceiling during {binh-dinh-period} [36, paras. 66, 75-76, Annex 5].`,
@@ -128,7 +128,7 @@ The on-lent funds, namely the entire IBRD loan and about {onlend-ida-pct} of the
     title: 'Components 1 and 2',
     kicker: 'Section 3.3.2',
     layout: 'right',
-    source: 'Section 3.3.2 · p. 50',
+    source: 'Section 3.3.2 · p. 46',
     body: `- **Component 1, Sanitation Infrastructure Expansion ({c1-base} base cost):** flood control works, drainage and wastewater collection networks, wastewater treatment plants, school and public sanitation facilities, revolving funds for household connections, and solid waste management [36, para. 31].
 - **Component 2, Urban Connectivity Improvement ({c2-base}):** over {c2-roads} of strategic roads and {c2-bridges|n} bridges along canals, drains and rivers, creating or upgrading arterial and link roads to relieve congestion and improve connectivity [36, paras. 20, 33].`,
   },
@@ -136,7 +136,7 @@ The on-lent funds, namely the entire IBRD loan and about {onlend-ida-pct} of the
     title: 'Components 3 and 4, and who pays',
     kicker: 'Section 3.3.2',
     layout: 'right',
-    source: 'Section 3.3.2 · pp. 50-51',
+    source: 'Section 3.3.2 · pp. 46-47',
     body: `- **Component 3, Compensation and Site Clearance ({c3-base}):** compensation, land acquisition and resettlement [36, para. 34].
 - **Component 4, Implementation Support and Institutional Reform ({c4-base}):** PMU capacity building and Decree No. {decree-80} on service contracts, tariff roadmaps and connection policies [36, para. 35].
 
@@ -146,9 +146,9 @@ Each source was linked to components: **IBRD fully financed Component 2**; **IDA
   {
     layout: 'centre',
     band: 'right',
-    title: 'Table 18 · Base cost vs total cost',
+    title: 'Table 3.3.2 · Base cost vs total cost',
     label: 'Why IBRD is 46.0, not 31.2',
-    source: 'Section 3.3.2 · Table 18 note · p. 51',
+    source: 'Section 3.3.2 · Table 3.3.2 note · p. 47',
     centre: t18,
     focus: ['t18-total-ibrd', 't18-c2-ibrd'],
     callouts: [{ from: '#t18-c2-ibrd', to: a('bridge'), label: 'Component 2' }],

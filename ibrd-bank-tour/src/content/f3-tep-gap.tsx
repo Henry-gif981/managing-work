@@ -15,14 +15,14 @@ const table = (
       { key: 'meaning', label: 'Meaning' },
     ]}
     rows={TABLE16.map((r) => ({ id: r.id, cells: { measure: <b>{r.measure}</b>, value: <R t={r.value} />, meaning: <R t={r.meaning} /> } }))}
-    caption={<R t="Table 16. TEP financing gap: definitions and derived comparisons (million USD). Source: Authors’ compilation and calculations from [46, Annex 3, Table 3.2; 41, pp. v, x, 17]." />}
+    caption={<R t="Table 3.2.7. TEP financing gap: definitions and derived comparisons (million USD). Source: Authors’ compilation and calculations from [46, Annex 3, Table 3.2; 41, pp. v, x, 17]." />}
   />
 );
 const row = (i: number) => ({
   layout: 'centre' as const,
-  title: 'Table 16 · The financing gap',
+  title: 'Table 3.2.7 · The financing gap',
   label: TABLE16[i].measure,
-  source: 'Section 3.2.5 · Table 16 · p. 45',
+  source: 'Section 3.2.5 · Table 3.2.7 · p. 42',
   centre: table,
   focus: [`t16-${TABLE16[i].id}`],
   callouts: [{ from: `#t16-${TABLE16[i].id}-measure`, to: a(TABLE16[i].anchor), label: TABLE16[i].measure }],
@@ -31,7 +31,7 @@ const p = scene('f3-tep-gap', [
   {
     title: 'Committed is not disbursed',
     kicker: 'Section 3.2.5',
-    source: 'Section 3.2.5 · p. 44',
+    source: 'Section 3.2.5 · p. 41',
     side: (
       <div className="card k-stats">
         <Stat id="st-disb" value={<F id="tep-ibrd-disb-pct" />} label="of the IBRD commitment disbursed" />
@@ -45,7 +45,7 @@ Actual total project cost was {tep-actual-total|2}, {tep-cost-cut|2} below appra
   {
     title: 'Not automatically a failure',
     kicker: 'Section 3.2.5',
-    source: 'Section 3.2.5 · p. 44',
+    source: 'Section 3.2.5 · p. 41',
     body: `The unused envelope should not automatically be labeled an implementation failure: **lower steel prices, competition in procurement and reductions in planned activities** all reduced the financing requirement.
 
 IEG refers to approximately **{tep-ieg-cancel} of loan savings cancelled** at closure. This reported cancellation is not a substitute for the {tep-gap|2} calculated difference: the two numbers describe **different accounting concepts** and should not be treated as interchangeable without a full reconciliation of loan-account transactions [41, pp. x, 17].`,
@@ -54,7 +54,7 @@ IEG refers to approximately **{tep-ieg-cancel} of loan savings cancelled** at cl
   {
     title: 'Why the schedule slipped',
     kicker: 'Section 3.2.5',
-    source: 'Section 3.2.5 · p. 45',
+    source: 'Section 3.2.5 · p. 42',
     body: `The schedule overrun was more directly linked to implementation shortcomings. Selecting and approving **smart-grid technology**, including concerns about taking substations offline, required roughly {smartgrid-years}; Component 2 had made little progress by the {tep-restructure-year} restructuring. Some works were also delayed by bidding-related processing and by compensation and land acquisition, so the project closed {tep-delay-years} later than planned.
 
 IEG nevertheless rated the overall outcome **highly satisfactory** because the principal capacity, efficiency and reliability objectives were substantially achieved [56, pp. 3, 12; 41, pp. x-xi, 17-18].`,
@@ -62,7 +62,7 @@ IEG nevertheless rated the overall outcome **highly satisfactory** because the p
   {
     title: 'Environmental and social issues',
     kicker: 'Section 3.2.5',
-    source: 'Section 3.2.5 · p. 45',
+    source: 'Section 3.2.5 · p. 42',
     side: (
       <div className="card k-stats">
         <Stat value={<F id="tep-affected-hh" />} label="affected households (approximately)" tone="warn" />
@@ -76,7 +76,7 @@ This supports a differentiated assessment: strong engineering and economic resul
   {
     title: 'Sustainability beyond the project',
     kicker: 'Section 3.2.5',
-    source: 'Section 3.2.5 · p. 45',
+    source: 'Section 3.2.5 · p. 42',
     callouts: [{ from: '.k-card .h2', to: a('gauge'), label: 'Tariffs and investment' }],
     body: `Sustainability depends on factors outside the project boundary. IEG warned that NPT's ability to maintain and expand the network depends on **more adequate transmission tariffs** and **timely capital investment**, particularly as variable renewable generation expands.
 

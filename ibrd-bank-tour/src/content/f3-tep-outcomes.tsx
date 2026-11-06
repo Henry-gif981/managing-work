@@ -18,7 +18,7 @@ const table = (
       { key: 'scope', label: 'Interpretation / scope', width: 300 },
     ]}
     rows={TABLE15.map((r) => ({ id: r.id, cells: { ind: <b>{r.ind}</b>, early: <R t={r.early} />, late: <R t={r.late} />, scope: r.scope } }))}
-    caption={<R t="Table 15. Selected system-level service and efficiency indicators around TEP completion. Source: Authors’ compilation from [41, pp. 9–11, Tables 2.2–2.3; underlying EVN data]." />}
+    caption={<R t="Table 3.2.6. Selected system-level service and efficiency indicators around TEP completion. Source: Authors’ compilation from [41, pp. 9–11, Tables 2.2–2.3; underlying EVN data]." />}
   />
 );
 const fig4 = (
@@ -32,14 +32,14 @@ const fig4 = (
     min={2.0}
     max={2.7}
     format={(v) => v.toFixed(2)}
-    caption={<R t="Figure 4. Vietnam’s electricity transmission loss ratio, 2015-2022 (%; axis from 2.0%, as in the paper). Source: [41, Table 2.3, p. 11], citing EVN data. 2016, 2017, 2018 and 2020 values are the data labels of the paper's figure. The system-wide ratio is not a TEP-only impact estimate." />}
+    caption={<R t="Figure 3.2.4. Vietnam’s electricity transmission loss ratio, 2015-2022 (%; axis from 2.0%, as in the paper). Source: [41, Table 2.3, p. 11], citing EVN data. 2016, 2017, 2018 and 2020 values are the data labels of the paper's figure. The system-wide ratio is not a TEP-only impact estimate." />}
   />
 );
 const row = (i: number) => ({
   layout: 'centre' as const,
-  title: 'Table 15 · System-level indicators',
+  title: 'Table 3.2.6 · System-level indicators',
   label: TABLE15[i].ind,
-  source: 'Section 3.2.4 · Table 15 · p. 43',
+  source: 'Section 3.2.4 · Table 3.2.6 · p. 40',
   centre: table,
   focus: [`t15-${TABLE15[i].id}`],
   callouts: [{ from: `#t15-${TABLE15[i].id}-ind`, to: a(TABLE15[i].anchor), label: TABLE15[i].ind.split(' per ')[0].split(' caused')[0] }],
@@ -48,7 +48,7 @@ const p = scene('f3-tep-outcomes', [
   {
     title: 'Operating efficiency at closure',
     kicker: 'Section 3.2.4 · outcomes',
-    source: 'Section 3.2.4 · p. 42',
+    source: 'Section 3.2.4 · p. 39',
     body: `Average **O&M expenditure per MWh** transmitted fell from {om-baseline} at baseline to {om-2021} in 2021, against a target of {om-target}, and stayed at that level in 2022. **Unserved energy** from transmission-system failures declined from {unserved-2012} at the end of 2012 to {unserved-2021} at closure. Average interruption duration and frequency decreased between 2018 and 2021.
 
 These are consistent with better asset operation and reliability, but IEG warns that several measures relate to the **entire grid** and cannot be isolated to project sub-areas [41, pp. 9-11].`,
@@ -60,9 +60,9 @@ These are consistent with better asset operation and reliability, but IEG warns 
   row(4),
   {
     layout: 'centre',
-    title: 'Figure 4 · Transmission loss ratio',
+    title: 'Figure 3.2.4 · Transmission loss ratio',
     label: 'Loss ratio 2015-2022',
-    source: 'Section 3.2.4 · Figure 4 · p. 43',
+    source: 'Section 3.2.4 · Figure 3.2.4 · p. 40',
     centre: fig4,
     focus: ['f4-0-0', 'f4-0-4', 'f4-0-6', 'f4-0-7'],
     callouts: [{ from: '#f4-0-7', to: a('gauge'), label: '2.54% in 2022' }],
@@ -75,7 +75,7 @@ These are consistent with better asset operation and reliability, but IEG warns 
   {
     title: 'Not a simple success story',
     kicker: 'Section 3.2.4',
-    source: 'Section 3.2.4 · p. 44',
+    source: 'Section 3.2.4 · p. 41',
     body: `Transmission losses fell to {loss-2019} in 2019 but rose to {loss-2021} in 2021 and {loss-2022} in 2022. IEG linked the increase to changing grid flows as **wind and solar generation expanded**, congestion in the central and southern regions, and insufficient new transmission investment.
 
 500-kV line faults fell from {faults500-2018|n} in 2018 to {faults500-2022|n} in 2022, while 220-kV faults rose from {faults220-2018|n} to {faults220-2022|n}: reliability improvements were not uniform [41, pp. 11-13].`,
@@ -83,7 +83,7 @@ These are consistent with better asset operation and reliability, but IEG warns 
   {
     title: 'Renewables: handle with care',
     kicker: 'Section 3.2.4',
-    source: 'Section 3.2.4 · p. 44',
+    source: 'Section 3.2.4 · p. 41',
     body: `TEP's greater transfer capacity and digital substation controls improved the technical conditions for intermittent generation. IEG cites the **Quang Ngai-Quy Nhon 220-kV line**'s contribution to better use of power from the **Thuong Kon Tum** hydropower plant.
 
 But the evaluation does not quantify extra solar or wind MWh due solely to TEP, and documents continued curtailment and congestion. The defensible conclusion: **TEP supported the network's capability to integrate renewables**, not that it eliminated curtailment or achieved a verified increase in renewable generation [41, pp. 8-13].`,
@@ -91,7 +91,7 @@ But the evaluation does not quantify extra solar or wind MWh due solely to TEP, 
   {
     title: 'Economic returns',
     kicker: 'Section 3.2.4',
-    source: 'Section 3.2.4 · p. 44',
+    source: 'Section 3.2.4 · p. 41',
     side: (
       <div className="card k-stats">
         <Stat id="st-eirr" value={<F id="eirr-icr" />} label="EIRR re-estimated in the 2022 ICR" tone="good" />

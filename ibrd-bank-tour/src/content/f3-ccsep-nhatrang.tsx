@@ -18,7 +18,7 @@ const p = scene('f3-ccsep-nhatrang', [
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     callouts: [{ from: '.k-card .h2', to: a('pin'), label: 'Nha Trang' }],
     body: `The single largest bottleneck was **resettlement in Nha Trang** (Section 3.3.3). Of the {nt-plans} households originally identified for compensation, only **{nt-plans-approved}** had approved plans after the restructuring, and two work packages (**NT-2.1 and NT-2.2**) were delayed and then cancelled, so the works could not be completed within the project period [60, executive summary, paras. 10, 29].`,
   },
@@ -27,7 +27,7 @@ const p = scene('f3-ccsep-nhatrang', [
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 58',
+    source: 'Section 3.3.4 · p. 53',
     callouts: [{ from: '.k-card .h2', to: a('pin'), label: '138 of 469' }],
     body: `At closing, only **{nt-comp} of the {nt-hh} affected households** in Nha Trang ({nt-comp-pct}) had been compensated, and {nt-to-relocate} households were still to be relocated [63, p. 19; 64, p. 17]. The land concerned: about {land-not-acq} not yet acquired, about {land-2018} acquired in 2018 and about {land-2021} in 2021 [60, paras. 11, 63].
 
@@ -43,7 +43,7 @@ World Bank Management cited "technical reasons" for the cancellations and said t
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 59',
+    source: 'Section 3.3.4 · p. 54',
     callouts: [{ from: '.k-card .h2', to: a('pin'), label: 'Ngoc Hiep Ward' }],
     body: `The bottleneck led to a formal complaint. In a request submitted by **{complainants|n} residents of Ngoc Hiep Ward** to the Inspection Panel on **{complaint-date}**, residents described land use and construction restrictions since {restrictions-since}, inconsistent resettlement policies, inadequate land compensation prices, and security pressure due to police presence [60, paras. 13, 17, 19, 23].
 
@@ -54,7 +54,7 @@ World Bank Management cited "technical reasons" for the cancellations and said t
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 59',
+    source: 'Section 3.3.4 · p. 54',
     body: `World Bank Management reviewed **{packages-reviewed|n} compensation packages** and identified **{packages-noncompliant|n} non-compliant cases**, referred to the PMU for correction in {pmu-referral}; {packages-lowprice|n} involved low land prices and were being revised. The compensation plan for the 5 ha area was officially revoked in {plan-revoked} [60, paras. 37, 40, 41].
 
 The Board of Executive Directors **approved the investigation on {investigation-approved}** [61].`,
@@ -64,7 +64,7 @@ The Board of Executive Directors **approved the investigation on {investigation-
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 59',
+    source: 'Section 3.3.4 · p. 54',
     body: `The parties entered a dispute resolution process, which concluded on {dispute-end} without a signed agreement after the complainants withdrew, although a confidential memorandum of understanding had been signed on {mou-date} [62].
 
 The case returned to the Inspection Panel, which submitted its **Investigation Report on {panel-report}** [61].`,
@@ -74,7 +74,7 @@ The case returned to the Inspection Panel, which submitted its **Investigation R
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 59',
+    source: 'Section 3.3.4 · p. 54',
     body: `The Panel found the Bank in **non-compliance in {noncompliance-areas|n} areas**: alternatives were not explored to avoid displacing secondary households at the Ngoc Hiep resettlement site, and consultation and access to the grievance mechanism were inadequate in the project's early stages.
 
 It found the Bank **in compliance** on land-use restrictions, which stemmed from the {master-plan} Master Plan and the {land-law} Land Law, and on valuation and compensation, after corrective measures. The Board approved the **Management Action Plan on {map-approved}** [61].`,
@@ -84,7 +84,7 @@ It found the Bank **in compliance** on land-use restrictions, which stemmed from
     kicker: 'Section 3.3.4 · Nha Trang',
     layout: 'left',
     side: stats,
-    source: 'Section 3.3.4 · p. 59 (Bank standards vs local rules: Sections 2.3.2, 3.4.2)',
+    source: 'Section 3.3.4 · p. 54 (Bank standards vs local rules: Sections 2.3.2, 3.4.2)',
     body: `{nt-causes|n} direct causes (Section 3.3.3) [57]:
 
 1. disagreements over **land prices and compensation**, which led one-third of approved plans to be rejected;

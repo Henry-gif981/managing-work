@@ -17,7 +17,7 @@ const tl = (
 const p = scene('f3-1993', [
   {
     title: 'Lending resumes in 1993',
-    source: 'Section 3.1.1 · p. 31',
+    source: 'Section 3.1.1 · p. 30',
     side: tl,
     callouts: [{ from: '.k-card .h2', to, label: 'Partnership records' }],
     body: `The present lending relationship took shape when the Bank **resumed lending in {resume-date}**, following the resolution of arrears and the re-establishment of external financial relations. Two IDA credits were approved that month: approximately {ida-edu-1993} for primary education and {ida-road-1993} for highway rehabilitation. The Bank opened its resident office in Hanoi in {hanoi-office}.
@@ -26,7 +26,7 @@ This re-engagement coincided with the early reforms under **Đổi Mới** and s
   },
   {
     title: 'Beyond capital: IDA or IBRD?',
-    source: 'Section 3.1.1 · p. 31',
+    source: 'Section 3.1.1 · p. 30',
     side: tl,
     body: `During the following two decades, the Bank's role extended beyond capital. IDA-financed operations supported physical infrastructure, education, poverty reduction and public-sector institutions, while policy analysis and project-level technical assistance helped public agencies manage complex investments.
 

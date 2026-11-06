@@ -7,7 +7,7 @@ const p = scene('f3-eval-achievements', [
   {
     title: 'Two cases, one lesson',
     kicker: 'Section 3.4',
-    source: 'Section 3.4 · p. 60',
+    source: 'Section 3.4 · p. 55',
     callouts: [{ from: '.k-card .h2', to: a('table'), label: 'Executive office' }],
     body: `Taken together, the two cases show that **IBRD support works as a package of finance, technical support and training**, and that its results depend on whether domestic systems can absorb it.
 
@@ -15,7 +15,7 @@ This section summarizes the achievements and limitations common to both projects
   },
   {
     title: 'Financial mobilization',
-    source: 'Section 3.4.1 · p. 60',
+    source: 'Section 3.4.1 · p. 55',
     side: (
       <div className="card k-stats">
         <Stat value={<F id="tep-ibrd" />} label={<>TEP: <F id="tep-maturity" /> maturity, <F id="tep-grace" /> grace</>} />
@@ -29,7 +29,7 @@ Both projects also mobilized counterpart resources: NPT committed {tep-counterpa
   },
   {
     title: 'Higher technical standards',
-    source: 'Section 3.4.1 · p. 60',
+    source: 'Section 3.4.1 · p. 55',
     callouts: [{ from: '.k-card .h2', to: a('compass'), label: 'Standards' }],
     body: `TEP introduced **smart-grid technology** in {tep-500|n} 500-kV and {tep-220|n} 220-kV substations and added **{tep-mw}** of transformer capacity. Operating costs per MWh fell from {om-baseline} to {om-2021}, and unserved energy dropped sharply [41].
 
@@ -37,7 +37,7 @@ CCSEP extended **sewer networks and treatment capacity** in four coastal cities 
   },
   {
     title: 'Higher management standards',
-    source: 'Section 3.4.1 · pp. 60-61',
+    source: 'Section 3.4.1 · pp. 55-56',
     callouts: [{ from: '.k-card .h2', to: a('scales'), label: 'Management' }],
     body: `Both projects applied the Bank's **procurement, financial management and safeguard rules**, and their implementing units built skills in these areas. NPT's asset management system now supports investment and maintenance decisions.
 

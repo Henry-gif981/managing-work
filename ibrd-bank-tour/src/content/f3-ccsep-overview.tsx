@@ -15,15 +15,15 @@ const table = (
       { key: 'act', label: 'Actual', align: 'right', width: 280 },
     ]}
     rows={TABLE17.map((r) => ({ id: r.id, cells: { m: <b>{r.m}</b>, plan: r.plan, act: r.act } }))}
-    caption={<R t="Table 17. Planned and actual project implementation timeline. Source: [36]; [57]; [63, Key Dates]. The ICR gives no separate implementation end date, so the actual date shown is the loan closing date." />}
+    caption={<R t="Table 3.3.1. Planned and actual project implementation timeline. Source: [36]; [57]; [63, Key Dates]. The ICR gives no separate implementation end date, so the actual date shown is the loan closing date." />}
   />
 );
 const row = (id: string, label: string, body: string) => ({
   layout: 'centre' as const,
   band: 'right' as const,
-  title: 'Table 17 · Planned vs actual timeline',
+  title: 'Table 3.3.1 · Planned vs actual timeline',
   label,
-  source: 'Section 3.3.1 · Table 17 · p. 48',
+  source: 'Section 3.3.1 · Table 3.3.1 · p. 44',
   centre: table,
   focus: [`t17-${id}`],
   callouts: [{ from: `#t17-${id}-act`, to: a('map'), label }],
@@ -34,7 +34,7 @@ const p = scene('f3-ccsep-overview', [
     title: 'Coastal cities under strain',
     kicker: 'Section 3.3.1 · Case study 2 · urban and environment',
     layout: 'right',
-    source: 'Section 3.3.1 · p. 47',
+    source: 'Section 3.3.1 · p. 44',
     side: (
       <div className="card k-stats">
         <Stat id="st-ww" value={<F id="urban-ww-treated" />} label="of urban wastewater treated (only about)" tone="bad" />
@@ -50,7 +50,7 @@ The sector needed around {sector-need} per year, while expected funding covered 
     title: 'CCSEP in four cities',
     kicker: 'Section 3.3.1',
     layout: 'left',
-    source: 'Section 3.3.1 · p. 47',
+    source: 'Section 3.3.1 · p. 44',
     callouts: [
       { from: '.k-card .h2', to: a('dong-hoi'), label: 'Dong Hoi' },
       { from: '.k-card .h2', to: a('quy-nhon'), label: 'Quy Nhon' },
@@ -66,7 +66,7 @@ It continued the earlier Coastal Cities Environmental Sanitation Project (CCESP,
     title: 'Dates, cost and actors',
     kicker: 'Section 3.3.1',
     layout: 'right',
-    source: 'Section 3.3.1 · p. 47',
+    source: 'Section 3.3.1 · p. 44',
     body: `Approved on {ccsep-approved}; the financing agreement was signed on {ccsep-signed} and became effective on {ccsep-effective}. The appraisal schedule ran from {ccsep-approved} to {ccsep-end-plan}, with loan closing on {ccsep-closing-plan}; the deadline was extended and the loan closed on **{ccsep-closing-date}**. Total cost at appraisal: **{ccsep-total}**.
 
 The Government of Vietnam was the borrower and the World Bank the financier; implementation was decentralized to **Quang Binh, Binh Dinh, Khanh Hoa and Ninh Thuan** through PMUs under the provincial People's Committees [36; 57].`,
@@ -79,7 +79,7 @@ The Government of Vietnam was the borrower and the World Bank the financier; imp
     title: 'Objective and three indicators',
     kicker: 'Section 3.3.1',
     layout: 'right',
-    source: 'Section 3.3.1 · p. 48',
+    source: 'Section 3.3.1 · p. 45',
     callouts: [{ from: '#st-ben', to: a('houses'), label: 'Beneficiaries' }],
     aside: (
       <div className="k-stats">

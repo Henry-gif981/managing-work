@@ -41,7 +41,7 @@ const door = (i: number) => ({
   layout: 'centre' as const,
   title: 'Four criteria',
   label: DOORS[i].name,
-  source: 'Sections 3.2.1-3.2.6 · pp. 35-46; ratings Section 2.2.3 · p. 26',
+  source: 'Sections 3.2.1-3.2.6 · pp. 33-43; ratings Section 2.2.3 · p. 25',
   centre: doors,
   focus: [`door-${DOORS[i].id}`],
   callouts: [{ from: `#door-${DOORS[i].id}`, to: a(['transformer', 'transformer', 'cash', 'gauge'][i]), label: DOORS[i].name }],
@@ -50,14 +50,14 @@ const p = scene('f3-tep-assess', [
   {
     title: 'What TEP shows',
     kicker: 'Section 3.2.6',
-    source: 'Section 3.2.6 · p. 46',
+    source: 'Section 3.2.6 · p. 43',
     callouts: [{ from: '.k-card .h2', to: a('transformer'), label: 'Strengths' }],
     body: `TEP shows how a sovereign IBRD investment loan can combine **high-voltage capital expenditure** with **technology modernization** and **targeted institutional development**. Its strongest demonstrable achievements were in physical outputs and improved operating indicators. It also delivered a useful reduction in measured capital costs relative to the appraisal budget.`,
   },
   {
     title: 'Weighed against',
     kicker: 'Section 3.2.6',
-    source: 'Section 3.2.6 · p. 46',
+    source: 'Section 3.2.6 · p. 43',
     body: `These strengths should be weighed against:
 
 - the lengthy **smart-grid preparation** process
@@ -70,7 +70,7 @@ const p = scene('f3-tep-assess', [
     layout: 'centre',
     title: 'Four criteria',
     label: 'Ratings',
-    source: 'Section 2.2.3 · p. 26; Section 3.2.5 · p. 45',
+    source: 'Section 2.2.3 · p. 25; Section 3.2.5 · p. 42',
     centre: doors,
     aside: (
       <Note>
@@ -81,7 +81,7 @@ const p = scene('f3-tep-assess', [
   {
     title: 'Three conclusions',
     kicker: 'Section 3.2.6',
-    source: 'Section 3.2.6 · p. 46',
+    source: 'Section 3.2.6 · p. 43',
     body: `For the research question, {tep-conclusions|n} conclusions follow:
 
 1. IBRD participation **existed alongside IDA before the 2017 graduation** and cannot be treated as a purely post-IDA arrangement.
@@ -91,7 +91,7 @@ const p = scene('f3-tep-assess', [
   {
     title: 'Towards the second case',
     kicker: 'Section 3.2.6',
-    source: 'Section 3.2.6 · p. 46',
+    source: 'Section 3.2.6 · p. 43',
     callouts: [{ from: '.k-card .h2', to: 'anchor:f3-tep-assess:ccsep', label: 'CCSEP' }],
     body: `These distinctions make the case study an evidence-based foundation for the comparison in Section 3.3.
 
