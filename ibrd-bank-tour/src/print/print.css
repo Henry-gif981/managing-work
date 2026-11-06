@@ -374,3 +374,24 @@ html.print-mode #root {
 .page-veil {
   display: none;
 }
+.exhibit .legal-card {
+  width: 1500px;
+  padding: 10px 16px;
+}
+.exhibit .legal-tl li {
+  font-size: 19px;
+  padding: 4px 10px;
+  margin: 2px 0;
+  grid-template-columns: 300px 440px 1fr;
+}
+.exhibit .timeline {
+  padding-top: 30px;
+}
+.exhibit .tl-date {
+  font-size: 24px;
+  margin-top: 26px;
+}
+.exhibit .chart svg {
+  max-height: 380px;
+  width: auto;
+}

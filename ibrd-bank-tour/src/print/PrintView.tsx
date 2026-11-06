@@ -85,9 +85,13 @@ function SceneSheet({ p, n, total, onOverflow }: { p: ScenePage; n: number; tota
     if (el && el.scrollHeight > el.clientHeight + 2) onOverflow(s.id);
   });
   // exhibits: shared centre/side nodes (tables, charts, timelines), once each, in order of first use
+  // each exhibit appears once, on the part that holds the first slide using it
   const exhibits: ReactNode[] = [];
-  if (slides)
-    for (const { sl } of mine) for (const node of [sl.centre, sl.side]) if (node && !exhibits.includes(node)) exhibits.push(node);
+  if (slides) {
+    const firstUse = new Map<ReactNode, number>();
+    slides.forEach((sl, i) => [sl.centre, sl.side].forEach((node) => node && !firstUse.has(node) && firstUse.set(node, i)));
+    for (const { sl, i } of mine) for (const node of [sl.centre, sl.side]) if (node && firstUse.get(node) === i && !exhibits.includes(node)) exhibits.push(node);
+  }
   const bg = bgOf(s.id);
   return (
     <section className="page scene-page" ref={ref} data-scene={s.id}>
@@ -258,7 +262,7 @@ export default function PrintView() {
     let changed = false;
     for (const id of pending.current) {
       const cur = next[id] ?? 1;
-      if (cur < 4 && slidesOf(id)) {
+      if (cur < 5 && slidesOf(id)) {
         next[id] = cur + 1;
         changed = true;
       }

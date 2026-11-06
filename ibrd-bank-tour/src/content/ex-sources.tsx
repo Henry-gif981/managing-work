@@ -24,7 +24,7 @@ export default function View({ print }: SceneViewProps) {
           <input className="refwall-search" placeholder="Search author, year, title, decree…" value={q} onChange={(e) => setQ(e.target.value)} onKeyDown={(e) => e.stopPropagation()} />
         )}
         <ol className="refwall-list">
-          {(print ? REFERENCES.slice(0, 12) : list).map((r) => (
+          {(print ? REFERENCES.slice(0, 5) : list).map((r) => (
             <li key={r.n}>
               <button onClick={() => openRef(r.n)} title="Open in the references panel">
                 [{r.n}]
