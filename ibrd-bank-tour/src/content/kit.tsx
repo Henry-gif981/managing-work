@@ -171,6 +171,8 @@ export function scene(sceneId: string, slides: Slide[]) {
       </>
     );
   }
+  // the print view lays all slides of a scene out on one page
+  (View as unknown as { slides: Slide[] }).slides = slides;
   return { beats, View };
 }
 

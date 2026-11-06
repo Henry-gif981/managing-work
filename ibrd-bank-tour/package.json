@@ -14,7 +14,9 @@
     "typecheck": "tsc --noEmit",
     "test:smoke": "node scripts/smoke.mjs",
     "docs:scenes": "tsx scripts/scene-list.ts",
-    "audit-content": "tsx scripts/audit-content.ts"
+    "audit-content": "tsx scripts/audit-content.ts",
+    "check-lines": "node scripts/check-lines.mjs",
+    "capture-bg": "node scripts/capture-bg.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.3.0",

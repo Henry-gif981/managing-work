@@ -8,9 +8,11 @@ export const PARAMS = {
   /** ?print=1 : static print layout, no WebGL */
   print: q.get('print') === '1',
   /** ?shot=1 : screenshot mode: no auto-advance, no fps watchdog, instant tweens */
-  shot: q.get('shot') === '1',
+  shot: q.get('shot') === '1' || q.get('capture') === '1',
+  /** ?capture=1 : 3D only (HUD and content hidden), for npm run capture-bg */
+  capture: q.get('capture') === '1',
   /** ?noauto=1 : transit scenes (door, lift-up) do not auto-advance */
-  noauto: q.get('noauto') === '1' || q.get('shot') === '1',
+  noauto: q.get('noauto') === '1' || q.get('shot') === '1' || q.get('capture') === '1',
   /** ?lite=1 : start in lite mode */
   lite: q.get('lite') === '1',
   /** ?dev=1 : start with dev overlay */

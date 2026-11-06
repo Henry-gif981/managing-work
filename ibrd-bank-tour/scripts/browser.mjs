@@ -21,6 +21,6 @@ export function ensureSingleBuild(force = process.argv.includes('--build')) {
 
 export async function launch() {
   return chromium.launch({
-    args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--enable-webgl'],
+    args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist', '--enable-webgl'],
   });
 }

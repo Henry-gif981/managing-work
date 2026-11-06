@@ -1,12 +1,13 @@
 import { Suspense, useEffect, useState } from 'react';
 import { useTour } from './state/store';
+import { PARAMS } from './util/params';
 import { SCENES } from './scenes';
 import { useDesignScale } from './util/design';
 import { Hud } from './hud/Hud';
 import { Panels } from './hud/Panels';
 import { Toasts } from './hud/Hud';
 import { SceneHost } from './SceneHost';
-import { CalloutLayer } from './primitives/Callout';
+import { CalloutLayer, CalloutPinsTop } from './primitives/Callout';
 import { LiteBackdrop, liteSetOf } from './lite/LiteBackdrop';
 import { webglAvailable } from './three/Stage';
 import Stage from './three/Stage';
@@ -34,11 +35,13 @@ export default function App() {
       ) : (
         <LiteBackdrop set={liteSetOf(SCENES[index])} />
       )}
-      <div className="blueprint" />
+      {!PARAMS.capture && <div className="blueprint" />}
       <div className={'fade' + (fade ? ' on' : '')} />
-      <div className="design" style={{ transform: `translate(${box.ox}px, ${box.oy}px) scale(${box.s})` }}>
-        <SceneHost />
+      <div className="design" hidden={PARAMS.capture} style={{ transform: `translate(${box.ox}px, ${box.oy}px) scale(${box.s})` }}>
+        {/* leader lines sit below the content cards (update part 5) */}
         <CalloutLayer />
+        <SceneHost />
+        <CalloutPinsTop />
         <Hud />
         <Panels />
         <Toasts />

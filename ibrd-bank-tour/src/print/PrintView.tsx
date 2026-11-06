@@ -1,111 +1,157 @@
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { SCENES, SEGMENTS } from '../scenes';
 import { CONTENT } from '../content';
 import { FocusContext } from '../primitives/focus';
 import { LiteBackdrop, liteSetOf } from '../lite/LiteBackdrop';
 import { REFERENCES } from '../data/references';
 import { COVER } from '../data/cover';
+import { R, type Slide } from '../content/kit';
 import type { CalloutSpec } from '../content/types';
 
-interface BeatPage {
-  kind: 'beat';
-  scene: number;
-  beat: number;
-}
-type Page = { kind: 'toc' } | BeatPage | { kind: 'refs'; from: number; to: number };
+/**
+ * ?print=1 (update part 6): cover (ext-facade), contents, ONE page per scene, references.
+ * - Background: the scene's 3D render (src/assets/print-bg/<id>.jpg, made by `npm run capture-bg`);
+ *   falls back to the lite illustration only if an image is missing.
+ * - Every beat of the scene at once: shared tables/charts/diagrams ("exhibits") once, then one card per beat.
+ * - Callouts become numbered pins: a badge on the related row/element and a legend naming the 3D prop.
+ * - A scene that does not fit is split over more pages; the split is logged in window.__printOverflow.
+ */
+const BG = import.meta.glob('../assets/print-bg/*.jpg', { eager: true, import: 'default' }) as Record<string, string>;
+const bgOf = (id: string) => BG[`../assets/print-bg/${id}.jpg`];
 
-const REFS_PER_PAGE = 14;
-
-function buildPages(): Page[] {
-  const pages: Page[] = [{ kind: 'toc' }];
-  SCENES.forEach((s, i) => {
-    const n = CONTENT[s.id]?.beats.length ?? 0;
-    for (let b = 0; b < n; b++) pages.push({ kind: 'beat', scene: i, beat: b });
-  });
-  for (let i = 0; i < REFERENCES.length; i += REFS_PER_PAGE) pages.push({ kind: 'refs', from: i, to: Math.min(REFERENCES.length, i + REFS_PER_PAGE) });
-  return pages;
-}
-
+const REFS_PER_PAGE = 16;
+const NO_FOCUS = new Set<string>();
 const pretty = (anchor: string) => anchor.split(':').pop()!.replace(/-/g, ' ');
 
-/**
- * Static stand-in for 3D callouts: a leader from the DOM element to a labelled marker in the free band
- * (left band for centre layouts, right band for right-banded layouts). Only centre layouts keep such a band free.
- */
-function PrintCallouts({ callouts, pageRef }: { callouts: CalloutSpec[]; pageRef: React.RefObject<HTMLElement | null> }) {
-  const [geo, setGeo] = useState<{ d: string; mx: number; my: number; label: string; right: boolean }[]>([]);
-  useEffect(() => {
-    // measure after the page ref is attached and fonts have laid out the text
-    let raf = 0;
-    const run = () => measure();
-    raf = requestAnimationFrame(() => (document.fonts?.ready ?? Promise.resolve()).then(run));
-    return () => cancelAnimationFrame(raf);
-  }, [callouts, pageRef]);
-  function measure() {
-    const page = pageRef.current;
-    if (!page) return;
-    const centre = page.querySelector('.k-centre');
-    if (!centre) return setGeo([]);
-    const right = centre.classList.contains('k-centre-r');
-    const pr = page.getBoundingClientRect();
-    const s = pr.width / 1920;
-    const out: typeof geo = [];
-    callouts.forEach((c, i) => {
-      const el = page.querySelector(c.from) as HTMLElement | null;
-      if (!el) return;
-      const r = el.getBoundingClientRect();
-      const x0 = ((right ? r.right : r.left) - pr.left) / s;
-      const y0 = (r.top + r.height / 2 - pr.top) / s;
-      const mx = right ? 1700 : 210;
-      const my = Math.min(900, Math.max(200, y0 + 90 + i * 70));
-      const cx = (x0 + mx) / 2;
-      out.push({ d: `M${x0},${y0} C${cx},${y0} ${cx},${my} ${mx},${my}`, mx, my, label: c.label ?? pretty(c.to), right });
-    });
-    setGeo(out);
-  }
-  if (!geo.length) return null;
-  return (
-    <svg className="callouts print-callouts" width={1920} height={1080} viewBox="0 0 1920 1080">
-      {geo.map((g, i) => (
-        <g key={i}>
-          <path className="halo" d={g.d} />
-          <path d={g.d} />
-          <g transform={`translate(${g.mx},${g.my})`}>
-            <circle className="pin-ring" r={11} />
-            <circle className="pin-dot" r={5} />
-            <text x={g.right ? -16 : 16} y={-14} textAnchor={g.right ? 'end' : 'start'}>
-              {g.label}
-            </text>
-            <text className="print-prop" x={g.right ? -16 : 16} y={26} textAnchor={g.right ? 'end' : 'start'}>
-              3D prop in the tour
-            </text>
-          </g>
-        </g>
-      ))}
-    </svg>
-  );
+type ScenePage = { kind: 'scene'; scene: number; part: number; parts: number };
+type Page = { kind: 'cover' } | { kind: 'toc' } | ScenePage | { kind: 'refs'; from: number; to: number };
+
+const printable = SCENES.map((s, i) => ({ s, i })).filter(({ s }) => s.id !== 'ext-facade' && (CONTENT[s.id]?.beats.length ?? 0) > 0);
+
+function slidesOf(id: string): Slide[] | null {
+  const v = CONTENT[id]?.View as unknown as { slides?: Slide[] };
+  return v?.slides ?? null;
 }
 
-function BeatPageView({ p, n, total }: { p: BeatPage; n: number; total: number }) {
+/** Split a scene's slides into `parts` consecutive groups. */
+function chunk<T>(a: T[], parts: number, k: number): T[] {
+  const n = Math.ceil(a.length / parts);
+  return a.slice(k * n, (k + 1) * n);
+}
+
+function Pin({ n }: { n: number }) {
+  return <span className="ppin">{n}</span>;
+}
+
+/** Adds pin badges next to the elements the callouts start from (table rows, chart bars, chips...). */
+function usePinBadges(root: React.RefObject<HTMLElement | null>, pins: { n: number; spec: CalloutSpec }[]) {
+  useEffect(() => {
+    const page = root.current;
+    if (!page) return;
+    const added: HTMLElement[] = [];
+    for (const { n, spec } of pins) {
+      if (spec.from.startsWith('.k-')) continue; // card-level callouts: the pin sits on the beat card title
+      const el = page.querySelector(spec.from) as HTMLElement | null;
+      if (!el) continue;
+      const target = (el.tagName === 'TR' ? el.querySelector('td, th') : el) as HTMLElement | null;
+      if (!target || target.querySelector(`.ppin[data-n="${n}"]`)) continue;
+      const b = document.createElement('span');
+      b.className = 'ppin';
+      b.dataset.n = String(n);
+      b.textContent = String(n);
+      if (target instanceof SVGElement) continue;
+      target.prepend(b);
+      added.push(b);
+    }
+    return () => added.forEach((b) => b.remove());
+  }, [root, pins]);
+}
+
+function SceneSheet({ p, n, total, onOverflow }: { p: ScenePage; n: number; total: number; onOverflow: (id: string) => void }) {
   const ref = useRef<HTMLElement>(null);
   const s = SCENES[p.scene];
   const c = CONTENT[s.id];
-  const beat = c.beats[p.beat];
-  const View = c.View;
+  const slides = slidesOf(s.id);
+  // numbered pins across the whole scene (stable numbering across split pages)
+  const allPins: { n: number; spec: CalloutSpec; slide: number }[] = [];
+  let k = 0;
+  if (slides) slides.forEach((sl, i) => sl.callouts?.forEach((spec) => allPins.push({ n: ++k, spec, slide: i })));
+  else c.beats.forEach((b, i) => b.callouts?.forEach((spec) => allPins.push({ n: ++k, spec, slide: i })));
+  const mine = slides ? chunk(slides.map((sl, i) => ({ sl, i })), p.parts, p.part) : [];
+  const pinsHere = allPins.filter((x) => !slides || mine.some((m) => m.i === x.slide));
+  usePinBadges(ref, pinsHere);
+  useLayoutEffect(() => {
+    const el = ref.current?.querySelector('.sheet') as HTMLElement | null;
+    if (el && el.scrollHeight > el.clientHeight + 2) onOverflow(s.id);
+  });
+  // exhibits: shared centre/side nodes (tables, charts, timelines), once each, in order of first use
+  const exhibits: ReactNode[] = [];
+  if (slides)
+    for (const { sl } of mine) for (const node of [sl.centre, sl.side]) if (node && !exhibits.includes(node)) exhibits.push(node);
+  const bg = bgOf(s.id);
   return (
-    <section className="page" ref={ref} data-scene={s.id} data-beat={p.beat + 1}>
-      <LiteBackdrop set={liteSetOf(s)} />
-      <div className="page-veil" />
-      <FocusContext.Provider value={new Set(beat?.focus ?? [])}>
-        <div className="scene-layer">
-          <View sceneId={s.id} beat={p.beat} print />
+    <section className="page scene-page" ref={ref} data-scene={s.id}>
+      {bg ? <img className="page-bg" src={bg} alt="" /> : <LiteBackdrop set={liteSetOf(s)} />}
+      <FocusContext.Provider value={NO_FOCUS}>
+        <div className="sheet">
+          <header className="sheet-head">
+            <span className="kicker">{s.sectionRef}</span>
+            <h2>{s.title}</h2>
+            {p.parts > 1 && <span className="sheet-part">part {p.part + 1}/{p.parts}</span>}
+          </header>
+          {slides ? (
+            <>
+              {exhibits.length > 0 && (
+                <div className="exhibits">
+                  {exhibits.map((x, i) => (
+                    <div className="exhibit" key={i}>
+                      {x}
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div className="beat-grid">
+                {mine.map(({ sl, i }) => {
+                  const pins = allPins.filter((x) => x.slide === i);
+                  if (!sl.body && !sl.aside && !(sl.layout === 'title')) return null;
+                  return (
+                    <div className="beat-card" key={i}>
+                      <div className="bc-head">
+                        <span className="bc-n">{i + 1}</span>
+                        <b>{sl.title ?? s.title}</b>
+                        {pins.map((x) => (
+                          <Pin key={x.n} n={x.n} />
+                        ))}
+                      </div>
+                      {sl.body && <R t={sl.body} />}
+                      {sl.aside}
+                      <div className="bc-src">{sl.source}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <div className="sheet-view">
+              <c.View sceneId={s.id} beat={c.beats.length - 1} print />
+            </div>
+          )}
+          {pinsHere.length > 0 && (
+            <div className="pin-legend">
+              {pinsHere.map((x) => (
+                <span key={x.n}>
+                  <Pin n={x.n} /> {x.spec.label ?? pretty(x.spec.to)} <i>→ 3D prop: {pretty(x.spec.to)}</i>
+                </span>
+              ))}
+            </div>
+          )}
+          {!slides && (
+            <div className="bc-src">
+              Source · {c.beats.map((b) => b.source).filter((v, i, a) => v && a.indexOf(v) === i).join(' · ')}
+            </div>
+          )}
         </div>
       </FocusContext.Provider>
-      {beat?.callouts?.length ? <PrintCallouts callouts={beat.callouts} pageRef={ref} /> : null}
-      <header className="page-head">
-        <b>{s.title}</b> · {s.sectionRef} · beat {p.beat + 1}/{c.beats.length}
-        {beat?.source ? ` · Source: ${beat.source}` : beat?.label ? ` · ${beat.label}` : ''}
-      </header>
       <footer className="page-foot">
         Group 6 – IBRD in Vietnam | {n}/{total}
       </footer>
@@ -113,8 +159,22 @@ function BeatPageView({ p, n, total }: { p: BeatPage; n: number; total: number }
   );
 }
 
+function CoverPage({ total }: { total: number }) {
+  const c = CONTENT['ext-facade'];
+  const bg = bgOf('ext-facade');
+  return (
+    <section className="page cover-page">
+      {bg && <img className="page-bg" src={bg} alt="" />}
+      <div className="scene-layer">
+        <c.View sceneId="ext-facade" beat={0} print />
+      </div>
+      <footer className="page-foot">Group 6 – IBRD in Vietnam | 1/{total}</footer>
+    </section>
+  );
+}
+
 function TocPage({ pages, total }: { pages: Page[]; total: number }) {
-  const firstPage = (sceneIdx: number) => pages.findIndex((q) => q.kind === 'beat' && q.scene === sceneIdx) + 1;
+  const first = (i: number) => pages.findIndex((q) => q.kind === 'scene' && q.scene === i) + 1;
   const refsPage = pages.findIndex((q) => q.kind === 'refs') + 1;
   return (
     <section className="page toc-page">
@@ -129,10 +189,10 @@ function TocPage({ pages, total }: { pages: Page[]; total: number }) {
               <h4>{g.label}</h4>
               <ol>
                 {SCENES.map((s, i) =>
-                  s.segment !== g.id || firstPage(i) === 0 ? null : (
+                  s.segment !== g.id || first(i) === 0 ? null : (
                     <li key={s.id}>
                       <span>{s.title}</span>
-                      <b>{firstPage(i)}</b>
+                      <b>{first(i)}</b>
                     </li>
                   ),
                 )}
@@ -150,7 +210,7 @@ function TocPage({ pages, total }: { pages: Page[]; total: number }) {
           </div>
         </div>
       </div>
-      <footer className="page-foot">Group 6 – IBRD in Vietnam | 1/{total}</footer>
+      <footer className="page-foot">Group 6 – IBRD in Vietnam | 2/{total}</footer>
     </section>
   );
 }
@@ -179,35 +239,78 @@ function RefsPage({ from, to, n, total }: { from: number; to: number; n: number;
   );
 }
 
-/** ?print=1 — a contents page, every beat of every scene as a static 1920x1080 page, then the references. No WebGL. */
 export default function PrintView() {
-  const pages = buildPages();
+  // parts per scene: starts at 1; a page that overflows asks for one more part (at most 4)
+  const [parts, setParts] = useState<Record<string, number>>({});
+  const [stable, setStable] = useState(0);
+  const pages: Page[] = [{ kind: 'cover' }, { kind: 'toc' }];
+  for (const { s, i } of printable) {
+    const np = parts[s.id] ?? 1;
+    for (let k = 0; k < np; k++) pages.push({ kind: 'scene', scene: i, part: k, parts: np });
+  }
+  for (let i = 0; i < REFERENCES.length; i += REFS_PER_PAGE) pages.push({ kind: 'refs', from: i, to: Math.min(REFERENCES.length, i + REFS_PER_PAGE) });
   const total = pages.length;
-  const beatsCount = pages.filter((p) => p.kind === 'beat').length;
+  const pending = useRef<Set<string>>(new Set());
+  const onOverflow = (id: string) => pending.current.add(id);
+  useLayoutEffect(() => {
+    if (!pending.current.size) return;
+    const next = { ...parts };
+    let changed = false;
+    for (const id of pending.current) {
+      const cur = next[id] ?? 1;
+      if (cur < 4 && slidesOf(id)) {
+        next[id] = cur + 1;
+        changed = true;
+      }
+    }
+    pending.current.clear();
+    if (changed) setParts(next);
+  });
   useEffect(() => {
     document.documentElement.classList.add('print-mode');
     const fit = () => document.documentElement.style.setProperty('--pz', String(Math.min(1, (window.innerWidth - 40) / 1920)));
     fit();
     window.addEventListener('resize', fit);
-    // signal for export-pdf / tests once fonts are ready
-    document.fonts?.ready.then(() => setTimeout(() => Object.assign(window, { __printReady: total, __printBeats: beatsCount }), 500));
     return () => window.removeEventListener('resize', fit);
-  }, [total, beatsCount]);
+  }, []);
+  // ready once fonts are loaded and the split has settled for two passes
+  useEffect(() => {
+    const t = setTimeout(() => setStable((x) => x + 1), 400);
+    return () => clearTimeout(t);
+  }, [parts]);
+  useEffect(() => {
+    if (!stable) return;
+    document.fonts?.ready.then(() =>
+      setTimeout(
+        () =>
+          Object.assign(window, {
+            __printReady: total,
+            __printScenes: printable.length,
+            __printOverflow: Object.entries(parts).filter(([, v]) => v > 1).map(([id, v]) => `${id} (${v} pages)`),
+          }),
+        300,
+      ),
+    );
+  }, [stable, total, parts]);
   return (
     <div className="print-root">
       <div className="print-bar">
-        Print preview · {total} pages: contents, {beatsCount} beats, references · use Print → Save as PDF (background graphics on)
+        Print preview · {total} pages: cover, contents, {printable.length} scenes, references · Print → Save as PDF (background graphics on)
         <a href={location.pathname + location.hash}>Back to the tour (P)</a>
       </div>
-      {pages.map((p, k) =>
-        p.kind === 'toc' ? (
-          <TocPage key={k} pages={pages} total={total} />
-        ) : p.kind === 'refs' ? (
-          <RefsPage key={k} from={p.from} to={p.to} n={k + 1} total={total} />
-        ) : (
-          <BeatPageView key={k} p={p} n={k + 1} total={total} />
-        ),
-      )}
+      {pages.map((p, k) => (
+        <Fragment key={k}>
+          {p.kind === 'cover' ? (
+            <CoverPage total={total} />
+          ) : p.kind === 'toc' ? (
+            <TocPage pages={pages} total={total} />
+          ) : p.kind === 'refs' ? (
+            <RefsPage from={p.from} to={p.to} n={k + 1} total={total} />
+          ) : (
+            <SceneSheet p={p} n={k + 1} total={total} onOverflow={onOverflow} />
+          )}
+        </Fragment>
+      ))}
     </div>
   );
 }

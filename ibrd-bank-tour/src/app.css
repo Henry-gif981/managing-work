@@ -1879,3 +1879,20 @@ html.shot *::after {
   letter-spacing: 0.12em;
   font-size: 18px;
 }
+
+/* leader lines: pale halo + navy line, numbered-pin fallback */
+.callouts path.halo {
+  stroke: var(--page);
+  stroke-width: 8;
+  opacity: 0.9;
+}
+.callouts .num-pin circle {
+  fill: var(--wb-navy);
+  stroke: var(--wb-cyan);
+  stroke-width: 3;
+}
+.callouts .num-pin text {
+  font: 700 18px var(--font-body);
+  fill: var(--page);
+  stroke: none;
+}
