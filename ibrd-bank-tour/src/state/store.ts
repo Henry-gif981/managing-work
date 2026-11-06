@@ -73,6 +73,24 @@ const lastBeat = (i: number) => Math.max(0, beatCount(SCENES[i].id) - 1);
 
 let toastSeq = 1;
 
+const LITE_KEY = 'ibrd-tour-lite';
+/** An explicit choice made with L is remembered per browser. */
+function storedLite(): boolean {
+  if (PARAMS.print || PARAMS.shot) return false;
+  try {
+    return localStorage.getItem(LITE_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+export function rememberLite(v: boolean) {
+  try {
+    localStorage.setItem(LITE_KEY, v ? '1' : '0');
+  } catch {
+    /* storage unavailable: the choice lasts for this page only */
+  }
+}
+
 export const useTour = create<TourState>((set, get) => ({
   index: 0,
   beat: 0,
@@ -82,7 +100,7 @@ export const useTour = create<TourState>((set, get) => ({
   settledIndex: 0,
   maxIndex: 0,
   coreOnly: false,
-  lite: PARAMS.lite,
+  lite: PARAMS.lite || storedLite(),
   dev: false,
   panel: null,
   refsFocus: null,

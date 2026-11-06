@@ -96,29 +96,10 @@ function Perf() {
 }
 
 function offerLite() {
+  // Never switches by itself: only a hint. Lite mode starts with L, ?lite=1, or when WebGL is unavailable.
   const st = useTour.getState();
   if (st.lite) return;
-  let left = 8;
-  let id = 0;
-  const timer = window.setInterval(() => {
-    left--;
-    if (left <= 0) {
-      window.clearInterval(timer);
-      st.dismissToast(id);
-      useTour.getState().setLite(true);
-    }
-  }, 1000);
-  id = st.toast({
-    text: 'The 3D view is running slowly. Switch to Lite mode? (switching automatically in 8 s)',
-    action: {
-      label: 'Switch now',
-      run: () => {
-        window.clearInterval(timer);
-        useTour.getState().setLite(true);
-      },
-    },
-    secondary: { label: 'Keep 3D', run: () => window.clearInterval(timer) },
-  });
+  st.toast({ text: 'The 3D view is running slowly. Switch to Lite mode? (L)', ttl: 6000 });
 }
 
 /** centre / left / right anchors for every scene, derived from its waypoint. */

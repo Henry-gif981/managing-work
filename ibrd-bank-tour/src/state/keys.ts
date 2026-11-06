@@ -1,4 +1,4 @@
-import { useTour } from './store';
+import { useTour, rememberLite } from './store';
 
 function toggleFullscreen() {
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -62,6 +62,7 @@ export function installKeys() {
           s.toggleDev();
           break;
         case 'l':
+          rememberLite(!s.lite);
           s.setLite(!s.lite);
           break;
         case 'p':
