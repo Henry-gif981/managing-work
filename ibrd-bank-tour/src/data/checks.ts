@@ -26,11 +26,7 @@ export const CHECKS: Check[] = [
   { name: 'Table 7 has 3 rows', run: (f) => count(TABLE7.length, f('table7-rows')) },
   { name: 'ESS list has exactly 10 items', run: (f) => count(ESS.length, f('ess-count')) },
   // arithmetic
-  { name: 'ASA funding shares 26 + 68 + 6 = 100', run: (f) => near(f('asa-admin') + f('asa-trust') + f('asa-ras'), 100) },
-  { name: 'PIR 2: 87.3 + 262.7 = 350', run: (f) => near(f('pir2-ibrd') + f('pir2-ida'), 350) },
-  { name: 'Power-sector DPF: 200 + 111.8 = 311.8', run: (f) => near(f('psr-ibrd') + f('psr-ida'), 311.8) },
   { name: 'TEP: counterpart 231.25 + IBRD 500.00 = total 731.25', run: (f) => near(f('tep-counterpart') + f('tep-ibrd'), f('tep-total')) },
-  { name: 'TEP capacity building: NPT 5.50 + IBRD 0.24 = actual 5.74', run: (f) => near(f('tep-cb-npt') + f('tep-cb-ibrd'), f('tep-cb-actual')) },
   { name: 'Maturity reform raised final maturity (30 -> 35) and average maturity (18 -> 20)', run: (f) => (f('final-mat-new') > f('final-mat-old') && f('avg-mat-new') > f('avg-mat-old')) || 'not increasing' },
   { name: 'Average maturity limit <= final maturity limit', run: (f) => f('avg-mat-new') <= f('final-mat-new') || 'avg > final' },
   { name: 'TEP 26-year maturity within the 35-year IFL limit', run: (f) => f('tep-maturity') <= f('final-mat-new') || 'exceeds' },
@@ -39,13 +35,9 @@ export const CHECKS: Check[] = [
   { name: '"More than 80 years": 2026 - 1944 >= 80', run: (f) => 2026 - f('ibrd-founded') >= f('ibrd-age') || 'age' },
   { name: 'IFC (1956) and IDA (1960) founded in the 1950s-1970s stage', run: (f) => (f('ifc-founded') >= 1950 && f('ida-founded') < 1980) || 'dates' },
   { name: 'PforR (2012) introduced after the IBRD (1944)', run: (f) => f('pforr-year') > f('ibrd-founded') || 'dates' },
-  { name: 'Vietnam IBRD-eligible (2007) before first IBRD loan (2009) and IDA graduation (2017)', run: (f) => (f('vn-ibrd-eligible') < 2009 && 2009 < f('scope-graduation')) || 'order' },
   { name: 'Phan Rang PMU: 10 of 12 staff from other ODA units (10 <= 12)', run: (f) => f('phanrang-from-oda') <= f('phanrang-staff') || '10 > 12' },
   { name: 'CCSEP: sewer connections (256,000) <= direct beneficiaries (290,000)', run: (f) => f('ccsep-sewer') <= f('ccsep-beneficiaries') || 'more connections than beneficiaries' },
   { name: 'TEP counterpart share of the planned cost is about 31.6%', run: (f) => near((f('tep-counterpart') / f('tep-total')) * 100, 31.6, 0.05) },
-  { name: 'TEP capacity building: IBRD share (0.24) smaller than NPT share (5.50)', run: (f) => f('tep-cb-ibrd') < f('tep-cb-npt') || 'order' },
-  { name: 'PIR 2 (May 2011): IDA credit larger than IBRD loan', run: (f) => f('pir2-ida') > f('pir2-ibrd') || 'order' },
-  { name: 'Power-sector DPF (2010): IBRD part larger than IDA part', run: (f) => f('psr-ibrd') > f('psr-ida') || 'order' },
   { name: 'Phan Rang PMU: 2 of 12 staff were new (12 - 10)', run: (f) => count(f('phanrang-staff') - f('phanrang-from-oda'), 2) },
 
   // ================= Chapter 3 =================

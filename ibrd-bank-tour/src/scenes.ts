@@ -58,7 +58,6 @@ type Row = [
 const OPTIONAL = new Set([
   'f1-history-1',
   'f1-history-2',
-  'f1-voting',
   'f2-vn-procedures',
   'f2-asa',
   'f2-institutional',
@@ -72,12 +71,8 @@ const ROWS: Row[] = [
   ['ext-facade', 'exterior', 0, 'entrance', 'The IBRD and Its Development Project Financing in Vietnam', 'Title page', 30],
   ['ext-door', 'door', 0, 'entrance', 'Entering the Bank', '—', 8],
   // FLOOR 1 · INTRODUCTION
-  ['f1-rationale-1', 'room', 1, 'intro', 'Rationale: Multilateral Development Finance', 'Introduction 1.1'],
   ['f1-rationale-2', 'room', 1, 'intro', 'Rationale: Why the IBRD Matters for Vietnam', 'Introduction 1.2'],
   ['f1-problem', 'room', 1, 'intro', 'Research Problem and Questions', 'Introduction 2'],
-  ['f1-objectives', 'room', 1, 'intro', 'Research Objectives', 'Introduction 3'],
-  ['f1-method', 'room', 1, 'intro', 'Research Methodology', 'Introduction 4'],
-  ['f1-scope', 'room', 1, 'intro', 'Research Scope', 'Introduction 5'],
   ['f1-structure', 'room', 1, 'intro', 'Structure of the Paper', 'Introduction 6'],
   // FLOOR 1 · CHAPTER 1
   ['f1-ch1-title', 'room', 1, 'ch1', 'Chapter 1 · Overview of the IBRD', 'Chapter 1'],
@@ -86,7 +81,6 @@ const ROWS: Row[] = [
   ['f1-history-1', 'room', 1, 'ch1', 'History and Development (I)', 'Section 1.2'],
   ['f1-history-2', 'room', 1, 'ch1', 'History and Development (II)', 'Section 1.2'],
   ['f1-gov', 'room', 1, 'ch1', 'Governors, Executive Directors, President', 'Section 1.3.1'],
-  ['f1-voting', 'room', 1, 'ch1', 'Voting Power', 'Section 1.3.2'],
   ['f1-funds', 'room', 1, 'ch1', 'Source of Funds', 'Section 1.3.3'],
   ['f1-instruments', 'room', 1, 'ch1', 'Three Instruments: IPF, DPF, PforR', 'Section 1.4.1'],
   ['f1-terms', 'room', 1, 'ch1', 'Loan Terms: Rates, Maturities, Fees', 'Section 1.4.2'],

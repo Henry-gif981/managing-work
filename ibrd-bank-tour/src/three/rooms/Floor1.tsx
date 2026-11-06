@@ -293,13 +293,9 @@ export function Floor1() {
         <TexPlane key={i} tex={t} position={[11.6, 5.75, -29.6 + i * 3.1]} rotation={FACE.west} size={[2.4, 0.6]} />
       ))}
       <SceneAnchors scene="f1-ch1-title" at={{ sign: [3.4, 6.3, -24] }} />
-      <SceneAnchors scene="f1-method" at={{ board: [-12.6, 2.5, -6] }} />
       <SceneAnchors scene="f1-structure" at={{ hall: [0, 3.5, -16] }} />
-      <SceneAnchors scene="f1-rationale-1" at={{ globe: [5.5, 1.6, -6] }} />
       <SceneAnchors scene="f1-rationale-2" at={{ map: [12.6, 3.2, -9] }} />
       <SceneAnchors scene="f1-problem" at={{ board: [-12.6, 2.5, -6] }} />
-      <SceneAnchors scene="f1-objectives" at={{ desk: [-5, 1.2, -11] }} />
-      <SceneAnchors scene="f1-scope" at={{ map: [12.6, 3.2, -9] }} />
       <SceneAnchors
         scene="f1-wbg"
         at={{ ibrd: [-3.2, 1.6, -22.6], ida: [-1.6, 1.6, -22.6], ifc: [0, 1.6, -22.6], miga: [1.6, 1.6, -22.6], icsid: [3.2, 1.6, -22.6] }}
@@ -314,7 +310,6 @@ export function Floor1() {
         scene="f1-terms"
         at={{ desk: [8, 0.9, -36.5], rate: [8, 1.9, -38.15], contract: [8.6, 0.95, -36.45], calendar: [9.05, 0.95, -36.8], clock: [7.75, 1.0, -36.88], coins: [7.0, 0.95, -36.18], ledger: [7.4, 0.88, -36.5] }}
       />
-      <SceneAnchors scene="f1-voting" at={{ stamps: [-10.05, 1.05, -41.0] }} />
       <SceneAnchors scene="f1-safeguards" at={{ stamps: [-10.05, 1.05, -41.0], ess5: [-10.05, 1.08, -40.89], papers: [-9.55, 0.9, -40.6] }} />
     </group>
   );

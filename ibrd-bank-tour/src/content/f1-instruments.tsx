@@ -9,64 +9,67 @@ const table = (
     id="t2"
     width={1440}
     columns={[
-      { key: 'inst', label: 'Instrument', width: 300 },
+      { key: 'inst', label: 'Instrument', width: 160 },
       { key: 'what', label: 'What it finances' },
       { key: 'against', label: 'Disbursed against' },
       { key: 'suited', label: 'Best suited to' },
     ]}
     rows={TABLE2.map((r) => ({ id: r.id, cells: { inst: <b>{r.inst}</b>, what: r.what, against: r.against, suited: r.suited } }))}
-    caption={<R t="Table 2. The IBRD's three lending instruments. Source: Authors' compilation from [16; 17]." />}
+    caption={<R t="Table 1.4.1. The IBRD's three lending instruments. Source: Authors' compilation from [16; 17]." />}
   />
 );
-const T = 'Table 2 · Three lending instruments';
+const T = 'Table 1.4.1 · Three lending instruments';
+const S = 'Section 1.4.1 · Table 1.4.1 · p. 18';
 const p = scene('f1-instruments', [
   {
-    title: 'Three instruments, one loan product',
     kicker: 'Section 1.4',
-    source: 'Section 1.4 · p. 16',
-    callouts: [{ from: '.k-card .h2', to: a('dpf'), label: 'Lending counters' }],
-    body: `The IBRD lends through **three instruments**, each defined by what it finances and what triggers disbursement.
-
-A single loan product, the **IBRD Flexible Loan**, sets the price and repayment terms. Environmental, social and procurement rules then govern how the money may be spent.`,
+    title: 'Three instruments, one loan',
+    source: 'Section 1.4 · p. 18',
+    callouts: [{ from: '.k-card', to: a('dpf'), label: 'Lending counters' }],
+    body: `The IBRD lends through **three instruments**, defined by what they finance and what triggers payment. One product, the **IBRD Flexible Loan**, sets price and repayment; environmental, social and procurement rules govern spending.`,
   },
   {
     layout: 'centre',
+    kicker: 'Section 1.4.1',
     title: T,
     label: 'IPF',
-    source: 'Section 1.4.1 · Table 2 · pp. 16-17',
+    source: S,
     centre: table,
     focus: ['t2-ipf'],
-    callouts: [{ from: '#t2-ipf-inst', to: a('ipf'), label: 'IPF' }],
-    body: `IPF is the IBRD's traditional instrument. It finances a ring-fenced set of project activities such as civil works, equipment and consulting services; money is disbursed as the borrower incurs eligible project expenditures [16]. IPF suits physical infrastructure with a clear scope and timetable. **Both case studies in Chapter 3, TEP and CCSEP, were financed through IPF.**`,
+    callouts: [{ from: '#t2-ipf', to: a('ipf'), label: 'IPF' }],
+    body: `**Investment Project Financing (IPF)** pays for project works, goods and services as costs are incurred; it suits infrastructure with a clear scope [16].`,
   },
   {
     layout: 'centre',
+    kicker: 'Section 1.4.1',
     title: T,
     label: 'DPF',
-    source: 'Section 1.4.1 · Table 2 · pp. 16-17',
+    source: S,
     centre: table,
     focus: ['t2-dpf'],
-    callouts: [{ from: '#t2-dpf-inst', to: a('dpf'), label: 'DPF' }],
-    body: `DPF supports a set of policy and institutional reforms rather than a project. The borrower must complete agreed "prior actions" before the Board approves the loan; funds then go to the general budget and are not traced to specific expenditures [16]. **Vietnam's first IBRD loan was a DPF operation:** a {pir1-ibrd} Public Investment Reform loan approved in {pir1-approved} and signed on {pir1-signed} [2].`,
+    callouts: [{ from: '#t2-dpf', to: a('dpf'), label: 'DPF' }],
+    body: `**Development Policy Financing (DPF)** supports reforms: after agreed prior actions, money goes to the budget [16]. Vietnam's first IBRD loan, {pir1-ibrd} in {pir1-approved}, was a DPF [2].`,
   },
   {
     layout: 'centre',
+    kicker: 'Section 1.4.1',
     title: T,
     label: 'PforR',
-    source: 'Section 1.4.1 · Table 2 · p. 17',
+    source: S,
     centre: table,
     focus: ['t2-pforr'],
-    callouts: [{ from: '#t2-pforr-inst', to: a('pforr'), label: 'PforR' }],
-    body: `PforR was introduced in {pforr-year}. It was only the {pforr-rank} financing instrument approved by the Bank's Board since {ibrd-founded} [17]. PforR supports a government's own program and uses the country's own systems. Disbursement depends on the **verified achievement of Disbursement-Linked Indicators (DLIs)**, not on individual expenditures [16].`,
+    callouts: [{ from: '#t2-pforr', to: a('pforr'), label: 'PforR' }],
+    body: `**Program-for-Results (PforR)**, introduced in {pforr-year}, funds a government's own program and pays on verified **Disbursement-Linked Indicators (DLIs)** [16; 17].`,
   },
   {
     layout: 'centre',
+    kicker: 'Section 1.4.1',
     title: 'What the IBRD "buys"',
     label: 'Inputs, reforms, results',
-    source: 'Section 1.4.1 · p. 17',
+    source: 'Section 1.4.1 · p. 19',
     centre: table,
     focus: ['t2-col-against'],
-    callouts: [{ from: '#t2-dpf-against', to: a('dpf') }],
+    callouts: [{ from: '#t2-dpf', to: a('dpf') }],
     aside: (
       <div className="chips">
         <Chip tone="navy">IPF → inputs</Chip>
@@ -74,7 +77,7 @@ A single loan product, the **IBRD Flexible Loan**, sets the price and repayment 
         <Chip tone="warn">PforR → results</Chip>
       </div>
     ),
-    body: `The key difference lies in what the IBRD "buys" with each loan: under IPF, it pays for **inputs**; under DPF, for **reforms**; under PforR, for **results**. This choice shapes the borrower's obligations, which Section 2.1.3 examines in practice.`,
+    body: `Under IPF the IBRD pays for **inputs**, under DPF for **reforms**, under PforR for **results**. This choice shapes the borrower's obligations.`,
   },
 ]);
 export const beats = p.beats;

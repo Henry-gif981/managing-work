@@ -1,32 +1,37 @@
 import { scene } from './kit';
 
 const to = 'anchor:f2-training-knowledge:blackboard';
+const S = 'Section 2.3.2 · p. 27';
 const p = scene('f2-training-knowledge', [
   {
     title: 'Learning by doing',
+    kicker: 'Section 2.3.2',
     layout: 'right',
-    source: 'Section 2.3.2 · p. 27',
-    callouts: [{ from: '.k-card .h2', to, label: 'Knowledge transfer' }],
-    body: `Much of the knowledge transfer happens through doing. Borrower staff apply the Bank's procurement rules and safeguard policies on real contracts, while Bank specialists review key steps.
-
-Over time, this builds skills in **bidding**, **contract management** and **risk assessment**.`,
+    source: S,
+    callouts: [{ from: '.k-card', to, label: 'Knowledge transfer' }],
+    body: `Most knowledge transfer happens **through doing**: borrower staff apply Bank procurement and safeguard rules on real contracts while Bank specialists review key steps.`,
   },
   {
     title: 'Dedicated programs',
+    kicker: 'Section 2.3.2',
     layout: 'right',
-    source: 'Section 2.3.2 · p. 27',
-    body: `The Bank also runs dedicated programs. In {mooc-year}, it launched what it described as the world's first massive open online course (MOOC) on public procurement, the **Certificate Program in Public Procurement** [43].
-
-E-procurement courses on the Open Learning Campus offer certification to participants who pass an examination [44].`,
+    source: S,
+    body: `In {mooc-year} the Bank launched a **massive open online course (MOOC) on public procurement** [43], and its **e-procurement courses** give certification to participants who pass an exam [44].`,
   },
   {
-    title: 'TEP and Nha Trang',
+    title: 'Skills build up across projects',
+    kicker: 'Section 2.3.2',
     layout: 'right',
-    source: 'Section 2.3.2 · p. 28',
-    callouts: [{ from: '.k-card .h2', to, label: 'Cumulative skills' }],
-    body: `TEP shows the cumulative effect: IEG found that NPT's regional boards had built capabilities in procurement, contract administration, financial management, safeguards and reporting, partly from earlier World Bank projects [41].
-
-**Safeguards proved harder to transfer.** Nha Trang shows that knowing the Bank's resettlement standards is not enough when local compensation rules and land prices differ (see Section 3.3.4).`,
+    source: S,
+    callouts: [{ from: '.k-card', to, label: 'Cumulative skills' }],
+    body: `Skills also build up across projects: the **Independent Evaluation Group (IEG)** found that the power transmission utility's regional boards had built capabilities in procurement, contract administration, financial management, safeguards and reporting [41].`,
+  },
+  {
+    title: 'Safeguards are harder to transfer',
+    kicker: 'Section 2.3.2',
+    layout: 'right',
+    source: S,
+    body: `Experience in one coastal city shows that knowing the Bank's resettlement standards is not enough when **local compensation rules and land prices differ**.`,
   },
 ]);
 export const beats = p.beats;

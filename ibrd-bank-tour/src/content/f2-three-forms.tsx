@@ -14,14 +14,15 @@ const table = (
       { key: 'train', label: 'Training and capacity building' },
     ]}
     rows={TABLE7.map((r) => ({ id: r.id, cells: { stage: <b>{r.stage}</b>, fin: r.fin, tech: r.tech, train: r.train } }))}
-    caption={<R t="Table 7. The three forms of IBRD support across the project cycle. Source: Authors' synthesis of Sections 2.1-2.3." />}
+    caption={<R t="Table 2.4.1. The three forms of IBRD support across the project cycle. Source: Authors' compilation of Sections 2.1-2.3." />}
   />
 );
 const row = (i: number) => ({
   layout: 'centre' as const,
-  title: 'Table 7 · Three forms of support',
+  kicker: 'Section 2.4',
+  title: 'Table 2.4.1 · Three forms of support',
   label: TABLE7[i].stage,
-  source: 'Section 2.4 · Table 7 · p. 29',
+  source: 'Section 2.4 · Table 2.4.1 · p. 28',
   centre: table,
   camera: `f2-three-forms-${TABLE7[i].id}`,
   focus: [`t7-${TABLE7[i].id}`],
@@ -44,23 +45,24 @@ const ways = (
   </div>
 );
 const way = (i: number) => ({
+  kicker: 'Section 2.4',
   title: 'How the forms reinforce one another',
   label: WAYS[i][0],
-  source: 'Section 2.4 · p. 29',
+  source: 'Section 2.4 · p. 28',
   side: ways,
   focus: [`way-${i + 1}`],
-  body: `The forms reinforce one another in {reinforce-ways|n} ways. **${['First', 'Second', 'Third'][i]}, ${WAYS[i][0].toLowerCase()}**: ${WAYS[i][1]}`,
+  body: `**${['First', 'Second', 'Third'][i]}, ${WAYS[i][0].toLowerCase()}**: ${WAYS[i][1]}`,
 });
 const p = scene('f2-three-forms', [
   {
     layout: 'centre',
-    title: 'Table 7 · Three forms of support',
+    title: 'Table 2.4.1 · Three forms of support',
     label: 'One package',
-    source: 'Section 2.4 · p. 29',
+    source: 'Section 2.4 · p. 28',
     centre: table,
     callouts: [{ from: '.k-head', to: a('prep'), label: 'Preparation' }],
     camera: 'f2-three-forms-prep',
-    body: `The {support-forms|n} forms of support are designed as one package: **finance pays for the investment, technical support makes it sound, and training makes it last**. Each covers a weakness of the others, and each appears at every stage of the project cycle.`,
+    body: `The three forms of support are **one package**: finance pays for the investment, technical support makes it sound, and training makes it last.`,
   },
   row(0),
   row(1),

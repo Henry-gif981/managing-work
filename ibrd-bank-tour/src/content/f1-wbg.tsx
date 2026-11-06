@@ -2,7 +2,7 @@ import { scene, R } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { TABLE1 } from '../data/tables';
 
-const S = 'Section 1.1.2 · Table 1 · p. 11';
+const S = 'Section 1.1.2 · Table 1.1.1 · p. 14';
 const a = (n: string) => `anchor:f1-wbg:${n}`;
 
 const table = (
@@ -11,7 +11,7 @@ const table = (
     width={1440}
     columns={[
       { key: 'inst', label: 'Institution', width: 120 },
-      { key: 'year', label: 'Year\u00a0founded', width: 175 },
+      { key: 'year', label: 'Year founded', width: 175 },
       { key: 'clients', label: 'Main clients' },
       { key: 'act', label: 'Main activities' },
       { key: 'funds', label: 'Source of funds' },
@@ -20,28 +20,28 @@ const table = (
       id: r.id,
       cells: { inst: <b>{r.inst}</b>, year: <R t={r.year} />, clients: r.clients, act: r.act, funds: r.funds },
     }))}
-    caption={<R t="Table 1. The five institutions of the World Bank Group. Source: Authors' compilation from [9] and [10]." />}
+    caption={<R t="Table 1.1.1. The five institutions of the World Bank Group. Source: Authors' compilation from [9] and [10]." />}
   />
 );
 
 const row = (id: string, label: string) => ({
   layout: 'centre' as const,
-  title: 'Table 1 · The five institutions',
+  kicker: 'Section 1.1.2',
+  title: 'Table 1.1.1 · The five institutions',
   source: S,
   label,
   centre: table,
   focus: [`t1-${id}`],
-  callouts: [{ from: `#t1-${id}-inst`, to: a(id), label }],
+  callouts: [{ from: `#t1-${id}`, to: a(id), label }],
 });
 
 const p = scene('f1-wbg', [
   {
+    kicker: 'Section 1.1.2',
     title: 'Five institutions, one goal',
-    source: 'Section 1.1.2 · pp. 10-11',
-    callouts: [{ from: '.k-card .h2', to: a('ibrd'), label: 'IBRD' }],
-    body: `The World Bank Group consists of five institutions. Each has its own role, but they work together toward the same goal. The IBRD is the oldest member, founded in {ibrd-founded}, and the largest development bank in the world. Together with IDA, it forms the World Bank in the narrow sense.
-
-The IBRD aims to reduce poverty in middle-income and creditworthy poorer countries, while IDA focuses on the world's poorest countries. IFC and MIGA focus on the private sector; ICSID deals with investment disputes.`,
+    source: 'Section 1.1.2 · p. 13',
+    callouts: [{ from: '.k-card', to: a('ibrd'), label: 'IBRD' }],
+    body: `The World Bank Group has **five institutions** working towards one goal. The IBRD, founded in {ibrd-founded}, is the **oldest and the largest development bank**; with IDA it forms the World Bank in the narrow sense.`,
   },
   row('ibrd', 'IBRD'),
   row('ida', 'IDA'),
@@ -50,41 +50,43 @@ The IBRD aims to reduce poverty in middle-income and creditworthy poorer countri
   row('icsid', 'ICSID'),
   {
     layout: 'centre',
+    kicker: 'Section 1.1.2',
     title: 'Key differences · IBRD / IDA',
     label: 'IBRD vs IDA',
-    source: 'Section 1.1.2 · p. 11',
+    source: 'Section 1.1.2 · p. 14',
     centre: table,
     focus: ['t1-ibrd-funds', 't1-ida-funds'],
-    callouts: [{ from: '#t1-ida-inst', to: a('ida'), label: 'IDA' }],
-    body: `The key difference between the IBRD and IDA lies in the type of borrower and the cost of funds. IBRD loans carry **market-based interest rates**, while IDA offers **much cheaper terms** because it is funded by donors.`,
+    callouts: [{ from: '#t1-ida', to: a('ida'), label: 'IDA' }],
+    body: `IBRD loans carry **market-based interest rates**; IDA, funded by donors, offers **much cheaper terms**.`,
   },
   {
     layout: 'centre',
+    kicker: 'Section 1.1.2',
     title: 'Key differences · IBRD / IFC',
     label: 'IBRD vs IFC',
-    source: 'Section 1.1.2 · p. 11',
+    source: 'Section 1.1.2 · p. 14',
     centre: table,
     focus: ['t1-ibrd-clients', 't1-ifc-clients'],
-    callouts: [{ from: '#t1-ifc-inst', to: a('ifc'), label: 'IFC' }],
-    body: `The IBRD and IFC differ mainly in their clients. The IBRD lends to **governments or to entities guaranteed by governments**, while IFC invests directly in **private companies without a government guarantee**.`,
+    callouts: [{ from: '#t1-ifc', to: a('ifc'), label: 'IFC' }],
+    body: `The IBRD lends to **governments** or government-guaranteed bodies; IFC invests in **private companies** without a guarantee.`,
   },
   {
     layout: 'centre',
+    kicker: 'Section 1.1.2',
     title: 'Key differences · MIGA / ICSID',
     label: 'MIGA and ICSID',
-    source: 'Section 1.1.2 · pp. 11-12',
+    source: 'Section 1.1.2 · p. 14',
     centre: table,
     focus: ['t1-miga-act', 't1-icsid-act'],
-    callouts: [{ from: '#t1-miga-inst', to: a('miga'), label: 'MIGA' }],
-    body: `MIGA and ICSID do not provide finance directly. Instead, they reduce risks for investors and help settle disputes, which makes the investment climate more attractive.`,
+    callouts: [{ from: '#t1-miga', to: a('miga'), label: 'MIGA' }],
+    body: `MIGA and ICSID **do not lend**: they reduce investors' risks and settle disputes, making the investment climate more attractive.`,
   },
   {
+    kicker: 'Section 1.1.2',
     title: 'The main public channel',
-    source: 'Section 1.1.2 · p. 12',
-    callouts: [{ from: '.k-card .h2', to: a('ibrd'), label: 'IBRD' }],
-    body: `In this structure, the IBRD acts as **the main channel for public financing to middle-income countries**.
-
-This is why it is especially important for Vietnam today.`,
+    source: 'Section 1.1.2 · p. 14',
+    callouts: [{ from: '.k-card', to: a('ibrd'), label: 'IBRD' }],
+    body: `In this structure, the IBRD is **the main channel for public financing to middle-income countries**, which is why it matters so much for Vietnam today.`,
   },
 ]);
 export const beats = p.beats;

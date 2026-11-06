@@ -11,9 +11,9 @@ export const TABLE1 = [
 ];
 
 export const TABLE2 = [
-  { id: 'ipf', inst: 'Investment Project Financing (IPF)', what: 'Ring-fenced project activities: works, goods, consulting services', against: 'Eligible expenditures actually incurred', suited: 'Infrastructure and other projects with a defined scope' },
-  { id: 'dpf', inst: 'Development Policy Financing (DPF)', what: 'A program of policy and institutional actions', against: 'Completion of agreed prior actions', suited: 'Sector or economy-wide reforms; budget support' },
-  { id: 'pforr', inst: 'Program-for-Results (PforR)', what: "Part of a government's own expenditure program", against: 'Verified achievement of Disbursement-Linked Indicators', suited: 'Programs where results can be measured and verified' },
+  { id: 'ipf', inst: 'IPF', what: 'Ring-fenced project activities: works, goods, consulting services', against: 'Eligible expenditures actually incurred', suited: 'Infrastructure and other projects with a defined scope' },
+  { id: 'dpf', inst: 'DPF', what: 'A program of policy and institutional actions', against: 'Completion of agreed prior actions', suited: 'Sector or economy-wide reforms; budget support' },
+  { id: 'pforr', inst: 'PforR', what: "Part of a government's own expenditure program", against: 'Verified achievement of Disbursement-Linked Indicators', suited: 'Programs where results can be measured and verified' },
 ];
 
 export const TABLE3 = [
@@ -40,11 +40,11 @@ export const ESS = [
 
 export const TABLE4 = [
   { id: 's1', stage: '1. Identification', act: 'Bank and government agree on a project concept consistent with the Country Partnership Framework', lead: 'Borrower and Bank', doc: 'Project Concept Note, Project Information Document' },
-  { id: 's2', stage: '2. Preparation', act: 'Feasibility studies, technical design, environmental and social instruments, procurement plan', lead: 'Borrower, with Bank advice', doc: 'Feasibility study, ESIA, resettlement plan' },
-  { id: 's3', stage: '3. Appraisal', act: 'Bank reviews technical, economic, financial, institutional and E&S aspects', lead: 'Bank', doc: 'Project Appraisal Document (PAD)' },
+  { id: 's2', stage: '2. Preparation', act: 'Feasibility studies, technical design, environmental and social instruments, procurement plan', lead: 'Borrower, with Bank advice', doc: 'Feasibility study, Environmental and Social Impact Assessment (ESIA), resettlement plan' },
+  { id: 's3', stage: '3. Appraisal', act: 'Bank reviews technical, economic, financial, institutional and environmental and social aspects', lead: 'Bank', doc: 'Project Appraisal Document (PAD)' },
   { id: 's4', stage: '4. Negotiation and Board approval', act: 'Legal agreements negotiated; Board of Executive Directors approves; loan signed and declared effective', lead: 'Borrower and Bank', doc: 'Loan Agreement' },
   { id: 's5', stage: '5. Implementation and supervision', act: 'Borrower carries out the project; Bank supervises and may restructure', lead: 'Borrower; Bank supervises', doc: 'Implementation Status and Results Report (ISR)' },
-  { id: 's6', stage: '6. Completion and evaluation', act: 'Results assessed; lessons recorded; independent validation', lead: 'Bank, then IEG', doc: 'Implementation Completion and Results Report (ICR)' },
+  { id: 's6', stage: '6. Completion and evaluation', act: 'Results assessed; lessons recorded; independent validation', lead: 'Bank, then Independent Evaluation Group (IEG)', doc: 'Implementation Completion and Results Report (ICR)' },
 ];
 
 export const TABLE5 = [
@@ -54,18 +54,18 @@ export const TABLE5 = [
   { id: 'special', method: 'Special commitment', how: 'Bank commits to pay a third party under a letter of credit opened by a commercial bank', use: 'Imported goods and equipment' },
 ];
 
+/** Table 2.3.1 (p. 27, _10): typical institutional reform activities in IBRD-financed projects */
 export const TABLE6 = [
-  { id: 'tep-asset', project: 'TEP', activity: 'Asset management system for NPT', position: 'Fully operational; used for investment and maintenance decisions' },
-  { id: 'tep-tariff', project: 'TEP', activity: 'Cost-reflective transmission tariff, IFRS reporting, testing laboratory', position: 'Carried out mainly with NPT/EVN funds' },
-  { id: 'ccsep-psmu', project: 'CCSEP', activity: 'Public Service Management Units in each city', position: 'Established' },
-  { id: 'ccsep-tariff', project: 'CCSEP', activity: 'Wastewater tariff roadmaps, household connection policies', position: 'Approved or issued; implementation varies by city' },
-  { id: 'ccsep-contracts', project: 'CCSEP', activity: 'Performance-based service contracts', position: 'Largely not yet in use as of {ccsep-contracts-check}, except at the Nha Trang treatment plant; all {ccsep-contracts|n} contracts signed and in operation by closing in {ccsep-closing}' },
+  { id: 'asset', area: 'Asset management', activity: 'An asset management system for the implementing utility', purpose: 'Base investment and maintenance decisions on data about costs, benefits and technical risks' },
+  { id: 'pricing', area: 'Service pricing', activity: 'Cost-reflective tariff roadmaps for transmission or wastewater services', purpose: 'Make the service provider financially sustainable' },
+  { id: 'reporting', area: 'Financial reporting', activity: 'Reporting under International Financial Reporting Standards (IFRS)', purpose: 'Improve financial reporting and governance' },
+  { id: 'delivery', area: 'Service delivery', activity: 'Performance-based service contracts, service management units and household connection policies under Decree No. 80/2014/ND-CP', purpose: 'Improve the operational efficiency of service providers' },
 ];
 
 export const TABLE7 = [
   { id: 'prep', stage: 'Preparation and appraisal', fin: 'Loan size, instrument and terms agreed; Project Preparation Advance if needed', tech: 'Feasibility, economic analysis, safeguard instruments, results framework', train: 'Assessment of the implementing agency’s capacity' },
   { id: 'impl', stage: 'Implementation', fin: 'Disbursement against eligible expenditures or results', tech: 'Supervision, ISRs, restructuring when needed', train: 'PMU training in procurement, financial management and safeguards' },
-  { id: 'after', stage: 'Completion and after', fin: 'Loan repayment; savings cancelled', tech: 'ICR and IEG evaluation; lessons for new projects', train: 'Systems and institutions left in place (e.g. TEP’s asset management system)' },
+  { id: 'after', stage: 'Completion and after', fin: 'Loan repayment; savings cancelled', tech: 'ICR and IEG evaluation; lessons for new projects', train: 'Systems and institutions left in place (e.g. a utility’s asset management system)' },
 ];
 
 // ======================= Chapter 3 =======================

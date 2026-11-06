@@ -5,8 +5,9 @@ const to = 'anchor:f2-package:table';
 const p = scene('f2-package', [
   {
     title: 'The package depends on the borrower',
-    source: 'Section 2.4 · pp. 29-30',
-    callouts: [{ from: '.k-card .h2', to, label: 'Domestic side' }],
+    kicker: 'Section 2.4',
+    source: 'Section 2.4 · pp. 28-29',
+    callouts: [{ from: '.k-card', to, label: 'Domestic side' }],
     aside: (
       <div className="chips">
         <Chip tone="bad">Counterpart funding</Chip>
@@ -14,16 +15,13 @@ const p = scene('f2-package', [
         <Chip tone="bad">PMU capacity</Chip>
       </div>
     ),
-    body: `The package, however, depends on the borrower. The evidence in Chapter 3 shows that the binding constraints usually lie on the **domestic side**: counterpart funding, land acquisition and PMU capacity.
-
-When these fail, IBRD money stays undisbursed, technical advice cannot be applied, and training stops at setup.`,
+    body: `In the projects reviewed in this study, the binding constraints lay mainly on the **domestic side**: counterpart funding, land acquisition and PMU capacity. When these fail, IBRD money stays undisbursed, technical advice cannot be applied, and reforms take effect only late.`,
   },
   {
     title: 'The value lies in the combination',
-    source: 'Section 2.4 · p. 30',
-    body: `The value of the IBRD therefore lies less in any single form of support than in their combination, and that combination works only when domestic systems are ready to absorb it.
-
-**Chapter 3 tests this argument against two projects in Vietnam.**`,
+    kicker: 'Section 2.4',
+    source: 'Section 2.4 · p. 29',
+    body: `The value of the IBRD lies less in any single form of support than in **their combination**, and that combination works only when **domestic systems are ready to absorb it**.`,
   },
 ]);
 export const beats = p.beats;
