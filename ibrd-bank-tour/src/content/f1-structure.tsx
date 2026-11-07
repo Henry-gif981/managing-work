@@ -11,7 +11,7 @@ export const beats: Beat[] = [
   },
 ];
 
-const FLOORS = [
+export const FLOORS = [
   { id: 'struct-f3', floor: 'Floor 3', label: 'Chapter 3: The IBRD and selected projects in Vietnam', goto: 'f3-ch3-title' },
   { id: 'struct-f2', floor: 'Floor 2', label: 'Chapter 2: How the IBRD supports project financing', goto: 'f2-ch2-title' },
   { id: 'struct-f1', floor: 'Floor 1', label: 'Chapter 1: Overview of the IBRD', goto: 'f1-ch1-title' },

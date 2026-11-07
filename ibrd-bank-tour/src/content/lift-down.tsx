@@ -13,7 +13,7 @@ interface Part {
   source: string;
   body: string;
 }
-const PARTS: Part[] = [
+export const PARTS: Part[] = [
   {
     floor: '3',
     kicker: 'Conclusion 1.1 · Summary of findings',

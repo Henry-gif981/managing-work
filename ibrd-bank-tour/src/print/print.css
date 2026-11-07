@@ -66,9 +66,9 @@ html.print-mode #root {
 }
 .page-foot {
   position: absolute;
-  left: 72px;
-  right: 48px;
-  bottom: 20px;
+  left: 60px;
+  right: 60px;
+  bottom: 30px;
   text-align: right;
   font-family: var(--font-caption);
   font-style: italic;
@@ -111,15 +111,389 @@ html.print-mode #root {
   break-after: auto;
   page-break-after: auto;
 }
-.print-callouts {
+/* ================= update 2: calm print layout =================
+ * Page 1920x1080. Safe margins: 60 px left/right, 40 px top, 110 px bottom (footer zone, nothing else enters it).
+ */
+.page-bg {
   position: absolute;
   inset: 0;
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.print-callouts .print-prop {
-  font: italic 400 18px var(--font-caption);
-  fill: var(--muted);
+.page-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
 }
+.page-foot {
+  z-index: 2;
+}
+.print-root {
+  --p-white: rgba(255, 255, 255, 0.96);
+  --p-shadow: 0 2px 10px rgba(0, 35, 69, 0.14);
+  color: var(--ink);
+}
+.scene-page .sheet {
+  position: absolute;
+  left: 60px;
+  right: 60px;
+  top: 40px;
+  bottom: 110px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sheet > * {
+  flex-shrink: 0;
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 12px 24px;
+  background: var(--p-white);
+  box-shadow: var(--p-shadow);
+  border-radius: 10px;
+  border-left: 6px solid var(--wb-cyan);
+}
+.sheet-head h2 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: 32px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--wb-navy);
+}
+.sh-label,
+.pc-label {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--wb-cyan);
+  color: var(--wb-navy);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.sh-label {
+  align-self: center;
+  font-size: 17px;
+}
+.sh-cont {
+  margin-left: auto;
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+}
+/* ---- main area: full width, exhibits centred, complete, final state ---- */
+.p-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 18px 20px;
+  background: var(--p-white);
+  box-shadow: var(--p-shadow);
+  border-radius: 10px;
+}
+.p-exhibit {
+  max-width: 100%;
+}
+.p-exhibit > * {
+  max-width: 100%;
+}
+.print-root .p-exhibit .dt-wrap,
+.print-root .p-exhibit .card,
+.print-root .p-exhibit .chart {
+  box-shadow: none !important;
+  margin: 0 auto;
+}
+.print-root .p-exhibit .card {
+  background: transparent;
+  padding: 0;
+}
+.print-root .p-exhibit .card.dark {
+  background: var(--wb-navy);
+  padding: 16px 20px;
+}
+.print-root .p-exhibit .dt {
+  font-size: 19px;
+  line-height: 1.28;
+}
+.print-root .p-exhibit .dt th {
+  padding: 7px 12px;
+}
+.print-root .p-exhibit .dt td {
+  padding: 5px 12px;
+}
+.print-root .p-exhibit .dt-caption {
+  font-size: 18px;
+  padding: 6px 12px 2px;
+  color: var(--muted);
+}
+.print-root .p-exhibit .chart {
+  width: 850px !important;
+  max-width: 100%;
+}
+.print-root .p-exhibit .chart svg {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+}
+.print-root .p-exhibit .dt-wrap {
+  width: fit-content !important;
+  max-width: 1760px;
+}
+.print-root .p-exhibit .legal-card {
+  width: 1600px;
+}
+.print-root .p-exhibit .legal-tl li {
+  font-size: 19px;
+  padding: 4px 10px;
+  margin: 2px 0;
+  grid-template-columns: 300px 440px 1fr;
+}
+.print-root .p-exhibit .timeline {
+  padding-top: 30px;
+}
+.print-root .p-exhibit .tl-date {
+  font-size: 22px;
+}
+/* no focus glow, no dimming in print */
+.print-root .is-focus,
+.print-root .is-dim {
+  opacity: 1 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  filter: none !important;
+}
+/* ---- text cards: equal column width, equal row height, one beat per card ---- */
+.p-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 24px;
+  align-content: start;
+}
+.pcard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  padding: 16px 20px 14px;
+  background: var(--p-white);
+  box-shadow: var(--p-shadow);
+  border-radius: 10px;
+  border-top: 4px solid var(--wb-navy);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.38;
+  overflow: hidden;
+  break-inside: avoid;
+}
+.pc-title {
+  margin: 2px 0 0;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 1.25;
+  color: var(--wb-navy);
+}
+.pc-body {
+  flex: 1;
+}
+.pcard .rich p,
+.pcard .rich li {
+  font-size: 20px;
+  color: var(--ink);
+}
+.pcard .rich p {
+  margin: 0 0 8px;
+}
+.pcard .rich p:last-child {
+  margin-bottom: 0;
+}
+.pcard .rich ul,
+.pcard .rich ol {
+  margin: 0 0 6px;
+  padding-left: 24px;
+}
+.pc-src {
+  margin-top: 4px;
+  padding-top: 6px;
+  border-top: 1px solid var(--surface-2);
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--muted);
+}
+.pcard .chips {
+  gap: 8px;
+  margin-top: 8px;
+}
+.pcard .chip {
+  font-size: 18px;
+  padding: 3px 12px;
+}
+.pcard .stat-value,
+.pcard .k-stats .stat-value {
+  font-size: 40px;
+}
+.pcard .k-keydiff,
+.pcard .k-buys {
+  font-size: 20px;
+}
+.pcard .k-keydiff ul {
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+.pcard .k-buys {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+/* ---- dark card (title slides): dark card AND white text, never mixed ---- */
+.pcard.dark {
+  background: rgba(0, 20, 43, 0.96);
+  border-top-color: var(--wb-cyan);
+}
+.pcard.dark,
+.pcard.dark .pc-title,
+.pcard.dark .rich p,
+.pcard.dark .rich li,
+.pcard.dark li,
+.pcard.dark b,
+.pcard.dark .pc-src {
+  color: #ffffff;
+}
+.pcard.dark .pc-src {
+  border-top-color: rgba(71, 196, 235, 0.5);
+}
+.pcard.dark .cite {
+  color: #47c4eb;
+}
+/* ---- light-on-dark colours from the live scenes are overridden on white cards ---- */
+.print-root .pcard:not(.dark) .card.dark,
+.print-root .pcard:not(.dark) .glass,
+.print-root .pcard:not(.dark) .card {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: none;
+  padding: 0;
+}
+.print-root .pcard:not(.dark) .h1,
+.print-root .pcard:not(.dark) .h2,
+.print-root .pcard:not(.dark) .kicker {
+  color: var(--wb-navy);
+}
+.print-root .chip.good {
+  background: #1f7a52;
+  color: #ffffff;
+}
+.print-root .chip.bad {
+  background: #b03a30;
+  color: #ffffff;
+}
+.print-root .chip.warn {
+  background: var(--warn);
+  color: var(--wb-navy);
+}
+.print-root .cite {
+  color: var(--wb-blue);
+}
+.p-floors {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.p-floors li {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--surface-2);
+}
+.p-floors b {
+  display: inline-block;
+  min-width: 190px;
+  color: var(--wb-navy);
+}
+/* no tab strips, buttons, hints or HUD in print */
+.print-root .glass-steps,
+.print-root .cover-hint,
+.print-root .refwall-search,
+.print-root .hud,
+.print-root .floor-btn {
+  display: none !important;
+}
+/* ---- Thank You page: the same dark card as the live scene ---- */
+.p-thanks {
+  position: absolute;
+  left: 50%;
+  top: 470px;
+  transform: translate(-50%, -50%);
+  width: 1180px;
+}
+/* ---- cover ---- */
+.p-cover {
+  position: absolute;
+  left: 60px;
+  top: 40px;
+  width: 900px;
+  padding: 30px 36px;
+  background: var(--p-white);
+  box-shadow: var(--p-shadow);
+  border-radius: 10px;
+  border-top: 4px solid var(--wb-navy);
+  color: var(--ink);
+}
+.p-cover h1 {
+  margin: 10px 0 14px;
+  font-family: var(--font-title);
+  font-size: 46px;
+  line-height: 1.15;
+  color: var(--wb-navy);
+}
+.p-cover-course {
+  margin-top: 10px;
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--muted);
+}
+.p-cover-sub {
+  margin: 0 0 18px;
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--wb-blue);
+}
+.p-cover-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 8px 16px;
+  font-size: 22px;
+}
+.p-cover-grid b {
+  color: var(--wb-blue);
+}
+.p-cover-grid ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.p-cover-place {
+  margin-top: 16px;
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--muted);
+}
+/* ---- contents ---- */
 .toc-page,
 .refs-page {
   background: var(--page);
@@ -127,25 +501,28 @@ html.print-mode #root {
 .toc-inner,
 .refs-inner {
   position: absolute;
-  left: 96px;
-  right: 72px;
+  left: 60px;
+  right: 60px;
   top: 60px;
-  bottom: 80px;
+  bottom: 110px;
+  overflow: hidden;
 }
 .toc-title {
-  font-size: 40px;
-  margin-bottom: 16px;
+  margin: 10px 0 18px;
+  font-family: var(--font-title);
+  font-size: 36px;
+  color: var(--wb-navy);
 }
 .toc-cols {
   column-count: 3;
-  column-gap: 40px;
+  column-gap: 44px;
 }
 .toc-seg {
   break-inside: avoid;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .toc-seg h4 {
-  margin: 0 0 2px;
+  margin: 0 0 3px;
   font-size: 15px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -160,29 +537,39 @@ html.print-mode #root {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  font-size: 15px;
-  line-height: 1.32;
+  font-size: 16px;
+  line-height: 1.34;
   border-bottom: 1px dotted var(--surface-2);
+  color: var(--ink);
 }
 .toc-seg li b {
+  color: var(--wb-navy);
+}
+/* ---- references: whole entries, paginated by measured height ---- */
+.refs-h {
+  margin: 0 0 12px;
+  font-family: var(--font-title);
+  font-size: 34px;
   color: var(--wb-navy);
 }
 .refs-print {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 21px;
-  line-height: 1.32;
+  font-size: 20px;
+  line-height: 1.34;
+  color: var(--ink);
 }
 .refs-print li {
   display: flex;
   gap: 12px;
-  padding: 6px 0;
+  padding: 5px 0;
   border-bottom: 1px solid var(--surface-2);
 }
 .refs-print b {
   color: var(--wb-blue);
   min-width: 52px;
+  flex-shrink: 0;
 }
 .refs-url {
   font-family: var(--font-caption);
@@ -190,208 +577,54 @@ html.print-mode #root {
   color: var(--muted);
   word-break: break-all;
 }
-
-/* ---------- one page per scene (update part 6) ---------- */
-.page-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.refs-measure {
+  position: absolute !important;
+  left: -10000px;
+  top: 0;
+  height: auto !important;
+  visibility: hidden;
 }
-.scene-page .sheet {
+.refs-measure .refs-inner {
+  position: static;
+  width: 1800px;
+  overflow: visible;
+}
+
+.print-measure {
   position: absolute;
-  left: 56px;
-  right: 56px;
-  top: 40px;
-  bottom: 70px;
-  overflow: hidden;
+  left: -10000px;
+  top: 0;
+  width: 1800px;
+  visibility: hidden;
+}
+.print-measure .m-cards {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: stretch;
 }
-.sheet-head {
-  display: flex;
-  align-items: baseline;
-  gap: 18px;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.88);
-  border-left: 6px solid var(--wb-cyan);
-  border-radius: 8px;
-  flex-shrink: 0;
+.print-measure .m-cards .pcard {
+  flex: none;
 }
-.sheet-head h2 {
-  margin: 0;
-  font-family: var(--font-title);
-  font-size: 34px;
-  text-transform: uppercase;
-  color: var(--wb-navy);
+
+.pc-title .pc-label {
+  margin-right: 8px;
+  vertical-align: 3px;
 }
-.sheet-head .kicker {
-  background: var(--wb-cyan);
-  color: var(--wb-navy);
-  padding: 2px 10px;
-  border-radius: 4px;
-  font-size: 18px;
+.pcard {
+  padding: 14px 18px 12px;
 }
-.sheet-part {
-  margin-left: auto;
-  font-family: var(--font-caption);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--muted);
+/* accessible text variants of the meaning colours on white (contrast >= 4.5:1); chart fills keep the live colours */
+.print-root .stat.good .stat-value {
+  color: #1f7a52;
 }
-.exhibits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  justify-content: center;
-  flex-shrink: 0;
+.print-root .stat.bad .stat-value {
+  color: #b03a30;
 }
-.exhibit > * {
-  background: rgba(255, 255, 255, 0.88) !important;
+.print-root .stat.warn .stat-value,
+.print-root .note b {
+  color: #a4501a;
 }
-.exhibit .dt-wrap,
-.exhibit .chart,
-.exhibit .card {
-  box-shadow: none;
-}
-.exhibit .dt {
-  font-size: 20px;
-}
-.exhibit .dt th,
-.exhibit .dt td {
-  padding: 6px 12px;
-}
-.exhibit .dt td {
-  background: rgba(234, 244, 250, 0.9);
-}
-.exhibit [style*='width: 1440'],
-.exhibit [style*='width: 1400'],
-.exhibit [style*='width: 1380'],
-.exhibit [style*='width: 1300'],
-.exhibit [style*='width: 1360'] {
-  width: 1500px !important;
-}
-.beat-grid {
-  column-count: 3;
-  column-gap: 12px;
-  flex: 1;
-  min-height: 0;
-}
-.beat-card {
-  break-inside: avoid;
-  margin-bottom: 12px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.88);
-  border-radius: 8px;
-  border-top: 3px solid var(--wb-navy);
-  font-size: 22px;
-  line-height: 1.38;
-}
-.beat-card .rich p {
-  margin: 0 0 6px;
-}
-.beat-card .stat-value {
-  font-size: 40px;
-}
-.beat-card .chips .chip {
-  font-size: 18px;
-}
-.bc-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-  color: var(--wb-navy);
-  font-size: 22px;
-}
-.bc-n {
-  min-width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: var(--wb-navy);
-  color: var(--page);
-  font-size: 16px;
-  display: grid;
-  place-items: center;
-}
-.bc-src {
-  margin-top: 4px;
-  font-family: var(--font-caption);
-  font-style: italic;
-  font-size: 19px;
-  color: var(--muted);
-}
-.ppin {
-  display: inline-grid;
-  place-items: center;
-  min-width: 26px;
-  height: 26px;
-  margin-right: 6px;
-  border-radius: 50%;
-  background: var(--wb-cyan);
-  color: var(--wb-navy);
-  font: 700 15px var(--font-body);
-  vertical-align: middle;
-}
-.pin-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 22px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.88);
-  border-radius: 8px;
-  font-size: 19px;
-  flex-shrink: 0;
-}
-.pin-legend i {
-  font-family: var(--font-caption);
-  color: var(--muted);
-}
-.sheet-view {
-  position: relative;
-  flex: 1;
-}
-.sheet-view .k-card,
-.sheet-view .glass-panel,
-.sheet-view .thanks,
-.sheet-view .refwall {
-  position: relative;
-  left: auto;
-  right: auto;
-  top: auto;
-  bottom: auto;
-  transform: none;
-  margin: 0 auto;
-}
-.sheet-view .card {
-  background: rgba(255, 255, 255, 0.88);
-}
-.cover-page .card {
-  background: rgba(255, 255, 255, 0.88);
-}
-.page-veil {
+/* the card title already names these boxes */
+.pcard .k-keydiff-h {
   display: none;
-}
-.exhibit .legal-card {
-  width: 1500px;
-  padding: 10px 16px;
-}
-.exhibit .legal-tl li {
-  font-size: 19px;
-  padding: 4px 10px;
-  margin: 2px 0;
-  grid-template-columns: 300px 440px 1fr;
-}
-.exhibit .timeline {
-  padding-top: 30px;
-}
-.exhibit .tl-date {
-  font-size: 24px;
-  margin-top: 26px;
-}
-.exhibit .chart svg {
-  max-height: 380px;
-  width: auto;
 }
