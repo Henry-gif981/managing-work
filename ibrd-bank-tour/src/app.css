@@ -1896,3 +1896,69 @@ html.shot *::after {
   fill: var(--page);
   stroke: none;
 }
+
+/* key-differences / "buys" cards under a full table (f1-wbg, f1-instruments) */
+.k-keydiff-h {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--wb-navy);
+  margin-bottom: 4px;
+}
+.k-keydiff ul,
+.k-buys-b ul {
+  margin: 0;
+  padding-left: 22px;
+}
+.k-keydiff li,
+.k-buys-b li {
+  margin: 2px 0;
+}
+.k-keydiff-f {
+  margin: 6px 0 0;
+}
+.k-buys {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.k-buys-a .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 6px 0 8px;
+}
+.k-buys-a p {
+  margin: 0;
+}
+/* f1-wbg beat 2: whole Table 1.1.1 + key differences on one screen */
+.k-centre #t1 {
+  font-size: 24px;
+  line-height: 1.22;
+}
+.k-centre #t1 th {
+  padding: 8px 16px;
+}
+.k-centre #t1 td {
+  padding: 6px 16px;
+}
+.k-keydiff {
+  font-size: 24px;
+  line-height: 1.3;
+}
+.k-keydiff ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  padding-left: 0;
+  list-style: none;
+}
+.k-keydiff li {
+  border-left: 4px solid var(--wb-cyan);
+  padding-left: 12px;
+}
+.k-buys {
+  font-size: 24px;
+  line-height: 1.3;
+}

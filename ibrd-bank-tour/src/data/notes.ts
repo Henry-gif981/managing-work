@@ -45,9 +45,16 @@ export const NOTES: Record<string, SceneNotes> = {
     targetSeconds: 60,
   },
   'f1-wbg': {
-    en: "Table 1.1.1 lists the five World Bank Group institutions. The key contrasts: cost of funds for IBRD versus IDA, clients for IBRD versus IFC, and MIGA and ICSID reduce risk rather than lend.",
-    vi: "Đi nhanh từng dòng bảng 1.1.1 rồi nêu 3 khác biệt.",
-    targetSeconds: 200,
+    en: "Five institutions, one goal: the IBRD is the oldest and largest, and with IDA it forms the World Bank.",
+    vi: "Năm tổ chức, một mục tiêu.",
+    targetSeconds: 40,
+    beats: [
+      { en: "Five institutions work towards one goal. The IBRD, founded in 1944, is the oldest and largest development bank; with IDA it forms the World Bank in the narrow sense.", vi: "Năm tổ chức, một mục tiêu." },
+      {
+        en: "Table 1.1.1 lists the five World Bank Group institutions: the IBRD, IDA, IFC, MIGA and ICSID, with the year founded, main clients, activities and source of funds. The key contrasts: cost of funds for IBRD versus IDA, clients for IBRD versus IFC, and MIGA and ICSID reduce risk rather than lend. In this structure the IBRD is the main public channel to middle-income countries.",
+        vi: "Đi nhanh từng dòng bảng 1.1.1 rồi nêu 3 khác biệt.",
+      },
+    ],
   },
   'f1-history-1': {
     en: "The IBRD was created at Bretton Woods in 1944 and its first loan went to France in 1947. After the Marshall Plan it turned to developing countries and, later, to poverty reduction.",
@@ -72,7 +79,14 @@ export const NOTES: Record<string, SceneNotes> = {
   'f1-instruments': {
     en: "Table 1.4.1 shows the three instruments: IPF pays for inputs, DPF for reforms and PforR for results.",
     vi: "Ba công cụ cho vay: đầu vào – cải cách – kết quả.",
-    targetSeconds: 100,
+    targetSeconds: 40,
+    beats: [
+      { en: "The IBRD lends through three instruments under one product, the IBRD Flexible Loan.", vi: "Ba công cụ, một khoản vay." },
+      {
+        en: "Table 1.4.1: IPF pays for works, goods and services as costs are incurred; DPF releases money to the budget after agreed prior actions, and Vietnam's first IBRD loan in 2009 was a DPF; PforR, introduced in 2012, pays on verified Disbursement-Linked Indicators. So the IBRD buys inputs, reforms or results, and this choice shapes the borrower's obligations.",
+        vi: "Ba công cụ cho vay: đầu vào – cải cách – kết quả.",
+      },
+    ],
   },
   'f1-terms': {
     en: "The IBRD Flexible Loan costs a reference rate plus a variable spread, a one-off front-end fee and a commitment fee on undisbursed money, so slow disbursement raises the real cost.",
