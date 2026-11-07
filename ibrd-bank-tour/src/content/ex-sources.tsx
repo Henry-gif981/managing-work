@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { SourceTag } from './kit';
 import type { Beat, SceneViewProps } from './types';
 import { REFERENCES } from '../data/references';
 import { Card, Title } from '../primitives/ScenePanel';
@@ -34,7 +35,7 @@ export default function View({ print }: SceneViewProps) {
           ))}
           {!print && list.length === 0 && <li className="caption">No match.</li>}
         </ol>
-        <div className="k-source">Source · References · pp. 60-66 · press R to open the panel</div>
+        <SourceTag s={'References · pp. 60-66'} />
       </Card>
     </div>
   );

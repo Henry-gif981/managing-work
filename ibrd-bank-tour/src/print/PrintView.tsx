@@ -8,6 +8,7 @@ import { R, type Slide } from '../content/kit';
 import { PARTS } from '../content/lift-down';
 import { FLOORS } from '../content/f1-structure';
 import { ThanksCard } from '../content/ex-thanks';
+import { SHOW_SOURCE_TAGS } from '../config';
 
 /**
  * ?print=1 (update 2: calm print layout). Order: cover, contents, one page per scene, references.
@@ -161,7 +162,7 @@ function Card({ c }: { c: PCard }) {
         <span className="pc-label">{c.label}</span> {c.title}
       </h3>
       <div className="pc-body">{c.body}</div>
-      {c.source && <div className="pc-src">Source · {c.source}</div>}
+      {SHOW_SOURCE_TAGS && c.source && <div className="pc-src">Source · {c.source}</div>}
     </article>
   );
 }

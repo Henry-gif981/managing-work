@@ -53,7 +53,7 @@ You can also use the on-screen ‹ › arrows at the bottom right, or swipe on a
 - **Plan:** add `?plan=<minutes>` (e.g. `index.html?plan=45`) and the HUD shows `+1:20 behind` or `-0:40 ahead` against a schedule spread over the scenes' `targetSeconds`. There is no default plan.
 - **Tour length:** "full tour ≈ X min" is the sum of `targetSeconds`. With Core path on it shows the core-path length.
 
-Other URL flags: `?lite=1` starts in Lite mode. `?shot=1` is for screenshots (instant tweens, no auto-advance, no fps watchdog). `?noauto=1` stops the door and lift-up scenes from auto-advancing. `?dev=0` turns the dev overlay off in `npm run dev`.
+Other URL flags: `?tags=1` shows the small grey source tags ("Source · Section x · p. n"), which are hidden by default (`SHOW_SOURCE_TAGS` in `src/config.ts`). `?lite=1` starts in Lite mode. `?shot=1` is for screenshots (instant tweens, no auto-advance, no fps watchdog). `?noauto=1` stops the door and lift-up scenes from auto-advancing. `?dev=0` turns the dev overlay off in `npm run dev`.
 
 ## Tuning cameras (dev mode)
 
@@ -150,7 +150,7 @@ Every colour is a CSS variable in `src/tokens.css`. The DOM uses them directly, 
 
 Open `?print=1` (or press **P**). The order is: cover, contents (built from the final page numbers), **one page per scene**, then the references. There is no WebGL and no HUD.
 - **Page grid (1920×1080):** a header band (cyan section chip and navy title), a **main area** with the scene's tables, charts and diagrams (each printed once, complete, in its final state, no focus glow), then the **text cards**.
-- **Cards:** a CSS grid with equal column width and equal row height (2-4 columns, 24 px gap). One beat is one card, with the cyan chip, title, body (20 px) and its source tag as the last line inside the card.
+- **Cards:** a CSS grid with equal column width and equal row height (2-4 columns, 24 px gap). One beat is one card, with the cyan chip, title and body (20 px); the source tag is only shown with `?tags=1`.
 - **Safe margins:** 60 px left and right, 40 px top, 110 px bottom. The bottom 110 px are the footer zone ("Group 6 – IBRD in Vietnam | page/total").
 - **No clutter:** no numbered pins, legends, leader lines, tab strips, buttons or hints.
 - **Background:** the scene's 3D end pose (`src/assets/print-bg/<scene>.jpg`, made by `npm run capture-bg`) under a 55% white scrim, with cards and the main area at 96% white.

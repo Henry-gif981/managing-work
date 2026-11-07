@@ -1,7 +1,7 @@
 import type { Beat } from './types';
 import { Card, Title } from '../primitives/ScenePanel';
 import { useTour } from '../state/store';
-import { R } from './kit';
+import { R, SourceTag } from './kit';
 
 export const beats: Beat[] = [
   {
@@ -34,7 +34,7 @@ export default function View() {
             </button>
           ))}
         </div>
-        <div className="k-source">Source · Introduction 6 · p. 12</div>
+        <SourceTag s={'Introduction 6 · p. 12'} />
       </Card>
     </div>
   );

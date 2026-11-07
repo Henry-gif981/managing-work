@@ -14,6 +14,7 @@ import { F } from '../primitives/Fact';
 import { Cite } from '../primitives/bits';
 import { useFocus } from '../primitives/focus';
 import { WAYPOINTS } from '../camera/waypoints';
+import { SHOW_SOURCE_TAGS } from '../config';
 
 const TOKEN = /(\{[a-z0-9.-]+(?:\|(?:n|\d))?\}|\[\d[^\]]*\]|\*\*[^*]+\*\*)/g;
 
@@ -95,8 +96,9 @@ export interface Slide extends Beat {
   band?: 'left' | 'right';
 }
 
-function SourceTag({ s }: { s: string }) {
-  return <div className="k-source">Source · {s}</div>;
+/** Source tag under a card; rendered only when SHOW_SOURCE_TAGS is on (?tags=1). */
+export function SourceTag({ s }: { s: string }) {
+  return SHOW_SOURCE_TAGS ? <div className="k-source">Source · {s}</div> : null;
 }
 
 /** Build a scene's { beats, View } from slides. */

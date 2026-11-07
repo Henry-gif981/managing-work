@@ -1,5 +1,5 @@
 import type { Beat, SceneViewProps } from './types';
-import { R } from './kit';
+import { R, SourceTag } from './kit';
 
 /**
  * Conclusion, shown on the cabin's glass panel while the lift rides down: one beat per part of the
@@ -91,7 +91,7 @@ export default function View({ beat }: SceneViewProps) {
             </li>
           ))}
         </ol>
-        <div className="k-source">Source · {p.source}</div>
+        <SourceTag s={p.source} />
       </div>
     </div>
   );

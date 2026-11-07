@@ -533,3 +533,20 @@ The "Part 2" section of update 2 above is therefore **superseded**.
 - **Facts:** the facts of the deleted beats stay in `facts.ts`. The table still shows most of them, `check-facts` uses them, and the note repeats their values.
 - **Backgrounds:** the `f1-terms` background was recaptured at exposure 0.850 without the removed props, and the `f1-instruments` background at 1.000 (its end pose is beat 5 again).
 - Tracker segments and counters follow `beats.length`. `docs/scene-list.md` was regenerated, and the scene count stays 59.
+
+## Part 2 · Small grey source lines removed (live and print)
+
+- **Flag:** `src/config.ts` exports `SHOW_SOURCE_TAGS`, default **false**. `?tags=1` (`PARAMS.tags`) switches the tags back on, live and in print, for the group's own checking.
+- **Hidden** when the flag is off:
+  - the kit's `SourceTag` under every card, including the line under chapter title cards (e.g. "Source · Chapter 1 · pp. 13-21") and under centre-layout captions;
+  - the hand-written lines in `f1-structure`, `lift-down` (one per Conclusion part) and `ex-sources` ("Source · References · pp. 60-66 · press R…");
+  - in print, the last line of every card (`.pc-src`), and with it the source line of the `ex-sources` card.
+  - The `ex-thanks` card had already lost its line in update 2, and the HUD never showed source tags.
+- **Kept:**
+  - the [n] citation superscripts;
+  - table and figure captions with "Source: Authors' compilation from […]" (part of the table);
+  - the references panel (R), the reference pages and the exit Sources scene;
+  - the cover's "Hanoi, 2026 · Press → to enter" line in the live tour, which is not a source tag.
+- **Data kept:** `source` stays on every slide and beat. The page and section tags in `facts.ts`, the fact tooltips, the coverage docs and `check-facts` are unchanged.
+- **No blank rows:** the tag elements are not rendered at all (the component returns `null`), so cards end with their body text. In print the cards stay equal in height (`grid-auto-rows: 1fr`) and the pages were packed again with the shorter cards.
+- **Checks:** `check-print` and `check-lines` never required source tags, so nothing in them had to change. `check-print` still checks every text that is rendered.
