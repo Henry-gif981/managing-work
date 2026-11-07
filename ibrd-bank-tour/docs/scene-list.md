@@ -11,12 +11,12 @@ Generated from `src/scenes.ts` by `npm run docs:scenes`. Beats are computed from
 | 5 | `f1-structure` | room | 1 | Floor 1 · Introduction | Introduction 6 |  | 20 | 1 |
 | 6 | `f1-ch1-title` | room | 1 | Floor 1 · Chapter 1 | Chapter 1 |  | 20 | ? |
 | 7 | `f1-what` | room | 1 | Floor 1 · Chapter 1 | Section 1.1.1 |  | 60 | ? |
-| 8 | `f1-wbg` | room | 1 | Floor 1 · Chapter 1 | Section 1.1.2 |  | 200 | ? |
+| 8 | `f1-wbg` | room | 1 | Floor 1 · Chapter 1 | Section 1.1.2 |  | 40 | ? |
 | 9 | `f1-history-1` | room | 1 | Floor 1 · Chapter 1 | Section 1.2 | yes | 80 | ? |
 | 10 | `f1-history-2` | room | 1 | Floor 1 · Chapter 1 | Section 1.2 | yes | 60 | ? |
 | 11 | `f1-gov` | room | 1 | Floor 1 · Chapter 1 | Section 1.3.1 |  | 140 | ? |
 | 12 | `f1-funds` | room | 1 | Floor 1 · Chapter 1 | Section 1.3.3 |  | 80 | ? |
-| 13 | `f1-instruments` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.1 |  | 100 | ? |
+| 13 | `f1-instruments` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.1 |  | 40 | ? |
 | 14 | `f1-terms` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.2 |  | 160 | ? |
 | 15 | `f1-safeguards` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.3 |  | 120 | ? |
 | 16 | `lift-1-2` | lift | 1 | Floor 1 · Chapter 1 | — |  | 10 | 0 |
@@ -64,4 +64,4 @@ Generated from `src/scenes.ts` by `npm run docs:scenes`. Beats are computed from
 | 58 | `ex-sources` | exit | G | Exit | References |  | 25 | 1 |
 | 59 | `ex-thanks` | exit | G | Exit | — |  | 25 | 1 |
 
-Full tour ≈ 137 min (8198 s) · core path ≈ 117 min (7048 s).
+Full tour ≈ 133 min (7978 s) · core path ≈ 114 min (6828 s).

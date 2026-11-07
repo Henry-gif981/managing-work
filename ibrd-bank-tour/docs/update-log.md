@@ -346,3 +346,47 @@ All ten positions match; no beat had to be located by its quoted text. The fix l
 - **Facts:** 62 facts removed (case numbers on Floors 1-2, voting power 0.21% / 15-16% / 85%, ASA 2023 amounts, PIR and power-sector amounts, …). 8 checks that used them were removed: ASA 26 + 68 + 6, PIR 2 87.3 + 262.7, power-sector 200 + 111.8, TEP capacity building 5.50 + 0.24 and their order checks, and the eligibility-year order check.
 - **Notes:** rewritten for all Floor 1-2 scenes (no case details) with targetSeconds = about 20 s per beat.
 - **References:** the 64 entries now come from the _10 paper (US$ → USD in [14]; dashes in [23] and [62]).
+
+---
+
+# Update 2 (scenes 8 and 14 condensed, calm print layout, Thank You page)
+
+## Part 1 · `f1-wbg` (Table 1.1.1): 10 → 2 beats
+
+| Beat | Before | After |
+|---|---|---|
+| 1 | Five institutions, one goal | **unchanged**: Five institutions, one goal (wide pose over the five institution props) |
+| 2 | Table 1.1.1 · row IBRD (focus) | **Table 1.1.1, whole table** (no row focus, centred) + one card **Key differences**: IBRD vs IDA · IBRD vs IFC · MIGA and ICSID do not lend, as three short lines side by side; table caption with [9] and [10] and the source line kept |
+| 3 | row IDA | removed |
+| 4 | row IFC | removed |
+| 5 | row MIGA | removed |
+| 6 | row ICSID | removed |
+| 7 | Key differences · IBRD / IDA | removed (now line 1 of the card) |
+| 8 | Key differences · IBRD / IFC | removed (now line 2 of the card) |
+| 9 | Key differences · MIGA / ICSID | removed (now line 3 of the card) |
+| 10 | The main public channel | removed as a beat; its sentence closes the Key differences card |
+
+Decisions:
+- The brief lists only the per-row and key-difference beats for deletion, but asks for exactly 2 beats. The old beat 10 ("The main public channel") is the subsection's closing key idea (and the scene objective), so its sentence was kept as the last line of the beat-2 card instead of being dropped.
+- To fit the whole table and the card on one 1920×1080 screen, Table 1.1.1 uses 24 px cells in this scene (instead of 26 px) and the three differences sit side by side.
+- One leader line, from the table's outer edge to the ICSID prop, without a label (a label would have touched the card). `check-lines`: 0 overlaps.
+- Facts: none removed, because every fact used by the deleted beats (`ibrd-founded` and the Table 1.1.1 cells) is still shown. Waypoints: none removed; `f1-wbg-table` is still the camera of beat 2. The per-institution anchors stay, because the 3D props are unchanged.
+- Notes: the scene had no per-beat notes. The scene note (the contrasts across the five rows) is now the note of beat 2, with a short note for beat 1. `targetSeconds` 200 → 40.
+
+## Part 2 · `f1-instruments` (Table 1.4.1): 5 → 2 beats
+
+| Beat | Before | After |
+|---|---|---|
+| 1 | Three instruments, one loan | **unchanged** |
+| 2 | Table 1.4.1 · row IPF (focus) | **Table 1.4.1, whole table** (no row focus) + one card: left, **What the IBRD "buys"** with the chips IPF → inputs, DPF → reforms, PforR → results and "This choice shapes the borrower's obligations."; right, the three one-line definitions with [16], [16] + [2], [16; 17], the first IBRD loan (USD 500 million, December 2009, a DPF) and "introduced in 2012" |
+| 3 | row DPF | removed (definition kept in the card) |
+| 4 | row PforR | removed (definition kept in the card) |
+| 5 | What the IBRD "buys" | removed (merged into beat 2) |
+
+Decisions:
+- The definitions keep the spelled-out names "Investment Project Financing (IPF)", etc., because beat 1 never spells them out (Floors 1-2 rule: spell out at first use per scene).
+- One leader line from the table's edge to the PforR counter, labelled "Lending counters". `check-lines`: 0 overlaps (beat 1 still uses its numbered-pin fallback, as before).
+- Facts: none removed (`pir1-ibrd`, `pir1-approved` and `pforr-year` are still shown). Waypoints: none removed (`f1-instruments-table` is the beat-2 camera).
+- Notes: per-beat notes added; beat 2 merges the three row notes. `targetSeconds` 100 → 40.
+
+Beat counts come from `beats.length`, so the tracker segments and the n/N counters update by themselves; `scenes.ts` reads the new `targetSeconds` from `notes.ts`. The scene count stays at 59.
