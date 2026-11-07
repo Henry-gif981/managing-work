@@ -347,17 +347,12 @@ html.print-mode #root {
 .pcard .k-stats .stat-value {
   font-size: 40px;
 }
-.pcard .k-keydiff,
-.pcard .k-buys {
+.pcard .k-keydiff {
   font-size: 20px;
 }
 .pcard .k-keydiff ul {
   grid-template-columns: 1fr;
   gap: 6px;
-}
-.pcard .k-buys {
-  grid-template-columns: 1fr;
-  gap: 10px;
 }
 /* ---- dark card (title slides): dark card AND white text, never mixed ---- */
 .pcard.dark {

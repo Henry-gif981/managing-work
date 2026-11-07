@@ -79,14 +79,7 @@ export const NOTES: Record<string, SceneNotes> = {
   'f1-instruments': {
     en: "Table 1.4.1 shows the three instruments: IPF pays for inputs, DPF for reforms and PforR for results.",
     vi: "Ba công cụ cho vay: đầu vào – cải cách – kết quả.",
-    targetSeconds: 40,
-    beats: [
-      { en: "The IBRD lends through three instruments under one product, the IBRD Flexible Loan.", vi: "Ba công cụ, một khoản vay." },
-      {
-        en: "Table 1.4.1: IPF pays for works, goods and services as costs are incurred; DPF releases money to the budget after agreed prior actions, and Vietnam's first IBRD loan in 2009 was a DPF; PforR, introduced in 2012, pays on verified Disbursement-Linked Indicators. So the IBRD buys inputs, reforms or results, and this choice shapes the borrower's obligations.",
-        vi: "Ba công cụ cho vay: đầu vào – cải cách – kết quả.",
-      },
-    ],
+    targetSeconds: 100,
   },
   'f1-terms': {
     en: "The IBRD Flexible Loan costs a reference rate plus a variable spread, a one-off front-end fee and a commitment fee on undisbursed money, so slow disbursement raises the real cost.",

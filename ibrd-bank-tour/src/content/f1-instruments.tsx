@@ -19,6 +19,7 @@ const table = (
   />
 );
 const T = 'Table 1.4.1 · Three lending instruments';
+const S = 'Section 1.4.1 · Table 1.4.1 · p. 18';
 const p = scene('f1-instruments', [
   {
     kicker: 'Section 1.4',
@@ -31,29 +32,52 @@ const p = scene('f1-instruments', [
     layout: 'centre',
     kicker: 'Section 1.4.1',
     title: T,
-    label: 'What the IBRD "buys"',
-    source: 'Section 1.4.1 · Table 1.4.1 · pp. 18-19',
+    label: 'IPF',
+    source: S,
     centre: table,
-    callouts: [{ from: '#t2', to: a('pforr'), label: 'Lending counters' }],
+    focus: ['t2-ipf'],
+    callouts: [{ from: '#t2-ipf', to: a('ipf'), label: 'IPF' }],
+    body: `**Investment Project Financing (IPF)** pays for project works, goods and services as costs are incurred; it suits infrastructure with a clear scope [16].`,
+  },
+  {
+    layout: 'centre',
+    kicker: 'Section 1.4.1',
+    title: T,
+    label: 'DPF',
+    source: S,
+    centre: table,
+    focus: ['t2-dpf'],
+    callouts: [{ from: '#t2-dpf', to: a('dpf'), label: 'DPF' }],
+    body: `**Development Policy Financing (DPF)** supports reforms: after agreed prior actions, money goes to the budget [16]. Vietnam's first IBRD loan, {pir1-ibrd} in {pir1-approved}, was a DPF [2].`,
+  },
+  {
+    layout: 'centre',
+    kicker: 'Section 1.4.1',
+    title: T,
+    label: 'PforR',
+    source: S,
+    centre: table,
+    focus: ['t2-pforr'],
+    callouts: [{ from: '#t2-pforr', to: a('pforr'), label: 'PforR' }],
+    body: `**Program-for-Results (PforR)**, introduced in {pforr-year}, funds a government's own program and pays on verified **Disbursement-Linked Indicators (DLIs)** [16; 17].`,
+  },
+  {
+    layout: 'centre',
+    kicker: 'Section 1.4.1',
+    title: 'What the IBRD "buys"',
+    label: 'Inputs, reforms, results',
+    source: 'Section 1.4.1 · p. 19',
+    centre: table,
+    focus: ['t2-col-against'],
+    callouts: [{ from: '#t2-dpf', to: a('dpf') }],
     aside: (
-      <div className="k-buys">
-        <div className="k-buys-a">
-          <div className="k-keydiff-h">What the IBRD "buys"</div>
-          <div className="chips">
-            <Chip tone="navy">IPF → inputs</Chip>
-            <Chip tone="cyan">DPF → reforms</Chip>
-            <Chip tone="warn">PforR → results</Chip>
-          </div>
-          <p>This choice shapes the borrower's obligations.</p>
-        </div>
-        <R
-          className="k-buys-b"
-          t={`- **Investment Project Financing (IPF)** pays for project works, goods and services as costs are incurred; it suits infrastructure with a clear scope [16].
-- **Development Policy Financing (DPF)** supports reforms: after agreed prior actions, money goes to the budget [16]. Vietnam's first IBRD loan, {pir1-ibrd} in {pir1-approved}, was a DPF [2].
-- **Program-for-Results (PforR)**, introduced in {pforr-year}, funds a government's own program and pays on verified **Disbursement-Linked Indicators (DLIs)** [16; 17].`}
-        />
+      <div className="chips">
+        <Chip tone="navy">IPF → inputs</Chip>
+        <Chip tone="cyan">DPF → reforms</Chip>
+        <Chip tone="warn">PforR → results</Chip>
       </div>
     ),
+    body: `Under IPF the IBRD pays for **inputs**, under DPF for **reforms**, under PforR for **results**. This choice shapes the borrower's obligations.`,
   },
 ]);
 export const beats = p.beats;

@@ -495,3 +495,21 @@ Layout decisions:
 
 - Scenes: 59. `f1-wbg` 2 beats, `f1-instruments` 2 beats.
 - PDF: **95 pages** (cover, contents, 55 scene pages plus 33 extra pages for scenes that do not fit one page, and 5 reference pages). Overflow scenes are listed in `docs/print-overflow.md`.
+
+---
+
+# Update 3 (scene numbering correction, scene 14 as one beat, source lines hidden)
+
+"Scene n" means the number in the web HUD ("scene n / 59"), not the PDF page.
+
+## Part 0 · Correction of update 2, part 2
+
+Update 2 applied "scene 14" to `f1-instruments`, but web scene 14 is `f1-terms` (Table 1.4.2) and web scene 13 is `f1-instruments`. The scene-8 change (`f1-wbg`) was correct and stays.
+
+`f1-instruments` had been reduced to 2 beats, so it was **restored** to its state before update 2:
+- `src/content/f1-instruments.tsx` was restored from commit `ae06609`. The file is identical to the original: beat 1 "Three instruments, one loan", beats 2-4 rows IPF / DPF / PforR (row focus, callouts to the three counters), and beat 5 "What the IBRD 'buys'".
+- The notes entry was restored (`targetSeconds` 100, no per-beat notes). The facts and waypoints had not been changed, so nothing else needed restoring.
+- The unused CSS that update 2 added for the merged card (`.k-buys*`) was removed.
+- Tracker segments and n/N counters follow `beats.length`, so they are back to 5 beats.
+
+The "Part 2" section of update 2 above is therefore **superseded**.
