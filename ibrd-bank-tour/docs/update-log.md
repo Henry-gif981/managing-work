@@ -494,7 +494,7 @@ Layout decisions:
 ## Final numbers
 
 - Scenes: 59. `f1-wbg` 2 beats, `f1-instruments` 2 beats.
-- PDF: **95 pages** (cover, contents, 55 scene pages plus 33 extra pages for scenes that do not fit one page, and 5 reference pages). Overflow scenes are listed in `docs/print-overflow.md`.
+- PDF: **95 pages** (update 2; **88 pages** after update 3) (cover, contents, 55 scene pages plus 33 extra pages for scenes that do not fit one page, and 5 reference pages). Overflow scenes are listed in `docs/print-overflow.md`.
 
 ---
 
@@ -550,3 +550,14 @@ The "Part 2" section of update 2 above is therefore **superseded**.
 - **Data kept:** `source` stays on every slide and beat. The page and section tags in `facts.ts`, the fact tooltips, the coverage docs and `check-facts` are unchanged.
 - **No blank rows:** the tag elements are not rendered at all (the component returns `null`), so cards end with their body text. In print the cards stay equal in height (`grid-auto-rows: 1fr`) and the pages were packed again with the shorter cards.
 - **Checks:** `check-print` and `check-lines` never required source tags, so nothing in them had to change. `check-print` still checks every text that is rendered.
+
+## Update 3 · verification
+
+- `check-facts`: 398 facts, 81 checks, 0 failures.
+- `check-lines`: 592 beat views, 406 lines, 0 overlaps.
+- `test:shots`: 105 screenshots, no console errors.
+- `test:smoke`: OK.
+- `build:single`: 10.9 MB.
+- `export-pdf`: **88 pages** (cover, contents, 55 scene pages plus 26 extra pages, and 5 reference pages).
+- `check-print`: 88 pages, 0 failures.
+- Web scenes 6, 8, 13 and 14 and PDF pages 6, 8, 14 and 15 were checked as images: no grey source lines, scene 14 shows the whole Table 1.4.2 in one beat, and scene 13 has its 5 original beats.

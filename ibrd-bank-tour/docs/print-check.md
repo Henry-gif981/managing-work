@@ -1,6 +1,6 @@
 # Print check (npm run check-print)
 
-95 pages, 5657 text nodes checked. Lowest contrast found: 4.85:1. References printed on pages 91–95 (64 entries).
+88 pages, 5101 text nodes checked. Lowest contrast found: 4.85:1. References printed on pages 84–88 (64 entries).
 
 **Result: no failures.**
 
