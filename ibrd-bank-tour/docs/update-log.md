@@ -418,3 +418,80 @@ Layout decisions:
 - **`ex-sources`:** a card that gives the page range of the reference pages. It prints no entries, so every reference appears exactly once.
 - **Contents page:** built from the final page numbers, after pagination.
 - **Overflow:** the scenes that need more than one page are listed in `docs/print-overflow.md`. Floor 3 scenes carry the paper's full text (up to 15 beats plus tables and charts), so at a 20 px body they cannot fit one page. The brief asked for "a second page for that scene only", but several Floor 3 scenes need 3-4 pages. Their text was not shortened (Floor 3 content stays as it is), and fonts were not shrunk below the minimums.
+
+## Part 4 · Thank You page and overexposure
+
+**Capture exposure:**
+- In `?capture=1` the renderer uses linear tone mapping with `toneMappingExposure` ≤ 1.0 on every material. That includes the unlit ones: labels, the exit door's daylight, the EXIT sign and the glow strips.
+- The exit hall's point light and door glow are scaled by the same factor. There is no bloom and no post-processing.
+- `npm run capture-bg` measures each frame and rejects it if more than 25% of its pixels are above luminance 245, or if its mean luminance is above 0.90. It then lowers exposure and light by 15% and captures again (at most 4 retries).
+- Final values per scene are in `docs/capture-exposure.md`.
+
+**Final exposure values:** all 59 images pass. 21 scenes stayed at 1.000, 34 needed 0.850, and 3 needed 0.723. The exit hall (`ex-thanks`) needed 0.522 (5 tries) and ends at 15.1% of pixels above 245 with a mean of 0.823. `ex-sources` (1.000, mean 0.869) and `lift-down` (1.000, mean 0.712) passed on the first try. Scenes below 1.0:
+
+- `ext-door`: exposure 0.850
+- `f1-structure`: exposure 0.850
+- `f1-what`: exposure 0.850
+- `f1-terms`: exposure 0.850
+- `f1-safeguards`: exposure 0.850
+- `f2-ch2-title`: exposure 0.850
+- `f2-cycle`: exposure 0.850
+- `f2-vn-procedures`: exposure 0.850
+- `f2-disbursement`: exposure 0.850
+- `f2-counterpart`: exposure 0.850
+- `f2-ipf`: exposure 0.850
+- `f2-dpf`: exposure 0.850
+- `f2-pforr`: exposure 0.850
+- `f2-prep`: exposure 0.850
+- `f2-asa`: exposure 0.850
+- `f2-me`: exposure 0.850
+- `f2-training-pmu`: exposure 0.850
+- `f2-institutional`: exposure 0.850
+- `f2-three-forms`: exposure 0.850
+- `f2-package`: exposure 0.850
+- `f3-ch3-title`: exposure 0.850
+- `f3-ida-graduation`: exposure 0.850
+- `f3-sahep`: exposure 0.850
+- `f3-legal`: exposure 0.850
+- `f3-tep-overview`: exposure 0.850
+- `f3-tep-cost`: exposure 0.850
+- `f3-tep-financing`: exposure 0.850
+- `f3-tep-impl`: exposure 0.723
+- `f3-tep-outputs`: exposure 0.850
+- `f3-tep-gap`: exposure 0.850
+- `f3-tep-assess`: exposure 0.850
+- `f3-ccsep-overview`: exposure 0.850
+- `f3-ccsep-structure`: exposure 0.850
+- `f3-ccsep-cities`: exposure 0.850
+- `f3-ccsep-impl`: exposure 0.723
+- `f3-ccsep-results`: exposure 0.723
+- `f3-ccsep-nhatrang`: exposure 0.850
+- `ex-thanks`: exposure 0.522
+
+**Thank You card** (`ex-thanks`, live and print use the same `ThanksCard`):
+- **Card:** dark navy at 92% (`rgba(0, 20, 43, 0.92)`, a deeper navy than `--wb-navy`). Over a white background, `--wb-navy` at 92% would give the light-cyan IDs only 6.2:1; this navy gives them 7.5:1.
+- **Text, all white:** "Thank you for listening", "Group 6 · Investment Economics 65", the five member names, "Lecturer · ThS. Phạm Thu Vân" and "National Economics University – School of Advanced Education Programs · Hanoi, 2026". White on the card is 15.2:1.
+- **Student IDs:** light cyan #47C4EB, 7.5:1 on the card.
+- **Lecturer line:** kept from the old card (as "Lecturer · …"), since the brief asks to keep everything not listed.
+- **"Questions?" line:** the live scene had none, so none was added.
+- **Print:** the old print CSS forced cards to white, which made the white text invisible. That override is gone, and the print uses the same dark card.
+
+**`npm run check-print`** (`scripts/check-print.mjs`, results in `docs/print-check.md`, exits non-zero on any failure):
+1. **Contrast:** each text node's colour against the page rendered with all text hidden (mean of the pixels under its rectangle), at least 4.5:1.
+2. **Placement:** no text in the footer zone (bottom 110 px, except the footer) or outside the page.
+3. **Clipping:** no card, sheet, contents or reference box with `scrollHeight` above its height.
+4. **Backgrounds:** each 3D image, on the cover and scene pages, must not be blank or uniform (SD ≤ 6) or overexposed (same thresholds as the capture). The contents and reference pages have a plain white background by design and are not tested.
+5. **References:** the printed set is exactly [1]..[64], once each, in order.
+6. **Font sizes** (added): card body at least 20 px, table text at least 18 px, any other text at least 14 px (citations excepted).
+
+**First run:**
+- 25 contrast failures: green/orange/red stat numbers and "Note ·" labels on white. Fixed with darker print text variants.
+- 57 background failures: the old images, before the exposure loop. Fixed by recapturing.
+- 12 contrast failures on `f1-gov`: the dimmed tiers of the tier diagram printed in earlier beat states. Fixed by printing an exhibit once, in its final state, when beats only change its classes.
+
+**Final run: 95 pages, 0 failures.**
+
+## Final numbers
+
+- Scenes: 59. `f1-wbg` 2 beats, `f1-instruments` 2 beats.
+- PDF: **95 pages** (cover, contents, 55 scene pages plus 33 extra pages for scenes that do not fit one page, and 5 reference pages). Overflow scenes are listed in `docs/print-overflow.md`.

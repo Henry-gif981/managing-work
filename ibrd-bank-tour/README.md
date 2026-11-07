@@ -15,6 +15,7 @@ npm run build:single   # dist-single/index.html — ONE file, opens from file://
 npm run capture-bg     # src/assets/print-bg/<scene>.jpg — 3D end-pose background per scene (for print)
 npm run export-pdf     # dist/ibrd-bank-tour.pdf — one page per scene (runs capture-bg first if images are missing)
 npm run check-lines    # leader lines vs text, every beat at 1920x1080 and 1366x768 → docs/line-overlaps.md
+npm run check-print    # print pages: contrast, footer zone, clipping, backgrounds, references, font sizes → docs/print-check.md
 npm run test:shots     # docs/screens/NN-<scene>[-bN].png — first and last beat of every scene
                        #   options: --only=id,id  --segments=intro,ch1  --all-beats
                        #   also reports content that is clipped or reaches into the HUD margins
@@ -147,13 +148,18 @@ Every colour is a CSS variable in `src/tokens.css`. The DOM uses them directly, 
 
 ## Print / PDF
 
-Open `?print=1` (or press **P**). The order is: cover (front of the building), contents, **one page per scene**, then the reference pages (16 per page). There is no WebGL and no HUD.
-- **Scene page:** the scene's 3D end pose as the background (`src/assets/print-bg/<scene>.jpg`, made by `npm run capture-bg` with `?capture=1`, 1920×1080 JPEG at quality 82; the script fails if an image is uniform). On top: the table, chart or diagram once and complete, then every beat as a card in a grid (white cards at about 88% opacity). Focus dimming is off.
-- **Callouts in print:** no leader lines. Each callout is a numbered pin on the card or table row, and a legend at the bottom of the page names the 3D prop for each number.
-- **Footer:** "Group 6 – IBRD in Vietnam | page/total".
-- **Overflow:** a scene gets an extra page only if its cards do not fit (at most 5 parts). Every case is logged in `docs/print-overflow.md`.
-- `npm run export-pdf` runs `capture-bg` if the images are missing, prints, and checks the page count (cover + contents + scenes + overflow + references), that every scene page has a non-blank background, and that no text is clipped. The current PDF has **72 pages**.
-- The backgrounds (about 7 MB) are embedded in the single-file build, which stays at about 11 MB (limit 40 MB).
+Open `?print=1` (or press **P**). The order is: cover, contents (built from the final page numbers), **one page per scene**, then the references. There is no WebGL and no HUD.
+- **Page grid (1920×1080):** a header band (cyan section chip and navy title), a **main area** with the scene's tables, charts and diagrams (each printed once, complete, in its final state, no focus glow), then the **text cards**.
+- **Cards:** a CSS grid with equal column width and equal row height (2-4 columns, 24 px gap). One beat is one card, with the cyan chip, title, body (20 px) and its source tag as the last line inside the card.
+- **Safe margins:** 60 px left and right, 40 px top, 110 px bottom. The bottom 110 px are the footer zone ("Group 6 – IBRD in Vietnam | page/total").
+- **No clutter:** no numbered pins, legends, leader lines, tab strips, buttons or hints.
+- **Background:** the scene's 3D end pose (`src/assets/print-bg/<scene>.jpg`, made by `npm run capture-bg`) under a 55% white scrim, with cards and the main area at 96% white.
+- **Colours:** text is navy or ink on white cards. Dark cards (chapter titles, Thank You) keep white text.
+- **Overflow:** a scene that does not fit continues on extra pages with whole cards, never smaller fonts (`docs/print-overflow.md`).
+- **References:** paginated by measured height, all 64 exactly once.
+- `npm run capture-bg`: exposure ≤ 1.0, retried 15% darker while an image has more than 25% of pixels above luminance 245 or a mean above 0.90 (`docs/capture-exposure.md`).
+- `npm run export-pdf` writes `dist/ibrd-bank-tour.pdf` (currently **95 pages**). It runs `capture-bg` first if the images are missing.
+- `npm run check-print` checks text contrast (≥ 4.5:1 against the rendered page), the footer zone and page edges, clipped boxes, backgrounds, references [1]..[64] and minimum font sizes, writes `docs/print-check.md`, and fails on any problem.
 
 ## Floors 1-2 content policy (update _10)
 

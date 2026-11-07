@@ -44,6 +44,22 @@ function slidesOf(id: string): Slide[] | null {
   return v?.slides ?? null;
 }
 
+const MERGES: string[] = [];
+/** Content signature of a React tree: element types, text and string props, ignoring className/style (beat states). */
+function signature(node: ReactNode): string {
+  if (node == null || typeof node === 'boolean') return '';
+  if (typeof node === 'string' || typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(signature).join('|');
+  const el = node as { type?: unknown; props?: Record<string, unknown> };
+  if (!el.type) return '?';
+  const t = el.type as { name?: string } | string;
+  const name = typeof t === 'string' ? t : t.name ?? 'c';
+  const props = Object.entries(el.props ?? {})
+    .filter(([k, v]) => !['className', 'style', 'children', 'key'].includes(k) && (typeof v === 'string' || typeof v === 'number'))
+    .map(([k, v]) => `${k}=${v}`)
+    .join(',');
+  return `<${name} ${props}>${signature(el.props?.children as ReactNode)}</>`;
+}
 /** What a scene prints: its exhibits (once each, in order of first use) and one card per beat. */
 function specOf(id: string): PSpec {
   const s = SCENES.find((x) => x.id === id)!;
@@ -90,7 +106,8 @@ function specOf(id: string): PSpec {
     const el = node as { type?: unknown; props?: { id?: string; className?: string } };
     const t = el?.type as { name?: string } | string | undefined;
     // plain DOM elements without an id are distinct exhibits; components (and ids) identify the same exhibit
-    if (typeof t === 'string' || !t) return el?.props?.id ? `${String(t)}#${el.props.id}` : `anon-${anon++}`;
+    // plain DOM elements: same tag + id or same tag + class = the same exhibit in another beat's state
+    if (typeof t === 'string' || !t) return el?.props?.id ? `${String(t)}#${el.props.id}` : t ? `sig:${signature(node)}` : `anon-${anon++}`;
     return `${t.name ?? 'component'}#${el?.props?.id ?? ''}`;
   };
   const at = new Map<string, number>();
@@ -98,7 +115,10 @@ function specOf(id: string): PSpec {
     for (const node of [sl.centre, sl.side]) {
       if (!node || main.includes(node)) continue;
       const k = keyOf(node);
-      if (at.has(k)) main[at.get(k)!] = node;
+      if (at.has(k)) {
+        main[at.get(k)!] = node;
+        MERGES.push(`${id}: ${k}`);
+      }
       else {
         at.set(k, main.length);
         main.push(node);
@@ -125,6 +145,8 @@ function specOf(id: string): PSpec {
 }
 
 const SPECS: Record<string, PSpec> = Object.fromEntries(printable.map(({ s }) => [s.id, specOf(s.id)]));
+if (typeof window !== 'undefined') (window as unknown as Record<string, unknown>).__printMerges = [...new Set(MERGES)];
+if (typeof window !== 'undefined') (window as unknown as Record<string, unknown>).__printExhibits = Object.fromEntries(Object.entries(SPECS).map(([k, v]) => [k, v.main.length]));
 
 /** 2-4 equal columns, chosen from the number of cards (first choice; the others are tried if it does not fit). */
 function colChoices(n: number): number[] {
