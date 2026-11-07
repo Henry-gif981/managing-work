@@ -17,7 +17,7 @@ Generated from `src/scenes.ts` by `npm run docs:scenes`. Beats are computed from
 | 11 | `f1-gov` | room | 1 | Floor 1 · Chapter 1 | Section 1.3.1 |  | 140 | ? |
 | 12 | `f1-funds` | room | 1 | Floor 1 · Chapter 1 | Section 1.3.3 |  | 80 | ? |
 | 13 | `f1-instruments` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.1 |  | 100 | ? |
-| 14 | `f1-terms` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.2 |  | 160 | ? |
+| 14 | `f1-terms` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.2 |  | 25 | ? |
 | 15 | `f1-safeguards` | room | 1 | Floor 1 · Chapter 1 | Section 1.4.3 |  | 120 | ? |
 | 16 | `lift-1-2` | lift | 1 | Floor 1 · Chapter 1 | — |  | 10 | 0 |
 | 17 | `f2-ch2-title` | room | 2 | Floor 2 · Chapter 2 | Chapter 2 |  | 20 | ? |
@@ -64,4 +64,4 @@ Generated from `src/scenes.ts` by `npm run docs:scenes`. Beats are computed from
 | 58 | `ex-sources` | exit | G | Exit | References |  | 25 | 1 |
 | 59 | `ex-thanks` | exit | G | Exit | — |  | 25 | 1 |
 
-Full tour ≈ 134 min (8038 s) · core path ≈ 115 min (6888 s).
+Full tour ≈ 132 min (7903 s) · core path ≈ 113 min (6753 s).

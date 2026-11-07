@@ -193,7 +193,7 @@ Open `?print=1` (or press **P**). The order is: cover, contents (built from the 
 - **Callouts and centring:** to give every table beat a callout to a *visible* prop, tables are centred in the area to the right of a 400 px prop band, not on the exact screen centre. Table beats switch to a dedicated camera.
 - **Props:**
   - `f1-instruments` uses the three teller counters labelled IPF / DPF / PforR (Table 1.4.1 has three rows).
-  - The loan desk got new props for Table 1.4.2: a rate board, a contract, a calendar, a clock, a coin stack and a ledger.
+  - The loan desk keeps its paper stack and ledger; the Table 1.4.2 props (rate board, calendar, clock, coin stack) were removed in update 3 together with the per-row beats.
   - Also new: an INFORMATION counter (`f1-what`), a hanging "CHAPTER 1 · OVERVIEW OF THE IBRD" sign, era plates on the archive wall (1944-1950s … 2000-present), ten stamps on the safeguards table (ESS5 in cyan), a "CHAPTER 2 · …" sign on Floor 2, and letter-of-credit papers on the finance desk.
   - Table 2.1.1's six stages map to the six chairs around the round table.
 - **Prose:** text is in English and sentences are shortened, never changed in meaning. Where the paper's wording is a range or qualitative ("around 15-16 percent", the IDA / IBRD / commercial cost ranking), the tour keeps it so and invents no figure.

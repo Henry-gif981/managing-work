@@ -17,7 +17,7 @@ Each scene starts at exposure 1.0 (linear tone mapping, no post-processing). An 
 | `f1-gov` | 1.000 | 1 | 15.7% | 0.794 | 66.0 |
 | `f1-funds` | 1.000 | 1 | 8.8% | 0.831 | 35.5 |
 | `f1-instruments` | 1.000 | 1 | 19.1% | 0.816 | 57.1 |
-| `f1-terms` | 0.850 | 2 | 0.0% | 0.798 | 45.9 |
+| `f1-terms` | 0.850 | 2 | 0.0% | 0.797 | 45.1 |
 | `f1-safeguards` | 0.850 | 2 | 0.1% | 0.834 | 26.7 |
 | `lift-1-2` | 1.000 | 1 | 7.1% | 0.716 | 45.2 |
 | `f2-ch2-title` | 0.850 | 2 | 0.1% | 0.791 | 43.1 |

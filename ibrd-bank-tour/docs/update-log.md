@@ -513,3 +513,23 @@ Update 2 applied "scene 14" to `f1-instruments`, but web scene 14 is `f1-terms` 
 - Tracker segments and n/N counters follow `beats.length`, so they are back to 5 beats.
 
 The "Part 2" section of update 2 above is therefore **superseded**.
+
+## Part 1 · `f1-terms` (web scene 14, Table 1.4.2): 8 → 1 beat
+
+| Beat | Before | After |
+|---|---|---|
+| 1 | Table 1.4.2 · The IBRD Flexible Loan (whole table, no focus) | **kept unchanged**: whole table (six rows, no row focus or highlight), caption with [18; 19; 20; 21; 22], the sentence with [18], and the leader line from the title band to the loan desk (`check-lines`: passes no text) |
+| 2 | Interest rate (row focus) | removed; text moved to the presenter note |
+| 3 | Final maturity | removed; text moved to the presenter note |
+| 4 | Average maturity | removed; text moved to the presenter note |
+| 5 | Short Maturity Loan | removed; text moved to the presenter note |
+| 6 | Front-end fee | removed; text moved to the presenter note |
+| 7 | Commitment fee | removed; text moved to the presenter note |
+| 8 | Why the commitment fee matters | removed; text moved to the presenter note |
+
+- **Presenter note** (`notes.ts`, beat 1): carries the full text of beats 2-8 with their citations: LIBOR → SOFR and the variable spread since 2021 [19]; final maturity 30 → 35 years in 2014, up to 50 for some projects [20; 21]; average maturity 18 → 20 years [20]; the Short Maturity Loan since October 2024, 7 years with a 20 bps discount [22]; front-end fee 0.25% [18]; commitment fee 0.25% a year from 60 days after signing [18]; and why the commitment fee matters (Section 1.4.2, p. 20). The values were checked against `facts.ts`. `targetSeconds` 160 → 25.
+- **Camera waypoints:** none removed. The deleted beats had no own waypoints, and every table beat used `f1-terms-table`, which beat 1 still uses.
+- **Props:** removed the rate board on its stand, the coin stack, the desk calendar and the clock, which only the deleted beats pointed at, together with their anchors (`rate`, `calendar`, `clock`, `coins`, `contract`, `ledger`). The paper stack and the ledger on the desk stay as ordinary desk dressing (they were there before and are part of the desk), and `desk` stays the beat-1 anchor.
+- **Facts:** the facts of the deleted beats stay in `facts.ts`. The table still shows most of them, `check-facts` uses them, and the note repeats their values.
+- **Backgrounds:** the `f1-terms` background was recaptured at exposure 0.850 without the removed props, and the `f1-instruments` background at 1.000 (its end pose is beat 5 again).
+- Tracker segments and counters follow `beats.length`. `docs/scene-list.md` was regenerated, and the scene count stays 59.

@@ -82,9 +82,15 @@ export const NOTES: Record<string, SceneNotes> = {
     targetSeconds: 100,
   },
   'f1-terms': {
-    en: "The IBRD Flexible Loan costs a reference rate plus a variable spread, a one-off front-end fee and a commitment fee on undisbursed money, so slow disbursement raises the real cost.",
-    vi: "Bảng 1.4.2 và hệ quả của phí cam kết.",
-    targetSeconds: 160,
+    en: "Table 1.4.2: the IBRD Flexible Loan costs an interest rate, a front-end fee and a commitment fee. The details of every row are in the beat note.",
+    vi: "Bảng 1.4.2: nói lần lượt từng dòng theo ghi chú.",
+    targetSeconds: 25,
+    beats: [
+      {
+        en: "The IBRD Flexible Loan is the main product for middle-income governments; its cost has three parts: an interest rate, a front-end fee and a commitment fee [18]. Interest rate: rate = reference rate + spread; the London Interbank Offered Rate (LIBOR) has given way to the Secured Overnight Financing Rate (SOFR), and since 2021 new loans carry a variable spread [19]. Final maturity: in 2014 the maximum final maturity rose from 30 to 35 years, and some projects can reach 50 years [20; 21]. Average maturity: the maximum average maturity rose from 18 to 20 years in the same reform [20]. Short Maturity Loan: since October 2024 it offers a 7-year final maturity with a 20 bps spread discount [22]. Front-end fee: a one-off 0.25% of the committed amount [18]. Commitment fee: 0.25% a year on the undisbursed balance, from 60 days after signing [18]. Why it matters: because the commitment fee is charged on undisbursed balances, slow disbursement raises the effective cost of the loan (Section 1.4.2, p. 20).",
+        vi: "Lãi suất (LIBOR → SOFR, biên độ biến đổi từ 2021); kỳ hạn 30 → 35 năm, tối đa 50; kỳ hạn bình quân 18 → 20 năm; khoản vay kỳ hạn ngắn từ 10/2024: 7 năm, giảm 20 bps; phí trả trước 0,25%; phí cam kết 0,25%/năm trên số dư chưa giải ngân từ 60 ngày sau ký — giải ngân chậm làm tăng chi phí thực.",
+      },
+    ],
   },
   'f1-safeguards': {
     en: "Since 2018 new projects follow the Environmental and Social Framework with its ten standards in Table 1.4.3; land and resettlement under ESS5 are the hardest. These rules are often stricter than domestic ones.",

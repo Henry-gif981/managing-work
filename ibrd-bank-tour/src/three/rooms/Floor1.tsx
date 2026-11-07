@@ -158,21 +158,6 @@ function buildFloor1(b: Builder) {
     ledger(l, [-0.6, 0.82, 0], false, 'blue');
     for (let i = 0; i < 5; i++) l.box('paper', [0.42, 0.02, 0.3], [0.6, 0.83 + i * 0.022, 0.05], { edges: i === 4 ? 25 : false });
     l.box('navy', [0.8, 0.18, 0.06], [0, 0.95, 0.5], { rot: [-0.4, 0, 0] }); // nameplate
-    // loan-terms props: coin stack (fees), desk calendar (average maturity), clock (short maturity)
-    for (let i = 0; i < 6; i++) l.cyl(i % 2 ? 'steel' : 'stone2', 0.09, 0.09, 0.025, [-1.0, 0.83 + i * 0.026, 0.32], 14, { edges: i === 5 ? 40 : false });
-    l.box('white', [0.26, 0.2, 0.06], [1.05, 0.92, -0.3], { rot: [-0.25, 0, 0] });
-    l.box('cyan', [0.26, 0.05, 0.065], [1.05, 1.0, -0.31], { rot: [-0.25, 0, 0], edges: false });
-    l.cyl('navy', 0.14, 0.14, 0.05, [-0.25, 0.98, -0.38], 20, { rot: [Math.PI / 2 - 0.2, 0, 0], edges: 50 });
-    l.cyl('white', 0.11, 0.11, 0.01, [-0.25, 0.985, -0.35], 20, { rot: [Math.PI / 2 - 0.2, 0, 0], edges: false });
-    // rate board on a stand behind the desk (interest rate)
-    l.box('steel', [0.05, 1.4, 0.05], [-0.7, 0.7, -1.7], { edges: false });
-    l.box('steel', [0.05, 1.4, 0.05], [0.7, 0.7, -1.7], { edges: false });
-    l.box('navy', [1.7, 1.0, 0.05], [0, 1.85, -1.7]);
-    l.box('paper', [1.55, 0.86, 0.02], [0, 1.85, -1.665], { edges: false });
-    l.lines([
-      [-0.65, 1.55, -1.65], [-0.3, 1.7, -1.65], [-0.3, 1.7, -1.65], [0.05, 1.62, -1.65], [0.05, 1.62, -1.65], [0.35, 1.95, -1.65],
-      [0.35, 1.95, -1.65], [0.65, 2.1, -1.65], [-0.7, 1.48, -1.65], [0.7, 1.48, -1.65], [-0.7, 1.48, -1.65], [-0.7, 2.2, -1.65],
-    ]);
   });
   // information counter (hall entrance, right of the aisle) at (4.4, 0, -18.8)
   b.at([4.4, 0, -18.8], 0, (c) => {
@@ -308,7 +293,7 @@ export function Floor1() {
       <SceneAnchors scene="f1-instruments" at={{ ipf: [-9.8, 1.9, -34], dpf: [-9.8, 1.9, -28], pforr: [-9.8, 1.9, -22] }} />
       <SceneAnchors
         scene="f1-terms"
-        at={{ desk: [8, 0.9, -36.5], rate: [8, 1.9, -38.15], contract: [8.6, 0.95, -36.45], calendar: [9.05, 0.95, -36.8], clock: [7.75, 1.0, -36.88], coins: [7.0, 0.95, -36.18], ledger: [7.4, 0.88, -36.5] }}
+        at={{ desk: [8, 0.9, -36.5] }}
       />
       <SceneAnchors scene="f1-safeguards" at={{ stamps: [-10.05, 1.05, -41.0], ess5: [-10.05, 1.08, -40.89], papers: [-9.55, 0.9, -40.6] }} />
     </group>
