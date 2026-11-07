@@ -4,7 +4,7 @@ import { useFrame } from '@react-three/fiber';
 import { Builder, board, column } from '../builder';
 import { FACE, Static, TexPlane } from '../common';
 import { textTexture } from '../textures';
-import { world } from '../world';
+import { world, captureLook } from '../world';
 import { tokenColor } from '../../theme';
 import { SceneAnchors } from '../anchors';
 
@@ -93,9 +93,9 @@ function ExitDoor() {
     const a = world.exit.open * THREE.MathUtils.degToRad(100);
     left.current.rotation.y = -a;
     right.current.rotation.y = a;
-    glowMat.opacity = world.exit.daylight * 0.28;
+    glowMat.opacity = world.exit.daylight * 0.28 * captureLook.light;
     glow.current.visible = world.exit.daylight > 0.01;
-    light.current.intensity = world.exit.daylight * 60;
+    light.current.intensity = world.exit.daylight * 60 * captureLook.light;
   });
   return (
     <group>

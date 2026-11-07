@@ -390,3 +390,31 @@ Decisions:
 - Notes: per-beat notes added; beat 2 merges the three row notes. `targetSeconds` 100 → 40.
 
 Beat counts come from `beats.length`, so the tracker segments and the n/N counters update by themselves; `scenes.ts` reads the new `targetSeconds` from `notes.ts`. The scene count stays at 59.
+
+## Part 3 · Print / PDF: clean, calm, readable
+
+The print view (`src/print/PrintView.tsx`, `src/print/print.css`) was rebuilt.
+
+| Problem in the 72-page PDF | Now |
+|---|---|
+| numbered blue circles, numbered squares in card headers, legend row "x → 3D prop: y" | removed; print has no pins, no legend, no prop labels and no leader lines. Nothing is numbered except citations [n] and page numbers |
+| staggered cards of different sizes (CSS columns) | CSS grid: equal column width, `grid-auto-rows: 1fr` (every row as tall as the page's tallest card), 2-4 columns, 24 px gap |
+| one beat's text split over two cards | one beat = one card; no CSS columns, no fragmentation |
+| source tags floating over cards | the source tag is the last line inside each card (17 px, muted); tables keep their own source line inside the table card |
+| cards on top of the footer | safe margins 60 px left/right, 40 px top, 110 px bottom; the footer zone is reserved (checked by `check-print`) |
+| Conclusion page showed only the last beat plus a tab strip | all five Conclusion parts are cards; no tab strip, buttons or "press" hints |
+| References overflowed into the footer; [48] and [62]-[64] missing | paginated by measured height (whole entries only); all 64 printed once, in order, on 5 pages; `check-print` verifies [1]..[64] |
+| Thank You unreadable (white on white) | see Part 4 |
+
+Layout decisions:
+- **Page grid:** header band (cyan section chip + navy title), a **main area** (all tables, charts, timelines and diagrams of the scene, complete, in their final state, focus glow off), then the **text cards**. The main area is a full-width white panel (96%) with the exhibits centred, so the cards line up with its left and right edges. A scene without exhibits uses the whole page for cards.
+- **Exhibits once:** an exhibit used by several beats is printed once, in the version of its last beat (its final state). Charts print 850 px wide, so two charts can sit side by side. Tables shrink to their content width.
+- **Card:** a cyan section chip and the title on one line, then the body (20 px), then the source tag. The chip shares the title line to save one line per card; the order (label, title, body) is kept. Title slides (chapter titles) are dark cards with white text, never mixed.
+- **Column count:** 2 columns for 1-2 cards, 3 for 3, 4 for 4, 3 for 5-6, 4 for 7-8, 3 for 9, 4 above. The other counts (2-4) are tried when the first choice does not fit. A single card keeps the 2-column width, because a full-width line at 20 px would be hard to read.
+- **Packing:** a hidden measuring pass measures every exhibit range and every card at 2/3/4-column widths. Each page then takes the exhibits that fit and as many whole cards as fit. After rendering, a page that still does not fit moves its last card on. Fonts are never shrunk below the minimums (body 20 px, tables 19 px, source tags 17 px, labels 15 px).
+- **Background:** the scene's 3D image (`capture-bg`) under a white scrim at 55%, with cards at 96% white and a subtle shadow.
+- **Text colours:** print text is navy or ink on white cards. Meaning colours that fail 4.5:1 on white get darker text variants in print: good #1f7a52, bad #b03a30, warn #a4501a (chart fills keep the live colours). The `good` chip uses #1f7a52 with white text.
+- **Cover:** a print-only cover card (no "Press → to enter" hint).
+- **`ex-sources`:** a card that gives the page range of the reference pages. It prints no entries, so every reference appears exactly once.
+- **Contents page:** built from the final page numbers, after pagination.
+- **Overflow:** the scenes that need more than one page are listed in `docs/print-overflow.md`. Floor 3 scenes carry the paper's full text (up to 15 beats plus tables and charts), so at a 20 px body they cannot fit one page. The brief asked for "a second page for that scene only", but several Floor 3 scenes need 3-4 pages. Their text was not shortened (Floor 3 content stays as it is), and fonts were not shrunk below the minimums.

@@ -5,7 +5,7 @@ import { useTour } from '../state/store';
 import { SCENES, type Scene } from '../scenes';
 import { cam } from '../camera/rig';
 import { WAYPOINTS } from '../camera/waypoints';
-import { world } from './world';
+import { world, captureLook } from './world';
 import { skyTexture } from './textures';
 import { tokenColor } from '../theme';
 import { Exterior } from './rooms/Exterior';
@@ -164,6 +164,36 @@ function Zones() {
   );
 }
 
+/**
+ * ?capture=1: linear tone mapping with exposure <= 1 on EVERY material (also the unlit labels, exit door
+ * daylight, exit sign and glow strips), no post-processing. window.__capture.set(e) lowers it for retries.
+ */
+function CaptureExposure() {
+  const { gl, scene, invalidate } = useThree();
+  useEffect(() => {
+    if (!PARAMS.capture) return;
+    const apply = (e: number) => {
+      captureLook.exposure = Math.min(1, e);
+      captureLook.light = Math.min(1, e);
+      gl.toneMapping = THREE.LinearToneMapping;
+      gl.toneMappingExposure = captureLook.exposure;
+      scene.traverse((o) => {
+        const m = (o as THREE.Mesh).material as THREE.Material | THREE.Material[] | undefined;
+        for (const x of Array.isArray(m) ? m : m ? [m] : []) {
+          if (!x.toneMapped) {
+            x.toneMapped = true;
+            x.needsUpdate = true;
+          }
+        }
+      });
+      invalidate();
+    };
+    apply(captureLook.exposure);
+    (window as unknown as { __capture: unknown }).__capture = { set: apply, get: () => ({ ...captureLook }) };
+  }, [gl, scene, invalidate]);
+  return null;
+}
+
 function Scenery() {
   const sky = useMemo(() => skyTexture(), []);
   const { scene } = useThree();
@@ -220,6 +250,7 @@ export default function Stage() {
         }}
       >
         <Scenery />
+        <CaptureExposure />
         <CameraApplier />
         <Zones />
         <AutoAnchors />

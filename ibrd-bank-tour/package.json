@@ -16,7 +16,8 @@
     "docs:scenes": "tsx scripts/scene-list.ts",
     "audit-content": "tsx scripts/audit-content.ts",
     "check-lines": "node scripts/check-lines.mjs",
-    "capture-bg": "node scripts/capture-bg.mjs"
+    "capture-bg": "node scripts/capture-bg.mjs",
+    "check-print": "node scripts/check-print.mjs"
   },
   "dependencies": {
     "@fontsource/cormorant-garamond": "^5.3.0",

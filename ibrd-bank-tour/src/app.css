@@ -1831,41 +1831,65 @@ html.shot *::after {
   cursor: pointer;
   padding: 0;
 }
-/* ---- thanks ---- */
+/* ---- thanks (update 2: dark navy card, white text, IDs in light cyan; contrast >= 7:1) ---- */
 .thanks {
   position: absolute;
   left: 50%;
-  bottom: 96px;
-  transform: translateX(-50%);
-  width: 980px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 1080px;
 }
-.thanks .card {
+.thanks-card {
+  background: rgba(0, 20, 43, 0.92);
+  color: #ffffff;
+  border-radius: var(--radius);
+  border-top: 6px solid #47c4eb;
+  box-shadow: var(--shadow);
+  padding: 44px 56px 36px;
   text-align: center;
 }
 .thanks-h {
-  font-size: 88px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 76px;
+  line-height: 1.1;
+  color: #ffffff;
 }
-.thanks-h::after {
-  margin-left: auto;
-  margin-right: auto;
-}
-.thanks-p {
-  margin: 0 0 12px;
+.thanks-group {
+  margin: 14px 0 22px;
   font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #ffffff;
 }
 .thanks-members {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
   justify-content: center;
-  gap: 8px 26px;
-  margin: 0;
+  gap: 10px 36px;
+  margin: 0 0 20px;
   padding: 0;
   list-style: none;
-  font-size: 24px;
+  font-size: 26px;
 }
-.thanks-members span {
-  color: var(--wb-cyan);
-  margin-left: 6px;
+.thanks-name {
+  color: #ffffff;
+  font-weight: 600;
+}
+.thanks-id {
+  color: #47c4eb;
+  margin-left: 8px;
+}
+.thanks-lect {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+.thanks-foot {
+  font-size: 22px;
+  color: #ffffff;
+  border-top: 1px solid rgba(71, 196, 235, 0.6);
+  padding-top: 12px;
 }
 
 /* section label above card titles: small cyan chip (navy text keeps the contrast) */

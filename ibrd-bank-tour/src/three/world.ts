@@ -30,3 +30,6 @@ export function displayFor(y: number): string {
 
 /** Lift geometry (shared by every floor). Cabin doors face +Z. */
 export const LIFT = { x: 0, z: -60, w: 4, d: 4, h: 3.2, doorZ: -58 };
+
+/** ?capture=1 only: exposure (renderer.toneMappingExposure, <= 1) and the exit-hall light factor; set by npm run capture-bg. */
+export const captureLook = { exposure: 1, light: 1 };
