@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { SCENES, SEGMENTS, type Scene } from '../scenes';
 import { beatCount } from '../content';
+import { useEdits, visibleBeats } from '../edit/store';
 import { useTour } from '../state/store';
 import { PARAMS } from '../util/params';
 import { perf } from '../three/refs';
@@ -30,8 +31,11 @@ export function Tracker() {
     [],
   );
   const cur = SCENES[index];
-  const B = Math.max(1, beatCount(cur.id));
-  const frac = (beat + 1) / B;
+  const edits = useEdits((st) => st.edits);
+  const editing = useEdits((st) => st.editing);
+  const v = visibleBeats(cur.id, beatCount(cur.id), edits, editing);
+  const B = Math.max(1, v.length);
+  const frac = (Math.max(0, v.indexOf(beat)) + 1) / B;
   return (
     <nav className="tracker" aria-label="Tour progress">
       {segs.map((g) => {
@@ -124,14 +128,20 @@ export function Counter() {
     return () => clearInterval(t);
   }, []);
   const s = SCENES[index];
-  const B = beatCount(s.id);
+  const edits = useEdits((st) => st.edits);
+  const editing = useEdits((st) => st.editing);
+  // hidden beats (edit mode) are not counted; in edit mode they are counted and marked
+  const v = visibleBeats(s.id, beatCount(s.id), edits, editing);
+  const B = v.length;
+  const pos = v.indexOf(beat);
+  const hiddenHere = editing && !!edits[`hide:${s.id}:${beat}`];
   const elapsed = (now - timerStart) / 1000;
   const total = totalSeconds(coreOnly);
   let plan: string | null = null;
   if (PARAMS.plan) {
     let before = 0;
     for (let i = 0; i < index; i++) if (!(coreOnly && SCENES[i].optional)) before += SCENES[i].targetSeconds;
-    const within = B > 0 ? (beat / B) * s.targetSeconds : 0;
+    const within = B > 0 ? (Math.max(0, pos) / B) * s.targetSeconds : 0;
     const expected = ((before + within) / total) * PARAMS.plan * 60;
     const d = elapsed - expected;
     plan = d >= 0 ? `+${fmt(d)} behind` : `-${fmt(d)} ahead`;
@@ -145,7 +155,8 @@ export function Counter() {
         ›
       </button>
       <div className="ct-main">
-        scene {index + 1} / {SCENES.length} · beat {B ? beat + 1 : '–'} / {B}
+        scene {index + 1} / {SCENES.length} · beat {B ? pos + 1 : '–'} / {B}
+        {hiddenHere && <b className="ct-hidden"> · hidden</b>}
       </div>
       <button className="ct-time" onClick={resetTimer} title="Click to reset the timer">
         {fmt(elapsed)}

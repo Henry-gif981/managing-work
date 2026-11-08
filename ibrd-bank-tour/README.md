@@ -69,6 +69,11 @@ You can fix a text directly in the HTML file, without the source code.
    - The saved file is again ONE offline HTML file. The edits are inside it (`<script id="tour-edits">`), and the print view / PDF of that file shows them too.
 
 Details:
+- **Hide a beat:** in edit mode, go to the beat and press **Hide beat n** in the edit bar.
+  - The presentation then skips that beat, and the beat counter and tracker count only the beats shown. The PDF leaves its card out.
+  - In edit mode hidden beats can still be reached: they show faded, with a red HIDDEN BEAT badge and "· hidden" in the counter. **Show beat n again** brings one back.
+  - The last shown beat of a scene cannot be hidden.
+  - Hidden beats are saved in the HTML like the text edits (key `hide:<scene>:<beat>`).
 - **Editable:** card titles, section chips and body texts on every content-kit scene, the five Conclusion parts on the lift ride, and every table cell, table header and table caption.
 - **Not editable:** chart labels, timelines, chips, the cover, the Thank You card and the 3D labels.
 - **Draft:** edits not saved yet are kept in the browser (`localStorage`) and come back after a reload. A small "Unsaved edits · E" button reminds you, closing the tab asks for confirmation, and **Discard unsaved** goes back to the text in the file.

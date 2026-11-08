@@ -5,7 +5,7 @@ import { FocusContext } from '../primitives/focus';
 import { REFERENCES } from '../data/references';
 import { COVER } from '../data/cover';
 import { R, editedSlide, type Slide } from '../content/kit';
-import { useEdits, ov } from '../edit/store';
+import { useEdits, ov, isHiddenBeat } from '../edit/store';
 import { PARTS } from '../content/lift-down';
 import { FLOORS } from '../content/f1-structure';
 import { ThanksCard } from '../content/ex-thanks';
@@ -70,7 +70,9 @@ function specOf(id: string): PSpec {
   if (id === 'lift-down')
     return {
       main: [],
-      cards: PARTS.map((p, i) => ({ label: p.kicker, title: ov(`s:lift-down:${i}:title`) ?? p.title, body: <R t={ov(`s:lift-down:${i}:body`) ?? p.body} />, source: p.source })),
+      cards: PARTS.map((p, i) => ({ i, p }))
+        .filter(({ i }) => !isHiddenBeat('lift-down', i))
+        .map(({ p, i }) => ({ label: p.kicker, title: ov(`s:lift-down:${i}:title`) ?? p.title, body: <R t={ov(`s:lift-down:${i}:body`) ?? p.body} />, source: p.source })),
     };
   if (id === 'f1-structure')
     return {
@@ -97,7 +99,9 @@ function specOf(id: string): PSpec {
     };
   const raw = slidesOf(id);
   const edits = useEdits.getState().edits;
-  const slides = raw ? raw.map((sl, i) => editedSlide(id, i, sl, edits)) : null;
+  // hidden beats (edit mode) are left out; a scene keeps at least one beat
+  const shown = raw ? raw.map((sl, i) => ({ sl, i })).filter(({ i }) => !isHiddenBeat(id, i, edits)) : [];
+  const slides = raw ? (shown.length ? shown : [{ sl: raw[0], i: 0 }]).map(({ sl, i }) => editedSlide(id, i, sl, edits)) : null;
   if (!slides) {
     const c = CONTENT[id];
     return { main: [], cards: c.beats.map((b) => ({ label: s.sectionRef, title: b.label ?? s.title, body: null, source: b.source ?? '' })) };

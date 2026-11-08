@@ -2077,3 +2077,35 @@ html.shot *::after {
   font: 700 13px var(--font-body);
   cursor: pointer;
 }
+.edit-btn.warn {
+  background: var(--warn);
+  border-color: var(--warn);
+}
+.edit-hidden-note {
+  color: #ffb27a !important;
+  letter-spacing: 0 !important;
+}
+.ct-hidden {
+  color: var(--bad);
+}
+/* edit mode on a hidden beat: the slide content is shown faded with a diagonal badge */
+.beat-hidden .scene-host,
+.beat-hidden .k-card,
+.beat-hidden .k-centre,
+.beat-hidden .k-titlecard,
+.beat-hidden .glass-panel {
+  opacity: 0.45;
+}
+.beat-hidden body::after {
+  content: 'HIDDEN BEAT';
+  position: fixed;
+  left: 24px;
+  top: 84px;
+  padding: 6px 14px;
+  background: var(--bad);
+  color: #fff;
+  font: 700 16px var(--font-body);
+  letter-spacing: 0.12em;
+  border-radius: 6px;
+  z-index: 999;
+}

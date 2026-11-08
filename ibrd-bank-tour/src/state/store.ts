@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { SCENES, type Scene } from '../scenes';
 import { beatCount } from '../content';
+import { visibleBeats } from '../edit/store';
 import { PARAMS } from '../util/params';
 
 export type NavMode = 'step' | 'jump';
@@ -69,7 +70,19 @@ export function prevIndex(from: number, coreOnly: boolean): number | null {
   for (let i = from - 1; i >= 0; i--) if (eligible(i, coreOnly) && !isTransit(SCENES[i])) return i;
   return null;
 }
-const lastBeat = (i: number) => Math.max(0, beatCount(SCENES[i].id) - 1);
+/** beats of scene i the presentation shows (hidden beats skipped outside edit mode) */
+const vis = (i: number) => visibleBeats(SCENES[i].id, beatCount(SCENES[i].id));
+const lastBeat = (i: number) => {
+  const v = vis(i);
+  return v.length ? v[v.length - 1] : 0;
+};
+const firstBeat = (i: number) => vis(i)[0] ?? 0;
+/** nearest shown beat to b (forwards first) */
+const nearestBeat = (i: number, b: number) => {
+  const v = vis(i);
+  if (!v.length) return 0;
+  return v.find((x) => x >= b) ?? v[v.length - 1];
+};
 
 let toastSeq = 1;
 
@@ -111,22 +124,23 @@ export const useTour = create<TourState>((set, get) => ({
 
   next: () => {
     const { index, beat, coreOnly } = get();
-    const B = beatCount(SCENES[index].id);
-    if (beat < B - 1) return set((s) => ({ beat: beat + 1, dir: 1, mode: 'step', navSeq: s.navSeq + 1 }));
+    const nb = vis(index).find((b) => b > beat);
+    if (nb !== undefined) return set((s) => ({ beat: nb, dir: 1, mode: 'step', navSeq: s.navSeq + 1 }));
     const j = nextIndex(index, coreOnly);
     if (j === null) return;
-    set((s) => ({ index: j, beat: 0, dir: 1, mode: 'step', navSeq: s.navSeq + 1, maxIndex: Math.max(s.maxIndex, j) }));
+    set((s) => ({ index: j, beat: firstBeat(j), dir: 1, mode: 'step', navSeq: s.navSeq + 1, maxIndex: Math.max(s.maxIndex, j) }));
   },
   prev: () => {
     const { index, beat, coreOnly } = get();
-    if (beat > 0) return set((s) => ({ beat: beat - 1, dir: -1, mode: 'step', navSeq: s.navSeq + 1 }));
+    const pb = [...vis(index)].reverse().find((b) => b < beat);
+    if (pb !== undefined) return set((s) => ({ beat: pb, dir: -1, mode: 'step', navSeq: s.navSeq + 1 }));
     const j = prevIndex(index, coreOnly);
     if (j === null) return;
     set((s) => ({ index: j, beat: lastBeat(j), dir: -1, mode: 'step', navSeq: s.navSeq + 1 }));
   },
   goto: (index, beat = 0, mode = 'jump') => {
     const i = Math.max(0, Math.min(SCENES.length - 1, index));
-    const b = Math.max(0, Math.min(lastBeat(i), beat));
+    const b = nearestBeat(i, Math.max(0, beat));
     set((s) => ({
       index: i,
       beat: b,

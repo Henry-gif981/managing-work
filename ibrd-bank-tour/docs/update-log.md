@@ -581,3 +581,18 @@ The "Part 2" section of update 2 above is therefore **superseded**.
   - built the saved HTML (10.87 MB) and reopened it in a fresh browser profile with no draft: the edits were there, also in `?print=1`;
   - saving again replaced the edits element instead of adding a second one;
   - no console errors, and `test:smoke` OK.
+
+## Update 4b · Hide a beat (edit mode)
+
+- **Button:** the edit bar has **Hide beat n** / **Show beat n again** for the current beat. The choice is stored with the text edits as `hide:<scene>:<beat>` and saved into the HTML by **Save HTML**.
+- **Presentation:**
+  - → / ← skip hidden beats, and a jump (grid, hash, tracker) to a hidden beat lands on the nearest shown beat.
+  - The beat counter and the tracker count only the shown beats ("beat 2 / 3").
+  - Leaving edit mode on a hidden beat moves to the nearest shown beat.
+- **Edit mode:** hidden beats stay reachable, so they can be shown again. They render faded, with a red "HIDDEN BEAT" badge and "· hidden" in the counter ("beat 3 / 5 · hidden").
+- **Print / PDF:** hidden beats' cards are left out. A scene always keeps at least one beat, so the button is disabled on a scene's last shown beat.
+- **Test** (Playwright, file://):
+  - hid beats 2 and 3 of `f1-instruments`; the scene became "beat 1 / 3" → "2 / 3" (the old beat 4) → "3 / 3", and ← went back correctly;
+  - the button was disabled on the one-beat `f1-terms`;
+  - the saved HTML reopened with the same hidden beats, and its print view showed 3 cards for the scene;
+  - no console errors.

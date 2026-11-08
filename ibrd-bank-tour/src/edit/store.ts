@@ -151,3 +151,18 @@ function afterSave() {
   }
   useEdits.getState().markSaved();
 }
+
+/* ---------------- hidden beats (edit mode: "Hide this beat") ---------------- */
+export const hideKey = (sceneId: string, beat: number) => `hide:${sceneId}:${beat}`;
+
+/**
+ * Beats of a scene that the presentation shows, in order. Hidden beats are skipped, except in edit mode
+ * (`withHidden`), so they can be reached and shown again. A scene always keeps at least one beat.
+ */
+export function visibleBeats(sceneId: string, n: number, edits: Edits = useEdits.getState().edits, withHidden = useEdits.getState().editing): number[] {
+  const all = Array.from({ length: n }, (_, i) => i);
+  if (withHidden) return all;
+  const v = all.filter((b) => !edits[hideKey(sceneId, b)]);
+  return v.length || !n ? v : [0];
+}
+export const isHiddenBeat = (sceneId: string, beat: number, edits: Edits = useEdits.getState().edits) => !!edits[hideKey(sceneId, beat)];

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { useEdits, saveHtml } from './store';
+import { useEdits, saveHtml, hideKey, visibleBeats } from './store';
+import { beatCount } from '../content';
+import { SCENES } from '../scenes';
 import { useTour } from '../state/store';
 
 /**
@@ -18,11 +20,36 @@ export function EditLayer() {
   const [open, setOpen] = useState<Open | null>(null);
   const [busy, setBusy] = useState(false);
   const area = useRef<HTMLTextAreaElement>(null);
+  const index = useTour((s) => s.index);
+  const beat = useTour((s) => s.beat);
+  const edits = useEdits((s) => s.edits);
+  const scene = SCENES[index];
+  const nBeats = beatCount(scene.id);
+  const hidden = !!edits[hideKey(scene.id, beat)];
+  const shownCount = visibleBeats(scene.id, nBeats, edits, false).length;
+  const hiddenTotal = Object.keys(edits).filter((k) => k.startsWith('hide:')).length;
 
   useEffect(() => {
     document.documentElement.classList.toggle('edit-mode', editing);
-    if (!editing) setOpen(null);
+    if (!editing) {
+      setOpen(null);
+      // leaving edit mode on a hidden beat: go to the nearest beat the presentation shows
+      const t = useTour.getState();
+      if (useEdits.getState().edits[hideKey(SCENES[t.index].id, t.beat)]) t.goto(t.index, t.beat, 'step');
+    }
   }, [editing]);
+  useEffect(() => {
+    document.documentElement.classList.toggle('beat-hidden', editing && hidden);
+  }, [editing, hidden]);
+
+  const toggleHide = () => {
+    if (!nBeats) return;
+    useEdits.getState().set(hideKey(scene.id, beat), hidden ? null : '1');
+    useTour.getState().toast({
+      text: hidden ? `Beat ${beat + 1} of ${scene.id} is shown again.` : `Beat ${beat + 1} of ${scene.id} is hidden: the presentation and the PDF skip it.`,
+      ttl: 3200,
+    });
+  };
 
   // click on an editable text -> open the editor (capture phase, so citation buttons do not open the R panel)
   useEffect(() => {
@@ -100,11 +127,21 @@ export function EditLayer() {
     <>
       <div className="edit-ui edit-bar">
         <b>EDIT MODE</b>
-        <span>Click any outlined text to change it.</span>
+        <span>{hidden ? <b className="edit-hidden-note">This beat is hidden in the presentation.</b> : 'Click any outlined text to change it.'}</span>
         <span className="edit-count">
-          {count} edited text{count === 1 ? '' : 's'}
+          {count - hiddenTotal} edited text{count - hiddenTotal === 1 ? '' : 's'} · {hiddenTotal} hidden beat{hiddenTotal === 1 ? '' : 's'}
           {dirty ? ' · not saved yet' : ' · saved'}
         </span>
+        {nBeats > 0 && (
+          <button
+            className={'edit-btn' + (hidden ? ' warn' : '')}
+            onClick={toggleHide}
+            disabled={!hidden && shownCount <= 1}
+            title={!hidden && shownCount <= 1 ? 'The last shown beat of a scene cannot be hidden' : hidden ? 'Show this beat again' : 'Skip this beat in the presentation and the PDF'}
+          >
+            {hidden ? `Show beat ${beat + 1} again` : `Hide beat ${beat + 1}`}
+          </button>
+        )}
         <button className="edit-btn primary" onClick={save} disabled={busy}>
           {busy ? 'Saving…' : 'Save HTML'}
         </button>
