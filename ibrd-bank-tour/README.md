@@ -55,6 +55,25 @@ You can also use the on-screen ‹ › arrows at the bottom right, or swipe on a
 
 Other URL flags: `?tags=1` shows the small grey source tags ("Source · Section x · p. n"), which are hidden by default (`SHOW_SOURCE_TAGS` in `src/config.ts`). `?lite=1` starts in Lite mode. `?shot=1` is for screenshots (instant tweens, no auto-advance, no fps watchdog). `?noauto=1` stops the door and lift-up scenes from auto-advancing. `?dev=0` turns the dev overlay off in `npm run dev`.
 
+## Editing text in the browser (key E) and saving the HTML
+
+You can fix a text directly in the HTML file, without the source code.
+1. Open the tour (also from `file://`) and press **E**, or open it with `?edit=1`. Every editable text gets a dashed outline.
+2. Click a text. A small editor opens with the text as a template: `**bold**`, `[12]` citation, `{fact-id}` number from the paper, a blank line for a new paragraph, `- ` for bullets.
+   - **Apply** (Ctrl+Enter) shows it at once.
+   - **Original text** brings back the paper's wording.
+   - **Esc** cancels.
+3. Press **Save HTML**.
+   - In Chrome or Edge a save dialog opens, and you can overwrite the file you opened; later saves in the same session reuse that file.
+   - Other browsers download `ibrd-bank-tour.html`, which replaces the old file.
+   - The saved file is again ONE offline HTML file. The edits are inside it (`<script id="tour-edits">`), and the print view / PDF of that file shows them too.
+
+Details:
+- **Editable:** card titles, section chips and body texts on every content-kit scene, the five Conclusion parts on the lift ride, and every table cell, table header and table caption.
+- **Not editable:** chart labels, timelines, chips, the cover, the Thank You card and the 3D labels.
+- **Draft:** edits not saved yet are kept in the browser (`localStorage`) and come back after a reload. A small "Unsaved edits · E" button reminds you, closing the tab asks for confirmation, and **Discard unsaved** goes back to the text in the file.
+- **Not in the source code:** the edits live only in the saved HTML. `npm run build:single` makes a fresh file from the source without them. To keep an edit for good, copy it into `src/content/…`; the edited key names the scene, beat and field, e.g. `s:f1-what:0:body` or `c:t1-ida-year`.
+
 ## Tuning cameras (dev mode)
 
 1. Go to the scene and press **D**.

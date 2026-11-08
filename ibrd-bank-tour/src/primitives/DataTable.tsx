@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
 import { useFocus } from './focus';
+import { useOv } from '../edit/store';
+import { R } from '../content/kit';
 
 export interface Column {
   key: string;
@@ -39,15 +41,31 @@ export function DataTable({ id, columns, rows, caption, width }: { id: string; c
           ))}
         </tbody>
       </table>
-      {caption && <div className="dt-caption">{caption}</div>}
+      {caption && <Caption id={id}>{caption}</Caption>}
+    </div>
+  );
+}
+
+/** Caption with an optional browser edit (edit mode). */
+function Caption({ id, children }: { id: string; children: ReactNode }) {
+  const o = useOv(`cap:${id}`);
+  return (
+    <div className="dt-caption" data-edit={`cap:${id}`} data-edit-label={`Table caption · ${id}`}>
+      {o != null ? <R t={o} className="cell-rich" /> : children}
     </div>
   );
 }
 
 function Th({ tableId, col }: { tableId: string; col: Column }) {
+  const o = useOv(`c:${tableId}-h-${col.key}`);
   return (
-    <th id={`${tableId}-h-${col.key}`} style={{ textAlign: col.align ?? 'left', width: col.width }}>
-      {col.label}
+    <th
+      id={`${tableId}-h-${col.key}`}
+      style={{ textAlign: col.align ?? 'left', width: col.width }}
+      data-edit={`c:${tableId}-h-${col.key}`}
+      data-edit-label={`Table header · ${tableId} · ${col.key}`}
+    >
+      {o != null ? <R t={o} className="cell-rich" /> : col.label}
     </th>
   );
 }
@@ -55,9 +73,16 @@ function Th({ tableId, col }: { tableId: string; col: Column }) {
 function Td({ tableId, row, col }: { tableId: string; row: Row; col: Column }) {
   const cellId = `${tableId}-${row.id}-${col.key}`;
   const cls = useFocus(cellId, `${tableId}-${row.id}`, `${tableId}-col-${col.key}`, tableId);
+  const o = useOv(`c:${cellId}`);
   return (
-    <td id={cellId} className={`${cls} ${col.align === 'right' ? 'num' : ''}`} style={{ textAlign: col.align ?? 'left' }}>
-      {row.cells[col.key]}
+    <td
+      id={cellId}
+      className={`${cls} ${col.align === 'right' ? 'num' : ''}`}
+      style={{ textAlign: col.align ?? 'left' }}
+      data-edit={`c:${cellId}`}
+      data-edit-label={`Table cell · ${tableId} · ${row.id} · ${col.key}`}
+    >
+      {o != null ? <R t={o} className="cell-rich" /> : row.cells[col.key]}
     </td>
   );
 }

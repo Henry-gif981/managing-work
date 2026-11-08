@@ -15,6 +15,8 @@ export const PARAMS = {
   noauto: q.get('noauto') === '1' || q.get('shot') === '1' || q.get('capture') === '1',
   /** ?tags=1 : show the small grey source tags (hidden by default, see src/config.ts) */
   tags: q.get('tags') === '1',
+  /** ?edit=1 : start in edit mode (text editing + Save HTML) */
+  edit: q.get('edit') === '1',
   /** ?lite=1 : start in lite mode */
   lite: q.get('lite') === '1',
   /** ?dev=1 : start with dev overlay */

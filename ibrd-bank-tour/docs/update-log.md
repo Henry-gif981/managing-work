@@ -561,3 +561,23 @@ The "Part 2" section of update 2 above is therefore **superseded**.
 - `export-pdf`: **88 pages** (cover, contents, 55 scene pages plus 26 extra pages, and 5 reference pages).
 - `check-print`: 88 pages, 0 failures.
 - Web scenes 6, 8, 13 and 14 and PDF pages 6, 8, 14 and 15 were checked as images: no grey source lines, scene 14 shows the whole Table 1.4.2 in one beat, and scene 13 has its 5 original beats.
+
+---
+
+# Update 4 · Edit text in the browser and save the HTML
+
+- **Edit mode:** key **E** or `?edit=1`. Editable texts get a dashed outline, and a click opens a small editor with the raw template.
+  - **Editable:** content-kit titles, section chips and bodies (keys `s:<scene>:<beat>:title|kicker|body`), the Conclusion parts (`s:lift-down:<n>:…`), and table cells, headers and captions (`c:<cell id>`, `cap:<table id>`).
+  - Edits render immediately, live and in print.
+- **Save HTML** writes ONE offline HTML file: the page as loaded (a DOM clone taken before React renders) plus `<script id="tour-edits" type="application/json">` with the edits. Chrome and Edge use the save dialog (`showSaveFilePicker`), so the opened file can be overwritten; other browsers download the file.
+- **Decisions:**
+  - **DOM clone, not text replace.** A text search-and-replace on the HTML corrupted the file in the first test, because the bundle's own code contains `</head>` and the tag text. The clone is safer.
+  - **Placement:** the edits element goes at the end of `<head>`, so `<meta charset>` stays in the first 1024 bytes and Vietnamese text keeps its encoding.
+  - **Draft:** unsaved edits are kept as a draft in `localStorage`, tied to the embedded edits it was made on, so a replaced file never picks up a stale draft. Closing the tab with unsaved edits asks first.
+  - **Not editable:** chart labels, timelines, chips, the cover, the Thank You card and 3D labels. They are JSX or SVG, not text templates.
+  - **Not in the source:** edits live only in the saved HTML, not in `src/`. `build:single` starts from the source again.
+- **Test** (Playwright, file://):
+  - edited a card body (`f1-what`) and a table cell (`t1-ida-year`); both showed at once;
+  - built the saved HTML (10.87 MB) and reopened it in a fresh browser profile with no draft: the edits were there, also in `?print=1`;
+  - saving again replaced the edits element instead of adding a second one;
+  - no console errors, and `test:smoke` OK.

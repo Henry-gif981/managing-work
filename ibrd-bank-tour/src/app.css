@@ -1965,3 +1965,115 @@ html.shot *::after {
   border-left: 4px solid var(--wb-cyan);
   padding-left: 12px;
 }
+
+/* ---------------- edit mode (key E): click a text to change it, then Save HTML ---------------- */
+.edit-mode [data-edit] {
+  outline: 2px dashed rgba(71, 196, 235, 0.9);
+  outline-offset: 2px;
+  cursor: text;
+}
+.edit-mode [data-edit]:hover {
+  outline-color: var(--warn);
+  background-color: rgba(232, 131, 58, 0.08);
+}
+.edit-mode .cite {
+  pointer-events: none;
+}
+.cell-rich p {
+  margin: 0;
+}
+.edit-ui {
+  font-family: var(--font-body);
+  z-index: 1000;
+}
+.edit-bar {
+  position: fixed;
+  left: 50%;
+  top: 76px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 14px;
+  background: var(--wb-navy);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px rgba(0, 35, 69, 0.35);
+  font-size: 15px;
+  white-space: nowrap;
+}
+.edit-bar b {
+  color: var(--wb-cyan);
+  letter-spacing: 0.1em;
+}
+.edit-count {
+  color: #c9e6f3;
+}
+.edit-btn {
+  font: 600 14px var(--font-body);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #c5d5e2;
+  background: #fff;
+  color: var(--wb-navy);
+  cursor: pointer;
+}
+.edit-btn.primary {
+  background: var(--wb-cyan);
+  border-color: var(--wb-cyan);
+  color: var(--wb-navy);
+}
+.edit-btn:disabled {
+  opacity: 0.6;
+}
+.edit-pop {
+  position: fixed;
+  padding: 12px;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 10px;
+  border-top: 4px solid var(--wb-cyan);
+  box-shadow: 0 10px 34px rgba(0, 35, 69, 0.35);
+}
+.edit-pop-h {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--wb-blue);
+  margin-bottom: 6px;
+}
+.edit-pop-h i {
+  color: var(--warn);
+}
+.edit-pop textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: 15px/1.45 var(--font-body);
+  padding: 8px 10px;
+  border: 1px solid #c5d5e2;
+  border-radius: 6px;
+  resize: vertical;
+  color: var(--ink);
+}
+.edit-pop-hint {
+  margin: 6px 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.edit-pop-btns {
+  display: flex;
+  gap: 8px;
+}
+.edit-pill {
+  position: fixed;
+  right: 18px;
+  top: 76px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--warn);
+  color: var(--wb-navy);
+  font: 700 13px var(--font-body);
+  cursor: pointer;
+}

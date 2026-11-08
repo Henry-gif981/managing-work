@@ -1,4 +1,5 @@
 import { useTour, rememberLite } from './store';
+import { useEdits } from '../edit/store';
 
 function toggleFullscreen() {
   if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
@@ -68,6 +69,12 @@ export function installKeys() {
         case 'p':
           openPrintPreview();
           break;
+        case 'e': {
+          const ed = useEdits.getState();
+          ed.setEditing(!ed.editing);
+          s.toast({ text: !ed.editing ? 'Edit mode ON: click any outlined text to change it, then Save HTML' : 'Edit mode OFF', ttl: 2600 });
+          break;
+        }
         case 'c':
           s.toggleCore();
           s.toast({ text: !s.coreOnly ? 'Core path ON: optional scenes are skipped' : 'Core path OFF: every scene is shown', ttl: 2200 });

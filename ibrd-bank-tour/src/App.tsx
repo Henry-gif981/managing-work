@@ -11,6 +11,10 @@ import { CalloutLayer, CalloutPinsTop } from './primitives/Callout';
 import { LiteBackdrop, liteSetOf } from './lite/LiteBackdrop';
 import { webglAvailable } from './three/Stage';
 import Stage from './three/Stage';
+import { EditLayer } from './edit/EditLayer';
+import { useEdits } from './edit/store';
+
+if (PARAMS.edit && !PARAMS.shot) useEdits.getState().setEditing(true);
 
 
 export default function App() {
@@ -47,6 +51,7 @@ export default function App() {
         <Toasts />
         {lite && <div className="lite-badge">LITE MODE · L to switch</div>}
       </div>
+      {!PARAMS.shot && <EditLayer />}
     </div>
   );
 }

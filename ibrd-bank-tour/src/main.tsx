@@ -1,3 +1,5 @@
+// must be the first import: captures the page as loaded, for "Save HTML" (edit mode)
+import './edit/original';
 import '@fontsource/playfair-display/latin-700.css';
 import '@fontsource/playfair-display/vietnamese-700.css';
 import '@fontsource/cormorant-garamond/latin-400-italic.css';
@@ -24,6 +26,7 @@ import { useTour } from './state/store';
 import { SCENES } from './scenes';
 import { beatCount } from './content';
 import { perf } from './three/refs';
+import { useEdits, buildHtml } from './edit/store';
 
 const root = createRoot(document.getElementById('root')!);
 if (new URLSearchParams(location.search).get('demo') === '1') {
@@ -41,6 +44,7 @@ if (new URLSearchParams(location.search).get('demo') === '1') {
     __tour: useTour,
     __scenes: SCENES.map((s) => ({ id: s.id, beats: beatCount(s.id), segment: s.segment })),
     __perf: perf,
+    __edit: { store: useEdits, buildHtml },
   });
   startDirector();
   installKeys();

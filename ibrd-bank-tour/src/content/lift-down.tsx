@@ -1,5 +1,6 @@
 import type { Beat, SceneViewProps } from './types';
 import { R, SourceTag } from './kit';
+import { useEdits } from '../edit/store';
 
 /**
  * Conclusion, shown on the cabin's glass panel while the lift rides down: one beat per part of the
@@ -69,7 +70,10 @@ Finally, two case studies cannot represent the whole IBRD portfolio in Vietnam, 
 export const beats: Beat[] = PARTS.map((p) => ({ label: `${p.floor} · ${p.title}`, source: p.source }));
 
 export default function View({ beat }: SceneViewProps) {
-  const p = PARTS[Math.min(beat, PARTS.length - 1)];
+  const bi = Math.min(beat, PARTS.length - 1);
+  const edits = useEdits((st) => st.edits);
+  const orig = PARTS[bi];
+  const p = { ...orig, title: edits[`s:lift-down:${bi}:title`] ?? orig.title, body: edits[`s:lift-down:${bi}:body`] ?? orig.body };
   const long = p.body.length > 700;
   return (
     <div className="glass-panel">
@@ -78,11 +82,13 @@ export default function View({ beat }: SceneViewProps) {
           <span className="glass-floor">{p.floor.split(' ')[0]}</span>
           <div>
             <div className="kicker">{p.kicker}</div>
-            <div className="h2">{p.title}</div>
+            <div className="h2" data-edit={`s:lift-down:${bi}:title`} data-edit-raw={orig.title} data-edit-label={`Conclusion · part ${bi + 1} · title`}>
+              {p.title}
+            </div>
           </div>
         </div>
         <div className={long ? 'glass-cols' : ''}>
-          <R t={p.body} />
+          <R t={p.body} edit={{ key: `s:lift-down:${bi}:body`, raw: orig.body, label: `Conclusion · part ${bi + 1} · text` }} />
         </div>
         <ol className="glass-steps">
           {PARTS.map((q, i) => (

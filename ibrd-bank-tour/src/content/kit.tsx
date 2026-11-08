@@ -15,6 +15,7 @@ import { Cite } from '../primitives/bits';
 import { useFocus } from '../primitives/focus';
 import { WAYPOINTS } from '../camera/waypoints';
 import { SHOW_SOURCE_TAGS } from '../config';
+import { useEdits } from '../edit/store';
 
 const TOKEN = /(\{[a-z0-9.-]+(?:\|(?:n|\d))?\}|\[\d[^\]]*\]|\*\*[^*]+\*\*)/g;
 
@@ -37,11 +38,11 @@ function inline(text: string, key = ''): ReactNode[] {
   });
 }
 
-/** Render a rich text template. */
-export function R({ t, className }: { t: string; className?: string }) {
+/** Render a rich text template. `edit` makes it editable in edit mode (key, original template, label). */
+export function R({ t, className, edit }: { t: string; className?: string; edit?: { key: string; raw: string; label?: string } }) {
   const blocks = t.trim().split(/\n\s*\n/);
   return (
-    <div className={'rich ' + (className ?? '')}>
+    <div className={'rich ' + (className ?? '')} data-edit={edit?.key} data-edit-raw={edit?.raw} data-edit-label={edit?.label}>
       {blocks.map((b, i) => {
         const lines = b.split('\n').map((l) => l.trim()).filter(Boolean);
         if (lines.every((l) => l.startsWith('- ')))
@@ -101,6 +102,13 @@ export function SourceTag({ s }: { s: string }) {
   return SHOW_SOURCE_TAGS ? <div className="k-source">Source · {s}</div> : null;
 }
 
+/** A slide with the browser edits (edit mode) applied to its title, kicker and body. */
+export function editedSlide(sceneId: string, i: number, sl: Slide, edits: Record<string, string>): Slide {
+  const k = `s:${sceneId}:${i}:`;
+  if (!(k + 'title' in edits) && !(k + 'kicker' in edits) && !(k + 'body' in edits)) return sl;
+  return { ...sl, title: edits[k + 'title'] ?? sl.title, kicker: edits[k + 'kicker'] ?? sl.kicker, body: edits[k + 'body'] ?? sl.body };
+}
+
 /** Build a scene's { beats, View } from slides. */
 export function scene(sceneId: string, slides: Slide[]) {
   // table / chart beats use the scene's "-table" waypoint when it exists (props framed beside the table)
@@ -121,20 +129,25 @@ export function scene(sceneId: string, slides: Slide[]) {
   }));
   function View({ beat }: SceneViewProps) {
     const s = sceneById(sceneId)!;
-    const sl = slides[Math.min(beat, slides.length - 1)];
+    const bi = Math.min(beat, slides.length - 1);
+    const edits = useEdits((st) => st.edits);
+    const sl = editedSlide(sceneId, bi, slides[bi], edits);
+    const ed = (field: 'title' | 'kicker' | 'body', raw: string) => ({ 'data-edit': `s:${sceneId}:${bi}:${field}`, 'data-edit-raw': raw, 'data-edit-label': `${sceneId} · beat ${bi + 1} · ${field}` });
+    const orig = slides[bi];
+    const edKey = (field: 'body') => ({ key: `s:${sceneId}:${bi}:${field}`, raw: orig.body ?? '', label: `${sceneId} · beat ${bi + 1} · text` });
     const layout = sl.layout ?? 'left';
     const kicker = sl.kicker ?? s.sectionRef;
     if (layout === 'centre') {
       return (
         <div className={'k-centre' + (sl.band === 'right' ? ' k-centre-r' : '')}>
           <div className="k-head">
-            <span className="kicker">{kicker}</span>
-            <span className="k-title">{sl.title ?? s.title}</span>
+            <span className="kicker" {...ed('kicker', orig.kicker ?? s.sectionRef)}>{kicker}</span>
+            <span className="k-title" {...ed('title', orig.title ?? s.title)}>{sl.title ?? s.title}</span>
           </div>
           {sl.centre}
           {(sl.body || sl.aside) && (
             <div className="card k-caption enter" key={beat}>
-              {sl.body && <R t={sl.body} />}
+              {sl.body && <R t={sl.body} edit={edKey('body')} />}
               {sl.aside}
               <SourceTag s={sl.source} />
             </div>
@@ -147,9 +160,9 @@ export function scene(sceneId: string, slides: Slide[]) {
       return (
         <div className="k-titlecard">
           <div className="card dark enter" key={beat}>
-            <div className="kicker">{kicker}</div>
-            <div className="h1">{sl.title ?? s.title}</div>
-            {sl.body && <R t={sl.body} />}
+            <div className="kicker" {...ed('kicker', orig.kicker ?? s.sectionRef)}>{kicker}</div>
+            <div className="h1" {...ed('title', orig.title ?? s.title)}>{sl.title ?? s.title}</div>
+            {sl.body && <R t={sl.body} edit={edKey('body')} />}
             {sl.aside}
             <SourceTag s={sl.source} />
           </div>
@@ -160,10 +173,10 @@ export function scene(sceneId: string, slides: Slide[]) {
       <>
         <div className={`k-card k-${layout}`}>
           <div className="card">
-            <div className="kicker">{kicker}</div>
-            <div className="h2">{sl.title ?? s.title}</div>
+            <div className="kicker" {...ed('kicker', orig.kicker ?? s.sectionRef)}>{kicker}</div>
+            <div className="h2" {...ed('title', orig.title ?? s.title)}>{sl.title ?? s.title}</div>
             <div className="enter" key={beat}>
-              {sl.body && <R t={sl.body} />}
+              {sl.body && <R t={sl.body} edit={edKey('body')} />}
               {sl.aside}
             </div>
             <SourceTag s={sl.source} />
