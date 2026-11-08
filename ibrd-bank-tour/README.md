@@ -150,7 +150,7 @@ src/lite/LiteBackdrop    static SVG per area (Lite + Print)     src/print/PrintV
 - **Ground floor:** the lift display shows G, 1, 2, 3. The entrance and lobby are "Floor 1" (as the brief says) and **G is the exit hall**, a separate level below (y = -10) reached only by the ride down. The exit door opens to daylight there.
 - **Building layout:** the lift is at the back of every floor, so Floor 3's context area is by the lift (its entrance) and the executive office is at the front of the building, above the portico.
 - **Transit scenes:** `ext-door`, `lift-1-2` and `lift-2-3` have 0 beats. Arriving forwards plays the animation and then auto-advances to the next scene. Pressing → during it skips ahead. Going backwards skips over them. Jumping to one replays it from the previous scene's state.
-- **Lift-down:** 5 beats. The display reads 3 → 2 → 1 → G, one floor per beat, and beat 5 opens the doors on the exit hall. Its content uses the frosted-glass card style on the right, standing in for the cabin's glass panel.
+- **Lift-down:** 3 beats (patch 7). The display reads 3 → 2 → 1, one floor per beat, and the lift stops at Floor 1. → then opens the cabin doors and goes straight to the exit (scene 58), where the exit door opens to daylight; the exit door stays open in both exit scenes. Its content uses the frosted-glass card style, standing in for the cabin's glass panel.
 - **Camera:** tweens slerp orientation (quaternions) instead of interpolating look-at targets, so wide turns never flip. Moving between levels without the lift (backwards, or jumps from the grid, tracker or hash) uses a short white fade cut instead of flying through floor slabs.
 - **Performance:** each room is merged into roughly one mesh per material plus one `LineSegments` for all ink outlines (`EdgesGeometry`). Floors outside the current zone are hidden. Measured in `test:shots`: at most 68 draw calls and about 21k triangles in any pose, against a budget of 150 / 300k. DPR is capped at 1.5, there is no post-processing, and tone mapping is off so the palette renders as specified.
 - **Labels in 3D:** canvas textures, redrawn once the fonts have loaded.
@@ -208,7 +208,7 @@ Open `?print=1` (or press **P**). The order is: cover, contents (built from the 
   - Figure 8's adjusted bars are drawn only where the text states a value.
   - Figure 5 (a pie in the paper) is drawn as a stacked bar.
 - **Fact formatting:** `{id|2}` shows a fact with 2 decimals, matching the paper's tables (625.00, 500.00).
-- **Conclusion:** the brief asks for exactly 5 lift-down beats (display 3 → 2 → 1 → G → G doors open), one per part of the Conclusion. Parts 1.2 and 3 run past ~90 words, so the glass panel switches to two columns for them rather than adding beats.
+- **Conclusion:** since patch 7, three short beats (Conclusion 1.1, 1.2 and 2). Limitations of the research and directions for further research were removed from the screen, the notes and the PDF.
 - **TEP assessment:** the four criteria (Relevance, Effectiveness, Efficiency, Sustainability) are shown as four doors holding the paper's remarks. The only ratings shown are the PPAR's overall ones, because the paper gives none per criterion (a `<Note>` says so).
 - **Exit:** `ex-sources` is a searchable, scrollable wall of all 64 references (the same data as the R panel); the print version points to the reference pages. `ex-thanks` uses the cover data, and the exit door opens on its beat.
 

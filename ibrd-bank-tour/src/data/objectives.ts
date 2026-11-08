@@ -33,7 +33,7 @@ export const OBJECTIVES: Record<string, string> = {
   'f2-three-forms': 'Finance, advice and training reinforce one another across the cycle.',
   'f2-package': 'The package works only when domestic systems can absorb it.',
   'lift-2-3': 'Ride up to Chapter 3.',
-  'f3-ch3-title': 'Chapter 3: context, two case studies (TEP left, CCSEP right) and the overall evaluation.',
+  'f3-ch3-title': 'Chapter 3: context, two case studies (TEP and CCSEP) and the overall evaluation.',
   'f3-1993': 'Lending resumed in 1993; "World Bank financing" may be IDA or IBRD.',
   'f3-ida-graduation': 'Graduation in July 2017 changed the lending mix and terms; IBRD lending already existed.',
   'f3-sahep': 'A late IDA credit (SAHEP) next to an earlier IBRD loan (TEP): an institutional comparison.',

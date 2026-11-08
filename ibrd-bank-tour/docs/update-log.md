@@ -596,3 +596,31 @@ The "Part 2" section of update 2 above is therefore **superseded**.
   - the button was disabled on the one-beat `f1-terms`;
   - the saved HTML reopened with the same hidden beats, and its print view showed 3 cards for the scene;
   - no console errors.
+
+---
+
+# Patch 7 · Shorter text on the web (scenes 34-38, 53-54, 57)
+
+The wording given in the brief was used as is. Only the [n] citations that each beat already had were added back, at the point where the cited fact appears.
+
+| Scene (HUD) | Id | Beats before → after | What changed |
+|---|---|---|---|
+| 34 | `f3-ch3-title` | 2 → **1** | dark title card "Vietnam and the IBRD in practice" with the four lines 3.1-3.4; description and the "Planned versus actual money" beat removed |
+| 35 | `f3-1993` | 2 → 2 | beat 1: the timeline (Oct 1993: World Bank resumes lending with two IDA credits [47] · 1994: Hanoi office opens), centred; beat 2: "Beyond capital: IDA or IBRD?" with the one line |
+| 36 | `f3-ida-graduation` | 4 → 4 | each beat reduced to its one line; the 4-date timeline kept, beat 1 highlights 1 July 2017 and IDA18 (SDR 1.593 billion); citations [3], [45; 46], [4] kept |
+| 37 | `f3-sahep` | 9 → **1** | the whole Table 3.1.1 (7 rows, no row highlight, caption kept) with the note "An institutional comparison, not a comparison of outputs."; the two text beats and the 7 row beats removed |
+| 38 | `f3-legal` | 11 → **3** | "Two overlapping systems", "Read the law as of its period" (with [49], [50], [51]), and "The current framework" with the whole Table 3.1.2 (no row highlight) and [54; 55]; the six row beats, the ESF beat and "From context to cases" removed |
+| 53 | `f3-eval-achievements` | 4 → 4 | one line per beat; beat 2 is three small cards (26-year maturity [23] · 10-year grace [23] · lower costs through competitive bidding [41]); the stat side card removed |
+| 54 | `f3-eval-limitations` | 4 → 4 | one line per beat, with citations [46], [57], [41], [36], [57], [63, p. 19]; the four chips kept |
+| 57 | `lift-down` | 5 → **3** | Floor 3 / 2 / 1 with one line each ([63; 64] on beat 2). "Limitations of the research" and "Directions for further research" removed from the screen, the notes and the PDF, and not moved anywhere |
+
+Decisions:
+- **Unit.** The brief wrote "+4,263 MVA" for scene 53. The paper (Table 3.2.5, `facts.ts` `tep-mw`) and the TEP-outputs scene give **4,263 MW**. Following the rule "keep the numbers as they are", the screen shows **MW**. If the paper's correct unit is MVA, change `tep-mw` and both scenes together.
+- **Lift (scene 57):** `LIFT_DOWN_LEVELS` is now 3 → 2 → 1, and the lift stops at Floor 1 with the doors closed. → on the last beat opens the cabin doors, makes a short white cut to the exit hall (level G, below Floor 1, so the camera cannot fly there straight) and opens the exit door to daylight right away in scene 58. The exit door now stays open in both exit scenes (58 and 59). The large floor letter on the glass panel shows 3, 2, 1, and the HUD counts 3 beats.
+- **Removed with their beats:** row highlights (`focus`) and leader lines of the deleted beats. The unused anchors `f3-ch3-title:aisle` and `f3-legal:tep` were removed. On scene 35 the timeline is centred, so the leader line to the documents (which it would cover) and the side timeline on beat 2 (cut off at the edge) were removed.
+- **Notes and timing:** the presenter notes of the changed scenes no longer mention removed content (Table numbers updated to 3.1.1 / 3.1.2), and `lift-down` has 3 per-beat notes. `targetSeconds` is about 20 s per beat: 20 / 40 / 80 / 25 / 60 / 80 / 80 / 60.
+- **Core path and print:** the Core path (C) skips optional scenes and has no beat list of its own; the tracker, n/N counters and print follow the new beat lists automatically. Scene count stays 59.
+- **Files changed:**
+  - content: `src/content/f3-ch3-title.tsx`, `f3-1993.tsx`, `f3-ida-graduation.tsx`, `f3-sahep.tsx`, `f3-legal.tsx`, `f3-eval-achievements.tsx`, `f3-eval-limitations.tsx`, `lift-down.tsx`;
+  - engine and data: `src/director.ts`, `src/data/notes.ts`, `src/data/objectives.ts`, `src/scenes.ts`, `src/three/rooms/Floor3.tsx`, `src/app.css` (`.mini-cards`);
+  - background images of the changed scenes.

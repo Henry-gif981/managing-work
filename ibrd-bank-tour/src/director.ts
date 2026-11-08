@@ -13,7 +13,8 @@ import { LEVEL_Y, displayFor, world } from './three/world';
 import { MOTION, PARAMS, REDUCED_MOTION } from './util/params';
 
 const IDX_DOOR = SCENE_INDEX['ext-door'];
-const LIFT_DOWN_LEVELS = [LEVEL_Y[3], LEVEL_Y[2], LEVEL_Y[1], LEVEL_Y.G, LEVEL_Y.G];
+// patch 7: the Conclusion has three beats (floors 3, 2, 1); the lift stops at Floor 1
+const LIFT_DOWN_LEVELS = [LEVEL_Y[3], LEVEL_Y[2], LEVEL_Y[1]];
 
 /** Height of the level a scene is on (where the lift cabin rests). */
 export function levelY(s: Scene, beat = 0): number {
@@ -51,7 +52,8 @@ function applyRest(i: number, beat: number) {
   world.lift.doors = s.id === 'lift-down' && beat < 4 ? 1 : 0;
   world.lift.display = displayFor(world.lift.y);
   world.lift.streak = 0;
-  world.exit.open = s.id === 'ex-thanks' ? 1 : 0;
+  // patch 7: the exit door stands open to daylight in both exit scenes (Sources and Thank You)
+  world.exit.open = s.kind === 'exit' ? 1 : 0;
   world.exit.daylight = world.exit.open;
   setCam(poseOf(i, beat));
 }
@@ -181,8 +183,22 @@ function onNav(from: { index: number; beat: number }, to: { index: number; beat:
     return;
   }
 
+  // ---------- lift (stopped at Floor 1) -> exit: doors open, cut to the exit hall, the exit door opens to daylight ----------
+  if (fromScene.id === 'lift-down' && s.kind === 'exit' && mode !== 'jump') {
+    t.to(world.lift, { doors: 0, duration: 0.7 * MOTION }, 0);
+    fadeCut(t, () => {
+      applyRest(to.index, to.beat);
+      world.exit.open = 0;
+      world.exit.daylight = 0;
+    });
+    t.to(world.exit, { open: 1, duration: 2.0 * MOTION, ease: 'power2.inOut' }, '>');
+    t.to(world.exit, { daylight: 1, duration: 1.4 * MOTION, ease: 'power1.inOut' }, '<0.3');
+    run(t);
+    return;
+  }
+
   // ---------- ordinary scenes ----------
-  const sameLevel = levelY(fromScene, from.beat) === levelY(s, to.beat) || (fromScene.id === 'lift-down' && s.kind === 'exit');
+  const sameLevel = levelY(fromScene, from.beat) === levelY(s, to.beat);
   if (mode === 'jump' || !sameLevel) {
     fadeCut(t, () => applyRest(to.index, to.beat));
     run(t);
@@ -193,7 +209,7 @@ function onNav(from: { index: number; beat: number }, to: { index: number; beat:
   const doorOpen = to.index >= IDX_DOOR ? 1 : 0;
   if (world.door.open !== doorOpen) t.to(world.door, { open: doorOpen, spill: 0, duration: 1.2 * MOTION }, doorOpen ? 0 : 1.1 * MOTION);
   if (fromScene.id === 'lift-down' || world.lift.doors > 0) t.to(world.lift, { doors: 0, duration: 0.8 * MOTION }, 0);
-  const exitOpen = s.id === 'ex-thanks' ? 1 : 0;
+  const exitOpen = s.kind === 'exit' ? 1 : 0;
   if (world.exit.open !== exitOpen) {
     t.to(world.exit, { open: exitOpen, duration: 2.2 * MOTION, ease: 'power2.inOut' }, 0.3 * MOTION);
     t.to(world.exit, { daylight: exitOpen, duration: 1.6 * MOTION, ease: 'power1.inOut' }, 0.6 * MOTION);

@@ -132,7 +132,7 @@ const ROWS: Row[] = [
   ['f3-recs-1', 'room', 3, 'eval', 'Recommendations for Vietnam (I)', 'Section 3.4.3'],
   ['f3-recs-2', 'room', 3, 'eval', 'Recommendations for Vietnam (II)', 'Section 3.4.3'],
   // CONCLUSION
-  ['lift-down', 'lift', 3, 'conclusion', 'Conclusion', 'Conclusion 1–4', 90],
+  ['lift-down', 'lift', 3, 'conclusion', 'Conclusion', 'Conclusion 1–2', 60],
   // EXIT
   ['ex-sources', 'exit', 0, 'exit', 'Sources', 'References', 30],
   ['ex-thanks', 'exit', 0, 'exit', 'Thank You', '—', 20],

@@ -2109,3 +2109,22 @@ html.shot *::after {
   border-radius: 6px;
   z-index: 999;
 }
+
+/* patch 7: three small cards in one card (f3-eval-achievements, Financial mobilization) */
+.mini-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 6px;
+}
+.mini-card {
+  padding: 14px 16px;
+  border-radius: 8px;
+  background: var(--surface);
+  border-top: 4px solid var(--wb-cyan);
+  font-weight: 600;
+  color: var(--wb-navy);
+}
+.mini-card .rich p {
+  margin: 0;
+}
