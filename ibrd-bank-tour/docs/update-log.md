@@ -624,3 +624,14 @@ Decisions:
   - content: `src/content/f3-ch3-title.tsx`, `f3-1993.tsx`, `f3-ida-graduation.tsx`, `f3-sahep.tsx`, `f3-legal.tsx`, `f3-eval-achievements.tsx`, `f3-eval-limitations.tsx`, `lift-down.tsx`;
   - engine and data: `src/director.ts`, `src/data/notes.ts`, `src/data/objectives.ts`, `src/scenes.ts`, `src/three/rooms/Floor3.tsx`, `src/app.css` (`.mini-cards`);
   - background images of the changed scenes.
+
+**Patch 7 verification:**
+- `check-facts`: 0 failures.
+- `check-lines`: 554 beat views, 0 overlaps.
+- `test:shots`: 103 screenshots, no console errors.
+- `test:smoke`: OK.
+- `build:single`: 10.8 MB.
+- `export-pdf`: **85 pages**.
+- `check-print`: 0 failures.
+- Backgrounds of the 10 changed scenes were recaptured: `ex-sources` now needs exposure 0.614 because the exit door stands open to daylight.
+- → on scene 57 beat 3/3 lands on scene 58 beat 1/1 with no errors.

@@ -41,7 +41,7 @@ Each scene starts at exposure 1.0 (linear tone mapping, no post-processing). An 
 | `f3-1993` | 1.000 | 1 | 12.7% | 0.842 | 51.4 |
 | `f3-ida-graduation` | 0.850 | 2 | 0.9% | 0.782 | 62.0 |
 | `f3-sahep` | 0.850 | 2 | 0.0% | 0.845 | 30.4 |
-| `f3-legal` | 0.850 | 2 | 0.0% | 0.766 | 63.5 |
+| `f3-legal` | 1.000 | 1 | 22.8% | 0.761 | 73.1 |
 | `f3-tep-overview` | 0.850 | 2 | 0.0% | 0.730 | 65.1 |
 | `f3-tep-cost` | 0.850 | 2 | 23.8% | 0.793 | 62.9 |
 | `f3-tep-financing` | 0.850 | 2 | 8.2% | 0.777 | 57.2 |
@@ -60,6 +60,6 @@ Each scene starts at exposure 1.0 (linear tone mapping, no post-processing). An 
 | `f3-eval-limitations` | 1.000 | 1 | 7.7% | 0.653 | 81.8 |
 | `f3-recs-1` | 1.000 | 1 | 6.0% | 0.603 | 84.1 |
 | `f3-recs-2` | 1.000 | 1 | 10.2% | 0.683 | 89.2 |
-| `lift-down` | 1.000 | 1 | 7.0% | 0.712 | 46.3 |
-| `ex-sources` | 1.000 | 1 | 17.3% | 0.869 | 33.3 |
+| `lift-down` | 1.000 | 1 | 1.5% | 0.705 | 33.8 |
+| `ex-sources` | 0.614 | 4 | 11.1% | 0.836 | 35.4 |
 | `ex-thanks` | 0.522 | 5 | 15.1% | 0.823 | 40.6 |
