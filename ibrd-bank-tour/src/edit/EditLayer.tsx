@@ -108,9 +108,7 @@ export function EditLayer() {
     setBusy(true);
     const r = await saveHtml();
     setBusy(false);
-    const toast = useTour.getState().toast;
-    if (r === 'saved') toast({ text: 'Saved: the HTML file now contains your edits.', ttl: 3500 });
-    else if (r === 'downloaded') toast({ text: 'Downloaded ibrd-bank-tour.html with your edits. Replace the old file with it.', ttl: 6000 });
+    useTour.getState().toast({ text: `Saved as a new file: ${r.name} (in your Downloads folder). The old file is unchanged.`, ttl: 6000 });
   };
   const discard = () => {
     if (confirm('Discard all unsaved edits and go back to the text in this HTML file?')) useEdits.getState().discardDraft();
@@ -143,7 +141,7 @@ export function EditLayer() {
           </button>
         )}
         <button className="edit-btn primary" onClick={save} disabled={busy}>
-          {busy ? 'Saving…' : 'Save HTML'}
+          {busy ? 'Saving…' : 'Save as new HTML'}
         </button>
         {dirty && (
           <button className="edit-btn" onClick={discard}>

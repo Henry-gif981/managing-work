@@ -104,42 +104,28 @@ export function buildHtml(edits: Edits): string {
   return '<!DOCTYPE html>\n' + doc.outerHTML;
 }
 
-type SaveHandle = { createWritable: () => Promise<{ write: (d: Blob) => Promise<void>; close: () => Promise<void> }> };
-let handle: SaveHandle | null = null;
+/** File name for a save: always new, with date and time, e.g. ibrd-bank-tour-2026-11-09-1432.html */
+export function newFileName(d = new Date()): string {
+  const z = (n: number) => String(n).padStart(2, '0');
+  return `ibrd-bank-tour-${d.getFullYear()}-${z(d.getMonth() + 1)}-${z(d.getDate())}-${z(d.getHours())}${z(d.getMinutes())}${z(d.getSeconds())}.html`;
+}
 
 /**
- * Save the tour as ONE HTML file with the edits inside. In Chrome/Edge a save dialog lets you overwrite the file you
- * opened (later saves reuse it); elsewhere the file is downloaded.
+ * Save the tour as a NEW single HTML file with the edits inside. Every save creates a new file (named with the date
+ * and time) in the browser's download folder; the file that is open is never overwritten.
  */
-export async function saveHtml(): Promise<'saved' | 'downloaded' | 'cancelled'> {
+export async function saveHtml(): Promise<{ name: string }> {
   const blob = new Blob([buildHtml(useEdits.getState().edits)], { type: 'text/html' });
-  const w = window as unknown as { showSaveFilePicker?: (o: unknown) => Promise<SaveHandle> };
-  if (w.showSaveFilePicker) {
-    try {
-      if (!handle)
-        handle = await w.showSaveFilePicker({
-          suggestedName: 'ibrd-bank-tour.html',
-          types: [{ description: 'HTML page', accept: { 'text/html': ['.html'] } }],
-        });
-      const out = await handle.createWritable();
-      await out.write(blob);
-      await out.close();
-      afterSave();
-      return 'saved';
-    } catch (e) {
-      if ((e as { name?: string }).name === 'AbortError') return 'cancelled';
-      handle = null; // fall back to a download
-    }
-  }
+  const name = newFileName();
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = 'ibrd-bank-tour.html';
+  a.download = name;
   document.body.appendChild(a);
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
   afterSave();
-  return 'downloaded';
+  return { name };
 }
 
 function afterSave() {

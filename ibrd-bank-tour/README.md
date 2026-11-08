@@ -63,10 +63,9 @@ You can fix a text directly in the HTML file, without the source code.
    - **Apply** (Ctrl+Enter) shows it at once.
    - **Original text** brings back the paper's wording.
    - **Esc** cancels.
-3. Press **Save HTML**.
-   - In Chrome or Edge a save dialog opens, and you can overwrite the file you opened; later saves in the same session reuse that file.
-   - Other browsers download `ibrd-bank-tour.html`, which replaces the old file.
-   - The saved file is again ONE offline HTML file. The edits are inside it (`<script id="tour-edits">`), and the print view / PDF of that file shows them too.
+3. Press **Save as new HTML**. Every save creates a **new** file in the browser's Downloads folder, named with the date and time (e.g. `ibrd-bank-tour-2026-11-09-143207.html`). The file you opened is never overwritten.
+   - The new file is again ONE offline HTML file. The edits are inside it (`<script id="tour-edits">`), and the print view / PDF of that file shows them too.
+   - To keep editing, open the newest file.
 
 Details:
 - **Hide a beat:** in edit mode, go to the beat and press **Hide beat n** in the edit bar.

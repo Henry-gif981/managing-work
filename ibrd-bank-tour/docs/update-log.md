@@ -635,3 +635,9 @@ Decisions:
 - `check-print`: 0 failures.
 - Backgrounds of the 10 changed scenes were recaptured: `ex-sources` now needs exposure 0.614 because the exit door stands open to daylight.
 - → on scene 57 beat 3/3 lands on scene 58 beat 1/1 with no errors.
+
+## Update 4c · Save always creates a new HTML file
+
+- The button is now **Save as new HTML**. Each save downloads a new file named with the date and time, e.g. `ibrd-bank-tour-2026-11-08-232827.html`. The opened file is never overwritten. The save dialog that could overwrite the opened file (`showSaveFilePicker`) was removed.
+- A toast names the new file. The draft is cleared after the save, because the new file holds the edits.
+- **Test** (Playwright): two saves made two files with different names (10.84 MB each); the second one reopened with the edit; no console errors.
