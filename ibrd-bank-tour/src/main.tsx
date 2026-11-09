@@ -26,6 +26,7 @@ import { useTour } from './state/store';
 import { SCENES } from './scenes';
 import { beatCount } from './content';
 import { perf } from './three/refs';
+import { world } from './three/world';
 import { useEdits, buildHtml } from './edit/store';
 
 const root = createRoot(document.getElementById('root')!);
@@ -45,6 +46,7 @@ if (new URLSearchParams(location.search).get('demo') === '1') {
     __scenes: SCENES.map((s) => ({ id: s.id, beats: beatCount(s.id), segment: s.segment })),
     __perf: perf,
     __edit: { store: useEdits, buildHtml },
+    __world: world,
   });
   startDirector();
   installKeys();

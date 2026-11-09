@@ -52,8 +52,8 @@ function applyRest(i: number, beat: number) {
   world.lift.doors = s.id === 'lift-down' && beat < 4 ? 1 : 0;
   world.lift.display = displayFor(world.lift.y);
   world.lift.streak = 0;
-  // patch 7: the exit door stands open to daylight in both exit scenes (Sources and Thank You)
-  world.exit.open = s.kind === 'exit' ? 1 : 0;
+  // the exit door opens to daylight only on the Thank You scene
+  world.exit.open = s.id === 'ex-thanks' ? 1 : 0;
   world.exit.daylight = world.exit.open;
   setCam(poseOf(i, beat));
 }
@@ -183,16 +183,21 @@ function onNav(from: { index: number; beat: number }, to: { index: number; beat:
     return;
   }
 
-  // ---------- lift (stopped at Floor 1) -> exit: doors open, cut to the exit hall, the exit door opens to daylight ----------
+  // ---------- lift -> exit (Sources): the cabin rides from Floor 1 down to the exit hall (G), the doors open
+  // and the camera walks out to the reference wall. The exit door stays closed until Thank You. ----------
   if (fromScene.id === 'lift-down' && s.kind === 'exit' && mode !== 'jump') {
-    t.to(world.lift, { doors: 0, duration: 0.7 * MOTION }, 0);
-    fadeCut(t, () => {
-      applyRest(to.index, to.beat);
-      world.exit.open = 0;
-      world.exit.daylight = 0;
-    });
-    t.to(world.exit, { open: 1, duration: 2.0 * MOTION, ease: 'power2.inOut' }, '>');
-    t.to(world.exit, { daylight: 1, duration: 1.4 * MOTION, ease: 'power1.inOut' }, '<0.3');
+    if (Math.abs(world.lift.y - LEVEL_Y.G) > 0.01) {
+      if (world.lift.doors < 1) t.to(world.lift, { doors: 1, duration: 0.6 * MOTION }, '>');
+      t.call(() => {
+        if (!REDUCED_MOTION) world.lift.streak = 1;
+      });
+      ride(t, LEVEL_Y.G, 2.0);
+      t.call(() => {
+        world.lift.streak = 0;
+      });
+    }
+    t.to(world.lift, { doors: 0, duration: 0.9 * MOTION }, '>');
+    camTo(t, poseOf(to.index, to.beat), '>-0.2', { duration: 2.2 });
     run(t);
     return;
   }
@@ -209,7 +214,7 @@ function onNav(from: { index: number; beat: number }, to: { index: number; beat:
   const doorOpen = to.index >= IDX_DOOR ? 1 : 0;
   if (world.door.open !== doorOpen) t.to(world.door, { open: doorOpen, spill: 0, duration: 1.2 * MOTION }, doorOpen ? 0 : 1.1 * MOTION);
   if (fromScene.id === 'lift-down' || world.lift.doors > 0) t.to(world.lift, { doors: 0, duration: 0.8 * MOTION }, 0);
-  const exitOpen = s.kind === 'exit' ? 1 : 0;
+  const exitOpen = s.id === 'ex-thanks' ? 1 : 0;
   if (world.exit.open !== exitOpen) {
     t.to(world.exit, { open: exitOpen, duration: 2.2 * MOTION, ease: 'power2.inOut' }, 0.3 * MOTION);
     t.to(world.exit, { daylight: exitOpen, duration: 1.6 * MOTION, ease: 'power1.inOut' }, 0.6 * MOTION);

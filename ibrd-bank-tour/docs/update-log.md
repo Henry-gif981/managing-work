@@ -641,3 +641,12 @@ Decisions:
 - The button is now **Save as new HTML**. Each save downloads a new file named with the date and time, e.g. `ibrd-bank-tour-2026-11-08-232827.html`. The opened file is never overwritten. The save dialog that could overwrite the opened file (`showSaveFilePicker`) was removed.
 - A toast names the new file. The draft is cleared after the save, because the new file holds the edits.
 - **Test** (Playwright): two saves made two files with different names (10.84 MB each); the second one reopened with the edit; no console errors.
+
+## Fix · Conclusion → References animation, exit door only on Thank You
+
+- **Problem:** patch 7 replaced the end of the Conclusion with a white cut, so the cabin no longer opened onto the exit hall. It also opened the exit door already on the Sources scene (58).
+- **Now:** on the last Conclusion beat (Floor 1), → rides the cabin on to G (about 2 s, display 1 → G), opens the cabin doors and walks the camera out to the reference wall, with no cut. The exit door stays closed on scene 58 and opens to daylight only on scene 59 (Thank You), as before patch 7.
+- **Measured** in a browser (`window.__world`): lift y 0 → -10 in 1.0-3.0 s, doors 1 → 0 in 3.0-4.3 s, exit door 0 on scene 58; on scene 59 it goes 0 → 1 in about 2.4 s.
+- **Backgrounds:** `ex-sources` (door closed) and `ex-thanks` were recaptured.
+- **The group's edited file** (`ibrd-bank-tour-2026-11-09-082506.html`, 12 text edits in scenes 35, 36, 38, 53, 54 and 56) was carried over: its edits JSON was embedded unchanged into the new build. The delivered `ibrd-bank-tour.html` therefore has the fix and all 12 edits; its PDF (85 pages) was printed from that file, and `check-print` on it reported 0 failures.
+- `__world` was added to the test hook in `main.tsx`.
