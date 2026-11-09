@@ -19,6 +19,8 @@ export interface Beat {
   camera?: string;
   /** where this beat's content comes from in the paper, e.g. "Section 1.3.2 · p. 14" */
   source?: string;
+  /** out of the main flow: shown only in Details mode (key V) and in edit mode; not printed */
+  detail?: boolean;
 }
 
 export interface SceneViewProps {

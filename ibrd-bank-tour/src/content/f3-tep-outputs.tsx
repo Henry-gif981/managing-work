@@ -1,4 +1,4 @@
-import { scene, R } from './kit';
+import { scene, R, detail } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { Chart } from '../primitives/Chart';
 import { Stat } from '../primitives/bits';
@@ -50,16 +50,16 @@ const p = scene('f3-tep-outputs', [
     kicker: 'Section 3.2.4',
     source: 'Section 3.2.4 · p. 38',
     callouts: [{ from: '.k-card .h2', to: a('new-lines'), label: 'New lines' }],
-    body: `The evaluation record supports a favourable assessment of the main physical outputs. IEG reported **{tep-new-lines}** of new high-voltage lines and **{tep-rehab}** of rehabilitated lines, against targets of {tep-new-lines-target} and {tep-rehab-target}. A total of **{tep-mw}** of transformer capacity was installed against {tep-mw-target}.
-
-Five 500-kV substations were upgraded with smart-grid technology, meeting the target; the project achieved {tep-220|n} of {tep-220-target|n} targeted 220-kV upgrades. The omitted **Ninh Binh** upgrade was cancelled because that substation was scheduled for dismantling [56, pp. 2-3; 41, pp. viii-ix, 8].`,
+    body: `According to the Independent Evaluation Group, TEP achieved or exceeded several major infrastructure targets [41, pp. viii-ix, 8].`,
   },
-  bar(0, `New transmission lines: {tep-new-lines} against {tep-new-lines-target} = **{tep-new-lines-pct}**.`),
-  bar(1, `Rehabilitated transmission lines: {tep-rehab} against {tep-rehab-target} = **{tep-rehab-pct}**.`),
-  bar(2, `Additional transformer capacity: {tep-mw} against {tep-mw-target} = **{tep-mw-pct}**.`),
-  bar(3, `500-kV smart-grid substations: {tep-500|n} of {tep-500-target|n} = **{tep-500-pct|n}.0%**, the original target met.`),
-  bar(4, `220-kV smart-grid substations: {tep-220|n} of {tep-220-target|n} = **{tep-220-pct}**. The Ninh Binh upgrade was cancelled because the substation was scheduled for dismantling.`),
-  {
+  bar(0, `The project constructed 981 kilometers of new transmission lines, exceeding the target of 920 kilometers.`),
+  bar(1, `It also rehabilitated 261 kilometers of existing lines, compared with the original target of 120 kilometers.`),
+  bar(2, `Additional transformer capacity reached 4,263 megawatts, exceeding the target of 3,950 megawatts.`),
+  // the 500-kV row stays in Table 3.2.5 but is not read out: detail beat
+  ...detail(bar(3, `500-kV smart-grid substations: {tep-500|n} of {tep-500-target|n} = **{tep-500-pct|n}.0%**, the original target met.`)),
+  bar(4, `Ten out of eleven targeted 220-kV substation upgrades were completed.`),
+  // electricity transmitted belongs to the operating results (scene 44): detail beat
+  ...detail({
     title: 'Capacity and electricity transmitted',
     kicker: 'Section 3.2.4',
     source: 'Section 3.2.4 · p. 39',
@@ -75,7 +75,7 @@ Five 500-kV substations were upgraded with smart-grid technology, meeting the ta
     body: `IEG reported that transmission capacity in the project areas had risen by almost {tep-capacity-closing} by closing and by {tep-capacity-2023} relative to the baseline by March 2023, after remaining work was completed.
 
 For the broader NPT system, electricity transmitted was {npt-twh-2018} in 2018, {npt-twh-2021} in 2021 and {npt-twh-2022} in 2022. This national series is useful context but **not a measure of electricity supplied solely because of TEP** [41, pp. viii-ix, 8-9].`,
-  },
+  }),
 ]);
 export const beats = p.beats;
 export default p.View;

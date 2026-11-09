@@ -69,6 +69,14 @@ export function installKeys() {
         case 'p':
           openPrintPreview();
           break;
+        case 'v': {
+          // Details mode: also step through the detail beats (tables and analysis kept out of the main flow)
+          const ed = useEdits.getState();
+          ed.setDetails(!ed.details);
+          s.toast({ text: !ed.details ? 'Details ON: → also shows the detail beats (full tables and analysis)' : 'Details OFF: main flow only', ttl: 2600 });
+          if (ed.details) s.goto(s.index, s.beat, 'step'); // leaving a detail beat -> nearest main-flow beat
+          break;
+        }
         case 'e': {
           const ed = useEdits.getState();
           ed.setEditing(!ed.editing);

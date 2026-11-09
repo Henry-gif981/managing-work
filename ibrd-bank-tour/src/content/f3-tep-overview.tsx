@@ -1,4 +1,4 @@
-import { scene, R } from './kit';
+import { scene, R, detail } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { TABLE10 } from '../data/tables';
 
@@ -32,20 +32,17 @@ const p = scene('f3-tep-overview', [
     kicker: 'Section 3.2.1 · Case study 1 · energy',
     source: 'Section 3.2.1 · p. 33',
     callouts: [{ from: '.k-card .h2', to: a('transformer'), label: 'TEP' }],
-    body: `The **Transmission Efficiency Project (TEP; {tep-id}; loan {tep-loan-no})** was approved on {tep-approval} and became effective on {tep-effective}. The original closing date of {tep-closing-orig} was extended to {tep-closed}.
-
-Its formal development objective was **to improve the capacity, efficiency and reliability of electricity transmission services** in selected parts of Vietnam's network. TEP was financed using Investment Project Financing (IPF), rather than a development-policy or results-based instrument [45; 46; 41].`,
+    body: `The Transmission Efficiency Project, or TEP, was approved in 2014. Its objective was to improve the capacity, efficiency and reliability of electricity transmission in selected areas of Vietnam [45; 46; 41].`,
   },
   {
     title: 'Who did what, and where',
     kicker: 'Section 3.2.1',
     source: 'Section 3.2.1 · p. 33',
     callouts: [{ from: '.k-card .h2', to: a('pylons'), label: '220-kV and 500-kV' }],
-    body: `The **Socialist Republic of Vietnam** was the borrower. The **National Power Transmission Corporation (NPT)**, a subsidiary of Vietnam Electricity (EVN), was the implementing entity, through its northern, central and southern regional project management boards. The **Ministry of Industry and Trade** was responsible for sector policy and technical approvals.
-
-The program covered **220-kV and 500-kV lines and substations** in the greater Hanoi region, the greater Ho Chi Minh City and Mekong Delta areas, and central Vietnam [45; 41].`,
+    body: `The Government of Vietnam was the borrower, while NPT, a subsidiary of EVN, implemented the project. It mainly focused on 220-kV and 500-kV transmission infrastructure [45; 41].`,
   },
-  {
+  // detail beats (out of the main flow; Details mode, key V): the planned envelope (now told in scene 41) and Table 3.2.1
+  ...detail({
     title: 'The planned envelope',
     kicker: 'Section 3.2.1',
     source: 'Section 3.2.1 · p. 34',
@@ -58,7 +55,7 @@ These amounts describe the planned financing envelope, not the amount drawn from
   row('dates', 'substation', 'Approval / effectiveness'),
   row('closing', 'substation', 'Original / actual closing'),
   row('ibrd', 'cash', 'Appraisal IBRD loan'),
-  row('actual', 'cash', 'Actual cost at closing'),
+  row('actual', 'cash', 'Actual cost at closing')),
 ]);
 export const beats = p.beats;
 export default p.View;

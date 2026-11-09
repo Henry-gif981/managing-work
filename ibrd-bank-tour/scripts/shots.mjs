@@ -19,6 +19,8 @@ page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
 page.on('pageerror', (e) => errors.push(String(e)));
 await page.goto(url + '?shot=1#ext-facade/1');
 await page.waitForFunction(() => window.__tour && document.fonts.status === 'loaded', null, { timeout: 30000 });
+// Details mode: detail beats (out of the main flow) are reachable too, so every beat is checked
+await page.evaluate(() => window.__edit?.store.getState().setDetails(true));
 const ids = await page.evaluate(() => window.__scenes);
 const report = [];
 for (let i = 0; i < ids.length; i++) {

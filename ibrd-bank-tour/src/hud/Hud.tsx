@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { SCENES, SEGMENTS, type Scene } from '../scenes';
-import { beatCount } from '../content';
+import { beatCount, detailFlags } from '../content';
 import { useEdits, visibleBeats } from '../edit/store';
 import { useTour } from '../state/store';
 import { PARAMS } from '../util/params';
@@ -33,7 +33,8 @@ export function Tracker() {
   const cur = SCENES[index];
   const edits = useEdits((st) => st.edits);
   const editing = useEdits((st) => st.editing);
-  const v = visibleBeats(cur.id, beatCount(cur.id), edits, editing);
+  const details = useEdits((st) => st.details);
+  const v = visibleBeats(cur.id, beatCount(cur.id), edits, editing, detailFlags(cur.id), details);
   const B = Math.max(1, v.length);
   const frac = (Math.max(0, v.indexOf(beat)) + 1) / B;
   return (
@@ -130,8 +131,11 @@ export function Counter() {
   const s = SCENES[index];
   const edits = useEdits((st) => st.edits);
   const editing = useEdits((st) => st.editing);
-  // hidden beats (edit mode) are not counted; in edit mode they are counted and marked
-  const v = visibleBeats(s.id, beatCount(s.id), edits, editing);
+  const details = useEdits((st) => st.details);
+  // hidden and detail beats are not counted; in edit mode (and detail beats in Details mode) they are counted and marked
+  const flags = detailFlags(s.id);
+  const v = visibleBeats(s.id, beatCount(s.id), edits, editing, flags, details);
+  const detailHere = (editing || details) && !!flags[beat];
   const B = v.length;
   const pos = v.indexOf(beat);
   const hiddenHere = editing && !!edits[`hide:${s.id}:${beat}`];
@@ -157,6 +161,7 @@ export function Counter() {
       <div className="ct-main">
         scene {index + 1} / {SCENES.length} · beat {B ? pos + 1 : '–'} / {B}
         {hiddenHere && <b className="ct-hidden"> · hidden</b>}
+        {detailHere && <b className="ct-detail"> · detail</b>}
       </div>
       <button className="ct-time" onClick={resetTimer} title="Click to reset the timer">
         {fmt(elapsed)}

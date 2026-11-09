@@ -1,4 +1,4 @@
-import { scene, R } from './kit';
+import { scene, R, detail } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { Chart } from '../primitives/Chart';
 import { F } from '../primitives/Fact';
@@ -41,7 +41,7 @@ const fig2 = (
   />
 );
 const ANCH: Record<string, string> = { c1: 'infra', c2: 'smartgrid', c3: 'capacity', fee: 'cash', total: 'cash' };
-const row = (i: number) => ({
+const row = (i: number, body?: string) => ({
   layout: 'centre' as const,
   title: 'Table 3.2.2 · Cost by component',
   label: TABLE11[i].comp,
@@ -49,6 +49,7 @@ const row = (i: number) => ({
   centre: table,
   focus: [`t11-${TABLE11[i].id}`],
   callouts: [{ from: `#t11-${TABLE11[i].id}-comp`, to: a(ANCH[TABLE11[i].id]), label: TABLE11[i].comp }],
+  body,
 });
 const bar = (j: number, body: string) => ({
   layout: 'centre' as const,
@@ -62,28 +63,28 @@ const bar = (j: number, body: string) => ({
 });
 const p = scene('f3-tep-cost', [
   {
-    title: 'Two physical components',
+    title: 'Project Components',
     kicker: 'Section 3.2.2',
     source: 'Section 3.2.2 · p. 34',
     callouts: [{ from: '.k-card .h2', to: a('infra'), label: 'Transmission infrastructure' }],
-    body: `**Component 1** financed construction, rehabilitation and upgrading of high-voltage transmission infrastructure. By increasing the power-transfer capacity of critical corridors and substations, it sought to ease load constraints, reduce system losses and improve reliability.
-
-**Component 2** modernized monitoring, control and protection equipment in selected substations through **smart-grid technology**, mainly to improve operational information and fault management; it did not itself build additional transmission capacity [45; 56].`,
+    body: `TEP consisted of three components: transmission infrastructure, smart-grid technology and institutional capacity building. The first two focused on technical improvements, while the third supported NPT's management capacity [45; 56].`,
   },
-  {
+  ...detail({
     title: 'Planned and actual cost',
     kicker: 'Section 3.2.2',
     source: 'Section 3.2.2 · pp. 34-35',
     body: `At appraisal, the infrastructure component accounted for {tep-c1-app} of total project cost, compared with {tep-c2-app} for smart-grid investments and {tep-c3-app} for capacity building. **Actual closing costs were lower in each category.**
 
 The component breakdown is informative because it distinguishes the physical and digital assets created by the project from its smaller institutional reform agenda [46].`,
-  },
-  row(0),
-  row(1),
-  row(2),
-  row(3),
-  row(4),
-  bar(0, `Transmission infrastructure: {tep-c1-app|2} planned, {tep-c1-act|2} actual ({tep-c1-pct}).`),
+  }),
+  // Table 3.2.2 stays on screen from beat 3 on; only the highlighted row changes (beats 3, 4, 5, 7)
+  row(0, `The largest investment went to transmission infrastructure, including high-voltage lines and substations.`),
+  row(1, `Smart-grid investment focused on monitoring, protection and control systems.`),
+  row(2, `Capacity building supported NPT's institutional and management development.`),
+  ...detail(row(3)),
+  row(4, `Overall, actual project costs were substantially lower than the original appraisal estimate.`),
+  // Figure 3.2.2 repeats Table 3.2.2 and the closing transition: detail beats
+  ...detail(bar(0, `Transmission infrastructure: {tep-c1-app|2} planned, {tep-c1-act|2} actual ({tep-c1-pct}).`),
   bar(1, `Smart-grid network: {tep-c2-app|2} planned, {tep-c2-act|2} actual ({tep-c2-pct}).`),
   bar(2, `Capacity building: {tep-c3-app|2} planned, {tep-c3-act|2} actual ({tep-c3-pct}).`),
   {
@@ -94,7 +95,7 @@ The component breakdown is informative because it distinguishes the physical and
     body: `Table 3.2.2 reproduces the component cost figures published in the World Bank completion report.
 
 Table 3.2.3 then separates the **IBRD contribution** from the **borrower-financed portion**, providing the breakdown needed to assess the project's financing mechanism.`,
-  },
+  }),
 ]);
 export const beats = p.beats;
 export default p.View;

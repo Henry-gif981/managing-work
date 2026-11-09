@@ -1,4 +1,4 @@
-import { scene, R } from './kit';
+import { scene, R, detail } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { Chart } from '../primitives/Chart';
 import { Stat, Note } from '../primitives/bits';
@@ -35,7 +35,7 @@ const fig4 = (
     caption={<R t="Figure 3.2.4. Vietnam’s electricity transmission loss ratio, 2015-2022 (%; axis from 2.0%, as in the paper). Source: [41, Table 2.3, p. 11], citing EVN data. 2016, 2017, 2018 and 2020 values are the data labels of the paper's figure. The system-wide ratio is not a TEP-only impact estimate." />}
   />
 );
-const row = (i: number) => ({
+const row = (i: number, body?: string) => ({
   layout: 'centre' as const,
   title: 'Table 3.2.6 · System-level indicators',
   label: TABLE15[i].ind,
@@ -43,22 +43,19 @@ const row = (i: number) => ({
   centre: table,
   focus: [`t15-${TABLE15[i].id}`],
   callouts: [{ from: `#t15-${TABLE15[i].id}-ind`, to: a(TABLE15[i].anchor), label: TABLE15[i].ind.split(' per ')[0].split(' caused')[0] }],
+  body,
 });
 const p = scene('f3-tep-outcomes', [
   {
-    title: 'Operating efficiency at closure',
+    title: 'Operating Efficiency at Closure',
     kicker: 'Section 3.2.4 · outcomes',
     source: 'Section 3.2.4 · p. 39',
-    body: `Average **O&M expenditure per MWh** transmitted fell from {om-baseline} at baseline to {om-2021} in 2021, against a target of {om-target}, and stayed at that level in 2022. **Unserved energy** from transmission-system failures declined from {unserved-2012} at the end of 2012 to {unserved-2021} at closure. Average interruption duration and frequency decreased between 2018 and 2021.
-
-These are consistent with better asset operation and reliability, but IEG warns that several measures relate to the **entire grid** and cannot be isolated to project sub-areas [41, pp. 9-11].`,
+    body: `Beyond physical infrastructure, the project also recorded improvements in operational efficiency and electricity supply reliability [41, pp. 9-11].`,
   },
-  row(0),
-  row(1),
-  row(2),
-  row(3),
-  row(4),
-  {
+  row(0, `Average operation and maintenance costs decreased from USD 0.87 to USD 0.67 per megawatt-hour transmitted.`),
+  row(1, `Unserved energy declined significantly, from 4,875 to 817 megawatt-hours.`),
+  // interruption duration, frequency and losses stay in Table 3.2.6; Figure 3.2.4 out of the main flow: detail beats
+  ...detail(row(2), row(3), row(4), {
     layout: 'centre',
     title: 'Figure 3.2.4 · Transmission loss ratio',
     label: 'Loss ratio 2015-2022',
@@ -71,16 +68,15 @@ These are consistent with better asset operation and reliability, but IEG warns 
         <R t="The IEG executive summary reports {loss-2022-ieg-summary|2}% for 2022, whereas its Table 2.3 reports {loss-2022}. The chart uses Table 2.3." />
       </Note>
     ),
-  },
+  }),
   {
-    title: 'Not a simple success story',
+    title: 'Not a Simple Success Story',
     kicker: 'Section 3.2.4',
     source: 'Section 3.2.4 · p. 41',
-    body: `Transmission losses fell to {loss-2019} in 2019 but rose to {loss-2021} in 2021 and {loss-2022} in 2022. IEG linked the increase to changing grid flows as **wind and solar generation expanded**, congestion in the central and southern regions, and insufficient new transmission investment.
-
-500-kV line faults fell from {faults500-2018|n} in 2018 to {faults500-2022|n} in 2022, while 220-kV faults rose from {faults220-2018|n} to {faults220-2022|n}: reliability improvements were not uniform [41, pp. 11-13].`,
+    body: `However, some operational indicators covered the national transmission system. Therefore, these improvements cannot be attributed entirely to TEP [41, pp. 11-13].`,
   },
-  {
+  // renewables and economic returns: detail beats
+  ...detail({
     title: 'Renewables: handle with care',
     kicker: 'Section 3.2.4',
     source: 'Section 3.2.4 · p. 41',
@@ -103,7 +99,7 @@ But the evaluation does not quantify extra solar or wind MWh due solely to TEP, 
     body: `The 2022 completion report re-estimated an aggregate economic internal rate of return (**EIRR**) of {eirr-icr}, against {eirr-pad} at appraisal, with an economic net present value of around {enpv} at the assumed {discount-rate} discount rate.
 
 These are results of a cost-benefit model, **not an observed cash return** to the IBRD or a guaranteed financial return for NPT. The higher EIRR partly reflects substantially lower capital cost; results are sensitive to assumptions, including the value of avoided supply interruptions [46, Annex 4].`,
-  },
+  }),
 ]);
 export const beats = p.beats;
 export default p.View;

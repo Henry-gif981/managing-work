@@ -28,3 +28,9 @@ export function beatCount(sceneId: string): number {
 export function beatOf(sceneId: string, beat: number): Beat | undefined {
   return CONTENT[sceneId]?.beats[beat];
 }
+
+import { visibleBeats } from '../edit/store';
+/** per beat: is it a detail beat (out of the main flow)? */
+export const detailFlags = (sceneId: string): boolean[] => CONTENT[sceneId]?.beats.map((b) => !!b.detail) ?? [];
+/** Beats the presentation shows now (hidden beats, detail beats, Details mode and edit mode applied). */
+export const shownBeats = (sceneId: string): number[] => visibleBeats(sceneId, beatCount(sceneId), undefined, undefined, detailFlags(sceneId));

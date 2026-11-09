@@ -55,6 +55,9 @@ function writeDraft(edits: Edits) {
 interface EditState {
   edits: Edits;
   editing: boolean;
+  /** Details mode (key V): also show the beats marked `detail` in the content (out of the main flow) */
+  details: boolean;
+  setDetails: (v: boolean) => void;
   /** true when there are changes that are not in the HTML file yet */
   dirty: boolean;
   setEditing: (v: boolean) => void;
@@ -68,6 +71,8 @@ const draft = readDraft();
 export const useEdits = create<EditState>((set, get) => ({
   edits: draft ?? EMBEDDED,
   editing: false,
+  details: false,
+  setDetails: (v) => set({ details: v }),
   dirty: !!draft,
   setEditing: (v) => set({ editing: v }),
   set: (key, value) => {
@@ -145,10 +150,18 @@ export const hideKey = (sceneId: string, beat: number) => `hide:${sceneId}:${bea
  * Beats of a scene that the presentation shows, in order. Hidden beats are skipped, except in edit mode
  * (`withHidden`), so they can be reached and shown again. A scene always keeps at least one beat.
  */
-export function visibleBeats(sceneId: string, n: number, edits: Edits = useEdits.getState().edits, withHidden = useEdits.getState().editing): number[] {
+export function visibleBeats(
+  sceneId: string,
+  n: number,
+  edits: Edits = useEdits.getState().edits,
+  withHidden = useEdits.getState().editing,
+  /** per beat: true = a "detail" beat (out of the main flow, shown only in Details mode or edit mode) */
+  detail: boolean[] = [],
+  details = useEdits.getState().details,
+): number[] {
   const all = Array.from({ length: n }, (_, i) => i);
   if (withHidden) return all;
-  const v = all.filter((b) => !edits[hideKey(sceneId, b)]);
-  return v.length || !n ? v : [0];
+  const v = all.filter((b) => !edits[hideKey(sceneId, b)] && (details || !detail[b]));
+  return v.length || !n ? v : [all.find((b) => !detail[b]) ?? 0];
 }
 export const isHiddenBeat = (sceneId: string, beat: number, edits: Edits = useEdits.getState().edits) => !!edits[hideKey(sceneId, beat)];

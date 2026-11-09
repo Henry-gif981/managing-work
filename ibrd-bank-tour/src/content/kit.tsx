@@ -126,6 +126,7 @@ export function scene(sceneId: string, slides: Slide[]) {
     callouts: sl.callouts,
     camera: sl.camera ?? (sl.layout === 'centre' ? tableCam ?? propCam(sl) : undefined),
     source: sl.source,
+    detail: sl.detail,
   }));
   function View({ beat }: SceneViewProps) {
     const s = sceneById(sceneId)!;
@@ -190,6 +191,9 @@ export function scene(sceneId: string, slides: Slide[]) {
   (View as unknown as { slides: Slide[] }).slides = slides;
   return { beats, View };
 }
+
+/** Mark slides as "detail": out of the main flow, kept for Details mode (key V). */
+export const detail = (...slides: Slide[]): Slide[] => slides.map((sl) => ({ ...sl, detail: true }));
 
 /** A list item that can be focused by id (e.g. the ten ESSs). */
 export function FocusItem({ id, children }: { id: string; children: ReactNode }) {

@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { SCENES, type Scene } from '../scenes';
-import { beatCount } from '../content';
-import { visibleBeats } from '../edit/store';
+import { beatCount, shownBeats } from '../content';
 import { PARAMS } from '../util/params';
 
 export type NavMode = 'step' | 'jump';
@@ -71,7 +70,7 @@ export function prevIndex(from: number, coreOnly: boolean): number | null {
   return null;
 }
 /** beats of scene i the presentation shows (hidden beats skipped outside edit mode) */
-const vis = (i: number) => visibleBeats(SCENES[i].id, beatCount(SCENES[i].id));
+const vis = (i: number) => shownBeats(SCENES[i].id);
 const lastBeat = (i: number) => {
   const v = vis(i);
   return v.length ? v[v.length - 1] : 0;

@@ -1,5 +1,5 @@
-import { scene, FocusItem, R } from './kit';
-import { Chip, Note } from '../primitives/bits';
+import { scene, FocusItem, R, detail } from './kit';
+import { Chip } from '../primitives/bits';
 import { F } from '../primitives/Fact';
 
 const a = (n: string) => `anchor:f3-tep-assess:${n}`;
@@ -52,9 +52,10 @@ const p = scene('f3-tep-assess', [
     kicker: 'Section 3.2.6',
     source: 'Section 3.2.6 · p. 43',
     callouts: [{ from: '.k-card .h2', to: a('transformer'), label: 'Strengths' }],
-    body: `TEP shows how a sovereign IBRD investment loan can combine **high-voltage capital expenditure** with **technology modernization** and **targeted institutional development**. Its strongest demonstrable achievements were in physical outputs and improved operating indicators. It also delivered a useful reduction in measured capital costs relative to the appraisal budget.`,
+    body: `TEP demonstrates how IBRD financing combined infrastructure investment, technological modernization and institutional development [41].`,
   },
-  {
+  // criteria detail (Full content: Details mode, key V)
+  ...detail({
     title: 'Weighed against',
     kicker: 'Section 3.2.6',
     source: 'Section 3.2.6 · p. 43',
@@ -64,21 +65,16 @@ const p = scene('f3-tep-assess', [
 - the large difference between **loan commitment and final disbursement**
 - the concentration of **capacity-building costs on the counterpart side**
 - continuing **sector-wide network constraints**`,
-  },
-  ...DOORS.map((_, i) => door(i)),
+  }, ...DOORS.map((_, i) => door(i))),
   {
     layout: 'centre',
-    title: 'Four criteria',
-    label: 'Ratings',
+    title: 'IEG Ratings',
+    label: 'IEG Ratings',
     source: 'Section 2.2.3 · p. 25; Section 3.2.5 · p. 42',
     centre: doors,
-    aside: (
-      <Note>
-        <R t="The paper gives one overall rating set for TEP (PPAR: outcome highly satisfactory, Bank performance satisfactory, M&E substantial [41]), not a separate rating per criterion. The four doors group the paper's remarks under the study's four criteria (Introduction 3.2)." />
-      </Note>
-    ),
+    body: `Overall, the Independent Evaluation Group rated the project's outcome as Highly Satisfactory, reflecting its strong achievements despite implementation challenges [41].`,
   },
-  {
+  ...detail({
     title: 'Three conclusions',
     kicker: 'Section 3.2.6',
     source: 'Section 3.2.6 · p. 43',
@@ -87,15 +83,13 @@ const p = scene('f3-tep-assess', [
 1. IBRD participation **existed alongside IDA before the 2017 graduation** and cannot be treated as a purely post-IDA arrangement.
 2. The financing mechanism should be evaluated using **both approved and disbursed funds**, with borrower expenditure shown separately.
 3. Successful outputs do **not** establish that all later improvements in Vietnam's transmission system, or the integration of a specific quantity of renewable generation, were caused by TEP.`,
-  },
+  }),
   {
-    title: 'Towards the second case',
+    title: 'Towards the Second Case',
     kicker: 'Section 3.2.6',
     source: 'Section 3.2.6 · p. 43',
     callouts: [{ from: '.k-card .h2', to: 'anchor:f3-tep-assess:ccsep', label: 'CCSEP' }],
-    body: `These distinctions make the case study an evidence-based foundation for the comparison in Section 3.3.
-
-**CCSEP** is a contrasting urban and environmental operation. Whereas TEP relied on a large IBRD loan implemented through NPT, CCSEP **combined IBRD and IDA financing with decentralized provincial implementation**. The comparison highlights how funding structure, counterpart obligations and institutional capacity influence implementation across sectors.`,
+    body: `Now, let's continue our museum tour with the Coastal Cities Sustainable Environment Project, which applied a different financing structure in the urban and environmental sector.`,
   },
 ]);
 export const beats = p.beats;

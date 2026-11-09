@@ -2128,3 +2128,67 @@ html.shot *::after {
 .mini-card .rich p {
   margin: 0;
 }
+.ct-detail {
+  color: var(--wb-blue);
+}
+
+/* scene 45 (f3-tep-gap) beat 1: IBRD committed vs disbursed, replaces Table 3.2.7 in the main flow */
+.gap-compare {
+  width: 640px;
+  padding: 22px 26px;
+}
+.gc-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 170px;
+  align-items: center;
+  gap: 14px;
+  margin: 10px 0;
+  font-size: 24px;
+}
+.gc-label {
+  font-weight: 700;
+  color: var(--wb-navy);
+}
+.gc-bar {
+  height: 34px;
+  background: var(--surface-2);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.gc-bar i {
+  display: block;
+  height: 100%;
+}
+.gc-commit {
+  background: var(--wb-navy);
+}
+.gc-disb {
+  background: var(--wb-cyan);
+}
+.gc-row b {
+  text-align: right;
+  color: var(--wb-navy);
+  font-size: 26px;
+}
+.gc-note {
+  margin-top: 8px;
+  font-size: 20px;
+  color: var(--ink);
+}
+/* scene 43 (f3-tep-outputs): Target and Actual columns of Table 3.2.5 in two colours */
+#t14 th[id$='-h-target'] {
+  background: var(--wb-blue);
+}
+#t14 th[id$='-h-actual'] {
+  background: #1f7a52;
+}
+#t14 td[id$='-target'] {
+  background: rgba(0, 108, 153, 0.1) !important;
+  color: var(--wb-blue);
+  font-weight: 600;
+}
+#t14 td[id$='-actual'] {
+  background: rgba(31, 122, 82, 0.12) !important;
+  color: #1f7a52;
+  font-weight: 700;
+}

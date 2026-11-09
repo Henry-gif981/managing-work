@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useEdits, saveHtml, hideKey, visibleBeats } from './store';
-import { beatCount } from '../content';
+import { beatCount, detailFlags, shownBeats } from '../content';
 import { SCENES } from '../scenes';
 import { useTour } from '../state/store';
 
@@ -26,7 +26,7 @@ export function EditLayer() {
   const scene = SCENES[index];
   const nBeats = beatCount(scene.id);
   const hidden = !!edits[hideKey(scene.id, beat)];
-  const shownCount = visibleBeats(scene.id, nBeats, edits, false).length;
+  const shownCount = visibleBeats(scene.id, nBeats, edits, false, detailFlags(scene.id), false).length;
   const hiddenTotal = Object.keys(edits).filter((k) => k.startsWith('hide:')).length;
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function EditLayer() {
       setOpen(null);
       // leaving edit mode on a hidden beat: go to the nearest beat the presentation shows
       const t = useTour.getState();
-      if (useEdits.getState().edits[hideKey(SCENES[t.index].id, t.beat)]) t.goto(t.index, t.beat, 'step');
+      if (!shownBeats(SCENES[t.index].id).includes(t.beat)) t.goto(t.index, t.beat, 'step');
     }
   }, [editing]);
   useEffect(() => {

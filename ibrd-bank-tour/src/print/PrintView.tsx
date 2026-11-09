@@ -100,7 +100,8 @@ function specOf(id: string): PSpec {
   const raw = slidesOf(id);
   const edits = useEdits.getState().edits;
   // hidden beats (edit mode) are left out; a scene keeps at least one beat
-  const shown = raw ? raw.map((sl, i) => ({ sl, i })).filter(({ i }) => !isHiddenBeat(id, i, edits)) : [];
+  // detail beats (out of the main flow) are not printed either
+  const shown = raw ? raw.map((sl, i) => ({ sl, i })).filter(({ sl, i }) => !isHiddenBeat(id, i, edits) && !sl.detail) : [];
   const slides = raw ? (shown.length ? shown : [{ sl: raw[0], i: 0 }]).map(({ sl, i }) => editedSlide(id, i, sl, edits)) : null;
   if (!slides) {
     const c = CONTENT[id];

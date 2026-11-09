@@ -16,6 +16,8 @@ for (const [W, H] of sizes) {
   const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
   await page.goto(url + (process.argv.includes('--legacy') ? '?shot=1&legacylines=1' : '?shot=1') + '#ext-facade/1');
   await page.waitForFunction(() => window.__tour && window.__scenes, null, { timeout: 60000 });
+  // Details mode: detail beats (out of the main flow) are reachable too, so every beat is checked
+  await page.evaluate(() => window.__edit?.store.getState().setDetails(true));
   const scenes = await page.evaluate(() => window.__scenes);
   for (let i = 0; i < scenes.length; i++) {
     const s = scenes[i];
