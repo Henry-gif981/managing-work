@@ -623,3 +623,8 @@ html.print-mode #root {
 .pcard .k-keydiff-h {
   display: none;
 }
+/* print shows the tier diagram (f1-gov) in its final state, all tiers in full, whichever beats are hidden */
+.print-root .tier {
+  opacity: 1;
+  border-left-color: var(--wb-cyan);
+}

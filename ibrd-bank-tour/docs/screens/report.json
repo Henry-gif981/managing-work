@@ -1,12 +1,282 @@
 [
   {
+    "i": 1,
+    "id": "ext-facade",
+    "beat": 1,
+    "beats": 1,
+    "calls": 50,
+    "tris": 17794,
+    "fps": 17.526777020447906,
+    "overflow": []
+  },
+  {
+    "i": 2,
+    "id": "ext-door",
+    "beat": 1,
+    "beats": 0,
+    "calls": 38,
+    "tris": 17680,
+    "fps": 1.9038553069966682,
+    "overflow": []
+  },
+  {
+    "i": 3,
+    "id": "f1-rationale-2",
+    "beat": 1,
+    "beats": 3,
+    "calls": 20,
+    "tris": 17514,
+    "fps": 2.6497085320615823,
+    "overflow": []
+  },
+  {
+    "i": 3,
+    "id": "f1-rationale-2",
+    "beat": 3,
+    "beats": 3,
+    "calls": 20,
+    "tris": 17514,
+    "fps": 1.5661707126076743,
+    "overflow": []
+  },
+  {
+    "i": 4,
+    "id": "f1-problem",
+    "beat": 1,
+    "beats": 2,
+    "calls": 23,
+    "tris": 17588,
+    "fps": 2.1427040925650305,
+    "overflow": []
+  },
+  {
+    "i": 4,
+    "id": "f1-problem",
+    "beat": 2,
+    "beats": 2,
+    "calls": 23,
+    "tris": 17588,
+    "fps": 2.7144408251901253,
+    "overflow": []
+  },
+  {
+    "i": 5,
+    "id": "f1-structure",
+    "beat": 1,
+    "beats": 1,
+    "calls": 63,
+    "tris": 18408,
+    "fps": 1.7510068289267042,
+    "overflow": []
+  },
+  {
+    "i": 6,
+    "id": "f1-ch1-title",
+    "beat": 1,
+    "beats": 1,
+    "calls": 48,
+    "tris": 14214,
+    "fps": 2.554060956921303,
+    "overflow": []
+  },
+  {
+    "i": 7,
+    "id": "f1-what",
+    "beat": 1,
+    "beats": 3,
+    "calls": 23,
+    "tris": 13438,
+    "fps": 2.9806259314456036,
+    "overflow": []
+  },
+  {
+    "i": 7,
+    "id": "f1-what",
+    "beat": 3,
+    "beats": 3,
+    "calls": 23,
+    "tris": 13438,
+    "fps": 3.2843418999920404,
+    "overflow": []
+  },
+  {
+    "i": 8,
+    "id": "f1-wbg",
+    "beat": 1,
+    "beats": 2,
+    "calls": 46,
+    "tris": 14148,
+    "fps": 2.706909386208382,
+    "overflow": []
+  },
+  {
+    "i": 8,
+    "id": "f1-wbg",
+    "beat": 2,
+    "beats": 2,
+    "calls": 26,
+    "tris": 13574,
+    "fps": 2.8702640642934036,
+    "overflow": []
+  },
+  {
+    "i": 9,
+    "id": "f1-history-1",
+    "beat": 1,
+    "beats": 4,
+    "calls": 20,
+    "tris": 13432,
+    "fps": 1.5765410688950183,
+    "overflow": []
+  },
+  {
+    "i": 9,
+    "id": "f1-history-1",
+    "beat": 4,
+    "beats": 4,
+    "calls": 20,
+    "tris": 13432,
+    "fps": 2.66542280269216,
+    "overflow": []
+  },
+  {
+    "i": 10,
+    "id": "f1-history-2",
+    "beat": 1,
+    "beats": 3,
+    "calls": 18,
+    "tris": 13362,
+    "fps": 1.758860258552674,
+    "overflow": []
+  },
+  {
+    "i": 10,
+    "id": "f1-history-2",
+    "beat": 3,
+    "beats": 3,
+    "calls": 18,
+    "tris": 13362,
+    "fps": 2.064693737095664,
+    "overflow": []
+  },
+  {
+    "i": 11,
+    "id": "f1-gov",
+    "beat": 1,
+    "beats": 7,
+    "calls": 29,
+    "tris": 14018,
+    "fps": 1.9557989438683923,
+    "overflow": []
+  },
+  {
+    "i": 11,
+    "id": "f1-gov",
+    "beat": 7,
+    "beats": 7,
+    "calls": 29,
+    "tris": 14018,
+    "fps": 5.210142410558801,
+    "overflow": []
+  },
+  {
+    "i": 12,
+    "id": "f1-funds",
+    "beat": 1,
+    "beats": 4,
+    "calls": 15,
+    "tris": 13422,
+    "fps": 3.6294347155427475,
+    "overflow": []
+  },
+  {
+    "i": 12,
+    "id": "f1-funds",
+    "beat": 4,
+    "beats": 4,
+    "calls": 15,
+    "tris": 13422,
+    "fps": 3.5774975404708877,
+    "overflow": []
+  },
+  {
+    "i": 13,
+    "id": "f1-instruments",
+    "beat": 1,
+    "beats": 5,
+    "calls": 17,
+    "tris": 13428,
+    "fps": 3.199488081907014,
+    "overflow": []
+  },
+  {
+    "i": 13,
+    "id": "f1-instruments",
+    "beat": 5,
+    "beats": 5,
+    "calls": 47,
+    "tris": 14212,
+    "fps": 2.8645087367513606,
+    "overflow": []
+  },
+  {
+    "i": 14,
+    "id": "f1-terms",
+    "beat": 1,
+    "beats": 1,
+    "calls": 16,
+    "tris": 13426,
+    "fps": 3.6469730123995534,
+    "overflow": []
+  },
+  {
+    "i": 15,
+    "id": "f1-safeguards",
+    "beat": 1,
+    "beats": 6,
+    "calls": 18,
+    "tris": 13560,
+    "fps": 3.5158653423575315,
+    "overflow": []
+  },
+  {
+    "i": 15,
+    "id": "f1-safeguards",
+    "beat": 6,
+    "beats": 6,
+    "calls": 18,
+    "tris": 13560,
+    "fps": 3.764587777638239,
+    "overflow": []
+  },
+  {
+    "i": 16,
+    "id": "lift-1-2",
+    "beat": 1,
+    "beats": 0,
+    "calls": 75,
+    "tris": 22192,
+    "fps": 0.5471058102636911,
+    "overflow": []
+  },
+  {
+    "i": 17,
+    "id": "f2-ch2-title",
+    "beat": 1,
+    "beats": 1,
+    "calls": 19,
+    "tris": 8010,
+    "fps": 4.941199723292133,
+    "overflow": []
+  },
+  {
     "i": 18,
     "id": "f2-cycle",
     "beat": 1,
     "beats": 8,
     "calls": 13,
     "tris": 7932,
-    "fps": 4.262574595055414,
+    "fps": 4.2105263157894735,
     "overflow": []
   },
   {
@@ -16,7 +286,747 @@
     "beats": 8,
     "calls": 15,
     "tris": 7936,
-    "fps": 2.162318004901218,
+    "fps": 1.8796992481203008,
+    "overflow": []
+  },
+  {
+    "i": 19,
+    "id": "f2-vn-procedures",
+    "beat": 1,
+    "beats": 1,
+    "calls": 34,
+    "tris": 8636,
+    "fps": 4.598546859192298,
+    "overflow": []
+  },
+  {
+    "i": 20,
+    "id": "f2-disbursement",
+    "beat": 1,
+    "beats": 6,
+    "calls": 16,
+    "tris": 8004,
+    "fps": 4.581271761041256,
+    "overflow": []
+  },
+  {
+    "i": 20,
+    "id": "f2-disbursement",
+    "beat": 6,
+    "beats": 6,
+    "calls": 16,
+    "tris": 8004,
+    "fps": 4.86807516308118,
+    "overflow": []
+  },
+  {
+    "i": 21,
+    "id": "f2-counterpart",
+    "beat": 1,
+    "beats": 1,
+    "calls": 16,
+    "tris": 8004,
+    "fps": 2.350360388593089,
+    "overflow": []
+  },
+  {
+    "i": 22,
+    "id": "f2-ipf",
+    "beat": 1,
+    "beats": 1,
+    "calls": 35,
+    "tris": 8638,
+    "fps": 2.2808484756328546,
+    "overflow": []
+  },
+  {
+    "i": 23,
+    "id": "f2-dpf",
+    "beat": 1,
+    "beats": 2,
+    "calls": 15,
+    "tris": 7936,
+    "fps": 1.9996000799836309,
+    "overflow": []
+  },
+  {
+    "i": 23,
+    "id": "f2-dpf",
+    "beat": 2,
+    "beats": 2,
+    "calls": 15,
+    "tris": 7936,
+    "fps": 3.4150672768251362,
+    "overflow": []
+  },
+  {
+    "i": 24,
+    "id": "f2-pforr",
+    "beat": 1,
+    "beats": 2,
+    "calls": 34,
+    "tris": 8636,
+    "fps": 2.559290223511448,
+    "overflow": []
+  },
+  {
+    "i": 24,
+    "id": "f2-pforr",
+    "beat": 2,
+    "beats": 2,
+    "calls": 34,
+    "tris": 8636,
+    "fps": 3.5429583702391496,
+    "overflow": []
+  },
+  {
+    "i": 25,
+    "id": "f2-prep",
+    "beat": 1,
+    "beats": 4,
+    "calls": 15,
+    "tris": 8002,
+    "fps": 3.500910236661646,
+    "overflow": []
+  },
+  {
+    "i": 25,
+    "id": "f2-prep",
+    "beat": 4,
+    "beats": 4,
+    "calls": 15,
+    "tris": 8002,
+    "fps": 4.550004550003972,
+    "overflow": []
+  },
+  {
+    "i": 26,
+    "id": "f2-asa",
+    "beat": 1,
+    "beats": 4,
+    "calls": 15,
+    "tris": 8004,
+    "fps": 2.085360767412965,
+    "overflow": []
+  },
+  {
+    "i": 26,
+    "id": "f2-asa",
+    "beat": 4,
+    "beats": 4,
+    "calls": 15,
+    "tris": 8004,
+    "fps": 3.8880248833590776,
+    "overflow": []
+  },
+  {
+    "i": 27,
+    "id": "f2-me",
+    "beat": 1,
+    "beats": 4,
+    "calls": 12,
+    "tris": 7272,
+    "fps": 3.8718420288457467,
+    "overflow": []
+  },
+  {
+    "i": 27,
+    "id": "f2-me",
+    "beat": 4,
+    "beats": 4,
+    "calls": 12,
+    "tris": 7272,
+    "fps": 3.5727045373344652,
+    "overflow": []
+  },
+  {
+    "i": 28,
+    "id": "f2-training-pmu",
+    "beat": 1,
+    "beats": 3,
+    "calls": 12,
+    "tris": 7930,
+    "fps": 4.285591840233307,
+    "overflow": []
+  },
+  {
+    "i": 28,
+    "id": "f2-training-pmu",
+    "beat": 3,
+    "beats": 3,
+    "calls": 12,
+    "tris": 7930,
+    "fps": 5.465974309920975,
+    "overflow": []
+  },
+  {
+    "i": 29,
+    "id": "f2-training-knowledge",
+    "beat": 1,
+    "beats": 4,
+    "calls": 11,
+    "tris": 7270,
+    "fps": 3.9988003598918462,
+    "overflow": []
+  },
+  {
+    "i": 29,
+    "id": "f2-training-knowledge",
+    "beat": 4,
+    "beats": 4,
+    "calls": 11,
+    "tris": 7270,
+    "fps": 3.9769337840523113,
+    "overflow": []
+  },
+  {
+    "i": 30,
+    "id": "f2-institutional",
+    "beat": 1,
+    "beats": 7,
+    "calls": 34,
+    "tris": 8636,
+    "fps": 2.2701475595913734,
+    "overflow": []
+  },
+  {
+    "i": 30,
+    "id": "f2-institutional",
+    "beat": 7,
+    "beats": 7,
+    "calls": 34,
+    "tris": 8636,
+    "fps": 1.8649757553153428,
+    "overflow": []
+  },
+  {
+    "i": 31,
+    "id": "f2-three-forms",
+    "beat": 1,
+    "beats": 7,
+    "calls": 16,
+    "tris": 8004,
+    "fps": 2.886558260367426,
+    "overflow": []
+  },
+  {
+    "i": 31,
+    "id": "f2-three-forms",
+    "beat": 7,
+    "beats": 7,
+    "calls": 35,
+    "tris": 8638,
+    "fps": 2.973314502341382,
+    "overflow": []
+  },
+  {
+    "i": 32,
+    "id": "f2-package",
+    "beat": 1,
+    "beats": 2,
+    "calls": 19,
+    "tris": 8010,
+    "fps": 2.891844997108415,
+    "overflow": []
+  },
+  {
+    "i": 32,
+    "id": "f2-package",
+    "beat": 2,
+    "beats": 2,
+    "calls": 19,
+    "tris": 8010,
+    "fps": 3.406690740614675,
+    "overflow": []
+  },
+  {
+    "i": 33,
+    "id": "lift-2-3",
+    "beat": 1,
+    "beats": 0,
+    "calls": 61,
+    "tris": 19948,
+    "fps": 1.67940213284084,
+    "overflow": []
+  },
+  {
+    "i": 34,
+    "id": "f3-ch3-title",
+    "beat": 1,
+    "beats": 1,
+    "calls": 27,
+    "tris": 11380,
+    "fps": 1.7885888034337927,
+    "overflow": []
+  },
+  {
+    "i": 35,
+    "id": "f3-1993",
+    "beat": 1,
+    "beats": 2,
+    "calls": 13,
+    "tris": 8796,
+    "fps": 1.9723865877712032,
+    "overflow": []
+  },
+  {
+    "i": 35,
+    "id": "f3-1993",
+    "beat": 2,
+    "beats": 2,
+    "calls": 13,
+    "tris": 8796,
+    "fps": 2.996928148647218,
+    "overflow": []
+  },
+  {
+    "i": 36,
+    "id": "f3-ida-graduation",
+    "beat": 1,
+    "beats": 4,
+    "calls": 37,
+    "tris": 11390,
+    "fps": 1.5097757982940063,
+    "overflow": []
+  },
+  {
+    "i": 36,
+    "id": "f3-ida-graduation",
+    "beat": 4,
+    "beats": 4,
+    "calls": 37,
+    "tris": 11390,
+    "fps": 1.8508236165091871,
+    "overflow": []
+  },
+  {
+    "i": 37,
+    "id": "f3-sahep",
+    "beat": 1,
+    "beats": 1,
+    "calls": 26,
+    "tris": 9388,
+    "fps": 2.6548672566371683,
+    "overflow": []
+  },
+  {
+    "i": 38,
+    "id": "f3-legal",
+    "beat": 1,
+    "beats": 3,
+    "calls": 34,
+    "tris": 11384,
+    "fps": 2.802167009153502,
+    "overflow": []
+  },
+  {
+    "i": 38,
+    "id": "f3-legal",
+    "beat": 3,
+    "beats": 3,
+    "calls": 33,
+    "tris": 10544,
+    "fps": 2.1500752526337705,
+    "overflow": []
+  },
+  {
+    "i": 39,
+    "id": "f3-tep-overview",
+    "beat": 1,
+    "beats": 8,
+    "calls": 23,
+    "tris": 11022,
+    "fps": 2.42072137496965,
+    "overflow": []
+  },
+  {
+    "i": 39,
+    "id": "f3-tep-overview",
+    "beat": 8,
+    "beats": 8,
+    "calls": 35,
+    "tris": 11386,
+    "fps": 2.9791459781529297,
+    "overflow": []
+  },
+  {
+    "i": 40,
+    "id": "f3-tep-cost",
+    "beat": 1,
+    "beats": 11,
+    "calls": 25,
+    "tris": 11308,
+    "fps": 2.7144408251901253,
+    "overflow": []
+  },
+  {
+    "i": 40,
+    "id": "f3-tep-cost",
+    "beat": 11,
+    "beats": 11,
+    "calls": 25,
+    "tris": 11308,
+    "fps": 2.9620853080567358,
+    "overflow": []
+  },
+  {
+    "i": 41,
+    "id": "f3-tep-financing",
+    "beat": 1,
+    "beats": 8,
+    "calls": 38,
+    "tris": 11414,
+    "fps": 3.166811812207826,
+    "overflow": []
+  },
+  {
+    "i": 41,
+    "id": "f3-tep-financing",
+    "beat": 8,
+    "beats": 8,
+    "calls": 22,
+    "tris": 10974,
+    "fps": 1.51545766821573,
+    "overflow": []
+  },
+  {
+    "i": 42,
+    "id": "f3-tep-impl",
+    "beat": 1,
+    "beats": 9,
+    "calls": 19,
+    "tris": 10900,
+    "fps": 1.90967249116768,
+    "overflow": []
+  },
+  {
+    "i": 42,
+    "id": "f3-tep-impl",
+    "beat": 9,
+    "beats": 9,
+    "calls": 19,
+    "tris": 10900,
+    "fps": 2.524402558061457,
+    "overflow": []
+  },
+  {
+    "i": 43,
+    "id": "f3-tep-outputs",
+    "beat": 1,
+    "beats": 7,
+    "calls": 36,
+    "tris": 11388,
+    "fps": 4.534461910520111,
+    "overflow": []
+  },
+  {
+    "i": 43,
+    "id": "f3-tep-outputs",
+    "beat": 7,
+    "beats": 7,
+    "calls": 36,
+    "tris": 11388,
+    "fps": 2.5870989996548457,
+    "overflow": []
+  },
+  {
+    "i": 44,
+    "id": "f3-tep-outcomes",
+    "beat": 1,
+    "beats": 10,
+    "calls": 19,
+    "tris": 10900,
+    "fps": 4.926917392018205,
+    "overflow": []
+  },
+  {
+    "i": 44,
+    "id": "f3-tep-outcomes",
+    "beat": 10,
+    "beats": 10,
+    "calls": 19,
+    "tris": 10900,
+    "fps": 1.709547824600189,
+    "overflow": []
+  },
+  {
+    "i": 45,
+    "id": "f3-tep-gap",
+    "beat": 1,
+    "beats": 12,
+    "calls": 15,
+    "tris": 10752,
+    "fps": 3.8025705376837435,
+    "overflow": []
+  },
+  {
+    "i": 45,
+    "id": "f3-tep-gap",
+    "beat": 12,
+    "beats": 12,
+    "calls": 15,
+    "tris": 10752,
+    "fps": 2.3796303640835337,
+    "overflow": []
+  },
+  {
+    "i": 46,
+    "id": "f3-tep-assess",
+    "beat": 1,
+    "beats": 9,
+    "calls": 39,
+    "tris": 11556,
+    "fps": 2.4762690879075526,
+    "overflow": []
+  },
+  {
+    "i": 46,
+    "id": "f3-tep-assess",
+    "beat": 9,
+    "beats": 9,
+    "calls": 39,
+    "tris": 11556,
+    "fps": 3.3952975129443033,
+    "overflow": []
+  },
+  {
+    "i": 47,
+    "id": "f3-ccsep-overview",
+    "beat": 1,
+    "beats": 8,
+    "calls": 25,
+    "tris": 11376,
+    "fps": 3.7439161362780577,
+    "overflow": []
+  },
+  {
+    "i": 47,
+    "id": "f3-ccsep-overview",
+    "beat": 8,
+    "beats": 8,
+    "calls": 25,
+    "tris": 11376,
+    "fps": 1.8384042650976589,
+    "overflow": []
+  },
+  {
+    "i": 48,
+    "id": "f3-ccsep-structure",
+    "beat": 1,
+    "beats": 15,
+    "calls": 17,
+    "tris": 10754,
+    "fps": 3.67782272894415,
+    "overflow": []
+  },
+  {
+    "i": 48,
+    "id": "f3-ccsep-structure",
+    "beat": 15,
+    "beats": 15,
+    "calls": 20,
+    "tris": 10902,
+    "fps": 4.033884630899556,
+    "overflow": []
+  },
+  {
+    "i": 49,
+    "id": "f3-ccsep-cities",
+    "beat": 1,
+    "beats": 15,
+    "calls": 15,
+    "tris": 11034,
+    "fps": 2.117148906139732,
+    "overflow": []
+  },
+  {
+    "i": 49,
+    "id": "f3-ccsep-cities",
+    "beat": 15,
+    "beats": 15,
+    "calls": 17,
+    "tris": 11106,
+    "fps": 2.4416049483194544,
+    "overflow": []
+  },
+  {
+    "i": 50,
+    "id": "f3-ccsep-impl",
+    "beat": 1,
+    "beats": 12,
+    "calls": 19,
+    "tris": 11250,
+    "fps": 3.556503956610063,
+    "overflow": []
+  },
+  {
+    "i": 50,
+    "id": "f3-ccsep-impl",
+    "beat": 12,
+    "beats": 12,
+    "calls": 19,
+    "tris": 11250,
+    "fps": 3.400782179901512,
+    "overflow": []
+  },
+  {
+    "i": 51,
+    "id": "f3-ccsep-results",
+    "beat": 1,
+    "beats": 12,
+    "calls": 21,
+    "tris": 10950,
+    "fps": 4.669406051551055,
+    "overflow": []
+  },
+  {
+    "i": 51,
+    "id": "f3-ccsep-results",
+    "beat": 12,
+    "beats": 12,
+    "calls": 21,
+    "tris": 10950,
+    "fps": 4.032583272844887,
+    "overflow": []
+  },
+  {
+    "i": 52,
+    "id": "f3-ccsep-nhatrang",
+    "beat": 1,
+    "beats": 7,
+    "calls": 15,
+    "tris": 11034,
+    "fps": 2.2237046920167467,
+    "overflow": []
+  },
+  {
+    "i": 52,
+    "id": "f3-ccsep-nhatrang",
+    "beat": 7,
+    "beats": 7,
+    "calls": 15,
+    "tris": 11034,
+    "fps": 2.761668047500572,
+    "overflow": []
+  },
+  {
+    "i": 53,
+    "id": "f3-eval-achievements",
+    "beat": 1,
+    "beats": 4,
+    "calls": 18,
+    "tris": 10898,
+    "fps": 2.0289463005547703,
+    "overflow": []
+  },
+  {
+    "i": 53,
+    "id": "f3-eval-achievements",
+    "beat": 4,
+    "beats": 4,
+    "calls": 18,
+    "tris": 10898,
+    "fps": 3.2647730982697944,
+    "overflow": []
+  },
+  {
+    "i": 54,
+    "id": "f3-eval-limitations",
+    "beat": 1,
+    "beats": 4,
+    "calls": 15,
+    "tris": 10054,
+    "fps": 2.81195079086116,
+    "overflow": []
+  },
+  {
+    "i": 54,
+    "id": "f3-eval-limitations",
+    "beat": 4,
+    "beats": 4,
+    "calls": 15,
+    "tris": 10054,
+    "fps": 2.833931607783616,
+    "overflow": []
+  },
+  {
+    "i": 55,
+    "id": "f3-recs-1",
+    "beat": 1,
+    "beats": 4,
+    "calls": 15,
+    "tris": 10054,
+    "fps": 2.4580090126997134,
+    "overflow": []
+  },
+  {
+    "i": 55,
+    "id": "f3-recs-1",
+    "beat": 4,
+    "beats": 4,
+    "calls": 15,
+    "tris": 10054,
+    "fps": 3.8292169251390367,
+    "overflow": []
+  },
+  {
+    "i": 56,
+    "id": "f3-recs-2",
+    "beat": 1,
+    "beats": 3,
+    "calls": 46,
+    "tris": 12012,
+    "fps": 1.6950110175714805,
+    "overflow": []
+  },
+  {
+    "i": 56,
+    "id": "f3-recs-2",
+    "beat": 3,
+    "beats": 3,
+    "calls": 46,
+    "tris": 12012,
+    "fps": 1.9554165037152023,
+    "overflow": []
+  },
+  {
+    "i": 57,
+    "id": "lift-down",
+    "beat": 1,
+    "beats": 3,
+    "calls": 49,
+    "tris": 12038,
+    "fps": 0.6266056770473792,
+    "overflow": []
+  },
+  {
+    "i": 57,
+    "id": "lift-down",
+    "beat": 3,
+    "beats": 3,
+    "calls": 61,
+    "tris": 13542,
+    "fps": 1.637331150225133,
+    "overflow": []
+  },
+  {
+    "i": 58,
+    "id": "ex-sources",
+    "beat": 1,
+    "beats": 1,
+    "calls": 12,
+    "tris": 1794,
+    "fps": 1.0916434692428898,
+    "overflow": []
+  },
+  {
+    "i": 59,
+    "id": "ex-thanks",
+    "beat": 1,
+    "beats": 1,
+    "calls": 21,
+    "tris": 1892,
+    "fps": 0.906864967806332,
     "overflow": []
   }
 ]

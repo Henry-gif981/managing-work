@@ -719,3 +719,30 @@ Decisions:
 **Not done: presenter notes.** The brief asks for the exact words of the doc "Script Chapter 2 rút gọn", but that doc was not attached; the uploads hold only the paper (_9, _10), "Fix chap 2.pdf" and an HTML file. The notes of the 9 scenes were therefore **not rewritten**, so as not to invent a script. They will be replaced word for word once the doc is provided.
 
 **Print:** the PDF follows the main flow, so detail scenes and detail beats are not printed.
+
+**Patch 8 verification:**
+- `check-facts`: 0 failures.
+- `check-lines`: 554 beat views, 0 overlaps.
+- `test:shots`: 103 screenshots, no console errors.
+- `test:smoke`: OK.
+- `export-pdf`: 70 pages.
+- `check-print`: 0 failures.
+
+## The group's final file + Chapter 2
+
+The group's `ibrd-bank-tour-2026-final.html` carried **41 edits**:
+- the 12 earlier text edits, unchanged;
+- 1 new text edit (`f3-ccsep-cities` beat 6);
+- 28 hidden beats in Floor 1, CCSEP and the evaluation scenes.
+
+Its code predates patch 8. The edits JSON was embedded unchanged into the current build, which became `deliver/ibrd-bank-tour-final.html`. All edit keys point at beats whose positions are unchanged, because patch 8 kept beat numbers.
+
+Checked:
+- the Chapter 2 flow runs 17 → 18 → 19 → 20 → 21 → 24 → 25 → 28 → 32;
+- the hidden beats are skipped (e.g. `f1-safeguards` goes from beat 1 to beat 3);
+- all 41 edits are present;
+- the PDF printed from the file has **66 pages**, and `check-print --file=` on it found 0 failures.
+
+**Print fix found with this file:** the group hid the last beat of `f1-gov`, so the print used an earlier state of the tier diagram, with dimmed tiers at 3.7:1 contrast. Print now always shows all tiers in full.
+
+**New option:** `check-print --file=<path>` checks any saved HTML file (with edits) without touching `dist-single`.

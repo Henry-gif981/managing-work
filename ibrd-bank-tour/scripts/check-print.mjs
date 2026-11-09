@@ -10,9 +10,12 @@
 // Exits non-zero on any failure.
 import fs from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { ROOT, ensureSingleBuild, launch } from './browser.mjs';
 
-const url = ensureSingleBuild(process.argv.includes('--build'));
+// --file=<path>: check another single-file HTML (e.g. a saved file with edits) instead of dist-single
+const fileArg = (process.argv.find((a) => a.startsWith('--file=')) ?? '').slice(7);
+const url = fileArg ? pathToFileURL(path.resolve(fileArg)).href : ensureSingleBuild(process.argv.includes('--build'));
 const browser = await launch();
 const page = await browser.newPage({ viewport: { width: 1960, height: 1100 }, deviceScaleFactor: 1 });
 const errors = [];
@@ -197,7 +200,7 @@ const totalFails = Object.values(fails).reduce((a, x) => a + x.length, 0);
 let md = `# Print check (npm run check-print)\n\n${meta.total} pages, ${textCount} text nodes checked. Lowest contrast found: ${minContrast.toFixed(2)}:1. References printed on pages ${refPages[0]}–${refPages[refPages.length - 1]} (${got.length} entries).\n\n**Result: ${totalFails ? `${totalFails} failure(s)` : 'no failures'}.**\n\n| Check | Result |\n|---|---|\n`;
 for (const [k, t] of Object.entries(titles)) md += `| ${t} | ${fails[k].length ? `✗ ${fails[k].length}` : '✓'} |\n`;
 for (const [k, t] of Object.entries(titles)) if (fails[k].length) md += `\n## ${t}\n\n${fails[k].slice(0, 200).map((x) => `- ${x}`).join('\n')}\n`;
-fs.writeFileSync(path.join(ROOT, 'docs', 'print-check.md'), md);
+if (!fileArg) fs.writeFileSync(path.join(ROOT, 'docs', 'print-check.md'), md);
 for (const [k, t] of Object.entries(titles)) console.log(`${fails[k].length ? '✗' : '✓'} ${t}${fails[k].length ? `: ${fails[k].length}` : ''}`);
 for (const [k] of Object.entries(titles)) for (const x of fails[k].slice(0, 12)) console.log('   ', x);
 console.log(`${meta.total} pages · ${totalFails} failure(s) · docs/print-check.md`);
