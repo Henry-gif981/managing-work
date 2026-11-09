@@ -2184,11 +2184,11 @@ html.shot *::after {
 }
 #t14 td[id$='-target'] {
   background: rgba(0, 108, 153, 0.1) !important;
-  color: var(--wb-blue);
+  color: #005478;
   font-weight: 600;
 }
 #t14 td[id$='-actual'] {
   background: rgba(31, 122, 82, 0.12) !important;
-  color: #1f7a52;
+  color: #155c3c;
   font-weight: 700;
 }

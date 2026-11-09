@@ -677,3 +677,13 @@ Decisions:
 - **Numbers checked** against `facts.ts`: 2014; 731.25 / 500 / 231.25; 318.53 / 63.7%; 981 / 920 km; 261 / 120 km; 4,263 / 3,950 MW; 10 of 11; 0.87 → 0.67 USD/MWh; 4,875 → 817 MWh; 2 years; highly satisfactory.
 - **Notes:** the presenter notes (N) of the eight scenes were rewritten to the main flow, and `targetSeconds` was set to the brief's targets.
 - **Checks:** `check-lines` and `test:shots` now switch Details mode on, so detail beats are still checked and photographed. `check-lines` on the eight scenes found 0 overlaps.
+
+**Update 5 verification:**
+- `check-facts`: 0 failures.
+- `check-lines`: 554 beat views (detail beats included), 0 overlaps.
+- `test:shots`: 103 screenshots, no console errors.
+- `test:smoke`: OK.
+- `export-pdf`: **77 pages**.
+- `check-print`: 0 failures. The first run flagged the green "Actual" numbers of Table 3.2.5 at 4.50:1; they were darkened to #155c3c, and the "Target" numbers to #005478.
+- Backgrounds of the eight scenes were recaptured.
+- The delivered HTML again carries the group's 12 text edits; its PDF (77 pages) was printed from it, and `check-print` on it found 0 failures.

@@ -4,13 +4,7 @@ Scenes whose exhibits and cards do not fit one 1920x1080 page at the minimum fon
 
 - f1-gov (2 pages)
 - f1-safeguards (2 pages)
-- f3-tep-cost (2 pages)
-- f3-tep-financing (2 pages)
-- f3-tep-impl (2 pages)
-- f3-tep-outputs (3 pages)
-- f3-tep-outcomes (3 pages)
-- f3-tep-gap (2 pages)
-- f3-tep-assess (2 pages)
+- f3-tep-outputs (2 pages)
 - f3-ccsep-overview (3 pages)
 - f3-ccsep-structure (3 pages)
 - f3-ccsep-cities (4 pages)
@@ -20,4 +14,4 @@ Scenes whose exhibits and cards do not fit one 1920x1080 page at the minimum fon
 
 Pages that still could not be made to fit: none.
 
-Total: 85 pages = cover + contents + 55 scenes + 23 extra scene page(s) + 5 reference pages.
+Total: 77 pages = cover + contents + 55 scenes + 15 extra scene page(s) + 5 reference pages.
