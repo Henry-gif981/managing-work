@@ -14,4 +14,4 @@ Scenes whose exhibits and cards do not fit one 1920x1080 page at the minimum fon
 
 Pages that still could not be made to fit: none.
 
-Total: 77 pages = cover + contents + 55 scenes + 15 extra scene page(s) + 5 reference pages.
+Total: 70 pages = cover + contents + 48 scenes + 15 extra scene page(s) + 5 reference pages.
