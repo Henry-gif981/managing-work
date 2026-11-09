@@ -28,6 +28,8 @@ export interface Scene {
   objective: string;
   targetSeconds: number;
   optional?: boolean;
+  /** out of the main flow (→ skips it unless Details mode, key V) */
+  detail?: boolean;
   /** waypoint id in src/camera/waypoints.ts */
   camera: string;
 }
@@ -55,10 +57,16 @@ type Row = [
   targetSeconds?: number,
 ];
 
+/**
+ * Patch 8: Chapter 2 scenes out of the main flow. They are optional (Core path) AND "detail" scenes: → skips them
+ * unless Details mode (key V) or edit mode is on; the grid (G) and hash links still open them.
+ */
+export const DETAIL_SCENES = new Set(['f2-ipf', 'f2-dpf', 'f2-asa', 'f2-me', 'f2-training-knowledge', 'f2-institutional', 'f2-three-forms']);
+
 const OPTIONAL = new Set([
+  ...DETAIL_SCENES,
   'f1-history-1',
   'f1-history-2',
-  'f2-vn-procedures',
   'f2-asa',
   'f2-institutional',
   'f3-1993',
@@ -148,6 +156,7 @@ export const SCENES: Scene[] = ROWS.map(([id, kind, floor, segment, title, secti
   objective: OBJECTIVES[id] ?? 'TBD',
   targetSeconds: NOTES[id]?.targetSeconds ?? targetSeconds ?? 60,
   optional: OPTIONAL.has(id) || undefined,
+  detail: DETAIL_SCENES.has(id) || undefined,
   camera: id,
 }));
 

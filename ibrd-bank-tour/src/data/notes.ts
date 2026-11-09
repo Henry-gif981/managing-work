@@ -106,22 +106,22 @@ export const NOTES: Record<string, SceneNotes> = {
   'f2-cycle': {
     en: "Every IBRD operation passes through a six-stage cycle in which the borrower implements and the Bank advises, appraises, finances and supervises. In Vietnam it runs alongside domestic steps, which often causes delays.",
     vi: "Chu trình 6 bước, bảng 2.1.1.",
-    targetSeconds: 160,
+    targetSeconds: 40,
   },
   'f2-vn-procedures': {
     en: "The diagram puts the World Bank cycle next to Vietnam's own approvals; delays arise where the two meet.",
     vi: "Hai làn quy trình song song.",
-    targetSeconds: 20,
+    targetSeconds: 25,
   },
   'f2-disbursement': {
     en: "Money is paid out by advance, reimbursement, direct payment or special commitment, always against documents and before a deadline.",
     vi: "Bốn phương thức giải ngân, bảng 2.1.2.",
-    targetSeconds: 120,
+    targetSeconds: 35,
   },
   'f2-counterpart': {
     en: "The borrower pays part of every project, and that counterpart money is often what holds disbursement back.",
     vi: "Vốn đối ứng là ràng buộc chính.",
-    targetSeconds: 20,
+    targetSeconds: 25,
   },
   'f2-ipf': {
     en: "IPF pays as contracts progress, so delays in land clearance or bidding slow the money directly.",
@@ -136,12 +136,12 @@ export const NOTES: Record<string, SceneNotes> = {
   'f2-pforr': {
     en: "PforR pays only for verified results and relies on the country's own systems, which shifts responsibility and risk to domestic agencies.",
     vi: "PforR và so sánh ba công cụ.",
-    targetSeconds: 40,
+    targetSeconds: 30,
   },
   'f2-prep': {
     en: "Technical support starts with preparation: the Bank's team checks design and viability, and a Preparation Advance can fund this work.",
     vi: "Chuẩn bị dự án và nghiên cứu khả thi.",
-    targetSeconds: 80,
+    targetSeconds: 25,
   },
   'f2-asa': {
     en: "Advisory Services and Analytics are the Bank's non-lending advice, funded three ways; Reimbursable Advisory Services matter more for Vietnam now.",
@@ -156,7 +156,7 @@ export const NOTES: Record<string, SceneNotes> = {
   'f2-training-pmu': {
     en: "Training works on people, skills and institutions; it sticks best when trained staff stay in the project units.",
     vi: "Đào tạo cho ban quản lý dự án.",
-    targetSeconds: 60,
+    targetSeconds: 25,
   },
   'f2-training-knowledge': {
     en: "Skills grow by doing and across projects, but safeguards are the hardest to transfer when local land rules differ.",
@@ -176,7 +176,7 @@ export const NOTES: Record<string, SceneNotes> = {
   'f2-package': {
     en: "The package works only when domestic systems are ready: counterpart funds, land and PMU capacity are the binding constraints. Now we take the lift to Floor 3.",
     vi: "Chốt chương 2, đi thang máy lên tầng 3.",
-    targetSeconds: 40,
+    targetSeconds: 30,
   },
   // ---------------- Chapter 3 · context ----------------
   'f3-ch3-title': {

@@ -1,4 +1,4 @@
-import { scene, R } from './kit';
+import { scene, R, firstOnly } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { TABLE5 } from '../data/tables';
 
@@ -28,7 +28,8 @@ const row = (i: number) => ({
   focus: [`t5-${TABLE5[i].id}`],
   callouts: [{ from: `#t5-${TABLE5[i].id}`, to: a(PROPS[TABLE5[i].id]), label: TABLE5[i].method }],
 });
-const p = scene('f2-disbursement', [
+// patch 8: only the first beat is in the main flow; the others are detail beats (key V)
+const p = scene('f2-disbursement', firstOnly([
   {
     layout: 'centre',
     kicker: 'Section 2.1.2',
@@ -54,6 +55,6 @@ const p = scene('f2-disbursement', [
     callouts: [{ from: '#t5', to: a('ledgers'), label: 'Supporting documents' }],
     body: `Each fund withdrawal requires supporting documents, minimum application value, and disbursement deadline (often up to 4 months) [28].`,
   },
-]);
+]));
 export const beats = p.beats;
 export default p.View;

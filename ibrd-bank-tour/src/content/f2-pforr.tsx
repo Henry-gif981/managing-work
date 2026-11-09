@@ -1,4 +1,4 @@
-import { scene } from './kit';
+import { scene, detail } from './kit';
 import { Chip } from '../primitives/bits';
 
 const p = scene('f2-pforr', [
@@ -10,8 +10,10 @@ const p = scene('f2-pforr', [
     body: `PforR links money to **Disbursement-Linked Indicators (DLIs)**, releasing funds only after verified results while relying on country's own fiduciary and environmental systems.
 
 **Independent Evaluation Group (IEG)** highlights that DLIs must lead clearly to development objectives, and monitoring should not focus on DLIs alone [35].`,
+    // patch 8: closing line of the single main-flow beat
+    aside: <div className="pforr-line">IPF builds assets · DPF supports reforms · PforR rewards results</div>,
   },
-  {
+  ...detail({
     title: 'Three instruments, three needs',
     kicker: 'Section 2.1.3',
     source: 'Section 2.1.3 · p. 24',
@@ -24,7 +26,7 @@ const p = scene('f2-pforr', [
       </div>
     ),
     body: `For Vietnam, which has mainly used IPF for infrastructure, the choice matters: a **results-based design** shifts more responsibility, and more risk, onto domestic agencies.`,
-  },
+  }),
 ]);
 export const beats = p.beats;
 export default p.View;

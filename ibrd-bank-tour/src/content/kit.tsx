@@ -195,6 +195,9 @@ export function scene(sceneId: string, slides: Slide[]) {
 /** Mark slides as "detail": out of the main flow, kept for Details mode (key V). */
 export const detail = (...slides: Slide[]): Slide[] => slides.map((sl) => ({ ...sl, detail: true }));
 
+/** Keep only the first slide in the main flow; the others become detail slides (Details mode, key V). */
+export const firstOnly = (slides: Slide[]): Slide[] => [slides[0], ...detail(...slides.slice(1))];
+
 /** A list item that can be focused by id (e.g. the ten ESSs). */
 export function FocusItem({ id, children }: { id: string; children: ReactNode }) {
   const cls = useFocus(id);

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { SCENES, SEGMENTS, type Scene } from '../scenes';
 import { beatCount, detailFlags } from '../content';
 import { useEdits, visibleBeats } from '../edit/store';
-import { useTour } from '../state/store';
+import { useTour, inFlow } from '../state/store';
 import { PARAMS } from '../util/params';
 import { perf } from '../three/refs';
 import { displayFor, world } from '../three/world';
@@ -13,7 +13,7 @@ const fmt = (sec: number) => {
 };
 
 function totalSeconds(coreOnly: boolean) {
-  return SCENES.reduce((a, s) => a + (coreOnly && s.optional ? 0 : s.targetSeconds), 0);
+  return SCENES.reduce((a, s, i) => a + (inFlow(i, coreOnly) ? s.targetSeconds : 0), 0);
 }
 
 /* ------------------------------------------------------------------ */
@@ -56,7 +56,7 @@ export function Tracker() {
               {g.idx.map((i) => (
                 <i
                   key={i}
-                  className={(SCENES[i].optional ? 'opt' : '') + (coreOnly && SCENES[i].optional ? ' dim' : '') + (i === index ? ' cur' : '')}
+                  className={(SCENES[i].optional ? 'opt' : '') + (!inFlow(i, coreOnly) ? ' dim' : '') + (i === index ? ' cur' : '')}
                 />
               ))}
             </span>
@@ -144,7 +144,7 @@ export function Counter() {
   let plan: string | null = null;
   if (PARAMS.plan) {
     let before = 0;
-    for (let i = 0; i < index; i++) if (!(coreOnly && SCENES[i].optional)) before += SCENES[i].targetSeconds;
+    for (let i = 0; i < index; i++) if (inFlow(i, coreOnly)) before += SCENES[i].targetSeconds;
     const within = B > 0 ? (Math.max(0, pos) / B) * s.targetSeconds : 0;
     const expected = ((before + within) / total) * PARAMS.plan * 60;
     const d = elapsed - expected;

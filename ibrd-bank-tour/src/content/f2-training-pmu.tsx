@@ -1,7 +1,8 @@
-import { scene } from './kit';
+import { scene, firstOnly } from './kit';
 
 const to = 'anchor:f2-training-pmu:desks';
-const p = scene('f2-training-pmu', [
+// patch 8: only the first beat is in the main flow; the others are detail beats (key V)
+const p = scene('f2-training-pmu', firstOnly([
   {
     title: 'Leaving capacity behind',
     kicker: 'Section 2.3',
@@ -25,6 +26,6 @@ const p = scene('f2-training-pmu', [
     source: 'Section 2.3.1 · p. 26',
     body: `Training works best when **staff stay with the unit**. In one urban project, most PMUs were carried over from an earlier project. Even so, weak PMU capacity remained a main cause of delay, and the Bank recommended adding qualified staff after restructuring [57].`,
   },
-]);
+]));
 export const beats = p.beats;
 export default p.View;

@@ -687,3 +687,35 @@ Decisions:
 - `check-print`: 0 failures. The first run flagged the green "Actual" numbers of Table 3.2.5 at 4.50:1; they were darkened to #155c3c, and the "Target" numbers to #005478.
 - Backgrounds of the eight scenes were recaptured.
 - The delivered HTML again carries the group's 12 text edits; its PDF (77 pages) was printed from it, and `check-print` on it found 0 failures.
+
+---
+
+# Patch 8 · Chapter 2 shortened (scenes 17-32, HUD numbers)
+
+**Main flow (Core path of Chapter 2):** 17 → 18 → 19 → 20 → 21 → 24 → 25 → 28 → 32. Tested: → from 21 goes to 24, 24 → 25, 25 → 28, 28 → 32, and ← goes back the same way.
+
+**Out of the main flow:** 22 `f2-ipf`, 23 `f2-dpf`, 26 `f2-asa`, 27 `f2-me`, 29 `f2-training-knowledge`, 30 `f2-institutional` and 31 `f2-three-forms`.
+- They are marked optional and are also **detail scenes** (`DETAIL_SCENES` in `src/scenes.ts`).
+- → / ← skip them unless Details mode (key V) or edit mode is on. The scene grid (G), hash links and the references (R) still reach them, and no code was removed.
+- `f2-vn-procedures` (19) was optional before; it is now in the Core path.
+
+**Decision: a separate mechanism instead of Core path by default.** Switching Core path (C) on by default would also skip the other optional scenes (History I/II, 1993, Legal framework, CCSEP cities), which the brief did not ask for. "Detail scenes" therefore always leave the main flow; Core path (C) still works as before on top of that.
+
+| HUD | Scene | Beats before → main flow | Kept |
+|---|---|---|---|
+| 17 | `f2-ch2-title` | 1 → 1 | unchanged |
+| 18 | `f2-cycle` | 8 → **1** | the whole Table 2.1.1 with the beat-1 text (table cells at 22 px so it fits; the leader line was dropped because the table covers the prop); stage beats and "Restructuring" → detail |
+| 19 | `f2-vn-procedures` | 1 → 1 | unchanged |
+| 20 | `f2-disbursement` | 6 → **1** | the whole Table 2.1.2 (four methods); row beats and "Documents, minimums and deadlines" → detail |
+| 21 | `f2-counterpart` | 1 → 1 | unchanged |
+| 24 | `f2-pforr` | 2 → **1** | beat 1 with the closing line "IPF builds assets · DPF supports reforms · PforR rewards results"; "Three instruments, three needs" → detail |
+| 25 | `f2-prep` | 4 → **1** | "More than a loan" |
+| 28 | `f2-training-pmu` | 3 → **1** | "Leaving capacity behind" |
+| 32 | `f2-package` | 2 → **1** | "The package depends on the borrower" |
+| 22, 23, 26, 27, 29, 30, 31 | (detail scenes) | 1, 2, 4, 4, 4, 1, 1 | out of the main flow |
+
+**Time:** `targetSeconds` of the 9 scenes is 20 + 40 + 25 + 35 + 25 + 30 + 25 + 25 + 30 = **255 s (4 min 15 s)**. The HUD total, the progress fill (detail scenes dimmed on the tracker) and `?plan=` count only the scenes in the current flow.
+
+**Not done: presenter notes.** The brief asks for the exact words of the doc "Script Chapter 2 rút gọn", but that doc was not attached; the uploads hold only the paper (_9, _10), "Fix chap 2.pdf" and an HTML file. The notes of the 9 scenes were therefore **not rewritten**, so as not to invent a script. They will be replaced word for word once the doc is provided.
+
+**Print:** the PDF follows the main flow, so detail scenes and detail beats are not printed.

@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { SCENES, type Scene } from '../scenes';
 import { beatCount, shownBeats } from '../content';
+import { useEdits } from '../edit/store';
 import { PARAMS } from '../util/params';
 
 export type NavMode = 'step' | 'jump';
@@ -57,8 +58,12 @@ export const isTransit = (s: Scene) => (s.kind === 'door' || s.kind === 'lift') 
 
 function eligible(i: number, coreOnly: boolean) {
   const s = SCENES[i];
-  return !!s && !(coreOnly && s.optional);
+  const e = useEdits.getState();
+  // detail scenes (patch 8) are out of the main flow unless Details mode or edit mode is on
+  return !!s && !(coreOnly && s.optional) && !(s.detail && !e.details && !e.editing);
 }
+/** Is scene i in the current flow (for the time totals)? */
+export const inFlow = (i: number, coreOnly: boolean) => eligible(i, coreOnly);
 
 export function nextIndex(from: number, coreOnly: boolean): number | null {
   for (let i = from + 1; i < SCENES.length; i++) if (eligible(i, coreOnly)) return i;

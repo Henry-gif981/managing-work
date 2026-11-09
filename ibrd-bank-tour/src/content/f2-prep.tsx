@@ -1,9 +1,10 @@
-import { scene } from './kit';
+import { scene, firstOnly } from './kit';
 
 const to = 'anchor:f2-prep:plans';
 const K = 'Section 2.2.1';
 const T = 'Project preparation and feasibility studies';
-const p = scene('f2-prep', [
+// patch 8: only the first beat is in the main flow; the others are detail beats (key V)
+const p = scene('f2-prep', firstOnly([
   {
     title: 'More than a loan',
     kicker: 'Section 2.2',
@@ -30,6 +31,6 @@ const p = scene('f2-prep', [
     source: 'Section 2.2.1 · p. 25',
     body: `The quality of preparation shapes everything that follows. As Independent Evaluation Group (IEG) concluded, more thorough advance preparation and regulatory coordination on TEP would have avoided project extension [41].`,
   },
-]);
+]));
 export const beats = p.beats;
 export default p.View;

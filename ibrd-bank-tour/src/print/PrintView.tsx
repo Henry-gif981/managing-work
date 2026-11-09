@@ -39,7 +39,8 @@ type ScenePage = { kind: 'scene'; scene: number; part: number; parts: number; fr
 type Split = { ex: number; cards: number };
 type Page = { kind: 'cover' } | { kind: 'toc' } | ScenePage | { kind: 'refs'; from: number; to: number; first: boolean };
 
-const printable = SCENES.map((s, i) => ({ s, i })).filter(({ s }) => s.id !== 'ext-facade' && (CONTENT[s.id]?.beats.length ?? 0) > 0);
+// print follows the main flow: detail scenes (patch 8) are not printed
+const printable = SCENES.map((s, i) => ({ s, i })).filter(({ s }) => s.id !== 'ext-facade' && !s.detail && (CONTENT[s.id]?.beats.length ?? 0) > 0);
 
 function slidesOf(id: string): Slide[] | null {
   const v = CONTENT[id]?.View as unknown as { slides?: Slide[] };

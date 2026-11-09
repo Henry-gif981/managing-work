@@ -2192,3 +2192,30 @@ html.shot *::after {
   color: #155c3c;
   font-weight: 700;
 }
+/* patch 8: closing line of f2-pforr */
+.pforr-line {
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-left: 5px solid var(--wb-cyan);
+  background: var(--surface);
+  font-weight: 700;
+  color: var(--wb-navy);
+}
+/* patch 8: f2-cycle beat 1 shows the whole Table 2.1.1 together with its text */
+.k-centre #t4 {
+  font-size: 22px;
+  line-height: 1.2;
+}
+.k-centre #t4 th {
+  padding: 7px 14px;
+}
+.k-centre #t4 td {
+  padding: 4px 14px;
+}
+.k-centre:has(#t4) .k-caption {
+  font-size: 24px;
+}
+.k-centre:has(#t4) .k-caption .rich p {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
