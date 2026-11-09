@@ -41,6 +41,7 @@ npm run docs:scenes    # regenerates docs/scene-list.md
 | N | presenter notes (EN talk track + VI cue, from `src/data/notes.ts`) |
 | G | scene grid: jump to any scene |
 | C | **Core path** on/off: optional scenes are skipped and dimmed on the tracker (nothing is removed) |
+| V | **Details** on/off: → also steps through the *detail* beats (full tables and analysis kept out of the main flow); the counter shows "· detail" on them |
 | L | Lite mode on/off (static illustrated backgrounds, same content and keys) |
 | P | print preview (`?print=1`), P or Esc to come back |
 | D | dev mode (free-fly camera, perf counters, anchor dots) |

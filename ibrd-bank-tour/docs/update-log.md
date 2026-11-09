@@ -650,3 +650,30 @@ Decisions:
 - **Backgrounds:** `ex-sources` (door closed) and `ex-thanks` were recaptured.
 - **The group's edited file** (`ibrd-bank-tour-2026-11-09-082506.html`, 12 text edits in scenes 35, 36, 38, 53, 54 and 56) was carried over: its edits JSON was embedded unchanged into the new build. The delivered `ibrd-bank-tour.html` therefore has the fix and all 12 edits; its PDF (85 pages) was printed from that file, and `check-print` on it reported 0 failures.
 - `__world` was added to the test hook in `main.tsx`.
+
+---
+
+# Update 5 · TEP scenes shortened (main flow + Details)
+
+**Numbering:** the brief numbered these scenes 44-51, the old numbering that still counted the 5 removed Floor 1 scenes. In the current HUD they are scenes **39-46**, and they were matched by title.
+
+**Mechanism:** a beat can be marked `detail` in the content (`detail(...)` in `src/content/kit.tsx`).
+- The presentation's main flow (→ / ←, the beat counter, the tracker, print/PDF) skips detail beats.
+- **Details mode** (key **V**) and edit mode step through them too, with "· detail" in the counter. Tables 3.2.1, 3.2.4, 3.2.6 and 3.2.7 and Figures 3.2.1, 3.2.2 and 3.2.4 therefore stay on the website ("Details"), but out of the main flow.
+- Beats keep their positions, so the text edits saved in HTML files (keys `s:<scene>:<beat>:…`) still point to the same beats.
+- The new sentences are the brief's wording. The [n] citations each beat already had were kept.
+
+| HUD | Brief | Scene | Beats (main flow) | Kept beats (original numbers) | Target time |
+|---|---|---|---|---|---|
+| 39 | 44 | `f3-tep-overview` | 8 → **2** | 1 The Transmission Efficiency Project · 2 Who did what, and where | 22 s |
+| 40 | 45 | `f3-tep-cost` | 11 → **5** | 1 Project Components · 3 Transmission Infrastructure · 4 Smart-grid Network · 5 Capacity Building · 7 Total Project Cost (Table 3.2.2 stays on screen from beat 3; only the highlighted row changes) | 32 s |
+| 41 | 46 | `f3-tep-financing` | 8 → **4** | 1 IBRD financing for infrastructure · 5 "At appraisal: total financing" · 7 Where the IBRD financing went · 8 Contractual Disciplines | 32 s |
+| 42 | 47 | `f3-tep-impl` | 9 → **4** | 1 Component 3: Four Strands · 2 What the IBRD Actually Funded · 3 Asset Management System · 8 A Learning Platform | 32 s |
+| 43 | 48 | `f3-tep-outputs` | 7 → **5** | 1 Physical Outputs · 2 New lines · 3 Rehabilitated lines · 4 Transformer capacity · 6 220-kV substations (Target and Actual columns of Table 3.2.5 coloured blue / green; the 500-kV row stays in the table) | 48 s |
+| 44 | 49 | `f3-tep-outcomes` | 10 → **4** | 1 Operating Efficiency at Closure · 2 O&M expenditure · 3 Unserved energy · 8 Not a Simple Success Story | 38 s |
+| 45 | 50 | `f3-tep-gap` | 12 → **4** | 1 Committed Is Not Disbursed (Table 3.2.7 replaced on screen by a committed-vs-disbursed comparison: USD 500.00 vs 318.53 million, 63.7%) · 2 Not Automatically a Failure · 10 Why the Schedule Slipped · 11 Environmental and Social Issues | 42 s |
+| 46 | 51 | `f3-tep-assess` | 9 → **3** | 1 What TEP Shows · 7 IEG Ratings (the four criteria and the PPAR ratings stay on screen) · 9 Towards the Second Case | 22 s |
+
+- **Numbers checked** against `facts.ts`: 2014; 731.25 / 500 / 231.25; 318.53 / 63.7%; 981 / 920 km; 261 / 120 km; 4,263 / 3,950 MW; 10 of 11; 0.87 → 0.67 USD/MWh; 4,875 → 817 MWh; 2 years; highly satisfactory.
+- **Notes:** the presenter notes (N) of the eight scenes were rewritten to the main flow, and `targetSeconds` was set to the brief's targets.
+- **Checks:** `check-lines` and `test:shots` now switch Details mode on, so detail beats are still checked and photographed. `check-lines` on the eight scenes found 0 overlaps.
