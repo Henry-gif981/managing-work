@@ -1,4 +1,4 @@
-import { scene } from './kit';
+import { scene, keepBeats } from './kit';
 import { Chip } from '../primitives/bits';
 
 const to = 'anchor:f2-asa:library';
@@ -13,7 +13,8 @@ const channels = (on: number) => (
     ))}
   </div>
 );
-const p = scene('f2-asa', [
+// patch 8c: main-flow beats [1, 2, 3]; the others are detail beats (key V)
+const p = scene('f2-asa', keepBeats([1, 2, 3], [
   {
     title: T,
     kicker: K,
@@ -43,6 +44,6 @@ const p = scene('f2-asa', [
     callouts: [{ from: '.k-card', to }],
     body: `In Vietnam, analytical work underpins major policy dialogues for reforms and builds local regulatory capacity. By resolving institutional bottlenecks early, ASA enhances project readiness and ensures effective loan execution [2].`,
   },
-]);
+]));
 export const beats = p.beats;
 export default p.View;

@@ -141,27 +141,27 @@ export const NOTES: Record<string, SceneNotes> = {
   'f2-prep': {
     en: "Technical support starts with preparation: the Bank's team checks design and viability, and a Preparation Advance can fund this work.",
     vi: "Chuẩn bị dự án và nghiên cứu khả thi.",
-    targetSeconds: 25,
+    targetSeconds: 60,
   },
   'f2-asa': {
     en: "Advisory Services and Analytics are the Bank's non-lending advice, funded three ways; Reimbursable Advisory Services matter more for Vietnam now.",
     vi: "ASA và RAS.",
-    targetSeconds: 80,
+    targetSeconds: 60,
   },
   'f2-me': {
     en: "Projects are tracked against a results framework at supervision, completion and independent evaluation, but system-wide indicators cannot be credited to one project.",
     vi: "Khung giám sát và đánh giá.",
-    targetSeconds: 80,
+    targetSeconds: 20,
   },
   'f2-training-pmu': {
     en: "Training works on people, skills and institutions; it sticks best when trained staff stay in the project units.",
     vi: "Đào tạo cho ban quản lý dự án.",
-    targetSeconds: 25,
+    targetSeconds: 40,
   },
   'f2-training-knowledge': {
     en: "Skills grow by doing and across projects, but safeguards are the hardest to transfer when local land rules differ.",
     vi: "Chuyển giao kiến thức.",
-    targetSeconds: 80,
+    targetSeconds: 40,
   },
   'f2-institutional': {
     en: "Table 2.3.1 shows typical institutional reforms. They last only if the borrower funds and sustains them.",
@@ -171,7 +171,7 @@ export const NOTES: Record<string, SceneNotes> = {
   'f2-three-forms': {
     en: "Table 2.4.1 shows finance, technical support and training at each stage; they reinforce one another.",
     vi: "Ba hình thức hỗ trợ, bảng 2.4.1.",
-    targetSeconds: 140,
+    targetSeconds: 40,
   },
   'f2-package': {
     en: "The package works only when domestic systems are ready: counterpart funds, land and PMU capacity are the binding constraints. Now we take the lift to Floor 3.",

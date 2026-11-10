@@ -61,13 +61,12 @@ type Row = [
  * Patch 8: Chapter 2 scenes out of the main flow. They are optional (Core path) AND "detail" scenes: → skips them
  * unless Details mode (key V) or edit mode is on; the grid (G) and hash links still open them.
  */
-export const DETAIL_SCENES = new Set(['f2-asa', 'f2-me', 'f2-training-knowledge', 'f2-institutional', 'f2-three-forms']);
+export const DETAIL_SCENES = new Set(['f2-institutional']);
 
 const OPTIONAL = new Set([
   ...DETAIL_SCENES,
   'f1-history-1',
   'f1-history-2',
-  'f2-asa',
   'f2-institutional',
   'f3-1993',
   'f3-legal',

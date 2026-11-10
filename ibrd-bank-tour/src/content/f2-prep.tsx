@@ -1,10 +1,10 @@
-import { scene, firstOnly } from './kit';
+import { scene, keepBeats } from './kit';
 
 const to = 'anchor:f2-prep:plans';
 const K = 'Section 2.2.1';
 const T = 'Project preparation and feasibility studies';
-// patch 8: only the first beat is in the main flow; the others are detail beats (key V)
-const p = scene('f2-prep', firstOnly([
+// patch 8c: main-flow beats [1, 2, 3]; the others are detail beats (key V)
+const p = scene('f2-prep', keepBeats([1, 2, 3], [
   {
     title: 'More than a loan',
     kicker: 'Section 2.2',

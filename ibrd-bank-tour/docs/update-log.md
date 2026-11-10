@@ -753,3 +753,22 @@ At the group's request, `f2-ipf` (1 beat) and `f2-dpf` (2 beats) were taken out 
 - Chapter 2 now runs 17 → 18 → 19 → 20 → 21 → 22 → 23 → 24 → 25 → 28 → 32: 11 scenes and 12 beats.
 - Time: 255 + 20 + 40 = **315 s (5 min 15 s)**.
 - The group's final file was rebuilt with its 41 edits. Its PDF has **68 pages**, `check-print --file=` found 0 failures, and `check-lines` on the two scenes found 0 overlaps.
+
+## Patch 8c · More Chapter 2 back in the main flow (HUD numbers)
+
+| HUD | Scene | Main-flow beats |
+|---|---|---|
+| 25 | `f2-prep` | 1, 2, 3 (beat 4 detail; the group's file also hides it) |
+| 26 | `f2-asa` | 1, 2, 3 (beat 4 detail); back in the main flow and no longer optional |
+| 27 | `f2-me` | 2 only |
+| 28 | `f2-training-pmu` | 2, 3 (beat 1 → detail) |
+| 29 | `f2-training-knowledge` | 1, 3 |
+| 31 | `f2-three-forms` | 1, and beat 5 "How the forms reinforce one another", which now shows **all three ways at once** in one card; the old one-way beats 6 and 7 are detail beats |
+
+- `DETAIL_SCENES` now holds only `f2-institutional` (30).
+- `keepBeats([..], slides)` was added in `kit.tsx`. Beat numbers are unchanged, so saved edits stay valid.
+- **Flow:** 17 → 18 → 19 → 20 → 21 → 22 → 23 (2) → 24 → 25 (3) → 26 (3) → 27 → 28 (2) → 29 (2) → 31 (2) → 32. That is 15 scenes and 22 beats, with `targetSeconds` 20 + 40 + 25 + 35 + 25 + 20 + 40 + 30 + 60 + 60 + 20 + 40 + 40 + 40 + 30 = **525 s (8 min 45 s)**.
+- **Checks:**
+  - `check-lines` on the six scenes: 0 overlaps;
+  - the backgrounds of the six scenes were recaptured;
+  - the group's final file was rebuilt with its 41 edits: its PDF has **72 pages**, `check-print --file=` found 0 failures, and `test:smoke` is OK.

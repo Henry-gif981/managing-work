@@ -1,8 +1,9 @@
-import { scene } from './kit';
+import { scene, keepBeats } from './kit';
 
 const to = 'anchor:f2-me:board';
 const S = 'Section 2.2.3 · p. 25';
-const p = scene('f2-me', [
+// patch 8c: main-flow beats [2]; the others are detail beats (key V)
+const p = scene('f2-me', keepBeats([2], [
   {
     title: 'The results framework',
     kicker: 'Section 2.2.3',
@@ -37,6 +38,6 @@ const p = scene('f2-me', [
     source: 'Section 2.2.3 · p. 26',
     body: `Many indicators, such as transmission losses, measure the **whole system**, so some improvements in a transmission project cannot be attributed to the project alone [41]. In another project, the ICR and IEG both rated M&E quality **modest** [63, p. 18; 64, p. 16].`,
   },
-]);
+]));
 export const beats = p.beats;
 export default p.View;

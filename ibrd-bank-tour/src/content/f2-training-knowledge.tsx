@@ -1,8 +1,9 @@
-import { scene } from './kit';
+import { scene, keepBeats } from './kit';
 
 const to = 'anchor:f2-training-knowledge:blackboard';
 const S = 'Section 2.3.2 · p. 27';
-const p = scene('f2-training-knowledge', [
+// patch 8c: main-flow beats [1, 3]; the others are detail beats (key V)
+const p = scene('f2-training-knowledge', keepBeats([1, 3], [
   {
     title: 'Learning by doing',
     kicker: 'Section 2.3.2',
@@ -33,6 +34,6 @@ const p = scene('f2-training-knowledge', [
     source: S,
     body: `Experience in one coastal city shows that knowing the Bank's resettlement standards is not enough when **local compensation rules and land prices differ**.`,
   },
-]);
+]));
 export const beats = p.beats;
 export default p.View;

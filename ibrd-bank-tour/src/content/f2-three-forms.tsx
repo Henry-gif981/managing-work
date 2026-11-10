@@ -1,4 +1,4 @@
-import { scene, R, FocusItem } from './kit';
+import { scene, R, FocusItem, keepBeats } from './kit';
 import { DataTable } from '../primitives/DataTable';
 import { TABLE7 } from '../data/tables';
 
@@ -53,7 +53,8 @@ const way = (i: number) => ({
   focus: [`way-${i + 1}`],
   body: `**${['First', 'Second', 'Third'][i]}, ${WAYS[i][0].toLowerCase()}**: ${WAYS[i][1]}`,
 });
-const p = scene('f2-three-forms', [
+// patch 8c: main-flow beats 1 and 5 (the merged "how the forms reinforce one another")
+const p = scene('f2-three-forms', keepBeats([1, 5], [
   {
     layout: 'centre',
     title: 'Table 2.4.1 · Three forms of support',
@@ -67,9 +68,16 @@ const p = scene('f2-three-forms', [
   row(0),
   row(1),
   row(2),
-  way(0),
+  // patch 8c: the three ways on one beat (no step-by-step reveal); the former single-way beats 6-7 are detail beats
+  {
+    kicker: 'Section 2.4',
+    title: 'How the forms reinforce one another',
+    label: 'How the forms reinforce one another',
+    source: 'Section 2.4 · p. 28',
+    body: WAYS.map(([h, t], i) => `- **${['First', 'Second', 'Third'][i]}, ${h.toLowerCase()}**: ${t}`).join('\n'),
+  },
   way(1),
   way(2),
-]);
+]));
 export const beats = p.beats;
 export default p.View;

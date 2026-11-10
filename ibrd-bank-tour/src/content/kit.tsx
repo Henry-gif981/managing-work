@@ -198,6 +198,9 @@ export const detail = (...slides: Slide[]): Slide[] => slides.map((sl) => ({ ...
 /** Keep only the first slide in the main flow; the others become detail slides (Details mode, key V). */
 export const firstOnly = (slides: Slide[]): Slide[] => [slides[0], ...detail(...slides.slice(1))];
 
+/** Keep only the given beats (1-based) in the main flow; the others become detail slides (key V). */
+export const keepBeats = (keep: number[], slides: Slide[]): Slide[] => slides.map((sl, i) => (keep.includes(i + 1) ? sl : { ...sl, detail: true }));
+
 /** A list item that can be focused by id (e.g. the ten ESSs). */
 export function FocusItem({ id, children }: { id: string; children: ReactNode }) {
   const cls = useFocus(id);

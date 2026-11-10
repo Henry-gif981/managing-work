@@ -1,8 +1,8 @@
-import { scene, firstOnly } from './kit';
+import { scene, keepBeats } from './kit';
 
 const to = 'anchor:f2-training-pmu:desks';
-// patch 8: only the first beat is in the main flow; the others are detail beats (key V)
-const p = scene('f2-training-pmu', firstOnly([
+// patch 8c: main-flow beats [2, 3]; the others are detail beats (key V)
+const p = scene('f2-training-pmu', keepBeats([2, 3], [
   {
     title: 'Leaving capacity behind',
     kicker: 'Section 2.3',
