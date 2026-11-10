@@ -746,3 +746,10 @@ Checked:
 **Print fix found with this file:** the group hid the last beat of `f1-gov`, so the print used an earlier state of the tier diagram, with dimmed tiers at 3.7:1 contrast. Print now always shows all tiers in full.
 
 **New option:** `check-print --file=<path>` checks any saved HTML file (with edits) without touching `dist-single`.
+
+## Patch 8b · Scenes 22 (IPF) and 23 (DPF) back in the main flow
+
+At the group's request, `f2-ipf` (1 beat) and `f2-dpf` (2 beats) were taken out of `DETAIL_SCENES`. They are in the main flow and the Core path again, unchanged.
+- Chapter 2 now runs 17 → 18 → 19 → 20 → 21 → 22 → 23 → 24 → 25 → 28 → 32: 11 scenes and 12 beats.
+- Time: 255 + 20 + 40 = **315 s (5 min 15 s)**.
+- The group's final file was rebuilt with its 41 edits. Its PDF has **68 pages**, `check-print --file=` found 0 failures, and `check-lines` on the two scenes found 0 overlaps.
